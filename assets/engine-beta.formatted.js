@@ -26559,7 +26559,6 @@ class Vector {
 }(),
 function() {
     var Bt = {
-        planet: getFilePath("planet.jpg"),
         asteroids1: getFilePath("asteroids1.png"),
         asteroids2: getFilePath("asteroids2.png"),
         asteroids3: getFilePath("asteroids3.png"),
@@ -33416,9 +33415,9 @@ $(function SWAM() {
     }
     )();
     let loader = new PIXI.loaders.Loader;
-    if (loader.add("halfplanet_sprite", "http://localhost/planet.jpg"),
-    loader.add("halfplanet_mask", "http://localhost/planet-mask2.jpg"),
-    loader.add("hyperspace", "http://localhost/hyperspace.jpg"),
+    if (loader.add("halfplanet_sprite", getFilePath("planet.jpg")),
+    loader.add("halfplanet_mask", getFilePath("planet-mask2.jpg")),
+    loader.add("hyperspace", getFilePath("hyperspace.jpg")),
     loader.load(()=>{
         SWAM.planet = createPlanet(Graphics.renderer),
         game.graphics.layers.map.addChildAt(SWAM.planet, getDoodadsIndex()),
