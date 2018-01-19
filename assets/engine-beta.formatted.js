@@ -1,13 +1,13 @@
 "use strict";
-!function(Bt, Gt) {
-    "object" == typeof module && "object" == typeof module.exports ? module.exports = Bt.document ? Gt(Bt, !0) : function(Xt) {
-        if (!Xt.document)
+!function(Bt, Xt) {
+    "object" == typeof module && "object" == typeof module.exports ? module.exports = Bt.document ? Xt(Bt, !0) : function(Gt) {
+        if (!Gt.document)
             throw new Error("jQuery requires a window with a document");
-        return Gt(Xt)
+        return Xt(Gt)
     }
-    : Gt(Bt)
-}("undefined" == typeof window ? this : window, function(Bt, Gt) {
-    function Xt(wa, Ca) {
+    : Xt(Bt)
+}("undefined" == typeof window ? this : window, function(Bt, Xt) {
+    function Gt(wa, Ca) {
         var Aa = (Ca = Ca || kn).createElement("script");
         Aa.text = wa,
         Ca.head.appendChild(Aa).parentNode.removeChild(Aa)
@@ -27,9 +27,9 @@
             return Pa === Ca !== Aa
         }) : "string" == typeof Ca ? rr.test(Ca) ? Vn.filter(Ca, wa, Aa) : (Ca = Vn.filter(Ca, wa),
         Vn.grep(wa, function(Pa) {
-            return -1 < Gn.call(Ca, Pa) !== Aa && 1 === Pa.nodeType
+            return -1 < Xn.call(Ca, Pa) !== Aa && 1 === Pa.nodeType
         })) : Vn.grep(wa, function(Pa) {
-            return -1 < Gn.call(Ca, Pa) !== Aa
+            return -1 < Xn.call(Ca, Pa) !== Aa
         })
     }
     function Wt(wa, Ca) {
@@ -231,10 +231,10 @@
         Ca = Bn.apply([], Ca);
         var ka = 0, Na = wa.length, Ba = Ca[0], Ua = Vn.isFunction(Ba), Ma, Ra, Da, Ia, Oa, La;
         if (Ua || 1 < Na && "string" == typeof Ba && !zn.checkClone && Lr.test(Ba))
-            return wa.each(function(Ga) {
-                var Xa = wa.eq(Ga);
-                Ua && (Ca[0] = Ba.call(this, Ga, Xa.html())),
-                fn(Xa, Ca, Aa, Pa)
+            return wa.each(function(Xa) {
+                var Ga = wa.eq(Xa);
+                Ua && (Ca[0] = Ba.call(this, Xa, Ga.html())),
+                fn(Ga, Ca, Aa, Pa)
             });
         if (Na && (Ma = rn(Ca, wa[0].ownerDocument, !1, wa, Pa),
         Ra = Ma.firstChild,
@@ -250,7 +250,7 @@
                 Vn.map(Da, pn),
                 ka = 0; ka < Ia; ka++)
                     Oa = Da[ka],
-                    wr.test(Oa.type || "") && !hr.access(Oa, "globalEval") && Vn.contains(La, Oa) && (Oa.src ? Vn._evalUrl && Vn._evalUrl(Oa.src) : Xt(Oa.textContent.replace(Nr, ""), La))
+                    wr.test(Oa.type || "") && !hr.access(Oa, "globalEval") && Vn.contains(La, Oa) && (Oa.src ? Vn._evalUrl && Vn._evalUrl(Oa.src) : Gt(Oa.textContent.replace(Nr, ""), La))
         }
         return wa
     }
@@ -344,10 +344,10 @@
         }), Oa = function() {
             if (Ma)
                 return !1;
-            for (var Na = zr || Sn(), Fa = Math.max(0, La.startTime + La.duration - Na), Ba = 1 - (Fa / La.duration || 0), Ua = 0, Ga = La.tweens.length; Ua < Ga; Ua++)
+            for (var Na = zr || Sn(), Fa = Math.max(0, La.startTime + La.duration - Na), Ba = 1 - (Fa / La.duration || 0), Ua = 0, Xa = La.tweens.length; Ua < Xa; Ua++)
                 La.tweens[Ua].run(Ba);
             return Ia.notifyWith(wa, [La, Ba, Fa]),
-            1 > Ba && Ga ? Fa : (Ga || Ia.notifyWith(wa, [La, 1, 0]),
+            1 > Ba && Xa ? Fa : (Xa || Ia.notifyWith(wa, [La, 1, 0]),
             Ia.resolveWith(wa, [La]),
             !1)
         }, La = Ia.promise({
@@ -380,23 +380,23 @@
             }
         }), ka = La.props, Pa, Ma;
         for (!function(Na, Fa) {
-            var Ba, Ua, Ga, Xa, Ha;
+            var Ba, Ua, Xa, Ga, Ha;
             for (Ba in Na)
                 if (Ua = Vn.camelCase(Ba),
-                Ga = Fa[Ua],
-                Xa = Na[Ba],
-                Array.isArray(Xa) && (Ga = Xa[1],
-                Xa = Na[Ba] = Xa[0]),
-                Ba !== Ua && (Na[Ua] = Xa,
+                Xa = Fa[Ua],
+                Ga = Na[Ba],
+                Array.isArray(Ga) && (Xa = Ga[1],
+                Ga = Na[Ba] = Ga[0]),
+                Ba !== Ua && (Na[Ua] = Ga,
                 delete Na[Ba]),
                 (Ha = Vn.cssHooks[Ua]) && ("expand"in Ha))
-                    for (Ba in Xa = Ha.expand(Xa),
+                    for (Ba in Ga = Ha.expand(Ga),
                     delete Na[Ua],
-                    Xa)
-                        (Ba in Na) || (Na[Ba] = Xa[Ba],
-                        Fa[Ba] = Ga);
+                    Ga)
+                        (Ba in Na) || (Na[Ba] = Ga[Ba],
+                        Fa[Ba] = Xa);
                 else
-                    Fa[Ua] = Ga
+                    Fa[Ua] = Xa
         }(ka, La.opts.specialEasing); Ra < Da; Ra++)
             if (Pa = An.prefilters[Ra].call(La, wa, ka, La.opts))
                 return Vn.isFunction(Pa.stop) && (Vn._queueHooks(La.elem, La.opts.queue).stop = Vn.proxy(Pa.stop, Pa)),
@@ -468,10 +468,10 @@
       , Fn = Ln.slice
       , Bn = Ln.concat
       , Un = Ln.push
-      , Gn = Ln.indexOf
-      , Xn = {}
-      , Hn = Xn.toString
-      , Yn = Xn.hasOwnProperty
+      , Xn = Ln.indexOf
+      , Gn = {}
+      , Hn = Gn.toString
+      , Yn = Gn.hasOwnProperty
       , jn = Yn.toString
       , Wn = jn.call(Object)
       , zn = {}
@@ -572,10 +572,10 @@
             return !0
         },
         type: function(wa) {
-            return null == wa ? wa + "" : "object" == typeof wa || "function" == typeof wa ? Xn[Hn.call(wa)] || "object" : typeof wa
+            return null == wa ? wa + "" : "object" == typeof wa || "function" == typeof wa ? Gn[Hn.call(wa)] || "object" : typeof wa
         },
         globalEval: function(wa) {
-            Xt(wa)
+            Gt(wa)
         },
         camelCase: function(wa) {
             return wa.replace(Kn, "ms-").replace(Qn, Zn)
@@ -600,7 +600,7 @@
             Aa
         },
         inArray: function(wa, Ca, Aa) {
-            return null == Ca ? -1 : Gn.call(Ca, wa, Aa)
+            return null == Ca ? -1 : Xn.call(Ca, wa, Aa)
         },
         merge: function(wa, Ca) {
             for (var Aa = +Ca.length, Pa = 0, Ma = wa.length; Pa < Aa; Pa++)
@@ -643,242 +643,242 @@
     }),
     "function" == typeof Symbol && (Vn.fn[Symbol.iterator] = Ln[Symbol.iterator]),
     Vn.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "), function(wa, Ca) {
-        Xn["[object " + Ca + "]"] = Ca.toLowerCase()
+        Gn["[object " + Ca + "]"] = Ca.toLowerCase()
     });
     var Jn = function(wa) {
-        function Ca(Qo, Zo, Jo, $o) {
-            var si = Zo && Zo.ownerDocument, di = Zo ? Zo.nodeType : 9, ei, ti, ni, ri, ai, oi, ii;
-            if (Jo = Jo || [],
-            "string" != typeof Qo || !Qo || 1 !== di && 9 !== di && 11 !== di)
-                return Jo;
-            if (!$o && ((Zo ? Zo.ownerDocument || Zo : co) !== ro && no(Zo),
-            Zo = Zo || ro,
-            oo)) {
-                if (11 !== di && (ai = Ho.exec(Qo)))
-                    if (!(ei = ai[1])) {
-                        if (ai[2])
-                            return Eo.apply(Jo, Zo.getElementsByTagName(Qo)),
-                            Jo;
-                        if ((ei = ai[3]) && Wa.getElementsByClassName && Zo.getElementsByClassName)
-                            return Eo.apply(Jo, Zo.getElementsByClassName(ei)),
-                            Jo
-                    } else if (9 === di) {
-                        if (!(ni = Zo.getElementById(ei)))
-                            return Jo;
-                        if (ni.id === ei)
-                            return Jo.push(ni),
-                            Jo
-                    } else if (si && (ni = si.getElementById(ei)) && uo(Zo, ni) && ni.id === ei)
-                        return Jo.push(ni),
-                        Jo;
-                if (Wa.qsa && !yo[Qo + " "] && (!io || !io.test(Qo))) {
-                    if (1 !== di)
-                        si = Zo,
-                        ii = Qo;
-                    else if ("object" !== Zo.nodeName.toLowerCase()) {
-                        for ((ri = Zo.getAttribute("id")) ? ri = ri.replace(zo, Vo) : Zo.setAttribute("id", ri = po),
-                        ti = (oi = Ka(Qo)).length; ti--; )
-                            oi[ti] = "#" + ri + " " + Ba(oi[ti]);
-                        ii = oi.join(","),
-                        si = Yo.test(Qo) && Na(Zo.parentNode) || Zo
+        function Ca(Ko, Qo, Zo, Jo) {
+            var ii = Qo && Qo.ownerDocument, si = Qo ? Qo.nodeType : 9, $o, ei, ti, ni, ri, ai, oi;
+            if (Zo = Zo || [],
+            "string" != typeof Ko || !Ko || 1 !== si && 9 !== si && 11 !== si)
+                return Zo;
+            if (!Jo && ((Qo ? Qo.ownerDocument || Qo : po) !== no && to(Qo),
+            Qo = Qo || no,
+            ao)) {
+                if (11 !== si && (ri = Go.exec(Ko)))
+                    if (!($o = ri[1])) {
+                        if (ri[2])
+                            return To.apply(Zo, Qo.getElementsByTagName(Ko)),
+                            Zo;
+                        if (($o = ri[3]) && Wa.getElementsByClassName && Qo.getElementsByClassName)
+                            return To.apply(Zo, Qo.getElementsByClassName($o)),
+                            Zo
+                    } else if (9 === si) {
+                        if (!(ti = Qo.getElementById($o)))
+                            return Zo;
+                        if (ti.id === $o)
+                            return Zo.push(ti),
+                            Zo
+                    } else if (ii && (ti = ii.getElementById($o)) && lo(Qo, ti) && ti.id === $o)
+                        return Zo.push(ti),
+                        Zo;
+                if (Wa.qsa && !mo[Ko + " "] && (!oo || !oo.test(Ko))) {
+                    if (1 !== si)
+                        ii = Qo,
+                        oi = Ko;
+                    else if ("object" !== Qo.nodeName.toLowerCase()) {
+                        for ((ni = Qo.getAttribute("id")) ? ni = ni.replace(Wo, zo) : Qo.setAttribute("id", ni = uo),
+                        ei = (ai = Ka(Ko)).length; ei--; )
+                            ai[ei] = "#" + ni + " " + Ba(ai[ei]);
+                        oi = ai.join(","),
+                        ii = Ho.test(Ko) && Na(Qo.parentNode) || Qo
                     }
-                    if (ii)
+                    if (oi)
                         try {
-                            return Eo.apply(Jo, si.querySelectorAll(ii)),
-                            Jo
-                        } catch (li) {} finally {
-                            ri === po && Zo.removeAttribute("id")
+                            return To.apply(Zo, ii.querySelectorAll(oi)),
+                            Zo
+                        } catch (di) {} finally {
+                            ni === uo && Qo.removeAttribute("id")
                         }
                 }
             }
-            return Za(Qo.replace(Io, "$1"), Zo, Jo, $o)
+            return Za(Ko.replace(Do, "$1"), Qo, Zo, Jo)
         }
         function Aa() {
-            function Qo(Jo, $o) {
-                return Zo.push(Jo + " ") > za.cacheLength && delete Qo[Zo.shift()],
-                Qo[Jo + " "] = $o
+            function Ko(Zo, Jo) {
+                return Qo.push(Zo + " ") > za.cacheLength && delete Ko[Qo.shift()],
+                Ko[Zo + " "] = Jo
             }
-            var Zo = [];
-            return Qo
+            var Qo = [];
+            return Ko
         }
-        function Pa(Qo) {
-            return Qo[po] = !0,
-            Qo
+        function Pa(Ko) {
+            return Ko[uo] = !0,
+            Ko
         }
-        function Ma(Qo) {
-            var Zo = ro.createElement("fieldset");
+        function Ma(Ko) {
+            var Qo = no.createElement("fieldset");
             try {
-                return !!Qo(Zo)
-            } catch (Jo) {
+                return !!Ko(Qo)
+            } catch (Zo) {
                 return !1
             } finally {
-                Zo.parentNode && Zo.parentNode.removeChild(Zo),
-                Zo = null
+                Qo.parentNode && Qo.parentNode.removeChild(Qo),
+                Qo = null
             }
         }
-        function Ra(Qo, Zo) {
-            for (var Jo = Qo.split("|"), $o = Jo.length; $o--; )
-                za.attrHandle[Jo[$o]] = Zo
+        function Ra(Ko, Qo) {
+            for (var Zo = Ko.split("|"), Jo = Zo.length; Jo--; )
+                za.attrHandle[Zo[Jo]] = Qo
         }
-        function Da(Qo, Zo) {
-            var Jo = Zo && Qo
-              , $o = Jo && 1 === Qo.nodeType && 1 === Zo.nodeType && Qo.sourceIndex - Zo.sourceIndex;
-            if ($o)
-                return $o;
+        function Da(Ko, Qo) {
+            var Zo = Qo && Ko
+              , Jo = Zo && 1 === Ko.nodeType && 1 === Qo.nodeType && Ko.sourceIndex - Qo.sourceIndex;
             if (Jo)
-                for (; Jo = Jo.nextSibling; )
-                    if (Jo === Zo)
+                return Jo;
+            if (Zo)
+                for (; Zo = Zo.nextSibling; )
+                    if (Zo === Qo)
                         return -1;
-            return Qo ? 1 : -1
+            return Ko ? 1 : -1
         }
-        function Ia(Qo) {
-            return function(Zo) {
-                return "input" === Zo.nodeName.toLowerCase() && Zo.type === Qo
+        function Ia(Ko) {
+            return function(Qo) {
+                return "input" === Qo.nodeName.toLowerCase() && Qo.type === Ko
             }
         }
-        function Oa(Qo) {
-            return function(Zo) {
-                var Jo = Zo.nodeName.toLowerCase();
-                return ("input" === Jo || "button" === Jo) && Zo.type === Qo
+        function Oa(Ko) {
+            return function(Qo) {
+                var Zo = Qo.nodeName.toLowerCase();
+                return ("input" === Zo || "button" === Zo) && Qo.type === Ko
             }
         }
-        function La(Qo) {
-            return function(Zo) {
-                return "form"in Zo ? Zo.parentNode && !1 === Zo.disabled ? "label"in Zo ? "label"in Zo.parentNode ? Zo.parentNode.disabled === Qo : Zo.disabled === Qo : Zo.isDisabled === Qo || Zo.isDisabled !== !Qo && Ko(Zo) === Qo : Zo.disabled === Qo : "label"in Zo && Zo.disabled === Qo
+        function La(Ko) {
+            return function(Qo) {
+                return "form"in Qo ? Qo.parentNode && !1 === Qo.disabled ? "label"in Qo ? "label"in Qo.parentNode ? Qo.parentNode.disabled === Ko : Qo.disabled === Ko : Qo.isDisabled === Ko || Qo.isDisabled !== !Ko && qo(Qo) === Ko : Qo.disabled === Ko : "label"in Qo && Qo.disabled === Ko
             }
         }
-        function ka(Qo) {
-            return Pa(function(Zo) {
-                return Zo = +Zo,
-                Pa(function(Jo, $o) {
-                    for (var ti = Qo([], Jo.length, Zo), ni = ti.length, ei; ni--; )
-                        Jo[ei = ti[ni]] && (Jo[ei] = !($o[ei] = Jo[ei]))
+        function ka(Ko) {
+            return Pa(function(Qo) {
+                return Qo = +Qo,
+                Pa(function(Zo, Jo) {
+                    for (var ei = Ko([], Zo.length, Qo), ti = ei.length, $o; ti--; )
+                        Zo[$o = ei[ti]] && (Zo[$o] = !(Jo[$o] = Zo[$o]))
                 })
             })
         }
-        function Na(Qo) {
-            return Qo && void 0 !== Qo.getElementsByTagName && Qo
+        function Na(Ko) {
+            return Ko && void 0 !== Ko.getElementsByTagName && Ko
         }
         function Fa() {}
-        function Ba(Qo) {
-            for (var Zo = 0, Jo = Qo.length, $o = ""; Zo < Jo; Zo++)
-                $o += Qo[Zo].value;
-            return $o
+        function Ba(Ko) {
+            for (var Qo = 0, Zo = Ko.length, Jo = ""; Qo < Zo; Qo++)
+                Jo += Ko[Qo].value;
+            return Jo
         }
-        function Ua(Qo, Zo, Jo) {
-            var $o = Zo.dir
-              , ei = Zo.next
-              , ti = ei || $o
-              , ni = Jo && "parentNode" === ti
-              , ri = fo++;
-            return Zo.first ? function(ai, oi, ii) {
-                for (; ai = ai[$o]; )
-                    if (1 === ai.nodeType || ni)
-                        return Qo(ai, oi, ii);
+        function Ua(Ko, Qo, Zo) {
+            var Jo = Qo.dir
+              , $o = Qo.next
+              , ei = $o || Jo
+              , ti = Zo && "parentNode" === ei
+              , ni = ho++;
+            return Qo.first ? function(ri, ai, oi) {
+                for (; ri = ri[Jo]; )
+                    if (1 === ri.nodeType || ti)
+                        return Ko(ri, ai, oi);
                 return !1
             }
-            : function(ai, oi, ii) {
-                var ui = [ho, ri], si, di, li;
-                if (ii) {
-                    for (; ai = ai[$o]; )
-                        if ((1 === ai.nodeType || ni) && Qo(ai, oi, ii))
+            : function(ri, ai, oi) {
+                var li = [co, ni], ii, si, di;
+                if (oi) {
+                    for (; ri = ri[Jo]; )
+                        if ((1 === ri.nodeType || ti) && Ko(ri, ai, oi))
                             return !0;
                 } else
-                    for (; ai = ai[$o]; )
-                        if (1 === ai.nodeType || ni)
-                            if (li = ai[po] || (ai[po] = {}),
-                            di = li[ai.uniqueID] || (li[ai.uniqueID] = {}),
-                            ei && ei === ai.nodeName.toLowerCase())
-                                ai = ai[$o] || ai;
+                    for (; ri = ri[Jo]; )
+                        if (1 === ri.nodeType || ti)
+                            if (di = ri[uo] || (ri[uo] = {}),
+                            si = di[ri.uniqueID] || (di[ri.uniqueID] = {}),
+                            $o && $o === ri.nodeName.toLowerCase())
+                                ri = ri[Jo] || ri;
                             else {
-                                if ((si = di[ti]) && si[0] === ho && si[1] === ri)
-                                    return ui[2] = si[2];
-                                if (di[ti] = ui,
-                                ui[2] = Qo(ai, oi, ii))
+                                if ((ii = si[ei]) && ii[0] === co && ii[1] === ni)
+                                    return li[2] = ii[2];
+                                if (si[ei] = li,
+                                li[2] = Ko(ri, ai, oi))
                                     return !0
                             }
                 return !1
             }
         }
-        function Ga(Qo) {
-            return 1 < Qo.length ? function(Zo, Jo, $o) {
-                for (var ei = Qo.length; ei--; )
-                    if (!Qo[ei](Zo, Jo, $o))
+        function Xa(Ko) {
+            return 1 < Ko.length ? function(Qo, Zo, Jo) {
+                for (var $o = Ko.length; $o--; )
+                    if (!Ko[$o](Qo, Zo, Jo))
                         return !1;
                 return !0
             }
-            : Qo[0]
+            : Ko[0]
         }
-        function Xa(Qo, Zo, Jo, $o, ei) {
-            for (var ni = [], ri = 0, ai = Qo.length, ti; ri < ai; ri++)
-                (ti = Qo[ri]) && (Jo && !Jo(ti, $o, ei) || (ni.push(ti),
-                null != Zo && Zo.push(ri)));
-            return ni
+        function Ga(Ko, Qo, Zo, Jo, $o) {
+            for (var ti = [], ni = 0, ri = Ko.length, ei; ni < ri; ni++)
+                (ei = Ko[ni]) && (Zo && !Zo(ei, Jo, $o) || (ti.push(ei),
+                null != Qo && Qo.push(ni)));
+            return ti
         }
-        function Ha(Qo, Zo, Jo, $o, ei, ti) {
-            return $o && !$o[po] && ($o = Ha($o)),
-            ei && !ei[po] && (ei = Ha(ei, ti)),
-            Pa(function(ni, ri, ai, oi) {
-                var li = [], ui = [], pi = ri.length, ci = ni || function(gi, mi, yi) {
-                    for (var _i = 0, bi = mi.length; _i < bi; _i++)
-                        Ca(gi, mi[_i], yi);
-                    return yi
-                }(Zo || "*", ai.nodeType ? [ai] : ai, []), hi = Qo && (ni || !Zo) ? Xa(ci, li, Qo, ai, oi) : ci, fi = Jo ? ei || (ni ? Qo : pi || $o) ? [] : ri : hi, ii, si, di;
-                if (Jo && Jo(hi, fi, ai, oi),
-                $o)
-                    for (ii = Xa(fi, ui),
-                    $o(ii, [], ai, oi),
-                    si = ii.length; si--; )
-                        (di = ii[si]) && (fi[ui[si]] = !(hi[ui[si]] = di));
-                if (!ni)
-                    fi = Xa(fi === ri ? fi.splice(pi, fi.length) : fi),
-                    ei ? ei(null, ri, fi, oi) : Eo.apply(ri, fi);
-                else if (ei || Qo) {
-                    if (ei) {
-                        for (ii = [],
-                        si = fi.length; si--; )
-                            (di = fi[si]) && ii.push(hi[si] = di);
-                        ei(null, fi = [], ii, oi)
+        function Ha(Ko, Qo, Zo, Jo, $o, ei) {
+            return Jo && !Jo[uo] && (Jo = Ha(Jo)),
+            $o && !$o[uo] && ($o = Ha($o, ei)),
+            Pa(function(ti, ni, ri, ai) {
+                var di = [], li = [], ui = ni.length, pi = ti || function(fi, gi, mi) {
+                    for (var yi = 0, _i = gi.length; yi < _i; yi++)
+                        Ca(fi, gi[yi], mi);
+                    return mi
+                }(Qo || "*", ri.nodeType ? [ri] : ri, []), ci = Ko && (ti || !Qo) ? Ga(pi, di, Ko, ri, ai) : pi, hi = Zo ? $o || (ti ? Ko : ui || Jo) ? [] : ni : ci, oi, ii, si;
+                if (Zo && Zo(ci, hi, ri, ai),
+                Jo)
+                    for (oi = Ga(hi, li),
+                    Jo(oi, [], ri, ai),
+                    ii = oi.length; ii--; )
+                        (si = oi[ii]) && (hi[li[ii]] = !(ci[li[ii]] = si));
+                if (!ti)
+                    hi = Ga(hi === ni ? hi.splice(ui, hi.length) : hi),
+                    $o ? $o(null, ni, hi, ai) : To.apply(ni, hi);
+                else if ($o || Ko) {
+                    if ($o) {
+                        for (oi = [],
+                        ii = hi.length; ii--; )
+                            (si = hi[ii]) && oi.push(ci[ii] = si);
+                        $o(null, hi = [], oi, ai)
                     }
-                    for (si = fi.length; si--; )
-                        (di = fi[si]) && -1 < (ii = ei ? wo(ni, di) : li[si]) && (ni[ii] = !(ri[ii] = di))
+                    for (ii = hi.length; ii--; )
+                        (si = hi[ii]) && -1 < (oi = $o ? So(ti, si) : di[ii]) && (ti[oi] = !(ni[oi] = si))
                 }
             })
         }
-        function Ya(Qo) {
-            for (var ei = Qo.length, ti = za.relative[Qo[0].type], ni = ti || za.relative[" "], ri = ti ? 1 : 0, ai = Ua(function(si) {
-                return si === Zo
-            }, ni, !0), oi = Ua(function(si) {
-                return -1 < wo(Zo, si)
-            }, ni, !0), ii = [function(si, di, li) {
-                var ui = !ti && (li || di !== Ja) || ((Zo = di).nodeType ? ai(si, di, li) : oi(si, di, li));
-                return Zo = null,
-                ui
+        function Ya(Ko) {
+            for (var $o = Ko.length, ei = za.relative[Ko[0].type], ti = ei || za.relative[" "], ni = ei ? 1 : 0, ri = Ua(function(ii) {
+                return ii === Qo
+            }, ti, !0), ai = Ua(function(ii) {
+                return -1 < So(Qo, ii)
+            }, ti, !0), oi = [function(ii, si, di) {
+                var li = !ei && (di || si !== Ja) || ((Qo = si).nodeType ? ri(ii, si, di) : ai(ii, si, di));
+                return Qo = null,
+                li
             }
-            ], Zo, Jo, $o; ri < ei; ri++)
-                if (Jo = za.relative[Qo[ri].type])
-                    ii = [Ua(Ga(ii), Jo)];
+            ], Qo, Zo, Jo; ni < $o; ni++)
+                if (Zo = za.relative[Ko[ni].type])
+                    oi = [Ua(Xa(oi), Zo)];
                 else {
-                    if ((Jo = za.filter[Qo[ri].type].apply(null, Qo[ri].matches))[po]) {
-                        for ($o = ++ri; $o < ei && !za.relative[Qo[$o].type]; $o++)
+                    if ((Zo = za.filter[Ko[ni].type].apply(null, Ko[ni].matches))[uo]) {
+                        for (Jo = ++ni; Jo < $o && !za.relative[Ko[Jo].type]; Jo++)
                             ;
-                        return Ha(1 < ri && Ga(ii), 1 < ri && Ba(Qo.slice(0, ri - 1).concat({
-                            value: " " === Qo[ri - 2].type ? "*" : ""
-                        })).replace(Io, "$1"), Jo, ri < $o && Ya(Qo.slice(ri, $o)), $o < ei && Ya(Qo = Qo.slice($o)), $o < ei && Ba(Qo))
+                        return Ha(1 < ni && Xa(oi), 1 < ni && Ba(Ko.slice(0, ni - 1).concat({
+                            value: " " === Ko[ni - 2].type ? "*" : ""
+                        })).replace(Do, "$1"), Zo, ni < Jo && Ya(Ko.slice(ni, Jo)), Jo < $o && Ya(Ko = Ko.slice(Jo)), Jo < $o && Ba(Ko))
                     }
-                    ii.push(Jo)
+                    oi.push(Zo)
                 }
-            return Ga(ii)
+            return Xa(oi)
         }
-        var po = "sizzle" + 1 * new Date, co = wa.document, ho = 0, fo = 0, go = Aa(), mo = Aa(), yo = Aa(), _o = function(Qo, Zo) {
-            return Qo === Zo && (eo = !0),
+        var uo = "sizzle" + 1 * new Date, po = wa.document, co = 0, ho = 0, fo = Aa(), go = Aa(), mo = Aa(), yo = function(Ko, Qo) {
+            return Ko === Qo && (eo = !0),
             0
-        }, bo = {}.hasOwnProperty, xo = [], vo = xo.pop, To = xo.push, Eo = xo.push, So = xo.slice, wo = function(Qo, Zo) {
-            for (var Jo = 0, $o = Qo.length; Jo < $o; Jo++)
-                if (Qo[Jo] === Zo)
-                    return Jo;
+        }, _o = {}.hasOwnProperty, bo = [], xo = bo.pop, vo = bo.push, To = bo.push, Eo = bo.slice, So = function(Ko, Qo) {
+            for (var Zo = 0, Jo = Ko.length; Zo < Jo; Zo++)
+                if (Ko[Zo] === Qo)
+                    return Zo;
             return -1
-        }, Co = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", Ao = "[\\x20\\t\\r\\n\\f]", Po = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+", Do = /[\x20\t\r\n\f]+/g, Io = /^[\x20\t\r\n\f]+|((?:^|[^\\])(?:\\.)*)[\x20\t\r\n\f]+$/g, Oo = /^[\x20\t\r\n\f]*,[\x20\t\r\n\f]*/, Lo = /^[\x20\t\r\n\f]*([>+~]|[\x20\t\r\n\f])[\x20\t\r\n\f]*/, ko = /=[\x20\t\r\n\f]*([^\]'"]*?)[\x20\t\r\n\f]*\]/g, No = /:((?:\\.|[\w-]|[^-\xa0])+)(?:\((('((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)")|((?:\\.|[^\\()[\]]|\[[\x20\t\r\n\f]*((?:\\.|[\w-]|[^-\xa0])+)(?:[\x20\t\r\n\f]*([*^$|!~]?=)[\x20\t\r\n\f]*(?:'((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)"|((?:\\.|[\w-]|[^-\xa0])+))|)[\x20\t\r\n\f]*\])*)|.*)\)|)/, Fo = /^(?:\\.|[\w-]|[^-\xa0])+$/, Bo = {
+        }, wo = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", Co = "[\\x20\\t\\r\\n\\f]", Ao = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+", Ro = /[\x20\t\r\n\f]+/g, Do = /^[\x20\t\r\n\f]+|((?:^|[^\\])(?:\\.)*)[\x20\t\r\n\f]+$/g, Io = /^[\x20\t\r\n\f]*,[\x20\t\r\n\f]*/, Oo = /^[\x20\t\r\n\f]*([>+~]|[\x20\t\r\n\f])[\x20\t\r\n\f]*/, Lo = /=[\x20\t\r\n\f]*([^\]'"]*?)[\x20\t\r\n\f]*\]/g, ko = /:((?:\\.|[\w-]|[^-\xa0])+)(?:\((('((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)")|((?:\\.|[^\\()[\]]|\[[\x20\t\r\n\f]*((?:\\.|[\w-]|[^-\xa0])+)(?:[\x20\t\r\n\f]*([*^$|!~]?=)[\x20\t\r\n\f]*(?:'((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)"|((?:\\.|[\w-]|[^-\xa0])+))|)[\x20\t\r\n\f]*\])*)|.*)\)|)/, No = /^(?:\\.|[\w-]|[^-\xa0])+$/, Fo = {
             ID: /^#((?:\\.|[\w-]|[^-\xa0])+)/,
             CLASS: /^\.((?:\\.|[\w-]|[^-\xa0])+)/,
             TAG: /^((?:\\.|[\w-]|[^-\xa0])+|[*])/,
@@ -887,254 +887,254 @@
             CHILD: /^:(only|first|last|nth|nth-last)-(child|of-type)(?:\([\x20\t\r\n\f]*(even|odd|(([+-]|)(\d*)n|)[\x20\t\r\n\f]*(?:([+-]|)[\x20\t\r\n\f]*(\d+)|))[\x20\t\r\n\f]*\)|)/i,
             bool: /^(?:checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped)$/i,
             needsContext: /^[\x20\t\r\n\f]*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\([\x20\t\r\n\f]*((?:-\d)?\d*)[\x20\t\r\n\f]*\)|)(?=[^-]|$)/i
-        }, Uo = /^(?:input|select|textarea|button)$/i, Go = /^h\d$/i, Xo = /^[^{]+\{\s*\[native \w/, Ho = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Yo = /[+~]/, jo = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/ig, Wo = function(Qo, Zo, Jo) {
-            var $o = "0x" + Zo - 65536;
-            return $o != $o || Jo ? Zo : 0 > $o ? String.fromCharCode($o + 65536) : String.fromCharCode(55296 | $o >> 10, 56320 | 1023 & $o)
-        }, zo = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g, Vo = function(Qo, Zo) {
-            return Zo ? "\0" === Qo ? "\uFFFD" : Qo.slice(0, -1) + "\\" + Qo.charCodeAt(Qo.length - 1).toString(16) + " " : "\\" + Qo
-        }, qo = function() {
-            no()
-        }, Ko = Ua(function(Qo) {
-            return !0 === Qo.disabled && ("form"in Qo || "label"in Qo)
+        }, Bo = /^(?:input|select|textarea|button)$/i, Uo = /^h\d$/i, Xo = /^[^{]+\{\s*\[native \w/, Go = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Ho = /[+~]/, Yo = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/ig, jo = function(Ko, Qo, Zo) {
+            var Jo = "0x" + Qo - 65536;
+            return Jo != Jo || Zo ? Qo : 0 > Jo ? String.fromCharCode(Jo + 65536) : String.fromCharCode(55296 | Jo >> 10, 56320 | 1023 & Jo)
+        }, Wo = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g, zo = function(Ko, Qo) {
+            return Qo ? "\0" === Ko ? "\uFFFD" : Ko.slice(0, -1) + "\\" + Ko.charCodeAt(Ko.length - 1).toString(16) + " " : "\\" + Ko
+        }, Vo = function() {
+            to()
+        }, qo = Ua(function(Ko) {
+            return !0 === Ko.disabled && ("form"in Ko || "label"in Ko)
         }, {
             dir: "parentNode",
             next: "legend"
-        }), ja, Wa, za, Va, qa, Ka, Qa, Za, Ja, $a, eo, no, ro, ao, oo, io, so, lo, uo;
+        }), ja, Wa, za, Va, qa, Ka, Qa, Za, Ja, $a, eo, to, no, ro, ao, oo, io, so, lo;
         try {
-            Eo.apply(xo = So.call(co.childNodes), co.childNodes),
-            xo[co.childNodes.length].nodeType
-        } catch (Qo) {
-            Eo = {
-                apply: xo.length ? function(Zo, Jo) {
-                    To.apply(Zo, So.call(Jo))
+            To.apply(bo = Eo.call(po.childNodes), po.childNodes),
+            bo[po.childNodes.length].nodeType
+        } catch (Ko) {
+            To = {
+                apply: bo.length ? function(Qo, Zo) {
+                    vo.apply(Qo, Eo.call(Zo))
                 }
-                : function(Zo, Jo) {
-                    for (var $o = Zo.length, ei = 0; Zo[$o++] = Jo[ei++]; )
+                : function(Qo, Zo) {
+                    for (var Jo = Qo.length, $o = 0; Qo[Jo++] = Zo[$o++]; )
                         ;
-                    Zo.length = $o - 1
+                    Qo.length = Jo - 1
                 }
             }
         }
         for (ja in Wa = Ca.support = {},
-        qa = Ca.isXML = function(Qo) {
-            var Zo = Qo && (Qo.ownerDocument || Qo).documentElement;
-            return !!Zo && "HTML" !== Zo.nodeName
+        qa = Ca.isXML = function(Ko) {
+            var Qo = Ko && (Ko.ownerDocument || Ko).documentElement;
+            return !!Qo && "HTML" !== Qo.nodeName
         }
         ,
-        no = Ca.setDocument = function(Qo) {
-            var $o = Qo ? Qo.ownerDocument || Qo : co, Zo, Jo;
-            return $o !== ro && 9 === $o.nodeType && $o.documentElement ? (ro = $o,
-            ao = ro.documentElement,
-            oo = !qa(ro),
-            co !== ro && (Jo = ro.defaultView) && Jo.top !== Jo && (Jo.addEventListener ? Jo.addEventListener("unload", qo, !1) : Jo.attachEvent && Jo.attachEvent("onunload", qo)),
-            Wa.attributes = Ma(function(ei) {
-                return ei.className = "i",
-                !ei.getAttribute("className")
+        to = Ca.setDocument = function(Ko) {
+            var Jo = Ko ? Ko.ownerDocument || Ko : po, Qo, Zo;
+            return Jo !== no && 9 === Jo.nodeType && Jo.documentElement ? (no = Jo,
+            ro = no.documentElement,
+            ao = !qa(no),
+            po !== no && (Zo = no.defaultView) && Zo.top !== Zo && (Zo.addEventListener ? Zo.addEventListener("unload", Vo, !1) : Zo.attachEvent && Zo.attachEvent("onunload", Vo)),
+            Wa.attributes = Ma(function($o) {
+                return $o.className = "i",
+                !$o.getAttribute("className")
             }),
-            Wa.getElementsByTagName = Ma(function(ei) {
-                return ei.appendChild(ro.createComment("")),
-                !ei.getElementsByTagName("*").length
+            Wa.getElementsByTagName = Ma(function($o) {
+                return $o.appendChild(no.createComment("")),
+                !$o.getElementsByTagName("*").length
             }),
-            Wa.getElementsByClassName = Xo.test(ro.getElementsByClassName),
-            Wa.getById = Ma(function(ei) {
-                return ao.appendChild(ei).id = po,
-                !ro.getElementsByName || !ro.getElementsByName(po).length
+            Wa.getElementsByClassName = Xo.test(no.getElementsByClassName),
+            Wa.getById = Ma(function($o) {
+                return ro.appendChild($o).id = uo,
+                !no.getElementsByName || !no.getElementsByName(uo).length
             }),
-            Wa.getById ? (za.filter.ID = function(ei) {
-                var ti = ei.replace(jo, Wo);
-                return function(ni) {
-                    return ni.getAttribute("id") === ti
+            Wa.getById ? (za.filter.ID = function($o) {
+                var ei = $o.replace(Yo, jo);
+                return function(ti) {
+                    return ti.getAttribute("id") === ei
                 }
             }
             ,
-            za.find.ID = function(ei, ti) {
-                if (void 0 !== ti.getElementById && oo) {
-                    var ni = ti.getElementById(ei);
-                    return ni ? [ni] : []
+            za.find.ID = function($o, ei) {
+                if (void 0 !== ei.getElementById && ao) {
+                    var ti = ei.getElementById($o);
+                    return ti ? [ti] : []
                 }
             }
-            ) : (za.filter.ID = function(ei) {
-                var ti = ei.replace(jo, Wo);
-                return function(ni) {
-                    var ri = void 0 !== ni.getAttributeNode && ni.getAttributeNode("id");
-                    return ri && ri.value === ti
+            ) : (za.filter.ID = function($o) {
+                var ei = $o.replace(Yo, jo);
+                return function(ti) {
+                    var ni = void 0 !== ti.getAttributeNode && ti.getAttributeNode("id");
+                    return ni && ni.value === ei
                 }
             }
             ,
-            za.find.ID = function(ei, ti) {
-                if (void 0 !== ti.getElementById && oo) {
-                    var oi = ti.getElementById(ei), ni, ri, ai;
-                    if (oi) {
-                        if ((ni = oi.getAttributeNode("id")) && ni.value === ei)
-                            return [oi];
-                        for (ai = ti.getElementsByName(ei),
-                        ri = 0; oi = ai[ri++]; )
-                            if ((ni = oi.getAttributeNode("id")) && ni.value === ei)
-                                return [oi]
+            za.find.ID = function($o, ei) {
+                if (void 0 !== ei.getElementById && ao) {
+                    var ai = ei.getElementById($o), ti, ni, ri;
+                    if (ai) {
+                        if ((ti = ai.getAttributeNode("id")) && ti.value === $o)
+                            return [ai];
+                        for (ri = ei.getElementsByName($o),
+                        ni = 0; ai = ri[ni++]; )
+                            if ((ti = ai.getAttributeNode("id")) && ti.value === $o)
+                                return [ai]
                     }
                     return []
                 }
             }
             ),
-            za.find.TAG = Wa.getElementsByTagName ? function(ei, ti) {
-                return void 0 === ti.getElementsByTagName ? Wa.qsa ? ti.querySelectorAll(ei) : void 0 : ti.getElementsByTagName(ei)
+            za.find.TAG = Wa.getElementsByTagName ? function($o, ei) {
+                return void 0 === ei.getElementsByTagName ? Wa.qsa ? ei.querySelectorAll($o) : void 0 : ei.getElementsByTagName($o)
             }
-            : function(ei, ti) {
-                var ri = [], ai = 0, oi = ti.getElementsByTagName(ei), ni;
-                if ("*" === ei) {
-                    for (; ni = oi[ai++]; )
-                        1 === ni.nodeType && ri.push(ni);
-                    return ri
+            : function($o, ei) {
+                var ni = [], ri = 0, ai = ei.getElementsByTagName($o), ti;
+                if ("*" === $o) {
+                    for (; ti = ai[ri++]; )
+                        1 === ti.nodeType && ni.push(ti);
+                    return ni
                 }
-                return oi
+                return ai
             }
             ,
-            za.find.CLASS = Wa.getElementsByClassName && function(ei, ti) {
-                if (void 0 !== ti.getElementsByClassName && oo)
-                    return ti.getElementsByClassName(ei)
+            za.find.CLASS = Wa.getElementsByClassName && function($o, ei) {
+                if (void 0 !== ei.getElementsByClassName && ao)
+                    return ei.getElementsByClassName($o)
             }
             ,
-            so = [],
             io = [],
-            (Wa.qsa = Xo.test(ro.querySelectorAll)) && (Ma(function(ei) {
-                ao.appendChild(ei).innerHTML = "<a id='" + po + "'></a><select id='" + po + "-\r\\' msallowcapture=''><option selected=''></option></select>",
-                ei.querySelectorAll("[msallowcapture^='']").length && io.push("[*^$]=" + Ao + "*(?:''|\"\")"),
-                ei.querySelectorAll("[selected]").length || io.push("\\[" + Ao + "*(?:value|" + Co + ")"),
-                ei.querySelectorAll("[id~=" + po + "-]").length || io.push("~="),
-                ei.querySelectorAll(":checked").length || io.push(":checked"),
-                ei.querySelectorAll("a#" + po + "+*").length || io.push(".#.+[+~]")
+            oo = [],
+            (Wa.qsa = Xo.test(no.querySelectorAll)) && (Ma(function($o) {
+                ro.appendChild($o).innerHTML = "<a id='" + uo + "'></a><select id='" + uo + "-\r\\' msallowcapture=''><option selected=''></option></select>",
+                $o.querySelectorAll("[msallowcapture^='']").length && oo.push("[*^$]=" + Co + "*(?:''|\"\")"),
+                $o.querySelectorAll("[selected]").length || oo.push("\\[" + Co + "*(?:value|" + wo + ")"),
+                $o.querySelectorAll("[id~=" + uo + "-]").length || oo.push("~="),
+                $o.querySelectorAll(":checked").length || oo.push(":checked"),
+                $o.querySelectorAll("a#" + uo + "+*").length || oo.push(".#.+[+~]")
             }),
-            Ma(function(ei) {
-                ei.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
-                var ti = ro.createElement("input");
-                ti.setAttribute("type", "hidden"),
-                ei.appendChild(ti).setAttribute("name", "D"),
-                ei.querySelectorAll("[name=d]").length && io.push("name" + Ao + "*[*^$|!~]?="),
-                2 !== ei.querySelectorAll(":enabled").length && io.push(":enabled", ":disabled"),
-                ao.appendChild(ei).disabled = !0,
-                2 !== ei.querySelectorAll(":disabled").length && io.push(":enabled", ":disabled"),
-                ei.querySelectorAll("*,:x"),
-                io.push(",.*:")
+            Ma(function($o) {
+                $o.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
+                var ei = no.createElement("input");
+                ei.setAttribute("type", "hidden"),
+                $o.appendChild(ei).setAttribute("name", "D"),
+                $o.querySelectorAll("[name=d]").length && oo.push("name" + Co + "*[*^$|!~]?="),
+                2 !== $o.querySelectorAll(":enabled").length && oo.push(":enabled", ":disabled"),
+                ro.appendChild($o).disabled = !0,
+                2 !== $o.querySelectorAll(":disabled").length && oo.push(":enabled", ":disabled"),
+                $o.querySelectorAll("*,:x"),
+                oo.push(",.*:")
             })),
-            (Wa.matchesSelector = Xo.test(lo = ao.matches || ao.webkitMatchesSelector || ao.mozMatchesSelector || ao.oMatchesSelector || ao.msMatchesSelector)) && Ma(function(ei) {
-                Wa.disconnectedMatch = lo.call(ei, "*"),
-                lo.call(ei, "[s!='']:x"),
-                so.push("!=", ":(" + Po + ")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|" + ("\\[" + Ao + "*(" + Po + ")(?:" + Ao + "*([*^$|!~]?=)" + Ao + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + Po + "))|)" + Ao + "*\\]") + ")*)|.*)\\)|)")
+            (Wa.matchesSelector = Xo.test(so = ro.matches || ro.webkitMatchesSelector || ro.mozMatchesSelector || ro.oMatchesSelector || ro.msMatchesSelector)) && Ma(function($o) {
+                Wa.disconnectedMatch = so.call($o, "*"),
+                so.call($o, "[s!='']:x"),
+                io.push("!=", ":(" + Ao + ")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|" + ("\\[" + Co + "*(" + Ao + ")(?:" + Co + "*([*^$|!~]?=)" + Co + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + Ao + "))|)" + Co + "*\\]") + ")*)|.*)\\)|)")
             }),
+            oo = oo.length && new RegExp(oo.join("|")),
             io = io.length && new RegExp(io.join("|")),
-            so = so.length && new RegExp(so.join("|")),
-            Zo = Xo.test(ao.compareDocumentPosition),
-            uo = Zo || Xo.test(ao.contains) ? function(ei, ti) {
-                var ni = 9 === ei.nodeType ? ei.documentElement : ei
-                  , ri = ti && ti.parentNode;
-                return ei === ri || ri && 1 === ri.nodeType && (ni.contains ? ni.contains(ri) : ei.compareDocumentPosition && 16 & ei.compareDocumentPosition(ri))
+            Qo = Xo.test(ro.compareDocumentPosition),
+            lo = Qo || Xo.test(ro.contains) ? function($o, ei) {
+                var ti = 9 === $o.nodeType ? $o.documentElement : $o
+                  , ni = ei && ei.parentNode;
+                return $o === ni || ni && 1 === ni.nodeType && (ti.contains ? ti.contains(ni) : $o.compareDocumentPosition && 16 & $o.compareDocumentPosition(ni))
             }
-            : function(ei, ti) {
-                if (ti)
-                    for (; ti = ti.parentNode; )
-                        if (ti === ei)
+            : function($o, ei) {
+                if (ei)
+                    for (; ei = ei.parentNode; )
+                        if (ei === $o)
                             return !0;
                 return !1
             }
             ,
-            _o = Zo ? function(ei, ti) {
-                if (ei === ti)
+            yo = Qo ? function($o, ei) {
+                if ($o === ei)
                     return eo = !0,
                     0;
-                var ni = !ei.compareDocumentPosition - !ti.compareDocumentPosition;
-                return ni || (1 & (ni = (ei.ownerDocument || ei) === (ti.ownerDocument || ti) ? ei.compareDocumentPosition(ti) : 1) || !Wa.sortDetached && ti.compareDocumentPosition(ei) === ni ? ei === ro || ei.ownerDocument === co && uo(co, ei) ? -1 : ti === ro || ti.ownerDocument === co && uo(co, ti) ? 1 : $a ? wo($a, ei) - wo($a, ti) : 0 : 4 & ni ? -1 : 1)
+                var ti = !$o.compareDocumentPosition - !ei.compareDocumentPosition;
+                return ti || (1 & (ti = ($o.ownerDocument || $o) === (ei.ownerDocument || ei) ? $o.compareDocumentPosition(ei) : 1) || !Wa.sortDetached && ei.compareDocumentPosition($o) === ti ? $o === no || $o.ownerDocument === po && lo(po, $o) ? -1 : ei === no || ei.ownerDocument === po && lo(po, ei) ? 1 : $a ? So($a, $o) - So($a, ei) : 0 : 4 & ti ? -1 : 1)
             }
-            : function(ei, ti) {
-                if (ei === ti)
+            : function($o, ei) {
+                if ($o === ei)
                     return eo = !0,
                     0;
-                var ri = 0, ai = ei.parentNode, oi = ti.parentNode, ii = [ei], si = [ti], ni;
-                if (!ai || !oi)
-                    return ei === ro ? -1 : ti === ro ? 1 : ai ? -1 : oi ? 1 : $a ? wo($a, ei) - wo($a, ti) : 0;
-                if (ai === oi)
-                    return Da(ei, ti);
-                for (ni = ei; ni = ni.parentNode; )
-                    ii.unshift(ni);
-                for (ni = ti; ni = ni.parentNode; )
-                    si.unshift(ni);
-                for (; ii[ri] === si[ri]; )
-                    ri++;
-                return ri ? Da(ii[ri], si[ri]) : ii[ri] === co ? -1 : si[ri] === co ? 1 : 0
+                var ni = 0, ri = $o.parentNode, ai = ei.parentNode, oi = [$o], ii = [ei], ti;
+                if (!ri || !ai)
+                    return $o === no ? -1 : ei === no ? 1 : ri ? -1 : ai ? 1 : $a ? So($a, $o) - So($a, ei) : 0;
+                if (ri === ai)
+                    return Da($o, ei);
+                for (ti = $o; ti = ti.parentNode; )
+                    oi.unshift(ti);
+                for (ti = ei; ti = ti.parentNode; )
+                    ii.unshift(ti);
+                for (; oi[ni] === ii[ni]; )
+                    ni++;
+                return ni ? Da(oi[ni], ii[ni]) : oi[ni] === po ? -1 : ii[ni] === po ? 1 : 0
             }
             ,
-            ro) : ro
+            no) : no
         }
         ,
-        Ca.matches = function(Qo, Zo) {
-            return Ca(Qo, null, null, Zo)
+        Ca.matches = function(Ko, Qo) {
+            return Ca(Ko, null, null, Qo)
         }
         ,
-        Ca.matchesSelector = function(Qo, Zo) {
-            if ((Qo.ownerDocument || Qo) !== ro && no(Qo),
-            Zo = Zo.replace(ko, "='$1']"),
-            Wa.matchesSelector && oo && !yo[Zo + " "] && (!so || !so.test(Zo)) && (!io || !io.test(Zo)))
+        Ca.matchesSelector = function(Ko, Qo) {
+            if ((Ko.ownerDocument || Ko) !== no && to(Ko),
+            Qo = Qo.replace(Lo, "='$1']"),
+            Wa.matchesSelector && ao && !mo[Qo + " "] && (!io || !io.test(Qo)) && (!oo || !oo.test(Qo)))
                 try {
-                    var Jo = lo.call(Qo, Zo);
-                    if (Jo || Wa.disconnectedMatch || Qo.document && 11 !== Qo.document.nodeType)
-                        return Jo
-                } catch ($o) {}
-            return 0 < Ca(Zo, ro, null, [Qo]).length
+                    var Zo = so.call(Ko, Qo);
+                    if (Zo || Wa.disconnectedMatch || Ko.document && 11 !== Ko.document.nodeType)
+                        return Zo
+                } catch (Jo) {}
+            return 0 < Ca(Qo, no, null, [Ko]).length
         }
         ,
-        Ca.contains = function(Qo, Zo) {
-            return (Qo.ownerDocument || Qo) !== ro && no(Qo),
-            uo(Qo, Zo)
+        Ca.contains = function(Ko, Qo) {
+            return (Ko.ownerDocument || Ko) !== no && to(Ko),
+            lo(Ko, Qo)
         }
         ,
-        Ca.attr = function(Qo, Zo) {
-            (Qo.ownerDocument || Qo) !== ro && no(Qo);
-            var Jo = za.attrHandle[Zo.toLowerCase()]
-              , $o = Jo && bo.call(za.attrHandle, Zo.toLowerCase()) ? Jo(Qo, Zo, !oo) : void 0;
-            return void 0 === $o ? Wa.attributes || !oo ? Qo.getAttribute(Zo) : ($o = Qo.getAttributeNode(Zo)) && $o.specified ? $o.value : null : $o
+        Ca.attr = function(Ko, Qo) {
+            (Ko.ownerDocument || Ko) !== no && to(Ko);
+            var Zo = za.attrHandle[Qo.toLowerCase()]
+              , Jo = Zo && _o.call(za.attrHandle, Qo.toLowerCase()) ? Zo(Ko, Qo, !ao) : void 0;
+            return void 0 === Jo ? Wa.attributes || !ao ? Ko.getAttribute(Qo) : (Jo = Ko.getAttributeNode(Qo)) && Jo.specified ? Jo.value : null : Jo
         }
         ,
-        Ca.escape = function(Qo) {
-            return (Qo + "").replace(zo, Vo)
+        Ca.escape = function(Ko) {
+            return (Ko + "").replace(Wo, zo)
         }
         ,
-        Ca.error = function(Qo) {
-            throw new Error("Syntax error, unrecognized expression: " + Qo)
+        Ca.error = function(Ko) {
+            throw new Error("Syntax error, unrecognized expression: " + Ko)
         }
         ,
-        Ca.uniqueSort = function(Qo) {
-            var Jo = [], $o = 0, ei = 0, Zo;
+        Ca.uniqueSort = function(Ko) {
+            var Zo = [], Jo = 0, $o = 0, Qo;
             if (eo = !Wa.detectDuplicates,
-            $a = !Wa.sortStable && Qo.slice(0),
-            Qo.sort(_o),
+            $a = !Wa.sortStable && Ko.slice(0),
+            Ko.sort(yo),
             eo) {
-                for (; Zo = Qo[ei++]; )
-                    Zo === Qo[ei] && ($o = Jo.push(ei));
-                for (; $o--; )
-                    Qo.splice(Jo[$o], 1)
+                for (; Qo = Ko[$o++]; )
+                    Qo === Ko[$o] && (Jo = Zo.push($o));
+                for (; Jo--; )
+                    Ko.splice(Zo[Jo], 1)
             }
             return $a = null,
-            Qo
+            Ko
         }
         ,
-        Va = Ca.getText = function(Qo) {
-            var Jo = "", $o = 0, ei = Qo.nodeType, Zo;
-            if (!ei)
-                for (; Zo = Qo[$o++]; )
-                    Jo += Va(Zo);
-            else if (1 === ei || 9 === ei || 11 === ei) {
-                if ("string" == typeof Qo.textContent)
-                    return Qo.textContent;
-                for (Qo = Qo.firstChild; Qo; Qo = Qo.nextSibling)
-                    Jo += Va(Qo)
-            } else if (3 === ei || 4 === ei)
-                return Qo.nodeValue;
-            return Jo
+        Va = Ca.getText = function(Ko) {
+            var Zo = "", Jo = 0, $o = Ko.nodeType, Qo;
+            if (!$o)
+                for (; Qo = Ko[Jo++]; )
+                    Zo += Va(Qo);
+            else if (1 === $o || 9 === $o || 11 === $o) {
+                if ("string" == typeof Ko.textContent)
+                    return Ko.textContent;
+                for (Ko = Ko.firstChild; Ko; Ko = Ko.nextSibling)
+                    Zo += Va(Ko)
+            } else if (3 === $o || 4 === $o)
+                return Ko.nodeValue;
+            return Zo
         }
         ,
         (za = Ca.selectors = {
             cacheLength: 50,
             createPseudo: Pa,
-            match: Bo,
+            match: Fo,
             attrHandle: {},
             find: {},
             relative: {
@@ -1154,205 +1154,205 @@
                 }
             },
             preFilter: {
-                ATTR: function(Qo) {
-                    return Qo[1] = Qo[1].replace(jo, Wo),
-                    Qo[3] = (Qo[3] || Qo[4] || Qo[5] || "").replace(jo, Wo),
-                    "~=" === Qo[2] && (Qo[3] = " " + Qo[3] + " "),
-                    Qo.slice(0, 4)
+                ATTR: function(Ko) {
+                    return Ko[1] = Ko[1].replace(Yo, jo),
+                    Ko[3] = (Ko[3] || Ko[4] || Ko[5] || "").replace(Yo, jo),
+                    "~=" === Ko[2] && (Ko[3] = " " + Ko[3] + " "),
+                    Ko.slice(0, 4)
                 },
-                CHILD: function(Qo) {
-                    return Qo[1] = Qo[1].toLowerCase(),
-                    "nth" === Qo[1].slice(0, 3) ? (Qo[3] || Ca.error(Qo[0]),
-                    Qo[4] = +(Qo[4] ? Qo[5] + (Qo[6] || 1) : 2 * ("even" === Qo[3] || "odd" === Qo[3])),
-                    Qo[5] = +(Qo[7] + Qo[8] || "odd" === Qo[3])) : Qo[3] && Ca.error(Qo[0]),
-                    Qo
+                CHILD: function(Ko) {
+                    return Ko[1] = Ko[1].toLowerCase(),
+                    "nth" === Ko[1].slice(0, 3) ? (Ko[3] || Ca.error(Ko[0]),
+                    Ko[4] = +(Ko[4] ? Ko[5] + (Ko[6] || 1) : 2 * ("even" === Ko[3] || "odd" === Ko[3])),
+                    Ko[5] = +(Ko[7] + Ko[8] || "odd" === Ko[3])) : Ko[3] && Ca.error(Ko[0]),
+                    Ko
                 },
-                PSEUDO: function(Qo) {
-                    var Jo = !Qo[6] && Qo[2], Zo;
-                    return Bo.CHILD.test(Qo[0]) ? null : (Qo[3] ? Qo[2] = Qo[4] || Qo[5] || "" : Jo && No.test(Jo) && (Zo = Ka(Jo, !0)) && (Zo = Jo.indexOf(")", Jo.length - Zo) - Jo.length) && (Qo[0] = Qo[0].slice(0, Zo),
-                    Qo[2] = Jo.slice(0, Zo)),
-                    Qo.slice(0, 3))
+                PSEUDO: function(Ko) {
+                    var Zo = !Ko[6] && Ko[2], Qo;
+                    return Fo.CHILD.test(Ko[0]) ? null : (Ko[3] ? Ko[2] = Ko[4] || Ko[5] || "" : Zo && ko.test(Zo) && (Qo = Ka(Zo, !0)) && (Qo = Zo.indexOf(")", Zo.length - Qo) - Zo.length) && (Ko[0] = Ko[0].slice(0, Qo),
+                    Ko[2] = Zo.slice(0, Qo)),
+                    Ko.slice(0, 3))
                 }
             },
             filter: {
-                TAG: function(Qo) {
-                    var Zo = Qo.replace(jo, Wo).toLowerCase();
-                    return "*" === Qo ? function() {
+                TAG: function(Ko) {
+                    var Qo = Ko.replace(Yo, jo).toLowerCase();
+                    return "*" === Ko ? function() {
                         return !0
                     }
-                    : function(Jo) {
-                        return Jo.nodeName && Jo.nodeName.toLowerCase() === Zo
+                    : function(Zo) {
+                        return Zo.nodeName && Zo.nodeName.toLowerCase() === Qo
                     }
                 },
-                CLASS: function(Qo) {
-                    var Zo = go[Qo + " "];
-                    return Zo || (Zo = new RegExp("(^|" + Ao + ")" + Qo + "(" + Ao + "|$)")) && go(Qo, function(Jo) {
-                        return Zo.test("string" == typeof Jo.className && Jo.className || void 0 !== Jo.getAttribute && Jo.getAttribute("class") || "")
+                CLASS: function(Ko) {
+                    var Qo = fo[Ko + " "];
+                    return Qo || (Qo = new RegExp("(^|" + Co + ")" + Ko + "(" + Co + "|$)")) && fo(Ko, function(Zo) {
+                        return Qo.test("string" == typeof Zo.className && Zo.className || void 0 !== Zo.getAttribute && Zo.getAttribute("class") || "")
                     })
                 },
-                ATTR: function(Qo, Zo, Jo) {
-                    return function($o) {
-                        var ei = Ca.attr($o, Qo);
-                        return null == ei ? "!=" === Zo : !Zo || (ei += "",
-                        "=" === Zo ? ei === Jo : "!=" === Zo ? ei !== Jo : "^=" === Zo ? Jo && 0 === ei.indexOf(Jo) : "*=" === Zo ? Jo && -1 < ei.indexOf(Jo) : "$=" === Zo ? Jo && ei.slice(-Jo.length) === Jo : "~=" === Zo ? -1 < (" " + ei.replace(Do, " ") + " ").indexOf(Jo) : "|=" == Zo && (ei === Jo || ei.slice(0, Jo.length + 1) === Jo + "-"))
+                ATTR: function(Ko, Qo, Zo) {
+                    return function(Jo) {
+                        var $o = Ca.attr(Jo, Ko);
+                        return null == $o ? "!=" === Qo : !Qo || ($o += "",
+                        "=" === Qo ? $o === Zo : "!=" === Qo ? $o !== Zo : "^=" === Qo ? Zo && 0 === $o.indexOf(Zo) : "*=" === Qo ? Zo && -1 < $o.indexOf(Zo) : "$=" === Qo ? Zo && $o.slice(-Zo.length) === Zo : "~=" === Qo ? -1 < (" " + $o.replace(Ro, " ") + " ").indexOf(Zo) : "|=" == Qo && ($o === Zo || $o.slice(0, Zo.length + 1) === Zo + "-"))
                     }
                 },
-                CHILD: function(Qo, Zo, Jo, $o, ei) {
-                    var ti = "nth" !== Qo.slice(0, 3)
-                      , ni = "last" !== Qo.slice(-4)
-                      , ri = "of-type" === Zo;
-                    return 1 === $o && 0 === ei ? function(ai) {
-                        return !!ai.parentNode
+                CHILD: function(Ko, Qo, Zo, Jo, $o) {
+                    var ei = "nth" !== Ko.slice(0, 3)
+                      , ti = "last" !== Ko.slice(-4)
+                      , ni = "of-type" === Qo;
+                    return 1 === Jo && 0 === $o ? function(ri) {
+                        return !!ri.parentNode
                     }
-                    : function(ai, oi, ii) {
-                        var hi = ti == ni ? "previousSibling" : "nextSibling", fi = ai.parentNode, gi = ri && ai.nodeName.toLowerCase(), mi = !ii && !ri, yi = !1, si, di, li, ui, pi, ci;
-                        if (fi) {
-                            if (ti) {
-                                for (; hi; ) {
-                                    for (ui = ai; ui = ui[hi]; )
-                                        if (ri ? ui.nodeName.toLowerCase() === gi : 1 === ui.nodeType)
+                    : function(ri, ai, oi) {
+                        var ci = ei == ti ? "previousSibling" : "nextSibling", hi = ri.parentNode, fi = ni && ri.nodeName.toLowerCase(), gi = !oi && !ni, mi = !1, ii, si, di, li, ui, pi;
+                        if (hi) {
+                            if (ei) {
+                                for (; ci; ) {
+                                    for (li = ri; li = li[ci]; )
+                                        if (ni ? li.nodeName.toLowerCase() === fi : 1 === li.nodeType)
                                             return !1;
-                                    ci = hi = "only" === Qo && !ci && "nextSibling"
+                                    pi = ci = "only" === Ko && !pi && "nextSibling"
                                 }
                                 return !0
                             }
-                            if (ci = [ni ? fi.firstChild : fi.lastChild],
-                            ni && mi) {
-                                for (yi = (pi = (si = (di = (li = (ui = fi)[po] || (ui[po] = {}))[ui.uniqueID] || (li[ui.uniqueID] = {}))[Qo] || [])[0] === ho && si[1]) && si[2],
-                                ui = pi && fi.childNodes[pi]; ui = ++pi && ui && ui[hi] || (yi = pi = 0) || ci.pop(); )
-                                    if (1 === ui.nodeType && ++yi && ui === ai) {
-                                        di[Qo] = [ho, pi, yi];
+                            if (pi = [ti ? hi.firstChild : hi.lastChild],
+                            ti && gi) {
+                                for (mi = (ui = (ii = (si = (di = (li = hi)[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] || [])[0] === co && ii[1]) && ii[2],
+                                li = ui && hi.childNodes[ui]; li = ++ui && li && li[ci] || (mi = ui = 0) || pi.pop(); )
+                                    if (1 === li.nodeType && ++mi && li === ri) {
+                                        si[Ko] = [co, ui, mi];
                                         break
                                     }
-                            } else if (mi && (yi = pi = (si = (di = (li = (ui = ai)[po] || (ui[po] = {}))[ui.uniqueID] || (li[ui.uniqueID] = {}))[Qo] || [])[0] === ho && si[1]),
-                            !1 === yi)
-                                for (; (ui = ++pi && ui && ui[hi] || (yi = pi = 0) || ci.pop()) && ((ri ? ui.nodeName.toLowerCase() !== gi : 1 !== ui.nodeType) || !++yi || (mi && ((di = (li = ui[po] || (ui[po] = {}))[ui.uniqueID] || (li[ui.uniqueID] = {}))[Qo] = [ho, yi]),
-                                ui !== ai)); )
+                            } else if (gi && (mi = ui = (ii = (si = (di = (li = ri)[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] || [])[0] === co && ii[1]),
+                            !1 === mi)
+                                for (; (li = ++ui && li && li[ci] || (mi = ui = 0) || pi.pop()) && ((ni ? li.nodeName.toLowerCase() !== fi : 1 !== li.nodeType) || !++mi || (gi && ((si = (di = li[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] = [co, mi]),
+                                li !== ri)); )
                                     ;
-                            return (yi -= ei) == $o || 0 == yi % $o && 0 <= yi / $o
+                            return (mi -= $o) == Jo || 0 == mi % Jo && 0 <= mi / Jo
                         }
                     }
                 },
-                PSEUDO: function(Qo, Zo) {
-                    var $o = za.pseudos[Qo] || za.setFilters[Qo.toLowerCase()] || Ca.error("unsupported pseudo: " + Qo), Jo;
-                    return $o[po] ? $o(Zo) : 1 < $o.length ? (Jo = [Qo, Qo, "", Zo],
-                    za.setFilters.hasOwnProperty(Qo.toLowerCase()) ? Pa(function(ei, ti) {
-                        for (var ri = $o(ei, Zo), ai = ri.length, ni; ai--; )
-                            ei[ni = wo(ei, ri[ai])] = !(ti[ni] = ri[ai])
-                    }) : function(ei) {
-                        return $o(ei, 0, Jo)
+                PSEUDO: function(Ko, Qo) {
+                    var Jo = za.pseudos[Ko] || za.setFilters[Ko.toLowerCase()] || Ca.error("unsupported pseudo: " + Ko), Zo;
+                    return Jo[uo] ? Jo(Qo) : 1 < Jo.length ? (Zo = [Ko, Ko, "", Qo],
+                    za.setFilters.hasOwnProperty(Ko.toLowerCase()) ? Pa(function($o, ei) {
+                        for (var ni = Jo($o, Qo), ri = ni.length, ti; ri--; )
+                            $o[ti = So($o, ni[ri])] = !(ei[ti] = ni[ri])
+                    }) : function($o) {
+                        return Jo($o, 0, Zo)
                     }
-                    ) : $o
+                    ) : Jo
                 }
             },
             pseudos: {
-                not: Pa(function(Qo) {
-                    var Zo = []
-                      , Jo = []
-                      , $o = Qa(Qo.replace(Io, "$1"));
-                    return $o[po] ? Pa(function(ei, ti, ni, ri) {
-                        for (var oi = $o(ei, null, ri, []), ii = ei.length, ai; ii--; )
-                            (ai = oi[ii]) && (ei[ii] = !(ti[ii] = ai))
-                    }) : function(ei, ti, ni) {
-                        return Zo[0] = ei,
-                        $o(Zo, null, ni, Jo),
-                        Zo[0] = null,
-                        !Jo.pop()
+                not: Pa(function(Ko) {
+                    var Qo = []
+                      , Zo = []
+                      , Jo = Qa(Ko.replace(Do, "$1"));
+                    return Jo[uo] ? Pa(function($o, ei, ti, ni) {
+                        for (var ai = Jo($o, null, ni, []), oi = $o.length, ri; oi--; )
+                            (ri = ai[oi]) && ($o[oi] = !(ei[oi] = ri))
+                    }) : function($o, ei, ti) {
+                        return Qo[0] = $o,
+                        Jo(Qo, null, ti, Zo),
+                        Qo[0] = null,
+                        !Zo.pop()
                     }
                 }),
-                has: Pa(function(Qo) {
-                    return function(Zo) {
-                        return 0 < Ca(Qo, Zo).length
+                has: Pa(function(Ko) {
+                    return function(Qo) {
+                        return 0 < Ca(Ko, Qo).length
                     }
                 }),
-                contains: Pa(function(Qo) {
-                    return Qo = Qo.replace(jo, Wo),
-                    function(Zo) {
-                        return -1 < (Zo.textContent || Zo.innerText || Va(Zo)).indexOf(Qo)
+                contains: Pa(function(Ko) {
+                    return Ko = Ko.replace(Yo, jo),
+                    function(Qo) {
+                        return -1 < (Qo.textContent || Qo.innerText || Va(Qo)).indexOf(Ko)
                     }
                 }),
-                lang: Pa(function(Qo) {
-                    return Fo.test(Qo || "") || Ca.error("unsupported lang: " + Qo),
-                    Qo = Qo.replace(jo, Wo).toLowerCase(),
-                    function(Zo) {
-                        var Jo;
+                lang: Pa(function(Ko) {
+                    return No.test(Ko || "") || Ca.error("unsupported lang: " + Ko),
+                    Ko = Ko.replace(Yo, jo).toLowerCase(),
+                    function(Qo) {
+                        var Zo;
                         do
-                            if (Jo = oo ? Zo.lang : Zo.getAttribute("xml:lang") || Zo.getAttribute("lang"))
-                                return (Jo = Jo.toLowerCase()) === Qo || 0 === Jo.indexOf(Qo + "-");
-                        while ((Zo = Zo.parentNode) && 1 === Zo.nodeType);return !1
+                            if (Zo = ao ? Qo.lang : Qo.getAttribute("xml:lang") || Qo.getAttribute("lang"))
+                                return (Zo = Zo.toLowerCase()) === Ko || 0 === Zo.indexOf(Ko + "-");
+                        while ((Qo = Qo.parentNode) && 1 === Qo.nodeType);return !1
                     }
                 }),
-                target: function(Qo) {
-                    var Zo = wa.location && wa.location.hash;
-                    return Zo && Zo.slice(1) === Qo.id
+                target: function(Ko) {
+                    var Qo = wa.location && wa.location.hash;
+                    return Qo && Qo.slice(1) === Ko.id
                 },
-                root: function(Qo) {
-                    return Qo === ao
+                root: function(Ko) {
+                    return Ko === ro
                 },
-                focus: function(Qo) {
-                    return Qo === ro.activeElement && (!ro.hasFocus || ro.hasFocus()) && !!(Qo.type || Qo.href || ~Qo.tabIndex)
+                focus: function(Ko) {
+                    return Ko === no.activeElement && (!no.hasFocus || no.hasFocus()) && !!(Ko.type || Ko.href || ~Ko.tabIndex)
                 },
                 enabled: La(!1),
                 disabled: La(!0),
-                checked: function(Qo) {
-                    var Zo = Qo.nodeName.toLowerCase();
-                    return "input" === Zo && !!Qo.checked || "option" === Zo && !!Qo.selected
+                checked: function(Ko) {
+                    var Qo = Ko.nodeName.toLowerCase();
+                    return "input" === Qo && !!Ko.checked || "option" === Qo && !!Ko.selected
                 },
-                selected: function(Qo) {
-                    return Qo.parentNode && Qo.parentNode.selectedIndex,
-                    !0 === Qo.selected
+                selected: function(Ko) {
+                    return Ko.parentNode && Ko.parentNode.selectedIndex,
+                    !0 === Ko.selected
                 },
-                empty: function(Qo) {
-                    for (Qo = Qo.firstChild; Qo; Qo = Qo.nextSibling)
-                        if (6 > Qo.nodeType)
+                empty: function(Ko) {
+                    for (Ko = Ko.firstChild; Ko; Ko = Ko.nextSibling)
+                        if (6 > Ko.nodeType)
                             return !1;
                     return !0
                 },
-                parent: function(Qo) {
-                    return !za.pseudos.empty(Qo)
+                parent: function(Ko) {
+                    return !za.pseudos.empty(Ko)
                 },
-                header: function(Qo) {
-                    return Go.test(Qo.nodeName)
+                header: function(Ko) {
+                    return Uo.test(Ko.nodeName)
                 },
-                input: function(Qo) {
-                    return Uo.test(Qo.nodeName)
+                input: function(Ko) {
+                    return Bo.test(Ko.nodeName)
                 },
-                button: function(Qo) {
-                    var Zo = Qo.nodeName.toLowerCase();
-                    return "input" === Zo && "button" === Qo.type || "button" === Zo
+                button: function(Ko) {
+                    var Qo = Ko.nodeName.toLowerCase();
+                    return "input" === Qo && "button" === Ko.type || "button" === Qo
                 },
-                text: function(Qo) {
-                    var Zo;
-                    return "input" === Qo.nodeName.toLowerCase() && "text" === Qo.type && (null == (Zo = Qo.getAttribute("type")) || "text" === Zo.toLowerCase())
+                text: function(Ko) {
+                    var Qo;
+                    return "input" === Ko.nodeName.toLowerCase() && "text" === Ko.type && (null == (Qo = Ko.getAttribute("type")) || "text" === Qo.toLowerCase())
                 },
                 first: ka(function() {
                     return [0]
                 }),
-                last: ka(function(Qo, Zo) {
-                    return [Zo - 1]
+                last: ka(function(Ko, Qo) {
+                    return [Qo - 1]
                 }),
-                eq: ka(function(Qo, Zo, Jo) {
-                    return [0 > Jo ? Jo + Zo : Jo]
+                eq: ka(function(Ko, Qo, Zo) {
+                    return [0 > Zo ? Zo + Qo : Zo]
                 }),
-                even: ka(function(Qo, Zo) {
-                    for (var Jo = 0; Jo < Zo; Jo += 2)
-                        Qo.push(Jo);
-                    return Qo
+                even: ka(function(Ko, Qo) {
+                    for (var Zo = 0; Zo < Qo; Zo += 2)
+                        Ko.push(Zo);
+                    return Ko
                 }),
-                odd: ka(function(Qo, Zo) {
-                    for (var Jo = 1; Jo < Zo; Jo += 2)
-                        Qo.push(Jo);
-                    return Qo
+                odd: ka(function(Ko, Qo) {
+                    for (var Zo = 1; Zo < Qo; Zo += 2)
+                        Ko.push(Zo);
+                    return Ko
                 }),
-                lt: ka(function(Qo, Zo, Jo) {
-                    for (var $o = 0 > Jo ? Jo + Zo : Jo; 0 <= --$o; )
-                        Qo.push($o);
-                    return Qo
+                lt: ka(function(Ko, Qo, Zo) {
+                    for (var Jo = 0 > Zo ? Zo + Qo : Zo; 0 <= --Jo; )
+                        Ko.push(Jo);
+                    return Ko
                 }),
-                gt: ka(function(Qo, Zo, Jo) {
-                    for (var $o = 0 > Jo ? Jo + Zo : Jo; ++$o < Zo; )
-                        Qo.push($o);
-                    return Qo
+                gt: ka(function(Ko, Qo, Zo) {
+                    for (var Jo = 0 > Zo ? Zo + Qo : Zo; ++Jo < Qo; )
+                        Ko.push(Jo);
+                    return Ko
                 })
             }
         }).pseudos.nth = za.pseudos.eq,
@@ -1371,135 +1371,135 @@
             za.pseudos[ja] = Oa(ja);
         return Fa.prototype = za.filters = za.pseudos,
         za.setFilters = new Fa,
-        Ka = Ca.tokenize = function(Qo, Zo) {
-            var oi = mo[Qo + " "], Jo, $o, ei, ti, ni, ri, ai;
-            if (oi)
-                return Zo ? 0 : oi.slice(0);
-            for (ni = Qo,
-            ri = [],
-            ai = za.preFilter; ni; ) {
-                for (ti in Jo && !($o = Oo.exec(ni)) || ($o && (ni = ni.slice($o[0].length) || ni),
-                ri.push(ei = [])),
-                Jo = !1,
-                ($o = Lo.exec(ni)) && (Jo = $o.shift(),
-                ei.push({
-                    value: Jo,
-                    type: $o[0].replace(Io, " ")
+        Ka = Ca.tokenize = function(Ko, Qo) {
+            var ai = go[Ko + " "], Zo, Jo, $o, ei, ti, ni, ri;
+            if (ai)
+                return Qo ? 0 : ai.slice(0);
+            for (ti = Ko,
+            ni = [],
+            ri = za.preFilter; ti; ) {
+                for (ei in Zo && !(Jo = Io.exec(ti)) || (Jo && (ti = ti.slice(Jo[0].length) || ti),
+                ni.push($o = [])),
+                Zo = !1,
+                (Jo = Oo.exec(ti)) && (Zo = Jo.shift(),
+                $o.push({
+                    value: Zo,
+                    type: Jo[0].replace(Do, " ")
                 }),
-                ni = ni.slice(Jo.length)),
+                ti = ti.slice(Zo.length)),
                 za.filter)
-                    ($o = Bo[ti].exec(ni)) && (!ai[ti] || ($o = ai[ti]($o))) && (Jo = $o.shift(),
-                    ei.push({
-                        value: Jo,
-                        type: ti,
-                        matches: $o
+                    (Jo = Fo[ei].exec(ti)) && (!ri[ei] || (Jo = ri[ei](Jo))) && (Zo = Jo.shift(),
+                    $o.push({
+                        value: Zo,
+                        type: ei,
+                        matches: Jo
                     }),
-                    ni = ni.slice(Jo.length));
-                if (!Jo)
+                    ti = ti.slice(Zo.length));
+                if (!Zo)
                     break
             }
-            return Zo ? ni.length : ni ? Ca.error(Qo) : mo(Qo, ri).slice(0)
+            return Qo ? ti.length : ti ? Ca.error(Ko) : go(Ko, ni).slice(0)
         }
         ,
-        Qa = Ca.compile = function(Qo, Zo) {
-            var $o = [], ei = [], ti = yo[Qo + " "], Jo;
-            if (!ti) {
-                for (Zo || (Zo = Ka(Qo)),
-                Jo = Zo.length; Jo--; )
-                    (ti = Ya(Zo[Jo]))[po] ? $o.push(ti) : ei.push(ti);
-                (ti = yo(Qo, function(ni, ri) {
-                    var ai = 0 < ri.length
-                      , oi = 0 < ni.length
-                      , ii = function(si, di, li, ui, pi) {
-                        var gi = 0, mi = "0", yi = si && [], _i = [], bi = Ja, xi = si || oi && za.find.TAG("*", pi), vi = ho += null == bi ? 1 : Math.random() || .1, Ti = xi.length, ci, hi, fi;
-                        for (pi && (Ja = di === ro || di || pi); mi !== Ti && null != (ci = xi[mi]); mi++) {
-                            if (oi && ci) {
-                                for (hi = 0,
-                                di || ci.ownerDocument === ro || (no(ci),
-                                li = !oo); fi = ni[hi++]; )
-                                    if (fi(ci, di || ro, li)) {
-                                        ui.push(ci);
+        Qa = Ca.compile = function(Ko, Qo) {
+            var Jo = [], $o = [], ei = mo[Ko + " "], Zo;
+            if (!ei) {
+                for (Qo || (Qo = Ka(Ko)),
+                Zo = Qo.length; Zo--; )
+                    (ei = Ya(Qo[Zo]))[uo] ? Jo.push(ei) : $o.push(ei);
+                (ei = mo(Ko, function(ti, ni) {
+                    var ri = 0 < ni.length
+                      , ai = 0 < ti.length
+                      , oi = function(ii, si, di, li, ui) {
+                        var fi = 0, gi = "0", mi = ii && [], yi = [], _i = Ja, bi = ii || ai && za.find.TAG("*", ui), xi = co += null == _i ? 1 : Math.random() || .1, vi = bi.length, pi, ci, hi;
+                        for (ui && (Ja = si === no || si || ui); gi !== vi && null != (pi = bi[gi]); gi++) {
+                            if (ai && pi) {
+                                for (ci = 0,
+                                si || pi.ownerDocument === no || (to(pi),
+                                di = !ao); hi = ti[ci++]; )
+                                    if (hi(pi, si || no, di)) {
+                                        li.push(pi);
                                         break
                                     }
-                                pi && (ho = vi)
+                                ui && (co = xi)
                             }
-                            ai && ((ci = !fi && ci) && gi--,
-                            si && yi.push(ci))
+                            ri && ((pi = !hi && pi) && fi--,
+                            ii && mi.push(pi))
                         }
-                        if (gi += mi,
-                        ai && mi !== gi) {
-                            for (hi = 0; fi = ri[hi++]; )
-                                fi(yi, _i, di, li);
-                            if (si) {
-                                if (0 < gi)
-                                    for (; mi--; )
-                                        yi[mi] || _i[mi] || (_i[mi] = vo.call(ui));
-                                _i = Xa(_i)
+                        if (fi += gi,
+                        ri && gi !== fi) {
+                            for (ci = 0; hi = ni[ci++]; )
+                                hi(mi, yi, si, di);
+                            if (ii) {
+                                if (0 < fi)
+                                    for (; gi--; )
+                                        mi[gi] || yi[gi] || (yi[gi] = xo.call(li));
+                                yi = Ga(yi)
                             }
-                            Eo.apply(ui, _i),
-                            pi && !si && 0 < _i.length && 1 < gi + ri.length && Ca.uniqueSort(ui)
+                            To.apply(li, yi),
+                            ui && !ii && 0 < yi.length && 1 < fi + ni.length && Ca.uniqueSort(li)
                         }
-                        return pi && (ho = vi,
-                        Ja = bi),
-                        yi
+                        return ui && (co = xi,
+                        Ja = _i),
+                        mi
                     };
-                    return ai ? Pa(ii) : ii
-                }(ei, $o))).selector = Qo
+                    return ri ? Pa(oi) : oi
+                }($o, Jo))).selector = Ko
             }
-            return ti
+            return ei
         }
         ,
-        Za = Ca.select = function(Qo, Zo, Jo, $o) {
-            var oi = "function" == typeof Qo && Qo, ii = !$o && Ka(Qo = oi.selector || Qo), ei, ti, ni, ri, ai;
-            if (Jo = Jo || [],
-            1 === ii.length) {
-                if (2 < (ti = ii[0] = ii[0].slice(0)).length && "ID" === (ni = ti[0]).type && 9 === Zo.nodeType && oo && za.relative[ti[1].type]) {
-                    if (!(Zo = (za.find.ID(ni.matches[0].replace(jo, Wo), Zo) || [])[0]))
-                        return Jo;
-                    oi && (Zo = Zo.parentNode),
-                    Qo = Qo.slice(ti.shift().value.length)
+        Za = Ca.select = function(Ko, Qo, Zo, Jo) {
+            var ai = "function" == typeof Ko && Ko, oi = !Jo && Ka(Ko = ai.selector || Ko), $o, ei, ti, ni, ri;
+            if (Zo = Zo || [],
+            1 === oi.length) {
+                if (2 < (ei = oi[0] = oi[0].slice(0)).length && "ID" === (ti = ei[0]).type && 9 === Qo.nodeType && ao && za.relative[ei[1].type]) {
+                    if (!(Qo = (za.find.ID(ti.matches[0].replace(Yo, jo), Qo) || [])[0]))
+                        return Zo;
+                    ai && (Qo = Qo.parentNode),
+                    Ko = Ko.slice(ei.shift().value.length)
                 }
-                for (ei = Bo.needsContext.test(Qo) ? 0 : ti.length; ei-- && (ni = ti[ei],
-                !za.relative[ri = ni.type]); )
-                    if ((ai = za.find[ri]) && ($o = ai(ni.matches[0].replace(jo, Wo), Yo.test(ti[0].type) && Na(Zo.parentNode) || Zo))) {
-                        if (ti.splice(ei, 1),
-                        !(Qo = $o.length && Ba(ti)))
-                            return Eo.apply(Jo, $o),
-                            Jo;
+                for ($o = Fo.needsContext.test(Ko) ? 0 : ei.length; $o-- && (ti = ei[$o],
+                !za.relative[ni = ti.type]); )
+                    if ((ri = za.find[ni]) && (Jo = ri(ti.matches[0].replace(Yo, jo), Ho.test(ei[0].type) && Na(Qo.parentNode) || Qo))) {
+                        if (ei.splice($o, 1),
+                        !(Ko = Jo.length && Ba(ei)))
+                            return To.apply(Zo, Jo),
+                            Zo;
                         break
                     }
             }
-            return (oi || Qa(Qo, ii))($o, Zo, !oo, Jo, !Zo || Yo.test(Qo) && Na(Zo.parentNode) || Zo),
-            Jo
+            return (ai || Qa(Ko, oi))(Jo, Qo, !ao, Zo, !Qo || Ho.test(Ko) && Na(Qo.parentNode) || Qo),
+            Zo
         }
         ,
-        Wa.sortStable = po.split("").sort(_o).join("") === po,
+        Wa.sortStable = uo.split("").sort(yo).join("") === uo,
         Wa.detectDuplicates = !!eo,
-        no(),
-        Wa.sortDetached = Ma(function(Qo) {
-            return 1 & Qo.compareDocumentPosition(ro.createElement("fieldset"))
+        to(),
+        Wa.sortDetached = Ma(function(Ko) {
+            return 1 & Ko.compareDocumentPosition(no.createElement("fieldset"))
         }),
-        Ma(function(Qo) {
-            return Qo.innerHTML = "<a href='#'></a>",
-            "#" === Qo.firstChild.getAttribute("href")
-        }) || Ra("type|href|height|width", function(Qo, Zo, Jo) {
-            if (!Jo)
-                return Qo.getAttribute(Zo, "type" === Zo.toLowerCase() ? 1 : 2)
+        Ma(function(Ko) {
+            return Ko.innerHTML = "<a href='#'></a>",
+            "#" === Ko.firstChild.getAttribute("href")
+        }) || Ra("type|href|height|width", function(Ko, Qo, Zo) {
+            if (!Zo)
+                return Ko.getAttribute(Qo, "type" === Qo.toLowerCase() ? 1 : 2)
         }),
-        Wa.attributes && Ma(function(Qo) {
-            return Qo.innerHTML = "<input/>",
-            Qo.firstChild.setAttribute("value", ""),
-            "" === Qo.firstChild.getAttribute("value")
-        }) || Ra("value", function(Qo, Zo, Jo) {
-            if (!Jo && "input" === Qo.nodeName.toLowerCase())
-                return Qo.defaultValue
+        Wa.attributes && Ma(function(Ko) {
+            return Ko.innerHTML = "<input/>",
+            Ko.firstChild.setAttribute("value", ""),
+            "" === Ko.firstChild.getAttribute("value")
+        }) || Ra("value", function(Ko, Qo, Zo) {
+            if (!Zo && "input" === Ko.nodeName.toLowerCase())
+                return Ko.defaultValue
         }),
-        Ma(function(Qo) {
-            return null == Qo.getAttribute("disabled")
-        }) || Ra(Co, function(Qo, Zo, Jo) {
-            var $o;
-            if (!Jo)
-                return !0 === Qo[Zo] ? Zo.toLowerCase() : ($o = Qo.getAttributeNode(Zo)) && $o.specified ? $o.value : null
+        Ma(function(Ko) {
+            return null == Ko.getAttribute("disabled")
+        }) || Ra(wo, function(Ko, Qo, Zo) {
+            var Jo;
+            if (!Zo)
+                return !0 === Ko[Qo] ? Qo.toLowerCase() : (Jo = Ko.getAttributeNode(Qo)) && Jo.specified ? Jo.value : null
         }),
         Ca
     }(Bt);
@@ -1616,7 +1616,7 @@
             return this.pushStack(1 < Ra.length ? Vn.uniqueSort(Ra) : Ra)
         },
         index: function(wa) {
-            return wa ? "string" == typeof wa ? Gn.call(Vn(wa), this[0]) : Gn.call(this, wa.jquery ? wa[0] : wa) : this[0] && this[0].parentNode ? this.first().prevAll().length : -1
+            return wa ? "string" == typeof wa ? Xn.call(Vn(wa), this[0]) : Xn.call(this, wa.jquery ? wa[0] : wa) : this[0] && this[0].parentNode ? this.first().prevAll().length : -1
         },
         add: function(wa, Ca) {
             return this.pushStack(Vn.uniqueSort(Vn.merge(this.get(), Vn(wa, Ca))))
@@ -1784,27 +1784,27 @@
                     function Oa(ka, Na, Fa, Ba) {
                         return function() {
                             var Ua = this
-                              , Ga = arguments
-                              , Xa = function() {
+                              , Xa = arguments
+                              , Ga = function() {
                                 var Ya, ja;
                                 if (!(ka < La)) {
-                                    if ((Ya = Fa.apply(Ua, Ga)) === Na.promise())
+                                    if ((Ya = Fa.apply(Ua, Xa)) === Na.promise())
                                         throw new TypeError("Thenable self-resolution");
                                     ja = Ya && ("object" == typeof Ya || "function" == typeof Ya) && Ya.then,
                                     Vn.isFunction(ja) ? Ba ? ja.call(Ya, Oa(La, Na, zt, Ba), Oa(La, Na, Vt, Ba)) : (La++,
                                     ja.call(Ya, Oa(La, Na, zt, Ba), Oa(La, Na, Vt, Ba), Oa(La, Na, zt, Na.notifyWith))) : (Fa !== zt && (Ua = void 0,
-                                    Ga = [Ya]),
-                                    (Ba || Na.resolveWith)(Ua, Ga))
+                                    Xa = [Ya]),
+                                    (Ba || Na.resolveWith)(Ua, Xa))
                                 }
                             }
-                              , Ha = Ba ? Xa : function() {
+                              , Ha = Ba ? Ga : function() {
                                 try {
-                                    Xa()
+                                    Ga()
                                 } catch (Ya) {
                                     Vn.Deferred.exceptionHook && Vn.Deferred.exceptionHook(Ya, Ha.stackTrace),
                                     ka + 1 >= La && (Fa !== Vt && (Ua = void 0,
-                                    Ga = [Ya]),
-                                    Na.rejectWith(Ua, Ga))
+                                    Xa = [Ya]),
+                                    Na.rejectWith(Ua, Xa))
                                 }
                             }
                             ;
@@ -2143,26 +2143,26 @@
     Vn.event = {
         global: {},
         add: function(wa, Ca, Aa, Pa, Ma) {
-            var Xa = hr.get(wa), Ra, Da, Ia, Oa, La, ka, Na, Fa, Ba, Ua, Ga;
-            if (Xa)
+            var Ga = hr.get(wa), Ra, Da, Ia, Oa, La, ka, Na, Fa, Ba, Ua, Xa;
+            if (Ga)
                 for (Aa.handler && (Aa = (Ra = Aa).handler,
                 Ma = Ra.selector),
                 Ma && Vn.find.matchesSelector(Pr, Ma),
                 Aa.guid || (Aa.guid = Vn.guid++),
-                (Oa = Xa.events) || (Oa = Xa.events = {}),
-                (Da = Xa.handle) || (Da = Xa.handle = function(Ha) {
+                (Oa = Ga.events) || (Oa = Ga.events = {}),
+                (Da = Ga.handle) || (Da = Ga.handle = function(Ha) {
                     return void 0 !== Vn && Vn.event.triggered !== Ha.type ? Vn.event.dispatch.apply(wa, arguments) : void 0
                 }
                 ),
                 La = (Ca = (Ca || "").match(dr) || [""]).length; La--; )
-                    Ba = Ga = (Ia = Dr.exec(Ca[La]) || [])[1],
+                    Ba = Xa = (Ia = Dr.exec(Ca[La]) || [])[1],
                     Ua = (Ia[2] || "").split(".").sort(),
                     Ba && (Na = Vn.event.special[Ba] || {},
                     Ba = (Ma ? Na.delegateType : Na.bindType) || Ba,
                     Na = Vn.event.special[Ba] || {},
                     ka = Vn.extend({
                         type: Ba,
-                        origType: Ga,
+                        origType: Xa,
                         data: Pa,
                         handler: Aa,
                         guid: Aa.guid,
@@ -2178,11 +2178,11 @@
                     Vn.event.global[Ba] = !0)
         },
         remove: function(wa, Ca, Aa, Pa, Ma) {
-            var Xa = hr.hasData(wa) && hr.get(wa), Ra, Da, Ia, Oa, La, ka, Na, Fa, Ba, Ua, Ga;
-            if (Xa && (Oa = Xa.events)) {
+            var Ga = hr.hasData(wa) && hr.get(wa), Ra, Da, Ia, Oa, La, ka, Na, Fa, Ba, Ua, Xa;
+            if (Ga && (Oa = Ga.events)) {
                 for (La = (Ca = (Ca || "").match(dr) || [""]).length; La--; )
                     if (Ia = Dr.exec(Ca[La]) || [],
-                    Ba = Ga = Ia[1],
+                    Ba = Xa = Ia[1],
                     Ua = (Ia[2] || "").split(".").sort(),
                     Ba) {
                         for (Na = Vn.event.special[Ba] || {},
@@ -2190,10 +2190,10 @@
                         Ia = Ia[2] && new RegExp("(^|\\.)" + Ua.join("\\.(?:.*\\.|)") + "(\\.|$)"),
                         Da = Ra = Fa.length; Ra--; )
                             ka = Fa[Ra],
-                            !Ma && Ga !== ka.origType || Aa && Aa.guid !== ka.guid || Ia && !Ia.test(ka.namespace) || Pa && Pa !== ka.selector && ("**" !== Pa || !ka.selector) || (Fa.splice(Ra, 1),
+                            !Ma && Xa !== ka.origType || Aa && Aa.guid !== ka.guid || Ia && !Ia.test(ka.namespace) || Pa && Pa !== ka.selector && ("**" !== Pa || !ka.selector) || (Fa.splice(Ra, 1),
                             ka.selector && Fa.delegateCount--,
                             Na.remove && Na.remove.call(wa, ka));
-                        Da && !Fa.length && (Na.teardown && !1 !== Na.teardown.call(wa, Ua, Xa.handle) || Vn.removeEvent(wa, Ba, Xa.handle),
+                        Da && !Fa.length && (Na.teardown && !1 !== Na.teardown.call(wa, Ua, Ga.handle) || Vn.removeEvent(wa, Ba, Ga.handle),
                         delete Oa[Ba])
                     } else
                         for (Ba in Oa)
@@ -2605,8 +2605,8 @@
             }
         }))
     }();
-    var Gr = /^(none|table(?!-c[ea]).+)/
-      , Xr = /^--/
+    var Xr = /^(none|table(?!-c[ea]).+)/
+      , Gr = /^--/
       , Hr = {
         position: "absolute",
         visibility: "hidden",
@@ -2649,7 +2649,7 @@
         },
         style: function(wa, Ca, Aa, Pa) {
             if (wa && 3 !== wa.nodeType && 8 !== wa.nodeType && wa.style) {
-                var Ia = Vn.camelCase(Ca), Oa = Xr.test(Ca), La = wa.style, Ma, Ra, Da;
+                var Ia = Vn.camelCase(Ca), Oa = Gr.test(Ca), La = wa.style, Ma, Ra, Da;
                 if (Oa || (Ca = _n(Ia)),
                 Da = Vn.cssHooks[Ca] || Vn.cssHooks[Ia],
                 void 0 === Aa)
@@ -2663,7 +2663,7 @@
         },
         css: function(wa, Ca, Aa, Pa) {
             var Ia = Vn.camelCase(Ca), Ma, Ra, Da;
-            return Xr.test(Ca) || (Ca = _n(Ia)),
+            return Gr.test(Ca) || (Ca = _n(Ia)),
             (Da = Vn.cssHooks[Ca] || Vn.cssHooks[Ia]) && "get"in Da && (Ma = Da.get(wa, !0, Aa)),
             void 0 === Ma && (Ma = mn(wa, Ca, Pa)),
             "normal" === Ma && Ca in Yr && (Ma = Yr[Ca]),
@@ -2675,7 +2675,7 @@
         Vn.cssHooks[Ca] = {
             get: function(Aa, Pa, Ma) {
                 if (Pa)
-                    return !Gr.test(Vn.css(Aa, "display")) || Aa.getClientRects().length && Aa.getBoundingClientRect().width ? vn(Aa, Ca, Ma) : vr(Aa, Hr, function() {
+                    return !Xr.test(Vn.css(Aa, "display")) || Aa.getClientRects().length && Aa.getBoundingClientRect().width ? vn(Aa, Ca, Ma) : vr(Aa, Hr, function() {
                         return vn(Aa, Ca, Ma)
                     })
             },
@@ -2793,7 +2793,7 @@
                 An.tweeners[Aa].unshift(Ca)
         },
         prefilters: [function(wa, Ca, Aa) {
-            var Fa = this, Ba = {}, Ua = wa.style, Ga = wa.nodeType && xr(wa), Xa = hr.get(wa, "fxshow"), Pa, Ma, Ra, Da, Ia, Oa, La, ka;
+            var Fa = this, Ba = {}, Ua = wa.style, Xa = wa.nodeType && xr(wa), Ga = hr.get(wa, "fxshow"), Pa, Ma, Ra, Da, Ia, Oa, La, ka;
             for (Pa in Aa.queue || (null == (Da = Vn._queueHooks(wa, "fx")).unqueued && (Da.unqueued = 0,
             Ia = Da.empty.fire,
             Da.empty.fire = function() {
@@ -2812,16 +2812,16 @@
                 qr.test(Ma)) {
                     if (delete Ca[Pa],
                     Ra = Ra || "toggle" === Ma,
-                    Ma === (Ga ? "hide" : "show")) {
-                        if ("show" !== Ma || !Xa || void 0 === Xa[Pa])
+                    Ma === (Xa ? "hide" : "show")) {
+                        if ("show" !== Ma || !Ga || void 0 === Ga[Pa])
                             continue;
-                        Ga = !0
+                        Xa = !0
                     }
-                    Ba[Pa] = Xa && Xa[Pa] || Vn.style(wa, Pa)
+                    Ba[Pa] = Ga && Ga[Pa] || Vn.style(wa, Pa)
                 }
             if ((Oa = !Vn.isEmptyObject(Ca)) || !Vn.isEmptyObject(Ba))
                 for (Pa in ("width"in Ca || "height"in Ca) && 1 === wa.nodeType && (Aa.overflow = [Ua.overflow, Ua.overflowX, Ua.overflowY],
-                null == (La = Xa && Xa.display) && (La = hr.get(wa, "display")),
+                null == (La = Ga && Ga.display) && (La = hr.get(wa, "display")),
                 "none" === (ka = Vn.css(wa, "display")) && (La ? ka = La : (en([wa], !0),
                 La = wa.style.display || La,
                 ka = Vn.css(wa, "display"),
@@ -2840,20 +2840,20 @@
                 })),
                 Oa = !1,
                 Ba)
-                    Oa || (Xa ? "hidden"in Xa && (Ga = Xa.hidden) : Xa = hr.access(wa, "fxshow", {
+                    Oa || (Ga ? "hidden"in Ga && (Xa = Ga.hidden) : Ga = hr.access(wa, "fxshow", {
                         display: La
                     }),
-                    Ra && (Xa.hidden = !Ga),
-                    Ga && en([wa], !0),
+                    Ra && (Ga.hidden = !Xa),
+                    Xa && en([wa], !0),
                     Fa.done(function() {
-                        for (Pa in Ga || en([wa]),
+                        for (Pa in Xa || en([wa]),
                         hr.remove(wa, "fxshow"),
                         Ba)
                             Vn.style(wa, Pa, Ba[Pa])
                     })),
-                    Oa = Cn(Ga ? Xa[Pa] : 0, Pa, Fa),
-                    Pa in Xa || (Xa[Pa] = Oa.start,
-                    Ga && (Oa.end = Oa.start,
+                    Oa = Cn(Xa ? Ga[Pa] : 0, Pa, Fa),
+                    Pa in Ga || (Ga[Pa] = Oa.start,
+                    Xa && (Oa.end = Oa.start,
                     Oa.start = 0))
         }
         ],
@@ -3438,97 +3438,97 @@
         ajaxTransport: Dn(ma),
         ajax: function(wa, Ca) {
             function Aa(qa, Ka, Qa, Za) {
-                var ao = Ka, Ja, $a, eo, no, ro;
+                var ro = Ka, Ja, $a, eo, to, no;
                 La || (La = !0,
                 Ia && Bt.clearTimeout(Ia),
                 Pa = void 0,
                 Ra = Za || "",
                 Va.readyState = 0 < qa ? 4 : 0,
                 Ja = 200 <= qa && 300 > qa || 304 === qa,
-                Qa && (no = function(oo, io, so) {
-                    for (var ho = oo.contents, fo = oo.dataTypes, lo, uo, po, co; "*" === fo[0]; )
-                        fo.shift(),
-                        void 0 === lo && (lo = oo.mimeType || io.getResponseHeader("Content-Type"));
-                    if (lo)
-                        for (uo in ho)
-                            if (ho[uo] && ho[uo].test(lo)) {
-                                fo.unshift(uo);
+                Qa && (to = function(ao, oo, io) {
+                    for (var co = ao.contents, ho = ao.dataTypes, so, lo, uo, po; "*" === ho[0]; )
+                        ho.shift(),
+                        void 0 === so && (so = ao.mimeType || oo.getResponseHeader("Content-Type"));
+                    if (so)
+                        for (lo in co)
+                            if (co[lo] && co[lo].test(so)) {
+                                ho.unshift(lo);
                                 break
                             }
-                    if (fo[0]in so)
-                        po = fo[0];
+                    if (ho[0]in io)
+                        uo = ho[0];
                     else {
-                        for (uo in so) {
-                            if (!fo[0] || oo.converters[uo + " " + fo[0]]) {
-                                po = uo;
+                        for (lo in io) {
+                            if (!ho[0] || ao.converters[lo + " " + ho[0]]) {
+                                uo = lo;
                                 break
                             }
-                            co || (co = uo)
+                            po || (po = lo)
                         }
-                        po = po || co
+                        uo = uo || po
                     }
-                    return po ? (po !== fo[0] && fo.unshift(po),
-                    so[po]) : void 0
+                    return uo ? (uo !== ho[0] && ho.unshift(uo),
+                    io[uo]) : void 0
                 }(Ba, Va, Qa)),
-                no = function(oo, io, so, lo) {
-                    var go = {}, mo = oo.dataTypes.slice(), uo, po, co, ho, fo;
-                    if (mo[1])
-                        for (co in oo.converters)
-                            go[co.toLowerCase()] = oo.converters[co];
-                    for (po = mo.shift(); po; )
-                        if (oo.responseFields[po] && (so[oo.responseFields[po]] = io),
-                        !fo && lo && oo.dataFilter && (io = oo.dataFilter(io, oo.dataType)),
-                        fo = po,
-                        po = mo.shift())
-                            if ("*" === po)
-                                po = fo;
-                            else if ("*" !== fo && fo !== po) {
-                                if (!(co = go[fo + " " + po] || go["* " + po]))
-                                    for (uo in go)
-                                        if ((ho = uo.split(" "))[1] === po && (co = go[fo + " " + ho[0]] || go["* " + ho[0]])) {
-                                            !0 === co ? co = go[uo] : !0 !== go[uo] && (po = ho[0],
-                                            mo.unshift(ho[1]));
+                to = function(ao, oo, io, so) {
+                    var fo = {}, go = ao.dataTypes.slice(), lo, uo, po, co, ho;
+                    if (go[1])
+                        for (po in ao.converters)
+                            fo[po.toLowerCase()] = ao.converters[po];
+                    for (uo = go.shift(); uo; )
+                        if (ao.responseFields[uo] && (io[ao.responseFields[uo]] = oo),
+                        !ho && so && ao.dataFilter && (oo = ao.dataFilter(oo, ao.dataType)),
+                        ho = uo,
+                        uo = go.shift())
+                            if ("*" === uo)
+                                uo = ho;
+                            else if ("*" !== ho && ho !== uo) {
+                                if (!(po = fo[ho + " " + uo] || fo["* " + uo]))
+                                    for (lo in fo)
+                                        if ((co = lo.split(" "))[1] === uo && (po = fo[ho + " " + co[0]] || fo["* " + co[0]])) {
+                                            !0 === po ? po = fo[lo] : !0 !== fo[lo] && (uo = co[0],
+                                            go.unshift(co[1]));
                                             break
                                         }
-                                if (!0 !== co)
-                                    if (co && oo.throws)
-                                        io = co(io);
+                                if (!0 !== po)
+                                    if (po && ao.throws)
+                                        oo = po(oo);
                                     else
                                         try {
-                                            io = co(io)
-                                        } catch (yo) {
+                                            oo = po(oo)
+                                        } catch (mo) {
                                             return {
                                                 state: "parsererror",
-                                                error: co ? yo : "No conversion from " + fo + " to " + po
+                                                error: po ? mo : "No conversion from " + ho + " to " + uo
                                             }
                                         }
                             }
                     return {
                         state: "success",
-                        data: io
+                        data: oo
                     }
-                }(Ba, no, Va, Ja),
-                Ja ? (Ba.ifModified && ((ro = Va.getResponseHeader("Last-Modified")) && (Vn.lastModified[Ma] = ro),
-                (ro = Va.getResponseHeader("etag")) && (Vn.etag[Ma] = ro)),
-                204 === qa || "HEAD" === Ba.type ? ao = "nocontent" : 304 === qa ? ao = "notmodified" : (ao = no.state,
-                $a = no.data,
-                Ja = !(eo = no.error))) : (eo = ao,
-                !qa && ao || (ao = "error",
+                }(Ba, to, Va, Ja),
+                Ja ? (Ba.ifModified && ((no = Va.getResponseHeader("Last-Modified")) && (Vn.lastModified[Ma] = no),
+                (no = Va.getResponseHeader("etag")) && (Vn.etag[Ma] = no)),
+                204 === qa || "HEAD" === Ba.type ? ro = "nocontent" : 304 === qa ? ro = "notmodified" : (ro = to.state,
+                $a = to.data,
+                Ja = !(eo = to.error))) : (eo = ro,
+                !qa && ro || (ro = "error",
                 0 > qa && (qa = 0))),
                 Va.status = qa,
-                Va.statusText = (Ka || ao) + "",
-                Ja ? Xa.resolveWith(Ua, [$a, ao, Va]) : Xa.rejectWith(Ua, [Va, ao, eo]),
+                Va.statusText = (Ka || ro) + "",
+                Ja ? Ga.resolveWith(Ua, [$a, ro, Va]) : Ga.rejectWith(Ua, [Va, ro, eo]),
                 Va.statusCode(Ya),
                 Ya = void 0,
-                ka && Ga.trigger(Ja ? "ajaxSuccess" : "ajaxError", [Va, Ba, Ja ? $a : eo]),
-                Ha.fireWith(Ua, [Va, ao]),
-                ka && (Ga.trigger("ajaxComplete", [Va, Ba]),
+                ka && Xa.trigger(Ja ? "ajaxSuccess" : "ajaxError", [Va, Ba, Ja ? $a : eo]),
+                Ha.fireWith(Ua, [Va, ro]),
+                ka && (Xa.trigger("ajaxComplete", [Va, Ba]),
                 --Vn.active || Vn.event.trigger("ajaxStop")))
             }
             "object" == typeof wa && (Ca = wa,
             wa = void 0),
             Ca = Ca || {};
-            var Ba = Vn.ajaxSetup({}, Ca), Ua = Ba.context || Ba, Ga = Ba.context && (Ua.nodeType || Ua.jquery) ? Vn(Ua) : Vn.event, Xa = Vn.Deferred(), Ha = Vn.Callbacks("once memory"), Ya = Ba.statusCode || {}, ja = {}, Wa = {}, za = "canceled", Va = {
+            var Ba = Vn.ajaxSetup({}, Ca), Ua = Ba.context || Ba, Xa = Ba.context && (Ua.nodeType || Ua.jquery) ? Vn(Ua) : Vn.event, Ga = Vn.Deferred(), Ha = Vn.Callbacks("once memory"), Ya = Ba.statusCode || {}, ja = {}, Wa = {}, za = "canceled", Va = {
                 readyState: 0,
                 getResponseHeader: function(qa) {
                     var Ka;
@@ -3568,7 +3568,7 @@
                     this
                 }
             }, Pa, Ma, Ra, Da, Ia, Oa, La, ka, Na, Fa;
-            if (Xa.promise(Va),
+            if (Ga.promise(Va),
             Ba.url = ((wa || Ba.url || na.href) + "").replace(fa, na.protocol + "//"),
             Ba.type = Ca.method || Ca.type || Ba.method || Ba.type,
             Ba.dataTypes = (Ba.dataType || "*").toLowerCase().match(dr) || [""],
@@ -3610,7 +3610,7 @@
             Va.fail(Ba.error),
             Pa = In(ma, Ba, Ca, Va)) {
                 if (Va.readyState = 1,
-                ka && Ga.trigger("ajaxSend", [Va, Ba]),
+                ka && Xa.trigger("ajaxSend", [Va, Ba]),
                 La)
                     return Va;
                 Ba.async && 0 < Ba.timeout && (Ia = Bt.setTimeout(function() {
@@ -4030,13 +4030,13 @@
         Vn
     }
     ,
-    Gt || (Bt.jQuery = Bt.$ = Vn),
+    Xt || (Bt.jQuery = Bt.$ = Vn),
     Vn
 }),
-function Bt(Gt, Xt, Ht) {
+function Bt(Xt, Gt, Ht) {
     function Yt(zt, Vt) {
-        if (!Xt[zt]) {
-            if (!Gt[zt]) {
+        if (!Gt[zt]) {
+            if (!Xt[zt]) {
                 var qt = "function" == typeof require && require;
                 if (!Vt && qt)
                     return qt(zt, !0);
@@ -4046,21 +4046,21 @@ function Bt(Gt, Xt, Ht) {
                 throw Kt.code = "MODULE_NOT_FOUND",
                 Kt
             }
-            var Qt = Xt[zt] = {
+            var Qt = Gt[zt] = {
                 exports: {}
             };
-            Gt[zt][0].call(Qt.exports, function(Zt) {
-                var Jt = Gt[zt][1][Zt];
+            Xt[zt][0].call(Qt.exports, function(Zt) {
+                var Jt = Xt[zt][1][Zt];
                 return Yt(Jt || Zt)
-            }, Qt, Qt.exports, Bt, Gt, Xt, Ht)
+            }, Qt, Qt.exports, Bt, Xt, Gt, Ht)
         }
-        return Xt[zt].exports
+        return Gt[zt].exports
     }
     for (var jt = "function" == typeof require && require, Wt = 0; Wt < Ht.length; Wt++)
         Yt(Ht[Wt]);
     return Yt
 }({
-    1: [function(Bt, Gt) {
+    1: [function(Bt, Xt) {
         function Ht(zt) {
             zt.fn.perfectScrollbar = function(Vt) {
                 return this.each(function() {
@@ -4081,13 +4081,13 @@ function Bt(Gt, Xt, Ht) {
             var Wt = window.jQuery ? window.jQuery : window.$;
             void 0 !== Wt && Ht(Wt)
         }
-        Gt.exports = Ht
+        Xt.exports = Ht
     }
     , {
         "../main": 6,
         "../plugin/instances": 17
     }],
-    2: [function(Bt, Gt) {
+    2: [function(Bt, Xt) {
         var Ht = {};
         Ht.create = function(Yt, jt) {
             var Wt = document.createElement(Yt);
@@ -4131,10 +4131,10 @@ function Bt(Gt, Xt, Ht) {
             })
         }
         ,
-        Gt.exports = Ht
+        Xt.exports = Ht
     }
     , {}],
-    3: [function(Bt, Gt) {
+    3: [function(Bt, Xt) {
         var Ht = function(jt) {
             this.element = jt,
             this.events = {}
@@ -4191,11 +4191,11 @@ function Bt(Gt, Xt, Ht) {
             Vt.bind(Wt, qt)
         }
         ,
-        Gt.exports = Yt
+        Xt.exports = Yt
     }
     , {}],
-    4: [function(Bt, Gt) {
-        Gt.exports = function() {
+    4: [function(Bt, Xt) {
+        Xt.exports = function() {
             function Ht() {
                 return Math.floor(65536 * (1 + Math.random())).toString(16).substring(1)
             }
@@ -4205,42 +4205,42 @@ function Bt(Gt, Xt, Ht) {
         }()
     }
     , {}],
-    5: [function(Bt, Gt, Xt) {
+    5: [function(Bt, Xt, Gt) {
         function Ht(Wt) {
             var zt;
             return zt = void 0 === Wt ? ["ps--x", "ps--y"] : ["ps--" + Wt],
             ["ps--in-scrolling"].concat(zt)
         }
         var Yt = Bt("./dom")
-          , jt = Xt.toInt = function(Wt) {
+          , jt = Gt.toInt = function(Wt) {
             return parseInt(Wt, 10) || 0
         }
         ;
-        Xt.isEditable = function(Wt) {
+        Gt.isEditable = function(Wt) {
             return Yt.matches(Wt, "input,[contenteditable]") || Yt.matches(Wt, "select,[contenteditable]") || Yt.matches(Wt, "textarea,[contenteditable]") || Yt.matches(Wt, "button,[contenteditable]")
         }
         ,
-        Xt.removePsClasses = function(Wt) {
+        Gt.removePsClasses = function(Wt) {
             for (var zt = 0, Vt; zt < Wt.classList.length; zt++)
                 Vt = Wt.classList[zt],
                 0 === Vt.indexOf("ps-") && Wt.classList.remove(Vt)
         }
         ,
-        Xt.outerWidth = function(Wt) {
+        Gt.outerWidth = function(Wt) {
             return jt(Yt.css(Wt, "width")) + jt(Yt.css(Wt, "paddingLeft")) + jt(Yt.css(Wt, "paddingRight")) + jt(Yt.css(Wt, "borderLeftWidth")) + jt(Yt.css(Wt, "borderRightWidth"))
         }
         ,
-        Xt.startScrolling = function(Wt, zt) {
+        Gt.startScrolling = function(Wt, zt) {
             for (var Vt = Ht(zt), qt = 0; qt < Vt.length; qt++)
                 Wt.classList.add(Vt[qt])
         }
         ,
-        Xt.stopScrolling = function(Wt, zt) {
+        Gt.stopScrolling = function(Wt, zt) {
             for (var Vt = Ht(zt), qt = 0; qt < Vt.length; qt++)
                 Wt.classList.remove(Vt[qt])
         }
         ,
-        Xt.env = {
+        Gt.env = {
             isWebKit: "undefined" != typeof document && "WebkitAppearance"in document.documentElement.style,
             supportsTouch: "undefined" != typeof window && ("ontouchstart"in window || window.DocumentTouch && document instanceof window.DocumentTouch),
             supportsIePointer: "undefined" != typeof window && null !== window.navigator.msMaxTouchPoints
@@ -4249,11 +4249,11 @@ function Bt(Gt, Xt, Ht) {
     , {
         "./dom": 2
     }],
-    6: [function(Bt, Gt) {
+    6: [function(Bt, Xt) {
         var Ht = Bt("./plugin/destroy")
           , Yt = Bt("./plugin/initialize")
           , jt = Bt("./plugin/update");
-        Gt.exports = {
+        Xt.exports = {
             initialize: Yt,
             update: jt,
             destroy: Ht
@@ -4264,8 +4264,8 @@ function Bt(Gt, Xt, Ht) {
         "./plugin/initialize": 16,
         "./plugin/update": 20
     }],
-    7: [function(Bt, Gt) {
-        Gt.exports = function() {
+    7: [function(Bt, Xt) {
+        Xt.exports = function() {
             return {
                 handlers: ["click-rail", "drag-scrollbar", "keyboard", "wheel", "touch"],
                 maxScrollbarLength: null,
@@ -4284,11 +4284,11 @@ function Bt(Gt, Xt, Ht) {
         }
     }
     , {}],
-    8: [function(Bt, Gt) {
+    8: [function(Bt, Xt) {
         var Ht = Bt("../lib/helper")
           , Yt = Bt("../lib/dom")
           , jt = Bt("./instances");
-        Gt.exports = function(Wt) {
+        Xt.exports = function(Wt) {
             var zt = jt.get(Wt);
             zt && (zt.event.unbindAll(),
             Yt.remove(zt.scrollbarX),
@@ -4304,11 +4304,11 @@ function Bt(Gt, Xt, Ht) {
         "../lib/helper": 5,
         "./instances": 17
     }],
-    9: [function(Bt, Gt) {
+    9: [function(Bt, Xt) {
         var Ht = Bt("../instances")
           , Yt = Bt("../update-geometry")
           , jt = Bt("../update-scroll");
-        Gt.exports = function(Wt) {
+        Xt.exports = function(Wt) {
             !function(zt, Vt) {
                 function qt(Qt) {
                     return Qt.getBoundingClientRect()
@@ -4338,7 +4338,7 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    10: [function(Bt, Gt) {
+    10: [function(Bt, Xt) {
         function Ht(Kt, Qt) {
             var Zt = null
               , Jt = null
@@ -4402,7 +4402,7 @@ function Bt(Gt, Xt, Ht) {
           , zt = Bt("../instances")
           , Vt = Bt("../update-geometry")
           , qt = Bt("../update-scroll");
-        Gt.exports = function(Kt) {
+        Xt.exports = function(Kt) {
             var Qt = zt.get(Kt);
             Ht(Kt, Qt),
             Yt(Kt, Qt)
@@ -4415,7 +4415,7 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    11: [function(Bt, Gt) {
+    11: [function(Bt, Xt) {
         function Ht(qt, Kt) {
             var Qt = !1;
             Kt.event.bind(qt, "mouseenter", function() {
@@ -4501,7 +4501,7 @@ function Bt(Gt, Xt, Ht) {
           , Wt = Bt("../instances")
           , zt = Bt("../update-geometry")
           , Vt = Bt("../update-scroll");
-        Gt.exports = function(qt) {
+        Xt.exports = function(qt) {
             Ht(qt, Wt.get(qt))
         }
     }
@@ -4512,7 +4512,7 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    12: [function(Bt, Gt) {
+    12: [function(Bt, Xt) {
         function Ht(zt, Vt) {
             function qt(Qt) {
                 var Zt = function(en) {
@@ -4574,7 +4574,7 @@ function Bt(Gt, Xt, Ht) {
         var Yt = Bt("../instances")
           , jt = Bt("../update-geometry")
           , Wt = Bt("../update-scroll");
-        Gt.exports = function(zt) {
+        Xt.exports = function(zt) {
             Ht(zt, Yt.get(zt))
         }
     }
@@ -4583,10 +4583,10 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    13: [function(Bt, Gt) {
+    13: [function(Bt, Xt) {
         var Ht = Bt("../instances")
           , Yt = Bt("../update-geometry");
-        Gt.exports = function(jt) {
+        Xt.exports = function(jt) {
             !function(Wt, zt) {
                 zt.event.bind(Wt, "scroll", function() {
                     Yt(Wt)
@@ -4598,7 +4598,7 @@ function Bt(Gt, Xt, Ht) {
         "../instances": 17,
         "../update-geometry": 18
     }],
-    14: [function(Bt, Gt) {
+    14: [function(Bt, Xt) {
         function Ht(Vt, qt) {
             function Kt() {
                 Qt && (clearInterval(Qt),
@@ -4656,7 +4656,7 @@ function Bt(Gt, Xt, Ht) {
           , jt = Bt("../instances")
           , Wt = Bt("../update-geometry")
           , zt = Bt("../update-scroll");
-        Gt.exports = function(Vt) {
+        Xt.exports = function(Vt) {
             Ht(Vt, jt.get(Vt))
         }
     }
@@ -4666,7 +4666,7 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    15: [function(Bt, Gt) {
+    15: [function(Bt, Xt) {
         function Ht(Vt, qt, Kt, Qt) {
             function Zt(cn, hn) {
                 zt(Vt, "top", Vt.scrollTop - hn),
@@ -4761,7 +4761,7 @@ function Bt(Gt, Xt, Ht) {
           , jt = Bt("../instances")
           , Wt = Bt("../update-geometry")
           , zt = Bt("../update-scroll");
-        Gt.exports = function(Vt) {
+        Xt.exports = function(Vt) {
             (Yt.env.supportsTouch || Yt.env.supportsIePointer) && Ht(Vt, jt.get(Vt), Yt.env.supportsTouch, Yt.env.supportsIePointer)
         }
     }
@@ -4771,7 +4771,7 @@ function Bt(Gt, Xt, Ht) {
         "../update-geometry": 18,
         "../update-scroll": 19
     }],
-    16: [function(Bt, Gt) {
+    16: [function(Bt, Xt) {
         var Ht = Bt("./instances")
           , Yt = Bt("./update-geometry")
           , jt = {
@@ -4783,7 +4783,7 @@ function Bt(Gt, Xt, Ht) {
             selection: Bt("./handler/selection")
         }
           , Wt = Bt("./handler/native-scroll");
-        Gt.exports = function(zt, Vt) {
+        Xt.exports = function(zt, Vt) {
             zt.classList.add("ps");
             var qt = Ht.add(zt, "object" == typeof Vt ? Vt : {});
             zt.classList.add("ps--theme_" + qt.settings.theme),
@@ -4805,7 +4805,7 @@ function Bt(Gt, Xt, Ht) {
         "./instances": 17,
         "./update-geometry": 18
     }],
-    17: [function(Bt, Gt, Xt) {
+    17: [function(Bt, Xt, Gt) {
         function Ht(Kt) {
             return Kt.getAttribute("data-ps-id")
         }
@@ -4815,7 +4815,7 @@ function Bt(Gt, Xt, Ht) {
           , zt = Bt("../lib/event-manager")
           , Vt = Bt("../lib/guid")
           , qt = {};
-        Xt.add = function(Kt, Qt) {
+        Gt.add = function(Kt, Qt) {
             var Zt = Vt();
             return function(Jt, $t) {
                 Jt.setAttribute("data-ps-id", $t)
@@ -4886,14 +4886,14 @@ function Bt(Gt, Xt, Ht) {
             qt[Zt]
         }
         ,
-        Xt.remove = function(Kt) {
+        Gt.remove = function(Kt) {
             delete qt[Ht(Kt)],
             function(Qt) {
                 Qt.removeAttribute("data-ps-id")
             }(Kt)
         }
         ,
-        Xt.get = function(Kt) {
+        Gt.get = function(Kt) {
             return qt[Ht(Kt)]
         }
     }
@@ -4904,7 +4904,7 @@ function Bt(Gt, Xt, Ht) {
         "../lib/helper": 5,
         "./default-setting": 7
     }],
-    18: [function(Bt, Gt) {
+    18: [function(Bt, Xt) {
         function Ht(Vt, qt) {
             return Vt.settings.minScrollbarLength && (qt = Math.max(qt, Vt.settings.minScrollbarLength)),
             Vt.settings.maxScrollbarLength && (qt = Math.min(qt, Vt.settings.maxScrollbarLength)),
@@ -4914,7 +4914,7 @@ function Bt(Gt, Xt, Ht) {
           , jt = Bt("../lib/dom")
           , Wt = Bt("./instances")
           , zt = Bt("./update-scroll");
-        Gt.exports = function(Vt) {
+        Xt.exports = function(Vt) {
             var qt = Wt.get(Vt);
             qt.containerWidth = Vt.clientWidth,
             qt.containerHeight = Vt.clientHeight,
@@ -4979,14 +4979,14 @@ function Bt(Gt, Xt, Ht) {
         "./instances": 17,
         "./update-scroll": 19
     }],
-    19: [function(Bt, Gt) {
+    19: [function(Bt, Xt) {
         var Ht = Bt("./instances")
           , Yt = function(jt) {
             var Wt = document.createEvent("Event");
             return Wt.initEvent(jt, !0, !0),
             Wt
         };
-        Gt.exports = function(jt, Wt, zt) {
+        Xt.exports = function(jt, Wt, zt) {
             if (void 0 === jt)
                 throw "You must provide an element to the update-scroll function";
             if (void 0 === Wt)
@@ -5017,13 +5017,13 @@ function Bt(Gt, Xt, Ht) {
     , {
         "./instances": 17
     }],
-    20: [function(Bt, Gt) {
+    20: [function(Bt, Xt) {
         var Ht = Bt("../lib/helper")
           , Yt = Bt("../lib/dom")
           , jt = Bt("./instances")
           , Wt = Bt("./update-geometry")
           , zt = Bt("./update-scroll");
-        Gt.exports = function(Vt) {
+        Xt.exports = function(Vt) {
             var qt = jt.get(Vt);
             qt && (qt.negativeScrollAdjustment = qt.isNegativeScroll ? Vt.scrollWidth - Vt.clientWidth : 0,
             Yt.css(qt.scrollbarXRail, "display", "block"),
@@ -5050,10 +5050,10 @@ function Bt(Gt, Xt, Ht) {
 function(Bt) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = Bt() : "function" == typeof define && define.amd ? define([], Bt) : ("undefined" == typeof window ? "undefined" == typeof global ? "undefined" == typeof self ? this : self : global : window).PIXI = Bt()
 }(function() {
-    return function Bt(Gt, Xt, Ht) {
+    return function Bt(Xt, Gt, Ht) {
         function Yt(zt, Vt) {
-            if (!Xt[zt]) {
-                if (!Gt[zt]) {
+            if (!Gt[zt]) {
+                if (!Xt[zt]) {
                     var qt = "function" == typeof require && require;
                     if (!Vt && qt)
                         return qt(zt, !0);
@@ -5063,21 +5063,21 @@ function(Bt) {
                     throw Kt.code = "MODULE_NOT_FOUND",
                     Kt
                 }
-                var Qt = Xt[zt] = {
+                var Qt = Gt[zt] = {
                     exports: {}
                 };
-                Gt[zt][0].call(Qt.exports, function(Zt) {
-                    var Jt = Gt[zt][1][Zt];
+                Xt[zt][0].call(Qt.exports, function(Zt) {
+                    var Jt = Xt[zt][1][Zt];
                     return Yt(Jt || Zt)
-                }, Qt, Qt.exports, Bt, Gt, Xt, Ht)
+                }, Qt, Qt.exports, Bt, Xt, Gt, Ht)
             }
-            return Xt[zt].exports
+            return Gt[zt].exports
         }
         for (var jt = "function" == typeof require && require, Wt = 0; Wt < Ht.length; Wt++)
             Yt(Ht[Wt]);
         return Yt
     }({
-        1: [function(Bt, Gt, Xt) {
+        1: [function(Bt, Xt, Gt) {
             "use restrict";
             function Ht(jt) {
                 var Wt = 32;
@@ -5089,31 +5089,31 @@ function(Bt) {
                 1431655765 & jt && (Wt -= 1),
                 Wt
             }
-            Xt.INT_BITS = 32,
-            Xt.INT_MAX = 2147483647,
-            Xt.INT_MIN = -2147483648,
-            Xt.sign = function(jt) {
+            Gt.INT_BITS = 32,
+            Gt.INT_MAX = 2147483647,
+            Gt.INT_MIN = -2147483648,
+            Gt.sign = function(jt) {
                 return (0 < jt) - (0 > jt)
             }
             ,
-            Xt.abs = function(jt) {
+            Gt.abs = function(jt) {
                 var Wt = jt >> 31;
                 return (jt ^ Wt) - Wt
             }
             ,
-            Xt.min = function(jt, Wt) {
+            Gt.min = function(jt, Wt) {
                 return Wt ^ (jt ^ Wt) & -(jt < Wt)
             }
             ,
-            Xt.max = function(jt, Wt) {
+            Gt.max = function(jt, Wt) {
                 return jt ^ (jt ^ Wt) & -(jt < Wt)
             }
             ,
-            Xt.isPow2 = function(jt) {
+            Gt.isPow2 = function(jt) {
                 return !(jt & jt - 1) && jt
             }
             ,
-            Xt.log2 = function(jt) {
+            Gt.log2 = function(jt) {
                 var Wt, zt;
                 return Wt = (65535 < jt) << 4,
                 jt >>>= Wt,
@@ -5128,17 +5128,17 @@ function(Bt) {
                 (Wt |= zt) | jt >> 1
             }
             ,
-            Xt.log10 = function(jt) {
+            Gt.log10 = function(jt) {
                 return 1e9 <= jt ? 9 : 1e8 <= jt ? 8 : 1e7 <= jt ? 7 : 1e6 <= jt ? 6 : 1e5 <= jt ? 5 : 1e4 <= jt ? 4 : 1e3 <= jt ? 3 : 100 <= jt ? 2 : 10 <= jt ? 1 : 0
             }
             ,
-            Xt.popCount = function(jt) {
+            Gt.popCount = function(jt) {
                 return jt -= 1431655765 & jt >>> 1,
                 16843009 * (252645135 & (jt = (858993459 & jt) + (858993459 & jt >>> 2)) + (jt >>> 4)) >>> 24
             }
             ,
-            Xt.countTrailingZeros = Ht,
-            Xt.nextPow2 = function(jt) {
+            Gt.countTrailingZeros = Ht,
+            Gt.nextPow2 = function(jt) {
                 return jt += 0 === jt,
                 --jt,
                 jt |= jt >>> 1,
@@ -5148,7 +5148,7 @@ function(Bt) {
                 (jt |= jt >>> 16) + 1
             }
             ,
-            Xt.prevPow2 = function(jt) {
+            Gt.prevPow2 = function(jt) {
                 return jt |= jt >>> 1,
                 jt |= jt >>> 2,
                 jt |= jt >>> 4,
@@ -5156,7 +5156,7 @@ function(Bt) {
                 (jt |= jt >>> 16) - (jt >>> 1)
             }
             ,
-            Xt.parity = function(jt) {
+            Gt.parity = function(jt) {
                 return jt ^= jt >>> 16,
                 jt ^= jt >>> 8,
                 jt ^= jt >>> 4,
@@ -5176,11 +5176,11 @@ function(Bt) {
                     jt[Wt] = 255 & Vt << qt
                 }
             }(Yt),
-            Xt.reverse = function(jt) {
+            Gt.reverse = function(jt) {
                 return Yt[255 & jt] << 24 | Yt[255 & jt >>> 8] << 16 | Yt[255 & jt >>> 16] << 8 | Yt[255 & jt >>> 24]
             }
             ,
-            Xt.interleave2 = function(jt, Wt) {
+            Gt.interleave2 = function(jt, Wt) {
                 return jt &= 65535,
                 jt = 16711935 & (jt | jt << 8),
                 jt = 252645135 & (jt | jt << 4),
@@ -5194,7 +5194,7 @@ function(Bt) {
                 jt | Wt << 1
             }
             ,
-            Xt.deinterleave2 = function(jt, Wt) {
+            Gt.deinterleave2 = function(jt, Wt) {
                 return jt = 1431655765 & jt >>> Wt,
                 jt = 858993459 & (jt | jt >>> 1),
                 jt = 252645135 & (jt | jt >>> 2),
@@ -5202,7 +5202,7 @@ function(Bt) {
                 (jt = 65535 & (jt | jt >>> 16)) << 16 >> 16
             }
             ,
-            Xt.interleave3 = function(jt, Wt, zt) {
+            Gt.interleave3 = function(jt, Wt, zt) {
                 return jt &= 1023,
                 jt = 4278190335 & (jt | jt << 16),
                 jt = 251719695 & (jt | jt << 8),
@@ -5222,7 +5222,7 @@ function(Bt) {
                 jt | zt << 2
             }
             ,
-            Xt.deinterleave3 = function(jt, Wt) {
+            Gt.deinterleave3 = function(jt, Wt) {
                 return jt = 1227133513 & jt >>> Wt,
                 jt = 3272356035 & (jt | jt >>> 2),
                 jt = 251719695 & (jt | jt >>> 4),
@@ -5230,13 +5230,13 @@ function(Bt) {
                 (jt = 1023 & (jt | jt >>> 16)) << 22 >> 22
             }
             ,
-            Xt.nextCombination = function(jt) {
+            Gt.nextCombination = function(jt) {
                 var Wt = jt | jt - 1;
                 return Wt + 1 | (~Wt & -~Wt) - 1 >>> Ht(jt) + 1
             }
         }
         , {}],
-        2: [function(Bt, Gt) {
+        2: [function(Bt, Xt) {
             function Ht(an, on, sn) {
                 sn = sn || 2;
                 var dn = on && on.length
@@ -5268,10 +5268,10 @@ function(Bt) {
                                 var Nn = Ln, Fn = On.x, Bn = On.y, Un = -1 / 0, kn;
                                 do {
                                     if (Bn <= Nn.y && Bn >= Nn.next.y) {
-                                        var Gn = Nn.x + (Bn - Nn.y) * (Nn.next.x - Nn.x) / (Nn.next.y - Nn.y);
-                                        if (Gn <= Fn && Gn > Un) {
-                                            if (Un = Gn,
-                                            Gn === Fn) {
+                                        var Xn = Nn.x + (Bn - Nn.y) * (Nn.next.x - Nn.x) / (Nn.next.y - Nn.y);
+                                        if (Xn <= Fn && Xn > Un) {
+                                            if (Un = Xn,
+                                            Xn === Fn) {
                                                 if (Bn === Nn.y)
                                                     return Nn;
                                                 if (Bn === Nn.next.y)
@@ -5285,10 +5285,10 @@ function(Bt) {
                                     return null;
                                 if (Fn === Un)
                                     return kn.prev;
-                                var Hn = kn, Yn = kn.x, jn = kn.y, Wn = 1 / 0, Xn;
+                                var Hn = kn, Yn = kn.x, jn = kn.y, Wn = 1 / 0, Gn;
                                 for (Nn = kn.next; Nn !== Hn; )
-                                    Fn >= Nn.x && Nn.x >= Yn && qt(Bn < jn ? Fn : Un, Bn, Yn, jn, Bn < jn ? Un : Fn, Bn, Nn.x, Nn.y) && ((Xn = Math.abs(Bn - Nn.y) / (Fn - Nn.x)) < Wn || Xn === Wn && Nn.x > kn.x) && Jt(Nn, On) && (kn = Nn,
-                                    Wn = Xn),
+                                    Fn >= Nn.x && Nn.x >= Yn && qt(Bn < jn ? Fn : Un, Bn, Yn, jn, Bn < jn ? Un : Fn, Bn, Nn.x, Nn.y) && ((Gn = Math.abs(Bn - Nn.y) / (Fn - Nn.x)) < Wn || Gn === Wn && Nn.x > kn.x) && Jt(Nn, On) && (kn = Nn,
+                                    Wn = Gn),
                                     Nn = Nn.next;
                                 return kn
                             }(Rn, Dn)) {
@@ -5556,7 +5556,7 @@ function(Bt) {
                     pn = un;
                 return ln
             }
-            Gt.exports = Ht,
+            Xt.exports = Ht,
             Ht.deviation = function(an, on, sn, dn) {
                 var ln = on && on.length
                   , un = ln ? on[0] * sn : an.length
@@ -5593,7 +5593,7 @@ function(Bt) {
             }
         }
         , {}],
-        3: [function(Bt, Gt) {
+        3: [function(Bt, Xt) {
             function Ht() {}
             function Yt(Vt, qt, Kt) {
                 this.fn = Vt,
@@ -5740,10 +5740,10 @@ function(Bt) {
             ,
             jt.prefixed = zt,
             jt.EventEmitter = jt,
-            void 0 !== Gt && (Gt.exports = jt)
+            void 0 !== Xt && (Xt.exports = jt)
         }
         , {}],
-        4: [function(Bt, Gt) {
+        4: [function(Bt, Xt) {
             !function(Ht) {
                 var Yt = /iPhone/i
                   , jt = /iPod/i
@@ -5809,15 +5809,15 @@ function(Bt) {
                     return dn.Class = on,
                     dn
                 };
-                void 0 !== Gt && Gt.exports && "undefined" == typeof window ? Gt.exports = on : void 0 !== Gt && Gt.exports && "undefined" != typeof window ? Gt.exports = sn() : Ht.isMobile = sn()
+                void 0 !== Xt && Xt.exports && "undefined" == typeof window ? Xt.exports = on : void 0 !== Xt && Xt.exports && "undefined" != typeof window ? Xt.exports = sn() : Ht.isMobile = sn()
             }(this)
         }
         , {}],
-        5: [function(Bt, Gt) {
+        5: [function(Bt, Xt) {
             var Ht = Object.getOwnPropertySymbols
               , Yt = Object.prototype.hasOwnProperty
               , jt = Object.prototype.propertyIsEnumerable;
-            Gt.exports = function() {
+            Xt.exports = function() {
                 try {
                     if (!Object.assign)
                         return !1;
@@ -5858,7 +5858,7 @@ function(Bt) {
             }
         }
         , {}],
-        6: [function(Bt, Gt) {
+        6: [function(Bt, Xt) {
             var Ht = new ArrayBuffer(0)
               , Yt = function(jt, Wt, zt, Vt) {
                 this.gl = jt,
@@ -5898,10 +5898,10 @@ function(Bt) {
                 this.gl.deleteBuffer(this.buffer)
             }
             ,
-            Gt.exports = Yt
+            Xt.exports = Yt
         }
         , {}],
-        7: [function(Bt, Gt) {
+        7: [function(Bt, Xt) {
             var Ht = Bt("./GLTexture")
               , Yt = function(jt, Wt, zt) {
                 this.gl = jt,
@@ -5984,12 +5984,12 @@ function(Bt) {
                 Kt
             }
             ,
-            Gt.exports = Yt
+            Xt.exports = Yt
         }
         , {
             "./GLTexture": 9
         }],
-        8: [function(Bt, Gt) {
+        8: [function(Bt, Xt) {
             var Ht = Bt("./shader/compileProgram")
               , Yt = Bt("./shader/extractAttributes")
               , jt = Bt("./shader/extractUniforms")
@@ -6015,7 +6015,7 @@ function(Bt) {
                 this.gl.deleteProgram(this.program)
             }
             ,
-            Gt.exports = Vt
+            Xt.exports = Vt
         }
         , {
             "./shader/compileProgram": 14,
@@ -6024,7 +6024,7 @@ function(Bt) {
             "./shader/generateUniformAccessObject": 18,
             "./shader/setPrecision": 22
         }],
-        9: [function(Bt, Gt) {
+        9: [function(Bt, Xt) {
             var Ht = function(jt, Wt, zt, Vt, qt) {
                 this.gl = jt,
                 this.texture = jt.createTexture(),
@@ -6143,10 +6143,10 @@ function(Bt) {
                 qt
             }
             ,
-            Gt.exports = Ht
+            Xt.exports = Ht
         }
         , {}],
-        10: [function(Bt, Gt) {
+        10: [function(Bt, Xt) {
             function Ht(jt, Wt) {
                 if (this.nativeVaoExtension = null,
                 Ht.FORCE_NATIVE || (this.nativeVaoExtension = jt.getExtension("OES_vertex_array_object") || jt.getExtension("MOZ_OES_vertex_array_object") || jt.getExtension("WEBKIT_OES_vertex_array_object")),
@@ -6166,7 +6166,7 @@ function(Bt) {
             }
             var Yt = Bt("./setVertexAttribArrays");
             Ht.prototype.constructor = Ht,
-            Gt.exports = Ht,
+            Xt.exports = Ht,
             Ht.FORCE_NATIVE = !1,
             Ht.prototype.bind = function() {
                 return this.nativeVao ? (this.nativeVaoExtension.bindVertexArrayOES(this.nativeVao),
@@ -6242,8 +6242,8 @@ function(Bt) {
         , {
             "./setVertexAttribArrays": 13
         }],
-        11: [function(Bt, Gt) {
-            Gt.exports = function(Ht, Yt) {
+        11: [function(Bt, Xt) {
+            Xt.exports = function(Ht, Yt) {
                 var jt = Ht.getContext("webgl", Yt) || Ht.getContext("experimental-webgl", Yt);
                 if (!jt)
                     throw new Error("This browser does not support webGL. Try using the canvas renderer");
@@ -6251,7 +6251,7 @@ function(Bt) {
             }
         }
         , {}],
-        12: [function(Bt, Gt) {
+        12: [function(Bt, Xt) {
             var Ht = {
                 createContext: Bt("./createContext"),
                 setVertexAttribArrays: Bt("./setVertexAttribArrays"),
@@ -6262,7 +6262,7 @@ function(Bt) {
                 VertexArrayObject: Bt("./VertexArrayObject"),
                 shader: Bt("./shader")
             };
-            void 0 !== Gt && Gt.exports && (Gt.exports = Ht),
+            void 0 !== Xt && Xt.exports && (Xt.exports = Ht),
             "undefined" != typeof window && (window.PIXI = window.PIXI || {},
             window.PIXI.glCore = Ht)
         }
@@ -6276,8 +6276,8 @@ function(Bt) {
             "./setVertexAttribArrays": 13,
             "./shader": 19
         }],
-        13: [function(Bt, Gt) {
-            Gt.exports = function(Ht, Yt, jt) {
+        13: [function(Bt, Xt) {
+            Xt.exports = function(Ht, Yt, jt) {
                 var Wt;
                 if (jt) {
                     var zt = jt.tempAttribState
@@ -6297,7 +6297,7 @@ function(Bt) {
             }
         }
         , {}],
-        14: [function(Bt, Gt) {
+        14: [function(Bt, Xt) {
             var Ht = function(Yt, jt, Wt) {
                 var zt = Yt.createShader(jt);
                 return Yt.shaderSource(zt, Wt),
@@ -6305,7 +6305,7 @@ function(Bt) {
                 Yt.getShaderParameter(zt, Yt.COMPILE_STATUS) ? zt : (console.log(Yt.getShaderInfoLog(zt)),
                 null)
             };
-            Gt.exports = function(Yt, jt, Wt, zt) {
+            Xt.exports = function(Yt, jt, Wt, zt) {
                 var Vt = Ht(Yt, Yt.VERTEX_SHADER, jt)
                   , qt = Ht(Yt, Yt.FRAGMENT_SHADER, Wt)
                   , Kt = Yt.createProgram();
@@ -6327,24 +6327,24 @@ function(Bt) {
             }
         }
         , {}],
-        15: [function(Bt, Gt) {
+        15: [function(Bt, Xt) {
             var Ht = function(Yt) {
                 for (var jt = Array(Yt), Wt = 0; Wt < jt.length; Wt++)
                     jt[Wt] = !1;
                 return jt
             };
-            Gt.exports = function(Yt, jt) {
+            Xt.exports = function(Yt, jt) {
                 return "float" === Yt ? 0 : "vec2" === Yt ? new Float32Array(2 * jt) : "vec3" === Yt ? new Float32Array(3 * jt) : "vec4" === Yt ? new Float32Array(4 * jt) : "int" === Yt || "sampler2D" === Yt ? 0 : "ivec2" === Yt ? new Int32Array(2 * jt) : "ivec3" === Yt ? new Int32Array(3 * jt) : "ivec4" === Yt ? new Int32Array(4 * jt) : "bool" != Yt && ("bvec2" === Yt ? Ht(2 * jt) : "bvec3" === Yt ? Ht(3 * jt) : "bvec4" === Yt ? Ht(4 * jt) : "mat2" === Yt ? new Float32Array([1, 0, 0, 1]) : "mat3" === Yt ? new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]) : "mat4" === Yt ? new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]) : void 0)
             }
         }
         , {}],
-        16: [function(Bt, Gt) {
+        16: [function(Bt, Xt) {
             var Ht = Bt("./mapType")
               , Yt = Bt("./mapSize")
               , jt = function(Wt, zt, Vt, qt) {
                 gl.vertexAttribPointer(this.location, this.size, Wt || gl.FLOAT, zt || !1, Vt || 0, qt || 0)
             };
-            Gt.exports = function(Wt, zt) {
+            Xt.exports = function(Wt, zt) {
                 for (var Vt = {}, qt = Wt.getProgramParameter(zt, Wt.ACTIVE_ATTRIBUTES), Kt = 0; Kt < qt; Kt++) {
                     var Qt = Wt.getActiveAttrib(zt, Kt)
                       , Zt = Ht(Wt, Qt.type);
@@ -6362,10 +6362,10 @@ function(Bt) {
             "./mapSize": 20,
             "./mapType": 21
         }],
-        17: [function(Bt, Gt) {
+        17: [function(Bt, Xt) {
             var Ht = Bt("./mapType")
               , Yt = Bt("./defaultValue");
-            Gt.exports = function(jt, Wt) {
+            Xt.exports = function(jt, Wt) {
                 for (var zt = {}, Vt = jt.getProgramParameter(Wt, jt.ACTIVE_UNIFORMS), qt = 0; qt < Vt; qt++) {
                     var Kt = jt.getActiveUniform(Wt, qt)
                       , Qt = Kt.name.replace(/\[.*?\]/, "")
@@ -6384,7 +6384,7 @@ function(Bt) {
             "./defaultValue": 15,
             "./mapType": 21
         }],
-        18: [function(Bt, Gt) {
+        18: [function(Bt, Xt) {
             var Ht = function(Kt) {
                 var Qt = Wt.replace("%%", Kt);
                 return new Function(Qt)
@@ -6438,7 +6438,7 @@ function(Bt) {
                 bvec4: "uniform4iv(location, value)",
                 sampler2D: "uniform1iv(location, value)"
             };
-            Gt.exports = function(Kt, Qt) {
+            Xt.exports = function(Kt, Qt) {
                 for (var Zt = {
                     data: {},
                     gl: Kt
@@ -6459,8 +6459,8 @@ function(Bt) {
             }
         }
         , {}],
-        19: [function(Bt, Gt) {
-            Gt.exports = {
+        19: [function(Bt, Xt) {
+            Xt.exports = {
                 compileProgram: Bt("./compileProgram"),
                 defaultValue: Bt("./defaultValue"),
                 extractAttributes: Bt("./extractAttributes"),
@@ -6481,7 +6481,7 @@ function(Bt) {
             "./mapType": 21,
             "./setPrecision": 22
         }],
-        20: [function(Bt, Gt) {
+        20: [function(Bt, Xt) {
             var Ht = {
                 float: 1,
                 vec2: 2,
@@ -6500,12 +6500,12 @@ function(Bt) {
                 mat4: 16,
                 sampler2D: 1
             };
-            Gt.exports = function(Yt) {
+            Xt.exports = function(Yt) {
                 return Ht[Yt]
             }
         }
         , {}],
-        21: [function(Bt, Gt) {
+        21: [function(Bt, Xt) {
             var Ht = null
               , Yt = {
                 FLOAT: "float",
@@ -6525,7 +6525,7 @@ function(Bt) {
                 FLOAT_MAT4: "mat4",
                 SAMPLER_2D: "sampler2D"
             };
-            Gt.exports = function(jt, Wt) {
+            Xt.exports = function(jt, Wt) {
                 if (!Ht) {
                     var zt = Object.keys(Yt);
                     Ht = {};
@@ -6537,13 +6537,13 @@ function(Bt) {
             }
         }
         , {}],
-        22: [function(Bt, Gt) {
-            Gt.exports = function(Ht, Yt) {
+        22: [function(Bt, Xt) {
+            Xt.exports = function(Ht, Yt) {
                 return "precision" === Ht.substring(0, 9) ? Ht : "precision " + Yt + " float;\n" + Ht
             }
         }
         , {}],
-        23: [function(Bt, Gt, Xt) {
+        23: [function(Bt, Xt, Gt) {
             (function(Ht) {
                 function Yt(qt, Kt) {
                     for (var Qt = 0, Zt = qt.length - 1, Jt; 0 <= Zt; Zt--)
@@ -6567,7 +6567,7 @@ function(Bt) {
                   , zt = function(qt) {
                     return Wt.exec(qt).slice(1)
                 };
-                Xt.resolve = function() {
+                Gt.resolve = function() {
                     for (var qt = "", Kt = !1, Qt = arguments.length - 1, Zt; -1 <= Qt && !Kt; Qt--) {
                         if (Zt = 0 <= Qt ? arguments[Qt] : Ht.cwd(),
                         "string" != typeof Zt)
@@ -6581,8 +6581,8 @@ function(Bt) {
                     (Kt ? "/" : "") + qt || "."
                 }
                 ,
-                Xt.normalize = function(qt) {
-                    var Kt = Xt.isAbsolute(qt)
+                Gt.normalize = function(qt) {
+                    var Kt = Gt.isAbsolute(qt)
                       , Qt = "/" === Vt(qt, -1);
                     return (qt = Yt(jt(qt.split("/"), function(Zt) {
                         return !!Zt
@@ -6591,20 +6591,20 @@ function(Bt) {
                     (Kt ? "/" : "") + qt
                 }
                 ,
-                Xt.isAbsolute = function(qt) {
+                Gt.isAbsolute = function(qt) {
                     return "/" === qt.charAt(0)
                 }
                 ,
-                Xt.join = function() {
+                Gt.join = function() {
                     var qt = Array.prototype.slice.call(arguments, 0);
-                    return Xt.normalize(jt(qt, function(Kt) {
+                    return Gt.normalize(jt(qt, function(Kt) {
                         if ("string" != typeof Kt)
                             throw new TypeError("Arguments to path.join must be strings");
                         return Kt
                     }).join("/"))
                 }
                 ,
-                Xt.relative = function(qt, Kt) {
+                Gt.relative = function(qt, Kt) {
                     function Qt(rn) {
                         for (var an = 0; an < rn.length && "" === rn[an]; an++)
                             ;
@@ -6612,8 +6612,8 @@ function(Bt) {
                             ;
                         return an > on ? [] : rn.slice(an, on - an + 1)
                     }
-                    qt = Xt.resolve(qt).substr(1),
-                    Kt = Xt.resolve(Kt).substr(1);
+                    qt = Gt.resolve(qt).substr(1),
+                    Kt = Gt.resolve(Kt).substr(1);
                     for (var Zt = Qt(qt.split("/")), Jt = Qt(Kt.split("/")), $t = Math.min(Zt.length, Jt.length), en = $t, tn = 0; tn < $t; tn++)
                         if (Zt[tn] !== Jt[tn]) {
                             en = tn;
@@ -6625,9 +6625,9 @@ function(Bt) {
                     return (nn = nn.concat(Jt.slice(en))).join("/")
                 }
                 ,
-                Xt.sep = "/",
-                Xt.delimiter = ":",
-                Xt.dirname = function(qt) {
+                Gt.sep = "/",
+                Gt.delimiter = ":",
+                Gt.dirname = function(qt) {
                     var Kt = zt(qt)
                       , Qt = Kt[0]
                       , Zt = Kt[1];
@@ -6635,13 +6635,13 @@ function(Bt) {
                     Qt + Zt) : "."
                 }
                 ,
-                Xt.basename = function(qt, Kt) {
+                Gt.basename = function(qt, Kt) {
                     var Qt = zt(qt)[2];
                     return Kt && Qt.substr(-1 * Kt.length) === Kt && (Qt = Qt.substr(0, Qt.length - Kt.length)),
                     Qt
                 }
                 ,
-                Xt.extname = function(qt) {
+                Gt.extname = function(qt) {
                     return zt(qt)[3]
                 }
                 ;
@@ -6654,7 +6654,7 @@ function(Bt) {
         , {
             _process: 24
         }],
-        24: [function(Bt, Gt) {
+        24: [function(Bt, Xt) {
             function Ht() {
                 throw new Error("setTimeout has not been defined")
             }
@@ -6718,7 +6718,7 @@ function(Bt) {
                 this.array = rn
             }
             function qt() {}
-            var Zt = Gt.exports = {}, Kt, Qt;
+            var Zt = Xt.exports = {}, Kt, Qt;
             !function() {
                 try {
                     Kt = "function" == typeof setTimeout ? setTimeout : Ht
@@ -6781,7 +6781,7 @@ function(Bt) {
             }
         }
         , {}],
-        25: [function(Bt, Gt, Xt) {
+        25: [function(Bt, Xt, Gt) {
             (function(Ht) {
                 !function(Yt) {
                     function jt(Tn) {
@@ -6886,8 +6886,8 @@ function(Bt) {
                         }
                         return Bn.join("")
                     }
-                    var en = "object" == typeof Xt && Xt && !Xt.nodeType && Xt
-                      , tn = "object" == typeof Gt && Gt && !Gt.nodeType && Gt
+                    var en = "object" == typeof Gt && Gt && !Gt.nodeType && Gt
+                      , tn = "object" == typeof Xt && Xt && !Xt.nodeType && Xt
                       , nn = "object" == typeof Ht && Ht;
                     nn.global !== nn && nn.window !== nn && nn.self !== nn || (Yt = nn);
                     var on = 2147483647, sn = 36, dn = 1, ln = 26, cn = 72, hn = 128, fn = "-", gn = /^xn--/, mn = /[^\x20-\x7E]/, yn = /[\x2E\u3002\uFF0E\uFF61]/g, _n = {
@@ -6916,7 +6916,7 @@ function(Bt) {
                     },
                     en && tn))
                         Yt.punycode = rn;
-                    else if (Gt.exports == en)
+                    else if (Xt.exports == en)
                         tn.exports = rn;
                     else
                         for (an in rn)
@@ -6926,11 +6926,11 @@ function(Bt) {
             ).call(this, "undefined" == typeof global ? "undefined" == typeof self ? "undefined" == typeof window ? {} : window : self : global)
         }
         , {}],
-        26: [function(Bt, Gt) {
+        26: [function(Bt, Xt) {
             function Ht(jt, Wt) {
                 return Object.prototype.hasOwnProperty.call(jt, Wt)
             }
-            Gt.exports = function(jt, Wt, zt, Vt) {
+            Xt.exports = function(jt, Wt, zt, Vt) {
                 Wt = Wt || "&",
                 zt = zt || "=";
                 var qt = {};
@@ -6959,7 +6959,7 @@ function(Bt) {
             }
         }
         , {}],
-        27: [function(Bt, Gt) {
+        27: [function(Bt, Xt) {
             function Ht(zt, Vt) {
                 if (zt.map)
                     return zt.map(Vt);
@@ -6979,7 +6979,7 @@ function(Bt) {
                     return "";
                 }
             };
-            Gt.exports = function(zt, Vt, qt, Kt) {
+            Xt.exports = function(zt, Vt, qt, Kt) {
                 return Vt = Vt || "&",
                 qt = qt || "=",
                 null === zt && (zt = void 0),
@@ -7002,15 +7002,15 @@ function(Bt) {
             }
         }
         , {}],
-        28: [function(Bt, Gt, Xt) {
-            Xt.decode = Xt.parse = Bt("./decode"),
-            Xt.encode = Xt.stringify = Bt("./encode")
+        28: [function(Bt, Xt, Gt) {
+            Gt.decode = Gt.parse = Bt("./decode"),
+            Gt.encode = Gt.stringify = Bt("./encode")
         }
         , {
             "./decode": 26,
             "./encode": 27
         }],
-        29: [function(Bt, Gt, Xt) {
+        29: [function(Bt, Xt, Gt) {
             function Ht() {
                 this.protocol = null,
                 this.slashes = null,
@@ -7034,21 +7034,21 @@ function(Bt) {
             }
             var jt = Bt("punycode")
               , Wt = Bt("./util");
-            Xt.parse = Yt,
-            Xt.resolve = function(on, sn) {
+            Gt.parse = Yt,
+            Gt.resolve = function(on, sn) {
                 return Yt(on, !1, !0).resolve(sn)
             }
             ,
-            Xt.resolveObject = function(on, sn) {
+            Gt.resolveObject = function(on, sn) {
                 return on ? Yt(on, !1, !0).resolveObject(sn) : sn
             }
             ,
-            Xt.format = function(on) {
+            Gt.format = function(on) {
                 return Wt.isString(on) && (on = Yt(on)),
                 on instanceof Ht ? on.format() : Ht.prototype.format.call(on)
             }
             ,
-            Xt.Url = Ht;
+            Gt.Url = Ht;
             var zt = /^([a-z0-9.+-]+:)/i
               , Vt = /:[0-9]*$/
               , qt = /^(\/\/?(?!\/)[^\?\s]*)(\?[^\s]*)?$/
@@ -7351,8 +7351,8 @@ function(Bt) {
             punycode: 25,
             querystring: 28
         }],
-        30: [function(Bt, Gt) {
-            Gt.exports = {
+        30: [function(Bt, Xt) {
+            Xt.exports = {
                 isString: function(Ht) {
                     return "string" == typeof Ht
                 },
@@ -7368,8 +7368,8 @@ function(Bt) {
             }
         }
         , {}],
-        31: [function(Bt, Gt) {
-            Gt.exports = function(Ht, Yt, jt) {
+        31: [function(Bt, Xt) {
+            Xt.exports = function(Ht, Yt, jt) {
                 var zt = Ht.length, Wt;
                 if (!(Yt >= zt || 0 === jt)) {
                     var Vt = zt - (jt = Yt + jt > zt ? zt - Yt : jt);
@@ -7380,13 +7380,13 @@ function(Bt) {
             }
         }
         , {}],
-        32: [function(Bt, Gt, Xt) {
+        32: [function(Bt, Xt, Gt) {
             function Ht(Qt) {
                 return Qt && Qt.__esModule ? Qt : {
                     default: Qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(Qt) {
                 return typeof Qt
             }
@@ -7562,7 +7562,7 @@ function(Bt) {
                 ,
                 Qt
             }();
-            Xt.default = Kt
+            Gt.default = Kt
         }
         , {
             "./Resource": 33,
@@ -7570,7 +7570,7 @@ function(Bt) {
             "mini-signals": 38,
             "parse-uri": 39
         }],
-        33: [function(Bt, Gt, Xt) {
+        33: [function(Bt, Xt, Gt) {
             function Ht(Jt) {
                 return Jt && Jt.__esModule ? Jt : {
                     default: Jt
@@ -7584,7 +7584,7 @@ function(Bt) {
             function Wt(Jt) {
                 return Jt.toString().replace("object ", "")
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var zt = function() {
                 function Jt($t, en) {
                     for (var tn = 0, nn; tn < en.length; tn++)
@@ -7921,7 +7921,7 @@ function(Bt) {
                 }]),
                 Jt
             }();
-            Xt.default = Zt,
+            Gt.default = Zt,
             Zt.STATUS_FLAGS = {
                 NONE: 0,
                 DATA_URL: 1,
@@ -7998,7 +7998,7 @@ function(Bt) {
             "mini-signals": 38,
             "parse-uri": 39
         }],
-        34: [function(Bt, Gt, Xt) {
+        34: [function(Bt, Xt, Gt) {
             function Ht() {}
             function Yt(jt) {
                 return function() {
@@ -8009,8 +8009,8 @@ function(Bt) {
                     Wt.apply(this, arguments)
                 }
             }
-            Xt.__esModule = !0,
-            Xt.eachSeries = function(jt, Wt, zt, Vt) {
+            Gt.__esModule = !0,
+            Gt.eachSeries = function(jt, Wt, zt, Vt) {
                 var qt = 0
                   , Kt = jt.length;
                 !function Qt(Zt) {
@@ -8020,7 +8020,7 @@ function(Bt) {
                 }()
             }
             ,
-            Xt.queue = function(jt, Wt) {
+            Gt.queue = function(jt, Wt) {
                 function zt(Kt, Qt, Zt) {
                     if (null != Zt && "function" != typeof Zt)
                         throw new Error("task callback must be a function");
@@ -8109,9 +8109,9 @@ function(Bt) {
             }
         }
         , {}],
-        35: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.encodeBinary = function(Yt) {
+        35: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.encodeBinary = function(Yt) {
                 for (var jt = "", Wt = 0; Wt < Yt.length; ) {
                     for (var zt = [0, 0, 0], Vt = [0, 0, 0, 0], qt = 0; qt < zt.length; ++qt)
                         zt[qt] = Wt < Yt.length ? 255 & Yt.charCodeAt(Wt++) : 0;
@@ -8134,7 +8134,7 @@ function(Bt) {
             }
         }
         , {}],
-        36: [function(Bt, Gt) {
+        36: [function(Bt, Xt) {
             var Ht = Bt("./Loader").default
               , Yt = Bt("./Resource").default
               , jt = Bt("./async")
@@ -8142,8 +8142,8 @@ function(Bt) {
             Ht.Resource = Yt,
             Ht.async = jt,
             Ht.base64 = Wt,
-            Gt.exports = Ht,
-            Gt.exports.default = Ht
+            Xt.exports = Ht,
+            Xt.exports.default = Ht
         }
         , {
             "./Loader": 32,
@@ -8151,13 +8151,13 @@ function(Bt) {
             "./async": 34,
             "./b64": 35
         }],
-        37: [function(Bt, Gt, Xt) {
+        37: [function(Bt, Xt, Gt) {
             function Ht(Vt) {
                 return Vt && Vt.__esModule ? Vt : {
                     default: Vt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(Vt) {
                 return typeof Vt
             }
@@ -8165,7 +8165,7 @@ function(Bt) {
                 return Vt && "function" == typeof Symbol && Vt.constructor === Symbol && Vt !== Symbol.prototype ? "symbol" : typeof Vt
             }
             ;
-            Xt.blobMiddlewareFactory = function() {
+            Gt.blobMiddlewareFactory = function() {
                 return function(Vt, qt) {
                     if (Vt.data) {
                         if (Vt.xhr && Vt.xhrType === jt.default.XHR_RESPONSE_TYPE.BLOB)
@@ -8214,7 +8214,7 @@ function(Bt) {
             "../../Resource": 33,
             "../../b64": 35
         }],
-        38: [function(Bt, Gt, Xt) {
+        38: [function(Bt, Xt, Gt) {
             function Ht(Vt, qt) {
                 if (!(Vt instanceof qt))
                     throw new TypeError("Cannot call a class as a function")
@@ -8227,7 +8227,7 @@ function(Bt) {
                 qt._owner = Vt,
                 qt
             }
-            Object.defineProperty(Xt, "__esModule", {
+            Object.defineProperty(Gt, "__esModule", {
                 value: !0
             });
             var jt = function() {
@@ -8343,12 +8343,12 @@ function(Bt) {
                 Vt
             }();
             zt.MiniSignalBinding = Wt,
-            Xt.default = zt,
-            Gt.exports = Xt.default
+            Gt.default = zt,
+            Xt.exports = Gt.default
         }
         , {}],
-        39: [function(Bt, Gt) {
-            Gt.exports = function(Ht, Yt) {
+        39: [function(Bt, Xt) {
+            Xt.exports = function(Ht, Yt) {
                 Yt = Yt || {};
                 for (var jt = {
                     key: ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"],
@@ -8370,13 +8370,13 @@ function(Bt) {
             }
         }
         , {}],
-        40: [function(Bt, Gt, Xt) {
+        40: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function(Zt) {
                 if (Zt && Zt.__esModule)
                     return Zt;
@@ -8567,7 +8567,7 @@ function(Bt) {
                 ,
                 Zt
             }();
-            Xt.default = Qt,
+            Gt.default = Qt,
             Yt.WebGLRenderer.registerPlugin("accessibility", Qt),
             Yt.CanvasRenderer.registerPlugin("accessibility", Qt)
         }
@@ -8576,9 +8576,9 @@ function(Bt) {
             "./accessibleTarget": 41,
             ismobilejs: 4
         }],
-        41: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = {
+        41: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = {
                 accessible: !1,
                 accessibleTitle: null,
                 accessibleHint: null,
@@ -8588,22 +8588,22 @@ function(Bt) {
             }
         }
         , {}],
-        42: [function(Bt, Gt, Xt) {
+        42: [function(Bt, Xt, Gt) {
             function Ht(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./accessibleTarget");
-            Object.defineProperty(Xt, "accessibleTarget", {
+            Object.defineProperty(Gt, "accessibleTarget", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./AccessibilityManager");
-            Object.defineProperty(Xt, "AccessibilityManager", {
+            Object.defineProperty(Gt, "AccessibilityManager", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
@@ -8614,13 +8614,13 @@ function(Bt) {
             "./AccessibilityManager": 40,
             "./accessibleTarget": 41
         }],
-        43: [function(Bt, Gt, Xt) {
+        43: [function(Bt, Xt, Gt) {
             function Ht(Qt) {
                 return Qt && Qt.__esModule ? Qt : {
                     default: Qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Qt(Zt, Jt) {
                     for (var $t = 0, en; $t < Jt.length; $t++)
@@ -8712,7 +8712,7 @@ function(Bt) {
                 }]),
                 Qt
             }();
-            Xt.default = Kt
+            Gt.default = Kt
         }
         , {
             "./autoDetectRenderer": 45,
@@ -8721,7 +8721,7 @@ function(Bt) {
             "./settings": 101,
             "./ticker": 120
         }],
-        44: [function(Bt, Gt, Xt) {
+        44: [function(Bt, Xt, Gt) {
             function Ht(zt, Vt) {
                 if (zt instanceof Array) {
                     if ("precision" !== zt[0].substring(0, 9)) {
@@ -8733,7 +8733,7 @@ function(Bt) {
                     return "precision " + Vt + " float;\n" + zt;
                 return zt
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("pixi-gl-core")
               , jt = function(zt) {
                 return zt && zt.__esModule ? zt : {
@@ -8767,20 +8767,20 @@ function(Bt) {
                 }(Vt, zt),
                 Vt
             }(Yt.GLShader);
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "./settings": 101,
             "pixi-gl-core": 12
         }],
-        45: [function(Bt, Gt, Xt) {
+        45: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0,
-            Xt.autoDetectRenderer = function(zt, Vt, qt, Kt) {
+            Gt.__esModule = !0,
+            Gt.autoDetectRenderer = function(zt, Vt, qt, Kt) {
                 var Qt = zt && zt.forceCanvas;
                 return void 0 !== Kt && (Qt = Kt),
                 !Qt && Yt.isWebGLSupported() ? new Wt.default(zt,Vt,qt) : new jt.default(zt,Vt,qt)
@@ -8804,18 +8804,18 @@ function(Bt) {
             "./renderers/webgl/WebGLRenderer": 84,
             "./utils": 124
         }],
-        46: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.VERSION = "4.5.6",
-            Xt.PI_2 = 2 * Math.PI,
-            Xt.RAD_TO_DEG = 180 / Math.PI,
-            Xt.DEG_TO_RAD = Math.PI / 180,
-            Xt.RENDERER_TYPE = {
+        46: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.VERSION = "4.5.6",
+            Gt.PI_2 = 2 * Math.PI,
+            Gt.RAD_TO_DEG = 180 / Math.PI,
+            Gt.DEG_TO_RAD = Math.PI / 180,
+            Gt.RENDERER_TYPE = {
                 UNKNOWN: 0,
                 WEBGL: 1,
                 CANVAS: 2
             },
-            Xt.BLEND_MODES = {
+            Gt.BLEND_MODES = {
                 NORMAL: 0,
                 ADD: 1,
                 MULTIPLY: 2,
@@ -8837,7 +8837,7 @@ function(Bt) {
                 ADD_NPM: 18,
                 SCREEN_NPM: 19
             },
-            Xt.DRAW_MODES = {
+            Gt.DRAW_MODES = {
                 POINTS: 0,
                 LINES: 1,
                 LINE_LOOP: 2,
@@ -8846,43 +8846,43 @@ function(Bt) {
                 TRIANGLE_STRIP: 5,
                 TRIANGLE_FAN: 6
             },
-            Xt.SCALE_MODES = {
+            Gt.SCALE_MODES = {
                 LINEAR: 0,
                 NEAREST: 1
             },
-            Xt.WRAP_MODES = {
+            Gt.WRAP_MODES = {
                 CLAMP: 0,
                 REPEAT: 1,
                 MIRRORED_REPEAT: 2
             },
-            Xt.GC_MODES = {
+            Gt.GC_MODES = {
                 AUTO: 0,
                 MANUAL: 1
             },
-            Xt.URL_FILE_EXTENSION = /\.(\w{3,4})(?:$|\?|#)/i,
-            Xt.DATA_URI = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;(charset=[\w-]+|base64))?,(.*)/i,
-            Xt.SVG_SIZE = /<svg[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*>/i,
-            Xt.SHAPES = {
+            Gt.URL_FILE_EXTENSION = /\.(\w{3,4})(?:$|\?|#)/i,
+            Gt.DATA_URI = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;(charset=[\w-]+|base64))?,(.*)/i,
+            Gt.SVG_SIZE = /<svg[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*(?:\s(width|height)=('|")(\d*(?:\.\d+)?)(?:px)?('|"))[^>]*>/i,
+            Gt.SHAPES = {
                 POLY: 0,
                 RECT: 1,
                 CIRC: 2,
                 ELIP: 3,
                 RREC: 4
             },
-            Xt.PRECISION = {
+            Gt.PRECISION = {
                 LOW: "lowp",
                 MEDIUM: "mediump",
                 HIGH: "highp"
             },
-            Xt.TRANSFORM_MODE = {
+            Gt.TRANSFORM_MODE = {
                 STATIC: 0,
                 DYNAMIC: 1
             },
-            Xt.TEXT_GRADIENT = {
+            Gt.TEXT_GRADIENT = {
                 LINEAR_VERTICAL: 0,
                 LINEAR_HORIZONTAL: 1
             },
-            Xt.UPDATE_PRIORITY = {
+            Gt.UPDATE_PRIORITY = {
                 INTERACTION: 50,
                 HIGH: 25,
                 NORMAL: 0,
@@ -8891,8 +8891,8 @@ function(Bt) {
             }
         }
         , {}],
-        47: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        47: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../math")
               , Yt = function() {
                 function jt() {
@@ -9072,13 +9072,13 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../math": 70
         }],
-        48: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        48: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -9339,20 +9339,20 @@ function(Bt) {
                     default: Wt
                 }
             }(Bt("./DisplayObject")).default);
-            Xt.default = jt,
+            Gt.default = jt,
             jt.prototype.containerUpdateTransform = jt.prototype.updateTransform
         }
         , {
             "../utils": 124,
             "./DisplayObject": 49
         }],
-        49: [function(Bt, Gt, Xt) {
+        49: [function(Bt, Xt, Gt) {
             function Ht(Jt) {
                 return Jt && Jt.__esModule ? Jt : {
                     default: Jt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Jt($t, en) {
                     for (var tn = 0, nn; tn < en.length; tn++)
@@ -9621,7 +9621,7 @@ function(Bt) {
                 }]),
                 $t
             }(jt.default);
-            Xt.default = Zt,
+            Gt.default = Zt,
             Zt.prototype.displayObjectUpdateTransform = Zt.prototype.updateTransform
         }
         , {
@@ -9633,8 +9633,8 @@ function(Bt) {
             "./TransformStatic": 52,
             eventemitter3: 3
         }],
-        50: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        50: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -9742,14 +9742,14 @@ function(Bt) {
                     default: Wt
                 }
             }(Bt("./TransformBase")).default);
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../math": 70,
             "./TransformBase": 51
         }],
-        51: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        51: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../math")
               , Yt = function() {
                 function jt() {
@@ -9779,15 +9779,15 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt,
+            Gt.default = Yt,
             Yt.prototype.updateWorldTransform = Yt.prototype.updateTransform,
             Yt.IDENTITY = new Yt
         }
         , {
             "../math": 70
         }],
-        52: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        52: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -9910,19 +9910,19 @@ function(Bt) {
                     default: Wt
                 }
             }(Bt("./TransformBase")).default);
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../math": 70,
             "./TransformBase": 51
         }],
-        53: [function(Bt, Gt, Xt) {
+        53: [function(Bt, Xt, Gt) {
             function Ht(sn) {
                 return sn && sn.__esModule ? sn : {
                     default: sn
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("../display/Container")), jt = Ht(Bt("../textures/RenderTexture")), Wt = Ht(Bt("../textures/Texture")), zt = Ht(Bt("./GraphicsData")), Vt = Ht(Bt("../sprites/Sprite")), qt = Bt("../math"), Kt = Bt("../utils"), Qt = Bt("../const"), Zt = Ht(Bt("../display/Bounds")), Jt = Ht(Bt("./utils/bezierCurveTo")), $t = Ht(Bt("../renderers/canvas/CanvasRenderer")), en, tn = new qt.Matrix, nn = new qt.Point, rn = new Float32Array(4), an = new Float32Array(4), on = function(sn) {
                 function dn() {
                     var ln = 0 < arguments.length && void 0 !== arguments[0] && arguments[0];
@@ -10359,7 +10359,7 @@ function(Bt) {
                 ,
                 dn
             }(Yt.default);
-            Xt.default = on,
+            Gt.default = on,
             on._SPRITE_TEXTURE = null
         }
         , {
@@ -10375,8 +10375,8 @@ function(Bt) {
             "./GraphicsData": 54,
             "./utils/bezierCurveTo": 56
         }],
-        54: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        54: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt, Wt, zt, Vt, qt, Kt, Qt, Zt) {
                     !function(Jt, $t) {
@@ -10411,11 +10411,11 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        55: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        55: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
@@ -10552,16 +10552,16 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt,
+            Gt.default = jt,
             Ht.default.registerPlugin("graphics", jt)
         }
         , {
             "../../const": 46,
             "../../renderers/canvas/CanvasRenderer": 77
         }],
-        56: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Ht, Yt, jt, Wt, zt, Vt, qt, Kt) {
+        56: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Ht, Yt, jt, Wt, zt, Vt, qt, Kt) {
                 var Qt = 8 < arguments.length && void 0 !== arguments[8] ? arguments[8] : []
                   , Zt = 0
                   , Jt = 0
@@ -10577,13 +10577,13 @@ function(Bt) {
             }
         }
         , {}],
-        57: [function(Bt, Gt, Xt) {
+        57: [function(Bt, Xt, Gt) {
             function Ht(en) {
                 return en && en.__esModule ? en : {
                     default: en
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("../../utils")
               , jt = Bt("../../const")
               , Wt = Ht(Bt("../../renderers/webgl/utils/ObjectRenderer"))
@@ -10701,7 +10701,7 @@ function(Bt) {
                 ,
                 tn
             }(Wt.default);
-            Xt.default = $t,
+            Gt.default = $t,
             zt.default.registerPlugin("graphics", $t)
         }
         , {
@@ -10716,8 +10716,8 @@ function(Bt) {
             "./utils/buildRectangle": 63,
             "./utils/buildRoundedRectangle": 64
         }],
-        58: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        58: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -10771,13 +10771,13 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "pixi-gl-core": 12
         }],
-        59: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        59: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Yt) {
                 function jt(Wt) {
                     return function(zt, Vt) {
@@ -10809,14 +10809,14 @@ function(Bt) {
                     default: Yt
                 }
             }(Bt("../../../Shader")).default);
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {
             "../../../Shader": 44
         }],
-        60: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Wt, zt, Vt) {
+        60: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Wt, zt, Vt) {
                 var qt = Wt.shape, Kt = qt.x, Qt = qt.y, Zt, Jt;
                 if (Wt.type === Yt.SHAPES.CIRC ? (Zt = qt.radius,
                 Jt = qt.radius) : (Zt = qt.width,
@@ -10866,9 +10866,9 @@ function(Bt) {
             "../../../utils": 124,
             "./buildLine": 61
         }],
-        61: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt, Wt, zt) {
+        61: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt, Wt, zt) {
                 jt.nativeLines ? function(Vt, qt) {
                     var Kt = 0
                       , Qt = Vt.points;
@@ -11013,14 +11013,14 @@ function(Bt) {
             "../../../math": 70,
             "../../../utils": 124
         }],
-        62: [function(Bt, Gt, Xt) {
+        62: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0,
-            Xt.default = function(zt, Vt, qt) {
+            Gt.__esModule = !0,
+            Gt.default = function(zt, Vt, qt) {
                 zt.points = zt.shape.points.slice();
                 var Kt = zt.points;
                 if (zt.fill && 6 <= Kt.length) {
@@ -11063,9 +11063,9 @@ function(Bt) {
             "./buildLine": 61,
             earcut: 2
         }],
-        63: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt, Wt, zt) {
+        63: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt, Wt, zt) {
                 var Vt = jt.shape
                   , qt = Vt.x
                   , Kt = Vt.y
@@ -11111,7 +11111,7 @@ function(Bt) {
             "../../../utils": 124,
             "./buildLine": 61
         }],
-        64: [function(Bt, Gt, Xt) {
+        64: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
@@ -11131,8 +11131,8 @@ function(Bt) {
                     en.push(on, sn);
                 return en
             }
-            Xt.__esModule = !0,
-            Xt.default = function(qt, Kt, Qt) {
+            Gt.__esModule = !0,
+            Gt.default = function(qt, Kt, Qt) {
                 var Zt = qt.shape
                   , Jt = Zt.x
                   , $t = Zt.y
@@ -11175,7 +11175,7 @@ function(Bt) {
             "./buildLine": 61,
             earcut: 2
         }],
-        65: [function(Bt, Gt, Xt) {
+        65: [function(Bt, Xt, Gt) {
             function Ht(On) {
                 if (On && On.__esModule)
                     return On;
@@ -11191,11 +11191,11 @@ function(Bt) {
                     default: On
                 }
             }
-            Xt.__esModule = !0,
-            Xt.autoDetectRenderer = Xt.Application = Xt.Filter = Xt.SpriteMaskFilter = Xt.Quad = Xt.RenderTarget = Xt.ObjectRenderer = Xt.WebGLManager = Xt.Shader = Xt.CanvasRenderTarget = Xt.TextureUvs = Xt.VideoBaseTexture = Xt.BaseRenderTexture = Xt.RenderTexture = Xt.BaseTexture = Xt.Texture = Xt.Spritesheet = Xt.CanvasGraphicsRenderer = Xt.GraphicsRenderer = Xt.GraphicsData = Xt.Graphics = Xt.TextMetrics = Xt.TextStyle = Xt.Text = Xt.SpriteRenderer = Xt.CanvasTinter = Xt.CanvasSpriteRenderer = Xt.Sprite = Xt.TransformBase = Xt.TransformStatic = Xt.Transform = Xt.Container = Xt.DisplayObject = Xt.Bounds = Xt.glCore = Xt.WebGLRenderer = Xt.CanvasRenderer = Xt.ticker = Xt.utils = Xt.settings = void 0;
+            Gt.__esModule = !0,
+            Gt.autoDetectRenderer = Gt.Application = Gt.Filter = Gt.SpriteMaskFilter = Gt.Quad = Gt.RenderTarget = Gt.ObjectRenderer = Gt.WebGLManager = Gt.Shader = Gt.CanvasRenderTarget = Gt.TextureUvs = Gt.VideoBaseTexture = Gt.BaseRenderTexture = Gt.RenderTexture = Gt.BaseTexture = Gt.Texture = Gt.Spritesheet = Gt.CanvasGraphicsRenderer = Gt.GraphicsRenderer = Gt.GraphicsData = Gt.Graphics = Gt.TextMetrics = Gt.TextStyle = Gt.Text = Gt.SpriteRenderer = Gt.CanvasTinter = Gt.CanvasSpriteRenderer = Gt.Sprite = Gt.TransformBase = Gt.TransformStatic = Gt.Transform = Gt.Container = Gt.DisplayObject = Gt.Bounds = Gt.glCore = Gt.WebGLRenderer = Gt.CanvasRenderer = Gt.ticker = Gt.utils = Gt.settings = void 0;
             var jt = Bt("./const");
             Object.keys(jt).forEach(function(On) {
-                "default" !== On && "__esModule" !== On && Object.defineProperty(Xt, On, {
+                "default" !== On && "__esModule" !== On && Object.defineProperty(Gt, On, {
                     enumerable: !0,
                     get: function() {
                         return jt[On]
@@ -11204,7 +11204,7 @@ function(Bt) {
             });
             var Wt = Bt("./math");
             Object.keys(Wt).forEach(function(On) {
-                "default" !== On && "__esModule" !== On && Object.defineProperty(Xt, On, {
+                "default" !== On && "__esModule" !== On && Object.defineProperty(Gt, On, {
                     enumerable: !0,
                     get: function() {
                         return Wt[On]
@@ -11212,245 +11212,245 @@ function(Bt) {
                 })
             });
             var zt = Bt("pixi-gl-core");
-            Object.defineProperty(Xt, "glCore", {
+            Object.defineProperty(Gt, "glCore", {
                 enumerable: !0,
                 get: function() {
                     return Yt(zt).default
                 }
             });
             var Vt = Bt("./display/Bounds");
-            Object.defineProperty(Xt, "Bounds", {
+            Object.defineProperty(Gt, "Bounds", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Vt).default
                 }
             });
             var qt = Bt("./display/DisplayObject");
-            Object.defineProperty(Xt, "DisplayObject", {
+            Object.defineProperty(Gt, "DisplayObject", {
                 enumerable: !0,
                 get: function() {
                     return Yt(qt).default
                 }
             });
             var Kt = Bt("./display/Container");
-            Object.defineProperty(Xt, "Container", {
+            Object.defineProperty(Gt, "Container", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Kt).default
                 }
             });
             var Qt = Bt("./display/Transform");
-            Object.defineProperty(Xt, "Transform", {
+            Object.defineProperty(Gt, "Transform", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Qt).default
                 }
             });
             var Zt = Bt("./display/TransformStatic");
-            Object.defineProperty(Xt, "TransformStatic", {
+            Object.defineProperty(Gt, "TransformStatic", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Zt).default
                 }
             });
             var Jt = Bt("./display/TransformBase");
-            Object.defineProperty(Xt, "TransformBase", {
+            Object.defineProperty(Gt, "TransformBase", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Jt).default
                 }
             });
             var $t = Bt("./sprites/Sprite");
-            Object.defineProperty(Xt, "Sprite", {
+            Object.defineProperty(Gt, "Sprite", {
                 enumerable: !0,
                 get: function() {
                     return Yt($t).default
                 }
             });
             var en = Bt("./sprites/canvas/CanvasSpriteRenderer");
-            Object.defineProperty(Xt, "CanvasSpriteRenderer", {
+            Object.defineProperty(Gt, "CanvasSpriteRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Yt(en).default
                 }
             });
             var tn = Bt("./sprites/canvas/CanvasTinter");
-            Object.defineProperty(Xt, "CanvasTinter", {
+            Object.defineProperty(Gt, "CanvasTinter", {
                 enumerable: !0,
                 get: function() {
                     return Yt(tn).default
                 }
             });
             var nn = Bt("./sprites/webgl/SpriteRenderer");
-            Object.defineProperty(Xt, "SpriteRenderer", {
+            Object.defineProperty(Gt, "SpriteRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Yt(nn).default
                 }
             });
             var rn = Bt("./text/Text");
-            Object.defineProperty(Xt, "Text", {
+            Object.defineProperty(Gt, "Text", {
                 enumerable: !0,
                 get: function() {
                     return Yt(rn).default
                 }
             });
             var an = Bt("./text/TextStyle");
-            Object.defineProperty(Xt, "TextStyle", {
+            Object.defineProperty(Gt, "TextStyle", {
                 enumerable: !0,
                 get: function() {
                     return Yt(an).default
                 }
             });
             var on = Bt("./text/TextMetrics");
-            Object.defineProperty(Xt, "TextMetrics", {
+            Object.defineProperty(Gt, "TextMetrics", {
                 enumerable: !0,
                 get: function() {
                     return Yt(on).default
                 }
             });
             var sn = Bt("./graphics/Graphics");
-            Object.defineProperty(Xt, "Graphics", {
+            Object.defineProperty(Gt, "Graphics", {
                 enumerable: !0,
                 get: function() {
                     return Yt(sn).default
                 }
             });
             var dn = Bt("./graphics/GraphicsData");
-            Object.defineProperty(Xt, "GraphicsData", {
+            Object.defineProperty(Gt, "GraphicsData", {
                 enumerable: !0,
                 get: function() {
                     return Yt(dn).default
                 }
             });
             var ln = Bt("./graphics/webgl/GraphicsRenderer");
-            Object.defineProperty(Xt, "GraphicsRenderer", {
+            Object.defineProperty(Gt, "GraphicsRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Yt(ln).default
                 }
             });
             var un = Bt("./graphics/canvas/CanvasGraphicsRenderer");
-            Object.defineProperty(Xt, "CanvasGraphicsRenderer", {
+            Object.defineProperty(Gt, "CanvasGraphicsRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Yt(un).default
                 }
             });
             var pn = Bt("./textures/Spritesheet");
-            Object.defineProperty(Xt, "Spritesheet", {
+            Object.defineProperty(Gt, "Spritesheet", {
                 enumerable: !0,
                 get: function() {
                     return Yt(pn).default
                 }
             });
             var cn = Bt("./textures/Texture");
-            Object.defineProperty(Xt, "Texture", {
+            Object.defineProperty(Gt, "Texture", {
                 enumerable: !0,
                 get: function() {
                     return Yt(cn).default
                 }
             });
             var hn = Bt("./textures/BaseTexture");
-            Object.defineProperty(Xt, "BaseTexture", {
+            Object.defineProperty(Gt, "BaseTexture", {
                 enumerable: !0,
                 get: function() {
                     return Yt(hn).default
                 }
             });
             var fn = Bt("./textures/RenderTexture");
-            Object.defineProperty(Xt, "RenderTexture", {
+            Object.defineProperty(Gt, "RenderTexture", {
                 enumerable: !0,
                 get: function() {
                     return Yt(fn).default
                 }
             });
             var gn = Bt("./textures/BaseRenderTexture");
-            Object.defineProperty(Xt, "BaseRenderTexture", {
+            Object.defineProperty(Gt, "BaseRenderTexture", {
                 enumerable: !0,
                 get: function() {
                     return Yt(gn).default
                 }
             });
             var mn = Bt("./textures/VideoBaseTexture");
-            Object.defineProperty(Xt, "VideoBaseTexture", {
+            Object.defineProperty(Gt, "VideoBaseTexture", {
                 enumerable: !0,
                 get: function() {
                     return Yt(mn).default
                 }
             });
             var yn = Bt("./textures/TextureUvs");
-            Object.defineProperty(Xt, "TextureUvs", {
+            Object.defineProperty(Gt, "TextureUvs", {
                 enumerable: !0,
                 get: function() {
                     return Yt(yn).default
                 }
             });
             var _n = Bt("./renderers/canvas/utils/CanvasRenderTarget");
-            Object.defineProperty(Xt, "CanvasRenderTarget", {
+            Object.defineProperty(Gt, "CanvasRenderTarget", {
                 enumerable: !0,
                 get: function() {
                     return Yt(_n).default
                 }
             });
             var bn = Bt("./Shader");
-            Object.defineProperty(Xt, "Shader", {
+            Object.defineProperty(Gt, "Shader", {
                 enumerable: !0,
                 get: function() {
                     return Yt(bn).default
                 }
             });
             var xn = Bt("./renderers/webgl/managers/WebGLManager");
-            Object.defineProperty(Xt, "WebGLManager", {
+            Object.defineProperty(Gt, "WebGLManager", {
                 enumerable: !0,
                 get: function() {
                     return Yt(xn).default
                 }
             });
             var vn = Bt("./renderers/webgl/utils/ObjectRenderer");
-            Object.defineProperty(Xt, "ObjectRenderer", {
+            Object.defineProperty(Gt, "ObjectRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Yt(vn).default
                 }
             });
             var Tn = Bt("./renderers/webgl/utils/RenderTarget");
-            Object.defineProperty(Xt, "RenderTarget", {
+            Object.defineProperty(Gt, "RenderTarget", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Tn).default
                 }
             });
             var En = Bt("./renderers/webgl/utils/Quad");
-            Object.defineProperty(Xt, "Quad", {
+            Object.defineProperty(Gt, "Quad", {
                 enumerable: !0,
                 get: function() {
                     return Yt(En).default
                 }
             });
             var Sn = Bt("./renderers/webgl/filters/spriteMask/SpriteMaskFilter");
-            Object.defineProperty(Xt, "SpriteMaskFilter", {
+            Object.defineProperty(Gt, "SpriteMaskFilter", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Sn).default
                 }
             });
             var wn = Bt("./renderers/webgl/filters/Filter");
-            Object.defineProperty(Xt, "Filter", {
+            Object.defineProperty(Gt, "Filter", {
                 enumerable: !0,
                 get: function() {
                     return Yt(wn).default
                 }
             });
             var Cn = Bt("./Application");
-            Object.defineProperty(Xt, "Application", {
+            Object.defineProperty(Gt, "Application", {
                 enumerable: !0,
                 get: function() {
                     return Yt(Cn).default
                 }
             });
             var An = Bt("./autoDetectRenderer");
-            Object.defineProperty(Xt, "autoDetectRenderer", {
+            Object.defineProperty(Gt, "autoDetectRenderer", {
                 enumerable: !0,
                 get: function() {
                     return An.autoDetectRenderer
@@ -11461,11 +11461,11 @@ function(Bt) {
               , Rn = Yt(Bt("./settings"))
               , Dn = Yt(Bt("./renderers/canvas/CanvasRenderer"))
               , In = Yt(Bt("./renderers/webgl/WebGLRenderer"));
-            Xt.settings = Rn.default,
-            Xt.utils = Pn,
-            Xt.ticker = Mn,
-            Xt.CanvasRenderer = Dn.default,
-            Xt.WebGLRenderer = In.default
+            Gt.settings = Rn.default,
+            Gt.utils = Pn,
+            Gt.ticker = Mn,
+            Gt.CanvasRenderer = Dn.default,
+            Gt.WebGLRenderer = In.default
         }
         , {
             "./Application": 43,
@@ -11511,11 +11511,11 @@ function(Bt) {
             "./utils": 124,
             "pixi-gl-core": 12
         }],
-        66: [function(Bt, Gt, Xt) {
+        66: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return 0 > Zt ? -1 : 0 < Zt ? 1 : 0
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
@@ -11593,13 +11593,13 @@ function(Bt) {
                     Zt.append(tn)
                 }
             };
-            Xt.default = Qt
+            Gt.default = Qt
         }
         , {
             "./Matrix": 67
         }],
-        67: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        67: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -11859,13 +11859,13 @@ function(Bt) {
                 }]),
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "./Point": 69
         }],
-        68: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        68: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function jt(Wt, zt) {
                     for (var Vt = 0, qt; Vt < zt.length; Vt++)
@@ -11929,11 +11929,11 @@ function(Bt) {
                 }]),
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {}],
-        69: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        69: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt() {
                     var jt = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 0
@@ -11964,74 +11964,74 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        70: [function(Bt, Gt, Xt) {
+        70: [function(Bt, Xt, Gt) {
             function Ht(Jt) {
                 return Jt && Jt.__esModule ? Jt : {
                     default: Jt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./Point");
-            Object.defineProperty(Xt, "Point", {
+            Object.defineProperty(Gt, "Point", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./ObservablePoint");
-            Object.defineProperty(Xt, "ObservablePoint", {
+            Object.defineProperty(Gt, "ObservablePoint", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./Matrix");
-            Object.defineProperty(Xt, "Matrix", {
+            Object.defineProperty(Gt, "Matrix", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./GroupD8");
-            Object.defineProperty(Xt, "GroupD8", {
+            Object.defineProperty(Gt, "GroupD8", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./shapes/Circle");
-            Object.defineProperty(Xt, "Circle", {
+            Object.defineProperty(Gt, "Circle", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
                 }
             });
             var qt = Bt("./shapes/Ellipse");
-            Object.defineProperty(Xt, "Ellipse", {
+            Object.defineProperty(Gt, "Ellipse", {
                 enumerable: !0,
                 get: function() {
                     return Ht(qt).default
                 }
             });
             var Kt = Bt("./shapes/Polygon");
-            Object.defineProperty(Xt, "Polygon", {
+            Object.defineProperty(Gt, "Polygon", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Kt).default
                 }
             });
             var Qt = Bt("./shapes/Rectangle");
-            Object.defineProperty(Xt, "Rectangle", {
+            Object.defineProperty(Gt, "Rectangle", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Qt).default
                 }
             });
             var Zt = Bt("./shapes/RoundedRectangle");
-            Object.defineProperty(Xt, "RoundedRectangle", {
+            Object.defineProperty(Gt, "RoundedRectangle", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Zt).default
@@ -12049,8 +12049,8 @@ function(Bt) {
             "./shapes/Rectangle": 74,
             "./shapes/RoundedRectangle": 75
         }],
-        71: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        71: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
@@ -12092,14 +12092,14 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../const": 46,
             "./Rectangle": 74
         }],
-        72: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        72: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
@@ -12142,14 +12142,14 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../const": 46,
             "./Rectangle": 74
         }],
-        73: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        73: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
@@ -12196,14 +12196,14 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../const": 46,
             "../Point": 69
         }],
-        74: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        74: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -12313,13 +12313,13 @@ function(Bt) {
                 }]),
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../const": 46
         }],
-        75: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        75: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../../const")
               , Yt = function() {
                 function jt() {
@@ -12367,18 +12367,18 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../../const": 46
         }],
-        76: [function(Bt, Gt, Xt) {
+        76: [function(Bt, Xt, Gt) {
             function Ht($t) {
                 return $t && $t.__esModule ? $t : {
                     default: $t
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function $t(en, tn) {
                     for (var nn = 0, rn; nn < tn.length; nn++)
@@ -12515,7 +12515,7 @@ function(Bt) {
                 }]),
                 en
             }(Qt.default);
-            Xt.default = Jt
+            Gt.default = Jt
         }
         , {
             "../const": 46,
@@ -12526,13 +12526,13 @@ function(Bt) {
             "../utils": 124,
             eventemitter3: 3
         }],
-        77: [function(Bt, Gt, Xt) {
+        77: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("../SystemRenderer"))
               , jt = Ht(Bt("./utils/CanvasMaskManager"))
               , Wt = Ht(Bt("./utils/CanvasRenderTarget"))
@@ -12652,7 +12652,7 @@ function(Bt) {
                 ,
                 Jt
             }(Yt.default);
-            Xt.default = Qt,
+            Gt.default = Qt,
             Vt.pluginTarget.mixin(Qt)
         }
         , {
@@ -12664,8 +12664,8 @@ function(Bt) {
             "./utils/CanvasRenderTarget": 79,
             "./utils/mapCanvasBlendModesToPixi": 81
         }],
-        78: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        78: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../../../const")
               , Yt = function() {
                 function jt(Wt) {
@@ -12756,13 +12756,13 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../../../const": 46
         }],
-        79: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        79: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -12828,12 +12828,12 @@ function(Bt) {
                 }]),
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../../settings": 101
         }],
-        80: [function(Bt, Gt, Xt) {
+        80: [function(Bt, Xt, Gt) {
             function Ht(Yt) {
                 var jt = document.createElement("canvas");
                 jt.width = 6,
@@ -12843,8 +12843,8 @@ function(Bt) {
                 Wt.fillRect(0, 0, 6, 1),
                 jt
             }
-            Xt.__esModule = !0,
-            Xt.default = function() {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 if ("undefined" == typeof document)
                     return !1;
                 var Yt = Ht("#ff00ff")
@@ -12864,9 +12864,9 @@ function(Bt) {
             }
         }
         , {}],
-        81: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function() {
+        81: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 var jt = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : [];
                 return (0,
                 Yt.default)() ? (jt[Ht.BLEND_MODES.NORMAL] = "source-over",
@@ -12919,8 +12919,8 @@ function(Bt) {
             "../../../const": 46,
             "./canUseNewCanvasBlendModes": 80
         }],
-        82: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        82: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../../const")
               , Yt = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
@@ -12969,14 +12969,14 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../const": 46,
             "../../settings": 101
         }],
-        83: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        83: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("pixi-gl-core")
               , Yt = Bt("../../const")
               , jt = function(Vt) {
@@ -13076,7 +13076,7 @@ function(Bt) {
                 ,
                 Vt
             }();
-            Xt.default = zt
+            Gt.default = zt
         }
         , {
             "../../const": 46,
@@ -13084,13 +13084,13 @@ function(Bt) {
             "./utils/RenderTarget": 96,
             "pixi-gl-core": 12
         }],
-        84: [function(Bt, Gt, Xt) {
+        84: [function(Bt, Xt, Gt) {
             function Ht(sn) {
                 return sn && sn.__esModule ? sn : {
                     default: sn
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("../SystemRenderer"))
               , jt = Ht(Bt("./managers/MaskManager"))
               , Wt = Ht(Bt("./managers/StencilManager"))
@@ -13372,7 +13372,7 @@ function(Bt) {
                 ,
                 dn
             }(Yt.default);
-            Xt.default = on,
+            Gt.default = on,
             tn.pluginTarget.mixin(on)
         }
         , {
@@ -13392,8 +13392,8 @@ function(Bt) {
             "./utils/validateContext": 100,
             "pixi-gl-core": 12
         }],
-        85: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        85: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -13493,18 +13493,18 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "./utils/mapWebGLBlendModesToPixi": 98
         }],
-        86: [function(Bt, Gt, Xt) {
+        86: [function(Bt, Xt, Gt) {
             function Ht(Qt) {
                 return Qt && Qt.__esModule ? Qt : {
                     default: Qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Qt(Zt, Jt) {
                     for (var $t = 0, en; $t < Jt.length; $t++)
@@ -13574,7 +13574,7 @@ function(Bt) {
                 }]),
                 Qt
             }();
-            Xt.default = Kt
+            Gt.default = Kt
         }
         , {
             "../../../const": 46,
@@ -13582,7 +13582,7 @@ function(Bt) {
             "../../../utils": 124,
             "./extractUniformsFromSrc": 87
         }],
-        87: [function(Bt, Gt, Xt) {
+        87: [function(Bt, Xt, Gt) {
             function Ht(jt) {
                 for (var Wt = /^(projectionMatrix|uSampler|filterArea|filterClamp)$/, zt = {}, Vt = void 0, qt = jt.replace(/\s+/g, " ").split(/\s*;\s*/), Kt = 0, Qt; Kt < qt.length; Kt++)
                     if (Qt = qt[Kt].trim(),
@@ -13601,8 +13601,8 @@ function(Bt) {
                     }
                 return zt
             }
-            Xt.__esModule = !0,
-            Xt.default = function(jt, Wt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt, Wt) {
                 var Vt = Ht(jt)
                   , qt = Ht(Wt);
                 return Object.assign(Vt, qt)
@@ -13617,16 +13617,16 @@ function(Bt) {
         , {
             "pixi-gl-core": 12
         }],
-        88: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.calculateScreenSpaceMatrix = function(Yt, jt, Wt) {
+        88: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.calculateScreenSpaceMatrix = function(Yt, jt, Wt) {
                 var zt = Yt.identity();
                 return zt.translate(jt.x / Wt.width, jt.y / Wt.height),
                 zt.scale(Wt.width, Wt.height),
                 zt
             }
             ,
-            Xt.calculateNormalizedScreenSpaceMatrix = function(Yt, jt, Wt) {
+            Gt.calculateNormalizedScreenSpaceMatrix = function(Yt, jt, Wt) {
                 var zt = Yt.identity();
                 zt.translate(jt.x / Wt.width, jt.y / Wt.height);
                 var Vt = Wt.width / jt.width
@@ -13635,7 +13635,7 @@ function(Bt) {
                 zt
             }
             ,
-            Xt.calculateSpriteMatrix = function(Yt, jt, Wt, zt) {
+            Gt.calculateSpriteMatrix = function(Yt, jt, Wt, zt) {
                 var Vt = zt._texture.baseTexture
                   , qt = Yt.set(Wt.width, 0, 0, Wt.height, jt.x, jt.y)
                   , Kt = zt.worldTransform.copy(Ht.Matrix.TEMP_MATRIX);
@@ -13651,8 +13651,8 @@ function(Bt) {
         , {
             "../../../math": 70
         }],
-        89: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        89: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
@@ -13700,14 +13700,14 @@ function(Bt) {
                 ,
                 zt
             }(Ht.default));
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../../../math": 70,
             "../Filter": 86,
             path: 23
         }],
-        90: [function(Bt, Gt, Xt) {
+        90: [function(Bt, Xt, Gt) {
             function Ht($t) {
                 return $t && $t.__esModule ? $t : {
                     default: $t
@@ -13717,7 +13717,7 @@ function(Bt) {
                 if (!($t instanceof en))
                     throw new TypeError("Cannot call a class as a function")
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var jt = Ht(Bt("./WebGLManager"))
               , Wt = Ht(Bt("../utils/RenderTarget"))
               , zt = Ht(Bt("../utils/Quad"))
@@ -13980,7 +13980,7 @@ function(Bt) {
                 ,
                 en
             }(jt.default);
-            Xt.default = Jt
+            Gt.default = Jt
         }
         , {
             "../../../Shader": 44,
@@ -13991,13 +13991,13 @@ function(Bt) {
             "./WebGLManager": 93,
             "bit-twiddle": 1
         }],
-        91: [function(Bt, Gt, Xt) {
+        91: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("./WebGLManager"))
               , jt = Ht(Bt("../filters/spriteMask/SpriteMaskFilter"))
               , Wt = function(zt) {
@@ -14096,14 +14096,14 @@ function(Bt) {
                 ,
                 Vt
             }(Yt.default);
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../filters/spriteMask/SpriteMaskFilter": 89,
             "./WebGLManager": 93
         }],
-        92: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        92: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -14186,13 +14186,13 @@ function(Bt) {
                 ,
                 Wt
             }(Ht.default);
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "./WebGLManager": 93
         }],
-        93: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        93: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt) {
                     !function(Wt, zt) {
@@ -14211,11 +14211,11 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        94: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        94: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Yt) {
                 function jt() {
                     return function(Wt, zt) {
@@ -14257,18 +14257,18 @@ function(Bt) {
                     default: Yt
                 }
             }(Bt("../managers/WebGLManager")).default);
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {
             "../managers/WebGLManager": 93
         }],
-        95: [function(Bt, Gt, Xt) {
+        95: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("pixi-gl-core"))
               , jt = Ht(Bt("../../../utils/createIndicesForQuads"))
               , Wt = function() {
@@ -14338,14 +14338,14 @@ function(Bt) {
                 ,
                 zt
             }();
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../../../utils/createIndicesForQuads": 122,
             "pixi-gl-core": 12
         }],
-        96: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        96: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../../../math")
               , Yt = Bt("../../../const")
               , jt = function(Vt) {
@@ -14443,7 +14443,7 @@ function(Bt) {
                 ,
                 Vt
             }();
-            Xt.default = zt
+            Gt.default = zt
         }
         , {
             "../../../const": 46,
@@ -14451,9 +14451,9 @@ function(Bt) {
             "../../../settings": 101,
             "pixi-gl-core": 12
         }],
-        97: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt, Wt) {
+        97: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt, Wt) {
                 var zt = !Wt;
                 if (0 === jt)
                     throw new Error("Invalid value of `0` passed to `checkMaxIfStatementsInShader`");
@@ -14490,9 +14490,9 @@ function(Bt) {
         , {
             "pixi-gl-core": 12
         }],
-        98: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Yt) {
+        98: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Yt) {
                 var jt = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : [];
                 return jt[Ht.BLEND_MODES.NORMAL] = [Yt.ONE, Yt.ONE_MINUS_SRC_ALPHA],
                 jt[Ht.BLEND_MODES.ADD] = [Yt.ONE, Yt.DST_ALPHA],
@@ -14522,9 +14522,9 @@ function(Bt) {
         , {
             "../../../const": 46
         }],
-        99: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Yt) {
+        99: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Yt) {
                 var jt = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : {};
                 return jt[Ht.DRAW_MODES.POINTS] = Yt.POINTS,
                 jt[Ht.DRAW_MODES.LINES] = Yt.LINES,
@@ -14541,23 +14541,23 @@ function(Bt) {
         , {
             "../../../const": 46
         }],
-        100: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Ht) {
+        100: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Ht) {
                 Ht.getContextAttributes().stencil || console.warn("Provided WebGL context does not have a stencil buffer, masks may not render correctly")
             }
         }
         , {}],
-        101: [function(Bt, Gt, Xt) {
+        101: [function(Bt, Xt, Gt) {
             function Ht(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("./utils/maxRecommendedTextures"))
               , jt = Ht(Bt("./utils/canUploadSameBuffer"));
-            Xt.default = {
+            Gt.default = {
                 TARGET_FPMS: .06,
                 MIPMAP_TEXTURES: !0,
                 RESOLUTION: 1,
@@ -14596,13 +14596,13 @@ function(Bt) {
             "./utils/canUploadSameBuffer": 121,
             "./utils/maxRecommendedTextures": 126
         }],
-        102: [function(Bt, Gt, Xt) {
+        102: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Zt(Jt, $t) {
                     for (var en = 0, tn; en < $t.length; en++)
@@ -14867,7 +14867,7 @@ function(Bt) {
                 }]),
                 Jt
             }(qt.default);
-            Xt.default = Qt
+            Gt.default = Qt
         }
         , {
             "../const": 46,
@@ -14876,13 +14876,13 @@ function(Bt) {
             "../textures/Texture": 115,
             "../utils": 124
         }],
-        103: [function(Bt, Gt, Xt) {
+        103: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("../../renderers/canvas/CanvasRenderer"))
               , jt = Bt("../../const")
               , Wt = Bt("../../math")
@@ -14935,7 +14935,7 @@ function(Bt) {
                 ,
                 Kt
             }();
-            Xt.default = qt,
+            Gt.default = qt,
             Yt.default.registerPlugin("sprite", qt)
         }
         , {
@@ -14944,8 +14944,8 @@ function(Bt) {
             "../../renderers/canvas/CanvasRenderer": 77,
             "./CanvasTinter": 104
         }],
-        104: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        104: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = Bt("../../utils")
               , Yt = {
                 getTintedTexture: function(jt, Wt) {
@@ -15049,14 +15049,14 @@ function(Bt) {
                 tintMethod: 0
             };
             Yt.tintMethod = Yt.canUseMultiply ? Yt.tintWithMultiply : Yt.tintWithPerPixel,
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../../renderers/canvas/utils/canUseNewCanvasBlendModes": 80,
             "../../utils": 124
         }],
-        105: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        105: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt) {
                     !function(Wt, zt) {
@@ -15076,16 +15076,16 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        106: [function(Bt, Gt, Xt) {
+        106: [function(Bt, Xt, Gt) {
             function Ht(nn) {
                 return nn && nn.__esModule ? nn : {
                     default: nn
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("../../renderers/webgl/utils/ObjectRenderer"))
               , jt = Ht(Bt("../../renderers/webgl/WebGLRenderer"))
               , Wt = Ht(Bt("../../utils/createIndicesForQuads"))
@@ -15275,9 +15275,9 @@ function(Bt) {
                         for (Cn = 0; Cn < on; ++Cn)
                             gn[Cn]._virtalBoundId = -1;
                         for (Cn = 0; Cn < xn; ++Cn) {
-                            for (var Bn = pn[Cn], Un = Bn.textureCount, Gn = 0; Gn < Un; Gn++)
-                                bn = Bn.textures[Gn],
-                                gn[Bn.ids[Gn]] !== bn && this.renderer.bindTexture(bn, Bn.ids[Gn], !0),
+                            for (var Bn = pn[Cn], Un = Bn.textureCount, Xn = 0; Xn < Un; Xn++)
+                                bn = Bn.textures[Xn],
+                                gn[Bn.ids[Xn]] !== bn && this.renderer.bindTexture(bn, Bn.ids[Xn], !0),
                                 bn._virtalBoundId = -1;
                             this.renderer.state.setBlendMode(Bn.blend),
                             an.drawElements(an.TRIANGLES, 6 * Bn.size, an.UNSIGNED_SHORT, 2 * (6 * Bn.start))
@@ -15316,7 +15316,7 @@ function(Bt) {
                 ,
                 rn
             }(Yt.default);
-            Xt.default = tn,
+            Gt.default = tn,
             jt.default.registerPlugin("sprite", tn)
         }
         , {
@@ -15331,9 +15331,9 @@ function(Bt) {
             "bit-twiddle": 1,
             "pixi-gl-core": 12
         }],
-        107: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt, Wt) {
+        107: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt, Wt) {
                 var zt = Yt;
                 zt = (zt = zt.replace(/%count%/gi, Wt)).replace(/%forloop%/gi, function(Qt) {
                     var Zt = "";
@@ -15367,13 +15367,13 @@ function(Bt) {
             "../../Shader": 44,
             path: 23
         }],
-        108: [function(Bt, Gt, Xt) {
+        108: [function(Bt, Xt, Gt) {
             function Ht(tn) {
                 return tn && tn.__esModule ? tn : {
                     default: tn
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function tn(nn, rn) {
                     for (var an = 0, on; an < rn.length; an++)
@@ -15665,7 +15665,7 @@ function(Bt) {
                 }]),
                 nn
             }(jt.default);
-            Xt.default = en
+            Gt.default = en
         }
         , {
             "../const": 46,
@@ -15678,8 +15678,8 @@ function(Bt) {
             "./TextMetrics": 109,
             "./TextStyle": 110
         }],
-        109: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        109: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function jt(Wt, zt, Vt, qt, Kt, Qt, Zt, Jt, $t) {
                     !function(en, tn) {
@@ -15798,7 +15798,7 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Ht;
+            Gt.default = Ht;
             var Yt = document.createElement("canvas");
             Yt.width = Yt.height = 10,
             Ht._canvas = Yt,
@@ -15806,7 +15806,7 @@ function(Bt) {
             Ht._fonts = {}
         }
         , {}],
-        110: [function(Bt, Gt, Xt) {
+        110: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return "number" == typeof Kt ? (0,
                 zt.hex2string)(Kt) : ("string" == typeof Kt && 0 === Kt.indexOf("0x") && (Kt = Kt.replace("0x", "#")),
@@ -15820,7 +15820,7 @@ function(Bt) {
                 }
                 return Ht(Kt)
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var jt = function() {
                 function Kt(Qt, Zt) {
                     for (var Jt = 0, $t; Jt < Zt.length; Jt++)
@@ -16167,19 +16167,19 @@ function(Bt) {
                 }]),
                 Kt
             }();
-            Xt.default = qt
+            Gt.default = qt
         }
         , {
             "../const": 46,
             "../utils": 124
         }],
-        111: [function(Bt, Gt, Xt) {
+        111: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("./BaseTexture"))
               , jt = Ht(Bt("../settings"))
               , Wt = function(zt) {
@@ -16238,19 +16238,19 @@ function(Bt) {
                 ,
                 Vt
             }(Yt.default);
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../settings": 101,
             "./BaseTexture": 112
         }],
-        112: [function(Bt, Gt, Xt) {
+        112: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("../utils")
               , jt = Ht(Bt("../settings"))
               , Wt = Ht(Bt("eventemitter3"))
@@ -16548,7 +16548,7 @@ function(Bt) {
                 ,
                 Qt
             }(Wt.default);
-            Xt.default = qt
+            Gt.default = qt
         }
         , {
             "../settings": 101,
@@ -16557,13 +16557,13 @@ function(Bt) {
             "bit-twiddle": 1,
             eventemitter3: 3
         }],
-        113: [function(Bt, Gt, Xt) {
+        113: [function(Bt, Xt, Gt) {
             function Ht(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("./BaseRenderTexture"))
               , jt = function(Wt) {
                 function zt(Vt, qt) {
@@ -16619,14 +16619,14 @@ function(Bt) {
                 ,
                 zt
             }(Ht(Bt("./Texture")).default);
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "./BaseRenderTexture": 111,
             "./Texture": 115
         }],
-        114: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        114: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function zt(Vt, qt) {
                     for (var Kt = 0, Qt; Kt < qt.length; Kt++)
@@ -16730,13 +16730,13 @@ function(Bt) {
                 ,
                 zt
             }();
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../": 65,
             "../utils": 124
         }],
-        115: [function(Bt, Gt, Xt) {
+        115: [function(Bt, Xt, Gt) {
             function Ht($t) {
                 return $t && $t.__esModule ? $t : {
                     default: $t
@@ -16751,7 +16751,7 @@ function(Bt) {
                 ,
                 $t.emit = function() {}
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var jt = function() {
                 function $t(en, tn) {
                     for (var nn = 0, rn; nn < tn.length; nn++)
@@ -16983,7 +16983,7 @@ function(Bt) {
                 }]),
                 en
             }(qt.default);
-            Xt.default = Jt,
+            Gt.default = Jt,
             Jt.EMPTY = new Jt(new Wt.default()),
             Yt(Jt.EMPTY),
             Yt(Jt.EMPTY.baseTexture),
@@ -17008,8 +17008,8 @@ function(Bt) {
             "./VideoBaseTexture": 117,
             eventemitter3: 3
         }],
-        116: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        116: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -17068,12 +17068,12 @@ function(Bt) {
                 ,
                 jt
             }();
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../math/GroupD8": 66
         }],
-        117: [function(Bt, Gt, Xt) {
+        117: [function(Bt, Xt, Gt) {
             function Ht(Kt, Qt) {
                 Qt || (Qt = "video/" + Kt.substr(Kt.lastIndexOf(".") + 1));
                 var Zt = document.createElement("source");
@@ -17081,7 +17081,7 @@ function(Bt) {
                 Zt.type = Qt,
                 Zt
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Kt(Qt, Zt) {
                     for (var Jt = 0, $t; Jt < Zt.length; Jt++)
@@ -17221,7 +17221,7 @@ function(Bt) {
                 }]),
                 Qt
             }(jt.default);
-            Xt.default = qt,
+            Gt.default = qt,
             qt.fromUrls = qt.fromUrl
         }
         , {
@@ -17230,13 +17230,13 @@ function(Bt) {
             "../utils": 124,
             "./BaseTexture": 112
         }],
-        118: [function(Bt, Gt, Xt) {
+        118: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function qt(Kt, Qt) {
                     for (var Zt = 0, Jt; Zt < Qt.length; Zt++)
@@ -17375,15 +17375,15 @@ function(Bt) {
                 }]),
                 qt
             }();
-            Xt.default = Vt
+            Gt.default = Vt
         }
         , {
             "../const": 46,
             "../settings": 101,
             "./TickerListener": 119
         }],
-        119: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        119: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt) {
                     var Wt = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : null
@@ -17436,12 +17436,12 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        120: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.Ticker = Xt.shared = void 0;
+        120: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.Ticker = Gt.shared = void 0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -17451,22 +17451,22 @@ function(Bt) {
             Yt.autoStart = !0,
             Yt.destroy = function() {}
             ,
-            Xt.shared = Yt,
-            Xt.Ticker = Ht.default
+            Gt.shared = Yt,
+            Gt.Ticker = Ht.default
         }
         , {
             "./Ticker": 118
         }],
-        121: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function() {
+        121: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 return !(navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform))
             }
         }
         , {}],
-        122: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Ht) {
+        122: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Ht) {
                 for (var Yt = 6 * Ht, jt = new Uint16Array(Yt), Wt = 0, zt = 0; Wt < Yt; Wt += 6,
                 zt += 4)
                     jt[Wt + 0] = zt + 0,
@@ -17479,9 +17479,9 @@ function(Bt) {
             }
         }
         , {}],
-        123: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt) {
+        123: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt) {
                 var Wt = 1 < arguments.length && void 0 !== arguments[1] ? arguments[1] : window.location;
                 if (0 === jt.indexOf("data:"))
                     return "";
@@ -17502,7 +17502,7 @@ function(Bt) {
         , {
             url: 29
         }],
-        124: [function(Bt, Gt, Xt) {
+        124: [function(Bt, Xt, Gt) {
             function Ht(rn) {
                 if (rn && rn.__esModule)
                     return rn;
@@ -17518,13 +17518,13 @@ function(Bt) {
                     default: rn
                 }
             }
-            Xt.__esModule = !0,
-            Xt.premultiplyBlendMode = Xt.BaseTextureCache = Xt.TextureCache = Xt.mixins = Xt.pluginTarget = Xt.EventEmitter = Xt.removeItems = Xt.isMobile = void 0,
-            Xt.uid = function() {
+            Gt.__esModule = !0,
+            Gt.premultiplyBlendMode = Gt.BaseTextureCache = Gt.TextureCache = Gt.mixins = Gt.pluginTarget = Gt.EventEmitter = Gt.removeItems = Gt.isMobile = void 0,
+            Gt.uid = function() {
                 return ++Jt
             }
             ,
-            Xt.hex2rgb = function(rn, an) {
+            Gt.hex2rgb = function(rn, an) {
                 return an = an || [],
                 an[0] = (255 & rn >> 16) / 255,
                 an[1] = (255 & rn >> 8) / 255,
@@ -17532,21 +17532,21 @@ function(Bt) {
                 an
             }
             ,
-            Xt.hex2string = function(rn) {
+            Gt.hex2string = function(rn) {
                 return rn = rn.toString(16),
                 "#" + (rn = "000000".substr(0, 6 - rn.length) + rn)
             }
             ,
-            Xt.rgb2hex = function(rn) {
+            Gt.rgb2hex = function(rn) {
                 return (255 * rn[0] << 16) + (255 * rn[1] << 8) + (0 | 255 * rn[2])
             }
             ,
-            Xt.getResolutionOfUrl = function(rn, an) {
+            Gt.getResolutionOfUrl = function(rn, an) {
                 var on = Wt.default.RETINA_PREFIX.exec(rn);
                 return on ? parseFloat(on[1]) : void 0 === an ? 1 : an
             }
             ,
-            Xt.decomposeDataUri = function(rn) {
+            Gt.decomposeDataUri = function(rn) {
                 var an = jt.DATA_URI.exec(rn);
                 if (an)
                     return {
@@ -17557,13 +17557,13 @@ function(Bt) {
                     }
             }
             ,
-            Xt.getUrlFileExtension = function(rn) {
+            Gt.getUrlFileExtension = function(rn) {
                 var an = jt.URL_FILE_EXTENSION.exec(rn);
                 if (an)
                     return an[1].toLowerCase()
             }
             ,
-            Xt.getSvgSize = function(rn) {
+            Gt.getSvgSize = function(rn) {
                 var an = jt.SVG_SIZE.exec(rn)
                   , on = {};
                 return an && (on[an[1]] = Math.round(parseFloat(an[3])),
@@ -17571,11 +17571,11 @@ function(Bt) {
                 on
             }
             ,
-            Xt.skipHello = function() {
+            Gt.skipHello = function() {
                 $t = !0
             }
             ,
-            Xt.sayHello = function(rn) {
+            Gt.sayHello = function(rn) {
                 if (!$t) {
                     if (-1 < navigator.userAgent.toLowerCase().indexOf("chrome")) {
                         var an = ["\n %c %c %c PixiJS " + jt.VERSION + " - \u2730 " + rn + " \u2730  %c  %c  http://www.pixijs.com/  %c %c \u2665%c\u2665%c\u2665 \n\n", "background: #ff66a5; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff66a5; background: #030307; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "background: #ffc3dc; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;"];
@@ -17586,7 +17586,7 @@ function(Bt) {
                 }
             }
             ,
-            Xt.isWebGLSupported = function() {
+            Gt.isWebGLSupported = function() {
                 var rn = {
                     stencil: !0,
                     failIfMajorPerformanceCaveat: !0
@@ -17608,29 +17608,29 @@ function(Bt) {
                 }
             }
             ,
-            Xt.sign = function(rn) {
+            Gt.sign = function(rn) {
                 return 0 === rn ? 0 : 0 > rn ? -1 : 1
             }
             ,
-            Xt.destroyTextureCache = function() {
+            Gt.destroyTextureCache = function() {
                 for (var rn in en)
                     en[rn].destroy();
                 for (rn in tn)
                     tn[rn].destroy()
             }
             ,
-            Xt.clearTextureCache = function() {
+            Gt.clearTextureCache = function() {
                 for (var rn in en)
                     delete en[rn];
                 for (rn in tn)
                     delete tn[rn]
             }
             ,
-            Xt.correctBlendMode = function(rn, an) {
+            Gt.correctBlendMode = function(rn, an) {
                 return nn[an ? 1 : 0][rn]
             }
             ,
-            Xt.premultiplyTint = function(rn, an) {
+            Gt.premultiplyTint = function(rn, an) {
                 if (1 === an)
                     return (255 * an << 24) + rn;
                 if (0 === an)
@@ -17644,7 +17644,7 @@ function(Bt) {
                 (255 * an << 24) + (on << 16) + (sn << 8) + dn
             }
             ,
-            Xt.premultiplyRgba = function(rn, an, on, sn) {
+            Gt.premultiplyRgba = function(rn, an, on, sn) {
                 return on = on || new Float32Array(4),
                 sn || void 0 === sn ? (on[0] = rn[0] * an,
                 on[1] = rn[1] * an,
@@ -17655,7 +17655,7 @@ function(Bt) {
                 on
             }
             ,
-            Xt.premultiplyTintToRgba = function(rn, an, on, sn) {
+            Gt.premultiplyTintToRgba = function(rn, an, on, sn) {
                 return on = on || new Float32Array(4),
                 on[0] = (255 & rn >> 16) / 255,
                 on[1] = (255 & rn >> 8) / 255,
@@ -17677,14 +17677,14 @@ function(Bt) {
               , Zt = Yt(Bt("./mapPremultipliedBlendModes"))
               , Jt = 0
               , $t = !1;
-            Xt.isMobile = Kt,
-            Xt.removeItems = Qt.default,
-            Xt.EventEmitter = zt.default,
-            Xt.pluginTarget = Vt.default,
-            Xt.mixins = qt;
-            var en = Xt.TextureCache = Object.create(null)
-              , tn = Xt.BaseTextureCache = Object.create(null)
-              , nn = Xt.premultiplyBlendMode = (0,
+            Gt.isMobile = Kt,
+            Gt.removeItems = Qt.default,
+            Gt.EventEmitter = zt.default,
+            Gt.pluginTarget = Vt.default,
+            Gt.mixins = qt;
+            var en = Gt.TextureCache = Object.create(null)
+              , tn = Gt.BaseTextureCache = Object.create(null)
+              , nn = Gt.premultiplyBlendMode = (0,
             Zt.default)()
         }
         , {
@@ -17697,9 +17697,9 @@ function(Bt) {
             ismobilejs: 4,
             "remove-array-items": 31
         }],
-        125: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function() {
+        125: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 for (var Yt = [], jt = [], Wt = 0; 32 > Wt; Wt++)
                     Yt[Wt] = Wt,
                     jt[Wt] = Wt;
@@ -17720,9 +17720,9 @@ function(Bt) {
         , {
             "../const": 46
         }],
-        126: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Yt) {
+        126: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Yt) {
                 return Ht.default.tablet || Ht.default.phone ? 4 : Yt
             }
             ;
@@ -17735,20 +17735,20 @@ function(Bt) {
         , {
             ismobilejs: 4
         }],
-        127: [function(Bt, Gt, Xt) {
+        127: [function(Bt, Xt, Gt) {
             function Ht(jt, Wt) {
                 if (jt && Wt)
                     for (var zt = Object.keys(Wt), Vt = 0, qt; Vt < zt.length; ++Vt)
                         qt = zt[Vt],
                         Object.defineProperty(jt, qt, Object.getOwnPropertyDescriptor(Wt, qt))
             }
-            Xt.__esModule = !0,
-            Xt.mixin = Ht,
-            Xt.delayMixin = function(jt, Wt) {
+            Gt.__esModule = !0,
+            Gt.mixin = Ht,
+            Gt.delayMixin = function(jt, Wt) {
                 Yt.push(jt, Wt)
             }
             ,
-            Xt.performMixins = function() {
+            Gt.performMixins = function() {
                 for (var jt = 0; jt < Yt.length; jt += 2)
                     Ht(Yt[jt], Yt[jt + 1]);
                 Yt.length = 0
@@ -17757,9 +17757,9 @@ function(Bt) {
             var Yt = []
         }
         , {}],
-        128: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = {
+        128: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = {
                 mixin: function(Ht) {
                     !function(Yt) {
                         Yt.__plugins = {},
@@ -17784,9 +17784,9 @@ function(Bt) {
             }
         }
         , {}],
-        129: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Ht) {
+        129: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Ht) {
                 var Yt = Ht.width, jt = Ht.height, Wt = Ht.getContext("2d"), zt = Wt.getImageData(0, 0, Yt, jt).data, Vt = zt.length, qt = {
                     top: null,
                     left: null,
@@ -17809,7 +17809,7 @@ function(Bt) {
             }
         }
         , {}],
-        130: [function(Bt, Gt, Xt) {
+        130: [function(Bt, Xt, Gt) {
             function Ht(Yt) {
                 var jt = new Error().stack;
                 void 0 === jt ? console.warn("Deprecation Warning: ", Yt) : (jt = jt.split("\n").splice(3).join("\n"),
@@ -17818,8 +17818,8 @@ function(Bt) {
                 console.groupEnd()) : (console.warn("Deprecation Warning: ", Yt),
                 console.warn(jt)))
             }
-            Xt.__esModule = !0,
-            Xt.default = function(Yt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Yt) {
                 var jt = Yt.mesh
                   , Wt = Yt.particles
                   , zt = Yt.extras
@@ -18341,8 +18341,8 @@ function(Bt) {
             }
         }
         , {}],
-        131: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        131: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 if (Wt && Wt.__esModule)
                     return Wt;
@@ -18407,28 +18407,28 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt,
+            Gt.default = jt,
             Ht.CanvasRenderer.registerPlugin("extract", jt)
         }
         , {
             "../../core": 65
         }],
-        132: [function(Bt, Gt, Xt) {
+        132: [function(Bt, Xt, Gt) {
             function Ht(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./webgl/WebGLExtract");
-            Object.defineProperty(Xt, "webgl", {
+            Object.defineProperty(Gt, "webgl", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./canvas/CanvasExtract");
-            Object.defineProperty(Xt, "canvas", {
+            Object.defineProperty(Gt, "canvas", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
@@ -18439,8 +18439,8 @@ function(Bt) {
             "./canvas/CanvasExtract": 131,
             "./webgl/WebGLExtract": 133
         }],
-        133: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        133: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 if (Wt && Wt.__esModule)
                     return Wt;
@@ -18522,14 +18522,14 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt,
+            Gt.default = jt,
             Ht.WebGLRenderer.registerPlugin("extract", jt)
         }
         , {
             "../../core": 65
         }],
-        134: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        134: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -18695,18 +18695,18 @@ function(Bt) {
                 }]),
                 zt
             }(Yt.Sprite);
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../core": 65
         }],
-        135: [function(Bt, Gt, Xt) {
+        135: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function qt(Kt, Qt) {
                     for (var Zt = 0, Jt; Zt < Qt.length; Zt++)
@@ -18968,7 +18968,7 @@ function(Bt) {
                 }]),
                 Kt
             }(jt.Container);
-            Xt.default = Vt,
+            Gt.default = Vt,
             Vt.fonts = {}
         }
         , {
@@ -18976,8 +18976,8 @@ function(Bt) {
             "../core/math/ObservablePoint": 68,
             "../core/settings": 101
         }],
-        136: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        136: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function zt(Vt, qt) {
                     for (var Kt = 0, Qt; Kt < qt.length; Kt++)
@@ -19062,18 +19062,18 @@ function(Bt) {
                 }]),
                 zt
             }();
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../core/math/Matrix": 67
         }],
-        137: [function(Bt, Gt, Xt) {
+        137: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Kt(Qt, Zt) {
                     for (var Jt = 0, $t; Jt < Zt.length; Jt++)
@@ -19277,7 +19277,7 @@ function(Bt) {
                 }]),
                 Qt
             }(jt.Sprite);
-            Xt.default = qt
+            Gt.default = qt
         }
         , {
             "../core": 65,
@@ -19529,44 +19529,44 @@ function(Bt) {
         , {
             "../core": 65
         }],
-        141: [function(Bt, Gt, Xt) {
+        141: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0,
-            Xt.BitmapText = Xt.TilingSpriteRenderer = Xt.TilingSprite = Xt.TextureTransform = Xt.AnimatedSprite = void 0;
+            Gt.__esModule = !0,
+            Gt.BitmapText = Gt.TilingSpriteRenderer = Gt.TilingSprite = Gt.TextureTransform = Gt.AnimatedSprite = void 0;
             var Yt = Bt("./AnimatedSprite");
-            Object.defineProperty(Xt, "AnimatedSprite", {
+            Object.defineProperty(Gt, "AnimatedSprite", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./TextureTransform");
-            Object.defineProperty(Xt, "TextureTransform", {
+            Object.defineProperty(Gt, "TextureTransform", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./TilingSprite");
-            Object.defineProperty(Xt, "TilingSprite", {
+            Object.defineProperty(Gt, "TilingSprite", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./webgl/TilingSpriteRenderer");
-            Object.defineProperty(Xt, "TilingSpriteRenderer", {
+            Object.defineProperty(Gt, "TilingSpriteRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./BitmapText");
-            Object.defineProperty(Xt, "BitmapText", {
+            Object.defineProperty(Gt, "BitmapText", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
@@ -19586,8 +19586,8 @@ function(Bt) {
             "./getGlobalPosition": 140,
             "./webgl/TilingSpriteRenderer": 142
         }],
-        142: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        142: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(zt) {
                 if (zt && zt.__esModule)
                     return zt;
@@ -19680,7 +19680,7 @@ function(Bt) {
                 ,
                 Vt
             }(Ht.ObjectRenderer);
-            Xt.default = Wt,
+            Gt.default = Wt,
             Ht.WebGLRenderer.registerPlugin("tilingSprite", Wt)
         }
         , {
@@ -19688,13 +19688,13 @@ function(Bt) {
             "../../core/const": 46,
             path: 23
         }],
-        143: [function(Bt, Gt, Xt) {
+        143: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function qt(Kt, Qt) {
                     for (var Zt = 0, Jt; Zt < Qt.length; Zt++)
@@ -19807,20 +19807,20 @@ function(Bt) {
                 }]),
                 Kt
             }(jt.Filter);
-            Xt.default = Vt
+            Gt.default = Vt
         }
         , {
             "../../core": 65,
             "./BlurXFilter": 144,
             "./BlurYFilter": 145
         }],
-        144: [function(Bt, Gt, Xt) {
+        144: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Kt(Qt, Zt) {
                     for (var Jt = 0, $t; Jt < Zt.length; Jt++)
@@ -19934,7 +19934,7 @@ function(Bt) {
                 }]),
                 Qt
             }(jt.Filter);
-            Xt.default = qt
+            Gt.default = qt
         }
         , {
             "../../core": 65,
@@ -19942,13 +19942,13 @@ function(Bt) {
             "./generateBlurVertSource": 147,
             "./getMaxBlurKernelSize": 148
         }],
-        145: [function(Bt, Gt, Xt) {
+        145: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function() {
                 function Kt(Qt, Zt) {
                     for (var Jt = 0, $t; Jt < Zt.length; Jt++)
@@ -20062,7 +20062,7 @@ function(Bt) {
                 }]),
                 Qt
             }(jt.Filter);
-            Xt.default = qt
+            Gt.default = qt
         }
         , {
             "../../core": 65,
@@ -20070,9 +20070,9 @@ function(Bt) {
             "./generateBlurVertSource": 147,
             "./getMaxBlurKernelSize": 148
         }],
-        146: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(jt) {
+        146: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(jt) {
                 for (var Wt = Ht[jt], zt = Wt.length, Vt = Yt, qt = "", Kt = void 0, Qt = 0, Zt; Qt < jt; Qt++)
                     Zt = "gl_FragColor += texture2D(uSampler, vBlurTexCoords[%index%]) * %value%;".replace("%index%", Qt),
                     Kt = Qt,
@@ -20094,9 +20094,9 @@ function(Bt) {
               , Yt = ["varying vec2 vBlurTexCoords[%size%];", "uniform sampler2D uSampler;", "void main(void)", "{", "    gl_FragColor = vec4(0.0);", "    %blur%", "}"].join("\n")
         }
         , {}],
-        147: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Yt, jt) {
+        147: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Yt, jt) {
                 var Wt = Math.ceil(Yt / 2), zt = Ht, Vt = "", qt;
                 qt = jt ? "vBlurTexCoords[%index%] = aTextureCoord + vec2(%sampleIndex% * strength, 0.0);" : "vBlurTexCoords[%index%] = aTextureCoord + vec2(0.0, %sampleIndex% * strength);";
                 for (var Kt = 0, Qt; Kt < Yt; Kt++)
@@ -20110,17 +20110,17 @@ function(Bt) {
             var Ht = ["attribute vec2 aVertexPosition;", "attribute vec2 aTextureCoord;", "uniform float strength;", "uniform mat3 projectionMatrix;", "varying vec2 vBlurTexCoords[%size%];", "void main(void)", "{", "gl_Position = vec4((projectionMatrix * vec3((aVertexPosition), 1.0)).xy, 0.0, 1.0);", "%blur%", "}"].join("\n")
         }
         , {}],
-        148: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function(Ht) {
+        148: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function(Ht) {
                 for (var Yt = Ht.getParameter(Ht.MAX_VARYING_VECTORS), jt = 15; jt > Yt; )
                     jt -= 2;
                 return jt
             }
         }
         , {}],
-        149: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        149: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -20335,15 +20335,15 @@ function(Bt) {
                 }]),
                 zt
             }(Yt.Filter));
-            Xt.default = jt,
+            Gt.default = jt,
             jt.prototype.grayscale = jt.prototype.greyscale
         }
         , {
             "../../core": 65,
             path: 23
         }],
-        150: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        150: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -20427,14 +20427,14 @@ function(Bt) {
                 }]),
                 zt
             }(Yt.Filter));
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../core": 65,
             path: 23
         }],
-        151: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        151: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 if (jt && jt.__esModule)
                     return jt;
@@ -20473,70 +20473,70 @@ function(Bt) {
                 }(Wt, jt),
                 Wt
             }(Ht.Filter));
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../../core": 65,
             path: 23
         }],
-        152: [function(Bt, Gt, Xt) {
+        152: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./fxaa/FXAAFilter");
-            Object.defineProperty(Xt, "FXAAFilter", {
+            Object.defineProperty(Gt, "FXAAFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./noise/NoiseFilter");
-            Object.defineProperty(Xt, "NoiseFilter", {
+            Object.defineProperty(Gt, "NoiseFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./displacement/DisplacementFilter");
-            Object.defineProperty(Xt, "DisplacementFilter", {
+            Object.defineProperty(Gt, "DisplacementFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./blur/BlurFilter");
-            Object.defineProperty(Xt, "BlurFilter", {
+            Object.defineProperty(Gt, "BlurFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./blur/BlurXFilter");
-            Object.defineProperty(Xt, "BlurXFilter", {
+            Object.defineProperty(Gt, "BlurXFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
                 }
             });
             var qt = Bt("./blur/BlurYFilter");
-            Object.defineProperty(Xt, "BlurYFilter", {
+            Object.defineProperty(Gt, "BlurYFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(qt).default
                 }
             });
             var Kt = Bt("./colormatrix/ColorMatrixFilter");
-            Object.defineProperty(Xt, "ColorMatrixFilter", {
+            Object.defineProperty(Gt, "ColorMatrixFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Kt).default
                 }
             });
             var Qt = Bt("./void/VoidFilter");
-            Object.defineProperty(Xt, "VoidFilter", {
+            Object.defineProperty(Gt, "VoidFilter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Qt).default
@@ -20553,8 +20553,8 @@ function(Bt) {
             "./noise/NoiseFilter": 153,
             "./void/VoidFilter": 154
         }],
-        153: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        153: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -20630,14 +20630,14 @@ function(Bt) {
                 }]),
                 zt
             }(Yt.Filter));
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../../core": 65,
             path: 23
         }],
-        154: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        154: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 if (jt && jt.__esModule)
                     return jt;
@@ -20678,14 +20678,14 @@ function(Bt) {
                 }(Wt, jt),
                 Wt
             }(Ht.Filter));
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "../../core": 65,
             path: 23
         }],
-        155: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        155: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -20765,13 +20765,13 @@ function(Bt) {
                 }]),
                 Wt
             }();
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "../core": 65
         }],
-        156: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        156: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt() {
                     !function(jt, Wt) {
@@ -20796,16 +20796,16 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        157: [function(Bt, Gt, Xt) {
+        157: [function(Bt, Xt, Gt) {
             function Ht($t) {
                 return $t && $t.__esModule ? $t : {
                     default: $t
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function($t) {
                 return typeof $t
             }
@@ -21291,7 +21291,7 @@ function(Bt) {
                 ,
                 en
             }(qt.default);
-            Xt.default = Jt,
+            Gt.default = Jt,
             jt.WebGLRenderer.registerPlugin("interaction", Jt),
             jt.CanvasRenderer.registerPlugin("interaction", Jt)
         }
@@ -21303,8 +21303,8 @@ function(Bt) {
             "./interactiveTarget": 160,
             eventemitter3: 3
         }],
-        158: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        158: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function jt(Wt, zt) {
                     for (var Vt = 0, qt; Vt < zt.length; Vt++)
@@ -21378,7 +21378,7 @@ function(Bt) {
                 }]),
                 jt
             }();
-            Xt.default = Yt,
+            Gt.default = Yt,
             Yt.FLAGS = Object.freeze({
                 NONE: 0,
                 OVER: 1,
@@ -21387,43 +21387,43 @@ function(Bt) {
             })
         }
         , {}],
-        159: [function(Bt, Gt, Xt) {
+        159: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./InteractionData");
-            Object.defineProperty(Xt, "InteractionData", {
+            Object.defineProperty(Gt, "InteractionData", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./InteractionManager");
-            Object.defineProperty(Xt, "InteractionManager", {
+            Object.defineProperty(Gt, "InteractionManager", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./interactiveTarget");
-            Object.defineProperty(Xt, "interactiveTarget", {
+            Object.defineProperty(Gt, "interactiveTarget", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./InteractionTrackingData");
-            Object.defineProperty(Xt, "InteractionTrackingData", {
+            Object.defineProperty(Gt, "InteractionTrackingData", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./InteractionEvent");
-            Object.defineProperty(Xt, "InteractionEvent", {
+            Object.defineProperty(Gt, "InteractionEvent", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
@@ -21437,9 +21437,9 @@ function(Bt) {
             "./InteractionTrackingData": 158,
             "./interactiveTarget": 160
         }],
-        160: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = {
+        160: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = {
                 interactive: !1,
                 interactiveChildren: !0,
                 hitArea: null,
@@ -21458,13 +21458,13 @@ function(Bt) {
             }
         }
         , {}],
-        161: [function(Bt, Gt, Xt) {
+        161: [function(Bt, Xt, Gt) {
             function Ht(Vt, qt) {
                 Vt.bitmapFont = zt.BitmapText.registerFont(Vt.data, qt)
             }
-            Xt.__esModule = !0,
-            Xt.parse = Ht,
-            Xt.default = function() {
+            Gt.__esModule = !0,
+            Gt.parse = Ht,
+            Gt.default = function() {
                 return function(Vt, qt) {
                     if (!(Vt.data && Vt.type === Wt.Resource.TYPE.XML))
                         qt();
@@ -21514,49 +21514,49 @@ function(Bt) {
             path: 23,
             "resource-loader": 36
         }],
-        162: [function(Bt, Gt, Xt) {
+        162: [function(Bt, Xt, Gt) {
             function Ht(Zt) {
                 return Zt && Zt.__esModule ? Zt : {
                     default: Zt
                 }
             }
-            Xt.__esModule = !0,
-            Xt.shared = Xt.Resource = Xt.textureParser = Xt.getResourcePath = Xt.spritesheetParser = Xt.parseBitmapFontData = Xt.bitmapFontParser = Xt.Loader = void 0;
+            Gt.__esModule = !0,
+            Gt.shared = Gt.Resource = Gt.textureParser = Gt.getResourcePath = Gt.spritesheetParser = Gt.parseBitmapFontData = Gt.bitmapFontParser = Gt.Loader = void 0;
             var Yt = Bt("./bitmapFontParser");
-            Object.defineProperty(Xt, "bitmapFontParser", {
+            Object.defineProperty(Gt, "bitmapFontParser", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             }),
-            Object.defineProperty(Xt, "parseBitmapFontData", {
+            Object.defineProperty(Gt, "parseBitmapFontData", {
                 enumerable: !0,
                 get: function() {
                     return Yt.parse
                 }
             });
             var jt = Bt("./spritesheetParser");
-            Object.defineProperty(Xt, "spritesheetParser", {
+            Object.defineProperty(Gt, "spritesheetParser", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             }),
-            Object.defineProperty(Xt, "getResourcePath", {
+            Object.defineProperty(Gt, "getResourcePath", {
                 enumerable: !0,
                 get: function() {
                     return jt.getResourcePath
                 }
             });
             var Wt = Bt("./textureParser");
-            Object.defineProperty(Xt, "textureParser", {
+            Object.defineProperty(Gt, "textureParser", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("resource-loader");
-            Object.defineProperty(Xt, "Resource", {
+            Object.defineProperty(Gt, "Resource", {
                 enumerable: !0,
                 get: function() {
                     return zt.Resource
@@ -21564,11 +21564,11 @@ function(Bt) {
             });
             var Vt = Ht(Bt("../core/Application"))
               , qt = Ht(Bt("./loader"));
-            Xt.Loader = qt.default;
+            Gt.Loader = qt.default;
             var Kt = new qt.default;
             Kt.destroy = function() {}
             ,
-            Xt.shared = Kt;
+            Gt.shared = Kt;
             var Qt = Vt.default.prototype;
             Qt._loader = null,
             Object.defineProperty(Qt, "loader", {
@@ -21595,13 +21595,13 @@ function(Bt) {
             "./textureParser": 165,
             "resource-loader": 36
         }],
-        163: [function(Bt, Gt, Xt) {
+        163: [function(Bt, Xt, Gt) {
             function Ht(Jt) {
                 return Jt && Jt.__esModule ? Jt : {
                     default: Jt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("resource-loader"))
               , jt = Bt("resource-loader/lib/middlewares/parsing/blob")
               , Wt = Ht(Bt("eventemitter3"))
@@ -21663,7 +21663,7 @@ function(Bt) {
                 ,
                 $t
             }(Yt.default);
-            for (var Qt in Xt.default = Kt,
+            for (var Qt in Gt.default = Kt,
             Wt.default.prototype)
                 Kt.prototype[Qt] = Wt.default.prototype[Qt];
             Kt._pixiMiddleware = [jt.blobMiddlewareFactory, zt.default, Vt.default, qt.default];
@@ -21678,12 +21678,12 @@ function(Bt) {
             "resource-loader": 36,
             "resource-loader/lib/middlewares/parsing/blob": 37
         }],
-        164: [function(Bt, Gt, Xt) {
+        164: [function(Bt, Xt, Gt) {
             function Ht(zt, Vt) {
                 return zt.isDataUrl ? zt.data.meta.image : jt.default.resolve(zt.url.replace(Vt, ""), zt.data.meta.image)
             }
-            Xt.__esModule = !0,
-            Xt.default = function() {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 return function(zt, Vt) {
                     var qt = zt.name + "_image";
                     if (zt.data && zt.type === Yt.Resource.TYPE.JSON && zt.data.frames && !this.resources[qt]) {
@@ -21707,7 +21707,7 @@ function(Bt) {
                 }
             }
             ,
-            Xt.getResourcePath = Ht;
+            Gt.getResourcePath = Ht;
             var Yt = Bt("resource-loader")
               , jt = function(zt) {
                 return zt && zt.__esModule ? zt : {
@@ -21721,9 +21721,9 @@ function(Bt) {
             "resource-loader": 36,
             url: 29
         }],
-        165: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0,
-            Xt.default = function() {
+        165: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0,
+            Gt.default = function() {
                 return function(jt, Wt) {
                     jt.data && jt.type === Ht.Resource.TYPE.IMAGE && (jt.texture = Yt.default.fromLoader(jt.data, jt.url, jt.name)),
                     Wt()
@@ -21741,8 +21741,8 @@ function(Bt) {
             "../core/textures/Texture": 115,
             "resource-loader": 36
         }],
-        166: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        166: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function qt(Kt, Qt) {
                     for (var Zt = 0, Jt; Zt < Qt.length; Zt++)
@@ -21886,7 +21886,7 @@ function(Bt) {
                 }]),
                 Kt
             }(Yt.Container);
-            Xt.default = Vt,
+            Gt.default = Vt,
             Vt.DRAW_MODES = {
                 TRIANGLE_MESH: 0,
                 TRIANGLES: 1
@@ -21896,8 +21896,8 @@ function(Bt) {
             "../core": 65,
             "../extras/TextureTransform": 136
         }],
-        167: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        167: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Wt(zt, Vt) {
                     for (var qt = 0, Kt; qt < Vt.length; qt++)
@@ -22081,13 +22081,13 @@ function(Bt) {
                     default: Wt
                 }
             }(Bt("./Plane")).default);
-            Xt.default = jt
+            Gt.default = jt
         }
         , {
             "./Plane": 168
         }],
-        168: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        168: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(jt) {
                 return jt && jt.__esModule ? jt : {
                     default: jt
@@ -22156,13 +22156,13 @@ function(Bt) {
                 ,
                 Wt
             }(Ht.default);
-            Xt.default = Yt
+            Gt.default = Yt
         }
         , {
             "./Mesh": 166
         }],
-        169: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        169: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Yt) {
                 function jt(Wt, zt) {
                     !function(qt, Kt) {
@@ -22268,13 +22268,13 @@ function(Bt) {
                     default: Yt
                 }
             }(Bt("./Mesh")).default);
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {
             "./Mesh": 166
         }],
-        170: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        170: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Wt) {
                 if (Wt && Wt.__esModule)
                     return Wt;
@@ -22417,57 +22417,57 @@ function(Bt) {
                 ,
                 Wt
             }();
-            Xt.default = jt,
+            Gt.default = jt,
             Ht.CanvasRenderer.registerPlugin("mesh", jt)
         }
         , {
             "../../core": 65,
             "../Mesh": 166
         }],
-        171: [function(Bt, Gt, Xt) {
+        171: [function(Bt, Xt, Gt) {
             function Ht(Kt) {
                 return Kt && Kt.__esModule ? Kt : {
                     default: Kt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./Mesh");
-            Object.defineProperty(Xt, "Mesh", {
+            Object.defineProperty(Gt, "Mesh", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./webgl/MeshRenderer");
-            Object.defineProperty(Xt, "MeshRenderer", {
+            Object.defineProperty(Gt, "MeshRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./canvas/CanvasMeshRenderer");
-            Object.defineProperty(Xt, "CanvasMeshRenderer", {
+            Object.defineProperty(Gt, "CanvasMeshRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./Plane");
-            Object.defineProperty(Xt, "Plane", {
+            Object.defineProperty(Gt, "Plane", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./NineSlicePlane");
-            Object.defineProperty(Xt, "NineSlicePlane", {
+            Object.defineProperty(Gt, "NineSlicePlane", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
                 }
             });
             var qt = Bt("./Rope");
-            Object.defineProperty(Xt, "Rope", {
+            Object.defineProperty(Gt, "Rope", {
                 enumerable: !0,
                 get: function() {
                     return Ht(qt).default
@@ -22482,13 +22482,13 @@ function(Bt) {
             "./canvas/CanvasMeshRenderer": 170,
             "./webgl/MeshRenderer": 172
         }],
-        172: [function(Bt, Gt, Xt) {
+        172: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function(qt) {
                 if (qt && qt.__esModule)
                     return qt;
@@ -22571,7 +22571,7 @@ function(Bt) {
                 ,
                 Kt
             }(Yt.ObjectRenderer);
-            Xt.default = Vt,
+            Gt.default = Vt,
             Yt.WebGLRenderer.registerPlugin("mesh", Vt)
         }
         , {
@@ -22580,8 +22580,8 @@ function(Bt) {
             path: 23,
             "pixi-gl-core": 12
         }],
-        173: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        173: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function zt(Vt, qt) {
                     for (var Kt = 0, Qt; Kt < qt.length; Kt++)
@@ -22743,28 +22743,28 @@ function(Bt) {
                 }]),
                 Vt
             }(Yt.Container);
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../core": 65,
             "../core/utils": 124
         }],
-        174: [function(Bt, Gt, Xt) {
+        174: [function(Bt, Xt, Gt) {
             function Ht(Wt) {
                 return Wt && Wt.__esModule ? Wt : {
                     default: Wt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./ParticleContainer");
-            Object.defineProperty(Xt, "ParticleContainer", {
+            Object.defineProperty(Gt, "ParticleContainer", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./webgl/ParticleRenderer");
-            Object.defineProperty(Xt, "ParticleRenderer", {
+            Object.defineProperty(Gt, "ParticleRenderer", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
@@ -22775,13 +22775,13 @@ function(Bt) {
             "./ParticleContainer": 173,
             "./webgl/ParticleRenderer": 176
         }],
-        175: [function(Bt, Gt, Xt) {
+        175: [function(Bt, Xt, Gt) {
             function Ht(zt) {
                 return zt && zt.__esModule ? zt : {
                     default: zt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Ht(Bt("pixi-gl-core"))
               , jt = Ht(Bt("../../core/utils/createIndicesForQuads"))
               , Wt = function() {
@@ -22875,19 +22875,19 @@ function(Bt) {
                 ,
                 zt
             }();
-            Xt.default = Wt
+            Gt.default = Wt
         }
         , {
             "../../core/utils/createIndicesForQuads": 122,
             "pixi-gl-core": 12
         }],
-        176: [function(Bt, Gt, Xt) {
+        176: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function(qt) {
                 if (qt && qt.__esModule)
                     return qt;
@@ -23115,7 +23115,7 @@ function(Bt) {
                 ,
                 Kt
             }(Yt.ObjectRenderer);
-            Xt.default = Vt,
+            Gt.default = Vt,
             Yt.WebGLRenderer.registerPlugin("particle", Vt)
         }
         , {
@@ -23124,8 +23124,8 @@ function(Bt) {
             "./ParticleBuffer": 175,
             "./ParticleShader": 177
         }],
-        177: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        177: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function(Yt) {
                 function jt(Wt) {
                     return function(zt, Vt) {
@@ -23157,7 +23157,7 @@ function(Bt) {
                     default: Yt
                 }
             }(Bt("../../core/Shader")).default);
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {
             "../../core/Shader": 44
@@ -23232,7 +23232,7 @@ function(Bt) {
             ).call(this, "undefined" == typeof global ? "undefined" == typeof self ? "undefined" == typeof window ? {} : window : self : global)
         }
         , {}],
-        182: [function(Bt, Gt, Xt) {
+        182: [function(Bt, Xt, Gt) {
             function Ht($t, en) {
                 var tn = !1;
                 if ($t && $t._textures && $t._textures.length)
@@ -23282,7 +23282,7 @@ function(Bt) {
                 return $t instanceof Kt.TextStyle && (-1 === en.indexOf($t) && en.push($t),
                 !0)
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Kt = function($t) {
                 if ($t && $t.__esModule)
                     return $t;
@@ -23397,13 +23397,13 @@ function(Bt) {
                 ,
                 $t
             }();
-            Xt.default = Jt
+            Gt.default = Jt
         }
         , {
             "../core": 65,
             "./limiters/CountLimiter": 185
         }],
-        183: [function(Bt, Gt, Xt) {
+        183: [function(Bt, Xt, Gt) {
             function Ht(zt, Vt) {
                 if (Vt instanceof Yt.BaseTexture) {
                     var qt = Vt.source
@@ -23414,7 +23414,7 @@ function(Bt) {
                 }
                 return !1
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = function(zt) {
                 if (zt && zt.__esModule)
                     return zt;
@@ -23470,50 +23470,50 @@ function(Bt) {
                     default: zt
                 }
             }(Bt("../BasePrepare")).default);
-            Xt.default = Wt,
+            Gt.default = Wt,
             Yt.CanvasRenderer.registerPlugin("prepare", Wt)
         }
         , {
             "../../core": 65,
             "../BasePrepare": 182
         }],
-        184: [function(Bt, Gt, Xt) {
+        184: [function(Bt, Xt, Gt) {
             function Ht(qt) {
                 return qt && qt.__esModule ? qt : {
                     default: qt
                 }
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Yt = Bt("./webgl/WebGLPrepare");
-            Object.defineProperty(Xt, "webgl", {
+            Object.defineProperty(Gt, "webgl", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Yt).default
                 }
             });
             var jt = Bt("./canvas/CanvasPrepare");
-            Object.defineProperty(Xt, "canvas", {
+            Object.defineProperty(Gt, "canvas", {
                 enumerable: !0,
                 get: function() {
                     return Ht(jt).default
                 }
             });
             var Wt = Bt("./BasePrepare");
-            Object.defineProperty(Xt, "BasePrepare", {
+            Object.defineProperty(Gt, "BasePrepare", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Wt).default
                 }
             });
             var zt = Bt("./limiters/CountLimiter");
-            Object.defineProperty(Xt, "CountLimiter", {
+            Object.defineProperty(Gt, "CountLimiter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(zt).default
                 }
             });
             var Vt = Bt("./limiters/TimeLimiter");
-            Object.defineProperty(Xt, "TimeLimiter", {
+            Object.defineProperty(Gt, "TimeLimiter", {
                 enumerable: !0,
                 get: function() {
                     return Ht(Vt).default
@@ -23527,8 +23527,8 @@ function(Bt) {
             "./limiters/TimeLimiter": 186,
             "./webgl/WebGLPrepare": 187
         }],
-        185: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        185: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt) {
                     !function(Wt, zt) {
@@ -23548,11 +23548,11 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        186: [function(Bt, Gt, Xt) {
-            Xt.__esModule = !0;
+        186: [function(Bt, Xt, Gt) {
+            Gt.__esModule = !0;
             var Ht = function() {
                 function Yt(jt) {
                     !function(Wt, zt) {
@@ -23572,10 +23572,10 @@ function(Bt) {
                 ,
                 Yt
             }();
-            Xt.default = Ht
+            Gt.default = Ht
         }
         , {}],
-        187: [function(Bt, Gt, Xt) {
+        187: [function(Bt, Xt, Gt) {
             function Ht(Vt, qt) {
                 return qt instanceof Wt.BaseTexture && (qt._glTextures[Vt.CONTEXT_UID] || Vt.textureManager.updateTexture(qt),
                 !0)
@@ -23588,7 +23588,7 @@ function(Bt) {
                 return Vt instanceof Wt.Graphics && (qt.push(Vt),
                 !0)
             }
-            Xt.__esModule = !0;
+            Gt.__esModule = !0;
             var Wt = function(Vt) {
                 if (Vt && Vt.__esModule)
                     return Vt;
@@ -23635,14 +23635,14 @@ function(Bt) {
                     default: Vt
                 }
             }(Bt("../BasePrepare")).default);
-            Xt.default = zt,
+            Gt.default = zt,
             Wt.WebGLRenderer.registerPlugin("prepare", zt)
         }
         , {
             "../../core": 65,
             "../BasePrepare": 182
         }],
-        188: [function(Bt, Gt, Xt) {
+        188: [function(Bt, Xt, Gt) {
             (function(Ht) {
                 function Yt(rn) {
                     if (rn && rn.__esModule)
@@ -23654,11 +23654,11 @@ function(Bt) {
                     return an.default = rn,
                     an
                 }
-                Xt.__esModule = !0,
-                Xt.loader = Xt.prepare = Xt.particles = Xt.mesh = Xt.loaders = Xt.interaction = Xt.filters = Xt.extras = Xt.extract = Xt.accessibility = void 0;
+                Gt.__esModule = !0,
+                Gt.loader = Gt.prepare = Gt.particles = Gt.mesh = Gt.loaders = Gt.interaction = Gt.filters = Gt.extras = Gt.extract = Gt.accessibility = void 0;
                 var jt = Bt("./polyfill");
                 Object.keys(jt).forEach(function(rn) {
-                    "default" !== rn && "__esModule" !== rn && Object.defineProperty(Xt, rn, {
+                    "default" !== rn && "__esModule" !== rn && Object.defineProperty(Gt, rn, {
                         enumerable: !0,
                         get: function() {
                             return jt[rn]
@@ -23667,7 +23667,7 @@ function(Bt) {
                 });
                 var Wt = Bt("./core");
                 Object.keys(Wt).forEach(function(rn) {
-                    "default" !== rn && "__esModule" !== rn && Object.defineProperty(Xt, rn, {
+                    "default" !== rn && "__esModule" !== rn && Object.defineProperty(Gt, rn, {
                         enumerable: !0,
                         get: function() {
                             return Wt[rn]
@@ -23690,19 +23690,19 @@ function(Bt) {
                   , tn = Yt(Bt("./prepare"));
                 Wt.utils.mixins.performMixins();
                 var nn = Jt.shared || null;
-                Xt.accessibility = Vt,
-                Xt.extract = qt,
-                Xt.extras = Kt,
-                Xt.filters = Qt,
-                Xt.interaction = Zt,
-                Xt.loaders = Jt,
-                Xt.mesh = $t,
-                Xt.particles = en,
-                Xt.prepare = tn,
-                Xt.loader = nn,
+                Gt.accessibility = Vt,
+                Gt.extract = qt,
+                Gt.extras = Kt,
+                Gt.filters = Qt,
+                Gt.interaction = Zt,
+                Gt.loaders = Jt,
+                Gt.mesh = $t,
+                Gt.particles = en,
+                Gt.prepare = tn,
+                Gt.loader = nn,
                 "function" == typeof zt.default && (0,
-                zt.default)(Xt),
-                Ht.PIXI = Xt
+                zt.default)(Gt),
+                Ht.PIXI = Gt
             }
             ).call(this, "undefined" == typeof global ? "undefined" == typeof self ? "undefined" == typeof window ? {} : window : self : global)
         }
@@ -23728,7 +23728,7 @@ function() {
     };
     Bt.prototype = {
         init: function() {
-            var Kt = this || Gt;
+            var Kt = this || Xt;
             return Kt._counter = 1e3,
             Kt._codecs = {},
             Kt._howls = [],
@@ -23746,7 +23746,7 @@ function() {
             Kt
         },
         volume: function(Kt) {
-            var Qt = this || Gt;
+            var Qt = this || Xt;
             if (Kt = parseFloat(Kt),
             Qt.ctx || qt(),
             void 0 !== Kt && 0 <= Kt && 1 >= Kt) {
@@ -23764,7 +23764,7 @@ function() {
             return Qt._volume
         },
         mute: function(Kt) {
-            var Qt = this || Gt;
+            var Qt = this || Xt;
             Qt.ctx || qt(),
             Qt._muted = Kt,
             Qt.usingWebAudio && (Qt.masterGain.gain.value = Kt ? 0 : Qt._volume);
@@ -23776,7 +23776,7 @@ function() {
             return Qt
         },
         unload: function() {
-            for (var Kt = this || Gt, Qt = Kt._howls.length - 1; 0 <= Qt; Qt--)
+            for (var Kt = this || Xt, Qt = Kt._howls.length - 1; 0 <= Qt; Qt--)
                 Kt._howls[Qt].unload();
             return Kt.usingWebAudio && Kt.ctx && void 0 !== Kt.ctx.close && (Kt.ctx.close(),
             Kt.ctx = null,
@@ -23784,10 +23784,10 @@ function() {
             Kt
         },
         codecs: function(Kt) {
-            return (this || Gt)._codecs[Kt.replace(/^x-/, "")]
+            return (this || Xt)._codecs[Kt.replace(/^x-/, "")]
         },
         _setup: function() {
-            var Kt = this || Gt;
+            var Kt = this || Xt;
             if (Kt.state = Kt.ctx ? Kt.ctx.state || "running" : "running",
             Kt._autoSuspend(),
             !Kt.usingWebAudio)
@@ -23806,7 +23806,7 @@ function() {
             Kt
         },
         _setupCodecs: function() {
-            var Kt = this || Gt
+            var Kt = this || Xt
               , Qt = null;
             try {
                 Qt = "undefined" == typeof Audio ? null : new Audio
@@ -23837,7 +23837,7 @@ function() {
             Kt
         },
         _enableMobileAudio: function() {
-            var Kt = this || Gt
+            var Kt = this || Xt
               , Qt = /iPhone|iPad|iPod|Android|BlackBerry|BB10|Silk|Mobi/i.test(Kt._navigator && Kt._navigator.userAgent)
               , Zt = !!("ontouchend"in window || Kt._navigator && 0 < Kt._navigator.maxTouchPoints || Kt._navigator && 0 < Kt._navigator.msMaxTouchPoints);
             if (!Kt._mobileEnabled && Kt.ctx && (Qt || Zt)) {
@@ -23846,7 +23846,7 @@ function() {
                 Kt.unload()),
                 Kt._scratchBuffer = Kt.ctx.createBuffer(1, 1, 22050);
                 var Jt = function() {
-                    Gt._autoResume();
+                    Xt._autoResume();
                     var $t = Kt.ctx.createBufferSource();
                     $t.buffer = Kt._scratchBuffer,
                     $t.connect(Kt.ctx.destination),
@@ -23867,7 +23867,7 @@ function() {
         },
         _autoSuspend: function() {
             var Kt = this;
-            if (Kt.autoSuspend && Kt.ctx && void 0 !== Kt.ctx.suspend && Gt.usingWebAudio) {
+            if (Kt.autoSuspend && Kt.ctx && void 0 !== Kt.ctx.suspend && Xt.usingWebAudio) {
                 for (var Qt = 0; Qt < Kt._howls.length; Qt++)
                     if (Kt._howls[Qt]._webAudio)
                         for (var Zt = 0; Zt < Kt._howls[Qt]._sounds.length; Zt++)
@@ -23888,7 +23888,7 @@ function() {
         },
         _autoResume: function() {
             var Kt = this;
-            if (Kt.ctx && void 0 !== Kt.ctx.resume && Gt.usingWebAudio)
+            if (Kt.ctx && void 0 !== Kt.ctx.resume && Xt.usingWebAudio)
                 return "running" === Kt.state && Kt._suspendTimer ? (clearTimeout(Kt._suspendTimer),
                 Kt._suspendTimer = null) : "suspended" === Kt.state ? (Kt.ctx.resume().then(function() {
                     Kt.state = "running";
@@ -23900,14 +23900,14 @@ function() {
                 Kt
         }
     };
-    var Gt = new Bt
-      , Xt = function(Kt) {
+    var Xt = new Bt
+      , Gt = function(Kt) {
         Kt.src && 0 !== Kt.src.length ? this.init(Kt) : console.error("An array of source files must be passed with any new Howl.")
     };
-    Xt.prototype = {
+    Gt.prototype = {
         init: function(Kt) {
             var Qt = this;
-            return Gt.ctx || qt(),
+            return Xt.ctx || qt(),
             Qt._autoplay = Kt.autoplay || !1,
             Qt._format = "string" == typeof Kt.format ? [Kt.format] : Kt.format,
             Qt._html5 = Kt.html5 || !1,
@@ -23962,9 +23962,9 @@ function() {
                 fn: Kt.onseek
             }] : [],
             Qt._onresume = [],
-            Qt._webAudio = Gt.usingWebAudio && !Qt._html5,
-            void 0 !== Gt.ctx && Gt.ctx && Gt.mobileAutoEnable && Gt._enableMobileAudio(),
-            Gt._howls.push(Qt),
+            Qt._webAudio = Xt.usingWebAudio && !Qt._html5,
+            void 0 !== Xt.ctx && Xt.ctx && Xt.mobileAutoEnable && Xt._enableMobileAudio(),
+            Xt._howls.push(Qt),
             Qt._autoplay && Qt._queue.push({
                 event: "play",
                 action: function() {
@@ -23976,7 +23976,7 @@ function() {
         },
         load: function() {
             var Kt = null;
-            if (Gt.noAudio)
+            if (Xt.noAudio)
                 this._emit("loaderror", null, "No audio support.");
             else {
                 "string" == typeof this._src && (this._src = [this._src]);
@@ -23993,7 +23993,7 @@ function() {
                         Zt && (Zt = Zt[1].toLowerCase())
                     }
                     if (Zt || console.warn("No file extension was found. Consider using the \"format\" property or specify an extension."),
-                    Zt && Gt.codecs(Zt)) {
+                    Zt && Xt.codecs(Zt)) {
                         Kt = this._src[Qt];
                         break
                     }
@@ -24047,7 +24047,7 @@ function() {
                     Zt._emit("play", tn._id)
                 }, 0),
                 tn._id;
-            Zt._webAudio && Gt._autoResume();
+            Zt._webAudio && Xt._autoResume();
             var rn = Math.max(0, 0 < tn._seek ? tn._seek : Zt._sprite[Kt][0] / 1e3)
               , an = Math.max(0, (Zt._sprite[Kt][0] + Zt._sprite[Kt][1]) / 1e3 - rn)
               , on = 1e3 * an / Math.abs(tn._rate);
@@ -24063,21 +24063,21 @@ function() {
                 var dn = function() {
                     Zt._refreshBuffer(tn);
                     var cn = tn._muted || Zt._muted ? 0 : tn._volume;
-                    sn.gain.setValueAtTime(cn, Gt.ctx.currentTime),
-                    tn._playStart = Gt.ctx.currentTime,
+                    sn.gain.setValueAtTime(cn, Xt.ctx.currentTime),
+                    tn._playStart = Xt.ctx.currentTime,
                     void 0 === sn.bufferSource.start ? tn._loop ? sn.bufferSource.noteGrainOn(0, rn, 86400) : sn.bufferSource.noteGrainOn(0, rn, an) : tn._loop ? sn.bufferSource.start(0, rn, 86400) : sn.bufferSource.start(0, rn, an),
                     on != 1 / 0 && (Zt._endTimers[tn._id] = setTimeout(Zt._ended.bind(Zt, tn), on)),
                     Qt || setTimeout(function() {
                         Zt._emit("play", tn._id)
                     }, 0)
                 };
-                "running" === Gt.state ? dn() : (Zt.once("resume", dn),
+                "running" === Xt.state ? dn() : (Zt.once("resume", dn),
                 Zt._clearTimer(tn._id))
             } else {
                 var ln = function() {
                     sn.currentTime = rn,
-                    sn.muted = tn._muted || Zt._muted || Gt._muted || sn.muted,
-                    sn.volume = tn._volume * Gt.volume(),
+                    sn.muted = tn._muted || Zt._muted || Xt._muted || sn.muted,
+                    sn.volume = tn._volume * Xt.volume(),
                     sn.playbackRate = tn._rate;
                     try {
                         if (sn.play(),
@@ -24089,15 +24089,15 @@ function() {
                         Zt._emit("playerror", tn._id, cn)
                     }
                 }
-                  , un = window && window.ejecta || !sn.readyState && Gt._navigator.isCocoonJS;
+                  , un = window && window.ejecta || !sn.readyState && Xt._navigator.isCocoonJS;
                 if (4 === sn.readyState || un)
                     ln();
                 else {
                     var pn = function() {
                         ln(),
-                        sn.removeEventListener(Gt._canPlayEvent, pn, !1)
+                        sn.removeEventListener(Xt._canPlayEvent, pn, !1)
                     };
-                    sn.addEventListener(Gt._canPlayEvent, pn, !1),
+                    sn.addEventListener(Xt._canPlayEvent, pn, !1),
                     Zt._clearTimer(tn._id)
                 }
             }
@@ -24177,7 +24177,7 @@ function() {
             for (var Jt = Zt._getSoundIds(Qt), $t = 0, en; $t < Jt.length; $t++)
                 en = Zt._soundById(Jt[$t]),
                 en && (en._muted = Kt,
-                Zt._webAudio && en._node ? en._node.gain.setValueAtTime(Kt ? 0 : en._volume, Gt.ctx.currentTime) : en._node && (en._node.muted = !!Gt._muted || Kt),
+                Zt._webAudio && en._node ? en._node.gain.setValueAtTime(Kt ? 0 : en._volume, Xt.ctx.currentTime) : en._node && (en._node.muted = !!Xt._muted || Kt),
                 Zt._emit("mute", en._id));
             return Zt
         },
@@ -24203,7 +24203,7 @@ function() {
             for (var en = 0; en < Qt.length; en++)
                 ($t = Zt._soundById(Qt[en])) && ($t._volume = Kt,
                 Jt[2] || Zt._stopFade(Qt[en]),
-                Zt._webAudio && $t._node && !$t._muted ? $t._node.gain.setValueAtTime(Kt, Gt.ctx.currentTime) : $t._node && !$t._muted && ($t._node.volume = Kt * Gt.volume()),
+                Zt._webAudio && $t._node && !$t._muted ? $t._node.gain.setValueAtTime(Kt, Xt.ctx.currentTime) : $t._node && !$t._muted && ($t._node.volume = Kt * Xt.volume()),
                 Zt._emit("volume", $t._id));
             return Zt
         },
@@ -24222,7 +24222,7 @@ function() {
                 if (rn = en._soundById(tn[nn]),
                 rn && (Jt || en._stopFade(tn[nn]),
                 en._webAudio && !rn._muted)) {
-                    var an = Gt.ctx.currentTime;
+                    var an = Xt.ctx.currentTime;
                     rn._volume = Kt,
                     null == $t && rn._node.gain.setValueAtTime(Kt, an),
                     rn._node.gain.linearRampToValueAtTime(Qt, an + Zt / 1e3)
@@ -24252,7 +24252,7 @@ function() {
         },
         _stopFade: function(Kt) {
             var Qt = this._soundById(Kt);
-            return Qt && Qt._interval && (this._webAudio && Qt._node.gain.cancelScheduledValues(Gt.ctx.currentTime),
+            return Qt && Qt._interval && (this._webAudio && Qt._node.gain.cancelScheduledValues(Xt.ctx.currentTime),
             clearInterval(Qt._interval),
             Qt._interval = null,
             this._emit("fade", Kt)),
@@ -24297,7 +24297,7 @@ function() {
             for (var en = 0; en < Qt.length; en++)
                 if ($t = Zt._soundById(Qt[en])) {
                     $t._rateSeek = Zt.seek(Qt[en]),
-                    $t._playStart = Zt._webAudio ? Gt.ctx.currentTime : $t._playStart,
+                    $t._playStart = Zt._webAudio ? Xt.ctx.currentTime : $t._playStart,
                     $t._rate = Kt,
                     Zt._webAudio && $t._node && $t._node.bufferSource ? $t._node.bufferSource.playbackRate.value = Kt : $t._node && ($t._node.playbackRate = Kt);
                     var tn = Zt.seek(Qt[en])
@@ -24327,7 +24327,7 @@ function() {
             if ($t) {
                 if (!("number" == typeof Kt && 0 <= Kt)) {
                     if (Zt._webAudio) {
-                        var en = Zt.playing(Qt) ? Gt.ctx.currentTime - $t._playStart : 0
+                        var en = Zt.playing(Qt) ? Xt.ctx.currentTime - $t._playStart : 0
                           , tn = $t._rateSeek ? $t._rateSeek - $t._seek : 0;
                         return $t._seek + (tn + en * Math.abs($t._rate))
                     }
@@ -24366,22 +24366,22 @@ function() {
         unload: function() {
             for (var Kt = this, Qt = Kt._sounds, Zt = 0; Zt < Qt.length; Zt++) {
                 (Qt[Zt]._paused || Kt.stop(Qt[Zt]._id),
-                !Kt._webAudio) && (/MSIE |Trident\//.test(Gt._navigator && Gt._navigator.userAgent) || (Qt[Zt]._node.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA"),
+                !Kt._webAudio) && (/MSIE |Trident\//.test(Xt._navigator && Xt._navigator.userAgent) || (Qt[Zt]._node.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA"),
                 Qt[Zt]._node.removeEventListener("error", Qt[Zt]._errorFn, !1),
-                Qt[Zt]._node.removeEventListener(Gt._canPlayEvent, Qt[Zt]._loadFn, !1)),
+                Qt[Zt]._node.removeEventListener(Xt._canPlayEvent, Qt[Zt]._loadFn, !1)),
                 delete Qt[Zt]._node,
                 Kt._clearTimer(Qt[Zt]._id);
-                var Jt = Gt._howls.indexOf(Kt);
-                0 <= Jt && Gt._howls.splice(Jt, 1)
+                var Jt = Xt._howls.indexOf(Kt);
+                0 <= Jt && Xt._howls.splice(Jt, 1)
             }
             var $t = !0;
-            for (Zt = 0; Zt < Gt._howls.length; Zt++)
-                if (Gt._howls[Zt]._src === Kt._src) {
+            for (Zt = 0; Zt < Xt._howls.length; Zt++)
+                if (Xt._howls[Zt]._src === Kt._src) {
                     $t = !1;
                     break
                 }
             return Yt && $t && delete Yt[Kt._src],
-            Gt.noAudio = !1,
+            Xt.noAudio = !1,
             Kt._state = "unloaded",
             Kt._sounds = [],
             Kt = null,
@@ -24458,7 +24458,7 @@ function() {
                 this._emit("play", Kt._id),
                 Kt._seek = Kt._start || 0,
                 Kt._rateSeek = 0,
-                Kt._playStart = Gt.ctx.currentTime;
+                Kt._playStart = Xt.ctx.currentTime;
                 var Jt = 1e3 * (Kt._stop - Kt._start) / Math.abs(Kt._rate);
                 this._endTimers[Kt._id] = setTimeout(this._ended.bind(this, Kt), Jt)
             }
@@ -24468,7 +24468,7 @@ function() {
             Kt._rateSeek = 0,
             this._clearTimer(Kt._id),
             this._cleanBuffer(Kt._node),
-            Gt._autoSuspend()),
+            Xt._autoSuspend()),
             this._webAudio || Zt || this.stop(Kt._id),
             this
         },
@@ -24515,7 +24515,7 @@ function() {
             return [Kt]
         },
         _refreshBuffer: function(Kt) {
-            return Kt._node.bufferSource = Gt.ctx.createBufferSource(),
+            return Kt._node.bufferSource = Xt.ctx.createBufferSource(),
             Kt._node.bufferSource.buffer = Yt[this._src],
             Kt._panner ? Kt._node.bufferSource.connect(Kt._panner) : Kt._node.bufferSource.connect(Kt._node),
             Kt._node.bufferSource.loop = Kt._loop,
@@ -24551,25 +24551,25 @@ function() {
             this._paused = !0,
             this._ended = !0,
             this._sprite = "__default",
-            this._id = ++Gt._counter,
+            this._id = ++Xt._counter,
             Kt._sounds.push(this),
             this.create(),
             this
         },
         create: function() {
             var Kt = this._parent
-              , Qt = Gt._muted || this._muted || this._parent._muted ? 0 : this._volume;
-            return Kt._webAudio ? (this._node = void 0 === Gt.ctx.createGain ? Gt.ctx.createGainNode() : Gt.ctx.createGain(),
-            this._node.gain.setValueAtTime(Qt, Gt.ctx.currentTime),
+              , Qt = Xt._muted || this._muted || this._parent._muted ? 0 : this._volume;
+            return Kt._webAudio ? (this._node = void 0 === Xt.ctx.createGain ? Xt.ctx.createGainNode() : Xt.ctx.createGain(),
+            this._node.gain.setValueAtTime(Qt, Xt.ctx.currentTime),
             this._node.paused = !0,
-            this._node.connect(Gt.masterGain)) : (this._node = new Audio,
+            this._node.connect(Xt.masterGain)) : (this._node = new Audio,
             this._errorFn = this._errorListener.bind(this),
             this._node.addEventListener("error", this._errorFn, !1),
             this._loadFn = this._loadListener.bind(this),
-            this._node.addEventListener(Gt._canPlayEvent, this._loadFn, !1),
+            this._node.addEventListener(Xt._canPlayEvent, this._loadFn, !1),
             this._node.src = Kt._src,
             this._node.preload = "auto",
-            this._node.volume = Qt * Gt.volume(),
+            this._node.volume = Qt * Xt.volume(),
             this._node.load()),
             this
         },
@@ -24584,7 +24584,7 @@ function() {
             this._paused = !0,
             this._ended = !0,
             this._sprite = "__default",
-            this._id = ++Gt._counter,
+            this._id = ++Xt._counter,
             this
         },
         _errorListener: function() {
@@ -24600,7 +24600,7 @@ function() {
             "loaded" !== Kt._state && (Kt._state = "loaded",
             Kt._emit("load"),
             Kt._loadQueue()),
-            this._node.removeEventListener(Gt._canPlayEvent, this._loadFn, !1)
+            this._node.removeEventListener(Xt._canPlayEvent, this._loadFn, !1)
         }
     };
     var Yt = {}
@@ -24642,7 +24642,7 @@ function() {
         }
     }
       , zt = function(Kt, Qt) {
-        Gt.ctx.decodeAudioData(Kt, function(Zt) {
+        Xt.ctx.decodeAudioData(Kt, function(Zt) {
             Zt && 0 < Qt._sounds.length && (Yt[Qt._src] = Zt,
             Vt(Qt, Zt))
         }, function() {
@@ -24660,99 +24660,99 @@ function() {
     }
       , qt = function() {
         try {
-            "undefined" == typeof AudioContext ? "undefined" == typeof webkitAudioContext ? Gt.usingWebAudio = !1 : Gt.ctx = new webkitAudioContext : Gt.ctx = new AudioContext
+            "undefined" == typeof AudioContext ? "undefined" == typeof webkitAudioContext ? Xt.usingWebAudio = !1 : Xt.ctx = new webkitAudioContext : Xt.ctx = new AudioContext
         } catch ($t) {
-            Gt.usingWebAudio = !1
+            Xt.usingWebAudio = !1
         }
-        var Kt = /iP(hone|od|ad)/.test(Gt._navigator && Gt._navigator.platform)
-          , Qt = Gt._navigator && Gt._navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)
+        var Kt = /iP(hone|od|ad)/.test(Xt._navigator && Xt._navigator.platform)
+          , Qt = Xt._navigator && Xt._navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)
           , Zt = Qt ? parseInt(Qt[1], 10) : null;
         if (Kt && Zt && 9 > Zt) {
-            var Jt = /safari/.test(Gt._navigator && Gt._navigator.userAgent.toLowerCase());
-            (Gt._navigator && Gt._navigator.standalone && !Jt || Gt._navigator && !Gt._navigator.standalone && !Jt) && (Gt.usingWebAudio = !1)
+            var Jt = /safari/.test(Xt._navigator && Xt._navigator.userAgent.toLowerCase());
+            (Xt._navigator && Xt._navigator.standalone && !Jt || Xt._navigator && !Xt._navigator.standalone && !Jt) && (Xt.usingWebAudio = !1)
         }
-        Gt.usingWebAudio && (Gt.masterGain = void 0 === Gt.ctx.createGain ? Gt.ctx.createGainNode() : Gt.ctx.createGain(),
-        Gt.masterGain.gain.value = Gt._muted ? 0 : 1,
-        Gt.masterGain.connect(Gt.ctx.destination)),
-        Gt._setup()
+        Xt.usingWebAudio && (Xt.masterGain = void 0 === Xt.ctx.createGain ? Xt.ctx.createGainNode() : Xt.ctx.createGain(),
+        Xt.masterGain.gain.value = Xt._muted ? 0 : 1,
+        Xt.masterGain.connect(Xt.ctx.destination)),
+        Xt._setup()
     };
     "function" == typeof define && define.amd && define([], function() {
         return {
-            Howler: Gt,
-            Howl: Xt
+            Howler: Xt,
+            Howl: Gt
         }
     }),
-    "undefined" != typeof exports && (exports.Howler = Gt,
-    exports.Howl = Xt),
+    "undefined" != typeof exports && (exports.Howler = Xt,
+    exports.Howl = Gt),
     "undefined" == typeof window ? "undefined" != typeof global && (global.HowlerGlobal = Bt,
-    global.Howler = Gt,
-    global.Howl = Xt,
+    global.Howler = Xt,
+    global.Howl = Gt,
     global.Sound = Ht) : (window.HowlerGlobal = Bt,
-    window.Howler = Gt,
-    window.Howl = Xt,
+    window.Howler = Xt,
+    window.Howl = Gt,
     window.Sound = Ht)
 }(),
 function() {
     HowlerGlobal.prototype._pos = [0, 0, 0],
     HowlerGlobal.prototype._orientation = [0, 0, -1, 0, 1, 0],
-    HowlerGlobal.prototype.stereo = function(Gt) {
+    HowlerGlobal.prototype.stereo = function(Xt) {
         if (!this.ctx || !this.ctx.listener)
             return this;
-        for (var Xt = this._howls.length - 1; 0 <= Xt; Xt--)
-            this._howls[Xt].stereo(Gt);
+        for (var Gt = this._howls.length - 1; 0 <= Gt; Gt--)
+            this._howls[Gt].stereo(Xt);
         return this
     }
     ,
-    HowlerGlobal.prototype.pos = function(Gt, Xt, Ht) {
-        return this.ctx && this.ctx.listener ? (Xt = "number" == typeof Xt ? Xt : this._pos[1],
+    HowlerGlobal.prototype.pos = function(Xt, Gt, Ht) {
+        return this.ctx && this.ctx.listener ? (Gt = "number" == typeof Gt ? Gt : this._pos[1],
         Ht = "number" == typeof Ht ? Ht : this._pos[2],
-        "number" == typeof Gt ? (this._pos = [Gt, Xt, Ht],
+        "number" == typeof Xt ? (this._pos = [Xt, Gt, Ht],
         this.ctx.listener.setPosition(this._pos[0], this._pos[1], this._pos[2]),
         this) : this._pos) : this
     }
     ,
-    HowlerGlobal.prototype.orientation = function(Gt, Xt, Ht, Yt, jt, Wt) {
+    HowlerGlobal.prototype.orientation = function(Xt, Gt, Ht, Yt, jt, Wt) {
         if (!this.ctx || !this.ctx.listener)
             return this;
         var zt = this._orientation;
-        return Xt = "number" == typeof Xt ? Xt : zt[1],
+        return Gt = "number" == typeof Gt ? Gt : zt[1],
         Ht = "number" == typeof Ht ? Ht : zt[2],
         Yt = "number" == typeof Yt ? Yt : zt[3],
         jt = "number" == typeof jt ? jt : zt[4],
         Wt = "number" == typeof Wt ? Wt : zt[5],
-        "number" == typeof Gt ? (this._orientation = [Gt, Xt, Ht, Yt, jt, Wt],
-        this.ctx.listener.setOrientation(Gt, Xt, Ht, Yt, jt, Wt),
+        "number" == typeof Xt ? (this._orientation = [Xt, Gt, Ht, Yt, jt, Wt],
+        this.ctx.listener.setOrientation(Xt, Gt, Ht, Yt, jt, Wt),
         this) : zt
     }
     ,
-    Howl.prototype.init = function(Gt) {
-        return function(Xt) {
-            return this._orientation = Xt.orientation || [1, 0, 0],
-            this._stereo = Xt.stereo || null,
-            this._pos = Xt.pos || null,
+    Howl.prototype.init = function(Xt) {
+        return function(Gt) {
+            return this._orientation = Gt.orientation || [1, 0, 0],
+            this._stereo = Gt.stereo || null,
+            this._pos = Gt.pos || null,
             this._pannerAttr = {
-                coneInnerAngle: void 0 === Xt.coneInnerAngle ? 360 : Xt.coneInnerAngle,
-                coneOuterAngle: void 0 === Xt.coneOuterAngle ? 360 : Xt.coneOuterAngle,
-                coneOuterGain: void 0 === Xt.coneOuterGain ? 0 : Xt.coneOuterGain,
-                distanceModel: void 0 === Xt.distanceModel ? "inverse" : Xt.distanceModel,
-                maxDistance: void 0 === Xt.maxDistance ? 1e4 : Xt.maxDistance,
-                panningModel: void 0 === Xt.panningModel ? "HRTF" : Xt.panningModel,
-                refDistance: void 0 === Xt.refDistance ? 1 : Xt.refDistance,
-                rolloffFactor: void 0 === Xt.rolloffFactor ? 1 : Xt.rolloffFactor
+                coneInnerAngle: void 0 === Gt.coneInnerAngle ? 360 : Gt.coneInnerAngle,
+                coneOuterAngle: void 0 === Gt.coneOuterAngle ? 360 : Gt.coneOuterAngle,
+                coneOuterGain: void 0 === Gt.coneOuterGain ? 0 : Gt.coneOuterGain,
+                distanceModel: void 0 === Gt.distanceModel ? "inverse" : Gt.distanceModel,
+                maxDistance: void 0 === Gt.maxDistance ? 1e4 : Gt.maxDistance,
+                panningModel: void 0 === Gt.panningModel ? "HRTF" : Gt.panningModel,
+                refDistance: void 0 === Gt.refDistance ? 1 : Gt.refDistance,
+                rolloffFactor: void 0 === Gt.rolloffFactor ? 1 : Gt.rolloffFactor
             },
-            this._onstereo = Xt.onstereo ? [{
-                fn: Xt.onstereo
+            this._onstereo = Gt.onstereo ? [{
+                fn: Gt.onstereo
             }] : [],
-            this._onpos = Xt.onpos ? [{
-                fn: Xt.onpos
+            this._onpos = Gt.onpos ? [{
+                fn: Gt.onpos
             }] : [],
-            this._onorientation = Xt.onorientation ? [{
-                fn: Xt.onorientation
+            this._onorientation = Gt.onorientation ? [{
+                fn: Gt.onorientation
             }] : [],
-            Gt.call(this, Xt)
+            Xt.call(this, Gt)
         }
     }(Howl.prototype.init),
-    Howl.prototype.stereo = function(Gt, Xt) {
+    Howl.prototype.stereo = function(Xt, Gt) {
         var Ht = this;
         if (!Ht._webAudio)
             return Ht;
@@ -24760,33 +24760,33 @@ function() {
             return Ht._queue.push({
                 event: "stereo",
                 action: function() {
-                    Ht.stereo(Gt, Xt)
+                    Ht.stereo(Xt, Gt)
                 }
             }),
             Ht;
         var Yt = void 0 === Howler.ctx.createStereoPanner ? "spatial" : "stereo";
-        if (void 0 === Xt) {
-            if ("number" != typeof Gt)
+        if (void 0 === Gt) {
+            if ("number" != typeof Xt)
                 return Ht._stereo;
-            Ht._stereo = Gt,
-            Ht._pos = [Gt, 0, 0]
+            Ht._stereo = Xt,
+            Ht._pos = [Xt, 0, 0]
         }
-        for (var jt = Ht._getSoundIds(Xt), Wt = 0, zt; Wt < jt.length; Wt++)
+        for (var jt = Ht._getSoundIds(Gt), Wt = 0, zt; Wt < jt.length; Wt++)
             if (zt = Ht._soundById(jt[Wt]),
             zt) {
-                if ("number" != typeof Gt)
+                if ("number" != typeof Xt)
                     return zt._stereo;
-                zt._stereo = Gt,
-                zt._pos = [Gt, 0, 0],
+                zt._stereo = Xt,
+                zt._pos = [Xt, 0, 0],
                 zt._node && (zt._pannerAttr.panningModel = "equalpower",
                 zt._panner && zt._panner.pan || Bt(zt, Yt),
-                "spatial" == Yt ? zt._panner.setPosition(Gt, 0, Math.abs(1 - Gt)) : zt._panner.pan.value = Gt),
+                "spatial" == Yt ? zt._panner.setPosition(Xt, 0, Math.abs(1 - Xt)) : zt._panner.pan.value = Xt),
                 Ht._emit("stereo", zt._id)
             }
         return Ht
     }
     ,
-    Howl.prototype.pos = function(Gt, Xt, Ht, Yt) {
+    Howl.prototype.pos = function(Xt, Gt, Ht, Yt) {
         var jt = this;
         if (!jt._webAudio)
             return jt;
@@ -24794,31 +24794,31 @@ function() {
             return jt._queue.push({
                 event: "pos",
                 action: function() {
-                    jt.pos(Gt, Xt, Ht, Yt)
+                    jt.pos(Xt, Gt, Ht, Yt)
                 }
             }),
             jt;
-        if (Xt = "number" == typeof Xt ? Xt : 0,
+        if (Gt = "number" == typeof Gt ? Gt : 0,
         Ht = "number" == typeof Ht ? Ht : -.5,
         void 0 === Yt) {
-            if ("number" != typeof Gt)
+            if ("number" != typeof Xt)
                 return jt._pos;
-            jt._pos = [Gt, Xt, Ht]
+            jt._pos = [Xt, Gt, Ht]
         }
         for (var Wt = jt._getSoundIds(Yt), zt = 0, Vt; zt < Wt.length; zt++)
             if (Vt = jt._soundById(Wt[zt]),
             Vt) {
-                if ("number" != typeof Gt)
+                if ("number" != typeof Xt)
                     return Vt._pos;
-                Vt._pos = [Gt, Xt, Ht],
+                Vt._pos = [Xt, Gt, Ht],
                 Vt._node && (Vt._panner && !Vt._panner.pan || Bt(Vt, "spatial"),
-                Vt._panner.setPosition(Gt, Xt, Ht)),
+                Vt._panner.setPosition(Xt, Gt, Ht)),
                 jt._emit("pos", Vt._id)
             }
         return jt
     }
     ,
-    Howl.prototype.orientation = function(Gt, Xt, Ht, Yt) {
+    Howl.prototype.orientation = function(Xt, Gt, Ht, Yt) {
         var jt = this;
         if (!jt._webAudio)
             return jt;
@@ -24826,33 +24826,33 @@ function() {
             return jt._queue.push({
                 event: "orientation",
                 action: function() {
-                    jt.orientation(Gt, Xt, Ht, Yt)
+                    jt.orientation(Xt, Gt, Ht, Yt)
                 }
             }),
             jt;
-        if (Xt = "number" == typeof Xt ? Xt : jt._orientation[1],
+        if (Gt = "number" == typeof Gt ? Gt : jt._orientation[1],
         Ht = "number" == typeof Ht ? Ht : jt._orientation[2],
         void 0 === Yt) {
-            if ("number" != typeof Gt)
+            if ("number" != typeof Xt)
                 return jt._orientation;
-            jt._orientation = [Gt, Xt, Ht]
+            jt._orientation = [Xt, Gt, Ht]
         }
         for (var Wt = jt._getSoundIds(Yt), zt = 0, Vt; zt < Wt.length; zt++)
             if (Vt = jt._soundById(Wt[zt]),
             Vt) {
-                if ("number" != typeof Gt)
+                if ("number" != typeof Xt)
                     return Vt._orientation;
-                Vt._orientation = [Gt, Xt, Ht],
+                Vt._orientation = [Xt, Gt, Ht],
                 Vt._node && (Vt._panner || (Vt._pos || (Vt._pos = jt._pos || [0, 0, -0.5]),
                 Bt(Vt, "spatial")),
-                Vt._panner.setOrientation(Gt, Xt, Ht)),
+                Vt._panner.setOrientation(Xt, Gt, Ht)),
                 jt._emit("orientation", Vt._id)
             }
         return jt
     }
     ,
     Howl.prototype.pannerAttr = function() {
-        var Yt = arguments, Gt, Xt, Ht;
+        var Yt = arguments, Xt, Gt, Ht;
         if (!this._webAudio)
             return this;
         if (0 === Yt.length)
@@ -24860,42 +24860,42 @@ function() {
         if (1 === Yt.length) {
             if ("object" != typeof Yt[0])
                 return (Ht = this._soundById(parseInt(Yt[0], 10))) ? Ht._pannerAttr : this._pannerAttr;
-            Gt = Yt[0],
-            void 0 == Xt && (Gt.pannerAttr || (Gt.pannerAttr = {
-                coneInnerAngle: Gt.coneInnerAngle,
-                coneOuterAngle: Gt.coneOuterAngle,
-                coneOuterGain: Gt.coneOuterGain,
-                distanceModel: Gt.distanceModel,
-                maxDistance: Gt.maxDistance,
-                refDistance: Gt.refDistance,
-                rolloffFactor: Gt.rolloffFactor,
-                panningModel: Gt.panningModel
+            Xt = Yt[0],
+            void 0 == Gt && (Xt.pannerAttr || (Xt.pannerAttr = {
+                coneInnerAngle: Xt.coneInnerAngle,
+                coneOuterAngle: Xt.coneOuterAngle,
+                coneOuterGain: Xt.coneOuterGain,
+                distanceModel: Xt.distanceModel,
+                maxDistance: Xt.maxDistance,
+                refDistance: Xt.refDistance,
+                rolloffFactor: Xt.rolloffFactor,
+                panningModel: Xt.panningModel
             }),
             this._pannerAttr = {
-                coneInnerAngle: void 0 === Gt.pannerAttr.coneInnerAngle ? this._coneInnerAngle : Gt.pannerAttr.coneInnerAngle,
-                coneOuterAngle: void 0 === Gt.pannerAttr.coneOuterAngle ? this._coneOuterAngle : Gt.pannerAttr.coneOuterAngle,
-                coneOuterGain: void 0 === Gt.pannerAttr.coneOuterGain ? this._coneOuterGain : Gt.pannerAttr.coneOuterGain,
-                distanceModel: void 0 === Gt.pannerAttr.distanceModel ? this._distanceModel : Gt.pannerAttr.distanceModel,
-                maxDistance: void 0 === Gt.pannerAttr.maxDistance ? this._maxDistance : Gt.pannerAttr.maxDistance,
-                refDistance: void 0 === Gt.pannerAttr.refDistance ? this._refDistance : Gt.pannerAttr.refDistance,
-                rolloffFactor: void 0 === Gt.pannerAttr.rolloffFactor ? this._rolloffFactor : Gt.pannerAttr.rolloffFactor,
-                panningModel: void 0 === Gt.pannerAttr.panningModel ? this._panningModel : Gt.pannerAttr.panningModel
+                coneInnerAngle: void 0 === Xt.pannerAttr.coneInnerAngle ? this._coneInnerAngle : Xt.pannerAttr.coneInnerAngle,
+                coneOuterAngle: void 0 === Xt.pannerAttr.coneOuterAngle ? this._coneOuterAngle : Xt.pannerAttr.coneOuterAngle,
+                coneOuterGain: void 0 === Xt.pannerAttr.coneOuterGain ? this._coneOuterGain : Xt.pannerAttr.coneOuterGain,
+                distanceModel: void 0 === Xt.pannerAttr.distanceModel ? this._distanceModel : Xt.pannerAttr.distanceModel,
+                maxDistance: void 0 === Xt.pannerAttr.maxDistance ? this._maxDistance : Xt.pannerAttr.maxDistance,
+                refDistance: void 0 === Xt.pannerAttr.refDistance ? this._refDistance : Xt.pannerAttr.refDistance,
+                rolloffFactor: void 0 === Xt.pannerAttr.rolloffFactor ? this._rolloffFactor : Xt.pannerAttr.rolloffFactor,
+                panningModel: void 0 === Xt.pannerAttr.panningModel ? this._panningModel : Xt.pannerAttr.panningModel
             })
         } else
-            2 === Yt.length && (Gt = Yt[0],
-            Xt = parseInt(Yt[1], 10));
-        for (var jt = this._getSoundIds(Xt), Wt = 0; Wt < jt.length; Wt++)
+            2 === Yt.length && (Xt = Yt[0],
+            Gt = parseInt(Yt[1], 10));
+        for (var jt = this._getSoundIds(Gt), Wt = 0; Wt < jt.length; Wt++)
             if (Ht = this._soundById(jt[Wt])) {
                 var zt = Ht._pannerAttr;
                 zt = {
-                    coneInnerAngle: void 0 === Gt.coneInnerAngle ? zt.coneInnerAngle : Gt.coneInnerAngle,
-                    coneOuterAngle: void 0 === Gt.coneOuterAngle ? zt.coneOuterAngle : Gt.coneOuterAngle,
-                    coneOuterGain: void 0 === Gt.coneOuterGain ? zt.coneOuterGain : Gt.coneOuterGain,
-                    distanceModel: void 0 === Gt.distanceModel ? zt.distanceModel : Gt.distanceModel,
-                    maxDistance: void 0 === Gt.maxDistance ? zt.maxDistance : Gt.maxDistance,
-                    refDistance: void 0 === Gt.refDistance ? zt.refDistance : Gt.refDistance,
-                    rolloffFactor: void 0 === Gt.rolloffFactor ? zt.rolloffFactor : Gt.rolloffFactor,
-                    panningModel: void 0 === Gt.panningModel ? zt.panningModel : Gt.panningModel
+                    coneInnerAngle: void 0 === Xt.coneInnerAngle ? zt.coneInnerAngle : Xt.coneInnerAngle,
+                    coneOuterAngle: void 0 === Xt.coneOuterAngle ? zt.coneOuterAngle : Xt.coneOuterAngle,
+                    coneOuterGain: void 0 === Xt.coneOuterGain ? zt.coneOuterGain : Xt.coneOuterGain,
+                    distanceModel: void 0 === Xt.distanceModel ? zt.distanceModel : Xt.distanceModel,
+                    maxDistance: void 0 === Xt.maxDistance ? zt.maxDistance : Xt.maxDistance,
+                    refDistance: void 0 === Xt.refDistance ? zt.refDistance : Xt.refDistance,
+                    rolloffFactor: void 0 === Xt.rolloffFactor ? zt.rolloffFactor : Xt.rolloffFactor,
+                    panningModel: void 0 === Xt.panningModel ? zt.panningModel : Xt.panningModel
                 };
                 var Vt = Ht._panner;
                 Vt ? (Vt.coneInnerAngle = zt.coneInnerAngle,
@@ -24911,47 +24911,47 @@ function() {
         return this
     }
     ,
-    Sound.prototype.init = function(Gt) {
+    Sound.prototype.init = function(Xt) {
         return function() {
-            var Xt = this._parent;
-            this._orientation = Xt._orientation,
-            this._stereo = Xt._stereo,
-            this._pos = Xt._pos,
-            this._pannerAttr = Xt._pannerAttr,
-            Gt.call(this),
-            this._stereo ? Xt.stereo(this._stereo) : this._pos && Xt.pos(this._pos[0], this._pos[1], this._pos[2], this._id)
+            var Gt = this._parent;
+            this._orientation = Gt._orientation,
+            this._stereo = Gt._stereo,
+            this._pos = Gt._pos,
+            this._pannerAttr = Gt._pannerAttr,
+            Xt.call(this),
+            this._stereo ? Gt.stereo(this._stereo) : this._pos && Gt.pos(this._pos[0], this._pos[1], this._pos[2], this._id)
         }
     }(Sound.prototype.init),
-    Sound.prototype.reset = function(Gt) {
+    Sound.prototype.reset = function(Xt) {
         return function() {
-            var Xt = this._parent;
-            return this._orientation = Xt._orientation,
-            this._pos = Xt._pos,
-            this._pannerAttr = Xt._pannerAttr,
-            Gt.call(this)
+            var Gt = this._parent;
+            return this._orientation = Gt._orientation,
+            this._pos = Gt._pos,
+            this._pannerAttr = Gt._pannerAttr,
+            Xt.call(this)
         }
     }(Sound.prototype.reset);
-    var Bt = function(Gt, Xt) {
-        "spatial" === (Xt = Xt || "spatial") ? (Gt._panner = Howler.ctx.createPanner(),
-        Gt._panner.coneInnerAngle = Gt._pannerAttr.coneInnerAngle,
-        Gt._panner.coneOuterAngle = Gt._pannerAttr.coneOuterAngle,
-        Gt._panner.coneOuterGain = Gt._pannerAttr.coneOuterGain,
-        Gt._panner.distanceModel = Gt._pannerAttr.distanceModel,
-        Gt._panner.maxDistance = Gt._pannerAttr.maxDistance,
-        Gt._panner.refDistance = Gt._pannerAttr.refDistance,
-        Gt._panner.rolloffFactor = Gt._pannerAttr.rolloffFactor,
-        Gt._panner.panningModel = Gt._pannerAttr.panningModel,
-        Gt._panner.setOrientation(Gt._orientation[0], Gt._orientation[1], Gt._orientation[2])) : (Gt._panner = Howler.ctx.createStereoPanner(),
-        Gt._panner.pan.value = Gt._stereo),
-        Gt._panner.connect(Gt._node),
-        Gt._paused || Gt._parent.pause(Gt._id, !0).play(Gt._id)
+    var Bt = function(Xt, Gt) {
+        "spatial" === (Gt = Gt || "spatial") ? (Xt._panner = Howler.ctx.createPanner(),
+        Xt._panner.coneInnerAngle = Xt._pannerAttr.coneInnerAngle,
+        Xt._panner.coneOuterAngle = Xt._pannerAttr.coneOuterAngle,
+        Xt._panner.coneOuterGain = Xt._pannerAttr.coneOuterGain,
+        Xt._panner.distanceModel = Xt._pannerAttr.distanceModel,
+        Xt._panner.maxDistance = Xt._pannerAttr.maxDistance,
+        Xt._panner.refDistance = Xt._pannerAttr.refDistance,
+        Xt._panner.rolloffFactor = Xt._pannerAttr.rolloffFactor,
+        Xt._panner.panningModel = Xt._pannerAttr.panningModel,
+        Xt._panner.setOrientation(Xt._orientation[0], Xt._orientation[1], Xt._orientation[2])) : (Xt._panner = Howler.ctx.createStereoPanner(),
+        Xt._panner.pan.value = Xt._stereo),
+        Xt._panner.connect(Xt._node),
+        Xt._paused || Xt._parent.pause(Xt._id, !0).play(Xt._id)
     }
 }(),
 function(Bt) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = Bt() : "function" == typeof define && define.amd ? define([], Bt) : ("undefined" == typeof window ? "undefined" == typeof global ? "undefined" == typeof self ? this : self : global : window).nipplejs = Bt()
 }(function() {
     function Bt() {}
-    function Gt(Zt, Jt) {
+    function Xt(Zt, Jt) {
         return this.identifier = Jt.identifier,
         this.position = Jt.position,
         this.frontPosition = Jt.frontPosition,
@@ -24968,8 +24968,8 @@ function(Bt) {
         },
         this.config(Jt),
         "dynamic" === this.options.mode && (this.options.restOpacity = 0),
-        this.id = Gt.id,
-        Gt.id += 1,
+        this.id = Xt.id,
+        Xt.id += 1,
         this.buildEl().stylize(),
         this.instance = {
             el: this.ui.el,
@@ -24992,15 +24992,15 @@ function(Bt) {
         },
         this.instance
     }
-    function Xt(Zt, Jt) {
+    function Gt(Zt, Jt) {
         return this.nipples = [],
         this.idles = [],
         this.actives = [],
         this.ids = [],
         this.pressureIntervals = {},
         this.manager = Zt,
-        this.id = Xt.id,
-        Xt.id += 1,
+        this.id = Gt.id,
+        Gt.id += 1,
         this.defaults = {
             zone: document.body,
             multitouch: !1,
@@ -25241,10 +25241,10 @@ function(Bt) {
         this
     }
     ,
-    Gt.prototype = new Bt,
-    Gt.constructor = Gt,
-    Gt.id = 0,
-    Gt.prototype.buildEl = function() {
+    Xt.prototype = new Bt,
+    Xt.constructor = Xt,
+    Xt.id = 0,
+    Xt.prototype.buildEl = function() {
         return this.ui = {},
         this.options.dataOnly ? this : (this.ui.el = document.createElement("div"),
         this.ui.back = document.createElement("div"),
@@ -25258,7 +25258,7 @@ function(Bt) {
         this)
     }
     ,
-    Gt.prototype.stylize = function() {
+    Xt.prototype.stylize = function() {
         if (this.options.dataOnly)
             return this;
         var Zt = this.options.fadeTime + "ms"
@@ -25298,7 +25298,7 @@ function(Bt) {
         this
     }
     ,
-    Gt.prototype.applyStyles = function(Zt) {
+    Xt.prototype.applyStyles = function(Zt) {
         for (var Jt in this.ui)
             if (this.ui.hasOwnProperty(Jt))
                 for (var $t in Zt[Jt])
@@ -25306,17 +25306,17 @@ function(Bt) {
         return this
     }
     ,
-    Gt.prototype.addToDom = function() {
+    Xt.prototype.addToDom = function() {
         return this.options.dataOnly || document.body.contains(this.ui.el) ? this : (this.options.zone.appendChild(this.ui.el),
         this)
     }
     ,
-    Gt.prototype.removeFromDom = function() {
+    Xt.prototype.removeFromDom = function() {
         return this.options.dataOnly || !document.body.contains(this.ui.el) ? this : (this.options.zone.removeChild(this.ui.el),
         this)
     }
     ,
-    Gt.prototype.destroy = function() {
+    Xt.prototype.destroy = function() {
         clearTimeout(this.removeTimeout),
         clearTimeout(this.showTimeout),
         clearTimeout(this.restTimeout),
@@ -25325,7 +25325,7 @@ function(Bt) {
         this.off()
     }
     ,
-    Gt.prototype.show = function(Zt) {
+    Xt.prototype.show = function(Zt) {
         var Jt = this;
         return Jt.options.dataOnly ? Jt : (clearTimeout(Jt.removeTimeout),
         clearTimeout(Jt.showTimeout),
@@ -25342,7 +25342,7 @@ function(Bt) {
         Jt)
     }
     ,
-    Gt.prototype.hide = function(Zt) {
+    Xt.prototype.hide = function(Zt) {
         var Jt = this;
         return Jt.options.dataOnly ? Jt : (Jt.ui.el.style.opacity = Jt.options.restOpacity,
         clearTimeout(Jt.removeTimeout),
@@ -25358,7 +25358,7 @@ function(Bt) {
         Jt)
     }
     ,
-    Gt.prototype.restPosition = function(Zt) {
+    Xt.prototype.restPosition = function(Zt) {
         var Jt = this;
         Jt.frontPosition = {
             x: 0,
@@ -25382,14 +25382,14 @@ function(Bt) {
         }, Jt.options.fadeTime)
     }
     ,
-    Gt.prototype.restCallback = function() {
+    Xt.prototype.restCallback = function() {
         var Zt = {};
         Zt.front = Kt.getTransitionStyle("transition", "none", ""),
         this.applyStyles(Zt),
         this.trigger("rested", this.instance)
     }
     ,
-    Gt.prototype.resetDirection = function() {
+    Xt.prototype.resetDirection = function() {
         this.direction = {
             x: !1,
             y: !1,
@@ -25397,7 +25397,7 @@ function(Bt) {
         }
     }
     ,
-    Gt.prototype.computeDirection = function(Zt) {
+    Xt.prototype.computeDirection = function(Zt) {
         var tn = Zt.angle.radian, nn = Math.PI / 4, rn = Math.PI / 2, Jt, $t, en;
         if (Jt = tn > nn && tn < 3 * nn ? "up" : tn > -nn && tn <= nn ? "left" : tn > 3 * -nn && tn <= -nn ? "down" : "right",
         $t = tn > -rn && tn < rn ? "left" : "right",
@@ -25425,10 +25425,10 @@ function(Bt) {
         return Zt
     }
     ,
-    Xt.prototype = new Bt,
-    Xt.constructor = Xt,
-    Xt.id = 0,
-    Xt.prototype.prepareNipples = function() {
+    Gt.prototype = new Bt,
+    Gt.constructor = Gt,
+    Gt.id = 0,
+    Gt.prototype.prepareNipples = function() {
         var Zt = this.nipples;
         Zt.on = this.on.bind(this),
         Zt.off = this.off.bind(this),
@@ -25448,13 +25448,13 @@ function(Bt) {
         }
     }
     ,
-    Xt.prototype.bindings = function() {
+    Gt.prototype.bindings = function() {
         this.bindEvt(this.options.zone, "start"),
         this.options.zone.style.touchAction = "none",
         this.options.zone.style.msTouchAction = "none"
     }
     ,
-    Xt.prototype.begin = function() {
+    Gt.prototype.begin = function() {
         var Zt = this.options;
         if ("static" === Zt.mode) {
             var Jt = this.createNipple(Zt.position, this.manager.getIdentifier());
@@ -25463,7 +25463,7 @@ function(Bt) {
         }
     }
     ,
-    Xt.prototype.createNipple = function(Zt, Jt) {
+    Gt.prototype.createNipple = function(Zt, Jt) {
         var $t = Kt.getScroll()
           , en = {}
           , tn = this.options;
@@ -25489,7 +25489,7 @@ function(Bt) {
                 y: rn.top + $t.y
             }
         }
-        var an = new Gt(this,{
+        var an = new Xt(this,{
             color: tn.color,
             size: tn.size,
             threshold: tn.threshold,
@@ -25514,11 +25514,11 @@ function(Bt) {
         an
     }
     ,
-    Xt.prototype.updateBox = function() {
+    Gt.prototype.updateBox = function() {
         this.box = this.options.zone.getBoundingClientRect()
     }
     ,
-    Xt.prototype.bindNipple = function(Zt) {
+    Gt.prototype.bindNipple = function(Zt) {
         var $t = this, en = function(tn, nn) {
             Jt = tn.type + " " + nn.id + ":" + tn.type,
             $t.trigger(Jt, nn)
@@ -25529,7 +25529,7 @@ function(Bt) {
         Zt.on("plain:up plain:right plain:down plain:left", en)
     }
     ,
-    Xt.prototype.pressureFn = function(Zt, Jt, $t) {
+    Gt.prototype.pressureFn = function(Zt, Jt, $t) {
         var en = this
           , tn = 0;
         clearInterval(en.pressureIntervals[$t]),
@@ -25542,7 +25542,7 @@ function(Bt) {
         .bind(en), 100)
     }
     ,
-    Xt.prototype.onstart = function(Zt) {
+    Gt.prototype.onstart = function(Zt) {
         var Jt = this
           , $t = Jt.options;
         return Zt = Kt.prepareEvent(Zt),
@@ -25554,7 +25554,7 @@ function(Bt) {
         !1)
     }
     ,
-    Xt.prototype.processOnStart = function(Zt) {
+    Gt.prototype.processOnStart = function(Zt) {
         var $t = this, en = $t.options, tn = $t.manager.getIdentifier(Zt), nn = Zt.force || Zt.pressure || Zt.webkitForce || 0, rn = {
             x: Zt.pageX,
             y: Zt.pageY
@@ -25581,14 +25581,14 @@ function(Bt) {
         return an
     }
     ,
-    Xt.prototype.getOrCreate = function(Zt, Jt) {
+    Gt.prototype.getOrCreate = function(Zt, Jt) {
         var en = this.options, $t;
         return /(semi|static)/.test(en.mode) ? ($t = this.idles[0]) ? (this.idles.splice(0, 1),
         $t) : "semi" === en.mode ? this.createNipple(Jt, Zt) : (console.warn("Coudln't find the needed nipple."),
         !1) : $t = this.createNipple(Jt, Zt)
     }
     ,
-    Xt.prototype.processOnMove = function(Zt) {
+    Gt.prototype.processOnMove = function(Zt) {
         var Jt = this.options
           , $t = this.manager.getIdentifier(Zt)
           , en = this.nipples.get($t);
@@ -25632,7 +25632,7 @@ function(Bt) {
         this.trigger("move " + en.id + ":move", dn)
     }
     ,
-    Xt.prototype.processOnEnd = function(Zt) {
+    Gt.prototype.processOnEnd = function(Zt) {
         var Jt = this
           , $t = Jt.options
           , en = Jt.manager.getIdentifier(Zt)
@@ -25655,7 +25655,7 @@ function(Bt) {
         /(semi|static)/.test($t.mode) && (Jt.manager.ids[nn.id] = nn.identifier))
     }
     ,
-    Xt.prototype.onDestroyed = function(Zt, Jt) {
+    Gt.prototype.onDestroyed = function(Zt, Jt) {
         0 <= this.nipples.indexOf(Jt) && this.nipples.splice(this.nipples.indexOf(Jt), 1),
         0 <= this.actives.indexOf(Jt) && this.actives.splice(this.actives.indexOf(Jt), 1),
         0 <= this.idles.indexOf(Jt) && this.idles.splice(this.idles.indexOf(Jt), 1),
@@ -25664,7 +25664,7 @@ function(Bt) {
         this.manager.unbindDocument()
     }
     ,
-    Xt.prototype.destroy = function() {
+    Gt.prototype.destroy = function() {
         for (var Zt in this.unbindEvt(this.options.zone, "start"),
         this.nipples.forEach(function(Jt) {
             Jt.destroy()
@@ -25698,7 +25698,7 @@ function(Bt) {
     }
     ,
     Ht.prototype.createCollection = function(Zt) {
-        var Jt = new Xt(this,Zt);
+        var Jt = new Gt(this,Zt);
         return this.bindCollection(Jt),
         this.collections.push(Jt),
         Jt
@@ -25970,8 +25970,8 @@ function() {
     window.UI = {},
     window.Games = {},
     window.Sound = {};
-    var Bt = function(Xt, Ht) {
-        Tools.updateTime(Xt),
+    var Bt = function(Gt, Ht) {
+        Tools.updateTime(Gt),
         Tools.debugStartFrame(),
         game.state == Network.STATE.PLAYING ? (Input.update(),
         Network.detectConnectivity(),
@@ -25984,9 +25984,9 @@ function() {
         Ht || Graphics.render(),
         Tools.debugEndFrame()
     }
-      , Gt = function() {
-        var Xt = performance.now() - game.time;
-        450 < Xt && !game.focus && Bt(Xt / 16.666, !0)
+      , Xt = function() {
+        var Gt = performance.now() - game.time;
+        450 < Gt && !game.focus && Bt(Gt / 16.666, !0)
     };
     $(function() {
         game.state = Network.STATE.LOGIN,
@@ -26001,16 +26001,16 @@ function() {
         Input.setup(),
         Games.setup(),
         Sound.setup();
-        var Xt = new PIXI.ticker.Ticker;
-        Xt.add(Bt),
-        Xt.start(),
-        setInterval(Gt, 500)
+        var Gt = new PIXI.ticker.Ticker;
+        Gt.add(Bt),
+        Gt.start(),
+        setInterval(Xt, 500)
     })
 }();
 class Vector {
-    constructor(Bt, Gt) {
+    constructor(Bt, Xt) {
         this.x = Bt,
-        this.y = Gt
+        this.y = Xt
     }
     add(Bt) {
         this.x += Bt,
@@ -26055,17 +26055,17 @@ class Vector {
     static diag(Bt) {
         return new Vector(Bt,Bt)
     }
-    static create(Bt, Gt) {
-        return new Vector(Math.sin(Bt) * Gt,-Math.cos(Bt) * Gt)
+    static create(Bt, Xt) {
+        return new Vector(Math.sin(Bt) * Xt,-Math.cos(Bt) * Xt)
     }
-    static createOff(Bt, Gt, Xt) {
-        return new Vector(Bt.x + Math.sin(Gt) * Xt,Bt.y - Math.cos(Gt) * Xt)
+    static createOff(Bt, Xt, Gt) {
+        return new Vector(Bt.x + Math.sin(Xt) * Gt,Bt.y - Math.cos(Xt) * Gt)
     }
 }
 !function() {
     var Bt = {}
-      , Gt = 0
-      , Xt = {
+      , Xt = 0
+      , Gt = {
         started: !1,
         startX: 200,
         startY: -2450,
@@ -26075,9 +26075,9 @@ class Vector {
         direction: 1
     };
     Tools.updateReel = function() {
-        if (!Xt.started) {
+        if (!Gt.started) {
             window.mainMenuTeam = Tools.randInt(1, 2),
-            Xt.pos = Vector.zero();
+            Gt.pos = Vector.zero();
             for (var Qt = Tools.rand(0, 1), Jt = [3, 1, 2, 4, 5], $t = [-270, -150, 0, 150, 270], en = 0, Zt; en < Jt.length; en++)
                 Players.add({
                     id: en + 1,
@@ -26094,25 +26094,25 @@ class Vector {
                 (Zt = Players.get(en + 1)).keystate.UP = !0,
                 Zt._offset = $t[en]
         }
-        Xt.started = !0,
-        2e3 < Xt.dist ? Xt.direction = -1 : 100 > Xt.dist && (Xt.direction = 1),
-        Xt.dist += .5 * Xt.direction * game.timeFactor,
-        Xt.pan += 1 / Xt.dist * game.timeFactor,
-        Xt.pos.x = Xt.startX + Math.sin(Xt.pan) * Xt.dist,
-        Xt.pos.y = Xt.startY - Math.cos(Xt.pan) * Xt.dist,
-        Graphics.setCamera(Xt.pos.x, Xt.pos.y),
+        Gt.started = !0,
+        2e3 < Gt.dist ? Gt.direction = -1 : 100 > Gt.dist && (Gt.direction = 1),
+        Gt.dist += .5 * Gt.direction * game.timeFactor,
+        Gt.pan += 1 / Gt.dist * game.timeFactor,
+        Gt.pos.x = Gt.startX + Math.sin(Gt.pan) * Gt.dist,
+        Gt.pos.y = Gt.startY - Math.cos(Gt.pan) * Gt.dist,
+        Graphics.setCamera(Gt.pos.x, Gt.pos.y),
         Players.update(),
         Particles.update();
         for (var nn = 1, tn; 5 >= nn; nn++)
-            (tn = Players.get(nn)).pos.x = Xt.pos.x + tn._offset,
-            tn.pos.y = Xt.pos.y + .24 * (game.screenY / game.scale),
+            (tn = Players.get(nn)).pos.x = Gt.pos.x + tn._offset,
+            tn.pos.y = Gt.pos.y + .24 * (game.screenY / game.scale),
             null == tn._prevPos ? tn._prevPos = tn.pos.clone() : tn.rot = new Vector(tn.pos.x - tn._prevPos.x,tn.pos.y - tn._prevPos.y).angle() + Math.PI,
             tn._prevPos = new Vector((19 * tn._prevPos.x + tn.pos.x) / 20,(19 * tn._prevPos.y + tn.pos.y) / 20);
-        if (game.time > Xt.explosion) {
-            var rn = new Vector(Tools.rand(Xt.pos.x - game.halfScreenX / game.scale, Xt.pos.x + game.halfScreenX / game.scale),Tools.rand(Xt.pos.y - game.halfScreenY / game.scale, Xt.pos.y + game.halfScreenY / game.scale));
+        if (game.time > Gt.explosion) {
+            var rn = new Vector(Tools.rand(Gt.pos.x - game.halfScreenX / game.scale, Gt.pos.x + game.halfScreenX / game.scale),Tools.rand(Gt.pos.y - game.halfScreenY / game.scale, Gt.pos.y + game.halfScreenY / game.scale));
             Particles.explosion(rn, Tools.rand(2, 2.5), Tools.randInt(4, 7)),
             Particles.explosion(new Vector(rn.x + Tools.rand(-100, 100),rn.y + Tools.rand(-100, 100)), Tools.rand(1, 1.2)),
-            Xt.explosion = game.time + Tools.rand(1e3, 3e3)
+            Gt.explosion = game.time + Tools.rand(1e3, 3e3)
         }
     }
     ,
@@ -26489,7 +26489,7 @@ class Vector {
         return Zt
     };
     Tools.handleError = function(Qt) {
-        5 < ++Gt || (null != Qt.error && (Qt.error = JSON.stringify(Qt.error, Kt)),
+        5 < ++Xt || (null != Qt.error && (Qt.error = JSON.stringify(Qt.error, Kt)),
         Tools.ajaxPost("/clienterror", {
             type: "runtime",
             error: JSON.stringify(Qt, null, "\t\t")
@@ -26559,6 +26559,10 @@ class Vector {
 }(),
 function() {
     var Bt = {
+        planet: getFilePath("planet.jpg"),
+        asteroids1: getFilePath("asteroids1.png"),
+        asteroids2: getFilePath("asteroids2.png"),
+        asteroids3: getFilePath("asteroids3.png"),
         map_sea: "assets/map_sea.jpg",
         map_sea_mask: "assets/map_sea_mask.jpg",
         map_forest: "assets/map_forest.jpg",
@@ -26574,7 +26578,7 @@ function() {
         items: "assets/items.png?2",
         gui: "assets/gui.png"
     }
-      , Gt = {
+      , Xt = {
         spirit: ["aircraft", [4, 4, 512, 256]],
         tornado: ["aircraft", [524, 4, 256, 256]],
         raptor: ["aircraft", [788, 4, 256, 256]],
@@ -26685,9 +26689,6 @@ function() {
         ui_minimap_1: ["gui", [500, 596, 16, 16]],
         ui_minimap_2: ["gui", [516, 596, 16, 16]],
         ui_minimap_3: ["gui", [532, 596, 16, 16]],
-        ui_minimap_stealth: ["gui", [548, 596, 16, 16]],
-        ui_minimap_stealth_target: ["gui", [564, 596, 16, 16]],
-        ui_minimap_target: ["gui", [580, 596, 16, 16]],
         ui_minimap_blue: ["gui", [484, 596, 16, 16]],
         ui_minimap_base_blue: ["gui", [484, 556, 32, 32]],
         ui_minimap_base_red: ["gui", [484, 516, 32, 32]],
@@ -26701,7 +26702,7 @@ function() {
         chatbubbleright: ["gui", [438, 274, 16, 82]],
         chatbubblepoint: ["gui", [297, 352, 36, 22]]
     }
-      , Xt = {
+      , Gt = {
         flag_1: ["flags", [2, 962, 80, 60]],
         flag_2: ["flags", [2, 898, 80, 60]],
         flag_3: ["flags", [2, 834, 80, 60]],
@@ -26898,21 +26899,21 @@ function() {
         },
         minimap1: {
             texture: "ui_minimap_1",
-            layer: "ui3",
+            layer: "ui2",
             anchor: [0.5, 0.5],
             alpha: 1,
             scale: .8
         },
         minimap2: {
             texture: "ui_minimap_2",
-            layer: "ui3",
+            layer: "ui2",
             anchor: [0.5, 0.5],
             alpha: 1,
             scale: .8
         },
         minimap3: {
             texture: "ui_minimap_3",
-            layer: "ui3",
+            layer: "ui2",
             anchor: [0.5, 0.5],
             alpha: 1,
             scale: .8
@@ -27223,11 +27224,11 @@ function() {
         for (var jt in Bt)
             Yt[jt] = new PIXI.Texture.fromImage(Bt[jt]);
         var Wt;
-        for (var zt in Gt)
-            Wt = Gt[zt],
-            Yt[zt] = new PIXI.Texture(Yt[Wt[0]].baseTexture,new PIXI.Rectangle(Wt[1][0],Wt[1][1],Wt[1][2],Wt[1][3]));
         for (var zt in Xt)
             Wt = Xt[zt],
+            Yt[zt] = new PIXI.Texture(Yt[Wt[0]].baseTexture,new PIXI.Rectangle(Wt[1][0],Wt[1][1],Wt[1][2],Wt[1][3]));
+        for (var zt in Gt)
+            Wt = Gt[zt],
             Yt[zt] = new PIXI.Texture(Yt[Wt[0]].baseTexture,new PIXI.Rectangle(Wt[1][0],Wt[1][1],Wt[1][2],Wt[1][3]))
     }
     ,
@@ -27257,91 +27258,93 @@ function() {
     }
 }(),
 function() {
-    var Gt = {
+    var Xt = {
         position: Vector.zero(),
         center: Vector.zero(),
         lastOverdraw: Vector.zero(),
         lastOverdrawTime: 0,
         shake: 0
-    }, Xt = {}, Ht = {}, Yt = {}, Bt;
+    }, Gt = {}, Ht = {}, Yt = {}, Bt;
     Graphics.setup = function() {
-        Vt(window.innerWidth, window.innerHeight),
-        jt(),
-        Textures.load(),
+        qt(window.innerWidth, window.innerHeight),
         Wt(),
-        qt(),
+        Textures.load(),
         zt(),
-        Qt(),
+        Kt(),
+        Vt(),
+        Zt(),
         Mobs.setupDoodads(),
         UI.setupMinimap(),
         UI.setupHUD()
     }
     ;
-    var jt = function() {
+    var Wt = function() {
         PIXI.utils.skipHello(),
         PIXI.settings.PRECISION_FRAGMENT = PIXI.PRECISION.HIGH;
-        var tn = {
+        var nn = {
             autoResize: !0,
             clearBeforeRender: !1,
             preserveDrawingBuffer: !0
         };
-        config.settings.hidpi && (tn.resolution = 2);
+        config.settings.hidpi && (nn.resolution = 2);
         try {
-            Bt = new PIXI.WebGLRenderer(game.screenX,game.screenY,tn)
-        } catch (nn) {
+            Bt = new PIXI.WebGLRenderer(game.screenX,game.screenY,nn),
+            Graphics.renderer = Bt
+        } catch (rn) {
             return void UI.popBigMsg(2)
         }
         document.body.appendChild(Bt.view)
     }
-      , Wt = function() {
-        for (var tn of ["game", "ui0", "ui1", "ui2", "ui3", "ui4", "hudHealth", "hudEnergy", "flags", "doodads", "map", "sea", "objects", "groundobjects", "fields", "shadows", "powerups", "crates", "aircraft", "aircraftme", "glows", "playernames", "bubbles", "thrusters", "projectiles", "smoke", "explosions"])
-            Yt[tn] = new PIXI.Container;
-        for (var nn of ["smoke", "crates", "thrusters", "projectiles", "aircraft", "aircraftme", "glows", "explosions", "powerups", "playernames", "flags", "bubbles"])
-            Yt.objects.addChild(Yt[nn]);
-        for (var rn of ["fields"])
-            Yt.groundobjects.addChild(Yt[rn]);
+      , zt = function() {
+        for (var nn of ["game", "ui0", "ui1", "ui2", "ui3", "ui4", "hudHealth", "hudEnergy", "flags", "doodads", "map", "sea", "objects", "groundobjects", "fields", "shadows", "powerups", "crates", "aircraft", "aircraftme", "glows", "playernames", "bubbles", "thrusters", "projectiles", "smoke", "explosions"])
+            Yt[nn] = new PIXI.Container,
+            Yt[nn].layerName = nn;
+        for (var rn of ["smoke", "crates", "thrusters", "projectiles", "aircraft", "aircraftme", "glows", "explosions", "powerups", "playernames", "flags", "bubbles"])
+            Yt.objects.addChild(Yt[rn]);
+        for (var an of ["fields"])
+            Yt.groundobjects.addChild(Yt[an]);
         if (game.graphics.layers = Yt,
         game.graphics.gui = Ht,
         config.debug.collisions) {
-            for (var an = new PIXI.Graphics, on = 0; on < config.walls.length; on++)
-                if (an.beginFill(16777215, .2),
-                an.drawCircle(config.walls[on][0], config.walls[on][1], config.walls[on][2]),
-                an.endFill(),
+            for (var on = new PIXI.Graphics, sn = 0; sn < config.walls.length; sn++)
+                if (on.beginFill(16777215, .2),
+                on.drawCircle(config.walls[sn][0], config.walls[sn][1], config.walls[sn][2]),
+                on.endFill(),
                 AutoPilot.debug) {
-                    var sn = AutoPilot.getGraphBoundingBox(config.walls[on][0], config.walls[on][1], config.walls[on][2]);
-                    an.beginFill(16711680, .2),
-                    an.drawRect(100 * sn.p1.x - 16384, 100 * sn.p1.y - 8192, 100 * (sn.p2.x - sn.p1.x + 1), 100 * (sn.p2.y - sn.p1.y + 1)),
-                    an.endFill()
+                    var dn = AutoPilot.getGraphBoundingBox(config.walls[sn][0], config.walls[sn][1], config.walls[sn][2]);
+                    on.beginFill(16711680, .2),
+                    on.drawRect(100 * dn.p1.x - 16384, 100 * dn.p1.y - 8192, 100 * (dn.p2.x - dn.p1.x + 1), 100 * (dn.p2.y - dn.p1.y + 1)),
+                    on.endFill()
                 }
             if (AutoPilot.debug) {
-                an.lineColor = 16777215,
-                an.lineStyle(1, 16777215);
-                for (var dn = -16383; 16383 >= dn; dn += 100)
-                    an.moveTo(dn, -8192),
-                    an.lineTo(dn, 8192);
-                for (var ln = -8192; 8192 >= ln; ln += 100)
-                    an.moveTo(-16383, ln),
-                    an.lineTo(16384, ln)
+                on.lineColor = 16777215,
+                on.lineStyle(1, 16777215);
+                for (var ln = -16383; 16383 >= ln; ln += 100)
+                    on.moveTo(ln, -8192),
+                    on.lineTo(ln, 8192);
+                for (var un = -8192; 8192 >= un; un += 100)
+                    on.moveTo(-16383, un),
+                    on.lineTo(16384, un)
             }
-            Yt.objects.addChild(an)
+            Yt.objects.addChild(on)
         }
     }
-      , zt = function() {
-        Xt.render = PIXI.RenderTexture.create(game.screenX + config.overdraw, game.screenY + config.overdraw, void 0, config.settings.hidpi ? 2 : void 0),
-        Xt.renderSprite = new PIXI.Sprite(Xt.render),
-        Xt.shadows = PIXI.RenderTexture.create(game.shadowX, game.shadowY, void 0, config.settings.hidpi ? 2 : void 0),
-        Xt.shadowsSprite = new PIXI.Sprite(Xt.shadows),
-        Xt.shadowsSprite.scale.set(game.screenX / game.shadowX, game.screenY / game.shadowY),
-        Xt.shadowsSprite.blendMode = PIXI.BLEND_MODES.MULTIPLY,
-        Xt.shadowsSprite.alpha = .4,
-        Yt.game.addChild(Xt.renderSprite),
+      , Vt = function() {
+        Gt.render = PIXI.RenderTexture.create(game.screenX + config.overdraw, game.screenY + config.overdraw, void 0, config.settings.hidpi ? 2 : void 0),
+        Gt.renderSprite = new PIXI.Sprite(Gt.render),
+        Gt.renderSprite.layerName = "renderSprite",
+        Gt.shadows = PIXI.RenderTexture.create(game.shadowX, game.shadowY, void 0, config.settings.hidpi ? 2 : void 0),
+        Gt.shadowsSprite = new PIXI.Sprite(Gt.shadows),
+        Gt.shadowsSprite.scale.set(game.screenX / game.shadowX, game.screenY / game.shadowY),
+        Gt.shadowsSprite.blendMode = PIXI.BLEND_MODES.MULTIPLY,
+        Gt.shadowsSprite.alpha = .4,
+        Yt.game.addChild(Gt.renderSprite),
         Yt.game.addChild(Yt.groundobjects),
-        Yt.game.addChild(Xt.shadowsSprite),
-        Xt.shade = Textures.sprite("screenshade"),
-        Xt.shade.scale.set(game.shadowX / 126 / game.scale, game.shadowY / 126 / game.scale),
-        Xt.shade.alpha = .825,
-        Xt.shade.anchor.set(.5, .5),
-        Yt.shadows.addChild(Xt.shade),
+        Gt.shade = Textures.sprite("screenshade"),
+        Gt.shade.scale.set(game.shadowX / 126 / game.scale, game.shadowY / 126 / game.scale),
+        Gt.shade.alpha = .825,
+        Gt.shade.anchor.set(.5, .5),
+        Yt.shadows.addChild(Gt.shade),
         Yt.game.addChild(Yt.objects),
         Yt.game.addChild(Yt.ui0),
         Yt.game.addChild(Yt.ui1),
@@ -27357,24 +27360,24 @@ function() {
         Yt.game.addChild(Ht.hudSpriteEnergy),
         Yt.game.addChild(Ht.hudSpriteHealth)
     };
-    Graphics.resizeRenderer = function(tn, nn) {
-        var rn = tn + config.overdraw
-          , an = nn + config.overdraw;
-        Vt(tn, nn),
-        qt(),
-        Bt.resize(tn, nn),
-        Xt.render.resize(rn, an),
-        Xt.shadows.resize(tn, nn),
-        Xt.shadowsSprite.scale.set(game.screenX / game.shadowX, game.screenY / game.shadowY),
-        Xt.shade.scale.set(game.shadowX / 126 / game.scale, game.shadowY / 126 / game.scale);
-        for (var on of ["sea", "forest", "sand", "rock"])
-            Xt[on].width = rn,
-            Xt[on].height = an;
+    Graphics.resizeRenderer = function(nn, rn) {
+        var an = nn + config.overdraw
+          , on = rn + config.overdraw;
+        qt(nn, rn),
+        Kt(),
+        Bt.resize(nn, rn),
+        Gt.render.resize(an, on),
+        Gt.shadows.resize(nn, rn),
+        Gt.shadowsSprite.scale.set(game.screenX / game.shadowX, game.screenY / game.shadowY),
+        Gt.shade.scale.set(game.shadowX / 126 / game.scale, game.shadowY / 126 / game.scale);
+        for (var sn of ["sea", "forest", "sand", "rock"])
+            Gt[sn].width = an,
+            Gt[sn].height = on;
         UI.resizeMinimap(),
         UI.resizeHUD(),
-        Zt(),
         Jt(),
-        Graphics.setCamera(Gt.center.x, Gt.center.y),
+        $t(),
+        Graphics.setCamera(Xt.center.x, Xt.center.y),
         game.state == Network.STATE.PLAYING && Network.resizeHorizon()
     }
     ,
@@ -27387,28 +27390,28 @@ function() {
         1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", "Reload game to apply HiDPI settings<br><span class=\"button\" onclick=\"Games.redirRoot()\">RELOAD</span>", 1e4)
     }
     ;
-    var Vt = function(tn, nn) {
-        game.screenX = tn,
-        game.screenY = nn,
-        game.halfScreenX = tn / 2,
-        game.halfScreenY = nn / 2,
+    var qt = function(nn, rn) {
+        game.screenX = nn,
+        game.screenY = rn,
+        game.halfScreenX = nn / 2,
+        game.halfScreenY = rn / 2,
         game.shadowX = Math.floor(game.screenX / config.shadowScaling),
         game.shadowY = Math.floor(game.screenY / config.shadowScaling)
     }
-      , qt = function() {
+      , Kt = function() {
         game.scale = (game.screenX + game.screenY) / config.scalingFactor,
         Yt.groundobjects.scale.set(game.scale),
         Yt.objects.scale.set(game.scale),
         Yt.shadows.scale.set(game.scale),
         Yt.doodads.scale.set(game.scale),
         Yt.bubbles.scale.set(1 / game.scale),
-        Kt()
+        Qt()
     }
-      , Kt = function() {
+      , Qt = function() {
         if (config.mobile) {
-            var tn = game.screenX > game.screenY ? "landscape" : "portrait";
-            config.phone = 599 >= game.screenX && "portrait" == tn || 599 >= game.screenY && "landscape" == tn,
-            config.tablet = 600 <= game.screenX && 1024 >= game.screenX && "portrait" == tn || 600 <= game.screenY && 1024 >= game.screenY && 1024 >= game.screenX && "landscape" == tn,
+            var nn = game.screenX > game.screenY ? "landscape" : "portrait";
+            config.phone = 599 >= game.screenX && "portrait" == nn || 599 >= game.screenY && "landscape" == nn,
+            config.tablet = 600 <= game.screenX && 1024 >= game.screenX && "portrait" == nn || 600 <= game.screenY && 1024 >= game.screenY && 1024 >= game.screenX && "landscape" == nn,
             config.maxScoreboard = 8,
             config.phone && (config.minimapSize = 160,
             config.maxScoreboard = 5),
@@ -27416,179 +27419,184 @@ function() {
             config.minimapPaddingX = game.screenX / 2 - config.minimapSize / 2
         }
     }
-      , Qt = function() {
-        var tn = Bt.width + config.overdraw
-          , nn = Bt.height + config.overdraw;
-        Xt.sea = Textures.tile("map_sea", tn, nn),
-        Xt.sea_mask = Textures.sprite("map_sea_mask"),
-        Xt.sea_mask.scale.set(8, 8),
-        Xt.sea_mask.blendMode = PIXI.BLEND_MODES.MULTIPLY,
-        Xt.sea_mask.alpha = .5,
-        Xt.forest = Textures.tile("map_forest", tn, nn),
-        Xt.sand = Textures.tile("map_sand", tn, nn),
-        Xt.sand_mask = Textures.sprite("map_sand_mask"),
-        Xt.sand_mask.scale.set(8, 8),
-        Xt.sand.mask = Xt.sand_mask,
-        Xt.rock = Textures.tile("map_rock", tn, nn),
-        Xt.rock_mask = Textures.sprite("map_rock_mask"),
-        Xt.rock_mask.scale.set(8, 8),
-        Xt.rock.mask = Xt.rock_mask,
-        Yt.sea.addChild(Xt.sea),
-        Yt.sea.addChild(Xt.sea_mask);
-        for (var rn of ["forest", "sand", "sand_mask", "rock", "rock_mask"])
-            Yt.map.addChild(Xt[rn]);
-        Yt.map.addChild(Yt.doodads),
-        $t(),
-        Zt()
-    }
       , Zt = function() {
-        var tn;
-        for (tn of ["sea", "forest", "sand", "rock"])
-            Xt[tn].tileScale.set(game.scale, game.scale);
-        for (tn of ["sea", "sand", "rock"])
-            Xt[tn + "_mask"].scale.set(8 * game.scale, 8 * game.scale)
+        var nn = Bt.width + config.overdraw
+          , rn = Bt.height + config.overdraw;
+        Gt.sea = Textures.tile("map_sea", nn, rn),
+        Gt.sea_mask = Textures.sprite("map_sea_mask"),
+        Gt.sea_mask.scale.set(8, 8),
+        Gt.sea_mask.blendMode = PIXI.BLEND_MODES.MULTIPLY,
+        Gt.sea_mask.alpha = .5,
+        Gt.forest = Textures.tile("map_forest", nn, rn),
+        Gt.sand = Textures.tile("map_sand", nn, rn),
+        Gt.sand_mask = Textures.sprite("map_sand_mask"),
+        Gt.sand_mask.scale.set(8, 8),
+        Gt.sand.mask = Gt.sand_mask,
+        Gt.rock = Textures.tile("map_rock", nn, rn),
+        Gt.rock_mask = Textures.sprite("map_rock_mask"),
+        Gt.rock_mask.scale.set(8, 8),
+        Gt.rock.mask = Gt.rock_mask,
+        Yt.sea.addChild(Gt.sea),
+        Yt.sea.addChild(Gt.sea_mask);
+        for (var an of ["forest", "sand", "sand_mask", "rock", "rock_mask"])
+            Yt.map.addChild(Gt[an]);
+        Yt.map.addChild(Yt.doodads),
+        en(),
+        Jt()
     }
       , Jt = function() {
-        try {
-            Xt.polygons.scale.x = game.scale,
-            Xt.polygons.scale.y = game.scale
-        } catch (tn) {}
+        var nn;
+        for (nn of ["sea", "forest", "sand", "rock"])
+            Gt[nn].tileScale.set(game.scale, game.scale);
+        for (nn of ["sea", "sand", "rock"])
+            Gt[nn + "_mask"].scale.set(8 * game.scale, 8 * game.scale)
     }
       , $t = function() {
-        $.getJSON("assets/map.json", function(tn) {
-            Xt.polygons = new PIXI.Graphics,
-            Xt.polygons.beginFill();
-            var un = 0, pn = 0, cn = 0, nn, rn, an, on, sn, dn, ln;
-            for (dn = 0; dn < tn.length; dn++)
-                for (an = 0,
-                ln = 0; ln < tn[dn].length; ln++) {
-                    for (on = [],
-                    sn = 0; sn < tn[dn][ln].length; sn += 2)
-                        nn = tn[dn][ln][sn] + pn,
-                        rn = tn[dn][ln][sn + 1] + cn,
-                        on.push(parseFloat(nn), -parseFloat(rn)),
-                        pn = nn,
+        try {
+            Gt.polygons.scale.x = game.scale,
+            Gt.polygons.scale.y = game.scale
+        } catch (nn) {}
+    }
+      , en = function() {
+        $.getJSON("assets/map.json", function(nn) {
+            Gt.polygons = new PIXI.Graphics,
+            Gt.polygons.beginFill();
+            var pn = 0, cn = 0, hn = 0, rn, an, on, sn, dn, ln, un;
+            for (ln = 0; ln < nn.length; ln++)
+                for (on = 0,
+                un = 0; un < nn[ln].length; un++) {
+                    for (sn = [],
+                    dn = 0; dn < nn[ln][un].length; dn += 2)
+                        rn = nn[ln][un][dn] + cn,
+                        an = nn[ln][un][dn + 1] + hn,
+                        sn.push(parseFloat(rn), -parseFloat(an)),
                         cn = rn,
-                        un++;
-                    Xt.polygons.drawPolygon(on),
-                    0 != an && Xt.polygons.addHole(),
-                    an++
+                        hn = an,
+                        pn++;
+                    Gt.polygons.drawPolygon(sn),
+                    0 != on && Gt.polygons.addHole(),
+                    on++
                 }
-            Xt.polygons.endFill(),
-            Jt(),
-            Yt.map.addChild(Xt.polygons),
-            Yt.map.mask = Xt.polygons
+            Gt.polygons.endFill(),
+            $t(),
+            Yt.map.addChild(Gt.polygons),
+            Yt.map.mask = Gt.polygons
         })
     };
-    Graphics.initSprite = function(tn, nn, rn) {
-        var an = Textures.sprite(tn);
-        return rn.position && an.position.set(rn.position[0], rn.position[1]),
-        rn.anchor && an.anchor.set(rn.anchor[0], rn.anchor[1]),
-        rn.pivot && an.pivot.set(rn.pivot[0], rn.pivot[1]),
-        rn.scale && (Array.isArray(rn.scale) ? an.scale.set(rn.scale[0], rn.scale[1]) : an.scale.set(rn.scale)),
-        rn.rotation && (an.rotation = rn.rotation),
-        rn.alpha && (an.alpha = rn.alpha),
-        rn.blend && (an.blendMode = PIXI.BLEND_MODES[rn.blend]),
-        rn.tint && (an.tint = rn.tint),
-        rn.mask && (an.mask = rn.mask),
-        rn.visible && (an.visible = rn.visible),
-        nn.addChild(an),
-        an
+    Graphics.initSprite = function(nn, rn, an) {
+        var on = Textures.sprite(nn);
+        return an.position && on.position.set(an.position[0], an.position[1]),
+        an.anchor && on.anchor.set(an.anchor[0], an.anchor[1]),
+        an.pivot && on.pivot.set(an.pivot[0], an.pivot[1]),
+        an.scale && (Array.isArray(an.scale) ? on.scale.set(an.scale[0], an.scale[1]) : on.scale.set(an.scale)),
+        an.rotation && (on.rotation = an.rotation),
+        an.alpha && (on.alpha = an.alpha),
+        an.blend && (on.blendMode = PIXI.BLEND_MODES[an.blend]),
+        an.tint && (on.tint = an.tint),
+        an.mask && (on.mask = an.mask),
+        an.visible && (on.visible = an.visible),
+        rn.addChild(on),
+        on
     }
     ,
-    Graphics.transform = function(tn, nn, rn, an, on, sn, dn) {
-        tn.position.set(nn, rn),
-        null == sn ? null != on && tn.scale.set(on) : tn.scale.set(on, sn),
-        null != an && (tn.rotation = an),
-        null != dn && (tn.alpha = dn)
+    Graphics.transform = function(nn, rn, an, on, sn, dn, ln) {
+        nn.position.set(rn, an),
+        null == dn ? null != sn && nn.scale.set(sn) : nn.scale.set(sn, dn),
+        null != on && (nn.rotation = on),
+        null != ln && (nn.alpha = ln)
     }
     ,
     Graphics.update = function() {
-        Xt.shade.position.set(Gt.center.x / config.shadowScaling, Gt.center.y / config.shadowScaling),
-        Xt.renderSprite.position.set(game.scale * (-Gt.position.x + Gt.lastOverdraw.x) - config.overdraw / 2, game.scale * (-Gt.position.y + Gt.lastOverdraw.y) - config.overdraw / 2),
-        Yt.objects.position.set(-Gt.position.x * game.scale, -Gt.position.y * game.scale),
-        Yt.groundobjects.position.set(-Gt.position.x * game.scale, -Gt.position.y * game.scale),
-        Yt.doodads.position.set(-Gt.position.x * game.scale + config.overdraw / 2, -Gt.position.y * game.scale + config.overdraw / 2),
-        Yt.shadows.position.set(-Gt.position.x * (game.scale / config.shadowScaling), -Gt.position.y * (game.scale / config.shadowScaling)),
-        Ht.minimap_box.position.set(game.screenX - config.minimapPaddingX - config.minimapSize * ((16384 - Gt.center.x) / 32768), game.screenY - config.minimapPaddingY - config.minimapSize / 2 * ((8192 - Gt.center.y) / 16384)),
-        config.overdrawOptimize ? (Math.abs(Gt.position.x - Gt.lastOverdraw.x) > config.overdraw / 2 / game.scale || Math.abs(Gt.position.y - Gt.lastOverdraw.y) > config.overdraw / 2 / game.scale || 2e3 < game.time - Gt.lastOverdrawTime) && en() : en()
+        let nn = Xt.position.x
+          , rn = Xt.position.y
+          , an = -nn * game.scale
+          , on = -rn * game.scale
+          , sn = config.overdraw / 2;
+        Gt.shade.position.set(Xt.center.x / config.shadowScaling, Xt.center.y / config.shadowScaling),
+        Gt.renderSprite.position.set(game.scale * (-nn + Xt.lastOverdraw.x) - sn, game.scale * (-rn + Xt.lastOverdraw.y) - sn),
+        Yt.objects.position.set(an, on),
+        Yt.groundobjects.position.set(an, on),
+        Yt.doodads.position.set(an + sn, on + sn),
+        Yt.shadows.position.set(-nn * (game.scale / config.shadowScaling), -rn * (game.scale / config.shadowScaling)),
+        Ht.minimap_box.position.set(game.screenX - config.minimapPaddingX - config.minimapSize * ((16384 - Xt.center.x) / 32768), game.screenY - config.minimapPaddingY - config.minimapSize / 2 * ((8192 - Xt.center.y) / 16384)),
+        SWAM.planet && SWAM.updateLayers(an, on),
+        config.overdrawOptimize ? (Math.abs(nn - Xt.lastOverdraw.x) > sn / game.scale || Math.abs(rn - Xt.lastOverdraw.y) > sn / game.scale || 2e3 < game.time - Xt.lastOverdrawTime) && tn() : tn()
     }
     ,
-    Graphics.setCamera = function(tn, nn) {
-        var rn = 0
-          , an = 0;
-        .5 < Gt.shake && (rn = Tools.rand(-Gt.shake, Gt.shake),
-        an = Tools.rand(-Gt.shake, Gt.shake),
-        Gt.shake *= 1 - .06 * game.timeFactor);
-        var on = game.halfScreenX / game.scale
-          , sn = game.halfScreenY / game.scale;
-        tn = Tools.clamp(tn, -16384 + on, 16384 - on),
-        nn = Tools.clamp(nn, -8192 + sn, 8192 - sn),
-        Gt.position.x = rn + tn - game.screenX / 2 / game.scale,
-        Gt.position.y = an + nn - game.screenY / 2 / game.scale,
-        Gt.center.x = rn + tn,
-        Gt.center.y = an + nn
+    Graphics.setCamera = function(nn, rn) {
+        var an = 0
+          , on = 0;
+        .5 < Xt.shake && (an = Tools.rand(-Xt.shake, Xt.shake),
+        on = Tools.rand(-Xt.shake, Xt.shake),
+        Xt.shake *= 1 - .06 * game.timeFactor);
+        var sn = game.halfScreenX / game.scale
+          , dn = game.halfScreenY / game.scale;
+        nn = Tools.clamp(nn, -16384 + sn, 16384 - sn),
+        rn = Tools.clamp(rn, -8192 + dn, 8192 - dn),
+        Xt.position.x = an + nn - sn,
+        Xt.position.y = on + rn - dn,
+        Xt.center.x = an + nn,
+        Xt.center.y = on + rn
     }
     ,
     Graphics.getCamera = function() {
-        return Gt.center
+        return Xt.center
     }
     ,
-    Graphics.shakeCamera = function(tn, nn) {
-        var rn = Tools.length(tn.x - Gt.center.x, tn.y - Gt.center.y)
-          , an = (game.halfScreenX / game.scale + game.halfScreenY / game.scale) / 2
-          , on = Tools.clamp(1.3 * (1 - rn / an), 0, 1);
-        .1 > on || (Gt.shake = on * nn)
+    Graphics.shakeCamera = function(nn, rn) {
+        var an = Tools.length(nn.x - Xt.center.x, nn.y - Xt.center.y)
+          , on = (game.halfScreenX / game.scale + game.halfScreenY / game.scale) / 2
+          , sn = Tools.clamp(1.3 * (1 - an / on), 0, 1);
+        .1 > sn || (Xt.shake = sn * rn)
     }
     ,
-    Graphics.shadowCoords = function(tn) {
-        var nn = Mobs.getClosestDoodad(tn);
-        return new Vector((tn.x + config.shadowOffsetX * nn) / config.shadowScaling,(tn.y + config.shadowOffsetY * nn) / config.shadowScaling)
+    Graphics.shadowCoords = function(nn) {
+        var rn = Mobs.getClosestDoodad(nn);
+        return new Vector((nn.x + config.shadowOffsetX * rn) / config.shadowScaling,(nn.y + config.shadowOffsetY * rn) / config.shadowScaling)
     }
     ,
-    Graphics.minimapMob = function(tn, nn, rn) {
-        null != tn && tn.position.set(game.screenX - config.minimapPaddingX - config.minimapSize * ((16384 - nn) / 32768), game.screenY - config.minimapPaddingY - config.minimapSize / 2 * ((8192 - rn) / 16384))
+    Graphics.minimapMob = function(nn, rn, an) {
+        null != nn && nn.position.set(game.screenX - config.minimapPaddingX - config.minimapSize * ((16384 - rn) / 32768), game.screenY - config.minimapPaddingY - config.minimapSize / 2 * ((8192 - an) / 16384))
     }
     ,
     Graphics.toggleFullscreen = function() {
         (function() {
-            var tn = document;
-            return tn.fullscreenElement ? null !== tn.fullscreenElement : tn.mozFullScreenElement ? null !== tn.mozFullScreenElement : tn.webkitFullscreenElement ? null !== tn.webkitFullscreenElement : tn.msFullscreenElement ? null !== tn.msFullscreenElement : void 0
+            var nn = document;
+            return nn.fullscreenElement ? null !== nn.fullscreenElement : nn.mozFullScreenElement ? null !== nn.mozFullScreenElement : nn.webkitFullscreenElement ? null !== nn.webkitFullscreenElement : nn.msFullscreenElement ? null !== nn.msFullscreenElement : void 0
         }
         )() ? function() {
-            var tn = document;
-            tn.exitFullscreen ? tn.exitFullscreen() : tn.mozCancelFullScreen ? tn.mozCancelFullScreen() : tn.webkitExitFullscreen ? tn.webkitExitFullscreen() : tn.msExitFullscreen && tn.msExitFullscreen()
+            var nn = document;
+            nn.exitFullscreen ? nn.exitFullscreen() : nn.mozCancelFullScreen ? nn.mozCancelFullScreen() : nn.webkitExitFullscreen ? nn.webkitExitFullscreen() : nn.msExitFullscreen && nn.msExitFullscreen()
         }() : function() {
-            var tn = document.documentElement;
-            if (tn.requestFullscreen ? tn.requestFullscreen() : tn.mozRequestFullScreen ? tn.mozRequestFullScreen() : tn.webkitRequestFullscreen ? tn.webkitRequestFullscreen() : tn.msRequestFullscreen && tn.msRequestFullscreen(),
+            var nn = document.documentElement;
+            if (nn.requestFullscreen ? nn.requestFullscreen() : nn.mozRequestFullScreen ? nn.mozRequestFullScreen() : nn.webkitRequestFullscreen ? nn.webkitRequestFullscreen() : nn.msRequestFullscreen && nn.msRequestFullscreen(),
             config.mobile && null != window.screen && null != window.screen.orientation)
                 try {
                     screen.orientation.lock("landscape")
-                } catch (nn) {}
+                } catch (rn) {}
         }()
     }
     ,
-    Graphics.inScreen = function(tn, nn) {
-        return tn.x >= Gt.center.x - game.halfScreenX / game.scale - nn && tn.x <= Gt.center.x + game.halfScreenX / game.scale + nn && tn.y >= Gt.center.y - game.halfScreenY / game.scale - nn && tn.y <= Gt.center.y + game.halfScreenY / game.scale + nn
+    Graphics.inScreen = function(nn, rn) {
+        return nn.x >= Xt.center.x - game.halfScreenX / game.scale - rn && nn.x <= Xt.center.x + game.halfScreenX / game.scale + rn && nn.y >= Xt.center.y - game.halfScreenY / game.scale - rn && nn.y <= Xt.center.y + game.halfScreenY / game.scale + rn
     }
     ;
-    var en = function() {
+    var tn = function() {
         Mobs.updateDoodads(),
-        Gt.lastOverdraw.x = Gt.position.x,
-        Gt.lastOverdraw.y = Gt.position.y,
-        Xt.renderSprite.position.set(-config.overdraw / 2, -config.overdraw / 2);
-        var nn = Gt.position.x - config.overdraw / game.scale / 2, rn = Gt.position.y - config.overdraw / game.scale / 2, an = -nn * game.scale, on = -rn * game.scale, sn = (-nn - 16384) * game.scale, dn = (-rn - 8192) * game.scale, tn;
-        for (tn of ["sea", "forest", "sand", "rock"])
-            Xt[tn].tilePosition.set(an, on);
-        for (tn of ["sea", "sand", "rock"])
-            Xt[tn + "_mask"].position.set(sn, dn);
-        null != Xt.polygons && null != Xt.polygons.position && Xt.polygons.position.set(-nn * game.scale, -rn * game.scale),
-        Gt.lastOverdrawTime = game.time,
-        Bt.render(Yt.sea, Xt.render),
-        Bt.render(Yt.map, Xt.render)
+        Xt.lastOverdraw.x = Xt.position.x,
+        Xt.lastOverdraw.y = Xt.position.y,
+        Gt.renderSprite.position.set(-config.overdraw / 2, -config.overdraw / 2);
+        var rn = Xt.position.x - config.overdraw / game.scale / 2, an = Xt.position.y - config.overdraw / game.scale / 2, on = -rn * game.scale, sn = -an * game.scale, dn = (-rn - 16384) * game.scale, ln = (-an - 8192) * game.scale, nn;
+        for (nn of ["sea", "forest", "sand", "rock"])
+            Gt[nn].tilePosition.set(on / 25, sn / 15);
+        for (nn of ["sea", "sand", "rock"])
+            Gt[nn + "_mask"].position.set(dn, ln);
+        Xt.lastOverdrawTime = game.time,
+        Bt.render(Yt.sea, Gt.render),
+        Bt.render(Yt.map, Gt.render)
     };
     Graphics.render = function() {
-        Bt.render(Yt.shadows, Xt.shadows, !0),
+        Bt.render(Yt.shadows, Gt.shadows, !0),
         Bt.render(Yt.hudEnergy, Ht.hudTextureEnergy, !0),
         Bt.render(Yt.hudHealth, Ht.hudTextureHealth, !0),
         Bt.render(Yt.game)
@@ -27596,8 +27604,8 @@ function() {
 }(),
 function() {
     var Bt = null
-      , Gt = null
-      , Xt = !1
+      , Xt = null
+      , Gt = !1
       , Ht = ""
       , Yt = !1
       , jt = null
@@ -27622,7 +27630,7 @@ function() {
             };
             null != game.spectatingID && _n && ("RIGHT" == yn ? Network.spectatePrev() : "LEFT" == yn && Network.spectateNext()),
             un(bn),
-            Gt && Xt && un(bn, !0)
+            Xt && Gt && un(bn, !0)
         }
     }
     ,
@@ -27693,7 +27701,17 @@ function() {
             c: hn.HORIZON,
             horizonX: Math.ceil(game.halfScreenX / game.scale),
             horizonY: Math.ceil(game.halfScreenY / game.scale)
-        })
+        }),
+        console.log("horizon: ", Math.ceil(game.halfScreenX / game.scale), Math.ceil(game.halfScreenY / game.scale))
+    }
+    ,
+    Network.horizonTest = function() {
+        game.state == Network.STATE.PLAYING && un({
+            c: hn.HORIZON,
+            horizonX: Math.ceil(game.screenX / game.scale),
+            horizonY: Math.ceil(game.screenY / game.scale)
+        }),
+        console.log("horizon: ", Math.ceil(game.screenX / game.scale), Math.ceil(game.screenY / game.scale))
     }
     ,
     Network.detectConnectivity = function() {
@@ -27703,8 +27721,8 @@ function() {
     Network.shutdown = function() {
         null != jt && clearInterval(jt),
         null != Bt && Bt.close(),
-        null != Gt && Gt.close(),
-        Xt = !1,
+        null != Xt && Xt.close(),
+        Gt = !1,
         Yt = !1,
         Wt = -1,
         zt = -1,
@@ -27735,7 +27753,7 @@ function() {
     }
     ;
     var tn = function() {
-        game.lagging || game.state == Network.STATE.PLAYING && (Yt ? Gt && Xt && un({
+        game.lagging || game.state == Network.STATE.PLAYING && (Yt ? Xt && Gt && un({
             c: hn.ACK
         }, !0) : un({
             c: hn.ACK
@@ -27958,7 +27976,7 @@ function() {
     ,
     Network.setup = function() {
         Ht = "wss://game-" + game.playHost + ".airma.sh/" + game.playPath,
-        Gt && Xt && Gt.close(),
+        Xt && Gt && Xt.close(),
         (Bt = new WebSocket(Ht)).binaryType = "arraybuffer",
         Bt.onopen = function() {
             un({
@@ -27986,23 +28004,23 @@ function() {
     }
     ;
     var sn = function() {
-        (Gt = new WebSocket(Ht)).binaryType = "arraybuffer",
-        Gt.onopen = function() {
+        (Xt = new WebSocket(Ht)).binaryType = "arraybuffer",
+        Xt.onopen = function() {
             un({
                 c: hn.BACKUP,
                 token: game.myToken
             }, !0)
         }
         ,
-        Gt.onclose = function() {
-            Xt = !1
+        Xt.onclose = function() {
+            Gt = !1
         }
         ,
-        Gt.onerror = function() {}
+        Xt.onerror = function() {}
         ,
-        Gt.onmessage = function(yn) {
+        Xt.onmessage = function(yn) {
             var _n = ln(yn.data);
-            _n.c === gn.BACKUP && (Xt = !0),
+            _n.c === gn.BACKUP && (Gt = !0),
             _n.backup = !0,
             rn(_n)
         }
@@ -28271,7 +28289,7 @@ function() {
         return xn
     }
       , un = function(yn, _n) {
-        _n ? Gt.send(dn(yn)) : Bt.send(dn(yn))
+        _n ? Xt.send(dn(yn)) : Bt.send(dn(yn))
     }
       , pn = {
         UP: 1,
@@ -28450,8 +28468,8 @@ function() {
 }(),
 function() {
     var Bt = {}
-      , Gt = {}
       , Xt = {}
+      , Gt = {}
       , Ht = null
       , Yt = 0
       , jt = 2 * Math.PI
@@ -28641,12 +28659,12 @@ function() {
             else {
                 var vn = Input.getBind(xn);
                 if (!un(xn))
-                    return null == $t[vn] ? (Xt[xn] || (Xt[xn] = !0,
+                    return null == $t[vn] ? (Gt[xn] || (Gt[xn] = !0,
                     UI.controlKey(xn, vn, !0)),
                     bn.preventDefault(),
                     !1) : (Bt[vn] || (Bt[vn] = !0,
                     yn(vn)),
-                    Gt[xn] || (Gt[xn] = !0),
+                    Xt[xn] || (Xt[xn] = !0),
                     bn.preventDefault(),
                     !1)
             }
@@ -28656,11 +28674,11 @@ function() {
         if (game.state == Network.STATE.PLAYING || game.state == Network.STATE.CONNECTING) {
             var xn = bn.which
               , vn = Input.getBind(xn);
-            if (null == $t[vn] && Xt[xn] && (Xt[xn] = !1),
+            if (null == $t[vn] && Gt[xn] && (Gt[xn] = !1),
             !un(xn))
                 return Bt[vn] && (Bt[vn] = !1,
                 _n(vn)),
-                Gt[xn] && (Gt[xn] = !1),
+                Xt[xn] && (Xt[xn] = !1),
                 bn.preventDefault(),
                 !1
         }
@@ -28813,7 +28831,7 @@ function() {
     }
     ,
     Input.unpressKey = function(bn) {
-        delete Xt[bn]
+        delete Gt[bn]
     }
     ,
     Input.keyState = function(bn) {
@@ -28824,13 +28842,13 @@ function() {
         if (game.state === Network.STATE.PLAYING) {
             for (var xn of on)
                 if (Bt[xn]) {
-                    if (bn && (Gt[38] || Gt[40] || Gt[37] || Gt[39]))
+                    if (bn && (Xt[38] || Xt[40] || Xt[37] || Xt[39]))
                         continue;
                     Bt[xn] = !1,
                     _n(xn)
                 }
-            for (var vn in Gt)
-                bn && (38 == vn || 40 == vn || 37 == vn || 39 == vn) || (Gt[vn] = !1)
+            for (var vn in Xt)
+                bn && (38 == vn || 40 == vn || 37 == vn || 39 == vn) || (Xt[vn] = !1)
         }
     }
     ,
@@ -28999,13 +29017,14 @@ function() {
         Bt["STRAFERIGHT" === bn ? "STRAFELEFT" : "STRAFERIGHT"] || _n("SPECIAL"))
     }
 }();
+var reWhitespace = /[\0-\x1F\x7F-\x9F\xAD\u0378\u0379\u037F-\u0383\u038B\u038D\u03A2\u0528-\u0530\u0557\u0558\u0560\u0588\u058B-\u058E\u0590\u05C8-\u05CF\u05EB-\u05EF\u05F5-\u0605\u061C\u061D\u06DD\u070E\u070F\u074B\u074C\u07B2-\u07BF\u07FB-\u07FF\u082E\u082F\u083F\u085C\u085D\u085F-\u089F\u08A1\u08AD-\u08E3\u08FF\u0978\u0980\u0984\u098D\u098E\u0991\u0992\u09A9\u09B1\u09B3-\u09B5\u09BA\u09BB\u09C5\u09C6\u09C9\u09CA\u09CF-\u09D6\u09D8-\u09DB\u09DE\u09E4\u09E5\u09FC-\u0A00\u0A04\u0A0B-\u0A0E\u0A11\u0A12\u0A29\u0A31\u0A34\u0A37\u0A3A\u0A3B\u0A3D\u0A43-\u0A46\u0A49\u0A4A\u0A4E-\u0A50\u0A52-\u0A58\u0A5D\u0A5F-\u0A65\u0A76-\u0A80\u0A84\u0A8E\u0A92\u0AA9\u0AB1\u0AB4\u0ABA\u0ABB\u0AC6\u0ACA\u0ACE\u0ACF\u0AD1-\u0ADF\u0AE4\u0AE5\u0AF2-\u0B00\u0B04\u0B0D\u0B0E\u0B11\u0B12\u0B29\u0B31\u0B34\u0B3A\u0B3B\u0B45\u0B46\u0B49\u0B4A\u0B4E-\u0B55\u0B58-\u0B5B\u0B5E\u0B64\u0B65\u0B78-\u0B81\u0B84\u0B8B-\u0B8D\u0B91\u0B96-\u0B98\u0B9B\u0B9D\u0BA0-\u0BA2\u0BA5-\u0BA7\u0BAB-\u0BAD\u0BBA-\u0BBD\u0BC3-\u0BC5\u0BC9\u0BCE\u0BCF\u0BD1-\u0BD6\u0BD8-\u0BE5\u0BFB-\u0C00\u0C04\u0C0D\u0C11\u0C29\u0C34\u0C3A-\u0C3C\u0C45\u0C49\u0C4E-\u0C54\u0C57\u0C5A-\u0C5F\u0C64\u0C65\u0C70-\u0C77\u0C80\u0C81\u0C84\u0C8D\u0C91\u0CA9\u0CB4\u0CBA\u0CBB\u0CC5\u0CC9\u0CCE-\u0CD4\u0CD7-\u0CDD\u0CDF\u0CE4\u0CE5\u0CF0\u0CF3-\u0D01\u0D04\u0D0D\u0D11\u0D3B\u0D3C\u0D45\u0D49\u0D4F-\u0D56\u0D58-\u0D5F\u0D64\u0D65\u0D76-\u0D78\u0D80\u0D81\u0D84\u0D97-\u0D99\u0DB2\u0DBC\u0DBE\u0DBF\u0DC7-\u0DC9\u0DCB-\u0DCE\u0DD5\u0DD7\u0DE0-\u0DF1\u0DF5-\u0E00\u0E3B-\u0E3E\u0E5C-\u0E80\u0E83\u0E85\u0E86\u0E89\u0E8B\u0E8C\u0E8E-\u0E93\u0E98\u0EA0\u0EA4\u0EA6\u0EA8\u0EA9\u0EAC\u0EBA\u0EBE\u0EBF\u0EC5\u0EC7\u0ECE\u0ECF\u0EDA\u0EDB\u0EE0-\u0EFF\u0F48\u0F6D-\u0F70\u0F98\u0FBD\u0FCD\u0FDB-\u0FFF\u10C6\u10C8-\u10CC\u10CE\u10CF\u1249\u124E\u124F\u1257\u1259\u125E\u125F\u1289\u128E\u128F\u12B1\u12B6\u12B7\u12BF\u12C1\u12C6\u12C7\u12D7\u1311\u1316\u1317\u135B\u135C\u137D-\u137F\u139A-\u139F\u13F5-\u13FF\u169D-\u169F\u16F1-\u16FF\u170D\u1715-\u171F\u1737-\u173F\u1754-\u175F\u176D\u1771\u1774-\u177F\u17DE\u17DF\u17EA-\u17EF\u17FA-\u17FF\u180F\u181A-\u181F\u1878-\u187F\u18AB-\u18AF\u18F6-\u18FF\u191D-\u191F\u192C-\u192F\u193C-\u193F\u1941-\u1943\u196E\u196F\u1975-\u197F\u19AC-\u19AF\u19CA-\u19CF\u19DB-\u19DD\u1A1C\u1A1D\u1A5F\u1A7D\u1A7E\u1A8A-\u1A8F\u1A9A-\u1A9F\u1AAE-\u1AFF\u1B4C-\u1B4F\u1B7D-\u1B7F\u1BF4-\u1BFB\u1C38-\u1C3A\u1C4A-\u1C4C\u1C80-\u1CBF\u1CC8-\u1CCF\u1CF7-\u1CFF\u1DE7-\u1DFB\u1F16\u1F17\u1F1E\u1F1F\u1F46\u1F47\u1F4E\u1F4F\u1F58\u1F5A\u1F5C\u1F5E\u1F7E\u1F7F\u1FB5\u1FC5\u1FD4\u1FD5\u1FDC\u1FF0\u1FF1\u1FF5\u1FFF\u200B-\u200F\u202A-\u202E\u2060-\u206F\u2072\u2073\u208F\u209D-\u209F\u20BB-\u20CF\u20F1-\u20FF\u218A-\u218F\u23F4-\u23FF\u2427-\u243F\u244B-\u245F\u2700\u2B4D-\u2B4F\u2B5A-\u2BFF\u2C2F\u2C5F\u2CF4-\u2CF8\u2D26\u2D28-\u2D2C\u2D2E\u2D2F\u2D68-\u2D6E\u2D71-\u2D7E\u2D97-\u2D9F\u2DA7\u2DAF\u2DB7\u2DBF\u2DC7\u2DCF\u2DD7\u2DDF\u2E3C-\u2E7F\u2E9A\u2EF4-\u2EFF\u2FD6-\u2FEF\u2FFC-\u2FFF\u3040\u3097\u3098\u3100-\u3104\u312E-\u3130\u318F\u31BB-\u31BF\u31E4-\u31EF\u321F\u32FF\u4DB6-\u4DBF\u9FCD-\u9FFF\uA48D-\uA48F\uA4C7-\uA4CF\uA62C-\uA63F\uA698-\uA69E\uA6F8-\uA6FF\uA78F\uA794-\uA79F\uA7AB-\uA7F7\uA82C-\uA82F\uA83A-\uA83F\uA878-\uA87F\uA8C5-\uA8CD\uA8DA-\uA8DF\uA8FC-\uA8FF\uA954-\uA95E\uA97D-\uA97F\uA9CE\uA9DA-\uA9DD\uA9E0-\uA9FF\uAA37-\uAA3F\uAA4E\uAA4F\uAA5A\uAA5B\uAA7C-\uAA7F\uAAC3-\uAADA\uAAF7-\uAB00\uAB07\uAB08\uAB0F\uAB10\uAB17-\uAB1F\uAB27\uAB2F-\uABBF\uABEE\uABEF\uABFA-\uABFF\uD7A4-\uD7AF\uD7C7-\uD7CA\uD7FC-\uF8FF\uFA6E\uFA6F\uFADA-\uFAFF\uFB07-\uFB12\uFB18-\uFB1C\uFB37\uFB3D\uFB3F\uFB42\uFB45\uFBC2-\uFBD2\uFD40-\uFD4F\uFD90\uFD91\uFDC8-\uFDEF\uFDFE\uFDFF\uFE1A-\uFE1F\uFE27-\uFE2F\uFE53\uFE67\uFE6C-\uFE6F\uFE75\uFEFD-\uFF00\uFFBF-\uFFC1\uFFC8\uFFC9\uFFD0\uFFD1\uFFD8\uFFD9\uFFDD-\uFFDF\uFFE7\uFFEF-\uFFFB\uFFFE\uFFFF]/g;
 class Player {
-    constructor(Bt, Gt) {
+    constructor(Bt, Xt) {
         this.id = Bt.id,
         this.status = Bt.status,
         this.level = null == Bt.level || 0 == Bt.level ? null : Bt.level,
         this.reel = 1 == Bt.reel,
-        this.name = Bt.name.replace(/[\u00A0\u1680​\u180E\u2000-\u2009\u200A​\u200B​\u200D\u202F\u205F​\u3000\u034F]/g, "[Whitespace]"),
+        this.name = Bt.name.replace(reWhitespace, "[Whitespace]"),
         this.type = Bt.type,
         this.team = Bt.team,
         this.pos = new Vector(Bt.posX,Bt.posY),
@@ -29029,6 +29048,7 @@ class Player {
         this.stealthed = !1,
         this.alpha = 1,
         this.scale = 1,
+        this.scorePlace = 0,
         this.powerups = {
             shield: !1,
             rampage: !1
@@ -29067,7 +29087,7 @@ class Player {
         this.me() && UI.visibilityHUD(!1)),
         this.reel ? (this._prevPos = null,
         this._offset = null) : this.visibilityUpdate(),
-        (!Gt && this.render || this.me()) && (this.scale = 0,
+        (!Xt && this.render || this.me()) && (this.scale = 0,
         this.state.scaleLevel = 0),
         this.me() && (game.myType = Bt.type,
         UI.aircraftSelected(Bt.type))
@@ -29081,18 +29101,18 @@ class Player {
     }
     setupThrusterColor() {
         var Bt = new PIXI.filters.ColorMatrixFilter
-          , Gt = new PIXI.filters.ColorMatrixFilter;
-        0 == this.graphicsSet ? Bt.hue(-20) : (Gt.saturate(1, !0),
+          , Xt = new PIXI.filters.ColorMatrixFilter;
+        0 == this.graphicsSet ? Bt.hue(-20) : (Xt.saturate(1, !0),
         Bt.hue(165)),
-        this.sprites.thruster && (this.sprites.thruster.filters = [Gt, Bt]),
-        this.sprites.thruster1 && (this.sprites.thruster1.filters = [Gt, Bt]),
-        this.sprites.thruster2 && (this.sprites.thruster2.filters = [Gt, Bt])
+        this.sprites.thruster && (this.sprites.thruster.filters = [Xt, Bt]),
+        this.sprites.thruster1 && (this.sprites.thruster1.filters = [Xt, Bt]),
+        this.sprites.thruster2 && (this.sprites.thruster2.filters = [Xt, Bt])
     }
     setupGraphics(Bt) {
         this.setGraphicsSet();
-        var Gt = 0 == this.graphicsSet ? "" : "_2"
-          , Xt = null;
-        switch (this.me() && (Xt = {
+        var Xt = 0 == this.graphicsSet ? "" : "_2"
+          , Gt = null;
+        switch (this.me() && (Gt = {
             layer: "aircraftme"
         }),
         this.sprites.powerup = Textures.init("powerupShield", {
@@ -29107,23 +29127,23 @@ class Player {
         case 1:
             this.state.baseScale = .25,
             this.state.nameplateDist = 60,
-            this.sprites.sprite = Textures.init("shipRaptor" + Gt, Xt),
-            this.sprites.shadow = Textures.init("shipRaptorShadow" + Gt, {
+            this.sprites.sprite = Textures.init("shipRaptor" + Xt, Gt),
+            this.sprites.shadow = Textures.init("shipRaptorShadow" + Xt, {
                 scale: this.state.baseScale * (2.4 / config.shadowScaling)
             }),
-            this.sprites.thruster = Textures.init("shipRaptorThruster" + Gt),
+            this.sprites.thruster = Textures.init("shipRaptorThruster" + Xt),
             this.sprites.thrusterGlow = Textures.init("thrusterGlowSmall"),
             this.sprites.thrusterShadow = Textures.init("thrusterShadow");
             break;
         case 2:
             this.state.baseScale = .35,
             this.state.nameplateDist = 60,
-            this.sprites.sprite = Textures.init("shipSpirit" + Gt, Xt),
-            this.sprites.shadow = Textures.init("shipSpiritShadow" + Gt, {
+            this.sprites.sprite = Textures.init("shipSpirit" + Xt, Gt),
+            this.sprites.shadow = Textures.init("shipSpiritShadow" + Xt, {
                 scale: this.state.baseScale * (2.4 / config.shadowScaling)
             }),
-            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Gt),
-            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Gt),
+            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Xt),
+            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Xt),
             this.sprites.thruster1Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster2Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster1Shadow = Textures.init("thrusterShadow"),
@@ -29132,24 +29152,24 @@ class Player {
         case 3:
             this.state.baseScale = .25,
             this.state.nameplateDist = 60,
-            this.sprites.sprite = Textures.init("shipComanche" + Gt, Xt),
-            this.sprites.rotor = Textures.init("shipComancheRotor" + Gt, Xt),
-            this.sprites.shadow = Textures.init("shipComancheShadow" + Gt, {
+            this.sprites.sprite = Textures.init("shipComanche" + Xt, Gt),
+            this.sprites.rotor = Textures.init("shipComancheRotor" + Xt, Gt),
+            this.sprites.shadow = Textures.init("shipComancheShadow" + Xt, {
                 scale: this.state.baseScale * (2.4 / config.shadowScaling)
             }),
-            this.sprites.rotorShadow = Textures.init("shipComancheRotorShadow" + Gt, {
+            this.sprites.rotorShadow = Textures.init("shipComancheRotorShadow" + Xt, {
                 scale: 2 * this.state.baseScale * (2.4 / config.shadowScaling)
             });
             break;
         case 4:
             this.state.baseScale = .28,
             this.state.nameplateDist = 60,
-            this.sprites.sprite = Textures.init("shipTornado" + Gt, Xt),
-            this.sprites.shadow = Textures.init("shipTornadoShadow" + Gt, {
+            this.sprites.sprite = Textures.init("shipTornado" + Xt, Gt),
+            this.sprites.shadow = Textures.init("shipTornadoShadow" + Xt, {
                 scale: this.state.baseScale * (2.4 / config.shadowScaling)
             }),
-            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Gt),
-            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Gt),
+            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Xt),
+            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Xt),
             this.sprites.thruster1Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster2Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster1Shadow = Textures.init("thrusterShadow"),
@@ -29158,22 +29178,23 @@ class Player {
         case 5:
             this.state.baseScale = .28,
             this.state.nameplateDist = 60,
-            this.sprites.sprite = Textures.init("shipProwler" + Gt, Xt),
-            this.sprites.shadow = Textures.init("shipProwlerShadow" + Gt, {
+            this.sprites.sprite = Textures.init("shipProwler" + Xt, Gt),
+            this.sprites.shadow = Textures.init("shipProwlerShadow" + Xt, {
                 scale: this.state.baseScale * (2.4 / config.shadowScaling)
             }),
-            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Gt),
-            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Gt),
+            this.sprites.thruster1 = Textures.init("shipRaptorThruster" + Xt),
+            this.sprites.thruster2 = Textures.init("shipRaptorThruster" + Xt),
             this.sprites.thruster1Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster2Glow = Textures.init("thrusterGlowSmall"),
             this.sprites.thruster1Shadow = Textures.init("thrusterShadow"),
             this.sprites.thruster2Shadow = Textures.init("thrusterShadow");
         }
-        if (this.setupThrusterColor(),
-        this.reel || Bt || (this.setupNameplate(),
+        if ("function" == typeof window.Glow && Glow(this),
+        this.setupThrusterColor(),
+        (this.reel || Bt || (this.setupNameplate(),
         this.setupChatBubbles(),
         null != this.level && this.setupLevelPlate()),
-        config.debug.collisions) {
+        config.debug.collisions)) {
             this.col = new PIXI.Graphics;
             for (var Ht of config.ships[this.type].collisions)
                 this.col.beginFill(16777215, .2),
@@ -29183,11 +29204,11 @@ class Player {
         }
     }
     reteam(Bt) {
-        var Gt = this.team;
+        var Xt = this.team;
         this.team = Bt,
         this.sprites.name.style = new PIXI.TextStyle(this.nameplateTextStyle()),
         UI.changeMinimapTeam(this.id, this.team),
-        Gt != this.team && (this.destroy(!1),
+        Xt != this.team && (this.destroy(!1),
         this.setupGraphics(!0),
         this.visibilityUpdate(!0))
     }
@@ -29251,39 +29272,39 @@ class Player {
     }
     visibilityUpdate(Bt) {
         this.culled = !Graphics.inScreen(this.pos, 128);
-        var Gt = !(this.hidden || this.culled || this.timedout);
-        if (Bt || this.render != Gt) {
-            switch (this.sprites.sprite.visible = Gt,
-            this.sprites.shadow.visible = Gt,
-            this.sprites.flag.visible = Gt,
-            this.sprites.name.visible = Gt,
-            null != this.sprites.level && (this.sprites.level.visible = Gt,
-            this.sprites.levelBorder.visible = Gt),
-            this.sprites.badge.visible = this.state.hasBadge && Gt,
-            this.sprites.powerup.visible = this.powerupActive && Gt,
-            this.sprites.powerupCircle.visible = this.powerupActive && Gt,
+        var Xt = !(this.hidden || this.culled || this.timedout);
+        if (Bt || this.render != Xt) {
+            switch (this.sprites.sprite.visible = Xt,
+            this.sprites.shadow.visible = Xt,
+            this.sprites.flag.visible = Xt,
+            this.sprites.name.visible = Xt,
+            null != this.sprites.level && (this.sprites.level.visible = Xt,
+            this.sprites.levelBorder.visible = Xt),
+            this.sprites.badge.visible = this.state.hasBadge && Xt,
+            this.sprites.powerup.visible = this.powerupActive && Xt,
+            this.sprites.powerupCircle.visible = this.powerupActive && Xt,
             this.type) {
             case 1:
-                this.sprites.thruster.visible = Gt,
-                this.sprites.thrusterGlow.visible = Gt,
-                this.sprites.thrusterShadow.visible = Gt;
+                this.sprites.thruster.visible = Xt,
+                this.sprites.thrusterGlow.visible = Xt,
+                this.sprites.thrusterShadow.visible = Xt;
                 break;
             case 2:
             case 4:
             case 5:
-                this.sprites.thruster1.visible = Gt,
-                this.sprites.thruster1Glow.visible = Gt,
-                this.sprites.thruster1Shadow.visible = Gt,
-                this.sprites.thruster2.visible = Gt,
-                this.sprites.thruster2Glow.visible = Gt,
-                this.sprites.thruster2Shadow.visible = Gt;
+                this.sprites.thruster1.visible = Xt,
+                this.sprites.thruster1Glow.visible = Xt,
+                this.sprites.thruster1Shadow.visible = Xt,
+                this.sprites.thruster2.visible = Xt,
+                this.sprites.thruster2Glow.visible = Xt,
+                this.sprites.thruster2Shadow.visible = Xt;
                 break;
             case 3:
-                this.sprites.rotor.visible = Gt,
-                this.sprites.rotorShadow.visible = Gt;
+                this.sprites.rotor.visible = Xt,
+                this.sprites.rotorShadow.visible = Xt;
             }
-            this.render = Gt,
-            Gt || Sound.clearThruster(this.id)
+            this.render = Xt,
+            Xt || Sound.clearThruster(this.id)
         }
     }
     stealth(Bt) {
@@ -29349,8 +29370,8 @@ class Player {
         return game.myID == this.id
     }
     destroy(Bt) {
-        var Gt = this.me() ? game.graphics.layers.aircraftme : game.graphics.layers.aircraft;
-        switch (Gt.removeChild(this.sprites.sprite),
+        var Xt = this.me() ? game.graphics.layers.aircraftme : game.graphics.layers.aircraft;
+        switch (Xt.removeChild(this.sprites.sprite),
         game.graphics.layers.shadows.removeChild(this.sprites.shadow),
         this.sprites.sprite.destroy(),
         this.sprites.shadow.destroy(),
@@ -29377,7 +29398,7 @@ class Player {
             this.sprites.thruster2Shadow.destroy();
             break;
         case 3:
-            Gt.removeChild(this.sprites.rotor),
+            Xt.removeChild(this.sprites.rotor),
             this.sprites.rotor.destroy(),
             game.graphics.layers.shadows.removeChild(this.sprites.rotorShadow),
             this.sprites.rotorShadow.destroy();
@@ -29403,46 +29424,46 @@ class Player {
         this.sprites.bubble.alpha = 0,
         this.sprites.bubble.scale.set(0, 0)),
         this.sprites.bubble.cacheAsBitmap = !1;
-        var Gt = UI.isEmote(Bt.text, !0);
-        if (Gt) {
+        var Xt = UI.isEmote(Bt.text, !0);
+        if (Xt) {
             this.sprites.bubbleText.visible = !1,
-            this.sprites.emote.texture = Textures.get("emote_" + Gt),
+            this.sprites.emote.texture = Textures.get("emote_" + Xt),
             this.sprites.emote.visible = !0;
-            var Xt = 26;
+            var Gt = 26;
             this.sprites.emote.position.set(0, 0)
         } else
             this.sprites.bubbleText.visible = !0,
             this.sprites.emote.visible = !1,
             this.sprites.bubbleText.text = Bt.text,
-            Xt = this.sprites.bubbleText.width,
-            this.sprites.bubbleText.position.set(-Xt / 2, -7);
-        this.sprites.bubbleLeft.position.set(-Xt / 2 - 16, -21),
-        this.sprites.bubbleRight.position.set(Xt / 2 + 8, -21),
-        this.sprites.bubbleCenter.position.set(-Xt / 2 - 9, -21),
-        this.sprites.bubbleCenter.scale.set(Xt / 82 + 18 / 82, .5),
+            Gt = this.sprites.bubbleText.width,
+            this.sprites.bubbleText.position.set(-Gt / 2, -7);
+        this.sprites.bubbleLeft.position.set(-Gt / 2 - 16, -21),
+        this.sprites.bubbleRight.position.set(Gt / 2 + 8, -21),
+        this.sprites.bubbleCenter.position.set(-Gt / 2 - 9, -21),
+        this.sprites.bubbleCenter.scale.set(Gt / 82 + 18 / 82, .5),
         this.sprites.bubblePoint.position.set(-9, 18),
         this.sprites.bubble.cacheAsBitmap = !0,
-        this.state.bubbleTextWidth = Xt
+        this.state.bubbleTextWidth = Gt
     }
-    networkKey(Bt, Gt) {
+    networkKey(Bt, Xt) {
         this.lastPacket = game.timeNetwork,
         1 == this.status && this.revive(),
-        null != Gt.posX && (this.reducedFactor = Tools.reducedFactor(),
-        this.pos.x = Gt.posX,
-        this.pos.y = Gt.posY,
-        this.rot = Gt.rot,
-        this.speed.x = Gt.speedX,
-        this.speed.y = Gt.speedY);
-        var Xt = this.stealthed;
-        null != Gt.keystate && Tools.decodeKeystate(this, Gt.keystate),
-        null != Gt.upgrades && (Tools.decodeUpgrades(this, Gt.upgrades),
+        null != Xt.posX && (this.reducedFactor = Tools.reducedFactor(),
+        this.pos.x = Xt.posX,
+        this.pos.y = Xt.posY,
+        this.rot = Xt.rot,
+        this.speed.x = Xt.speedX,
+        this.speed.y = Xt.speedY);
+        var Gt = this.stealthed;
+        null != Xt.keystate && Tools.decodeKeystate(this, Xt.keystate),
+        null != Xt.upgrades && (Tools.decodeUpgrades(this, Xt.upgrades),
         this.updatePowerups()),
-        null != Gt.energy && (this.energy = Gt.energy,
-        this.energyRegen = Gt.energyRegen),
-        null != Gt.boost && (this.boost = Gt.boost),
-        this.team != game.myTeam && (this.stealthed || Xt && !this.stealthed) && this.unstealth(),
-        this.me() || !Xt || this.stealthed || this.unstealth(),
-        Gt.c == Network.SERVERPACKET.EVENT_BOUNCE && 300 < game.time - this.state.lastBounceSound && (this.state.lastBounceSound = game.time,
+        null != Xt.energy && (this.energy = Xt.energy,
+        this.energyRegen = Xt.energyRegen),
+        null != Xt.boost && (this.boost = Xt.boost),
+        this.team != game.myTeam && (this.stealthed || Gt && !this.stealthed) && this.unstealth(),
+        this.me() || !Gt || this.stealthed || this.unstealth(),
+        Xt.c == Network.SERVERPACKET.EVENT_BOUNCE && 300 < game.time - this.state.lastBounceSound && (this.state.lastBounceSound = game.time,
         Sound.playerImpact(this.pos, this.type, this.speed.length() / config.ships[this.type].maxSpeed))
     }
     updateLevel(Bt) {
@@ -29502,12 +29523,12 @@ class Player {
         this.state.powerupFade = 0,
         this.state.powerupFadeState = 1))
     }
-    impact(Bt, Gt, Xt, Ht) {
-        this.health = Xt,
+    impact(Bt, Xt, Gt, Ht) {
+        this.health = Gt,
         this.healthRegen = Ht,
         this.stealthed && this.unstealth(),
-        200 != Bt && Mobs.explosion(Gt, Bt),
-        this.me() && 0 == this.status && Graphics.shakeCamera(Gt, 8)
+        200 != Bt && Mobs.explosion(Xt, Bt),
+        this.me() && 0 == this.status && Graphics.shakeCamera(Xt, 8)
     }
     changeType(Bt) {
         this.type != Bt.type && (this.destroy(!1),
@@ -29549,7 +29570,8 @@ class Player {
         UI.hideSpectator()),
         this.updateGraphics(1),
         Sound.playerRespawn(this),
-        this.id == game.myID && SWAM.CruiseMode.off()
+        this.id == game.myID && (SWAM.CruiseMode.off(),
+        SWAM.hyperSpace.show())
     }
     revive() {
         this.status = 0,
@@ -29573,13 +29595,13 @@ class Player {
     updateNameplate() {
         if (!this.reel) {
             var Bt = (this.sprites.name.width + this.sprites.flag.width + 10) / 2
-              , Gt = this.pos.x - Bt + (this.state.hasBadge ? 12 : 0) - (null == this.level ? 0 : this.sprites.level.width / 2 + 8)
-              , Xt = this.pos.y + this.state.nameplateDist * this.scale;
-            this.sprites.name.position.set(Gt + 40, Xt),
-            this.sprites.flag.position.set(Gt + 15, Xt + 10),
-            null != this.level && (this.sprites.level.position.set(Gt + 2 * Bt + 13, Xt + 2),
-            this.sprites.levelBorder.position.set(Gt + 2 * Bt + 7.75, Xt - .5)),
-            this.state.hasBadge && this.sprites.badge.position.set(Gt - 28, Xt)
+              , Xt = this.pos.x - Bt + (this.state.hasBadge ? 12 : 0) - (null == this.level ? 0 : this.sprites.level.width / 2 + 8)
+              , Gt = this.pos.y + this.state.nameplateDist * this.scale;
+            this.sprites.name.position.set(Xt + 40, Gt),
+            this.sprites.flag.position.set(Xt + 15, Gt + 10),
+            null != this.level && (this.sprites.level.position.set(Xt + 2 * Bt + 13, Gt + 2),
+            this.sprites.levelBorder.position.set(Xt + 2 * Bt + 7.75, Gt - .5)),
+            this.state.hasBadge && this.sprites.badge.position.set(Xt - 28, Gt)
         }
     }
     updateBubble() {
@@ -29593,10 +29615,10 @@ class Player {
         this.sprites.bubble.visible = !1)) : (this.sprites.bubble.scale.set(Tools.easing.outElastic(this.state.bubbleProgress, .5)),
         this.sprites.bubble.alpha = 1);
         var Bt = 0 == (this.state.bubbleTextWidth + game.screenX) % 2 ? .5 : 0
-          , Gt = 0 == game.screenY % 2 ? 0 : .5
-          , Xt = this.state.nameplateDist * this.scale;
-        this.powerupActive && (Xt += 60),
-        this.sprites.bubble.position.set(this.pos.x * game.scale + Bt, (this.pos.y - Xt) * game.scale + Gt)
+          , Xt = 0 == game.screenY % 2 ? 0 : .5
+          , Gt = this.state.nameplateDist * this.scale;
+        this.powerupActive && (Gt += 60),
+        this.sprites.bubble.position.set(this.pos.x * game.scale + Bt, (this.pos.y - Gt) * game.scale + Xt)
     }
     detectTimeout() {
         if (!this.me()) {
@@ -29610,16 +29632,7 @@ class Player {
             this.resetPowerups())
         }
     }
-    leaveHorizon() {
-        this.me() || this.timedout || (this.lastPacket = -1e4,
-        this.timedout = !0,
-        this.boost = !1,
-        this.strafe = !1,
-        this.flagspeed = !1,
-        this.speed = Vector.zero(),
-        this.keystate = {},
-        this.resetPowerups())
-    }
+    leaveHorizon() {}
     update(Bt) {
         if (this.reel)
             this.clientCalcs(Bt);
@@ -29632,8 +29645,8 @@ class Player {
             if (!(!1 !== this.reducedFactor && (Bt -= this.reducedFactor,
             this.reducedFactor = !1,
             0 >= Bt))) {
-                var jt = .51 < Bt ? Math.round(Bt) : 1, Wt = Bt / jt, zt = 2 * Math.PI, Vt = this.boost ? 1.5 : 1, Gt, Xt, Ht, Yt;
-                for (Gt = 0; Gt < jt; Gt++) {
+                var jt = .51 < Bt ? Math.round(Bt) : 1, Wt = Bt / jt, zt = 2 * Math.PI, Vt = this.boost ? 1.5 : 1, Xt, Gt, Ht, Yt;
+                for (Xt = 0; Xt < jt; Xt++) {
                     this.energy += Wt * this.energyRegen,
                     1 <= this.energy && (this.energy = 1),
                     this.health += Wt * this.healthRegen,
@@ -29642,7 +29655,7 @@ class Player {
                     this.strafe ? (this.keystate.LEFT && (Yt = this.rot - .5 * Math.PI),
                     this.keystate.RIGHT && (Yt = this.rot + .5 * Math.PI)) : (this.keystate.LEFT && (this.rot += -Wt * config.ships[this.type].turnFactor),
                     this.keystate.RIGHT && (this.rot += Wt * config.ships[this.type].turnFactor)),
-                    Xt = this.speed.x,
+                    Gt = this.speed.x,
                     Ht = this.speed.y,
                     this.keystate.UP ? -999 == Yt ? Yt = this.rot : Yt += Math.PI * (this.keystate.RIGHT ? -.25 : .25) : this.keystate.DOWN && (-999 == Yt ? Yt = this.rot + Math.PI : Yt += Math.PI * (this.keystate.RIGHT ? .25 : -.25)),
                     -999 !== Yt && (this.speed.x += Math.sin(Yt) * config.ships[this.type].accelFactor * Wt * Vt,
@@ -29655,7 +29668,7 @@ class Player {
                     qt > Kt ? this.speed.multiply(Kt / qt) : this.speed.x > Qt || this.speed.x < -Qt || this.speed.y > Qt || this.speed.y < -Qt ? (this.speed.x *= 1 - config.ships[this.type].brakeFactor * Wt,
                     this.speed.y *= 1 - config.ships[this.type].brakeFactor * Wt) : (this.speed.x = 0,
                     this.speed.y = 0),
-                    this.pos.x += Wt * Xt + .5 * (this.speed.x - Xt) * Wt * Wt,
+                    this.pos.x += Wt * Gt + .5 * (this.speed.x - Gt) * Wt * Wt,
                     this.pos.y += Wt * Ht + .5 * (this.speed.y - Ht) * Wt * Wt,
                     this.clientCalcs(Wt)
                 }
@@ -29677,18 +29690,18 @@ class Player {
         case 2:
         case 4:
         case 5:
-            var Gt = !1
-              , Xt = !1
+            var Xt = !1
+              , Gt = !1
               , Ht = this.boost ? 1.5 : 1;
-            !1 !== (Gt = this.keystate.LEFT ? .3 : this.keystate.RIGHT ? -.3 : 0) && (this.state.thrustDir = Tools.converge(this.state.thrustDir, Gt, .1 * Bt)),
-            !1 !== (Xt = this.keystate.UP ? 1 : this.keystate.DOWN ? -1 : 0) && (this.state.thrustLevel = Tools.converge(this.state.thrustLevel, Xt * Ht, .2 * Bt));
+            !1 !== (Xt = this.keystate.LEFT ? .3 : this.keystate.RIGHT ? -.3 : 0) && (this.state.thrustDir = Tools.converge(this.state.thrustDir, Xt, .1 * Bt)),
+            !1 !== (Gt = this.keystate.UP ? 1 : this.keystate.DOWN ? -1 : 0) && (this.state.thrustLevel = Tools.converge(this.state.thrustLevel, Gt * Ht, .2 * Bt));
             break;
         case 3:
             this.state.thrustDir += (.2 + this.speed.length() / 50) * Bt;
         }
         this.culled || this.render && (!this.stealthed && .4 > this.health && Particles.planeDamage(this),
         !this.stealthed && .2 > this.health && Particles.planeDamage(this),
-        this.boost && Particles.planeBoost(this, 0 <= Xt),
+        this.boost && Particles.planeBoost(this, 0 <= Gt),
         5 == this.type && this.stealthed && (this.state.stealthLevel += .03 * Bt,
         this.state.stealthLevel = Tools.clamp(this.state.stealthLevel, 0, this.team == game.myTeam ? .5 : 1),
         this.opacity(1 - this.state.stealthLevel)),
@@ -29703,11 +29716,11 @@ class Player {
         this.sprites.powerupCircle.visible = !1))))
     }
     updateGraphics() {
-        var Gt = Tools.oscillator(.025, 1e3, this.randomness) * this.scale
-          , Xt = 1.5 * this.state.thrustLevel
+        var Xt = Tools.oscillator(.025, 1e3, this.randomness) * this.scale
+          , Gt = 1.5 * this.state.thrustLevel
           , Ht = this.rot
           , Yt = Graphics.shadowCoords(this.pos);
-        if (Graphics.transform(this.sprites.sprite, this.pos.x, this.pos.y, Ht, Gt * this.state.baseScale, Gt * this.state.baseScale),
+        if (Graphics.transform(this.sprites.sprite, this.pos.x, this.pos.y, Ht, Xt * this.state.baseScale, Xt * this.state.baseScale),
         Graphics.transform(this.sprites.shadow, Yt.x, Yt.y, Ht, this.state.baseScale * (2.4 / config.shadowScaling) * this.scale, this.state.baseScale * (2.4 / config.shadowScaling) * this.scale),
         this.powerupActive) {
             var jt = .35 * (0 == this.state.powerupFadeState ? 2 * (1 - this.state.powerupFade) + 1 : 1 - this.state.powerupFade) * Tools.oscillator(.075, 100, this.randomness)
@@ -29721,78 +29734,78 @@ class Player {
         if (0 == this.graphicsSet)
             switch (this.type) {
             case 1:
-                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-Ht) * (5 * Gt), this.pos.y + Math.cos(-Ht) * (5 * Gt), Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-Ht) * (5 * Xt), this.pos.y + Math.cos(-Ht) * (5 * Xt), Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
                 this.sprites.thruster.alpha = 0.05,
-                Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-Ht - .5 * this.state.thrustDir) * (40 * Gt), this.pos.y + Math.cos(-Ht - .5 * this.state.thrustDir) * (40 * Gt), null, 1.5 * Xt * this.scale, 1 * Xt * this.scale, .3 * this.state.thrustLevel);
+                Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-Ht - .5 * this.state.thrustDir) * (40 * Xt), this.pos.y + Math.cos(-Ht - .5 * this.state.thrustDir) * (40 * Xt), null, 1.5 * Gt * this.scale, 1 * Gt * this.scale, .3 * this.state.thrustLevel);
                 break;
             case 2:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .5) * (15 * Gt), this.pos.y + Math.cos(-Ht - .5) * (15 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.5 - Ht) * (15 * Gt), this.pos.y + Math.cos(.5 - Ht) * (15 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .5) * (10 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .5) * (10 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.5 - Ht) * (10 * Gt) / config.shadowScaling, Yt.y + Math.cos(.5 - Ht) * (10 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .3) * (50 * Gt), this.pos.y + Math.cos(-Ht - .3) * (50 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - Ht) * (50 * Gt), this.pos.y + Math.cos(.3 - Ht) * (50 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel);
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .5) * (15 * Xt), this.pos.y + Math.cos(-Ht - .5) * (15 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.5 - Ht) * (15 * Xt), this.pos.y + Math.cos(.5 - Ht) * (15 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .5) * (10 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .5) * (10 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.5 - Ht) * (10 * Xt) / config.shadowScaling, Yt.y + Math.cos(.5 - Ht) * (10 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .3) * (50 * Xt), this.pos.y + Math.cos(-Ht - .3) * (50 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - Ht) * (50 * Xt), this.pos.y + Math.cos(.3 - Ht) * (50 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel);
                 break;
             case 3:
-                Graphics.transform(this.sprites.rotor, this.pos.x, this.pos.y, this.state.thrustDir, 2 * (Gt * this.state.baseScale), 2 * (Gt * this.state.baseScale), .8),
+                Graphics.transform(this.sprites.rotor, this.pos.x, this.pos.y, this.state.thrustDir, 2 * (Xt * this.state.baseScale), 2 * (Xt * this.state.baseScale), .8),
                 Graphics.transform(this.sprites.rotorShadow, Yt.x, Yt.y, this.state.thrustDir, 2 * (this.state.baseScale * (2.4 / config.shadowScaling) * this.scale), 2 * (this.state.baseScale * (2.4 / config.shadowScaling) * this.scale));
                 break;
             case 4:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .25) * (5 * Gt), this.pos.y + Math.cos(-Ht - .25) * (5 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.25 - Ht) * (5 * Gt), this.pos.y + Math.cos(.25 - Ht) * (5 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .15) * (28 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .15) * (28 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.15 - Ht) * (28 * Gt) / config.shadowScaling, Yt.y + Math.cos(.15 - Ht) * (28 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2) * (45 * Gt), this.pos.y + Math.cos(-Ht - .2) * (45 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht) * (45 * Gt), this.pos.y + Math.cos(.2 - Ht) * (45 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel);
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .25) * (5 * Xt), this.pos.y + Math.cos(-Ht - .25) * (5 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.25 - Ht) * (5 * Xt), this.pos.y + Math.cos(.25 - Ht) * (5 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .15) * (28 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .15) * (28 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.15 - Ht) * (28 * Xt) / config.shadowScaling, Yt.y + Math.cos(.15 - Ht) * (28 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2) * (45 * Xt), this.pos.y + Math.cos(-Ht - .2) * (45 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht) * (45 * Xt), this.pos.y + Math.cos(.2 - Ht) * (45 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel);
                 break;
             case 5:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .35) * (20 * Gt), this.pos.y + Math.cos(-Ht - .35) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.35 - Ht) * (20 * Gt), this.pos.y + Math.cos(.35 - Ht) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
-                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .35) * (20 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .35) * (20 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.35 - Ht) * (20 * Gt) / config.shadowScaling, Yt.y + Math.cos(.35 - Ht) * (20 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Gt), this.pos.y + Math.cos(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht - 0 * this.state.thrustDir) * (35 * Gt), this.pos.y + Math.cos(.2 - Ht - 0 * this.state.thrustDir) * (35 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - .35) * (20 * Xt), this.pos.y + Math.cos(-Ht - .35) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.35 - Ht) * (20 * Xt), this.pos.y + Math.cos(.35 - Ht) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
+                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .35) * (20 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .35) * (20 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.35 - Ht) * (20 * Xt) / config.shadowScaling, Yt.y + Math.cos(.35 - Ht) * (20 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Xt), this.pos.y + Math.cos(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht - 0 * this.state.thrustDir) * (35 * Xt), this.pos.y + Math.cos(.2 - Ht - 0 * this.state.thrustDir) * (35 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
             }
         else
             switch (this.type) {
             case 1:
-                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-Ht) * (20 * Gt), this.pos.y + Math.cos(-Ht) * (20 * Gt), Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thrusterShadow, Yt.x + Math.sin(-Ht) * (20 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht) * (20 * Gt) / config.shadowScaling, Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-Ht - .5 * this.state.thrustDir) * (40 * Gt), this.pos.y + Math.cos(-Ht - .5 * this.state.thrustDir) * (40 * Gt), null, 1.5 * Xt * this.scale, 1 * Xt * this.scale, .3 * this.state.thrustLevel),
+                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-Ht) * (20 * Xt), this.pos.y + Math.cos(-Ht) * (20 * Xt), Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thrusterShadow, Yt.x + Math.sin(-Ht) * (20 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht) * (20 * Xt) / config.shadowScaling, Ht + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-Ht - .5 * this.state.thrustDir) * (40 * Xt), this.pos.y + Math.cos(-Ht - .5 * this.state.thrustDir) * (40 * Xt), null, 1.5 * Gt * this.scale, 1 * Gt * this.scale, .3 * this.state.thrustLevel),
                 this.sprites.thruster.scale.x = this.sprites.thruster.scale.y = 0.25;
                 break;
             case 2:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.8 - Ht) * (50 * Gt), this.pos.y + Math.cos(.8 - Ht) * (50 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.5 - Ht) * (32 * Gt) / config.shadowScaling, Yt.y + Math.cos(.5 - Ht) * (32 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - Ht) * (50 * Gt), this.pos.y + Math.cos(.3 - Ht) * (50 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel);
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.8 - Ht) * (50 * Xt), this.pos.y + Math.cos(.8 - Ht) * (50 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale, .6 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.5 - Ht) * (32 * Xt) / config.shadowScaling, Yt.y + Math.cos(.5 - Ht) * (32 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), .6 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - Ht) * (50 * Xt), this.pos.y + Math.cos(.3 - Ht) * (50 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel);
                 break;
             case 3:
-                Graphics.transform(this.sprites.rotor, this.pos.x, this.pos.y, this.state.thrustDir, 2 * (Gt * this.state.baseScale), 2 * (Gt * this.state.baseScale), .8),
+                Graphics.transform(this.sprites.rotor, this.pos.x, this.pos.y, this.state.thrustDir, 2 * (Xt * this.state.baseScale), 2 * (Xt * this.state.baseScale), .8),
                 Graphics.transform(this.sprites.rotorShadow, Yt.x, Yt.y, this.state.thrustDir, 2 * (this.state.baseScale * (2.4 / config.shadowScaling) * this.scale), 2 * (this.state.baseScale * (2.4 / config.shadowScaling) * this.scale));
                 break;
             case 4:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - 1) * (20 * Gt), this.pos.y + Math.cos(-Ht - 1) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(1 - Ht) * (20 * Gt), this.pos.y + Math.cos(1 - Ht) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
-                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .15) * (28 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .15) * (28 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.15 - Ht) * (28 * Gt) / config.shadowScaling, Yt.y + Math.cos(.15 - Ht) * (28 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
-                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2) * (45 * Gt), this.pos.y + Math.cos(-Ht - .2) * (45 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht) * (45 * Gt), this.pos.y + Math.cos(.2 - Ht) * (45 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - 1) * (20 * Xt), this.pos.y + Math.cos(-Ht - 1) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(1 - Ht) * (20 * Xt), this.pos.y + Math.cos(1 - Ht) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .5 * zt * Vt * this.scale, qt),
+                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .15) * (28 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .15) * (28 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.15 - Ht) * (28 * Xt) / config.shadowScaling, Yt.y + Math.cos(.15 - Ht) * (28 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale * (4 / config.shadowScaling), .5 * zt * Vt * this.scale * (4 / config.shadowScaling), qt / 2.5),
+                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2) * (45 * Xt), this.pos.y + Math.cos(-Ht - .2) * (45 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht) * (45 * Xt), this.pos.y + Math.cos(.2 - Ht) * (45 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
                 this.sprites.thruster1.scale.x = this.sprites.thruster1.scale.y = 0.35,
                 this.sprites.thruster2.scale.x = this.sprites.thruster2.scale.y = 0.35;
                 break;
             case 5:
                 0 > this.state.thrustLevel && (zt *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - 0.3) * (20 * Gt), this.pos.y + Math.cos(-Ht - .35) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.3 - Ht) * (20 * Gt), this.pos.y + Math.cos(.35 - Ht) * (20 * Gt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
-                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .35) * (20 * Gt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .35) * (20 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.35 - Ht) * (20 * Gt) / config.shadowScaling, Yt.y + Math.cos(.35 - Ht) * (20 * Gt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Gt), this.pos.y + Math.cos(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht - 0 * this.state.thrustDir) * (35 * Gt), this.pos.y + Math.cos(.2 - Ht - 0 * this.state.thrustDir) * (35 * Gt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-Ht - 0.3) * (20 * Xt), this.pos.y + Math.cos(-Ht - .35) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.3 - Ht) * (20 * Xt), this.pos.y + Math.cos(.35 - Ht) * (20 * Xt), Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * zt * Vt * this.scale, .4 * zt * Vt * this.scale, qt * this.alpha),
+                Graphics.transform(this.sprites.thruster1Shadow, Yt.x + Math.sin(-Ht - .35) * (20 * Xt) / config.shadowScaling, Yt.y + Math.cos(-Ht - .35) * (20 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, Yt.x + Math.sin(.35 - Ht) * (20 * Xt) / config.shadowScaling, Yt.y + Math.cos(.35 - Ht) * (20 * Xt) / config.shadowScaling, Ht + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), .4 * zt * Vt * this.scale * (4 / config.shadowScaling), qt * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Xt), this.pos.y + Math.cos(-Ht - .2 - 0 * this.state.thrustDir) * (35 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - Ht - 0 * this.state.thrustDir) * (35 * Xt), this.pos.y + Math.cos(.2 - Ht - 0 * this.state.thrustDir) * (35 * Xt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
             }
         this.updateNameplate(),
         this.state.bubble && this.updateBubble(),
@@ -29802,8 +29815,8 @@ class Player {
 }
 !function() {
     var Bt = {}
-      , Gt = [-1, -1, -1]
-      , Xt = ["badge_gold", "badge_silver", "badge_bronze"];
+      , Xt = [-1, -1, -1]
+      , Gt = ["badge_gold", "badge_silver", "badge_bronze"];
     Players.update = function() {
         var Ht, Yt;
         for (Ht in Bt)
@@ -29877,17 +29890,17 @@ class Player {
         for (var jt = Tools.clamp(Ht.length, 0, 3), Wt = [], zt = 0, Yt; zt < jt; zt++)
             null != (Yt = Bt[Ht[zt].id]) && (Wt.push(Yt.id),
             Yt.state.badge != zt && (Yt.state.badge = zt,
-            Yt.changeBadge(Xt[zt])),
+            Yt.changeBadge(Gt[zt])),
             Yt.state.hasBadge || (Yt.state.hasBadge = !0,
             Yt.render && (Yt.sprites.badge.visible = !0)));
-        for (var Vt = 0; Vt < Gt.length; Vt++)
-            if (-1 == Wt.indexOf(Gt[Vt])) {
-                if (null == (Yt = Bt[Gt[Vt]]))
+        for (var Vt = 0; Vt < Xt.length; Vt++)
+            if (-1 == Wt.indexOf(Xt[Vt])) {
+                if (null == (Yt = Bt[Xt[Vt]]))
                     continue;
                 Yt.state.hasBadge && (Yt.state.hasBadge = !1,
                 Yt.sprites.badge.visible = !1)
             }
-        Gt = Wt
+        Xt = Wt
     }
     ,
     Players.chat = function(Ht) {
@@ -30152,19 +30165,19 @@ class Mob {
         !(!1 !== this.reducedFactor && (Bt -= this.reducedFactor,
         this.reducedFactor = !1,
         0 >= Bt))) {
-            var Yt = .51 < Bt ? Math.round(Bt) : 1, jt = Bt / Yt, Gt, Xt, Ht;
-            for (Gt = 0; Gt < Yt; Gt++)
+            var Yt = .51 < Bt ? Math.round(Bt) : 1, jt = Bt / Yt, Xt, Gt, Ht;
+            for (Xt = 0; Xt < Yt; Xt++)
                 if (this.stationary)
                     this.clientCalcs(jt);
                 else {
-                    Xt = this.speed.x,
+                    Gt = this.speed.x,
                     Ht = this.speed.y,
                     this.speed.x += this.accel.x * jt,
                     this.speed.y += this.accel.y * jt;
                     var Wt = this.speed.length();
                     Wt > this.maxSpeed && this.speed.multiply(this.maxSpeed / Wt),
                     this.state.inactive && this.speed.multiply(1 - .03 * jt),
-                    this.pos.x += jt * Xt + .5 * (this.speed.x - Xt) * jt,
+                    this.pos.x += jt * Gt + .5 * (this.speed.x - Gt) * jt,
                     this.pos.y += jt * Ht + .5 * (this.speed.y - Ht) * jt,
                     -16384 > this.pos.x && (this.pos.x += 32768),
                     16384 < this.pos.x && (this.pos.x -= 32768),
@@ -30187,19 +30200,19 @@ class Mob {
             case 5:
             case 6:
             case 7:
-                var Gt = 1;
+                var Xt = 1;
                 if (this.state.inactive) {
                     if (this.state.despawnTicker += .01 * Bt,
                     .75 < this.state.despawnTicker,
                     1 < this.state.despawnTicker)
                         return void (this.forDeletion = !0);
-                    Gt = Tools.clamp(1 - this.state.despawnTicker, .3, 1)
+                    Xt = Tools.clamp(1 - this.state.despawnTicker, .3, 1)
                 }
-                if (!this.culled && .3 < Gt) {
-                    var Xt = this.speed.angle() + Math.PI;
-                    Xt - this.spriteRot >= Math.PI ? this.spriteRot += 2 * Math.PI : this.spriteRot - Xt > Math.PI && (this.spriteRot -= 2 * Math.PI),
-                    this.spriteRot = Tools.converge(this.spriteRot, Xt, .1 * Bt),
-                    Particles.missileSmoke(this, this.exhaust, Gt)
+                if (!this.culled && .3 < Xt) {
+                    var Gt = this.speed.angle() + Math.PI;
+                    Gt - this.spriteRot >= Math.PI ? this.spriteRot += 2 * Math.PI : this.spriteRot - Gt > Math.PI && (this.spriteRot -= 2 * Math.PI),
+                    this.spriteRot = Tools.converge(this.spriteRot, Gt, .1 * Bt),
+                    Particles.missileSmoke(this, this.exhaust, Xt)
                 }
                 break;
             case 4:
@@ -30218,31 +30231,31 @@ class Mob {
         case 5:
         case 6:
         case 7:
-            var Gt = Graphics.shadowCoords(this.pos)
-              , Xt = Tools.oscillator(.1, .5, this.randomness)
+            var Xt = Graphics.shadowCoords(this.pos)
+              , Gt = Tools.oscillator(.1, .5, this.randomness)
               , Ht = Tools.oscillator(.15, 10, this.randomness);
             Graphics.transform(this.sprites.sprite, this.pos.x, this.pos.y, this.spriteRot),
-            Graphics.transform(this.sprites.shadow, Gt.x, Gt.y, this.spriteRot),
+            Graphics.transform(this.sprites.shadow, Xt.x, Xt.y, this.spriteRot),
             Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-this.spriteRot) * (this.exhaust + 20), this.pos.y + Math.cos(-this.spriteRot) * (this.exhaust + 20), null, null, null, (.5 * this.state.luminosity + .2) * Ht),
             Graphics.transform(this.sprites.smokeGlow, this.pos.x + Math.sin(-this.spriteRot) * (this.exhaust + 20), this.pos.y + Math.cos(-this.spriteRot) * (this.exhaust + 20), this.spriteRot),
-            Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-this.spriteRot) * this.exhaust, this.pos.y + Math.cos(-this.spriteRot) * this.exhaust, this.spriteRot, config.mobs[this.type].thruster[0] * Xt, config.mobs[this.type].thruster[1] * Xt);
+            Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-this.spriteRot) * this.exhaust, this.pos.y + Math.cos(-this.spriteRot) * this.exhaust, this.spriteRot, config.mobs[this.type].thruster[0] * Gt, config.mobs[this.type].thruster[1] * Gt);
             break;
         case 4:
         case 8:
         case 9:
             var Yt;
-            Gt = Graphics.shadowCoords(this.pos),
+            Xt = Graphics.shadowCoords(this.pos),
             Yt = 0 == this.state.despawnType ? 1 - this.state.despawnTicker : 1 + 2 * this.state.despawnTicker,
             Yt *= Tools.oscillator(.08, 500, this.randomness),
             Graphics.transform(this.sprites.sprite, this.pos.x, this.pos.y + 20 * (Tools.oscillator(.08, 330, this.randomness) - 1.04), null, this.state.baseScale * Yt, this.state.baseScale * Yt, 1 - this.state.despawnTicker),
-            Graphics.transform(this.sprites.shadow, Gt.x, Gt.y, null, this.state.baseScaleShadow * Yt, this.state.baseScaleShadow * Yt, 1 - this.state.despawnTicker);
+            Graphics.transform(this.sprites.shadow, Xt.x, Xt.y, null, this.state.baseScaleShadow * Yt, this.state.baseScaleShadow * Yt, 1 - this.state.despawnTicker);
         }
     }
 }
 !function() {
     var Bt = {}
-      , Gt = []
-      , Xt = {};
+      , Xt = []
+      , Gt = {};
     Mobs.add = function(Ht, Yt) {
         Bt[Ht.id] = new Mob(Ht),
         Yt && Bt[Ht.id].network(Ht)
@@ -30306,7 +30319,7 @@ class Mob {
     }
     ,
     Mobs.countDoodads = function() {
-        return [Gt.length, config.doodads.length]
+        return [Xt.length, config.doodads.length]
     }
     ,
     Mobs.setupDoodads = function() {
@@ -30330,8 +30343,8 @@ class Mob {
     }
     ,
     Mobs.getClosestDoodad = function(Ht) {
-        for (var Wt = 2, zt = 0, Yt, jt; zt < Gt.length; zt++)
-            0 == (jt = Gt[zt])[5] && Tools.distFastCheckFloat(Ht.x, Ht.y, jt[0], jt[1], 256 * jt[3]) && (Yt = Tools.distance(Ht.x, Ht.y, jt[0], jt[1]) / (256 * jt[3])) < Wt && (Wt = Yt);
+        for (var Wt = 2, zt = 0, Yt, jt; zt < Xt.length; zt++)
+            0 == (jt = Xt[zt])[5] && Tools.distFastCheckFloat(Ht.x, Ht.y, jt[0], jt[1], 256 * jt[3]) && (Yt = Tools.distance(Ht.x, Ht.y, jt[0], jt[1]) / (256 * jt[3])) < Wt && (Wt = Yt);
         return Tools.clamp(3.333 * (Wt - .5), .2, 1)
     }
     ,
@@ -30343,15 +30356,15 @@ class Mob {
                     Ht = config.doodads[Vt],
                     game.state == Network.STATE.LOGIN && 0 != Ht[9] || Graphics.inScreen(new Vector(Ht[0],Ht[1]), 256 * Ht[3] + config.overdraw) && (Ht[7] || (Ht[8].visible = !0,
                     Ht[7] = !0,
-                    Xt[Vt] || (Xt[Vt] = !0,
-                    Gt.push([Ht[0], Ht[1], Ht[2], Ht[3], Vt, Ht[9]]))));
-        for (var qt = Gt.length - 1, Vt; 0 <= qt; qt--)
-            Vt = Gt[qt][4],
+                    Gt[Vt] || (Gt[Vt] = !0,
+                    Xt.push([Ht[0], Ht[1], Ht[2], Ht[3], Vt, Ht[9]]))));
+        for (var qt = Xt.length - 1, Vt; 0 <= qt; qt--)
+            Vt = Xt[qt][4],
             Ht = config.doodads[Vt],
             Graphics.inScreen(new Vector(Ht[0],Ht[1]), 256 * Ht[3] + config.overdraw) || Ht[7] && (Ht[8].visible = !1,
             Ht[7] = !1,
-            Gt.splice(qt, 1),
-            delete Xt[Vt])
+            Xt.splice(qt, 1),
+            delete Gt[Vt])
     }
 }(),
 function() {
@@ -30426,7 +30439,7 @@ function() {
             var Yt, jt;
             for (Yt in this.emitters) {
                 switch ((jt = this.emitters[Yt]).type) {
-                case Xt.EMITTER_EXPLOSION_FRAGMENT:
+                case Gt.EMITTER_EXPLOSION_FRAGMENT:
                     jt.life += .02 * Ht,
                     jt.speed.multiply(1 - .02 * Ht);
                 }
@@ -30436,14 +30449,14 @@ function() {
                     switch (jt.pos.x += jt.speed.x * Ht,
                     jt.pos.y += jt.speed.y * Ht,
                     jt.type) {
-                    case Xt.EMITTER_EXPLOSION_FRAGMENT:
+                    case Gt.EMITTER_EXPLOSION_FRAGMENT:
                         var Wt = Tools.randInt(1, 16)
                           , zt = .5 * (1 - jt.life)
                           , Vt = 1 - jt.life
                           , qt = Tools.rand(-.1, .1)
                           , Kt = Tools.randCircle();
-                        this.addParticle(Xt.FRAGMENT_SMOKE, "smoke_" + Wt, Vector.zero(), jt.pos.clone(), Vector.diag(zt), 1, qt, Kt, null, null, null, null, Vt + .2),
-                        jt.shadowLayer && jt.shadowLayer.addParticle(Xt.FRAGMENT_SMOKE, "smokeshadow_" + Wt, Vector.zero(), jt.pos.clone(), Vector.diag(zt), 1, qt, Kt, null, null, null, null, Vt + .2);
+                        this.addParticle(Gt.FRAGMENT_SMOKE, "smoke_" + Wt, Vector.zero(), jt.pos.clone(), Vector.diag(zt), 1, qt, Kt, null, null, null, null, Vt + .2),
+                        jt.shadowLayer && jt.shadowLayer.addParticle(Gt.FRAGMENT_SMOKE, "smokeshadow_" + Wt, Vector.zero(), jt.pos.clone(), Vector.diag(zt), 1, qt, Kt, null, null, null, null, Vt + .2);
                     }
             }
         }
@@ -30469,12 +30482,12 @@ function() {
             this.updateEmitters(Ht);
             for (var jt = this.first; -1 != jt; ) {
                 switch ((Yt = this.particles[jt]).type) {
-                case Xt.MISSILE:
-                case Xt.MISSILE_FAT:
-                case Xt.MISSILE_SMALL:
-                    Yt.type == Xt.MISSILE ? (Yt.scale.add(.2 * Ht),
+                case Gt.MISSILE:
+                case Gt.MISSILE_FAT:
+                case Gt.MISSILE_SMALL:
+                    Yt.type == Gt.MISSILE ? (Yt.scale.add(.2 * Ht),
                     Yt.scale.ceil(2 * Yt.data),
-                    Yt.life += .05 * Ht) : Yt.type == Xt.MISSILE_FAT ? (Yt.scale.add(.3 * Ht),
+                    Yt.life += .05 * Ht) : Yt.type == Gt.MISSILE_FAT ? (Yt.scale.add(.3 * Ht),
                     Yt.scale.ceil(3 * Yt.data),
                     Yt.life += .05 * Ht) : (Yt.scale.add(.14 * Ht),
                     Yt.scale.ceil(1.4 * Yt.data),
@@ -30483,53 +30496,53 @@ function() {
                     Yt.alpha = .7 * (1 - Yt.life),
                     Yt.sprite.tint = Tools.colorLerp(Yt.tint, 16777215, 2 * (1 - Yt.life));
                     break;
-                case Xt.SHOCKWAVE_SMOKE:
+                case Gt.SHOCKWAVE_SMOKE:
                     Yt.life += .05 * Ht,
                     Yt.alpha = .7 * Tools.easing.custom(Yt.life, "shockwave");
                     break;
-                case Xt.SHOCKWAVE_INNER:
-                case Xt.SHOCKWAVE_OUTER:
+                case Gt.SHOCKWAVE_INNER:
+                case Gt.SHOCKWAVE_OUTER:
                     Yt.life += .05 * Ht;
                     var Wt = Tools.easing.custom(Yt.life, "shockwave");
                     Yt.alpha = .4 * Wt,
-                    Yt.type == Xt.SHOCKWAVE_OUTER ? Yt.scale.both(4 * Yt.life) : Yt.scale.both(3 * Yt.life);
+                    Yt.type == Gt.SHOCKWAVE_OUTER ? Yt.scale.both(4 * Yt.life) : Yt.scale.both(3 * Yt.life);
                     break;
-                case Xt.EXPLOSION_FLASH:
+                case Gt.EXPLOSION_FLASH:
                     Yt.life += .1 * Ht,
                     Yt.alpha = 1 - Yt.life;
                     break;
-                case Xt.EXPLOSION_FLASH_BIG:
+                case Gt.EXPLOSION_FLASH_BIG:
                     Yt.life += .04 * Ht,
                     Yt.alpha = 1 - Yt.life;
                     break;
-                case Xt.EXPLOSION_HOT_SMOKE:
+                case Gt.EXPLOSION_HOT_SMOKE:
                     Yt.life += .035 * Ht,
                     Yt.alpha = 1 - Yt.life,
                     Yt.scale.add(.05 * Ht),
                     Yt.speed.multiply(1 - .1 * Ht),
                     Yt.rotationSpeed *= 1 - .05 * Ht;
                     break;
-                case Xt.EXPLOSION_SMOKE:
+                case Gt.EXPLOSION_SMOKE:
                     Yt.life += .01 * Ht,
                     Yt.alpha = Tools.easing.custom(Yt.life, "explosionSmoke"),
                     Yt.scale.add(.05 * Ht),
                     Yt.speed.multiply(1 - .05 * Ht),
                     Yt.rotationSpeed *= 1 - .05 * Ht;
                     break;
-                case Xt.EXPLOSION_SPARK:
+                case Gt.EXPLOSION_SPARK:
                     Yt.life += .02 * Ht,
                     Yt.alpha = 2 * (1 - Yt.life),
                     Yt.speed.multiply(1 - .05 * Ht),
                     Yt.rotationSpeed *= 1 - .05 * Ht;
                     break;
-                case Xt.FRAGMENT_SMOKE:
+                case Gt.FRAGMENT_SMOKE:
                     Yt.life += .02 * Ht,
                     Yt.scale.add(.075 * Ht * Yt.data),
                     Yt.scale.ceil(2 * Yt.data),
                     Yt.rotationSpeed *= 1 - .05 * Ht,
                     Yt.alpha = .3 * (1 - Yt.life);
                     break;
-                case Xt.PLANE_DAMAGE:
+                case Gt.PLANE_DAMAGE:
                     Yt.life += .02 * Ht,
                     Yt.alpha = 2 * (1 - Yt.life),
                     Yt.speed.multiply(1 - .1 * Ht);
@@ -30560,25 +30573,25 @@ function() {
             }
         }
     }
-    var Gt = {};
+    var Xt = {};
     Math.PI,
     Particles.setup = function() {
-        Gt.smoke = new Bt(game.graphics.layers.smoke,2e3),
-        Gt.shadows = new Bt(game.graphics.layers.shadows,2e3,null,!0),
-        Gt.explosions = new Bt(game.graphics.layers.explosions,2e3)
+        Xt.smoke = new Bt(game.graphics.layers.smoke,2e3),
+        Xt.shadows = new Bt(game.graphics.layers.shadows,2e3,null,!0),
+        Xt.explosions = new Bt(game.graphics.layers.explosions,2e3)
     }
     ,
     Particles.update = function() {
         for (var Ht = .51 < game.timeFactor ? Math.round(game.timeFactor) : 1, Yt = game.timeFactor / Ht, jt = 0; jt < Ht; jt++)
-            Gt.smoke.update(Yt),
-            Gt.explosions.update(Yt),
-            Gt.shadows.update(Yt)
+            Xt.smoke.update(Yt),
+            Xt.explosions.update(Yt),
+            Xt.shadows.update(Yt)
     }
     ,
     Particles.wipe = function() {
-        Gt.smoke.wipe(),
-        Gt.explosions.wipe(),
-        Gt.shadows.wipe()
+        Xt.smoke.wipe(),
+        Xt.explosions.wipe(),
+        Xt.shadows.wipe()
     }
     ,
     Particles.planeDamage = function(Ht) {
@@ -30590,12 +30603,12 @@ function() {
           , qt = Tools.rand(0, .3)
           , Kt = Vector.createOff(Ht.pos, Wt, Tools.rand(0, 5 * Yt))
           , Qt = Vector.create(Wt, zt);
-        Gt.explosions.addParticle(Xt.PLANE_DAMAGE, "spark_" + jt, new Vector(Qt.x + Ht.speed.x,Qt.y + Ht.speed.y), Kt, Vector.diag(Vt), 0, 0, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD, qt)
+        Xt.explosions.addParticle(Gt.PLANE_DAMAGE, "spark_" + jt, new Vector(Qt.x + Ht.speed.x,Qt.y + Ht.speed.y), Kt, Vector.diag(Vt), 0, 0, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD, qt)
     }
     ,
     Particles.explosion = function(Ht, Yt, jt) {
         for (var Wt = 1 < Yt ? 1 + (Yt - 1) / 1.5 : Yt, zt = 0; 2 > zt; zt++)
-            Gt.explosions.addParticle(Xt.EXPLOSION_FLASH, "flash_" + Tools.randInt(1, 4), Vector.zero(), Ht.clone(), Vector.diag(1.5 * Yt), 0, 0, Tools.randCircle(), 15987628, null, PIXI.BLEND_MODES.ADD);
+            Xt.explosions.addParticle(Gt.EXPLOSION_FLASH, "flash_" + Tools.randInt(1, 4), Vector.zero(), Ht.clone(), Vector.diag(1.5 * Yt), 0, 0, Tools.randCircle(), 15987628, null, PIXI.BLEND_MODES.ADD);
         var Vt, qt, Kt, Qt, Zt, Jt, $t, en, tn;
         for (Vt = Math.round(Tools.rand(20, 30) * Yt),
         zt = 0; zt < Vt; zt++)
@@ -30605,12 +30618,12 @@ function() {
             Jt = Tools.rand(-.2, .2),
             $t = Tools.rand(.4, 1.5) * Wt,
             tn = Tools.rand(0, .3),
-            Gt.explosions.addParticle(Xt.EXPLOSION_SPARK, "spark_" + qt, Vector.create(Kt, Zt), Ht.clone(), Vector.diag($t), 0, Jt, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD, tn);
+            Xt.explosions.addParticle(Gt.EXPLOSION_SPARK, "spark_" + qt, Vector.create(Kt, Zt), Ht.clone(), Vector.diag($t), 0, Jt, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD, tn);
         for (zt = 0; zt < jt; zt++)
             Kt = Tools.randCircle(),
             Zt = Tools.rand(3, 7) * Wt,
             Qt = Tools.rand(15, 30) * Yt,
-            Gt.explosions.addEmitter(Xt.EMITTER_EXPLOSION_FRAGMENT, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Tools.rand(0, .5), Gt.shadows);
+            Xt.explosions.addEmitter(Gt.EMITTER_EXPLOSION_FRAGMENT, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Tools.rand(0, .5), Xt.shadows);
         for (Vt = Math.round(Tools.rand(20, 30) * Yt),
         zt = 0; zt < Vt; zt++)
             qt = Tools.randInt(1, 16),
@@ -30620,9 +30633,9 @@ function() {
             Jt = Tools.rand(-.1, .1),
             $t = Tools.rand(.5, .8) * Yt,
             en = Tools.randCircle(),
-            Gt.explosions.addParticle(Xt.EXPLOSION_SMOKE, "smoke_" + qt, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Vector.diag($t), 0, Jt, en),
-            Gt.shadows.addParticle(Xt.EXPLOSION_SMOKE, "smokeshadow_" + qt, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Vector.diag($t), 0, Jt, en);
-        for (Gt.explosions.addParticle(Xt.EXPLOSION_FLASH_BIG, "glowsmall", Vector.zero(), Ht.clone(), Vector.diag(6 * Yt), 0, 0, 0, null, null, PIXI.BLEND_MODES.ADD),
+            Xt.explosions.addParticle(Gt.EXPLOSION_SMOKE, "smoke_" + qt, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Vector.diag($t), 0, Jt, en),
+            Xt.shadows.addParticle(Gt.EXPLOSION_SMOKE, "smokeshadow_" + qt, Vector.create(Kt, Zt), Vector.createOff(Ht, Kt, Qt), Vector.diag($t), 0, Jt, en);
+        for (Xt.explosions.addParticle(Gt.EXPLOSION_FLASH_BIG, "glowsmall", Vector.zero(), Ht.clone(), Vector.diag(6 * Yt), 0, 0, 0, null, null, PIXI.BLEND_MODES.ADD),
         Vt = Math.round(Tools.rand(5, 10) * Yt),
         zt = 0; zt < Vt; zt++)
             qt = Tools.randInt(1, 4),
@@ -30630,11 +30643,11 @@ function() {
             Zt = Tools.rand(1, 3) * Yt,
             Jt = Tools.rand(-.1, .1),
             $t = Tools.rand(.1, .3) * Yt,
-            Gt.explosions.addParticle(Xt.EXPLOSION_HOT_SMOKE, "hotsmoke_" + qt, Vector.create(Kt, Zt), Ht.clone(), Vector.diag($t), 0, Jt, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD)
+            Xt.explosions.addParticle(Gt.EXPLOSION_HOT_SMOKE, "hotsmoke_" + qt, Vector.create(Kt, Zt), Ht.clone(), Vector.diag($t), 0, Jt, Tools.randCircle(), 16739073, null, PIXI.BLEND_MODES.ADD)
     }
     ,
     Particles.missileSmoke = function(Ht, Yt, jt) {
-        var Wt = [null, Xt.MISSILE, Xt.MISSILE_FAT, Xt.MISSILE_SMALL, null, Xt.MISSILE, Xt.MISSILE, Xt.MISSILE][Ht.type]
+        var Wt = [null, Gt.MISSILE, Gt.MISSILE_FAT, Gt.MISSILE_SMALL, null, Gt.MISSILE, Gt.MISSILE, Gt.MISSILE][Ht.type]
           , zt = Ht.spriteRot + Math.PI
           , Vt = Vector.createOff(Ht.pos, zt, Yt)
           , qt = .2 * (jt = jt || 1)
@@ -30643,8 +30656,8 @@ function() {
           , Zt = Tools.randInt(1, 16)
           , Jt = Tools.rand(-.1, .1);
         Tools.randCircle(),
-        Gt.smoke.addParticle(Wt, "smoke_" + Zt, Qt.clone(), Vt.clone(), new Vector(1.25 * qt,4 * qt), 1, Jt, zt, 16775590, null, null, null, jt),
-        Gt.shadows.addParticle(Wt, "smokeshadow_" + Zt, Qt.clone(), Vt.clone(), new Vector(1.25 * qt,4 * qt), 1, Jt, zt, null, null, null, null, jt)
+        Xt.smoke.addParticle(Wt, "smoke_" + Zt, Qt.clone(), Vt.clone(), new Vector(1.25 * qt,4 * qt), 1, Jt, zt, 16775590, null, null, null, jt),
+        Xt.shadows.addParticle(Wt, "smokeshadow_" + Zt, Qt.clone(), Vt.clone(), new Vector(1.25 * qt,4 * qt), 1, Jt, zt, null, null, null, null, jt)
     }
     ,
     Particles.planeBoost = function(Ht, Yt) {
@@ -30656,27 +30669,27 @@ function() {
           , Kt = Tools.randInt(1, 16)
           , Qt = Tools.rand(-.1, .1);
         Tools.randCircle(),
-        Gt.smoke.addParticle(Xt.MISSILE, "smoke_" + Kt, qt.clone(), Wt.clone(), new Vector(.3,1.2), 1, Qt, jt, 16775590, null, null, null, 1.2),
-        Gt.shadows.addParticle(Xt.MISSILE, "smokeshadow_" + Kt, qt.clone(), Wt.clone(), new Vector(.3,1.2), 1, Qt, jt, null, null, null, null, 1.2)
+        Xt.smoke.addParticle(Gt.MISSILE, "smoke_" + Kt, qt.clone(), Wt.clone(), new Vector(.3,1.2), 1, Qt, jt, 16775590, null, null, null, 1.2),
+        Xt.shadows.addParticle(Gt.MISSILE, "smokeshadow_" + Kt, qt.clone(), Wt.clone(), new Vector(.3,1.2), 1, Qt, jt, null, null, null, null, 1.2)
     }
     ,
     Particles.spiritShockwave = function(Ht) {
         for (var Wt = 0, Yt, jt; 40 > Wt; Wt++)
             jt = 2 * (Wt / 40) * Math.PI,
             Yt = Tools.randInt(1, 16),
-            Gt.smoke.addParticle(Xt.SHOCKWAVE_SMOKE, "smoke_" + Yt, Vector.create(jt, 8), Ht.clone(), Vector.diag(2), 0, .4, Tools.randCircle());
-        Gt.smoke.addParticle(Xt.SHOCKWAVE_INNER, "shockwave", Vector.zero(), Ht.clone(), Vector.zero(), 0, 0, -.35 + Math.PI),
-        Gt.smoke.addParticle(Xt.SHOCKWAVE_OUTER, "shockwave", Vector.zero(), Ht.clone(), Vector.zero(), 0, 0, -.35)
+            Xt.smoke.addParticle(Gt.SHOCKWAVE_SMOKE, "smoke_" + Yt, Vector.create(jt, 8), Ht.clone(), Vector.diag(2), 0, .4, Tools.randCircle());
+        Xt.smoke.addParticle(Gt.SHOCKWAVE_INNER, "shockwave", Vector.zero(), Ht.clone(), Vector.zero(), 0, 0, -.35 + Math.PI),
+        Xt.smoke.addParticle(Gt.SHOCKWAVE_OUTER, "shockwave", Vector.zero(), Ht.clone(), Vector.zero(), 0, 0, -.35)
     }
     ,
     Particles.count = function() {
         var Ht = 0;
-        for (var Yt in Gt)
-            Ht += Gt[Yt].particles.length;
+        for (var Yt in Xt)
+            Ht += Xt[Yt].particles.length;
         return Ht
     }
     ;
-    var Xt = {
+    var Gt = {
         MISSILE: 0,
         MISSILE_FAT: 1,
         MISSILE_SMALL: 2,
@@ -30692,12 +30705,12 @@ function() {
         PLANE_DAMAGE: 12,
         EMITTER_EXPLOSION_FRAGMENT: 100
     };
-    Particles.PTYPE = Xt
+    Particles.PTYPE = Gt
 }(),
 function() {
     var Bt = {}
-      , Gt = {}
-      , Xt = null
+      , Xt = {}
+      , Gt = null
       , Ht = !1
       , Yt = 0
       , jt = !1
@@ -30761,6 +30774,7 @@ function() {
     }
       , bn = ["tf", "pepe", "clap", "lol", "bro", "kappa", "cry", "rage"]
       , xn = ["", "Shield", "Inferno"];
+    game.tooltipValues = _n,
     UI.show = function(Dn, In) {
         $(Dn).css({
             display: In ? "inline-block" : "block"
@@ -30931,7 +30945,7 @@ function() {
             game.graphics.layers.ui3.removeChild(Bt[Ln].sprite),
             Bt[Ln].sprite.destroy(),
             delete Bt[Ln];
-        for (var Gn = 0, Xn = "", Hn = {}, Yn = !1, jn = 0, Wn = {}, zn = "", Vn = "", qn = "", Kn = 0, kn, Nn, Fn, Bn, Un; Kn < In.length; Kn++)
+        for (var Xn = 0, Gn = "", Hn = {}, Yn = !1, jn = 0, Wn = {}, zn = "", Vn = "", qn = "", Kn = 0, kn, Nn, Fn, Bn, Un; Kn < In.length; Kn++)
             null != (kn = Players.get(In[Kn].id)) && (Wn = Tools.decodeMinimapCoords(In[Kn].x, In[Kn].y),
             kn.scorePlace = Kn + 1,
             kn.lowResPos.x = Wn.x,
@@ -30956,12 +30970,12 @@ function() {
             delete Bt[Qn]);
         if (0 != jn) {
             for (On = On ? Tools.clamp(On, 1, Dn.length) : Dn.length,
-            Kn = 0; Kn < On && (null == (kn = Players.get(Dn[Kn].id)) || (Gn++,
-            Nn = 1 == Gn ? "<span class=\"badge scoreboard gold\"></span>" : 2 == Gn ? "<span class=\"badge scoreboard silver\"></span>" : 3 == Gn ? "<span class=\"badge scoreboard bronze\"></span>" : Gn + ".",
+            Kn = 0; Kn < On && (null == (kn = Players.get(Dn[Kn].id)) || (Xn++,
+            Nn = 1 == Xn ? "<span class=\"badge scoreboard gold\"></span>" : 2 == Xn ? "<span class=\"badge scoreboard silver\"></span>" : 3 == Xn ? "<span class=\"badge scoreboard bronze\"></span>" : Xn + ".",
             Fn = kn.me() ? " sel" : "",
             Bn = Dn[Kn].score,
             Un = Dn[Kn].level,
-            jn > On && Gn == On - 1 && (Xn += "<div class=\"line dottedline\">&middot; &middot; &middot;</div>",
+            jn > On && Xn == On - 1 && (Gn += "<div class=\"line dottedline\">&middot; &middot; &middot;</div>",
             !0,
             kn = Players.get(game.myID),
             Nn = jn + ".",
@@ -30973,10 +30987,10 @@ function() {
             2 == game.gameType && (zn = " team-" + kn.team),
             Vn = "",
             4 == (Nn + "").length && (Vn = " bigger"),
-            Xn += "<div class=\"line" + Fn + "\" player-id=\"" + kn.id + "\"><span class=\"place" + Vn + "\">" + Nn + "</span><span class=\"flag small flag-" + kn.flag + "\"></span><span class=\"nick" + zn + "\">" + (kn.removedFromMap ? UI.escapeHTML(kn.name).strike() : UI.escapeHTML(kn.name)) + "</span>" + (0 == Un ? "" : "<span class=\"holder\">&nbsp;<span class=\"rank\">" + Un + "</span></span>") + "<span class=\"score\">" + Tn(Bn) + "</span></div>",
+            Gn += "<div class=\"line" + Fn + "\" player-id=\"" + kn.id + "\"><span class=\"place" + Vn + "\">" + Nn + "</span><span class=\"flag small flag-" + kn.flag + "\"></span><span class=\"nick" + zn + "\">" + (kn.removedFromMap ? UI.escapeHTML(kn.name).strike() : UI.escapeHTML(kn.name)) + "</span>" + (0 == Un ? "" : "<span class=\"holder\">&nbsp;<span class=\"rank\">" + Un + "</span></span>") + "<span class=\"score\">" + Tn(Bn) + "</span></div>",
             !Yn)); Kn++)
                 ;
-            $("#scoreboard").html(Xn),
+            $("#scoreboard").html(Gn),
             $("#scoreboard div").click(function(Zn) {
                 var Jn = $(Zn.currentTarget).attr("player-id");
                 parseInt(Jn) != Math.NaN && (window.target = parseInt(Jn))
@@ -31053,7 +31067,7 @@ function() {
     ,
     UI.addChatKilledLine = function(Dn, In) {
         if (!0 == window.ShowKilled) {
-            if (!Gt[Dn.id]) {
+            if (!Xt[Dn.id]) {
                 var Ln = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"flag small flag-" + Dn.flag + "\"></span><span class=\"nick\" style=\"color:" + (1 == Dn.team ? "#4d7fd5" : 2 == Dn.team ? "#dc4f46" : "") + ";\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text\" style=\"margin-left: 10px; margin-right: 10px; opacity: 0.6;\"> killed </span><span class=\"playersel\" data-playerid=\"" + In.id + "\"><span class=\"flag small flag-" + In.flag + "\"></span><span class=\"nick\" style=\"color:" + (1 == In.team ? "#4d7fd5" : 2 == In.team ? "#dc4f46" : "") + ";\">" + UI.escapeHTML(In.name) + "</span></span></div>"
                   , kn = $(Ln);
                 $("#WhoKilledWho").append(kn);
@@ -31067,29 +31081,31 @@ function() {
     }
     ,
     UI.addChatLine = function(Dn, In, On) {
-        if (!Gt[Dn.id]) {
+        if (!Xt[Dn.id]) {
             if (Yt++,
-            0 == On)
-                var Ln = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"flag small flag-" + Dn.flag + "\"></span><span class=\"nick\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text\">" + UI.escapeHTML(In) + "</span></div>";
-            else if (1 == On || 2 == On) {
-                var kn = 1 == On ? "TO" : "FROM";
+            0 == On) {
+                var Ln = "";
+                2 == game.gameType && (Ln = "style = 'color: " + (1 == Dn.team ? "#4076E2" : "#EA4242") + ";' ");
+                var kn = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"flag small flag-" + Dn.flag + "\"></span><span class=\"nick\" " + Ln + " >" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text\">" + UI.escapeHTML(In) + "</span></div>"
+            } else if (1 == On || 2 == On) {
+                var Nn = 1 == On ? "TO" : "FROM";
                 2 == On && (ln = Cn(Dn.name)),
-                Ln = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"tag whisper\">" + kn + "</span><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"nick green\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text green\">" + UI.escapeHTML(In) + "</span></div>",
+                kn = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"tag whisper\">" + Nn + "</span><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"nick green\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text green\">" + UI.escapeHTML(In) + "</span></div>",
                 Wt = -1
             } else
-                Ln = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"tag team\">TEAM</span><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"nick blue\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text blue\">" + UI.escapeHTML(In) + "</span></div>",
+                kn = "<div id=\"chat-" + Yt + "\" class=\"line\"><span class=\"tag team\">TEAM</span><span class=\"playersel\" data-playerid=\"" + Dn.id + "\"><span class=\"nick blue\">" + UI.escapeHTML(Dn.name) + "</span></span><span class=\"text blue\">" + UI.escapeHTML(In) + "</span></div>",
                 Wt = -1;
-            var Nn = "#chat-" + (Yt - config.maxChatLines);
-            if ($(Nn).length && $(Nn).remove(),
-            $("#chatlines").append(Ln),
+            var Fn = "#chat-" + (Yt - config.maxChatLines);
+            if ($(Fn).length && $(Fn).remove(),
+            $("#chatlines").append(kn),
             Vt)
                 qt++,
                 $("#chatunreadlines").html(qt),
                 1 == qt && UI.show("#chatunreadlines", !0);
             else {
-                var Fn = $("#chatbox");
-                1 != On && 2 != On && Dn.id != game.myID && Fn.is(":hover") || (Fn.perfectScrollbar("update"),
-                Fn.scrollTop(Fn[0].scrollHeight))
+                var Bn = $("#chatbox");
+                1 != On && 2 != On && Dn.id != game.myID && Bn.is(":hover") || (Bn.perfectScrollbar("update"),
+                Bn.scrollTop(Bn[0].scrollHeight))
             }
         }
     }
@@ -31131,8 +31147,8 @@ function() {
     var Sn = function() {
         var Dn = window.innerWidth
           , In = window.innerHeight;
-        Dn == game.screenX && In == game.screenY || (clearTimeout(Xt),
-        Xt = setTimeout(function() {
+        Dn == game.screenX && In == game.screenY || (clearTimeout(Gt),
+        Gt = setTimeout(function() {
             Graphics.resizeRenderer(Dn, In)
         }, 250))
     };
@@ -31221,6 +31237,7 @@ function() {
     UI.aircraftSelected = function(Dn) {
         for (var In = 0 == game.myGraphicsSet ? "teamImperial" : "teamRebel", On = 1; 5 >= On; On++)
             $("#selectaircraft-" + On).removeClass("teamImperial").removeClass("teamRebel").addClass(In);
+        SWAM.updateShipNames(),
         Dn = parseInt(Dn);
         for (var On = 1; 5 >= On; On++)
             On == Dn ? $("#selectaircraft-" + On).addClass("sel") : $("#selectaircraft-" + On).removeClass("sel")
@@ -31495,22 +31512,22 @@ function() {
             Dn.c == Network.SERVERPACKET.SCORE_DETAILED_BTR ? Ln = [["name", "&nbsp;"], ["wins", "&nbsp;"], ["kills", "Kills"], ["deaths", "Deaths"], ["bounty", "Bounty"], ["rank", "Level"], ["ping", "Ping"]] : Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (Ln = [["name", "&nbsp;"], ["captures", "&nbsp;"], ["kills", "Kills"], ["deaths", "Deaths"], ["bounty", "Bounty"], ["rank", "Level"], ["ping", "Ping"]]);
             for (var kn = "", Nn = 0; Nn < Ln.length; Nn++)
                 kn += "<div class=\"" + Ln[Nn][0] + "\">" + Ln[Nn][1] + "</div>";
-            for (var Gn = "", Xn = "", Hn = -1, Yn = -1, jn = 0, Fn, Bn, Un; jn < In.length; jn++)
+            for (var Xn = "", Gn = "", Hn = -1, Yn = -1, jn = 0, Fn, Bn, Un; jn < In.length; jn++)
                 null != (Fn = Players.get(In[jn].id)) && (Bn = 2 >= jn ? "&nbsp;<div class=\"badge detail " + On[jn] + "\"></div>" : jn + 1 + ".",
                 Un = Fn.me() ? " sel" : "",
-                Gn = Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? " team-" + Fn.team : Dn.c != Network.SERVERPACKET.SCORE_DETAILED_BTR || In[jn].alive ? "" : " inactive",
-                Xn += "<div class=\"item" + Un + "\" player-id=\"" + Fn.id + "\"><div class=\"name\"><div class=\"position\">",
-                Xn += Bn + "</div><div class=\"flag small flag-" + Fn.flag + "\"></div>",
-                Xn += "<div class=\"player" + Gn + "\">" + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</div></div>",
-                Dn.c == Network.SERVERPACKET.SCORE_DETAILED_BTR && (0 == In[jn].wins ? Xn += "<div class=\"wins\">&nbsp;</div>" : Xn += "<div class=\"wins\">" + In[jn].wins + "<div class=\"wins-container\">&nbsp;<div class=\"wins-icon\"></div></div></div>"),
-                Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (0 == In[jn].captures ? Xn += "<div class=\"captures\">&nbsp;</div>" : Xn += "<div class=\"captures\">" + In[jn].captures + "<div class=\"captures-container\">&nbsp;<div class=\"captures-icon\"></div></div></div>"),
-                Xn += "<div class=\"kills\">" + In[jn].kills + "</div>",
-                Xn += "<div class=\"deaths\">" + In[jn].deaths + "</div>",
-                Dn.c == Network.SERVERPACKET.SCORE_DETAILED && (Xn += "<div class=\"damage\">" + wn(In[jn].damage) + "</div>"),
-                Xn += "<div class=\"bounty\">" + In[jn].score + "</div>",
-                Xn += "<div class=\"rank\">" + (0 == In[jn].level ? "&nbsp;" : In[jn].level) + "</div>",
-                Xn += "<div class=\"ping\">" + In[jn].ping + "<span class=\"ms\">ms</span></div>",
-                Xn += "</div>",
+                Xn = Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? " team-" + Fn.team : Dn.c != Network.SERVERPACKET.SCORE_DETAILED_BTR || In[jn].alive ? "" : " inactive",
+                Gn += "<div class=\"item" + Un + "\" player-id=\"" + Fn.id + "\"><div class=\"name\"><div class=\"position\">",
+                Gn += Bn + "</div><div class=\"flag small flag-" + Fn.flag + "\"></div>",
+                Gn += "<div class=\"player" + Xn + "\">" + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</div></div>",
+                Dn.c == Network.SERVERPACKET.SCORE_DETAILED_BTR && (0 == In[jn].wins ? Gn += "<div class=\"wins\">&nbsp;</div>" : Gn += "<div class=\"wins\">" + In[jn].wins + "<div class=\"wins-container\">&nbsp;<div class=\"wins-icon\"></div></div></div>"),
+                Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (0 == In[jn].captures ? Gn += "<div class=\"captures\">&nbsp;</div>" : Gn += "<div class=\"captures\">" + In[jn].captures + "<div class=\"captures-container\">&nbsp;<div class=\"captures-icon\"></div></div></div>"),
+                Gn += "<div class=\"kills\">" + In[jn].kills + "</div>",
+                Gn += "<div class=\"deaths\">" + In[jn].deaths + "</div>",
+                Dn.c == Network.SERVERPACKET.SCORE_DETAILED && (Gn += "<div class=\"damage\">" + wn(In[jn].damage) + "</div>"),
+                Gn += "<div class=\"bounty\">" + In[jn].score + "</div>",
+                Gn += "<div class=\"rank\">" + (0 == In[jn].level ? "&nbsp;" : In[jn].level) + "</div>",
+                Gn += "<div class=\"ping\">" + In[jn].ping + "<span class=\"ms\">ms</span></div>",
+                Gn += "</div>",
                 Dn.c == Network.SERVERPACKET.SCORE_DETAILED ? In[jn].damage > Hn && (Hn = In[jn].damage,
                 Yn = Fn) : Dn.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? In[jn].captures > Hn && (Hn = In[jn].captures,
                 Yn = Fn) : In[jn].kills > Hn && (Hn = In[jn].kills,
@@ -31530,7 +31547,7 @@ function() {
             }
             $("#scoreplayers").html(Wn),
             $("#scoretable").html(kn),
-            $("#scorecontainer").html(Xn),
+            $("#scorecontainer").html(Gn),
             $("#scoremvp").html(zn),
             $("#scorecontainer div").click(function(Kn) {
                 var Qn = $(Kn.currentTarget).attr("player-id");
@@ -31556,7 +31573,7 @@ function() {
             };
             Zt || (kn.display = "block",
             Zt = !0);
-            var Nn = null == Gt[Ln.id] ? "Ignore" : "Unignore"
+            var Nn = null == Xt[Ln.id] ? "Ignore" : "Unignore"
               , Fn = "<div class=\"header\">" + UI.escapeHTML(Ln.name) + "</div><div class=\"item\" onclick=\"UI.contextWhisper()\">Whisper</div><div class=\"item\" onclick=\"UI.context" + Nn + "()\">" + Nn + "</div><div class=\"item\" onclick=\"UI.contextVotemute()\">Vote mute</div><div class=\"arrow\"></div>";
             return $("#contextmenu").html(Fn),
             $("#contextmenu").css(kn),
@@ -31581,12 +31598,12 @@ function() {
     ,
     UI.chatIgnore = function(Dn) {
         var In = Players.get(Dn);
-        null != In && Dn != game.myID && null == Gt[In.id] && (Gt[In.id] = !0,
+        null != In && Dn != game.myID && null == Xt[In.id] && (Xt[In.id] = !0,
         UI.addChatMessage("Ignoring player " + UI.escapeHTML(In.name) + "&nbsp;&nbsp;&bull;&nbsp;&nbsp;To unignore type /unignore " + UI.escapeHTML(Cn(In.name)), !0))
     }
     ,
     UI.chatUnignore = function(Dn) {
-        Gt[Dn.id] && (delete Gt[Dn.id],
+        Xt[Dn.id] && (delete Xt[Dn.id],
         UI.addChatMessage("Removed player " + UI.escapeHTML(Dn.name) + " from ignore list", !0))
     }
     ,
@@ -31764,7 +31781,7 @@ function() {
         },
         fn = !1,
         gn = {},
-        Gt = {},
+        Xt = {},
         UI.resetUpgrades(),
         UI.resetPowerups(),
         UI.hideSpectator(),
@@ -31807,14 +31824,14 @@ function() {
             kn += "<div class=\"item\"><div class=\"clickto\">Click to respawn</div></div>"
         } else {
             var Un = ["", "speed", "defense", "energy", "missile"]
-              , Gn = On - 100
-              , Xn = gn[Un[Gn]]
-              , Hn = "+" + Math.round(100 * (config.upgrades[Un[Gn]].factor[gn[Un[Gn]]] - 1)) + "%";
+              , Xn = On - 100
+              , Gn = gn[Un[Xn]]
+              , Hn = "+" + Math.round(100 * (config.upgrades[Un[Xn]].factor[gn[Un[Xn]]] - 1)) + "%";
             (kn += "<div class=\"header\">" + _n[On][0] + "</div>",
-            kn += "<div class=\"item\"><div class=\"level\">" + Xn + " / " + (config.upgrades[Un[Gn]].factor.length - 1) + "</div>",
-            0 < Xn && (kn += "<div class=\"percent\">" + Hn + "</div></div>"),
-            Xn < config.upgrades[Un[Gn]].factor.length - 1) ? (kn += "<div class=\"item smaller\"><div class=\"requires\">Requires 1 upgrade point</div></div>",
-            kn += "<div class=\"item smaller\"><div class=\"clickto\">Click to upgrade to " + (Hn = "+" + Math.round(100 * (config.upgrades[Un[Gn]].factor[gn[Un[Gn]] + 1] - 1)) + "%") + "</div></div>") : kn += "<div class=\"item smaller\"><div class=\"clickto\">Max upgrade reached</div></div>"
+            kn += "<div class=\"item\"><div class=\"level\">" + Gn + " / " + (config.upgrades[Un[Xn]].factor.length - 1) + "</div>",
+            0 < Gn && (kn += "<div class=\"percent\">" + Hn + "</div></div>"),
+            Gn < config.upgrades[Un[Xn]].factor.length - 1) ? (kn += "<div class=\"item smaller\"><div class=\"requires\">Requires 1 upgrade point</div></div>",
+            kn += "<div class=\"item smaller\"><div class=\"clickto\">Click to upgrade to " + (Hn = "+" + Math.round(100 * (config.upgrades[Un[Xn]].factor[gn[Un[Xn]] + 1] - 1)) + "%") + "</div></div>") : kn += "<div class=\"item smaller\"><div class=\"clickto\">Max upgrade reached</div></div>"
         }
         kn += "<div class=\"arrow\"></div>",
         null == In && $("#tooltip").css({
@@ -32001,8 +32018,8 @@ function() {
 }(),
 function() {
     var Bt = !1
-      , Gt = !1
       , Xt = !1
+      , Gt = !1
       , Ht = ["", "Free For All", "Capture The Flag", "Battle Royale"]
       , Yt = ["", "ffa", "ctf", "br"]
       , jt = 0
@@ -32246,7 +32263,7 @@ function() {
     }
     ,
     Games.closeDropdowns = function() {
-        Gt && Games.updateType(!1),
+        Xt && Games.updateType(!1),
         Bt && Games.updateRegion(!1)
     }
     ,
@@ -32259,7 +32276,7 @@ function() {
             Tn && UI.closeLogin(),
             null == Tn && (Tn = Bt),
             Tn) {
-                Gt && Games.updateType(!1),
+                Xt && Games.updateType(!1),
                 Sn += "<div class=\"item\"><div class=\"region header\">REGION</div><div class=\"players header\">PLAYERS</div><div class=\"ping header\">PING</div><div class=\"clear\"></div></div>";
                 var Cn = "";
                 null != qt && (Cn = "<span class=\"autoregion\">(" + Jt[qt].name + ")</span>"),
@@ -32313,9 +32330,9 @@ function() {
           , wn = null;
         if (Qt && !$t) {
             if (null != En && (En.stopPropagation(),
-            Gt || Sound.UIClick()),
+            Xt || Sound.UIClick()),
             Tn && UI.closeLogin(),
-            null == Tn && (Tn = Gt),
+            null == Tn && (Tn = Xt),
             Tn) {
                 if (Bt && Games.updateRegion(!1),
                 Sn += "<div class=\"item\"><div class=\"gametype header\">GAME</div><div class=\"players header\">PLAYERS</div><div class=\"clear\"></div></div>",
@@ -32356,18 +32373,18 @@ function() {
             }
             $("#playtype").html(Sn),
             $("#playtype").css(wn),
-            Gt = Tn
+            Xt = Tn
         }
     }
     ,
     Games.popGames = function() {
-        if (!Xt) {
+        if (!Gt) {
             UI.closeAllPanels("games");
             var Tn = gn();
             UI.hide("#menu"),
             $("#gameselector").html(Tn),
             UI.show("#gameselector"),
-            Xt = !0,
+            Gt = !0,
             mn(),
             Sound.UIClick()
         }
@@ -32402,14 +32419,14 @@ function() {
         })
     };
     Games.closeGames = function() {
-        Xt && (UI.hide("#gameselector"),
+        Gt && (UI.hide("#gameselector"),
         UI.show("#menu"),
-        Xt = !1,
+        Gt = !1,
         Sound.UIClick())
     }
     ,
     Games.toggleGames = function() {
-        Xt ? Games.closeGames() : Games.popGames()
+        Gt ? Games.closeGames() : Games.popGames()
     }
     ,
     Games.switchGame = function(Tn) {
@@ -32830,18 +32847,18 @@ function() {
                             colorDir: .5 > Tools.rand(0, 1) ? -1 : 1
                         }
                     }
-        for (var Gn in tn)
-            null == Rn[Gn] ? (game.graphics.layers.powerups.removeChild(tn[Gn].sprite),
-            tn[Gn].sprite.destroy(),
-            delete tn[Gn]) : (tn[Gn].rotation += tn[Gn].rotationSpeed * game.timeFactor,
-            tn[Gn].opacity += tn[Gn].opacitySpeed * game.timeFactor,
-            tn[Gn].opacity > tn[Gn].maxOpacity && (tn[Gn].opacity = tn[Gn].maxOpacity),
-            tn[Gn].color += .005 * tn[Gn].colorDir * game.timeFactor,
-            0 > tn[Gn].color && (tn[Gn].colorDir = 1),
-            1 < tn[Gn].color && (tn[Gn].colorDir = -1),
-            tn[Gn].sprite.rotation = tn[Gn].rotation,
-            tn[Gn].sprite.alpha = tn[Gn].opacity,
-            tn[Gn].sprite.tint = Tools.colorLerp(16427014, 16404230, tn[Gn].color))
+        for (var Xn in tn)
+            null == Rn[Xn] ? (game.graphics.layers.powerups.removeChild(tn[Xn].sprite),
+            tn[Xn].sprite.destroy(),
+            delete tn[Xn]) : (tn[Xn].rotation += tn[Xn].rotationSpeed * game.timeFactor,
+            tn[Xn].opacity += tn[Xn].opacitySpeed * game.timeFactor,
+            tn[Xn].opacity > tn[Xn].maxOpacity && (tn[Xn].opacity = tn[Xn].maxOpacity),
+            tn[Xn].color += .005 * tn[Xn].colorDir * game.timeFactor,
+            0 > tn[Xn].color && (tn[Xn].colorDir = 1),
+            1 < tn[Xn].color && (tn[Xn].colorDir = -1),
+            tn[Xn].sprite.rotation = tn[Xn].rotation,
+            tn[Xn].sprite.alpha = tn[Xn].opacity,
+            tn[Xn].sprite.tint = Tools.colorLerp(16427014, 16404230, tn[Xn].color))
     }
     ;
     var vn = function() {
@@ -32873,8 +32890,8 @@ function() {
 }(),
 function() {
     var Bt = {}
-      , Gt = {}
       , Xt = {}
+      , Gt = {}
       , Ht = 0
       , Yt = 0
       , jt = {}
@@ -32945,7 +32962,7 @@ function() {
             0 < Object.keys(cn[En]).length)
                 for (var Sn in cn[En])
                     Tn[Sn] = cn[En][Sn];
-            Gt[En] = new Howl(Tn)
+            Xt[En] = new Howl(Tn)
         }
         Bt = new Howl(hn)
     }
@@ -33040,8 +33057,8 @@ function() {
     Sound.update = function() {
         if (!(100 > game.time - zt)) {
             var Tn = game.focus ? 300 : 1e3;
-            for (var En in Xt)
-                game.time - Xt[En].last > Tn && Sound.clearThruster(En);
+            for (var En in Gt)
+                game.time - Gt[En].last > Tn && Sound.clearThruster(En);
             for (var Sn in jt)
                 game.time >= jt[Sn].time && (bn(jt[Sn].id, jt[Sn].sound),
                 delete jt[Sn]);
@@ -33065,9 +33082,9 @@ function() {
       , yn = function(Tn, En, Sn, wn, Cn, An) {
         if (config.settings.sound) {
             if (An) {
-                if (null == Gt[Tn])
+                if (null == Xt[Tn])
                     return;
-                var Pn = Gt[Tn]
+                var Pn = Xt[Tn]
             } else
                 Pn = Bt;
             if (!(null != En && .01 > En)) {
@@ -33084,9 +33101,9 @@ function() {
       , _n = function(Tn, En, Sn, wn, Cn, An, Pn) {
         if (config.settings.sound) {
             if (Pn) {
-                if (null == Gt[En])
+                if (null == Xt[En])
                     return;
-                var Mn = Gt[En]
+                var Mn = Xt[En]
             } else
                 Mn = Bt;
             null != Sn && Mn.volume(Sn, Tn),
@@ -33097,27 +33114,27 @@ function() {
     }
       , bn = function(Tn, En, Sn) {
         if (Sn) {
-            if (null == Gt[En])
+            if (null == Xt[En])
                 return;
-            var wn = Gt[En]
+            var wn = Xt[En]
         } else
             wn = Bt;
         wn.stop(Tn)
     };
     Sound.clearThruster = function(Tn) {
-        if (null != Xt[Tn]) {
-            var En = Xt[Tn].soundId
-              , Sn = Xt[Tn].vol;
-            _n(En, Xt[Tn].sound, null, null, null, [Sn, 0, 200, !0]),
+        if (null != Gt[Tn]) {
+            var En = Gt[Tn].soundId
+              , Sn = Gt[Tn].vol;
+            _n(En, Gt[Tn].sound, null, null, null, [Sn, 0, 200, !0]),
             function(wn, Cn, An) {
                 jt[++Wt] = {
                     id: wn,
                     sound: Cn,
                     time: game.time + An
                 }
-            }(En, Xt[Tn].sound, 300),
-            0 == Xt[Tn].type ? Ht-- : Yt--,
-            delete Xt[Tn]
+            }(En, Gt[Tn].sound, 300),
+            0 == Gt[Tn].type ? Ht-- : Yt--,
+            delete Gt[Tn]
         }
     }
     ,
@@ -33147,8 +33164,8 @@ function() {
                 wn = "missile",
                 Cn = "mob_" + En.id;
             if (!Sn)
-                null != Xt[Cn] && Sound.clearThruster(Cn);
-            else if (null == Xt[Cn]) {
+                null != Gt[Cn] && Sound.clearThruster(Cn);
+            else if (null == Gt[Cn]) {
                 if (0 == Tn) {
                     if (!En.me() && 5 <= Ht)
                         return;
@@ -33164,7 +33181,7 @@ function() {
                 if (.01 > Pn)
                     return;
                 var Rn = yn(wn, null, En.pos, Mn, [0, Pn, 200]);
-                Xt[Cn] = {
+                Gt[Cn] = {
                     type: Tn,
                     started: game.time,
                     last: game.time,
@@ -33174,7 +33191,7 @@ function() {
                 },
                 0 == Tn ? Ht++ : Yt++
             } else {
-                if (100 > game.time - Xt[Cn].last)
+                if (100 > game.time - Gt[Cn].last)
                     return;
                 if (An = xn(En.pos),
                 0 == Tn ? (Pn = An * dn[En.type] * Zt,
@@ -33183,11 +33200,11 @@ function() {
                     return void Sound.clearThruster(Cn);
                 if (Mn = null,
                 0 == Tn && 3 == En.type && (Mn = sn[En.type] + En.speed.length() / 20),
-                250 > game.time - Xt[Cn].started)
+                250 > game.time - Gt[Cn].started)
                     return;
-                _n(Xt[Cn].soundId, Xt[Cn].sound, null, En.pos, Mn, [Xt[Cn].vol, Pn, 100, !0]),
-                Xt[Cn].last = game.time,
-                Xt[Cn].vol = Pn
+                _n(Gt[Cn].soundId, Gt[Cn].sound, null, En.pos, Mn, [Gt[Cn].vol, Pn, 100, !0]),
+                Gt[Cn].last = game.time,
+                Gt[Cn].vol = Pn
             }
         }
     }
@@ -33207,158 +33224,422 @@ function() {
 }();
 function ReplaceWhitespaceNames() {
     var Bt = Players.getIDs();
-    for (var Gt in Bt) {
-        var Xt = Players.get(Gt);
-        Xt.name = Xt.name.replace(/[\u00A0\u1680​\u180E\u2000-\u2009\u200A​\u200B​\u200D\u202F\u205F​\u3000\u034F]/g, "[Whitespace]")
+    for (var Xt in Bt) {
+        var Gt = Players.get(Xt);
+        Gt.name = Gt.name.replace(/[\u00A0\u1680​\u180E\u2000-\u2009\u200A​\u200B​\u200D\u202F\u205F​\u3000\u034F]/g, "[Whitespace]")
     }
 }
 function toUnicode(Bt) {
-    for (var Gt = "", Xt = 0, Ht; Xt < Bt.length; Xt++) {
-        for (Ht = Bt.charCodeAt(Xt).toString(16).toUpperCase(); 4 > Ht.length; )
+    for (var Xt = "", Gt = 0, Ht; Gt < Bt.length; Gt++) {
+        for (Ht = Bt.charCodeAt(Gt).toString(16).toUpperCase(); 4 > Ht.length; )
             Ht = "0" + Ht;
         Ht = "\\u" + Ht,
-        Gt += Ht
+        Xt += Ht
     }
-    return Gt
+    return Xt
 }
-$(function Bt() {
-    window.SWAM = Bt;
-    var Gt = Games.prep
-      , Xt = Games.wipe
-      , Ht = {
-        _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-        encode: function(Jt) {
-            var $t = "", en, tn, nn, rn, an, on, sn, dn = 0;
-            for (Jt = Ht._utf8_encode(Jt); dn < Jt.length; )
-                en = Jt.charCodeAt(dn++),
-                tn = Jt.charCodeAt(dn++),
-                nn = Jt.charCodeAt(dn++),
-                rn = en >> 2,
-                an = (3 & en) << 4 | tn >> 4,
-                on = (15 & tn) << 2 | nn >> 6,
-                sn = 63 & nn,
-                isNaN(tn) ? on = sn = 64 : isNaN(nn) && (sn = 64),
-                $t = $t + this._keyStr.charAt(rn) + this._keyStr.charAt(an) + this._keyStr.charAt(on) + this._keyStr.charAt(sn);
-            return $t
-        },
-        decode: function(Jt) {
-            var $t = "", dn = 0, en, tn, nn, rn, an, on, sn;
-            for (Jt = Jt.replace(/[^A-Za-z0-9+/=]/g, ""); dn < Jt.length; )
-                rn = this._keyStr.indexOf(Jt.charAt(dn++)),
-                an = this._keyStr.indexOf(Jt.charAt(dn++)),
-                on = this._keyStr.indexOf(Jt.charAt(dn++)),
-                sn = this._keyStr.indexOf(Jt.charAt(dn++)),
-                en = rn << 2 | an >> 4,
-                tn = (15 & an) << 4 | on >> 2,
-                nn = (3 & on) << 6 | sn,
-                $t += String.fromCharCode(en),
-                64 != on && ($t += String.fromCharCode(tn)),
-                64 != sn && ($t += String.fromCharCode(nn));
-            return $t = Ht._utf8_decode($t),
-            $t
-        },
-        _utf8_encode: function(Jt) {
-            Jt = Jt.replace(/rn/g, "n");
-            for (var $t = "", en = 0, tn; en < Jt.length; en++)
-                tn = Jt.charCodeAt(en),
-                128 > tn ? $t += String.fromCharCode(tn) : 127 < tn && 2048 > tn ? ($t += String.fromCharCode(192 | tn >> 6),
-                $t += String.fromCharCode(128 | 63 & tn)) : ($t += String.fromCharCode(224 | tn >> 12),
-                $t += String.fromCharCode(128 | 63 & tn >> 6),
-                $t += String.fromCharCode(128 | 63 & tn));
-            return $t
-        },
-        _utf8_decode: function(Jt) {
-            for (var $t = "", en = 0, tn = 0, rn = 0; en < Jt.length; )
-                tn = Jt.charCodeAt(en),
-                128 > tn ? ($t += String.fromCharCode(tn),
-                en++) : 191 < tn && 224 > tn ? (rn = Jt.charCodeAt(en + 1),
-                $t += String.fromCharCode((31 & tn) << 6 | 63 & rn),
-                en += 2) : (rn = Jt.charCodeAt(en + 1),
-                c3 = Jt.charCodeAt(en + 2),
-                $t += String.fromCharCode((15 & tn) << 12 | (63 & rn) << 6 | 63 & c3),
-                en += 3);
-            return $t
-        }
+function confirmDialog(Bt) {
+    Bt = Bt || {},
+    Bt.yesText = Bt.yesText || "Yes",
+    Bt.noText = Bt.noText || "No",
+    Bt.title = Bt.title || "Confirmation needed.",
+    Bt.message = Bt.message || "Do you wish to continue?",
+    Bt.yes = Bt.yes || function() {}
+    ,
+    Bt.no = Bt.no || function() {}
+    ;
+    var Xt = "<div id='confirmDialog' tabindex='1' style='position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,.5)'><div style='position: absolute; width: 550px; height: 180px; left: calc(50% - 275px); top: calc(50% - 90px);background-color: rgba(0,0,0,0.9); box-shadow: 0 10px 59px -9px rgba(0,0,0,0.7); border-radius: 9px; border-bottom: 2px solid rgba(0,0,0,0.3); border-top: 2px solid rgba(255,255,255,0.08); box-sizing: border-box; padding: 18px 18px 0 18px; cursor: default; font-family: verdana,arial,helvetica,sans-serif'><div style='font-size: 20px; color: white; margin-bottom: 10px;'>$title</div><div style='color: #AAAAAA'>$message</div><hr/><div style='width: 200px; position: absolute; left: calc(50% - 100px); margin-top: 20px;'><input id='confirmYes' type='button' value='' style='width: 80px; height: 25px; background-color: #228a12; color: white; border-radius: 4px; font-size=16px; text-shadow: 0 -1px 0 rgba(0,0,0,0.6); border: 2px solid rgba(0,0,0,.2)'><span style='margin-left: 40px'></span><input id='confirmNo' type='button' value='' style='width: 80px; height: 25px; background-color: #555555; color: white; border-radius: 4px; font-size=16px; text-shadow: 0 -1px 0 rgba(0,0,0,0.6); border: 2px solid rgba(0,0,0,.2)'></div></div></div>";
+    Xt = Xt.replace(/\$title/g, Bt.title).replace(/\$message/g, Bt.message);
+    var Gt = $(Xt);
+    $("body").append(Gt),
+    Gt.focus().keydown(function(Ht) {
+        Ht.stopImmediatePropagation()
+    }).keyup(function(Ht) {
+        Ht.stopImmediatePropagation()
+    }),
+    $("#confirmYes", Gt).val(Bt.yesText).click(function() {
+        Gt.remove(),
+        Bt.yes()
+    }),
+    $("#confirmNo", Gt).val(Bt.noText).click(function() {
+        Gt.remove(),
+        Bt.no()
+    })
+}
+$.getScript("https://cdn.jsdelivr.net/npm/pixi-filters@2.5.0/dist/pixi-filters.js"),
+$(function SWAM() {
+    function getDoodadsIndex() {
+        let Bt = game.graphics.layers.map
+          , Xt = game.graphics.layers.doodads
+          , Gt = 0;
+        for (var Ht = 0; Ht < Bt.children.length; Ht++)
+            Bt.children[Ht] == Xt && (Gt = Ht);
+        return Gt
     }
-      , Yt = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAC/VBMVEUAAAD////////////////////////+/v4LCwv///8ODg7//////////////////////////////v59fHz///////////////8VFRX5+fn//v7//v7///////8SEhL////////////++vr///8bGxsUFBQbGxsuLi7///////////8gICA0NDRcXFxAQED////////SCQkxMTEmJiZBQUFiYmKwsLDa2trOzs7q6uqlpaX////////9/f3////KCwsuLi47OjpUVFRQUFDhV1eBgYFsbGzupqa8vLzS0tLk5OTw8PDl5eX////////////79fXskpLxCgrbCQnOFxfZGRncFBT0GxsqKiraJyf1NzcgICBGRkbjQEDUPT3VVlZDQ0PYZWWHh4fqjo6hBQVHR0f09PTBCgryvb3R0dH43d31xcX+5uY5OTn////uAwPDERG6Cgq/FxfVDw/aIiJPT0/eTEzJHBw5OTncdHR0dHSCgoLULS3WPT1RUVGvAgJ0dHS+vr7ExMTyycn7h4fTLy/sJCT75+fOVFRra2vmenqgoKCampr55ub88fH///+Tk5PY2NioqKjpenrGxsbzwMDQQUH4+PjvWlr209Pr6+v86urs7OzEDAzlDQ3mICDOS0vXKirha2v2YWEzMzODg4PiRESTk5NcWlqhoaHBAgKmpqbreXnPFRXxsbGDg4OzDg5qamrsb2/ehYXuvLzLHh61tbX67e3oVFTmRkZUVFTgVVX2zMy8Gxv6mJjzt7ewsLBpaWn30ND8sLDyra323991dXXtoaHtQkLdYGD////0r6+Ghob////xp6d8fHz56OhVVVXuVFT0w8PafX30zs7toqLrOzvKysrvtbXrnZ3hd3fa2tr1qqq7u7vorKz2trbbaGjtwcHwwcH71dXdfHz12Njzk5P85eUHBwcJCQncAADfAQHIAADtAADqAADmAADRAADiAADWAQHZAADMAADFAADDAQHAAQHxAADKAADOAQG6AADkAADTAQHFcXUqAAAA6XRSTlMAAgUJDzASwP4e/VozIUgYOl4s3VNAPDb6wGRQQiT7Pg1NHBX49/XockpF8u/m11Um/PLy7eHQx8PBiYFubGf58+/o5uXc3NLKycXDt5CHencx/Pv49/f29PHu7Ovq6eXi4drX08zCsKqmpZeOjCn++fj39vTp6Ojk3dzb2tbU09LNzMnJw8O8vLKwo52amZaVlJCNioeHenFwbWVi+/r16OPg3Nzb2NfW09PSz87Nzc3My8jGxsTDwsLAvr29vLu3trOxsa+sqaalo6KhoJqak5GMiIeDgX54eHh2cG9ubGZlYltPTkJCOwDD0BUAAARNSURBVDjLZZRldBNBFIXTrCfZjbunSZqkCVBKgQrFpS20FHd3d3d3d3d3d3d3d99NGwhV2sJhdgsFDu/fzPnOvfe8N294f1VICASHEiQhhiF+CO+/CuGKD6EEIlGqEBIFFFd/I3w+BEF8Pkyo9Y/HP9CrSRic2JsiDCAWGEVhGLaJFPeH5a++W1xkg7krC/Qb40OwmCBTU20EYp0/PC8r2GK+HiFsqakgHcoas0IgiUz0esF7GUKV61Q+PSv441wchfT4+HCRSIaUCIVCWDOURJRP9y/4oDYs7TqxJYAGTOy61KD+tGjCnRdClREFUnwLIaKeDBz/1mB4M2ng4Or1siKqt218+JVS9e7SrshpQgkJ83mQGHEvHlZ+rt7gude7oFfLeln1q9TPrDvXYKa6ygVh8xQiMcSDSxh0R/OHL7aqVC8n9cnNKZ8XEZHR4NBziTqmhtaHjyjnMcI8sVp4o29wis6DIJRrb6+c9Lz8YN1ttSmkO16yaiXcMVUoEvOMVO0NGX0v6swlSLV0RuucbJC8ygydpLsGZxh7I1OxJUqShwivNsjo10knIUKNVMq+5dnpeRE7Yq3dffKSDNOsdEnHHLeMpyq3x5/Zr1O8xGYRq3VdWgCo8Zlyt33RmFzAVNJWxScrRDxPSvM0f/2TLqUNQmXC6azfgC435VptmTYavGJiDUExoYRnTV6Z5q/bNtZqhNEeiluDc7PTq3TrHF22akUBY6qGlQ1vKjXzFLVWfE3zV+kCQhEioJSbk31ZGjtKQ9MMw1TGaoY5pEpe8Vpfvqf5G1RPFqrUbtf5VQW5HWXW2q1oDiqlrTlIIDUA6PMXINX8WHK8Lm7m2D4FHW2I+3+oDqD8mc3HXp955WDLgo4IohTGVjP9Y6dPbviZNcxovKZ62xa9j+v0emlK5+gxci/+JzgV26Qna5iZEVGvfG67TbMXLpy9O1KOdWBbUCpxNNcCpWttzwBnGMxPb0ebvKc6e020JiqJbWZ/7VDmNGimWneiTiDwmTUMtmNAkhoJApBa4BtaOBYNO5Yeim5NvgUCrOFIwND2MtGNaFA4N+AKhQMmzHHj6nxjDUcyrJA3CWuG01xVkFdiNNxTQWWsFKC2V2QAJeiPYVECDokq3cHHFD46CyGJP9vwW2ACNrqyhmFwr3x9RaBkKlUaw4qeLx8tQbnGNdwSVQZLqlrKXmjk8A5JxBKH4OG/FiEECpXpU6aEMa0OaLHoNpHACrfLy2BYjcp002tCM7dSYKfEiLV4zDrGOapsknazTyOotFHboezOcDpsltDMLSe7nRabUaJ/dsTBOKO2JiRE2scklK4WTpvaP1KoAAOEOApCSREljGnvxBlnBQHeKJxmHMVmSd1qYyHzmyJkKuuymAvtw5xOuzOy2OSYZXozQqBFDKCAZSiJqCiFND7O5YqLlxZ3mxGjGP798RSJwWJSJpIoPRTlMahEMvKvT/En4U+imSkuVtwAAAAASUVORK5CYII=')"
-      , Vt = [Yt, "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAACi1BMVEUAAAD///8LCwv///////8ODg4QEBD////7+/sWFhb///////////8NDQ3///82Njb///////////////////////8ZGRn///////////////////////////8UFBQUFBQmJiZhYWH///////////////////////8cHBwaGhouLi4xMTFHR0dpaWl7e3v///8fHx8fHx8uLi5ubm5+fn7BwcHS0tLv7+/4+Pj///////////////////////////8gICAgICBXV1dkZGSAgICCgoLb29vo6Ojx8fGmpqb///////////////////8YGBgoKCgzMzM/Pz8zMzMqKipLS0tTU1NRUVFbW1tDQ0N5eXkxMTGEhISKioq9vb3Y2NhOTk7l5eXl5eX09PT9/f3///////////////////////8SEhIVFRUrKysiIiI7OztDQ0MkJCRPT091dXVjY2NqamqpqalHR0e0tLS6urrMzMxISEjh4eG+vr7z8/P19fXOzs52dnadnZ2vr6////8aGhpdXV05OTkwMDAqKipOTk5cXFxFRUWSkpI6OjpVVVWfn5+lpaVwcHA/Pz+tra2qqqqvr6+BgYFZWVloaGhnZ2fs7OzOzs7S0tJVVVXt7e3a2tqwsLDR0dHPz89+fn7R0dGKioq6urqWlpba2tqurq6oqKj+/v7AwMD////k5OTe3t74+Pjc3Nz////4+Pj////r6+v19fXq6urw8PD///////8jIyM7Ozs7OztxcXF0dHRbW1tPT094eHjFxcWxsbG1tbW8vLzIyMhoaGhra2tra2ufn5+hoaGYmJicnJzMzMzS0tKSkpLDw8PIyMjKysrPz88HBwcKCgrXv00AAAAA13RSTlMAv/4DAf39IcD6Qgk9/grwPzstJBYS9F5aU0hGHQ/7+PXkV086MRgH+Pjz8uvi3Tf49Ojg3MzIw8BnXDQyLyoU8u3n49zbxsPCilVSUEoN+fTv7evr6ujo5ePd3dvZzcfGxbd+eXNiXyYOAvr19PDv7e3p393Z0dDPzsrKxcXCwL6skoNM8eXk5OPg3tvX1tXU09PT0dHQzs7Nx8PDwL+8uLitp6ajoJWUkpGQhYOBgX12b25ubW1lY18jH/Xh4Nva1tXQy8XEwsC2tbKkop6cmZeVi4l4dpOI3Z0AAAP8SURBVDjLdVRnVxNREN23cVt6JwkhhSRAAoTQkSBGIDE0QVREBRQ79t4Vxd5777333nvvdefnuG+DkuM5vi/75Z6Zu3MLEXs9JLIkPVNaopEmWiyJUk2wlElJkkl6EHFvQmo/PdNLYzEn9Lw5Zsz1nuPMFrnnnr5fKoZ1j7GWalbcXb5sYY7RXmccOHfZ8jsuudZqwMO6MEoDU5JoqhyxEvi6egXpCABpnNtZbMm611vZhZIoe+uyXNcOTeLt67cuWODw5hfMmZ0N9hG/qjXj9THUBJlB5zZXDoNJ294UsjvLbXTTFjZ6cHc2rDmTLB/fWyYRlqUmMe6qzrX8kJcdaH+Lg+Z5OtC8CLGv18H0Uya5zpDag5D0s2ZVncsB53BU2Nzg5cXnbfC3oUWPyemfTW6mXULI9FrXlUeQyaL8Ro7nwZc7U6UAsGXMQ8hPrflhLkmREe2Muuc+yCjMz1XhGeQMFjlpHgDSM+cXrYLNNxJ1SYS+V/XpbMhoxhD8VEvQIIUwEcMqyoD7mFySQtzX3N6j8KWBsIHCoLThfX0ggCgbCZA2md5wS80QpYkXQ4GdgwEcQ5003je/AH+oMn86QMaO9LrztVrC4zoBziKngsxEbGYdT/c/eqy/jeea9gu0oZENw7vqIJFVNQLmRAeR1NDIEtTyYPOXUaPP7nX42aJIC0dObWtVbEp2E3LTMNtiVMGBQjU0v+/xUWOra8aNPnl4QXgqDXQuOhDqU6wm1MV9pixF5RSAQGTWhbFSTy918aVtnPiDg9HIAfYEKSFNMA48gspIDOIHXK7xWK3aFVeH8CJoGjtyNfUfUO2/oPh15PrYOtOl2RP/rMsR1mHidpE4mT6zFROvcWHiL/wqUiQ+RSCOT0DOWYJPMDyKNjqefsUnqM9jOyLNHNnQ1krhE3hqTkA5Kx4T5XrFYw4QjuksRHkUzCgKw1tzEMuSHdhVBlCflzkR0+2SpSmMZZmXbseyMKLAAQDgaIgJPBkLreCwwD5RYMEqZmyVChUAYPVVUTaD5MXn8zcC9wFbpZ2RCqYbhE2HUdQMhJyiZyaXzxNM9wybLmbfh9i+rYM5ALJ/XniqMImetgsJ1HO+C/ZVikFIFoIwK4IKKxrSYos41cxFqO0JGfpk0jBJEiFSBsad3JkDQ14Vob4tDkrg7M2LILR4Hd8nFqkJceE0Pl8aZbc02ejGjWzHwd0hfu03HE6lBFcBjrkbxxyMs7YWFOCY75gd4icu/Nkd81hhBC2myoUrSQj4aLI+mwf79jMJtVk6XBh/q8dg1cpx9cwdaEzzGqdvf195x6XW3jco4wtKLDF5d4lV1co9upT2WInF91gKUxrsqkN5UBtfh78BLbSeZWMjzYgAAAAASUVORK5CYII=')", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAADAFBMVEUAAAD////////////////////////////////////++/v////////////////////////////////////////////////////////////////////vAwP////////////////////////////////////////////////////zBATICgr////////////////////dBATFBATqAwPRCgrqDAzXDw/oHR36iIj64OD////95OT//////////////////f3////////jBQXXBgbBBQXNEhLFERHdFBT0GBjbGBjUFBTaJCT1JCTTPT32QEDhQEDqSkrbSUnYUlL0bW3wp6f4s7Pvubn//////Pz////yo6P////////////TAgLSBwfnBgbzCQntCQm6CAjxDQ3cCAjvGBjQHBzAHBy7EBDgKCjwODjuJSXtOjriVFTbWFjSV1f0T0/abm7zYmLjdnbfPT3mjo7nbW30sLDyycn66en75+f40NDpWVn8sLD31tb3xcX////4yMj////0oqL5x8f55eX88fH0wMD55ub+6+vwdHTzwMDfQkL////+8vLuq6v98vL209PvsbH88PDvwcHoh4f539/ohYXvoKDMGxvVKSnRLCzqJCT1MzPyNDTFJSXOQkLrFRXgTEzOS0voDg7oQEDlW1vXKirMEhLXYmLYZGTha2vqGxvTMzPUQkLsh4fuLy/UJyfulpbqoaHrqqrXODj6enrreXn2oKDwu7vehYXehYXVMzPuvLzLHh7oVFTmRkb519fQLCzpICDPWVn6mJjzt7f3goLNT0/4o6P0cnLkdHT32tr5wcH239/toaHtQkLtwcH0r6/jfn7uVFT80dH0w8PafX33np7NODj++/v0zs7hd3fvXl784ODuVlb99fX85ubbaGj71dXIAADLAADCAADpAAC6AADfAADQAADkAADaAADXAAC/AADFAADmAAC3AAC1AADcAADrAAC8AADwAADtAADhAADNAADUAADuAADSAADyAABVO9ozAAAA5nRSTlMAAhAIBB4xBjoSGgxkSTdDNVJPHGE8LywlCnJM/lhVRz4rIRaIXUAoIxT++pCNg3wi/v7++/r59sihlI9ubGpbUUYY/v39+fn49/f39PPt6+vp6ebX0a+ql3t3dWdZJv79/fz8/Pr69/b29u/u7uvm5ePi39/d3dfRzMnEvLu6sa6ppKGfnZybmZmWjYyHhICAfHdwaWJeSD4yMPby8fHv7uzr6ejo6Ofk4+Pi4eDf3dzZ2dbU09DQz8/OzcnIx8bGwsLBv769vLu7u7e3trW1r6mmpaKOjIqIh4aEg4N2dXNuaGdlT3CF9PkAAARHSURBVDjLZZRldNpQGIZDQkIIJLhDcVtXmUu9c3d3d3d3d3d3d3d3d/cChQLtWlrWdtsNbO3O2ffv3vOc93mTe+6F/hkGA4GNIgNqhBEmA/pvGKFhImxUilskUgMbUKH5F2GyEARhsWCUL1x0flEyZYDBCuwwizCAcGA2G+bAIkzw7kD+rpcRfBEc3iryMhGYQGNXryJQqWreQYejw/B5QgwlVq2ORQm2IkwxQBM99vXNCj2mTWwRmebwdGieQGLWFfM/YTKDXcGkGRZswCzvL85fSfGWzRo7EEBbx07/wuOv/HDtOY9vsyMMIOOgGNlm99XlPN7y25uGHa/uKNvsUJ/LSy2Sb4+3z1VRsTCLASGpUnLJkchnQh7vVe/0Gk16OuoMqO3tPpenI9vs3/I6mS/iMCC4PY87Pv/EEpVEsvR6L3/pSEfZjr6al9rgVMqy8a7DH1UyOwsiqKRpdTz3PqdgUq3yXA1nmiPfU/XUYlIq05mnlStzl6tDFZCcXDy8oPwjrq59LGWeuceZCZoPmMnFDbG4eVa/QL8XAj0MYUlPa/vqtuDiqF1OxlyIBFDHUQuEVjvBN0/vH+hyi0ulQpKEkaV8dSe1xQlOKsWdWB9AaycmgpWRL57UN6gerOShUEqrHaW8tW8qLSIFLNPM3gt8jSuZpWwFgSc8WB9U14tW2SBhdAV3Tvejb1VyGNYLZg8B0MAZ7aRs2EbGnC4XzOscJbBCgqhyP9zenZVAKRGWNGOI35nZpJKYj6KUuNJQVzCvREmNHooo2SnDnVOzmSlJQpHKh9tynZn177dWURJN9KgKNFRZIwNQmawMt7fhOFOiOL7y6N7pfmfkmZZKcdvocY2yQlA7GuriyvqR4204emrLyWMGZafn+p2Nx0xuOfVKoyoZrgCAgC7Z1CPgAsKqdfcdG7G5a/Z3QJWuP6LZsD6l3AAqLFEywgqRCzaqXbSwoGz1GtXSvwPK7yxdvU55n9edkRUorGUSyiGLcqg6SAt9P/PTnH6ayvXTZxOG1A1itAaIz73RrZAWen0eR5ozNz07G0QBqMCb8yPLpW4aLyEgqyBuQ15hICT0ODKdubQQRHl++mioR3MzZodQXXzFznmFf4WZQBiKyqehjDKDF5JyDsSWRcxp8CsvSH8hENK1QCvnn1IVmnMpAoEUIrzthHq/wrUKAEULgY8u5a7StBUph5kQC26vVVas9W+tcBTwlWoUp8GMCANcO6NMGHOyFhAW1wpHVW04RYyjHCZ9gRUEJmhVsZ4a1ApTQEhHlW08hWuxgRsVego4IkyonNCgW5mivwWiqq0ZGSfWydk0E6YIWQp3TsW+5TpVoWulla7WtdegFq01uI2NFD8rCqMcFyTE3Wnav0LN8uV7rmty9slCsRZDQ64iCoFFeolQHB9jioqKMkW3Tmyn5cuNnD9McRhbZOXrtEJBhCBZxcOlttTiR/E3AYEOqmgNZcgAAAAASUVORK5CYII=')"]
-      , qt = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzNTkuMjEgMzU5LjIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KPG1ldGFkYXRhPgo8cmRmOlJERj4KPGNjOldvcmsgcmRmOmFib3V0PSIiPgo8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KPGRjOnR5cGUgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIvPgo8ZGM6dGl0bGUvPgo8L2NjOldvcms+CjwvcmRmOlJERj4KPC9tZXRhZGF0YT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIxMC4wMSAtMzQzLjEzKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMTE2IC0yLjg1ODgpIiBmaWxsPSIjYzlmZjAwIj4KPHBhdGggZD0ibTM3Ny41IDQzNy4zOGMtNzMuMTc4IDAtMTMyLjUgNTkuMzIyLTEzMi41IDEzMi41IDAgNDAuODM3IDE4LjQ4NCA3Ny4zNTEgNDcuNTMxIDEwMS42NiA4Ljg3NjUtOC44OTQ0IDE3Ljc1MS0xNy43OTEgMjYuNjI1LTI2LjY4OCAxLjk1MjYtMS45NTI2IDAuMzczOTktNi43MTk4LTMuNTMxMi0xMC42MjUtMy45MDUyLTMuOTA1Mi04LjY0MTEtNS40ODM5LTEwLjU5NC0zLjUzMTJsLTEyLjY4OCAxMi42ODhjLTE0LjQ2Ny0xNi43NDgtMjQuMDg4LTM3LjgxNy0yNi42NTYtNjFoMTkuMzEyYzIuNzYxNCAwIDUtNC40NzcyIDUtMTBzLTIuMjM4Ni0xMC01LTEwaC0xOS43NWMxLjU3NTItMjMuOTE0IDEwLjYwNi00NS43OTMgMjQuODEyLTYzLjMxMmwxNC45NjkgMTQuOTY5YzEuOTUyNiAxLjk1MjYgNi42ODg1IDAuMzczOTkgMTAuNTk0LTMuNTMxMiAzLjkwNTItMy45MDUyIDUuNDgzOS04LjY3MjQgMy41MzEyLTEwLjYyNWwtMTUuMTU2LTE1LjE1NmMxNy4zNDgtMTQuOTg1IDM5LjMzMS0yNC43NzMgNjMuNS0yNi45MDZ2MjIuMDYyYzAgMi43NjE0IDQuNDc3MiA1IDEwIDVzMTAtMi4yMzg2IDEwLTV2LTIyLjA2MmMyNC4xOCAyLjEzMDQgNDYuMTQ3IDExLjkxMSA2My41IDI2LjkwNmwtMTUuMTU2IDE1LjE1NmMtMS45NTI2IDEuOTUyNi0wLjM3Mzk5IDYuNzE5OCAzLjUzMTIgMTAuNjI1IDMuOTA1MiAzLjkwNTIgOC42NDExIDUuNDgzOSAxMC41OTQgMy41MzEybDE0Ljk2OS0xNC45NjljMTQuMjAzIDE3LjUyMSAyMy4yNDIgMzkuMzk2IDI0LjgxMiA2My4zMTJoLTE5Ljc1Yy0yLjc2MTQgMC01IDQuNDc3Mi01IDEwczIuMjM4NiAxMCA1IDEwaDE5LjI4MWMtMi41NjMxIDIzLjE4Ni0xMi4xNjUgNDQuMjUtMjYuNjI1IDYxbC0xMi42ODgtMTIuNjg4Yy0xLjk1MjYtMS45NTI2LTYuNjg4NS0wLjM3Mzk5LTEwLjU5NCAzLjUzMTItMy45MDUyIDMuOTA1Mi01LjQ4MzkgOC42NzI0LTMuNTMxMiAxMC42MjUgOC44NzI5IDguOTA4NCAxNy43NjYgMTcuNzk3IDI2LjY1NiAyNi42ODggMjkuMDM3LTI0LjMwNiA0Ny41LTYwLjgyOCA0Ny41LTEwMS42NiAwLTczLjE3OC01OS4zMjItMTMyLjUtMTMyLjUtMTMyLjV6Ii8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEuMTY2NyAwIDAgMS4xNjY3IC02MCAtOTUuMzk0KSIgZD0ibTM5MCA1NzIuMzZjMCA4LjI4NDMtNi43MTU3IDE1LTE1IDE1cy0xNS02LjcxNTctMTUtMTUgNi43MTU3LTE1IDE1LTE1IDE1IDYuNzE1NyAxNSAxNXoiLz4KPHBhdGggZD0ibTM0NS43MyA0OTMuNTNjLTQuNjA2OCAyLjA2NjQtNy40ODQ5IDUuNDk4MS02LjU0NjUgNy45MTA4bDIzLjc4NyA2MS4xNjJjLTMuMDc1MiA0LjU4OTYtMy45MzM5IDEwLjU3Ni0xLjc3OTUgMTYuMTE2IDMuNTAzMiA5LjAwNzcgMTMuNjQ1IDEzLjQ3IDIyLjY1MyA5Ljk2NjhzMTMuNDctMTMuNjQ1IDkuOTY2OC0yMi42NTNjLTIuMTU0NC01LjUzOTUtNi44MzI0LTkuMzczLTEyLjItMTAuNjc5bC0yMy43ODctNjEuMTYyYy0xLjAwMDktMi41NzM2LTUuOTg1LTMuMDM3Mi0xMS4xMzItMS4wMzUzLTAuMzIxNyAwLjEyNTExLTAuNjU0MDEgMC4yMzYtMC45NjExMiAwLjM3Mzc5eiIvPgo8cGF0aCBkPSJtMzAzLjUyIDM4Ni44MiAxOC42NzYtNy4xNTU2IDguOTQ0NSAyMy4zNDUgMTQuMDA3LTUuMzY2Ny0yMC4xNjEgNDUuMjA2LTQ1LjIwNi0yMC4xNjEgMTQuMDA3LTUuMzY2Ny04Ljk0NDUtMjMuMzQ1eiIvPgo8L2c+CjwvZz4KPC9zdmc+Cg=="
-      , Qt = "url('data:image/svg+xml;base64," + Ht.encode(Ht.decode(qt).replace(/\#c9ff00/g, "#555555")) + "')";
+    function crateTileLayer(Bt, Xt) {
+        var Gt = Graphics.renderer.width
+          , Ht = Graphics.renderer.height;
+        let Yt = Textures.tile(Bt, Gt, Ht);
+        return Yt.layerName = Xt,
+        game.graphics.layers.map.addChildAt(Yt, getDoodadsIndex()),
+        Yt.tileScale.set(game.scale, game.scale),
+        Yt
+    }
+    function createPlanet(Bt) {
+        let Xt = createPlanetSprite(Bt);
+        return Xt.layerName = "planet",
+        Xt.scale.set(game.scale / 2, game.scale / 2),
+        Xt.baseX = -16384,
+        Xt.baseY = 8192 - Xt.height,
+        Xt
+    }
+    function createPlanetSprite(Bt) {
+        var Xt = PIXI.Texture.fromImage("halfplanet_sprite")
+          , Gt = new PIXI.Sprite(Xt)
+          , Ht = PIXI.Sprite.fromImage("halfplanet_mask");
+        Ht.scale.set(4, 4);
+        let Yt = PIXI.RenderTexture.create(4 * Gt.width, 2 * Gt.height)
+          , jt = new PIXI.Sprite(Yt);
+        return Gt.addChild(Ht),
+        Gt.filters = [new PIXI.SpriteMaskFilter(Ht)],
+        Gt.position.set(0, 0),
+        Gt.scale.set(2, 2),
+        Bt.render(Gt, Yt),
+        Gt.scale.set(-2, 2),
+        Gt.position.set(2 * Gt.width, 0),
+        Bt.render(Gt, Yt, !1),
+        jt
+    }
+    window.SWAM = SWAM,
+    SWAM.debug = !1,
+    config.overdraw = 0,
+    config.overdrawOptimize = !0;
+    let games_prep = Games.prep
+      , games_wipe = Games.wipe
+      , graphics_resizeRenderer = Graphics.resizeRenderer;
     window.ShowKilled = !0,
-    window.ShowEnterLeave = !1,
+    window.ShowEnterLeave = !1;
+    let Base64 = {
+        _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+        encode: function(Bt) {
+            var Xt = "", qt = 0, Gt, Ht, Yt, jt, Wt, zt, Vt;
+            for (Bt = Base64._utf8_encode(Bt); qt < Bt.length; )
+                Gt = Bt.charCodeAt(qt++),
+                Ht = Bt.charCodeAt(qt++),
+                Yt = Bt.charCodeAt(qt++),
+                jt = Gt >> 2,
+                Wt = (3 & Gt) << 4 | Ht >> 4,
+                zt = (15 & Ht) << 2 | Yt >> 6,
+                Vt = 63 & Yt,
+                isNaN(Ht) ? zt = Vt = 64 : isNaN(Yt) && (Vt = 64),
+                Xt = Xt + this._keyStr.charAt(jt) + this._keyStr.charAt(Wt) + this._keyStr.charAt(zt) + this._keyStr.charAt(Vt);
+            return Xt
+        },
+        decode: function(Bt) {
+            var Xt = "", qt = 0, Gt, Ht, Yt, jt, Wt, zt, Vt;
+            for (Bt = Bt.replace(/[^A-Za-z0-9+/=]/g, ""); qt < Bt.length; )
+                jt = this._keyStr.indexOf(Bt.charAt(qt++)),
+                Wt = this._keyStr.indexOf(Bt.charAt(qt++)),
+                zt = this._keyStr.indexOf(Bt.charAt(qt++)),
+                Vt = this._keyStr.indexOf(Bt.charAt(qt++)),
+                Gt = jt << 2 | Wt >> 4,
+                Ht = (15 & Wt) << 4 | zt >> 2,
+                Yt = (3 & zt) << 6 | Vt,
+                Xt += String.fromCharCode(Gt),
+                64 != zt && (Xt += String.fromCharCode(Ht)),
+                64 != Vt && (Xt += String.fromCharCode(Yt));
+            return Xt = Base64._utf8_decode(Xt),
+            Xt
+        },
+        _utf8_encode: function(Bt) {
+            Bt = Bt.replace(/rn/g, "n");
+            for (var Xt = "", Gt = 0, Ht; Gt < Bt.length; Gt++)
+                Ht = Bt.charCodeAt(Gt),
+                128 > Ht ? Xt += String.fromCharCode(Ht) : 127 < Ht && 2048 > Ht ? (Xt += String.fromCharCode(192 | Ht >> 6),
+                Xt += String.fromCharCode(128 | 63 & Ht)) : (Xt += String.fromCharCode(224 | Ht >> 12),
+                Xt += String.fromCharCode(128 | 63 & Ht >> 6),
+                Xt += String.fromCharCode(128 | 63 & Ht));
+            return Xt
+        },
+        _utf8_decode: function(Bt) {
+            for (var Xt = "", Gt = 0, Ht = 0, jt = 0; Gt < Bt.length; )
+                Ht = Bt.charCodeAt(Gt),
+                128 > Ht ? (Xt += String.fromCharCode(Ht),
+                Gt++) : 191 < Ht && 224 > Ht ? (jt = Bt.charCodeAt(Gt + 1),
+                Xt += String.fromCharCode((31 & Ht) << 6 | 63 & jt),
+                Gt += 2) : (jt = Bt.charCodeAt(Gt + 1),
+                c3 = Bt.charCodeAt(Gt + 2),
+                Xt += String.fromCharCode((15 & Ht) << 12 | (63 & jt) << 6 | 63 & c3),
+                Gt += 3);
+            return Xt
+        }
+    };
+    window.Base64 = Base64;
+    let imperialRebelDataURL = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAC/VBMVEUAAAD////////////////////////+/v4LCwv///8ODg7//////////////////////////////v59fHz///////////////8VFRX5+fn//v7//v7///////8SEhL////////////++vr///8bGxsUFBQbGxsuLi7///////////8gICA0NDRcXFxAQED////////SCQkxMTEmJiZBQUFiYmKwsLDa2trOzs7q6uqlpaX////////9/f3////KCwsuLi47OjpUVFRQUFDhV1eBgYFsbGzupqa8vLzS0tLk5OTw8PDl5eX////////////79fXskpLxCgrbCQnOFxfZGRncFBT0GxsqKiraJyf1NzcgICBGRkbjQEDUPT3VVlZDQ0PYZWWHh4fqjo6hBQVHR0f09PTBCgryvb3R0dH43d31xcX+5uY5OTn////uAwPDERG6Cgq/FxfVDw/aIiJPT0/eTEzJHBw5OTncdHR0dHSCgoLULS3WPT1RUVGvAgJ0dHS+vr7ExMTyycn7h4fTLy/sJCT75+fOVFRra2vmenqgoKCampr55ub88fH///+Tk5PY2NioqKjpenrGxsbzwMDQQUH4+PjvWlr209Pr6+v86urs7OzEDAzlDQ3mICDOS0vXKirha2v2YWEzMzODg4PiRESTk5NcWlqhoaHBAgKmpqbreXnPFRXxsbGDg4OzDg5qamrsb2/ehYXuvLzLHh61tbX67e3oVFTmRkZUVFTgVVX2zMy8Gxv6mJjzt7ewsLBpaWn30ND8sLDyra323991dXXtoaHtQkLdYGD////0r6+Ghob////xp6d8fHz56OhVVVXuVFT0w8PafX30zs7toqLrOzvKysrvtbXrnZ3hd3fa2tr1qqq7u7vorKz2trbbaGjtwcHwwcH71dXdfHz12Njzk5P85eUHBwcJCQncAADfAQHIAADtAADqAADmAADRAADiAADWAQHZAADMAADFAADDAQHAAQHxAADKAADOAQG6AADkAADTAQHFcXUqAAAA6XRSTlMAAgUJDzASwP4e/VozIUgYOl4s3VNAPDb6wGRQQiT7Pg1NHBX49/XockpF8u/m11Um/PLy7eHQx8PBiYFubGf58+/o5uXc3NLKycXDt5CHencx/Pv49/f29PHu7Ovq6eXi4drX08zCsKqmpZeOjCn++fj39vTp6Ojk3dzb2tbU09LNzMnJw8O8vLKwo52amZaVlJCNioeHenFwbWVi+/r16OPg3Nzb2NfW09PSz87Nzc3My8jGxsTDwsLAvr29vLu3trOxsa+sqaalo6KhoJqak5GMiIeDgX54eHh2cG9ubGZlYltPTkJCOwDD0BUAAARNSURBVDjLZZRldBNBFIXTrCfZjbunSZqkCVBKgQrFpS20FHd3d3d3d3d3d3d3d99NGwhV2sJhdgsFDu/fzPnOvfe8N294f1VICASHEiQhhiF+CO+/CuGKD6EEIlGqEBIFFFd/I3w+BEF8Pkyo9Y/HP9CrSRic2JsiDCAWGEVhGLaJFPeH5a++W1xkg7krC/Qb40OwmCBTU20EYp0/PC8r2GK+HiFsqakgHcoas0IgiUz0esF7GUKV61Q+PSv441wchfT4+HCRSIaUCIVCWDOURJRP9y/4oDYs7TqxJYAGTOy61KD+tGjCnRdClREFUnwLIaKeDBz/1mB4M2ng4Or1siKqt218+JVS9e7SrshpQgkJ83mQGHEvHlZ+rt7gude7oFfLeln1q9TPrDvXYKa6ygVh8xQiMcSDSxh0R/OHL7aqVC8n9cnNKZ8XEZHR4NBziTqmhtaHjyjnMcI8sVp4o29wis6DIJRrb6+c9Lz8YN1ttSmkO16yaiXcMVUoEvOMVO0NGX0v6swlSLV0RuucbJC8ygydpLsGZxh7I1OxJUqShwivNsjo10knIUKNVMq+5dnpeRE7Yq3dffKSDNOsdEnHHLeMpyq3x5/Zr1O8xGYRq3VdWgCo8Zlyt33RmFzAVNJWxScrRDxPSvM0f/2TLqUNQmXC6azfgC435VptmTYavGJiDUExoYRnTV6Z5q/bNtZqhNEeiluDc7PTq3TrHF22akUBY6qGlQ1vKjXzFLVWfE3zV+kCQhEioJSbk31ZGjtKQ9MMw1TGaoY5pEpe8Vpfvqf5G1RPFqrUbtf5VQW5HWXW2q1oDiqlrTlIIDUA6PMXINX8WHK8Lm7m2D4FHW2I+3+oDqD8mc3HXp955WDLgo4IohTGVjP9Y6dPbviZNcxovKZ62xa9j+v0emlK5+gxci/+JzgV26Qna5iZEVGvfG67TbMXLpy9O1KOdWBbUCpxNNcCpWttzwBnGMxPb0ebvKc6e020JiqJbWZ/7VDmNGimWneiTiDwmTUMtmNAkhoJApBa4BtaOBYNO5Yeim5NvgUCrOFIwND2MtGNaFA4N+AKhQMmzHHj6nxjDUcyrJA3CWuG01xVkFdiNNxTQWWsFKC2V2QAJeiPYVECDokq3cHHFD46CyGJP9vwW2ACNrqyhmFwr3x9RaBkKlUaw4qeLx8tQbnGNdwSVQZLqlrKXmjk8A5JxBKH4OG/FiEECpXpU6aEMa0OaLHoNpHACrfLy2BYjcp002tCM7dSYKfEiLV4zDrGOapsknazTyOotFHboezOcDpsltDMLSe7nRabUaJ/dsTBOKO2JiRE2scklK4WTpvaP1KoAAOEOApCSREljGnvxBlnBQHeKJxmHMVmSd1qYyHzmyJkKuuymAvtw5xOuzOy2OSYZXozQqBFDKCAZSiJqCiFND7O5YqLlxZ3mxGjGP798RSJwWJSJpIoPRTlMahEMvKvT/En4U+imSkuVtwAAAAASUVORK5CYII=')"
+      , gsData = [imperialRebelDataURL, "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAACi1BMVEUAAAD///8LCwv///////8ODg4QEBD////7+/sWFhb///////////8NDQ3///82Njb///////////////////////8ZGRn///////////////////////////8UFBQUFBQmJiZhYWH///////////////////////8cHBwaGhouLi4xMTFHR0dpaWl7e3v///8fHx8fHx8uLi5ubm5+fn7BwcHS0tLv7+/4+Pj///////////////////////////8gICAgICBXV1dkZGSAgICCgoLb29vo6Ojx8fGmpqb///////////////////8YGBgoKCgzMzM/Pz8zMzMqKipLS0tTU1NRUVFbW1tDQ0N5eXkxMTGEhISKioq9vb3Y2NhOTk7l5eXl5eX09PT9/f3///////////////////////8SEhIVFRUrKysiIiI7OztDQ0MkJCRPT091dXVjY2NqamqpqalHR0e0tLS6urrMzMxISEjh4eG+vr7z8/P19fXOzs52dnadnZ2vr6////8aGhpdXV05OTkwMDAqKipOTk5cXFxFRUWSkpI6OjpVVVWfn5+lpaVwcHA/Pz+tra2qqqqvr6+BgYFZWVloaGhnZ2fs7OzOzs7S0tJVVVXt7e3a2tqwsLDR0dHPz89+fn7R0dGKioq6urqWlpba2tqurq6oqKj+/v7AwMD////k5OTe3t74+Pjc3Nz////4+Pj////r6+v19fXq6urw8PD///////8jIyM7Ozs7OztxcXF0dHRbW1tPT094eHjFxcWxsbG1tbW8vLzIyMhoaGhra2tra2ufn5+hoaGYmJicnJzMzMzS0tKSkpLDw8PIyMjKysrPz88HBwcKCgrXv00AAAAA13RSTlMAv/4DAf39IcD6Qgk9/grwPzstJBYS9F5aU0hGHQ/7+PXkV086MRgH+Pjz8uvi3Tf49Ojg3MzIw8BnXDQyLyoU8u3n49zbxsPCilVSUEoN+fTv7evr6ujo5ePd3dvZzcfGxbd+eXNiXyYOAvr19PDv7e3p393Z0dDPzsrKxcXCwL6skoNM8eXk5OPg3tvX1tXU09PT0dHQzs7Nx8PDwL+8uLitp6ajoJWUkpGQhYOBgX12b25ubW1lY18jH/Xh4Nva1tXQy8XEwsC2tbKkop6cmZeVi4l4dpOI3Z0AAAP8SURBVDjLdVRnVxNREN23cVt6JwkhhSRAAoTQkSBGIDE0QVREBRQ79t4Vxd5777333nvvdefnuG+DkuM5vi/75Z6Zu3MLEXs9JLIkPVNaopEmWiyJUk2wlElJkkl6EHFvQmo/PdNLYzEn9Lw5Zsz1nuPMFrnnnr5fKoZ1j7GWalbcXb5sYY7RXmccOHfZ8jsuudZqwMO6MEoDU5JoqhyxEvi6egXpCABpnNtZbMm611vZhZIoe+uyXNcOTeLt67cuWODw5hfMmZ0N9hG/qjXj9THUBJlB5zZXDoNJ294UsjvLbXTTFjZ6cHc2rDmTLB/fWyYRlqUmMe6qzrX8kJcdaH+Lg+Z5OtC8CLGv18H0Uya5zpDag5D0s2ZVncsB53BU2Nzg5cXnbfC3oUWPyemfTW6mXULI9FrXlUeQyaL8Ro7nwZc7U6UAsGXMQ8hPrflhLkmREe2Muuc+yCjMz1XhGeQMFjlpHgDSM+cXrYLNNxJ1SYS+V/XpbMhoxhD8VEvQIIUwEcMqyoD7mFySQtzX3N6j8KWBsIHCoLThfX0ggCgbCZA2md5wS80QpYkXQ4GdgwEcQ5003je/AH+oMn86QMaO9LrztVrC4zoBziKngsxEbGYdT/c/eqy/jeea9gu0oZENw7vqIJFVNQLmRAeR1NDIEtTyYPOXUaPP7nX42aJIC0dObWtVbEp2E3LTMNtiVMGBQjU0v+/xUWOra8aNPnl4QXgqDXQuOhDqU6wm1MV9pixF5RSAQGTWhbFSTy918aVtnPiDg9HIAfYEKSFNMA48gspIDOIHXK7xWK3aFVeH8CJoGjtyNfUfUO2/oPh15PrYOtOl2RP/rMsR1mHidpE4mT6zFROvcWHiL/wqUiQ+RSCOT0DOWYJPMDyKNjqefsUnqM9jOyLNHNnQ1krhE3hqTkA5Kx4T5XrFYw4QjuksRHkUzCgKw1tzEMuSHdhVBlCflzkR0+2SpSmMZZmXbseyMKLAAQDgaIgJPBkLreCwwD5RYMEqZmyVChUAYPVVUTaD5MXn8zcC9wFbpZ2RCqYbhE2HUdQMhJyiZyaXzxNM9wybLmbfh9i+rYM5ALJ/XniqMImetgsJ1HO+C/ZVikFIFoIwK4IKKxrSYos41cxFqO0JGfpk0jBJEiFSBsad3JkDQ14Vob4tDkrg7M2LILR4Hd8nFqkJceE0Pl8aZbc02ejGjWzHwd0hfu03HE6lBFcBjrkbxxyMs7YWFOCY75gd4icu/Nkd81hhBC2myoUrSQj4aLI+mwf79jMJtVk6XBh/q8dg1cpx9cwdaEzzGqdvf195x6XW3jco4wtKLDF5d4lV1co9upT2WInF91gKUxrsqkN5UBtfh78BLbSeZWMjzYgAAAAASUVORK5CYII=')", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAADAFBMVEUAAAD////////////////////////////////////++/v////////////////////////////////////////////////////////////////////vAwP////////////////////////////////////////////////////zBATICgr////////////////////dBATFBATqAwPRCgrqDAzXDw/oHR36iIj64OD////95OT//////////////////f3////////jBQXXBgbBBQXNEhLFERHdFBT0GBjbGBjUFBTaJCT1JCTTPT32QEDhQEDqSkrbSUnYUlL0bW3wp6f4s7Pvubn//////Pz////yo6P////////////TAgLSBwfnBgbzCQntCQm6CAjxDQ3cCAjvGBjQHBzAHBy7EBDgKCjwODjuJSXtOjriVFTbWFjSV1f0T0/abm7zYmLjdnbfPT3mjo7nbW30sLDyycn66en75+f40NDpWVn8sLD31tb3xcX////4yMj////0oqL5x8f55eX88fH0wMD55ub+6+vwdHTzwMDfQkL////+8vLuq6v98vL209PvsbH88PDvwcHoh4f539/ohYXvoKDMGxvVKSnRLCzqJCT1MzPyNDTFJSXOQkLrFRXgTEzOS0voDg7oQEDlW1vXKirMEhLXYmLYZGTha2vqGxvTMzPUQkLsh4fuLy/UJyfulpbqoaHrqqrXODj6enrreXn2oKDwu7vehYXehYXVMzPuvLzLHh7oVFTmRkb519fQLCzpICDPWVn6mJjzt7f3goLNT0/4o6P0cnLkdHT32tr5wcH239/toaHtQkLtwcH0r6/jfn7uVFT80dH0w8PafX33np7NODj++/v0zs7hd3fvXl784ODuVlb99fX85ubbaGj71dXIAADLAADCAADpAAC6AADfAADQAADkAADaAADXAAC/AADFAADmAAC3AAC1AADcAADrAAC8AADwAADtAADhAADNAADUAADuAADSAADyAABVO9ozAAAA5nRSTlMAAhAIBB4xBjoSGgxkSTdDNVJPHGE8LywlCnJM/lhVRz4rIRaIXUAoIxT++pCNg3wi/v7++/r59sihlI9ubGpbUUYY/v39+fn49/f39PPt6+vp6ebX0a+ql3t3dWdZJv79/fz8/Pr69/b29u/u7uvm5ePi39/d3dfRzMnEvLu6sa6ppKGfnZybmZmWjYyHhICAfHdwaWJeSD4yMPby8fHv7uzr6ejo6Ofk4+Pi4eDf3dzZ2dbU09DQz8/OzcnIx8bGwsLBv769vLu7u7e3trW1r6mmpaKOjIqIh4aEg4N2dXNuaGdlT3CF9PkAAARHSURBVDjLZZRldNpQGIZDQkIIJLhDcVtXmUu9c3d3d3d3d3d3d3d3d/cChQLtWlrWdtsNbO3O2ffv3vOc93mTe+6F/hkGA4GNIgNqhBEmA/pvGKFhImxUilskUgMbUKH5F2GyEARhsWCUL1x0flEyZYDBCuwwizCAcGA2G+bAIkzw7kD+rpcRfBEc3iryMhGYQGNXryJQqWreQYejw/B5QgwlVq2ORQm2IkwxQBM99vXNCj2mTWwRmebwdGieQGLWFfM/YTKDXcGkGRZswCzvL85fSfGWzRo7EEBbx07/wuOv/HDtOY9vsyMMIOOgGNlm99XlPN7y25uGHa/uKNvsUJ/LSy2Sb4+3z1VRsTCLASGpUnLJkchnQh7vVe/0Gk16OuoMqO3tPpenI9vs3/I6mS/iMCC4PY87Pv/EEpVEsvR6L3/pSEfZjr6al9rgVMqy8a7DH1UyOwsiqKRpdTz3PqdgUq3yXA1nmiPfU/XUYlIq05mnlStzl6tDFZCcXDy8oPwjrq59LGWeuceZCZoPmMnFDbG4eVa/QL8XAj0MYUlPa/vqtuDiqF1OxlyIBFDHUQuEVjvBN0/vH+hyi0ulQpKEkaV8dSe1xQlOKsWdWB9AaycmgpWRL57UN6gerOShUEqrHaW8tW8qLSIFLNPM3gt8jSuZpWwFgSc8WB9U14tW2SBhdAV3Tvejb1VyGNYLZg8B0MAZ7aRs2EbGnC4XzOscJbBCgqhyP9zenZVAKRGWNGOI35nZpJKYj6KUuNJQVzCvREmNHooo2SnDnVOzmSlJQpHKh9tynZn177dWURJN9KgKNFRZIwNQmawMt7fhOFOiOL7y6N7pfmfkmZZKcdvocY2yQlA7GuriyvqR4204emrLyWMGZafn+p2Nx0xuOfVKoyoZrgCAgC7Z1CPgAsKqdfcdG7G5a/Z3QJWuP6LZsD6l3AAqLFEywgqRCzaqXbSwoGz1GtXSvwPK7yxdvU55n9edkRUorGUSyiGLcqg6SAt9P/PTnH6ayvXTZxOG1A1itAaIz73RrZAWen0eR5ozNz07G0QBqMCb8yPLpW4aLyEgqyBuQ15hICT0ODKdubQQRHl++mioR3MzZodQXXzFznmFf4WZQBiKyqehjDKDF5JyDsSWRcxp8CsvSH8hENK1QCvnn1IVmnMpAoEUIrzthHq/wrUKAEULgY8u5a7StBUph5kQC26vVVas9W+tcBTwlWoUp8GMCANcO6NMGHOyFhAW1wpHVW04RYyjHCZ9gRUEJmhVsZ4a1ApTQEhHlW08hWuxgRsVego4IkyonNCgW5mivwWiqq0ZGSfWydk0E6YIWQp3TsW+5TpVoWulla7WtdegFq01uI2NFD8rCqMcFyTE3Wnav0LN8uV7rmty9slCsRZDQ64iCoFFeolQHB9jioqKMkW3Tmyn5cuNnD9McRhbZOXrtEJBhCBZxcOlttTiR/E3AYEOqmgNZcgAAAAASUVORK5CYII=')"]
+      , cruise64green = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzNTkuMjEgMzU5LjIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KPG1ldGFkYXRhPgo8cmRmOlJERj4KPGNjOldvcmsgcmRmOmFib3V0PSIiPgo8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KPGRjOnR5cGUgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIvPgo8ZGM6dGl0bGUvPgo8L2NjOldvcms+CjwvcmRmOlJERj4KPC9tZXRhZGF0YT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIxMC4wMSAtMzQzLjEzKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTIuMTE2IC0yLjg1ODgpIiBmaWxsPSIjYzlmZjAwIj4KPHBhdGggZD0ibTM3Ny41IDQzNy4zOGMtNzMuMTc4IDAtMTMyLjUgNTkuMzIyLTEzMi41IDEzMi41IDAgNDAuODM3IDE4LjQ4NCA3Ny4zNTEgNDcuNTMxIDEwMS42NiA4Ljg3NjUtOC44OTQ0IDE3Ljc1MS0xNy43OTEgMjYuNjI1LTI2LjY4OCAxLjk1MjYtMS45NTI2IDAuMzczOTktNi43MTk4LTMuNTMxMi0xMC42MjUtMy45MDUyLTMuOTA1Mi04LjY0MTEtNS40ODM5LTEwLjU5NC0zLjUzMTJsLTEyLjY4OCAxMi42ODhjLTE0LjQ2Ny0xNi43NDgtMjQuMDg4LTM3LjgxNy0yNi42NTYtNjFoMTkuMzEyYzIuNzYxNCAwIDUtNC40NzcyIDUtMTBzLTIuMjM4Ni0xMC01LTEwaC0xOS43NWMxLjU3NTItMjMuOTE0IDEwLjYwNi00NS43OTMgMjQuODEyLTYzLjMxMmwxNC45NjkgMTQuOTY5YzEuOTUyNiAxLjk1MjYgNi42ODg1IDAuMzczOTkgMTAuNTk0LTMuNTMxMiAzLjkwNTItMy45MDUyIDUuNDgzOS04LjY3MjQgMy41MzEyLTEwLjYyNWwtMTUuMTU2LTE1LjE1NmMxNy4zNDgtMTQuOTg1IDM5LjMzMS0yNC43NzMgNjMuNS0yNi45MDZ2MjIuMDYyYzAgMi43NjE0IDQuNDc3MiA1IDEwIDVzMTAtMi4yMzg2IDEwLTV2LTIyLjA2MmMyNC4xOCAyLjEzMDQgNDYuMTQ3IDExLjkxMSA2My41IDI2LjkwNmwtMTUuMTU2IDE1LjE1NmMtMS45NTI2IDEuOTUyNi0wLjM3Mzk5IDYuNzE5OCAzLjUzMTIgMTAuNjI1IDMuOTA1MiAzLjkwNTIgOC42NDExIDUuNDgzOSAxMC41OTQgMy41MzEybDE0Ljk2OS0xNC45NjljMTQuMjAzIDE3LjUyMSAyMy4yNDIgMzkuMzk2IDI0LjgxMiA2My4zMTJoLTE5Ljc1Yy0yLjc2MTQgMC01IDQuNDc3Mi01IDEwczIuMjM4NiAxMCA1IDEwaDE5LjI4MWMtMi41NjMxIDIzLjE4Ni0xMi4xNjUgNDQuMjUtMjYuNjI1IDYxbC0xMi42ODgtMTIuNjg4Yy0xLjk1MjYtMS45NTI2LTYuNjg4NS0wLjM3Mzk5LTEwLjU5NCAzLjUzMTItMy45MDUyIDMuOTA1Mi01LjQ4MzkgOC42NzI0LTMuNTMxMiAxMC42MjUgOC44NzI5IDguOTA4NCAxNy43NjYgMTcuNzk3IDI2LjY1NiAyNi42ODggMjkuMDM3LTI0LjMwNiA0Ny41LTYwLjgyOCA0Ny41LTEwMS42NiAwLTczLjE3OC01OS4zMjItMTMyLjUtMTMyLjUtMTMyLjV6Ii8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEuMTY2NyAwIDAgMS4xNjY3IC02MCAtOTUuMzk0KSIgZD0ibTM5MCA1NzIuMzZjMCA4LjI4NDMtNi43MTU3IDE1LTE1IDE1cy0xNS02LjcxNTctMTUtMTUgNi43MTU3LTE1IDE1LTE1IDE1IDYuNzE1NyAxNSAxNXoiLz4KPHBhdGggZD0ibTM0NS43MyA0OTMuNTNjLTQuNjA2OCAyLjA2NjQtNy40ODQ5IDUuNDk4MS02LjU0NjUgNy45MTA4bDIzLjc4NyA2MS4xNjJjLTMuMDc1MiA0LjU4OTYtMy45MzM5IDEwLjU3Ni0xLjc3OTUgMTYuMTE2IDMuNTAzMiA5LjAwNzcgMTMuNjQ1IDEzLjQ3IDIyLjY1MyA5Ljk2NjhzMTMuNDctMTMuNjQ1IDkuOTY2OC0yMi42NTNjLTIuMTU0NC01LjUzOTUtNi44MzI0LTkuMzczLTEyLjItMTAuNjc5bC0yMy43ODctNjEuMTYyYy0xLjAwMDktMi41NzM2LTUuOTg1LTMuMDM3Mi0xMS4xMzItMS4wMzUzLTAuMzIxNyAwLjEyNTExLTAuNjU0MDEgMC4yMzYtMC45NjExMiAwLjM3Mzc5eiIvPgo8cGF0aCBkPSJtMzAzLjUyIDM4Ni44MiAxOC42NzYtNy4xNTU2IDguOTQ0NSAyMy4zNDUgMTQuMDA3LTUuMzY2Ny0yMC4xNjEgNDUuMjA2LTQ1LjIwNi0yMC4xNjEgMTQuMDA3LTUuMzY2Ny04Ljk0NDUtMjMuMzQ1eiIvPgo8L2c+CjwvZz4KPC9zdmc+Cg=="
+      , cruiseOFFDataURL = "url('data:image/svg+xml;base64," + Base64.encode(Base64.decode(cruise64green).replace(/\#c9ff00/g, "#555555")) + "')";
+    eval(Base64.decode("d2luZG93Lkdsb3cgPSBmdW5jdGlvbihwbGF5ZXIpDQp7DQogICAgaWYgKFBJWEkuZmlsdGVycy5HbG93RmlsdGVyICYmIHBsYXllci5uYW1lID09ICJCb21iaXRhIikgew0KICAgICAgICB2YXIgY29sb3IgPSAocGxheWVyLmdyYXBoaWNzU2V0ID09IDApID8gMHhFMEUwRkYgOiAweEZGRkZGRjsNCiAgICAgICAgcGxheWVyLnNwcml0ZXMuc3ByaXRlLmZpbHRlcnMgPSBbDQogICAgICAgICAgICBuZXcgUElYSS5maWx0ZXJzLkdsb3dGaWx0ZXIoMTAsIDEsIDAsIGNvbG9yLCAwLjIpDQogICAgICAgIF07DQogICAgfQ0KfTs=")),
+    window.Glow = Glow,
     game.chosenGraphicsSet = -1;
-    var Zt = $("<div class=\"\" style=\"position: relative; width: 44px; height: 44px; cursor: pointer; background-color: rgba(0, 0, 0, 0.3); background-repeat: no-repeat; background-position: center; display: none;\" id=\"graphicsSet\" cgs= \"-1\" title= \"Switch style between Imperial / Rebel / Random\" ></div > ").css("background-image", Yt).click(function() {
+    let divGraphicsSet = $("<div class=\"\" style=\"position: relative; width: 44px; height: 44px; cursor: pointer; background-color: rgba(0, 0, 0, 0.3); background-repeat: no-repeat; background-position: center; display: none;\" id=\"graphicsSet\" cgs= \"-1\" title= \"Switch style between Imperial / Rebel / Random\" ></div > ").css("background-image", imperialRebelDataURL).click(function() {
         if (2 != game.gameType) {
-            var $t = parseInt($(Zt).attr("cgs"));
-            $t++,
-            2 == $t && ($t = -1),
-            $(Zt).attr("cgs", $t),
-            game.chosenGraphicsSet = $t,
-            $(Zt).css("background-image", Vt[$t + 1]);
-            var en = Players.getMe();
-            null != en && (en.destroy(!1),
-            en.setupGraphics(!0),
-            en.visibilityUpdate(!0)),
+            let Xt = parseInt($(divGraphicsSet).attr("cgs"));
+            Xt++,
+            2 == Xt && (Xt = -1),
+            $(divGraphicsSet).attr("cgs", Xt),
+            game.chosenGraphicsSet = Xt,
+            $(divGraphicsSet).css("background-image", gsData[Xt + 1]);
+            let Gt = Players.getMe();
+            null != Gt && (Gt.destroy(!1),
+            Gt.setupGraphics(!0),
+            Gt.visibilityUpdate(!0)),
             UI.aircraftSelected(game.myType)
         }
     });
-    $("#sidebar").prepend(Zt),
+    $("#sidebar").prepend(divGraphicsSet),
     $("#settings").prepend($("<div style='position: absolute; right: 66px; top: 0; width: 33px; height: 31px; cursor: pointer; border-radius: 5px; background-repeat: no-repeat; background-size: 20px 20px; background-position: 7px 6px; opacity: .8;'></div>").css("background-image", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAANlBMVEUAAAD////////////////////////////////////////////////////////////////////xY8b8AAAAEXRSTlMAhpDuGWXDf7YGz7+vn3BAMAcWIBEAAABjSURBVBjTjZFLDoAwCAUplNJaf9z/srqQKIGFb0MyASYBGEjqQjgAewWX2guQsZcS6F3UUzXYbGX7QC5P2KBk45BA0Zl0bhhFO0kUHSI/RVMxQlxWJzIYRSynH09Plx45fccF86MHQB43eIwAAAAASUVORK5CYII=')")).css("width", "100px").click(function() {
-        $("#scoreboard").toggle(400),
-        $("#roomnamecontainer").toggle(400)
+        SWAM.toggleLeaderboard()
     }),
     $("#minimizechatcontainer").prepend("<div id='clearChat' style='position: absolute; right: 70px; color: #c9c9c9; opacity: 0.8; cursor: pointer;'>Clear chat</div>"),
     $("#clearChat").click(function() {
         $("#chatlines").html("")
     }),
+    (SWAM.appendHelp = function() {
+        var Bt = [["Z", "Radio All"], ["X", "Radio Team"], ["C", "Radio Bubble"], ["Y", "Drop flag"], ["5 or End", "Cruise Control"], ["F3", "Toggle leaderboard"], ["F4", "Toggle UI"]]
+          , Xt = $("<div class=\"commands\" style=\"color: white\">StarMash - A Star Wars Mod shortcuts<div class=\"cmdlist\"></div></div>");
+        for (var Ht of Bt) {
+            var Yt = "<span class=\"nowrap\"><div class=\"cmd\">$key</div><div class=\"desc\">$desc</div></span>".replace(/\$key/g, Ht[0]).replace(/\$desc/g, Ht[1]);
+            $(".cmdlist", Xt).append(Yt)
+        }
+        $("#howtoplay .hiddenstuff").append(Xt)
+    }
+    )();
+    let loader = new PIXI.loaders.Loader;
+    if (loader.add("halfplanet_sprite", "http://localhost/planet.jpg"),
+    loader.add("halfplanet_mask", "http://localhost/planet-mask2.jpg"),
+    loader.add("hyperspace", "http://localhost/hyperspace.jpg"),
+    loader.load(()=>{
+        SWAM.planet = createPlanet(Graphics.renderer),
+        game.graphics.layers.map.addChildAt(SWAM.planet, getDoodadsIndex()),
+        SWAM.asteroids3 = crateTileLayer("asteroids1", "asteroids3"),
+        SWAM.asteroids3.tileScale.set(game.scale / 3, game.scale / 3),
+        SWAM.asteroids2 = crateTileLayer("asteroids2", "asteroids2"),
+        SWAM.asteroids2.tileScale.set(game.scale, game.scale),
+        SWAM.asteroids1 = crateTileLayer("asteroids1", "asteroids1"),
+        SWAM.asteroids1.tileScale.set(game.scale, game.scale),
+        SWAM.hyperSpace = new HyperSpace,
+        Graphics.setCamera(0, 0)
+    }
+    ),
+    SWAM.resizeLayers = function(Bt, Xt) {
+        let Gt = Bt / game.scale
+          , Ht = Xt / game.scale;
+        SWAM.asteroids1 && (SWAM.asteroids1.width = Gt,
+        SWAM.asteroids1.height = Ht),
+        SWAM.asteroids2 && (SWAM.asteroids2.width = Gt,
+        SWAM.asteroids2.height = Ht),
+        SWAM.asteroids3 && (SWAM.asteroids3.width = Gt,
+        SWAM.asteroids3.height = Ht)
+    }
+    ,
+    SWAM.doUpdates = !0,
+    SWAM.updateLayers = function(Bt, Xt) {
+        SWAM.doUpdates && (this.updatePlanet(Bt, Xt),
+        this.updateAsteroids(Bt, Xt))
+    }
+    ,
+    SWAM.updatePlanet = function() {
+        var Gt = SWAM.planet;
+        let Ht = Graphics.getCamera()
+          , Yt = game.halfScreenX / game.scale
+          , jt = game.halfScreenY / game.scale
+          , Wt = Ht.x - Yt + 16384
+          , zt = game.screenX - Gt.width
+          , Vt = config.mapWidth - game.screenX / game.scale
+          , Kt = Ht.y + 8192
+          , Qt = 0;
+        if (5e3 > Kt)
+            Qt = game.screenY;
+        else {
+            let Zt = config.mapHeight - jt - 5e3;
+            Qt = game.screenY - Gt.height * (Kt - 5e3) / Zt
+        }
+        Gt.position.set(Wt * zt / Vt, Qt)
+    }
+    ,
+    SWAM.updateAsteroids = function(Bt, Xt) {
+        let Gt = Graphics.getCamera()
+          , Ht = Gt.y - game.halfScreenY / game.scale;
+        SWAM.asteroids1 && (SWAM.asteroids1 && SWAM.asteroids1.tilePosition.set(Bt / 2, Xt / 2),
+        SWAM.asteroids2 && SWAM.asteroids2.tilePosition.set(Bt / 4, Xt / 4),
+        SWAM.asteroids3 && SWAM.asteroids3.tilePosition.set(Bt / 6, Xt / 6))
+    }
+    ,
+    SWAM.panX = function(Bt) {
+        Bt = Bt || {};
+        let Xt = "undefined" == typeof Bt.start ? -8192 : Bt.start
+          , Gt = "undefined" == typeof Bt.end ? 8192 : Bt.end
+          , Ht = "undefined" == typeof Bt.step ? 200 : Bt.step
+          , Yt = "undefined" == typeof Bt.speed ? 50 : Bt.speed;
+        Gt <= Xt || (Graphics.setCamera(Xt, Graphics.getCamera().y),
+        Xt += Ht,
+        setTimeout(()=>{
+            SWAM.panX({
+                start: Xt,
+                end: Gt,
+                step: Ht,
+                speed: Yt
+            })
+        }
+        , Yt))
+    }
+    ,
+    SWAM.panY = function(Bt) {
+        Bt = Bt || {};
+        let Xt = "undefined" == typeof Bt.start ? -8192 : Bt.start
+          , Gt = "undefined" == typeof Bt.end ? 8192 : Bt.end
+          , Ht = "undefined" == typeof Bt.step ? 200 : Bt.step
+          , Yt = "undefined" == typeof Bt.speed ? 50 : Bt.speed;
+        Gt <= Xt || (Graphics.setCamera(Graphics.getCamera().x, Xt),
+        Xt += Ht,
+        setTimeout(()=>{
+            SWAM.panY({
+                start: Xt,
+                end: Gt,
+                step: Ht,
+                speed: Yt
+            })
+        }
+        , Yt))
+    }
+    ,
+    SWAM.resizeMap = function(Bt) {
+        config.scalingFactor = Bt,
+        Graphics.resizeRenderer(game.screenX, game.screenY)
+    }
+    ,
     Games.prep = function() {
-        Gt.apply(Games),
+        games_prep.apply(Games),
         (1 == game.gameType || 3 == game.gameType) && $("#graphicsSet").show(),
         $("body").append("<div id='AutoPilotAlert' style='position: absolute; top: 100px; left: calc(50% - 100px); width: 200px; color: white; font-size: 40px; background-color: rgb(7, 185, 7); opacity: 0.6; text-align: center; border-radius: 20px; padding: 10px; display:none;'>AutoPilot</div>"),
         $("body").append("<div id='WhoKilledWho' style='position: absolute; top: 40px; left: 60px; width: 400px; height: 80px; opacity:0.9; overflow: hidden; padding: 8px; font-size: 12px; color: white;'></div>"),
-        Bt.radio.append(),
-        UI.addChatMessage("Mod:  Press Z, X or C  to send prefixed chat messages.".bold()),
-        UI.addChatMessage("5 or END to toggle Cruise Control.".bold()),
+        UI.addChatMessage("Mod:  Press H to check StarMash shortcuts.".bold()),
         UI.addChatMessage("Alt-Click the minimap for autopilot (experimental).".bold()),
         2 == game.gameType && UI.addChatMessage("Y when carrying the flag, to drop it.".bold()),
         window.PlayerInfoTimer = setInterval(function() {
-            var Jt = Players.getIDs()
-              , $t = Players.getMe();
-            for (var en in Jt) {
-                var tn = Players.get(en);
-                "undefined" != typeof tn.scorePlace && (tn.sprites.name.text = tn.scorePlace + ". " + tn.name)
+            var Bt = Players.getIDs()
+              , Xt = Players.getMe();
+            for (var Gt in Bt) {
+                var Ht = Players.get(Gt);
+                "undefined" != typeof Ht.scorePlace && (Ht.sprites.name.text = Ht.scorePlace + ". " + Ht.name)
             }
         }, 500),
-        $(window).keydown(Bt.keydown_handler),
-        $(window).keyup(Bt.keyup_handler),
-        $("canvas").click(Bt.canvas_click_handler)
+        SWAM.hyperSpace.show(),
+        $(window).keydown(SWAM.keydown_handler),
+        $(window).keyup(SWAM.keyup_handler),
+        $("canvas").click(SWAM.canvas_click_handler)
     }
     ,
     Games.wipe = function() {
-        Xt.apply(Games),
+        games_wipe.apply(Games),
         clearInterval(window.PlayerInfoTimer),
         $("#graphicsSet").hide(),
         $("body").remove("#WhoKilledWho"),
-        $(window).off("keydown", Bt.keydown_handler),
-        $(window).off("keyup", Bt.keyup_handler),
-        $("canvas").off("click", Bt.canvas_click_handler)
+        $(window).off("keydown", SWAM.keydown_handler),
+        $(window).off("keyup", SWAM.keyup_handler),
+        $("canvas").off("click", SWAM.canvas_click_handler)
     }
     ,
-    Bt.CruiseMode = {
+    Graphics.resizeRenderer = function(Bt, Xt) {
+        graphics_resizeRenderer.call(Graphics, Bt, Xt),
+        SWAM.resizeLayers(Bt, Xt)
+    }
+    ,
+    SWAM.addDebugElements = function() {
+        SWAM.debug && ($("#logon").append("<div><input class='dgCamUpdates' type='button' value='updates' style='width: 50px; margin-right: 10px;'></div><table><tr><td colspan='3' align='center'><input class='dgCamY' type='button' value='-8192' style='width: 50px; margin-right: 10px;'></td></tr><tr><td><input class='dgCamX' type='button' value='-16384' style='width: 50px; margin-right: 10px;'></td><td><input class='dgCamX' type='button' value='0' style='width: 50px; margin-right: 10px;'><input class='dgCamY' type='button' value='0'    style='width: 50px; margin-right: 10px;'></td><td><input class='dgCamX' type='button' value='16384' style='width: 50px; margin-right: 10px;'></td></tr><tr><td colspan='3' align='center'><input class='dgCamY' type='button' value='8192' style='width: 50px; margin-right: 10px;'></td></tr></table>"),
+        $("#logon input.dgCamX").click(function(Bt) {
+            let Xt = $(Bt.target).val();
+            Graphics.setCamera(parseFloat(Xt), Graphics.getCamera().y)
+        }),
+        $("#logon input.dgCamY").click(function(Bt) {
+            let Xt = $(Bt.target).val();
+            Graphics.setCamera(Graphics.getCamera().x, parseFloat(Xt))
+        }),
+        $("#logon input.dgCamUpdates").click(function() {
+            SWAM.doUpdates = !SWAM.doUpdates
+        }))
+    }
+    ,
+    SWAM.toggleLeaderboard = function() {
+        game.state !== Network.STATE.PLAYING || ($("#scoreboard").toggle(400),
+        $("#roomnamecontainer").toggle(400))
+    }
+    ,
+    SWAM.toggleUI = function() {
+        if (game.state === Network.STATE.PLAYING) {
+            let Bt = "none" == $("#sidebar").css("display");
+            Bt ? ($("#scoreboard").show(400),
+            $("#roomnamecontainer").show(400)) : ($("#scoreboard").hide(400),
+            $("#roomnamecontainer").hide(400)),
+            $("#sidebar").toggle(400),
+            $("#logosmall").toggle(400),
+            $("#menu").toggle(400),
+            $("#gameinfo").toggle(400),
+            $("#scorebig").toggle(400)
+        }
+    }
+    ,
+    SWAM.moveMinimap = function() {
+        setTimeout(function() {
+            $("#scorebig").css("right", config.minimapSize + "px"),
+            config.minimapPaddingY = game.screenY - 50 - config.minimapSize / 2,
+            UI.resizeMinimap()
+        }, 8e3)
+    }
+    ,
+    SWAM.updateShipNames = function() {
+        let Bt = {
+            1: ["X-Wing"],
+            2: ["B-Wing"],
+            3: ["A-Wing"],
+            4: ["Y-Wing"],
+            5: ["Scout ship"],
+            101: ["Speed"],
+            102: ["Deflector Shields"],
+            103: ["Energy Regen"],
+            104: ["Laser Speed"]
+        }
+          , Xt = {
+            1: ["Tie Fighter"],
+            2: ["Tie Bomber"],
+            3: ["Tie Interceptor"],
+            4: ["Tie Advanced"],
+            5: ["Tie Phantom"],
+            101: ["Speed"],
+            102: ["Deflector Shields"],
+            103: ["Energy Regen"],
+            104: ["Laser Speed"]
+        };
+        for (var Gt in game.tooltipValues)
+            game.tooltipValues[Gt][0] = 0 == game.myGraphicsSet ? Xt[Gt][0] : Bt[Gt][0]
+    }
+    ,
+    SWAM.CruiseMode = {
         append: function() {
-            var Jt = $("<div id='CruiseControl' state='OFF' style='display: none; background-color: rgba(0,0,0,.3); width: 44px; height: 44px; background-repeat: no-repeat; background-size: 35px 35px; background-position: center; border-radius: 7px;'></div>").css("background-image", Qt).show().click(function() {
-                Bt.CruiseMode.toggle()
+            let Bt = $("<div id='CruiseControl' state='OFF' style='display: none; background-color: rgba(0,0,0,.3); width: 44px; height: 44px; background-repeat: no-repeat; background-size: 35px 35px; background-position: center; border-radius: 7px;'></div>").css("background-image", cruiseOFFDataURL).show().click(function() {
+                SWAM.CruiseMode.toggle()
             });
-            $("#sidebar").append(Jt),
-            $("#CruiseControl").mouseenter(function($t) {
-                var en = "<div class='header'>Cruise Control</div></div><div class='desc'>Makes the ship advance automatically at full speed.  Can be activated with 'B' key.</div>";
-                en += "<div class=\"arrow\"></div>",
-                $("#tooltip").html(en),
+            $("#sidebar").append(Bt),
+            $("#CruiseControl").mouseenter(function(Xt) {
+                let Gt = "<div class='header'>Cruise Control</div></div><div class='desc'>Makes the ship advance automatically at full speed.  Can be activated with '5' or 'END' keys.</div>";
+                Gt += "<div class=\"arrow\"></div>",
+                $("#tooltip").html(Gt),
                 UI.show("#tooltip");
-                var tn = $t.currentTarget.getBoundingClientRect();
+                let Ht = Xt.currentTarget.getBoundingClientRect();
                 $("#tooltip").css({
-                    left: Math.round(tn.left + 60) + "px",
-                    top: Math.round(tn.top - 10) + "px"
+                    left: Math.round(Ht.left + 60) + "px",
+                    top: Math.round(Ht.top - 10) + "px"
                 })
             }).mouseleave(function() {
                 UI.hide("#tooltip"),
@@ -33369,132 +33650,206 @@ $(function Bt() {
             $("#CruiseControl").css({
                 borderColor: "#c9ff00",
                 "background-size": "44px 44px",
-                backgroundImage: "url('data:image/svg+xml;base64," + qt + "')"
+                backgroundImage: "url('data:image/svg+xml;base64," + cruise64green + "')"
             }).attr("state", "ON"),
             Network.sendKey("UP", !0)
         },
-        off: function(Jt) {
-            Jt = Jt || !0,
+        off: function(Bt) {
+            "undefined" == typeof Bt && (Bt = !0),
             $("#CruiseControl").css({
                 borderColor: "#555555",
                 "background-size": "35px 35px",
-                backgroundImage: Qt
+                backgroundImage: cruiseOFFDataURL
             }).attr("state", "OFF"),
-            Jt && Network.sendKey("UP", !1)
+            Bt && Network.sendKey("UP", !1)
         },
         toggle: function() {
-            "ON" === $("#CruiseControl").attr("state") ? Bt.CruiseMode.off() : Bt.CruiseMode.on()
+            "ON" === $("#CruiseControl").attr("state") ? SWAM.CruiseMode.off() : SWAM.CruiseMode.on()
         },
         isOn: function() {
             return "ON" === $("#CruiseControl").attr("state")
         }
     },
-    Bt.CruiseMode.append(),
-    Bt.radio = {
+    SWAM.CruiseMode.append(),
+    SWAM.radio = {
         append: function() {
-            $("body").append("<div id='radioPanel' style='display: none; position: absolute; bottom: 180px; left: 60px; width: 300px; height: auto; max-width: 700px; opacity:0.9; overflow: hidden; padding: 8px; font-size: 12px; color: white; text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); background-color: rgba(0,0,0,0.5); border: 1px solid #555555; border-radius: 3px;' ><div id='radioChannel' style='color: yellow;'>Send TEAM RADIO</div><hr/><div id='radioOptions'></div></div>")
+            $("body").append("<div id='radioPanel' style='display: none; position: absolute; bottom: 180px; left: 60px; width: 300px; height: auto; max-width: 700px; opacity:0.9; overflow: hidden; padding: 8px; font-size: 12px; color: white; text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); background-color: rgba(0,0,0,0.5); border: 1px solid #555555; border-radius: 3px;' ><div id='radioChannel' style='color: yellow;'>* Radio not available *</div><div id='btnRadioConfig' style='color: #888888; text-decoration: underline; position: absolute; top: 6px; right: 10px; cursor: pointer;'>[Customize Messages]</div><hr/><div id='radioOptions'></div></div>"),
+            this.loadOptions(),
+            $("#btnRadioConfig").click(function() {
+                SWAM.radio.showConfig(SWAM.radio.currentChannel)
+            })
         },
         currentChannel: 0,
-        channels: [Network.sendChat, Network.sendTeam, Network.sendSay],
+        channelMethods: [Network.sendChat, Network.sendTeam, Network.sendSay],
         visible: function() {
             return "none" !== $("#radioPanel").css("display")
         },
-        show: function() {
+        send: function(Bt) {
+            this.channelMethods[this.currentChannel](Bt)
+        },
+        sendTo: function(Bt, Xt) {
+            this.channelMethods[Bt](Xt)
+        },
+        channelNames: ["* Radio to All *", "* Radio to TEAM *", "* CLOSE RANGE signal *"],
+        channelKeys: ["Z", "X", "C"],
+        options: [[], [], []],
+        defaultOptions: [["gg", "Hi!", "Yes", "No", "Thanks!", "You are welcome!", "I'll be right back.", "Got to go, cya!", "Great work, team!"], ["Affirmative", "Negative", "** I'VE GOT THE FLAG! COVER ME! **", "** THE ENEMY HAS OUR FLAG! **", "** All wings, protect our flag carrier! **", "Defending the base! Need assistance!", "Attacking their base!  Need assistance!", "Regroup team", "Hold this position", "Stick together, team!"], ["Hey there!", "Stop!", "Go Go Go!", "Imperial scum!", "Rebel scum!", "%@*#$!!", "YEE-HAW!!!", ":lol:", ":cry:", ":clap:"]],
+        loadOptions: function() {
+            var Bt = localStorage.getItem("radioMessages");
+            if (null != Bt)
+                try {
+                    SWAM.radio.options = JSON.parse(Bt)
+                } catch (Xt) {
+                    var Bt = null;
+                    localStorage.removeItem("radioMessages")
+                }
+            if (null == Bt) {
+                var Bt = jQuery.extend(!0, {}, SWAM.radio.defaultOptions);
+                SWAM.radio.options = Bt
+            }
+        },
+        showConfig: function(Bt) {
+            this.hide();
+            var Xt = "<div id='radioCustomization' tabindex='1' style='position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,.5)'><div style='position: absolute; width: 550px; height: 450px; left: calc(50% - 275px); top: calc(50% - 225px);background-color: rgba(0,0,0,0.75); box-shadow: 0 10px 59px -9px rgba(0,0,0,0.7); border-radius: 9px; border-bottom: 2px solid rgba(0,0,0,0.3); border-top: 2px solid rgba(255,255,255,0.08); box-sizing: border-box; padding: 18px 18px 0 18px; cursor: default; font-family: verdana,arial,helvetica,sans-serif'><div style='font-size: 20px; color: white; margin-bottom: 10px;'>Customize messages for: <span style='color: yellow'>$channel</span></div><div style='color: #AAAAAA'>Enter the messages below. Use '|' character to separate multiple lines in the same meesage.</div><div class='optionList'></div><div style='color: #888888; text-decoration: underline; cursor: pointer; margin: 10px;'><hr/><span id='radioRestoreThis'>[Restore THIS panel to default]</span><span id='radioRestoreAll' style='margin-left: 30px;'>[Restore ALL messages to default]</span></div><div style='width: 200px; position: absolute; left: calc(50% - 100px); margin-top: 20px;'><input id='radioCustomizeSave' type='button' value='Save' style='width: 80px; height: 25px; background-color: #228a12; color: white; border-radius: 4px; font-size=16px; text-shadow: 0 -1px 0 rgba(0,0,0,0.6); border: 2px solid rgba(0,0,0,.2)'><span style='margin-left: 40px'></span><input id='radioCustomizeCancel' type='button' value='Cancel' style='width: 80px; height: 25px; background-color: #555555; color: white; border-radius: 4px; font-size=16px; text-shadow: 0 -1px 0 rgba(0,0,0,0.6); border: 2px solid rgba(0,0,0,.2)'></div></div></div>";
+            Xt = Xt.replace(/\$channel/g, SWAM.radio.channelNames[Bt]);
+            for (var Gt = $(Xt), Yt = 0; 10 > Yt; Yt++) {
+                Xt = "<div style='margin: 5px;'><span style='margin-right: 10px; color:white;'>$index</span><input type='text' maxlength: '150' style='font-size: 13px; font-family: MontserratWeb,Helvetica,sans-serif;width: 450px;background-color: rgba(0,0,0,0.5); color: #dcdcdc; text-shadow: 0 0 3px rgba(0,0,0,0.8);border: 1px solid #555555; border-radius: 3px;padding-left: 12px;' value = ''></div>".replace(/\$index/g, 9 > Yt ? Yt + 1 : "0");
+                var jt = $(Xt);
+                $("input", jt).val(SWAM.radio.options[Bt][Yt]),
+                $(".optionList", Gt).append(jt)
+            }
+            $("body").append(Gt),
+            Gt.focus(),
+            $("#radioCustomizeSave", Gt).click(function() {
+                for (var Wt = $("input", Gt), zt = 0; zt < Wt.length; zt++)
+                    SWAM.radio.options[Bt][zt] = Wt[zt].value;
+                localStorage.setItem("radioMessages", JSON.stringify(SWAM.radio.options)),
+                Gt.remove()
+            }),
+            $("#radioCustomizeCancel", Gt).click(function() {
+                Gt.remove()
+            }),
+            $("#radioRestoreThis", Gt).click(function() {
+                confirmDialog({
+                    title: "Are you sure? This will delete all customized messages for this panel and restore them to default.",
+                    message: SWAM.radio.channelNames[Bt] + "   -  Confirmation needed",
+                    yes: function() {
+                        var Wt = jQuery.extend(!0, [], SWAM.radio.defaultOptions[Bt]);
+                        SWAM.radio.options[Bt] = Wt,
+                        localStorage.setItem("radioMessages", JSON.stringify(SWAM.radio.options)),
+                        SWAM.radio.loadOptions(),
+                        Gt.remove()
+                    }
+                })
+            }),
+            $("#radioRestoreAll", Gt).click(function() {
+                confirmDialog({
+                    title: "Are you sure? This will delete all customized messages and restore them to default.",
+                    message: "Confirmation needed",
+                    yes: function() {
+                        localStorage.removeItem("radioMessages"),
+                        SWAM.radio.loadOptions(),
+                        Gt.remove()
+                    }
+                })
+            }),
+            $(Gt).keydown(function(Wt) {
+                Wt.stopImmediatePropagation()
+            }).keyup(function(Wt) {
+                Wt.stopImmediatePropagation()
+            })
+        },
+        show: function(Bt) {
+            SWAM.radio.currentChannel = Bt;
+            for (var Xt = SWAM.radio.options, Gt = "Close Menu - Press " + SWAM.radio.channelKeys[Bt] + "<div>-----</div>", Ht = 0; Ht < Xt[Bt].length; Ht++)
+                Gt += "<div><span style='margin-right: 15px;'>" + (Ht + 1) % 10 + ".</span>" + Xt[Bt][Ht] + "</div>";
+            $("#radioChannel").html(SWAM.radio.channelNames[Bt]),
+            $("#radioOptions").html(Gt),
             $("#radioPanel").show()
         },
         hide: function() {
             $("#radioPanel").hide()
-        },
-        send: function(Jt) {
-            this.channels[this.currentChannel](Jt)
-        },
-        sendBy: function(Jt, $t) {
-            this.channels[Jt]($t)
-        },
-        channelNames: ["* Radio to All *", "* Radio to TEAM *", "* CLOSE RANGE signal *"],
-        channelKeys: ["Z", "X", "C"],
-        options: {
-            chat: ["gg", "Hi!", "Yes", "No", "Thanks!", "You are welcome!", "I'll be right back.", "Got to go, cya!", "Great work, team!"],
-            team: ["Affirmative", "Negative", "** I'VE GOT THE FLAG! COVER ME! **", "** THE ENEMY HAS OUR FLAG! **", "** All wings, protect our flag carrier! **", "Defending the base! Need assistance!", "Attacking their base!  Need assistance!", "Regroup team", "Hold this position", "Stick together, team!"],
-            say: ["Hey there!", "Stop!", "Go Go Go!", "Imperial scum!", "Rebel scum!", "%@*#$!!", "YEE-HAW!!!", ":lol:", ":cry:", ":clap:"]
         }
     },
-    Bt.keydown_handler = function(Jt) {
-        if (game.state === Network.STATE.PLAYING && "none" === $("#chatinput").css("display")) {
-            var $t = $.inArray(Jt.which, [65, 68, 87, 83, 37, 38, 39, 40]);
-            -1 < $t && AutoPilot && 0 < AutoPilot.currentNode && AutoPilot.cancel(),
-            $t = $.inArray(Jt.which, [87, 83, 38, 40]),
-            -1 < $t && (Bt.CruiseMode.isOn() && Bt.CruiseMode.off(1 == $t || 3 == $t),
-            Jt.stopImmediatePropagation(),
-            Jt.preventDefault()),
-            (53 === Jt.keyCode || 35 == Jt.keyCode) && (Bt.CruiseMode.isOn() ? Bt.CruiseMode.off() : Bt.CruiseMode.on(),
-            Jt.stopImmediatePropagation(),
-            Jt.preventDefault()),
-            89 === Jt.keyCode && (Network.sendCommand("drop", ""),
-            Jt.stopImmediatePropagation(),
-            Jt.preventDefault())
+    SWAM.radio.append(),
+    SWAM.keydown_handler = function(Bt) {
+        if (!(game.state !== Network.STATE.PLAYING || SWAM.chatinputVisible())) {
+            var Xt = $.inArray(Bt.which, [65, 68, 87, 83, 37, 38, 39, 40]);
+            -1 < Xt && AutoPilot && 0 < AutoPilot.currentNode && AutoPilot.cancel(),
+            Xt = $.inArray(Bt.which, [87, 83, 38, 40, 53, 35]),
+            -1 < Xt && (SWAM.CruiseMode.isOn() ? SWAM.CruiseMode.off(0 != Xt && 2 != Xt) : (53 == Bt.keyCode || 35 == Bt.keyCode) && SWAM.CruiseMode.on()),
+            89 == Bt.keyCode && (Network.sendCommand("drop", ""),
+            Bt.stopImmediatePropagation(),
+            Bt.preventDefault())
         }
     }
     ,
-    Bt.keyup_handler = function(Jt) {
-        if (game.state === Network.STATE.PLAYING && "none" === $("#chatinput").css("display")) {
-            var $t = $.inArray(Jt.which, [90, 88, 67]);
-            if (-1 < $t) {
-                if (Bt.radio.visible() && $t == Bt.radio.currentChannel)
-                    Bt.radio.hide(),
-                    Jt.stopImmediatePropagation(),
-                    Jt.preventDefault();
-                else {
-                    Bt.radio.currentChannel = $t,
-                    Bt.radio.show();
-                    for (var en = [Bt.radio.options.chat, Bt.radio.options.team, Bt.radio.options.say], tn = "Close Menu - Press " + Bt.radio.channelKeys[$t] + "<div>-----</div>", nn = 0; nn < en[$t].length; nn++)
-                        tn += "<div><span style='margin-right: 15px;'>" + (nn + 1) % 10 + ".</span>" + en[$t][nn] + "</div>";
-                    $("#radioChannel").html(Bt.radio.channelNames[$t]),
-                    $("#radioOptions").html(tn)
-                }
-                Jt.stopImmediatePropagation(),
-                Jt.preventDefault()
-            }
-            if (48 <= Jt.which && 57 >= Jt.which && Bt.radio.visible()) {
-                Bt.radio.hide();
-                var tn = "";
-                $t = Jt.which - 49,
-                -1 == $t && ($t = 9);
-                var en = [Bt.radio.options.chat, Bt.radio.options.team, Bt.radio.options.say]
-                  , rn = Bt.radio.currentChannel;
-                if (0 <= $t && $t < en[rn].length) {
-                    tn = en[rn][$t];
-                    var an = tn.split(/\s*\|\s*/);
-                    $t = 0;
-                    var on = function() {
-                        Bt.radio.sendBy(rn, an[$t++]),
-                        $t < an.length && setTimeout(on, 1500)
+    SWAM.chatinputVisible = function() {
+        return "none" !== $("#chatinput").css("display")
+    }
+    ,
+    SWAM.keyup_handler = function(Bt) {
+        if (!(game.state !== Network.STATE.PLAYING || SWAM.chatinputVisible())) {
+            var Xt = $.inArray(Bt.which, [90, 88, 67]);
+            if (-1 < Xt && (SWAM.radio.visible() && Xt == SWAM.radio.currentChannel ? SWAM.radio.hide() : SWAM.radio.show(Xt)),
+            48 <= Bt.which && 57 >= Bt.which && SWAM.radio.visible()) {
+                SWAM.radio.hide();
+                var Gt = "";
+                Xt = Bt.which - 49,
+                -1 == Xt && (Xt = 9);
+                var Ht = SWAM.radio.options
+                  , Yt = SWAM.radio.currentChannel;
+                if (0 <= Xt && Xt < Ht[Yt].length) {
+                    Gt = Ht[Yt][Xt];
+                    var jt = Gt.split(/\s*\|\s*/);
+                    Xt = 0;
+                    var Wt = function() {
+                        SWAM.radio.sendTo(Yt, jt[Xt++]),
+                        Xt < jt.length && setTimeout(Wt, 1500)
                     };
-                    on()
+                    Wt()
                 } else
-                    Bt.radio.hide();
-                Jt.stopImmediatePropagation(),
-                Jt.stopPropagation(),
-                Jt.preventDefault()
+                    SWAM.radio.hide();
+                Bt.stopImmediatePropagation(),
+                Bt.stopPropagation(),
+                Bt.preventDefault()
+            }
+            114 == Bt.which && SWAM.toggleLeaderboard(),
+            115 == Bt.which && SWAM.toggleUI()
+        }
+    }
+    ,
+    SWAM.canvas_click_handler = function(Bt) {
+        if (1 == Bt.which && Bt.altKey) {
+            var Xt = game.screenX - config.minimapPaddingX - config.minimapSize
+              , Gt = game.screenX - config.minimapPaddingX
+              , Ht = game.screenY - config.minimapPaddingY - config.minimapSize / 2
+              , Yt = game.screenY - config.minimapPaddingY;
+            if (Bt.pageX > Xt && Bt.pageX < Gt && Bt.pageY > Ht && Bt.pageY < Yt) {
+                var jt = -1 * (32768 * ((game.screenX - config.minimapPaddingX - Bt.pageX) / config.minimapSize) - 16384)
+                  , Wt = -1 * (16384 * (2 * ((game.screenY - config.minimapPaddingY - Bt.pageY) / config.minimapSize)) - 8192);
+                AutoPilot.log(jt, Wt),
+                AutoPilot.NavigateTo(jt, Wt)
             }
         }
     }
     ,
-    Bt.canvas_click_handler = function(Jt) {
-        if (1 == Jt.which && Jt.altKey) {
-            var $t = game.screenX - config.minimapPaddingX - config.minimapSize
-              , en = game.screenX - config.minimapPaddingX
-              , tn = game.screenY - config.minimapPaddingY - config.minimapSize / 2
-              , nn = game.screenY - config.minimapPaddingY;
-            if (Jt.pageX > $t && Jt.pageX < en && Jt.pageY > tn && Jt.pageY < nn) {
-                var rn = -1 * (32768 * ((game.screenX - config.minimapPaddingX - Jt.pageX) / config.minimapSize) - 16384)
-                  , an = -1 * (16384 * (2 * ((game.screenY - config.minimapPaddingY - Jt.pageY) / config.minimapSize)) - 8192);
-                AutoPilot.log(rn, an),
-                AutoPilot.NavigateTo(rn, an)
-            }
+    SWAM.debug) {
+        let Bt = new Textures.sprite("ui_minimap_target");
+        Bt.position.set(0, 0),
+        game.graphics.layers.doodads.addChild(Bt);
+        let Xt = Graphics.setCamera;
+        Graphics.setCamera = function(Gt, Ht) {
+            Xt(Gt, Ht),
+            null != Bt && Bt.position.set(Gt, Ht)
+        }
+        ,
+        SWAM.addDebugElements(),
+        SWAM.listLayers = function(Gt) {
+            for (var Ht = 0; Ht < Gt.children.length; Ht++)
+                console.log(Gt.children[Ht].layerName)
         }
     }
-    ,
     AutoPilot.Load()
 }),
 window.AutoPilot = {
@@ -33515,31 +33870,31 @@ window.AutoPilot = {
             AutoPilot.Matrix = zt
         })
     },
-    angleTo: function(Bt, Gt) {
-        var Xt = Math.atan2(-Bt.x + Gt.x, Bt.y - Gt.y);
-        return 0 > Xt && (Xt += 2 * Math.PI),
-        Xt
+    angleTo: function(Bt, Xt) {
+        var Gt = Math.atan2(-Bt.x + Xt.x, Bt.y - Xt.y);
+        return 0 > Gt && (Gt += 2 * Math.PI),
+        Gt
     },
-    angleToNeg: function(Bt, Gt) {
-        return Math.atan2(-Bt.x + Gt.x, Bt.y - Gt.y)
+    angleToNeg: function(Bt, Xt) {
+        return Math.atan2(-Bt.x + Xt.x, Bt.y - Xt.y)
     },
-    mapCoordX: function(Bt, Gt) {
-        return Gt |= 0,
-        Math.floor((Bt + 16384 + Gt) / 100)
+    mapCoordX: function(Bt, Xt) {
+        return Xt |= 0,
+        Math.floor((Bt + 16384 + Xt) / 100)
     },
-    mapCoordY: function(Bt, Gt) {
-        return Gt |= 0,
-        Math.floor((Bt + 8192 + Gt) / 100)
+    mapCoordY: function(Bt, Xt) {
+        return Xt |= 0,
+        Math.floor((Bt + 8192 + Xt) / 100)
     },
-    getGraphBoundingBox: function(Bt, Gt, Xt) {
+    getGraphBoundingBox: function(Bt, Xt, Gt) {
         return {
             p1: {
-                x: this.mapCoordX(Bt, -Xt),
-                y: this.mapCoordY(Gt, -Xt)
+                x: this.mapCoordX(Bt, -Gt),
+                y: this.mapCoordY(Xt, -Gt)
             },
             p2: {
-                x: this.mapCoordX(Bt, Xt),
-                y: this.mapCoordY(Gt, Xt)
+                x: this.mapCoordX(Bt, Gt),
+                y: this.mapCoordY(Xt, Gt)
             }
         }
     },
@@ -33609,12 +33964,12 @@ window.AutoPilot = {
     tgs: function() {
         this.NavigateTo(this.greenland.x, this.greenland.y)
     },
-    NavigateTo: function(Bt, Gt) {
-        var Xt = Players.getMe()
-          , Ht = this.mapCoordX(Xt.pos.x)
-          , Yt = this.mapCoordY(Xt.pos.y)
+    NavigateTo: function(Bt, Xt) {
+        var Gt = Players.getMe()
+          , Ht = this.mapCoordX(Gt.pos.x)
+          , Yt = this.mapCoordY(Gt.pos.y)
           , jt = this.mapCoordX(Bt)
-          , Wt = this.mapCoordY(Gt);
+          , Wt = this.mapCoordY(Xt);
         AutoPilot.path = this.SearchPath(Ht, Yt, jt, Wt),
         AutoPilot.debug && (AutoPilot.erasePath(),
         AutoPilot.drawPath()),
@@ -33628,15 +33983,15 @@ window.AutoPilot = {
     },
     drawnPath: null,
     drawPath: function() {
-        for (var Bt = AutoPilot.path, Gt = new PIXI.Graphics, Xt = 0; Xt < Bt.length; Xt++) {
-            var Ht = Bt[Xt].y
-              , Yt = Bt[Xt].x;
-            Gt.beginFill(65280, .2),
-            Gt.drawRect(100 * Ht - 16384, 100 * Yt - 8192, 100, 100),
-            Gt.endFill()
+        for (var Bt = AutoPilot.path, Xt = new PIXI.Graphics, Gt = 0; Gt < Bt.length; Gt++) {
+            var Ht = Bt[Gt].y
+              , Yt = Bt[Gt].x;
+            Xt.beginFill(65280, .2),
+            Xt.drawRect(100 * Ht - 16384, 100 * Yt - 8192, 100, 100),
+            Xt.endFill()
         }
-        this.drawnPath = Gt,
-        game.graphics.layers.objects.addChild(Gt)
+        this.drawnPath = Xt,
+        game.graphics.layers.objects.addChild(Xt)
     },
     Test: function() {
         if (window.res = this.SearchPath(111, 11, 161, 46),
@@ -33657,12 +34012,12 @@ window.AutoPilot = {
     currentNode: 0,
     moveNext: function() {
         var Bt = AutoPilot.path[this.currentNode].y
-          , Gt = AutoPilot.path[this.currentNode].x;
-        this.moveTo(100 * Bt - 16384 + 50, 100 * Gt - 8192 + 50, !0)
+          , Xt = AutoPilot.path[this.currentNode].x;
+        this.moveTo(100 * Bt - 16384 + 50, 100 * Xt - 8192 + 50, !0)
     },
     prevX: 0,
     prevY: 0,
-    moveTo: function(Bt, Gt, Xt) {
+    moveTo: function(Bt, Xt, Gt) {
         function Ht() {
             if (!AutoPilot.exit) {
                 if (Yt = Players.getMe(),
@@ -33674,7 +34029,7 @@ window.AutoPilot = {
                     return void AutoPilot.cancel();
                 var jt = AutoPilot.angleTo(Yt.pos, {
                     x: Bt,
-                    y: Gt
+                    y: Xt
                 })
                   , Wt = !0
                   , zt = jt - Yt.rot;
@@ -33699,11 +34054,11 @@ window.AutoPilot = {
                           , Kt = 100 * AutoPilot.path[AutoPilot.currentNode + 1].x - 8192 + 50;
                         jt = AutoPilot.angleTo(Yt.pos, {
                             x: Bt,
-                            y: Gt
+                            y: Xt
                         });
                         var Qt = AutoPilot.angleTo({
                             x: Bt,
-                            y: Gt
+                            y: Xt
                         }, {
                             x: qt,
                             y: Kt
@@ -33714,34 +34069,89 @@ window.AutoPilot = {
                         AutoPilot.stop()
                     }, 50)
                 }
-                !AutoPilot.exit && 100 < Tools.distance(Yt.pos.x, Yt.pos.y, Bt, Gt) ? setTimeout(Ht, 100) : !AutoPilot.exit && Xt && AutoPilot.currentNode < AutoPilot.path.length - 1 ? (AutoPilot.currentNode++,
+                !AutoPilot.exit && 100 < Tools.distance(Yt.pos.x, Yt.pos.y, Bt, Xt) ? setTimeout(Ht, 100) : !AutoPilot.exit && Gt && AutoPilot.currentNode < AutoPilot.path.length - 1 ? (AutoPilot.currentNode++,
                 AutoPilot.moveNext()) : AutoPilot.fullStop()
             }
         }
         AutoPilot.debug && console.log(this.currentNode),
-        Xt |= !1,
+        Gt |= !1,
         AutoPilot.exit = !1;
         var Yt = Players.getMe();
         this.prevX = Yt.pos.x,
         this.prevY = Yt.pos.y,
         Ht()
     },
-    SearchPath: function(Bt, Gt, Xt, Ht) {
+    SearchPath: function(Bt, Xt, Gt, Ht) {
         var Yt = new Graph(AutoPilot.Matrix,{
             diagonal: !0
         })
-          , jt = Yt.grid[Gt][Bt]
-          , Wt = Yt.grid[Ht][Xt];
+          , jt = Yt.grid[Xt][Bt]
+          , Wt = Yt.grid[Ht][Gt];
         return astar.search(Yt, jt, Wt, {
             closest: !0
         })
-    }
+    },
+    debug: !1,
+    logMoves: !1
 },
-window.AP = AutoPilot;
-function moveMinimap() {
-    setTimeout(function() {
-        $("#scorebig").css("right", config.minimapSize + "px"),
-        config.minimapPaddingY = game.screenY - 50 - config.minimapSize / 2,
-        UI.resizeMinimap()
-    }, 8e3)
+window.HyperSpace = function() {
+    this.sprite = null;
+    let Bt = PIXI.Texture.fromImage("hyperspace");
+    this.sprite = new PIXI.Sprite(Bt)
+}
+,
+window.HyperSpace.prototype = {
+    sprite: null,
+    initialize: function() {
+        let Bt = PIXI.Texture.fromImage("hyperspace");
+        this.sprite = new PIXI.Sprite(Bt)
+    },
+    show: function() {
+        function Xt() {
+            for (name in Ht)
+                "game" != name && (Ht[name].visible = Ht[name].prevVisible,
+                delete Ht[name].prevVisible);
+            game.graphics.layers.game.removeChild(Gt.sprite),
+            Gt.sprite.filters = null;
+            let zt = config.overdrawOptimize;
+            config.overdrawOptimize = !1,
+            setTimeout(function() {
+                config.overdrawOptimize = zt
+            }, 100)
+        }
+        let Gt = this
+          , Ht = game.graphics.layers;
+        (function() {
+            for (name in Ht)
+                "game" != name && (Ht[name].prevVisible = Ht[name].visible,
+                Ht[name].visible = !1);
+            Gt.sprite.width = game.screenX,
+            Gt.sprite.height = game.screenY,
+            game.graphics.layers.game.addChild(Gt.sprite)
+        }
+        )();
+        let Yt = new PIXI.filters.ZoomBlurFilter(2,{
+            x: game.halfScreenX,
+            y: game.halfScreenY
+        },0)
+          , jt = new PIXI.filters.AdjustmentFilter({
+            gamma: 2,
+            brightness: 2,
+            alpha: 1
+        })
+          , Wt = function() {
+            Yt.strength -= 0.03,
+            1 < jt.gamma && (jt.gamma -= 0.02,
+            jt.brightness -= 0.02),
+            0 < Yt.strength ? setTimeout(function() {
+                Wt()
+            }, 10) : (Yt.strength = 0,
+            Xt())
+        };
+        this.sprite.filters = [Yt, jt],
+        Wt()
+    }
+};
+function getFilePath(Bt) {
+    return "https://cdn.rawgit.com/Molesmalo/StarWarsMod4AirMash/master/assets/" + Bt
 }
