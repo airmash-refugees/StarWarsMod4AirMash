@@ -34011,7 +34011,7 @@ window.AutoPilot = {
     WALKABLE: 0,
     BLOCKED: 1,
     Load: function() {
-        $.getScript("http://localhost/pathfinding-browser.min.js", function() {
+        $.getScript(getFilePath("pathfinding-browser.min.js"), function() {
             for (var Yt = window.config.walls, zt = Array(164), Vt = 0; 164 > Vt; Vt++) {
                 zt[Vt] = Array(328);
                 for (var qt = 0; 328 > qt; qt++)
