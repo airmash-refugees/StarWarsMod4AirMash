@@ -35189,10 +35189,10 @@ SWAM.Audio = {
     }
 };
 function getFilePath(Bt) {
-    return "http://localhost/" + Bt + "?" + SWAM_version
+    return "https://molesmalo.github.io/StarWarsMod4AirMash/assets/" + Bt + "?" + SWAM_version
 }
 function getThemePath(Bt) {
-    return SWAM.UseSWTheme ? "http://localhost/" + Bt + "?" + SWAM_version : "assets/" + Bt + "?" + SWAM_version
+    return SWAM.UseSWTheme ? "https://molesmalo.github.io/StarWarsMod4AirMash/assets/" + Bt + "?" + SWAM_version : "assets/" + Bt + "?" + SWAM_version
 }
 function getURLRegEx(Bt) {
     return Bt = "undefined" == typeof Bt || Bt,
@@ -35201,6 +35201,7 @@ function getURLRegEx(Bt) {
 SWAM.BackgroundFactor = 100,
 SWAM.UseParallax = !1,
 SWAM.UseSWTheme = !1,
+SWAM.doUpdates = !1,
 SWAM.UseParallax || (SWAM.BackgroundFactor = 1,
 SWAM.UseSWTheme = !1),
 $(function() {
