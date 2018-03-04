@@ -26101,6 +26101,7 @@ function loadGameCode() {
             Yt.pan += 1 / Yt.dist * game.timeFactor,
             Yt.pos.x = Yt.startX + Math.sin(Yt.pan) * Yt.dist,
             Yt.pos.y = Yt.startY - Math.cos(Yt.pan) * Yt.dist,
+            Graphics.setCamera(Yt.pos.x, Yt.pos.y),
             Players.update(),
             Particles.update();
             for (var an = 1, nn; 5 >= an; an++)
@@ -35758,9 +35759,6 @@ SWAM.Audio = {
 function getFilePath(Bt) {
     return "https://molesmalo.github.io/StarWarsMod4AirMash/assets/" + Bt + "?" + SWAM_version
 }
-window.anonmod = !0,
-config.scalingFactor = 5e3,
-config.playerNameSize = "40px",
 $(function() {}),
 SWAM.loadExtensions(()=>{
     SWAM.trigger("extensionsLoaded"),
