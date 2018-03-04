@@ -34128,7 +34128,7 @@ function SWAM() {
     }
     )(),
     SWAM.Templates = document.createElement("div"),
-    $.get(getFilePath("mod_templates.html"), Bt=>{
+    $.get(getFilePath("mod_templates-beta.html"), Bt=>{
         $(SWAM.Templates).html(Bt),
         addRedditPanel(),
         addChangelogPanel(),
