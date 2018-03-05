@@ -35651,11 +35651,12 @@ window.AutoPilot = {
         this.lastState.stealthed = Bt.state)
     },
     mimicUpdate: function(Bt, Xt) {
-        function Gt(zt, Vt) {
-            AutoPilot.lastState.keystate[zt] != Vt[zt] && (console.log("sending key: " + zt + " - " + Vt[zt]),
-            Network.sendKey(zt, Vt[zt]))
+        function Gt(jt, zt) {
+            AutoPilot.lastState.keystate[jt] != zt[jt] && (console.log("sending key: " + jt + " - " + zt[jt]),
+            Network.sendKey(jt, zt[jt]))
         }
         function Ht() {
+            let jt = Players.getMe();
             3 != jt.type && (Yt.strafe = !1);
             let zt = Yt.strafe
               , Vt = AutoPilot.lastState.strafe;
@@ -35666,24 +35667,21 @@ window.AutoPilot = {
         };
         if (Xt.id != game.myID && Xt.id == AutoPilot.mimicTarget && !AutoPilot.mimicPaused) {
             let Wt = {};
-            if (Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
+            return (Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
             Wt[Network.SERVERPACKET.PLAYER_FIRE] = "fire",
             Wt[Network.SERVERPACKET.EVENT_BOOST] = "boost",
             Wt[Network.SERVERPACKET.EVENT_BOUNCE] = "bounce",
-            null == Xt.keystate)
-                return Bt == Network.SERVERPACKET.PLAYER_FIRE ? (Network.sendKey("FIRE", !0),
-                void setTimeout(function() {
-                    Network.sendKey("FIRE", !1)
-                }, 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
-                AutoPilot.lastState.boost = Xt.boost));
-            Players.getMe();
-            Tools.decodeKeystate(Yt, Xt.keystate),
+            null == Xt.keystate) ? Bt == Network.SERVERPACKET.PLAYER_FIRE ? (Network.sendKey("FIRE", !0),
+            void setTimeout(function() {
+                Network.sendKey("FIRE", !1)
+            }, 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
+            AutoPilot.lastState.boost = Xt.boost)) : void (Tools.decodeKeystate(Yt, Xt.keystate),
             Ht(),
             null != Xt.keystate && (Gt("UP", Yt.keystate),
             Gt("DOWN", Yt.keystate),
             Gt("LEFT", Yt.keystate),
             Gt("RIGHT", Yt.keystate)),
-            AutoPilot.lastkeys = $.extend(AutoPilot.lastState, Yt)
+            AutoPilot.lastkeys = $.extend(AutoPilot.lastState, Yt))
         }
     },
     debug: !1,
