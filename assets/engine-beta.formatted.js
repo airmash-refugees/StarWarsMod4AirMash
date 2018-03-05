@@ -421,7 +421,7 @@ window.SWAM_version = "2.1030401",
     function Rn(wr, Cr, Ar, Pr) {
         if (Array.isArray(Cr))
             Vn.each(Cr, function(Rr, Ir) {
-                Ar || or.test(wr) ? Pr(wr, Ir) : Rn(wr + "[" + ("object" == typeof Ir && null != Ir ? Rr : "") + "]", Ir, Ar, Pr)
+                Ar || ir.test(wr) ? Pr(wr, Ir) : Rn(wr + "[" + ("object" == typeof Ir && null != Ir ? Rr : "") + "]", Ir, Ar, Pr)
             });
         else if (Ar || "object" !== Vn.type(Cr))
             Pr(wr, Cr);
@@ -647,239 +647,239 @@ window.SWAM_version = "2.1030401",
         Gn["[object " + Cr + "]"] = Cr.toLowerCase()
     });
     var Jn = function(wr) {
-        function Cr(Ko, Zo, Qo, Jo) {
-            var ii = Zo && Zo.ownerDocument, si = Zo ? Zo.nodeType : 9, $o, ei, ti, ni, ai, ri, oi;
-            if (Qo = Qo || [],
-            "string" != typeof Ko || !Ko || 1 !== si && 9 !== si && 11 !== si)
-                return Qo;
-            if (!Jo && ((Zo ? Zo.ownerDocument || Zo : po) !== no && to(Zo),
-            Zo = Zo || no,
-            ro)) {
-                if (11 !== si && (ai = Go.exec(Ko)))
-                    if (!($o = ai[1])) {
-                        if (ai[2])
-                            return To.apply(Qo, Zo.getElementsByTagName(Ko)),
-                            Qo;
-                        if (($o = ai[3]) && jr.getElementsByClassName && Zo.getElementsByClassName)
-                            return To.apply(Qo, Zo.getElementsByClassName($o)),
-                            Qo
-                    } else if (9 === si) {
-                        if (!(ti = Zo.getElementById($o)))
-                            return Qo;
-                        if (ti.id === $o)
-                            return Qo.push(ti),
-                            Qo
-                    } else if (ii && (ti = ii.getElementById($o)) && lo(Zo, ti) && ti.id === $o)
-                        return Qo.push(ti),
-                        Qo;
-                if (jr.qsa && !mo[Ko + " "] && (!oo || !oo.test(Ko))) {
-                    if (1 !== si)
-                        ii = Zo,
-                        oi = Ko;
-                    else if ("object" !== Zo.nodeName.toLowerCase()) {
-                        for ((ni = Zo.getAttribute("id")) ? ni = ni.replace(jo, zo) : Zo.setAttribute("id", ni = uo),
-                        ei = (ri = Kr(Ko)).length; ei--; )
-                            ri[ei] = "#" + ni + " " + Br(ri[ei]);
-                        oi = ri.join(","),
-                        ii = Ho.test(Ko) && Nr(Zo.parentNode) || Zo
+        function Cr(qi, Ki, Zi, Qi) {
+            var io = Ki && Ki.ownerDocument, oo = Ki ? Ki.nodeType : 9, Ji, $i, eo, to, no, ao, ro;
+            if (Zi = Zi || [],
+            "string" != typeof qi || !qi || 1 !== oo && 9 !== oo && 11 !== oo)
+                return Zi;
+            if (!Qi && ((Ki ? Ki.ownerDocument || Ki : ui) !== ni && ti(Ki),
+            Ki = Ki || ni,
+            ri)) {
+                if (11 !== oo && (no = Xi.exec(qi)))
+                    if (!(Ji = no[1])) {
+                        if (no[2])
+                            return vi.apply(Zi, Ki.getElementsByTagName(qi)),
+                            Zi;
+                        if ((Ji = no[3]) && jr.getElementsByClassName && Ki.getElementsByClassName)
+                            return vi.apply(Zi, Ki.getElementsByClassName(Ji)),
+                            Zi
+                    } else if (9 === oo) {
+                        if (!(eo = Ki.getElementById(Ji)))
+                            return Zi;
+                        if (eo.id === Ji)
+                            return Zi.push(eo),
+                            Zi
+                    } else if (io && (eo = io.getElementById(Ji)) && di(Ki, eo) && eo.id === Ji)
+                        return Zi.push(eo),
+                        Zi;
+                if (jr.qsa && !gi[qi + " "] && (!ii || !ii.test(qi))) {
+                    if (1 !== oo)
+                        io = Ki,
+                        ro = qi;
+                    else if ("object" !== Ki.nodeName.toLowerCase()) {
+                        for ((to = Ki.getAttribute("id")) ? to = to.replace(Wi, ji) : Ki.setAttribute("id", to = li),
+                        $i = (ao = Kr(qi)).length; $i--; )
+                            ao[$i] = "#" + to + " " + Br(ao[$i]);
+                        ro = ao.join(","),
+                        io = Gi.test(qi) && Nr(Ki.parentNode) || Ki
                     }
-                    if (oi)
+                    if (ro)
                         try {
-                            return To.apply(Qo, ii.querySelectorAll(oi)),
-                            Qo
-                        } catch (di) {} finally {
-                            ni === uo && Zo.removeAttribute("id")
+                            return vi.apply(Zi, io.querySelectorAll(ro)),
+                            Zi
+                        } catch (so) {} finally {
+                            to === li && Ki.removeAttribute("id")
                         }
                 }
             }
-            return Qr(Ko.replace(Io, "$1"), Zo, Qo, Jo)
+            return Qr(qi.replace(Ri, "$1"), Ki, Zi, Qi)
         }
         function Ar() {
-            function Ko(Qo, Jo) {
-                return Zo.push(Qo + " ") > zr.cacheLength && delete Ko[Zo.shift()],
-                Ko[Qo + " "] = Jo
+            function qi(Zi, Qi) {
+                return Ki.push(Zi + " ") > zr.cacheLength && delete qi[Ki.shift()],
+                qi[Zi + " "] = Qi
             }
-            var Zo = [];
-            return Ko
+            var Ki = [];
+            return qi
         }
-        function Pr(Ko) {
-            return Ko[uo] = !0,
-            Ko
+        function Pr(qi) {
+            return qi[li] = !0,
+            qi
         }
-        function Mr(Ko) {
-            var Zo = no.createElement("fieldset");
+        function Mr(qi) {
+            var Ki = ni.createElement("fieldset");
             try {
-                return !!Ko(Zo)
-            } catch (Qo) {
+                return !!qi(Ki)
+            } catch (Zi) {
                 return !1
             } finally {
-                Zo.parentNode && Zo.parentNode.removeChild(Zo),
-                Zo = null
+                Ki.parentNode && Ki.parentNode.removeChild(Ki),
+                Ki = null
             }
         }
-        function Rr(Ko, Zo) {
-            for (var Qo = Ko.split("|"), Jo = Qo.length; Jo--; )
-                zr.attrHandle[Qo[Jo]] = Zo
+        function Rr(qi, Ki) {
+            for (var Zi = qi.split("|"), Qi = Zi.length; Qi--; )
+                zr.attrHandle[Zi[Qi]] = Ki
         }
-        function Ir(Ko, Zo) {
-            var Qo = Zo && Ko
-              , Jo = Qo && 1 === Ko.nodeType && 1 === Zo.nodeType && Ko.sourceIndex - Zo.sourceIndex;
-            if (Jo)
-                return Jo;
-            if (Qo)
-                for (; Qo = Qo.nextSibling; )
-                    if (Qo === Zo)
+        function Ir(qi, Ki) {
+            var Zi = Ki && qi
+              , Qi = Zi && 1 === qi.nodeType && 1 === Ki.nodeType && qi.sourceIndex - Ki.sourceIndex;
+            if (Qi)
+                return Qi;
+            if (Zi)
+                for (; Zi = Zi.nextSibling; )
+                    if (Zi === Ki)
                         return -1;
-            return Ko ? 1 : -1
+            return qi ? 1 : -1
         }
-        function Dr(Ko) {
-            return function(Zo) {
-                return "input" === Zo.nodeName.toLowerCase() && Zo.type === Ko
+        function Dr(qi) {
+            return function(Ki) {
+                return "input" === Ki.nodeName.toLowerCase() && Ki.type === qi
             }
         }
-        function Or(Ko) {
-            return function(Zo) {
-                var Qo = Zo.nodeName.toLowerCase();
-                return ("input" === Qo || "button" === Qo) && Zo.type === Ko
+        function Or(qi) {
+            return function(Ki) {
+                var Zi = Ki.nodeName.toLowerCase();
+                return ("input" === Zi || "button" === Zi) && Ki.type === qi
             }
         }
-        function Lr(Ko) {
-            return function(Zo) {
-                return "form"in Zo ? Zo.parentNode && !1 === Zo.disabled ? "label"in Zo ? "label"in Zo.parentNode ? Zo.parentNode.disabled === Ko : Zo.disabled === Ko : Zo.isDisabled === Ko || Zo.isDisabled !== !Ko && qo(Zo) === Ko : Zo.disabled === Ko : "label"in Zo && Zo.disabled === Ko
+        function Lr(qi) {
+            return function(Ki) {
+                return "form"in Ki ? Ki.parentNode && !1 === Ki.disabled ? "label"in Ki ? "label"in Ki.parentNode ? Ki.parentNode.disabled === qi : Ki.disabled === qi : Ki.isDisabled === qi || Ki.isDisabled !== !qi && Vi(Ki) === qi : Ki.disabled === qi : "label"in Ki && Ki.disabled === qi
             }
         }
-        function kr(Ko) {
-            return Pr(function(Zo) {
-                return Zo = +Zo,
-                Pr(function(Qo, Jo) {
-                    for (var ei = Ko([], Qo.length, Zo), ti = ei.length, $o; ti--; )
-                        Qo[$o = ei[ti]] && (Qo[$o] = !(Jo[$o] = Qo[$o]))
+        function kr(qi) {
+            return Pr(function(Ki) {
+                return Ki = +Ki,
+                Pr(function(Zi, Qi) {
+                    for (var $i = qi([], Zi.length, Ki), eo = $i.length, Ji; eo--; )
+                        Zi[Ji = $i[eo]] && (Zi[Ji] = !(Qi[Ji] = Zi[Ji]))
                 })
             })
         }
-        function Nr(Ko) {
-            return Ko && void 0 !== Ko.getElementsByTagName && Ko
+        function Nr(qi) {
+            return qi && void 0 !== qi.getElementsByTagName && qi
         }
         function Fr() {}
-        function Br(Ko) {
-            for (var Zo = 0, Qo = Ko.length, Jo = ""; Zo < Qo; Zo++)
-                Jo += Ko[Zo].value;
-            return Jo
+        function Br(qi) {
+            for (var Ki = 0, Zi = qi.length, Qi = ""; Ki < Zi; Ki++)
+                Qi += qi[Ki].value;
+            return Qi
         }
-        function Ur(Ko, Zo, Qo) {
-            var Jo = Zo.dir
-              , $o = Zo.next
-              , ei = $o || Jo
-              , ti = Qo && "parentNode" === ei
-              , ni = ho++;
-            return Zo.first ? function(ai, ri, oi) {
-                for (; ai = ai[Jo]; )
-                    if (1 === ai.nodeType || ti)
-                        return Ko(ai, ri, oi);
+        function Ur(qi, Ki, Zi) {
+            var Qi = Ki.dir
+              , Ji = Ki.next
+              , $i = Ji || Qi
+              , eo = Zi && "parentNode" === $i
+              , to = ci++;
+            return Ki.first ? function(no, ao, ro) {
+                for (; no = no[Qi]; )
+                    if (1 === no.nodeType || eo)
+                        return qi(no, ao, ro);
                 return !1
             }
-            : function(ai, ri, oi) {
-                var li = [co, ni], ii, si, di;
-                if (oi) {
-                    for (; ai = ai[Jo]; )
-                        if ((1 === ai.nodeType || ti) && Ko(ai, ri, oi))
+            : function(no, ao, ro) {
+                var lo = [pi, to], io, oo, so;
+                if (ro) {
+                    for (; no = no[Qi]; )
+                        if ((1 === no.nodeType || eo) && qi(no, ao, ro))
                             return !0;
                 } else
-                    for (; ai = ai[Jo]; )
-                        if (1 === ai.nodeType || ti)
-                            if (di = ai[uo] || (ai[uo] = {}),
-                            si = di[ai.uniqueID] || (di[ai.uniqueID] = {}),
-                            $o && $o === ai.nodeName.toLowerCase())
-                                ai = ai[Jo] || ai;
+                    for (; no = no[Qi]; )
+                        if (1 === no.nodeType || eo)
+                            if (so = no[li] || (no[li] = {}),
+                            oo = so[no.uniqueID] || (so[no.uniqueID] = {}),
+                            Ji && Ji === no.nodeName.toLowerCase())
+                                no = no[Qi] || no;
                             else {
-                                if ((ii = si[ei]) && ii[0] === co && ii[1] === ni)
-                                    return li[2] = ii[2];
-                                if (si[ei] = li,
-                                li[2] = Ko(ai, ri, oi))
+                                if ((io = oo[$i]) && io[0] === pi && io[1] === to)
+                                    return lo[2] = io[2];
+                                if (oo[$i] = lo,
+                                lo[2] = qi(no, ao, ro))
                                     return !0
                             }
                 return !1
             }
         }
-        function Xr(Ko) {
-            return 1 < Ko.length ? function(Zo, Qo, Jo) {
-                for (var $o = Ko.length; $o--; )
-                    if (!Ko[$o](Zo, Qo, Jo))
+        function Xr(qi) {
+            return 1 < qi.length ? function(Ki, Zi, Qi) {
+                for (var Ji = qi.length; Ji--; )
+                    if (!qi[Ji](Ki, Zi, Qi))
                         return !1;
                 return !0
             }
-            : Ko[0]
+            : qi[0]
         }
-        function Gr(Ko, Zo, Qo, Jo, $o) {
-            for (var ti = [], ni = 0, ai = Ko.length, ei; ni < ai; ni++)
-                (ei = Ko[ni]) && (Qo && !Qo(ei, Jo, $o) || (ti.push(ei),
-                null != Zo && Zo.push(ni)));
-            return ti
+        function Gr(qi, Ki, Zi, Qi, Ji) {
+            for (var eo = [], to = 0, no = qi.length, $i; to < no; to++)
+                ($i = qi[to]) && (Zi && !Zi($i, Qi, Ji) || (eo.push($i),
+                null != Ki && Ki.push(to)));
+            return eo
         }
-        function Hr(Ko, Zo, Qo, Jo, $o, ei) {
-            return Jo && !Jo[uo] && (Jo = Hr(Jo)),
-            $o && !$o[uo] && ($o = Hr($o, ei)),
-            Pr(function(ti, ni, ai, ri) {
-                var di = [], li = [], ui = ni.length, pi = ti || function(fi, gi, mi) {
-                    for (var yi = 0, _i = gi.length; yi < _i; yi++)
-                        Cr(fi, gi[yi], mi);
-                    return mi
-                }(Zo || "*", ai.nodeType ? [ai] : ai, []), ci = Ko && (ti || !Zo) ? Gr(pi, di, Ko, ai, ri) : pi, hi = Qo ? $o || (ti ? Ko : ui || Jo) ? [] : ni : ci, oi, ii, si;
-                if (Qo && Qo(ci, hi, ai, ri),
-                Jo)
-                    for (oi = Gr(hi, li),
-                    Jo(oi, [], ai, ri),
-                    ii = oi.length; ii--; )
-                        (si = oi[ii]) && (hi[li[ii]] = !(ci[li[ii]] = si));
-                if (!ti)
-                    hi = Gr(hi === ni ? hi.splice(ui, hi.length) : hi),
-                    $o ? $o(null, ni, hi, ri) : To.apply(ni, hi);
-                else if ($o || Ko) {
-                    if ($o) {
-                        for (oi = [],
-                        ii = hi.length; ii--; )
-                            (si = hi[ii]) && oi.push(ci[ii] = si);
-                        $o(null, hi = [], oi, ri)
+        function Hr(qi, Ki, Zi, Qi, Ji, $i) {
+            return Qi && !Qi[li] && (Qi = Hr(Qi)),
+            Ji && !Ji[li] && (Ji = Hr(Ji, $i)),
+            Pr(function(eo, to, no, ao) {
+                var so = [], lo = [], uo = to.length, po = eo || function(fo, go, mo) {
+                    for (var yo = 0, _o = go.length; yo < _o; yo++)
+                        Cr(fo, go[yo], mo);
+                    return mo
+                }(Ki || "*", no.nodeType ? [no] : no, []), co = qi && (eo || !Ki) ? Gr(po, so, qi, no, ao) : po, ho = Zi ? Ji || (eo ? qi : uo || Qi) ? [] : to : co, ro, io, oo;
+                if (Zi && Zi(co, ho, no, ao),
+                Qi)
+                    for (ro = Gr(ho, lo),
+                    Qi(ro, [], no, ao),
+                    io = ro.length; io--; )
+                        (oo = ro[io]) && (ho[lo[io]] = !(co[lo[io]] = oo));
+                if (!eo)
+                    ho = Gr(ho === to ? ho.splice(uo, ho.length) : ho),
+                    Ji ? Ji(null, to, ho, ao) : vi.apply(to, ho);
+                else if (Ji || qi) {
+                    if (Ji) {
+                        for (ro = [],
+                        io = ho.length; io--; )
+                            (oo = ho[io]) && ro.push(co[io] = oo);
+                        Ji(null, ho = [], ro, ao)
                     }
-                    for (ii = hi.length; ii--; )
-                        (si = hi[ii]) && -1 < (oi = $o ? Eo(ti, si) : di[ii]) && (ti[oi] = !(ni[oi] = si))
+                    for (io = ho.length; io--; )
+                        (oo = ho[io]) && -1 < (ro = Ji ? Si(eo, oo) : so[io]) && (eo[ro] = !(to[ro] = oo))
                 }
             })
         }
-        function Yr(Ko) {
-            for (var $o = Ko.length, ei = zr.relative[Ko[0].type], ti = ei || zr.relative[" "], ni = ei ? 1 : 0, ai = Ur(function(ii) {
-                return ii === Zo
-            }, ti, !0), ri = Ur(function(ii) {
-                return -1 < Eo(Zo, ii)
-            }, ti, !0), oi = [function(ii, si, di) {
-                var li = !ei && (di || si !== Jr) || ((Zo = si).nodeType ? ai(ii, si, di) : ri(ii, si, di));
-                return Zo = null,
-                li
+        function Yr(qi) {
+            for (var Ji = qi.length, $i = zr.relative[qi[0].type], eo = $i || zr.relative[" "], to = $i ? 1 : 0, no = Ur(function(io) {
+                return io === Ki
+            }, eo, !0), ao = Ur(function(io) {
+                return -1 < Si(Ki, io)
+            }, eo, !0), ro = [function(io, oo, so) {
+                var lo = !$i && (so || oo !== Jr) || ((Ki = oo).nodeType ? no(io, oo, so) : ao(io, oo, so));
+                return Ki = null,
+                lo
             }
-            ], Zo, Qo, Jo; ni < $o; ni++)
-                if (Qo = zr.relative[Ko[ni].type])
-                    oi = [Ur(Xr(oi), Qo)];
+            ], Ki, Zi, Qi; to < Ji; to++)
+                if (Zi = zr.relative[qi[to].type])
+                    ro = [Ur(Xr(ro), Zi)];
                 else {
-                    if ((Qo = zr.filter[Ko[ni].type].apply(null, Ko[ni].matches))[uo]) {
-                        for (Jo = ++ni; Jo < $o && !zr.relative[Ko[Jo].type]; Jo++)
+                    if ((Zi = zr.filter[qi[to].type].apply(null, qi[to].matches))[li]) {
+                        for (Qi = ++to; Qi < Ji && !zr.relative[qi[Qi].type]; Qi++)
                             ;
-                        return Hr(1 < ni && Xr(oi), 1 < ni && Br(Ko.slice(0, ni - 1).concat({
-                            value: " " === Ko[ni - 2].type ? "*" : ""
-                        })).replace(Io, "$1"), Qo, ni < Jo && Yr(Ko.slice(ni, Jo)), Jo < $o && Yr(Ko = Ko.slice(Jo)), Jo < $o && Br(Ko))
+                        return Hr(1 < to && Xr(ro), 1 < to && Br(qi.slice(0, to - 1).concat({
+                            value: " " === qi[to - 2].type ? "*" : ""
+                        })).replace(Ri, "$1"), Zi, to < Qi && Yr(qi.slice(to, Qi)), Qi < Ji && Yr(qi = qi.slice(Qi)), Qi < Ji && Br(qi))
                     }
-                    oi.push(Qo)
+                    ro.push(Zi)
                 }
-            return Xr(oi)
+            return Xr(ro)
         }
-        var uo = "sizzle" + 1 * new Date, po = wr.document, co = 0, ho = 0, fo = Ar(), go = Ar(), mo = Ar(), yo = function(Ko, Zo) {
-            return Ko === Zo && (eo = !0),
+        var li = "sizzle" + 1 * new Date, ui = wr.document, pi = 0, ci = 0, hi = Ar(), fi = Ar(), gi = Ar(), mi = function(qi, Ki) {
+            return qi === Ki && (ei = !0),
             0
-        }, _o = {}.hasOwnProperty, bo = [], xo = bo.pop, vo = bo.push, To = bo.push, So = bo.slice, Eo = function(Ko, Zo) {
-            for (var Qo = 0, Jo = Ko.length; Qo < Jo; Qo++)
-                if (Ko[Qo] === Zo)
-                    return Qo;
+        }, yi = {}.hasOwnProperty, _i = [], bi = _i.pop, xi = _i.push, vi = _i.push, Ti = _i.slice, Si = function(qi, Ki) {
+            for (var Zi = 0, Qi = qi.length; Zi < Qi; Zi++)
+                if (qi[Zi] === Ki)
+                    return Zi;
             return -1
-        }, wo = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", Co = "[\\x20\\t\\r\\n\\f]", Ao = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+", Ro = /[\x20\t\r\n\f]+/g, Io = /^[\x20\t\r\n\f]+|((?:^|[^\\])(?:\\.)*)[\x20\t\r\n\f]+$/g, Do = /^[\x20\t\r\n\f]*,[\x20\t\r\n\f]*/, Oo = /^[\x20\t\r\n\f]*([>+~]|[\x20\t\r\n\f])[\x20\t\r\n\f]*/, Lo = /=[\x20\t\r\n\f]*([^\]'"]*?)[\x20\t\r\n\f]*\]/g, ko = /:((?:\\.|[\w-]|[^-\xa0])+)(?:\((('((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)")|((?:\\.|[^\\()[\]]|\[[\x20\t\r\n\f]*((?:\\.|[\w-]|[^-\xa0])+)(?:[\x20\t\r\n\f]*([*^$|!~]?=)[\x20\t\r\n\f]*(?:'((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)"|((?:\\.|[\w-]|[^-\xa0])+))|)[\x20\t\r\n\f]*\])*)|.*)\)|)/, No = /^(?:\\.|[\w-]|[^-\xa0])+$/, Fo = {
+        }, Ei = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", wi = "[\\x20\\t\\r\\n\\f]", Ci = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+", Mi = /[\x20\t\r\n\f]+/g, Ri = /^[\x20\t\r\n\f]+|((?:^|[^\\])(?:\\.)*)[\x20\t\r\n\f]+$/g, Ii = /^[\x20\t\r\n\f]*,[\x20\t\r\n\f]*/, Di = /^[\x20\t\r\n\f]*([>+~]|[\x20\t\r\n\f])[\x20\t\r\n\f]*/, Oi = /=[\x20\t\r\n\f]*([^\]'"]*?)[\x20\t\r\n\f]*\]/g, Li = /:((?:\\.|[\w-]|[^-\xa0])+)(?:\((('((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)")|((?:\\.|[^\\()[\]]|\[[\x20\t\r\n\f]*((?:\\.|[\w-]|[^-\xa0])+)(?:[\x20\t\r\n\f]*([*^$|!~]?=)[\x20\t\r\n\f]*(?:'((?:\\.|[^\\'])*)'|"((?:\\.|[^\\"])*)"|((?:\\.|[\w-]|[^-\xa0])+))|)[\x20\t\r\n\f]*\])*)|.*)\)|)/, ki = /^(?:\\.|[\w-]|[^-\xa0])+$/, Ni = {
             ID: /^#((?:\\.|[\w-]|[^-\xa0])+)/,
             CLASS: /^\.((?:\\.|[\w-]|[^-\xa0])+)/,
             TAG: /^((?:\\.|[\w-]|[^-\xa0])+|[*])/,
@@ -888,254 +888,254 @@ window.SWAM_version = "2.1030401",
             CHILD: /^:(only|first|last|nth|nth-last)-(child|of-type)(?:\([\x20\t\r\n\f]*(even|odd|(([+-]|)(\d*)n|)[\x20\t\r\n\f]*(?:([+-]|)[\x20\t\r\n\f]*(\d+)|))[\x20\t\r\n\f]*\)|)/i,
             bool: /^(?:checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped)$/i,
             needsContext: /^[\x20\t\r\n\f]*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\([\x20\t\r\n\f]*((?:-\d)?\d*)[\x20\t\r\n\f]*\)|)(?=[^-]|$)/i
-        }, Bo = /^(?:input|select|textarea|button)$/i, Uo = /^h\d$/i, Xo = /^[^{]+\{\s*\[native \w/, Go = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Ho = /[+~]/, Yo = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/ig, Wo = function(Ko, Zo, Qo) {
-            var Jo = "0x" + Zo - 65536;
-            return Jo != Jo || Qo ? Zo : 0 > Jo ? String.fromCharCode(Jo + 65536) : String.fromCharCode(55296 | Jo >> 10, 56320 | 1023 & Jo)
-        }, jo = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g, zo = function(Ko, Zo) {
-            return Zo ? "\0" === Ko ? "\uFFFD" : Ko.slice(0, -1) + "\\" + Ko.charCodeAt(Ko.length - 1).toString(16) + " " : "\\" + Ko
-        }, Vo = function() {
-            to()
-        }, qo = Ur(function(Ko) {
-            return !0 === Ko.disabled && ("form"in Ko || "label"in Ko)
+        }, Fi = /^(?:input|select|textarea|button)$/i, Bi = /^h\d$/i, Ui = /^[^{]+\{\s*\[native \w/, Xi = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Gi = /[+~]/, Hi = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/ig, Yi = function(qi, Ki, Zi) {
+            var Qi = "0x" + Ki - 65536;
+            return Qi != Qi || Zi ? Ki : 0 > Qi ? String.fromCharCode(Qi + 65536) : String.fromCharCode(55296 | Qi >> 10, 56320 | 1023 & Qi)
+        }, Wi = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g, ji = function(qi, Ki) {
+            return Ki ? "\0" === qi ? "\uFFFD" : qi.slice(0, -1) + "\\" + qi.charCodeAt(qi.length - 1).toString(16) + " " : "\\" + qi
+        }, zi = function() {
+            ti()
+        }, Vi = Ur(function(qi) {
+            return !0 === qi.disabled && ("form"in qi || "label"in qi)
         }, {
             dir: "parentNode",
             next: "legend"
-        }), Wr, jr, zr, Vr, qr, Kr, Zr, Qr, Jr, $r, eo, to, no, ao, ro, oo, io, so, lo;
+        }), Wr, jr, zr, Vr, qr, Kr, Zr, Qr, Jr, $r, ei, ti, ni, ai, ri, ii, oi, si, di;
         try {
-            To.apply(bo = So.call(po.childNodes), po.childNodes),
-            bo[po.childNodes.length].nodeType
-        } catch (Ko) {
-            To = {
-                apply: bo.length ? function(Zo, Qo) {
-                    vo.apply(Zo, So.call(Qo))
+            vi.apply(_i = Ti.call(ui.childNodes), ui.childNodes),
+            _i[ui.childNodes.length].nodeType
+        } catch (qi) {
+            vi = {
+                apply: _i.length ? function(Ki, Zi) {
+                    xi.apply(Ki, Ti.call(Zi))
                 }
-                : function(Zo, Qo) {
-                    for (var Jo = Zo.length, $o = 0; Zo[Jo++] = Qo[$o++]; )
+                : function(Ki, Zi) {
+                    for (var Qi = Ki.length, Ji = 0; Ki[Qi++] = Zi[Ji++]; )
                         ;
-                    Zo.length = Jo - 1
+                    Ki.length = Qi - 1
                 }
             }
         }
         for (Wr in jr = Cr.support = {},
-        qr = Cr.isXML = function(Ko) {
-            var Zo = Ko && (Ko.ownerDocument || Ko).documentElement;
-            return !!Zo && "HTML" !== Zo.nodeName
+        qr = Cr.isXML = function(qi) {
+            var Ki = qi && (qi.ownerDocument || qi).documentElement;
+            return !!Ki && "HTML" !== Ki.nodeName
         }
         ,
-        to = Cr.setDocument = function(Ko) {
-            var Jo = Ko ? Ko.ownerDocument || Ko : po, Zo, Qo;
-            return Jo !== no && 9 === Jo.nodeType && Jo.documentElement ? (no = Jo,
-            ao = no.documentElement,
-            ro = !qr(no),
-            po !== no && (Qo = no.defaultView) && Qo.top !== Qo && (Qo.addEventListener ? Qo.addEventListener("unload", Vo, !1) : Qo.attachEvent && Qo.attachEvent("onunload", Vo)),
-            jr.attributes = Mr(function($o) {
-                return $o.className = "i",
-                !$o.getAttribute("className")
+        ti = Cr.setDocument = function(qi) {
+            var Qi = qi ? qi.ownerDocument || qi : ui, Ki, Zi;
+            return Qi !== ni && 9 === Qi.nodeType && Qi.documentElement ? (ni = Qi,
+            ai = ni.documentElement,
+            ri = !qr(ni),
+            ui !== ni && (Zi = ni.defaultView) && Zi.top !== Zi && (Zi.addEventListener ? Zi.addEventListener("unload", zi, !1) : Zi.attachEvent && Zi.attachEvent("onunload", zi)),
+            jr.attributes = Mr(function(Ji) {
+                return Ji.className = "i",
+                !Ji.getAttribute("className")
             }),
-            jr.getElementsByTagName = Mr(function($o) {
-                return $o.appendChild(no.createComment("")),
-                !$o.getElementsByTagName("*").length
+            jr.getElementsByTagName = Mr(function(Ji) {
+                return Ji.appendChild(ni.createComment("")),
+                !Ji.getElementsByTagName("*").length
             }),
-            jr.getElementsByClassName = Xo.test(no.getElementsByClassName),
-            jr.getById = Mr(function($o) {
-                return ao.appendChild($o).id = uo,
-                !no.getElementsByName || !no.getElementsByName(uo).length
+            jr.getElementsByClassName = Ui.test(ni.getElementsByClassName),
+            jr.getById = Mr(function(Ji) {
+                return ai.appendChild(Ji).id = li,
+                !ni.getElementsByName || !ni.getElementsByName(li).length
             }),
-            jr.getById ? (zr.filter.ID = function($o) {
-                var ei = $o.replace(Yo, Wo);
-                return function(ti) {
-                    return ti.getAttribute("id") === ei
+            jr.getById ? (zr.filter.ID = function(Ji) {
+                var $i = Ji.replace(Hi, Yi);
+                return function(eo) {
+                    return eo.getAttribute("id") === $i
                 }
             }
             ,
-            zr.find.ID = function($o, ei) {
-                if (void 0 !== ei.getElementById && ro) {
-                    var ti = ei.getElementById($o);
-                    return ti ? [ti] : []
+            zr.find.ID = function(Ji, $i) {
+                if (void 0 !== $i.getElementById && ri) {
+                    var eo = $i.getElementById(Ji);
+                    return eo ? [eo] : []
                 }
             }
-            ) : (zr.filter.ID = function($o) {
-                var ei = $o.replace(Yo, Wo);
-                return function(ti) {
-                    var ni = void 0 !== ti.getAttributeNode && ti.getAttributeNode("id");
-                    return ni && ni.value === ei
+            ) : (zr.filter.ID = function(Ji) {
+                var $i = Ji.replace(Hi, Yi);
+                return function(eo) {
+                    var to = void 0 !== eo.getAttributeNode && eo.getAttributeNode("id");
+                    return to && to.value === $i
                 }
             }
             ,
-            zr.find.ID = function($o, ei) {
-                if (void 0 !== ei.getElementById && ro) {
-                    var ri = ei.getElementById($o), ti, ni, ai;
-                    if (ri) {
-                        if ((ti = ri.getAttributeNode("id")) && ti.value === $o)
-                            return [ri];
-                        for (ai = ei.getElementsByName($o),
-                        ni = 0; ri = ai[ni++]; )
-                            if ((ti = ri.getAttributeNode("id")) && ti.value === $o)
-                                return [ri]
+            zr.find.ID = function(Ji, $i) {
+                if (void 0 !== $i.getElementById && ri) {
+                    var ao = $i.getElementById(Ji), eo, to, no;
+                    if (ao) {
+                        if ((eo = ao.getAttributeNode("id")) && eo.value === Ji)
+                            return [ao];
+                        for (no = $i.getElementsByName(Ji),
+                        to = 0; ao = no[to++]; )
+                            if ((eo = ao.getAttributeNode("id")) && eo.value === Ji)
+                                return [ao]
                     }
                     return []
                 }
             }
             ),
-            zr.find.TAG = jr.getElementsByTagName ? function($o, ei) {
-                return void 0 === ei.getElementsByTagName ? jr.qsa ? ei.querySelectorAll($o) : void 0 : ei.getElementsByTagName($o)
+            zr.find.TAG = jr.getElementsByTagName ? function(Ji, $i) {
+                return void 0 === $i.getElementsByTagName ? jr.qsa ? $i.querySelectorAll(Ji) : void 0 : $i.getElementsByTagName(Ji)
             }
-            : function($o, ei) {
-                var ni = [], ai = 0, ri = ei.getElementsByTagName($o), ti;
-                if ("*" === $o) {
-                    for (; ti = ri[ai++]; )
-                        1 === ti.nodeType && ni.push(ti);
-                    return ni
+            : function(Ji, $i) {
+                var to = [], no = 0, ao = $i.getElementsByTagName(Ji), eo;
+                if ("*" === Ji) {
+                    for (; eo = ao[no++]; )
+                        1 === eo.nodeType && to.push(eo);
+                    return to
                 }
-                return ri
+                return ao
             }
             ,
-            zr.find.CLASS = jr.getElementsByClassName && function($o, ei) {
-                if (void 0 !== ei.getElementsByClassName && ro)
-                    return ei.getElementsByClassName($o)
+            zr.find.CLASS = jr.getElementsByClassName && function(Ji, $i) {
+                if (void 0 !== $i.getElementsByClassName && ri)
+                    return $i.getElementsByClassName(Ji)
             }
             ,
-            io = [],
-            oo = [],
-            (jr.qsa = Xo.test(no.querySelectorAll)) && (Mr(function($o) {
-                ao.appendChild($o).innerHTML = "<a id='" + uo + "'></a><select id='" + uo + "-\r\\' msallowcapture=''><option selected=''></option></select>",
-                $o.querySelectorAll("[msallowcapture^='']").length && oo.push("[*^$]=" + Co + "*(?:''|\"\")"),
-                $o.querySelectorAll("[selected]").length || oo.push("\\[" + Co + "*(?:value|" + wo + ")"),
-                $o.querySelectorAll("[id~=" + uo + "-]").length || oo.push("~="),
-                $o.querySelectorAll(":checked").length || oo.push(":checked"),
-                $o.querySelectorAll("a#" + uo + "+*").length || oo.push(".#.+[+~]")
+            oi = [],
+            ii = [],
+            (jr.qsa = Ui.test(ni.querySelectorAll)) && (Mr(function(Ji) {
+                ai.appendChild(Ji).innerHTML = "<a id='" + li + "'></a><select id='" + li + "-\r\\' msallowcapture=''><option selected=''></option></select>",
+                Ji.querySelectorAll("[msallowcapture^='']").length && ii.push("[*^$]=" + wi + "*(?:''|\"\")"),
+                Ji.querySelectorAll("[selected]").length || ii.push("\\[" + wi + "*(?:value|" + Ei + ")"),
+                Ji.querySelectorAll("[id~=" + li + "-]").length || ii.push("~="),
+                Ji.querySelectorAll(":checked").length || ii.push(":checked"),
+                Ji.querySelectorAll("a#" + li + "+*").length || ii.push(".#.+[+~]")
             }),
-            Mr(function($o) {
-                $o.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
-                var ei = no.createElement("input");
-                ei.setAttribute("type", "hidden"),
-                $o.appendChild(ei).setAttribute("name", "D"),
-                $o.querySelectorAll("[name=d]").length && oo.push("name" + Co + "*[*^$|!~]?="),
-                2 !== $o.querySelectorAll(":enabled").length && oo.push(":enabled", ":disabled"),
-                ao.appendChild($o).disabled = !0,
-                2 !== $o.querySelectorAll(":disabled").length && oo.push(":enabled", ":disabled"),
-                $o.querySelectorAll("*,:x"),
-                oo.push(",.*:")
+            Mr(function(Ji) {
+                Ji.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
+                var $i = ni.createElement("input");
+                $i.setAttribute("type", "hidden"),
+                Ji.appendChild($i).setAttribute("name", "D"),
+                Ji.querySelectorAll("[name=d]").length && ii.push("name" + wi + "*[*^$|!~]?="),
+                2 !== Ji.querySelectorAll(":enabled").length && ii.push(":enabled", ":disabled"),
+                ai.appendChild(Ji).disabled = !0,
+                2 !== Ji.querySelectorAll(":disabled").length && ii.push(":enabled", ":disabled"),
+                Ji.querySelectorAll("*,:x"),
+                ii.push(",.*:")
             })),
-            (jr.matchesSelector = Xo.test(so = ao.matches || ao.webkitMatchesSelector || ao.mozMatchesSelector || ao.oMatchesSelector || ao.msMatchesSelector)) && Mr(function($o) {
-                jr.disconnectedMatch = so.call($o, "*"),
-                so.call($o, "[s!='']:x"),
-                io.push("!=", ":(" + Ao + ")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|" + ("\\[" + Co + "*(" + Ao + ")(?:" + Co + "*([*^$|!~]?=)" + Co + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + Ao + "))|)" + Co + "*\\]") + ")*)|.*)\\)|)")
+            (jr.matchesSelector = Ui.test(si = ai.matches || ai.webkitMatchesSelector || ai.mozMatchesSelector || ai.oMatchesSelector || ai.msMatchesSelector)) && Mr(function(Ji) {
+                jr.disconnectedMatch = si.call(Ji, "*"),
+                si.call(Ji, "[s!='']:x"),
+                oi.push("!=", ":(" + Ci + ")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|" + ("\\[" + wi + "*(" + Ci + ")(?:" + wi + "*([*^$|!~]?=)" + wi + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + Ci + "))|)" + wi + "*\\]") + ")*)|.*)\\)|)")
             }),
-            oo = oo.length && new RegExp(oo.join("|")),
-            io = io.length && new RegExp(io.join("|")),
-            Zo = Xo.test(ao.compareDocumentPosition),
-            lo = Zo || Xo.test(ao.contains) ? function($o, ei) {
-                var ti = 9 === $o.nodeType ? $o.documentElement : $o
-                  , ni = ei && ei.parentNode;
-                return $o === ni || ni && 1 === ni.nodeType && (ti.contains ? ti.contains(ni) : $o.compareDocumentPosition && 16 & $o.compareDocumentPosition(ni))
+            ii = ii.length && new RegExp(ii.join("|")),
+            oi = oi.length && new RegExp(oi.join("|")),
+            Ki = Ui.test(ai.compareDocumentPosition),
+            di = Ki || Ui.test(ai.contains) ? function(Ji, $i) {
+                var eo = 9 === Ji.nodeType ? Ji.documentElement : Ji
+                  , to = $i && $i.parentNode;
+                return Ji === to || to && 1 === to.nodeType && (eo.contains ? eo.contains(to) : Ji.compareDocumentPosition && 16 & Ji.compareDocumentPosition(to))
             }
-            : function($o, ei) {
-                if (ei)
-                    for (; ei = ei.parentNode; )
-                        if (ei === $o)
+            : function(Ji, $i) {
+                if ($i)
+                    for (; $i = $i.parentNode; )
+                        if ($i === Ji)
                             return !0;
                 return !1
             }
             ,
-            yo = Zo ? function($o, ei) {
-                if ($o === ei)
-                    return eo = !0,
+            mi = Ki ? function(Ji, $i) {
+                if (Ji === $i)
+                    return ei = !0,
                     0;
-                var ti = !$o.compareDocumentPosition - !ei.compareDocumentPosition;
-                return ti || (1 & (ti = ($o.ownerDocument || $o) === (ei.ownerDocument || ei) ? $o.compareDocumentPosition(ei) : 1) || !jr.sortDetached && ei.compareDocumentPosition($o) === ti ? $o === no || $o.ownerDocument === po && lo(po, $o) ? -1 : ei === no || ei.ownerDocument === po && lo(po, ei) ? 1 : $r ? Eo($r, $o) - Eo($r, ei) : 0 : 4 & ti ? -1 : 1)
+                var eo = !Ji.compareDocumentPosition - !$i.compareDocumentPosition;
+                return eo || (1 & (eo = (Ji.ownerDocument || Ji) === ($i.ownerDocument || $i) ? Ji.compareDocumentPosition($i) : 1) || !jr.sortDetached && $i.compareDocumentPosition(Ji) === eo ? Ji === ni || Ji.ownerDocument === ui && di(ui, Ji) ? -1 : $i === ni || $i.ownerDocument === ui && di(ui, $i) ? 1 : $r ? Si($r, Ji) - Si($r, $i) : 0 : 4 & eo ? -1 : 1)
             }
-            : function($o, ei) {
-                if ($o === ei)
-                    return eo = !0,
+            : function(Ji, $i) {
+                if (Ji === $i)
+                    return ei = !0,
                     0;
-                var ni = 0, ai = $o.parentNode, ri = ei.parentNode, oi = [$o], ii = [ei], ti;
-                if (!ai || !ri)
-                    return $o === no ? -1 : ei === no ? 1 : ai ? -1 : ri ? 1 : $r ? Eo($r, $o) - Eo($r, ei) : 0;
-                if (ai === ri)
-                    return Ir($o, ei);
-                for (ti = $o; ti = ti.parentNode; )
-                    oi.unshift(ti);
-                for (ti = ei; ti = ti.parentNode; )
-                    ii.unshift(ti);
-                for (; oi[ni] === ii[ni]; )
-                    ni++;
-                return ni ? Ir(oi[ni], ii[ni]) : oi[ni] === po ? -1 : ii[ni] === po ? 1 : 0
+                var to = 0, no = Ji.parentNode, ao = $i.parentNode, ro = [Ji], io = [$i], eo;
+                if (!no || !ao)
+                    return Ji === ni ? -1 : $i === ni ? 1 : no ? -1 : ao ? 1 : $r ? Si($r, Ji) - Si($r, $i) : 0;
+                if (no === ao)
+                    return Ir(Ji, $i);
+                for (eo = Ji; eo = eo.parentNode; )
+                    ro.unshift(eo);
+                for (eo = $i; eo = eo.parentNode; )
+                    io.unshift(eo);
+                for (; ro[to] === io[to]; )
+                    to++;
+                return to ? Ir(ro[to], io[to]) : ro[to] === ui ? -1 : io[to] === ui ? 1 : 0
             }
             ,
-            no) : no
+            ni) : ni
         }
         ,
-        Cr.matches = function(Ko, Zo) {
-            return Cr(Ko, null, null, Zo)
+        Cr.matches = function(qi, Ki) {
+            return Cr(qi, null, null, Ki)
         }
         ,
-        Cr.matchesSelector = function(Ko, Zo) {
-            if ((Ko.ownerDocument || Ko) !== no && to(Ko),
-            Zo = Zo.replace(Lo, "='$1']"),
-            jr.matchesSelector && ro && !mo[Zo + " "] && (!io || !io.test(Zo)) && (!oo || !oo.test(Zo)))
+        Cr.matchesSelector = function(qi, Ki) {
+            if ((qi.ownerDocument || qi) !== ni && ti(qi),
+            Ki = Ki.replace(Oi, "='$1']"),
+            jr.matchesSelector && ri && !gi[Ki + " "] && (!oi || !oi.test(Ki)) && (!ii || !ii.test(Ki)))
                 try {
-                    var Qo = so.call(Ko, Zo);
-                    if (Qo || jr.disconnectedMatch || Ko.document && 11 !== Ko.document.nodeType)
-                        return Qo
-                } catch (Jo) {}
-            return 0 < Cr(Zo, no, null, [Ko]).length
+                    var Zi = si.call(qi, Ki);
+                    if (Zi || jr.disconnectedMatch || qi.document && 11 !== qi.document.nodeType)
+                        return Zi
+                } catch (Qi) {}
+            return 0 < Cr(Ki, ni, null, [qi]).length
         }
         ,
-        Cr.contains = function(Ko, Zo) {
-            return (Ko.ownerDocument || Ko) !== no && to(Ko),
-            lo(Ko, Zo)
+        Cr.contains = function(qi, Ki) {
+            return (qi.ownerDocument || qi) !== ni && ti(qi),
+            di(qi, Ki)
         }
         ,
-        Cr.attr = function(Ko, Zo) {
-            (Ko.ownerDocument || Ko) !== no && to(Ko);
-            var Qo = zr.attrHandle[Zo.toLowerCase()]
-              , Jo = Qo && _o.call(zr.attrHandle, Zo.toLowerCase()) ? Qo(Ko, Zo, !ro) : void 0;
-            return void 0 === Jo ? jr.attributes || !ro ? Ko.getAttribute(Zo) : (Jo = Ko.getAttributeNode(Zo)) && Jo.specified ? Jo.value : null : Jo
+        Cr.attr = function(qi, Ki) {
+            (qi.ownerDocument || qi) !== ni && ti(qi);
+            var Zi = zr.attrHandle[Ki.toLowerCase()]
+              , Qi = Zi && yi.call(zr.attrHandle, Ki.toLowerCase()) ? Zi(qi, Ki, !ri) : void 0;
+            return void 0 === Qi ? jr.attributes || !ri ? qi.getAttribute(Ki) : (Qi = qi.getAttributeNode(Ki)) && Qi.specified ? Qi.value : null : Qi
         }
         ,
-        Cr.escape = function(Ko) {
-            return (Ko + "").replace(jo, zo)
+        Cr.escape = function(qi) {
+            return (qi + "").replace(Wi, ji)
         }
         ,
-        Cr.error = function(Ko) {
-            throw new Error("Syntax error, unrecognized expression: " + Ko)
+        Cr.error = function(qi) {
+            throw new Error("Syntax error, unrecognized expression: " + qi)
         }
         ,
-        Cr.uniqueSort = function(Ko) {
-            var Qo = [], Jo = 0, $o = 0, Zo;
-            if (eo = !jr.detectDuplicates,
-            $r = !jr.sortStable && Ko.slice(0),
-            Ko.sort(yo),
-            eo) {
-                for (; Zo = Ko[$o++]; )
-                    Zo === Ko[$o] && (Jo = Qo.push($o));
-                for (; Jo--; )
-                    Ko.splice(Qo[Jo], 1)
+        Cr.uniqueSort = function(qi) {
+            var Zi = [], Qi = 0, Ji = 0, Ki;
+            if (ei = !jr.detectDuplicates,
+            $r = !jr.sortStable && qi.slice(0),
+            qi.sort(mi),
+            ei) {
+                for (; Ki = qi[Ji++]; )
+                    Ki === qi[Ji] && (Qi = Zi.push(Ji));
+                for (; Qi--; )
+                    qi.splice(Zi[Qi], 1)
             }
             return $r = null,
-            Ko
+            qi
         }
         ,
-        Vr = Cr.getText = function(Ko) {
-            var Qo = "", Jo = 0, $o = Ko.nodeType, Zo;
-            if (!$o)
-                for (; Zo = Ko[Jo++]; )
-                    Qo += Vr(Zo);
-            else if (1 === $o || 9 === $o || 11 === $o) {
-                if ("string" == typeof Ko.textContent)
-                    return Ko.textContent;
-                for (Ko = Ko.firstChild; Ko; Ko = Ko.nextSibling)
-                    Qo += Vr(Ko)
-            } else if (3 === $o || 4 === $o)
-                return Ko.nodeValue;
-            return Qo
+        Vr = Cr.getText = function(qi) {
+            var Zi = "", Qi = 0, Ji = qi.nodeType, Ki;
+            if (!Ji)
+                for (; Ki = qi[Qi++]; )
+                    Zi += Vr(Ki);
+            else if (1 === Ji || 9 === Ji || 11 === Ji) {
+                if ("string" == typeof qi.textContent)
+                    return qi.textContent;
+                for (qi = qi.firstChild; qi; qi = qi.nextSibling)
+                    Zi += Vr(qi)
+            } else if (3 === Ji || 4 === Ji)
+                return qi.nodeValue;
+            return Zi
         }
         ,
         (zr = Cr.selectors = {
             cacheLength: 50,
             createPseudo: Pr,
-            match: Fo,
+            match: Ni,
             attrHandle: {},
             find: {},
             relative: {
@@ -1155,205 +1155,205 @@ window.SWAM_version = "2.1030401",
                 }
             },
             preFilter: {
-                ATTR: function(Ko) {
-                    return Ko[1] = Ko[1].replace(Yo, Wo),
-                    Ko[3] = (Ko[3] || Ko[4] || Ko[5] || "").replace(Yo, Wo),
-                    "~=" === Ko[2] && (Ko[3] = " " + Ko[3] + " "),
-                    Ko.slice(0, 4)
+                ATTR: function(qi) {
+                    return qi[1] = qi[1].replace(Hi, Yi),
+                    qi[3] = (qi[3] || qi[4] || qi[5] || "").replace(Hi, Yi),
+                    "~=" === qi[2] && (qi[3] = " " + qi[3] + " "),
+                    qi.slice(0, 4)
                 },
-                CHILD: function(Ko) {
-                    return Ko[1] = Ko[1].toLowerCase(),
-                    "nth" === Ko[1].slice(0, 3) ? (Ko[3] || Cr.error(Ko[0]),
-                    Ko[4] = +(Ko[4] ? Ko[5] + (Ko[6] || 1) : 2 * ("even" === Ko[3] || "odd" === Ko[3])),
-                    Ko[5] = +(Ko[7] + Ko[8] || "odd" === Ko[3])) : Ko[3] && Cr.error(Ko[0]),
-                    Ko
+                CHILD: function(qi) {
+                    return qi[1] = qi[1].toLowerCase(),
+                    "nth" === qi[1].slice(0, 3) ? (qi[3] || Cr.error(qi[0]),
+                    qi[4] = +(qi[4] ? qi[5] + (qi[6] || 1) : 2 * ("even" === qi[3] || "odd" === qi[3])),
+                    qi[5] = +(qi[7] + qi[8] || "odd" === qi[3])) : qi[3] && Cr.error(qi[0]),
+                    qi
                 },
-                PSEUDO: function(Ko) {
-                    var Qo = !Ko[6] && Ko[2], Zo;
-                    return Fo.CHILD.test(Ko[0]) ? null : (Ko[3] ? Ko[2] = Ko[4] || Ko[5] || "" : Qo && ko.test(Qo) && (Zo = Kr(Qo, !0)) && (Zo = Qo.indexOf(")", Qo.length - Zo) - Qo.length) && (Ko[0] = Ko[0].slice(0, Zo),
-                    Ko[2] = Qo.slice(0, Zo)),
-                    Ko.slice(0, 3))
+                PSEUDO: function(qi) {
+                    var Zi = !qi[6] && qi[2], Ki;
+                    return Ni.CHILD.test(qi[0]) ? null : (qi[3] ? qi[2] = qi[4] || qi[5] || "" : Zi && Li.test(Zi) && (Ki = Kr(Zi, !0)) && (Ki = Zi.indexOf(")", Zi.length - Ki) - Zi.length) && (qi[0] = qi[0].slice(0, Ki),
+                    qi[2] = Zi.slice(0, Ki)),
+                    qi.slice(0, 3))
                 }
             },
             filter: {
-                TAG: function(Ko) {
-                    var Zo = Ko.replace(Yo, Wo).toLowerCase();
-                    return "*" === Ko ? function() {
+                TAG: function(qi) {
+                    var Ki = qi.replace(Hi, Yi).toLowerCase();
+                    return "*" === qi ? function() {
                         return !0
                     }
-                    : function(Qo) {
-                        return Qo.nodeName && Qo.nodeName.toLowerCase() === Zo
+                    : function(Zi) {
+                        return Zi.nodeName && Zi.nodeName.toLowerCase() === Ki
                     }
                 },
-                CLASS: function(Ko) {
-                    var Zo = fo[Ko + " "];
-                    return Zo || (Zo = new RegExp("(^|" + Co + ")" + Ko + "(" + Co + "|$)")) && fo(Ko, function(Qo) {
-                        return Zo.test("string" == typeof Qo.className && Qo.className || void 0 !== Qo.getAttribute && Qo.getAttribute("class") || "")
+                CLASS: function(qi) {
+                    var Ki = hi[qi + " "];
+                    return Ki || (Ki = new RegExp("(^|" + wi + ")" + qi + "(" + wi + "|$)")) && hi(qi, function(Zi) {
+                        return Ki.test("string" == typeof Zi.className && Zi.className || void 0 !== Zi.getAttribute && Zi.getAttribute("class") || "")
                     })
                 },
-                ATTR: function(Ko, Zo, Qo) {
-                    return function(Jo) {
-                        var $o = Cr.attr(Jo, Ko);
-                        return null == $o ? "!=" === Zo : !Zo || ($o += "",
-                        "=" === Zo ? $o === Qo : "!=" === Zo ? $o !== Qo : "^=" === Zo ? Qo && 0 === $o.indexOf(Qo) : "*=" === Zo ? Qo && -1 < $o.indexOf(Qo) : "$=" === Zo ? Qo && $o.slice(-Qo.length) === Qo : "~=" === Zo ? -1 < (" " + $o.replace(Ro, " ") + " ").indexOf(Qo) : "|=" == Zo && ($o === Qo || $o.slice(0, Qo.length + 1) === Qo + "-"))
+                ATTR: function(qi, Ki, Zi) {
+                    return function(Qi) {
+                        var Ji = Cr.attr(Qi, qi);
+                        return null == Ji ? "!=" === Ki : !Ki || (Ji += "",
+                        "=" === Ki ? Ji === Zi : "!=" === Ki ? Ji !== Zi : "^=" === Ki ? Zi && 0 === Ji.indexOf(Zi) : "*=" === Ki ? Zi && -1 < Ji.indexOf(Zi) : "$=" === Ki ? Zi && Ji.slice(-Zi.length) === Zi : "~=" === Ki ? -1 < (" " + Ji.replace(Mi, " ") + " ").indexOf(Zi) : "|=" == Ki && (Ji === Zi || Ji.slice(0, Zi.length + 1) === Zi + "-"))
                     }
                 },
-                CHILD: function(Ko, Zo, Qo, Jo, $o) {
-                    var ei = "nth" !== Ko.slice(0, 3)
-                      , ti = "last" !== Ko.slice(-4)
-                      , ni = "of-type" === Zo;
-                    return 1 === Jo && 0 === $o ? function(ai) {
-                        return !!ai.parentNode
+                CHILD: function(qi, Ki, Zi, Qi, Ji) {
+                    var $i = "nth" !== qi.slice(0, 3)
+                      , eo = "last" !== qi.slice(-4)
+                      , to = "of-type" === Ki;
+                    return 1 === Qi && 0 === Ji ? function(no) {
+                        return !!no.parentNode
                     }
-                    : function(ai, ri, oi) {
-                        var ci = ei == ti ? "previousSibling" : "nextSibling", hi = ai.parentNode, fi = ni && ai.nodeName.toLowerCase(), gi = !oi && !ni, mi = !1, ii, si, di, li, ui, pi;
-                        if (hi) {
-                            if (ei) {
-                                for (; ci; ) {
-                                    for (li = ai; li = li[ci]; )
-                                        if (ni ? li.nodeName.toLowerCase() === fi : 1 === li.nodeType)
+                    : function(no, ao, ro) {
+                        var co = $i == eo ? "previousSibling" : "nextSibling", ho = no.parentNode, fo = to && no.nodeName.toLowerCase(), go = !ro && !to, mo = !1, io, oo, so, lo, uo, po;
+                        if (ho) {
+                            if ($i) {
+                                for (; co; ) {
+                                    for (lo = no; lo = lo[co]; )
+                                        if (to ? lo.nodeName.toLowerCase() === fo : 1 === lo.nodeType)
                                             return !1;
-                                    pi = ci = "only" === Ko && !pi && "nextSibling"
+                                    po = co = "only" === qi && !po && "nextSibling"
                                 }
                                 return !0
                             }
-                            if (pi = [ti ? hi.firstChild : hi.lastChild],
-                            ti && gi) {
-                                for (mi = (ui = (ii = (si = (di = (li = hi)[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] || [])[0] === co && ii[1]) && ii[2],
-                                li = ui && hi.childNodes[ui]; li = ++ui && li && li[ci] || (mi = ui = 0) || pi.pop(); )
-                                    if (1 === li.nodeType && ++mi && li === ai) {
-                                        si[Ko] = [co, ui, mi];
+                            if (po = [eo ? ho.firstChild : ho.lastChild],
+                            eo && go) {
+                                for (mo = (uo = (io = (oo = (so = (lo = ho)[li] || (lo[li] = {}))[lo.uniqueID] || (so[lo.uniqueID] = {}))[qi] || [])[0] === pi && io[1]) && io[2],
+                                lo = uo && ho.childNodes[uo]; lo = ++uo && lo && lo[co] || (mo = uo = 0) || po.pop(); )
+                                    if (1 === lo.nodeType && ++mo && lo === no) {
+                                        oo[qi] = [pi, uo, mo];
                                         break
                                     }
-                            } else if (gi && (mi = ui = (ii = (si = (di = (li = ai)[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] || [])[0] === co && ii[1]),
-                            !1 === mi)
-                                for (; (li = ++ui && li && li[ci] || (mi = ui = 0) || pi.pop()) && ((ni ? li.nodeName.toLowerCase() !== fi : 1 !== li.nodeType) || !++mi || (gi && ((si = (di = li[uo] || (li[uo] = {}))[li.uniqueID] || (di[li.uniqueID] = {}))[Ko] = [co, mi]),
-                                li !== ai)); )
+                            } else if (go && (mo = uo = (io = (oo = (so = (lo = no)[li] || (lo[li] = {}))[lo.uniqueID] || (so[lo.uniqueID] = {}))[qi] || [])[0] === pi && io[1]),
+                            !1 === mo)
+                                for (; (lo = ++uo && lo && lo[co] || (mo = uo = 0) || po.pop()) && ((to ? lo.nodeName.toLowerCase() !== fo : 1 !== lo.nodeType) || !++mo || (go && ((oo = (so = lo[li] || (lo[li] = {}))[lo.uniqueID] || (so[lo.uniqueID] = {}))[qi] = [pi, mo]),
+                                lo !== no)); )
                                     ;
-                            return (mi -= $o) == Jo || 0 == mi % Jo && 0 <= mi / Jo
+                            return (mo -= Ji) == Qi || 0 == mo % Qi && 0 <= mo / Qi
                         }
                     }
                 },
-                PSEUDO: function(Ko, Zo) {
-                    var Jo = zr.pseudos[Ko] || zr.setFilters[Ko.toLowerCase()] || Cr.error("unsupported pseudo: " + Ko), Qo;
-                    return Jo[uo] ? Jo(Zo) : 1 < Jo.length ? (Qo = [Ko, Ko, "", Zo],
-                    zr.setFilters.hasOwnProperty(Ko.toLowerCase()) ? Pr(function($o, ei) {
-                        for (var ni = Jo($o, Zo), ai = ni.length, ti; ai--; )
-                            $o[ti = Eo($o, ni[ai])] = !(ei[ti] = ni[ai])
-                    }) : function($o) {
-                        return Jo($o, 0, Qo)
+                PSEUDO: function(qi, Ki) {
+                    var Qi = zr.pseudos[qi] || zr.setFilters[qi.toLowerCase()] || Cr.error("unsupported pseudo: " + qi), Zi;
+                    return Qi[li] ? Qi(Ki) : 1 < Qi.length ? (Zi = [qi, qi, "", Ki],
+                    zr.setFilters.hasOwnProperty(qi.toLowerCase()) ? Pr(function(Ji, $i) {
+                        for (var to = Qi(Ji, Ki), no = to.length, eo; no--; )
+                            Ji[eo = Si(Ji, to[no])] = !($i[eo] = to[no])
+                    }) : function(Ji) {
+                        return Qi(Ji, 0, Zi)
                     }
-                    ) : Jo
+                    ) : Qi
                 }
             },
             pseudos: {
-                not: Pr(function(Ko) {
-                    var Zo = []
-                      , Qo = []
-                      , Jo = Zr(Ko.replace(Io, "$1"));
-                    return Jo[uo] ? Pr(function($o, ei, ti, ni) {
-                        for (var ri = Jo($o, null, ni, []), oi = $o.length, ai; oi--; )
-                            (ai = ri[oi]) && ($o[oi] = !(ei[oi] = ai))
-                    }) : function($o, ei, ti) {
-                        return Zo[0] = $o,
-                        Jo(Zo, null, ti, Qo),
-                        Zo[0] = null,
-                        !Qo.pop()
+                not: Pr(function(qi) {
+                    var Ki = []
+                      , Zi = []
+                      , Qi = Zr(qi.replace(Ri, "$1"));
+                    return Qi[li] ? Pr(function(Ji, $i, eo, to) {
+                        for (var ao = Qi(Ji, null, to, []), ro = Ji.length, no; ro--; )
+                            (no = ao[ro]) && (Ji[ro] = !($i[ro] = no))
+                    }) : function(Ji, $i, eo) {
+                        return Ki[0] = Ji,
+                        Qi(Ki, null, eo, Zi),
+                        Ki[0] = null,
+                        !Zi.pop()
                     }
                 }),
-                has: Pr(function(Ko) {
-                    return function(Zo) {
-                        return 0 < Cr(Ko, Zo).length
+                has: Pr(function(qi) {
+                    return function(Ki) {
+                        return 0 < Cr(qi, Ki).length
                     }
                 }),
-                contains: Pr(function(Ko) {
-                    return Ko = Ko.replace(Yo, Wo),
-                    function(Zo) {
-                        return -1 < (Zo.textContent || Zo.innerText || Vr(Zo)).indexOf(Ko)
+                contains: Pr(function(qi) {
+                    return qi = qi.replace(Hi, Yi),
+                    function(Ki) {
+                        return -1 < (Ki.textContent || Ki.innerText || Vr(Ki)).indexOf(qi)
                     }
                 }),
-                lang: Pr(function(Ko) {
-                    return No.test(Ko || "") || Cr.error("unsupported lang: " + Ko),
-                    Ko = Ko.replace(Yo, Wo).toLowerCase(),
-                    function(Zo) {
-                        var Qo;
+                lang: Pr(function(qi) {
+                    return ki.test(qi || "") || Cr.error("unsupported lang: " + qi),
+                    qi = qi.replace(Hi, Yi).toLowerCase(),
+                    function(Ki) {
+                        var Zi;
                         do
-                            if (Qo = ro ? Zo.lang : Zo.getAttribute("xml:lang") || Zo.getAttribute("lang"))
-                                return (Qo = Qo.toLowerCase()) === Ko || 0 === Qo.indexOf(Ko + "-");
-                        while ((Zo = Zo.parentNode) && 1 === Zo.nodeType);return !1
+                            if (Zi = ri ? Ki.lang : Ki.getAttribute("xml:lang") || Ki.getAttribute("lang"))
+                                return (Zi = Zi.toLowerCase()) === qi || 0 === Zi.indexOf(qi + "-");
+                        while ((Ki = Ki.parentNode) && 1 === Ki.nodeType);return !1
                     }
                 }),
-                target: function(Ko) {
-                    var Zo = wr.location && wr.location.hash;
-                    return Zo && Zo.slice(1) === Ko.id
+                target: function(qi) {
+                    var Ki = wr.location && wr.location.hash;
+                    return Ki && Ki.slice(1) === qi.id
                 },
-                root: function(Ko) {
-                    return Ko === ao
+                root: function(qi) {
+                    return qi === ai
                 },
-                focus: function(Ko) {
-                    return Ko === no.activeElement && (!no.hasFocus || no.hasFocus()) && !!(Ko.type || Ko.href || ~Ko.tabIndex)
+                focus: function(qi) {
+                    return qi === ni.activeElement && (!ni.hasFocus || ni.hasFocus()) && !!(qi.type || qi.href || ~qi.tabIndex)
                 },
                 enabled: Lr(!1),
                 disabled: Lr(!0),
-                checked: function(Ko) {
-                    var Zo = Ko.nodeName.toLowerCase();
-                    return "input" === Zo && !!Ko.checked || "option" === Zo && !!Ko.selected
+                checked: function(qi) {
+                    var Ki = qi.nodeName.toLowerCase();
+                    return "input" === Ki && !!qi.checked || "option" === Ki && !!qi.selected
                 },
-                selected: function(Ko) {
-                    return Ko.parentNode && Ko.parentNode.selectedIndex,
-                    !0 === Ko.selected
+                selected: function(qi) {
+                    return qi.parentNode && qi.parentNode.selectedIndex,
+                    !0 === qi.selected
                 },
-                empty: function(Ko) {
-                    for (Ko = Ko.firstChild; Ko; Ko = Ko.nextSibling)
-                        if (6 > Ko.nodeType)
+                empty: function(qi) {
+                    for (qi = qi.firstChild; qi; qi = qi.nextSibling)
+                        if (6 > qi.nodeType)
                             return !1;
                     return !0
                 },
-                parent: function(Ko) {
-                    return !zr.pseudos.empty(Ko)
+                parent: function(qi) {
+                    return !zr.pseudos.empty(qi)
                 },
-                header: function(Ko) {
-                    return Uo.test(Ko.nodeName)
+                header: function(qi) {
+                    return Bi.test(qi.nodeName)
                 },
-                input: function(Ko) {
-                    return Bo.test(Ko.nodeName)
+                input: function(qi) {
+                    return Fi.test(qi.nodeName)
                 },
-                button: function(Ko) {
-                    var Zo = Ko.nodeName.toLowerCase();
-                    return "input" === Zo && "button" === Ko.type || "button" === Zo
+                button: function(qi) {
+                    var Ki = qi.nodeName.toLowerCase();
+                    return "input" === Ki && "button" === qi.type || "button" === Ki
                 },
-                text: function(Ko) {
-                    var Zo;
-                    return "input" === Ko.nodeName.toLowerCase() && "text" === Ko.type && (null == (Zo = Ko.getAttribute("type")) || "text" === Zo.toLowerCase())
+                text: function(qi) {
+                    var Ki;
+                    return "input" === qi.nodeName.toLowerCase() && "text" === qi.type && (null == (Ki = qi.getAttribute("type")) || "text" === Ki.toLowerCase())
                 },
                 first: kr(function() {
                     return [0]
                 }),
-                last: kr(function(Ko, Zo) {
-                    return [Zo - 1]
+                last: kr(function(qi, Ki) {
+                    return [Ki - 1]
                 }),
-                eq: kr(function(Ko, Zo, Qo) {
-                    return [0 > Qo ? Qo + Zo : Qo]
+                eq: kr(function(qi, Ki, Zi) {
+                    return [0 > Zi ? Zi + Ki : Zi]
                 }),
-                even: kr(function(Ko, Zo) {
-                    for (var Qo = 0; Qo < Zo; Qo += 2)
-                        Ko.push(Qo);
-                    return Ko
+                even: kr(function(qi, Ki) {
+                    for (var Zi = 0; Zi < Ki; Zi += 2)
+                        qi.push(Zi);
+                    return qi
                 }),
-                odd: kr(function(Ko, Zo) {
-                    for (var Qo = 1; Qo < Zo; Qo += 2)
-                        Ko.push(Qo);
-                    return Ko
+                odd: kr(function(qi, Ki) {
+                    for (var Zi = 1; Zi < Ki; Zi += 2)
+                        qi.push(Zi);
+                    return qi
                 }),
-                lt: kr(function(Ko, Zo, Qo) {
-                    for (var Jo = 0 > Qo ? Qo + Zo : Qo; 0 <= --Jo; )
-                        Ko.push(Jo);
-                    return Ko
+                lt: kr(function(qi, Ki, Zi) {
+                    for (var Qi = 0 > Zi ? Zi + Ki : Zi; 0 <= --Qi; )
+                        qi.push(Qi);
+                    return qi
                 }),
-                gt: kr(function(Ko, Zo, Qo) {
-                    for (var Jo = 0 > Qo ? Qo + Zo : Qo; ++Jo < Zo; )
-                        Ko.push(Jo);
-                    return Ko
+                gt: kr(function(qi, Ki, Zi) {
+                    for (var Qi = 0 > Zi ? Zi + Ki : Zi; ++Qi < Ki; )
+                        qi.push(Qi);
+                    return qi
                 })
             }
         }).pseudos.nth = zr.pseudos.eq,
@@ -1372,135 +1372,135 @@ window.SWAM_version = "2.1030401",
             zr.pseudos[Wr] = Or(Wr);
         return Fr.prototype = zr.filters = zr.pseudos,
         zr.setFilters = new Fr,
-        Kr = Cr.tokenize = function(Ko, Zo) {
-            var ri = go[Ko + " "], Qo, Jo, $o, ei, ti, ni, ai;
-            if (ri)
-                return Zo ? 0 : ri.slice(0);
-            for (ti = Ko,
-            ni = [],
-            ai = zr.preFilter; ti; ) {
-                for (ei in Qo && !(Jo = Do.exec(ti)) || (Jo && (ti = ti.slice(Jo[0].length) || ti),
-                ni.push($o = [])),
-                Qo = !1,
-                (Jo = Oo.exec(ti)) && (Qo = Jo.shift(),
-                $o.push({
-                    value: Qo,
-                    type: Jo[0].replace(Io, " ")
+        Kr = Cr.tokenize = function(qi, Ki) {
+            var ao = fi[qi + " "], Zi, Qi, Ji, $i, eo, to, no;
+            if (ao)
+                return Ki ? 0 : ao.slice(0);
+            for (eo = qi,
+            to = [],
+            no = zr.preFilter; eo; ) {
+                for ($i in Zi && !(Qi = Ii.exec(eo)) || (Qi && (eo = eo.slice(Qi[0].length) || eo),
+                to.push(Ji = [])),
+                Zi = !1,
+                (Qi = Di.exec(eo)) && (Zi = Qi.shift(),
+                Ji.push({
+                    value: Zi,
+                    type: Qi[0].replace(Ri, " ")
                 }),
-                ti = ti.slice(Qo.length)),
+                eo = eo.slice(Zi.length)),
                 zr.filter)
-                    (Jo = Fo[ei].exec(ti)) && (!ai[ei] || (Jo = ai[ei](Jo))) && (Qo = Jo.shift(),
-                    $o.push({
-                        value: Qo,
-                        type: ei,
-                        matches: Jo
+                    (Qi = Ni[$i].exec(eo)) && (!no[$i] || (Qi = no[$i](Qi))) && (Zi = Qi.shift(),
+                    Ji.push({
+                        value: Zi,
+                        type: $i,
+                        matches: Qi
                     }),
-                    ti = ti.slice(Qo.length));
-                if (!Qo)
+                    eo = eo.slice(Zi.length));
+                if (!Zi)
                     break
             }
-            return Zo ? ti.length : ti ? Cr.error(Ko) : go(Ko, ni).slice(0)
+            return Ki ? eo.length : eo ? Cr.error(qi) : fi(qi, to).slice(0)
         }
         ,
-        Zr = Cr.compile = function(Ko, Zo) {
-            var Jo = [], $o = [], ei = mo[Ko + " "], Qo;
-            if (!ei) {
-                for (Zo || (Zo = Kr(Ko)),
-                Qo = Zo.length; Qo--; )
-                    (ei = Yr(Zo[Qo]))[uo] ? Jo.push(ei) : $o.push(ei);
-                (ei = mo(Ko, function(ti, ni) {
-                    var ai = 0 < ni.length
-                      , ri = 0 < ti.length
-                      , oi = function(ii, si, di, li, ui) {
-                        var fi = 0, gi = "0", mi = ii && [], yi = [], _i = Jr, bi = ii || ri && zr.find.TAG("*", ui), xi = co += null == _i ? 1 : Math.random() || .1, vi = bi.length, pi, ci, hi;
-                        for (ui && (Jr = si === no || si || ui); gi !== vi && null != (pi = bi[gi]); gi++) {
-                            if (ri && pi) {
-                                for (ci = 0,
-                                si || pi.ownerDocument === no || (to(pi),
-                                di = !ro); hi = ti[ci++]; )
-                                    if (hi(pi, si || no, di)) {
-                                        li.push(pi);
+        Zr = Cr.compile = function(qi, Ki) {
+            var Qi = [], Ji = [], $i = gi[qi + " "], Zi;
+            if (!$i) {
+                for (Ki || (Ki = Kr(qi)),
+                Zi = Ki.length; Zi--; )
+                    ($i = Yr(Ki[Zi]))[li] ? Qi.push($i) : Ji.push($i);
+                ($i = gi(qi, function(eo, to) {
+                    var no = 0 < to.length
+                      , ao = 0 < eo.length
+                      , ro = function(io, oo, so, lo, uo) {
+                        var fo = 0, go = "0", mo = io && [], yo = [], _o = Jr, bo = io || ao && zr.find.TAG("*", uo), xo = pi += null == _o ? 1 : Math.random() || .1, vo = bo.length, po, co, ho;
+                        for (uo && (Jr = oo === ni || oo || uo); go !== vo && null != (po = bo[go]); go++) {
+                            if (ao && po) {
+                                for (co = 0,
+                                oo || po.ownerDocument === ni || (ti(po),
+                                so = !ri); ho = eo[co++]; )
+                                    if (ho(po, oo || ni, so)) {
+                                        lo.push(po);
                                         break
                                     }
-                                ui && (co = xi)
+                                uo && (pi = xo)
                             }
-                            ai && ((pi = !hi && pi) && fi--,
-                            ii && mi.push(pi))
+                            no && ((po = !ho && po) && fo--,
+                            io && mo.push(po))
                         }
-                        if (fi += gi,
-                        ai && gi !== fi) {
-                            for (ci = 0; hi = ni[ci++]; )
-                                hi(mi, yi, si, di);
-                            if (ii) {
-                                if (0 < fi)
-                                    for (; gi--; )
-                                        mi[gi] || yi[gi] || (yi[gi] = xo.call(li));
-                                yi = Gr(yi)
+                        if (fo += go,
+                        no && go !== fo) {
+                            for (co = 0; ho = to[co++]; )
+                                ho(mo, yo, oo, so);
+                            if (io) {
+                                if (0 < fo)
+                                    for (; go--; )
+                                        mo[go] || yo[go] || (yo[go] = bi.call(lo));
+                                yo = Gr(yo)
                             }
-                            To.apply(li, yi),
-                            ui && !ii && 0 < yi.length && 1 < fi + ni.length && Cr.uniqueSort(li)
+                            vi.apply(lo, yo),
+                            uo && !io && 0 < yo.length && 1 < fo + to.length && Cr.uniqueSort(lo)
                         }
-                        return ui && (co = xi,
-                        Jr = _i),
-                        mi
+                        return uo && (pi = xo,
+                        Jr = _o),
+                        mo
                     };
-                    return ai ? Pr(oi) : oi
-                }($o, Jo))).selector = Ko
+                    return no ? Pr(ro) : ro
+                }(Ji, Qi))).selector = qi
             }
-            return ei
+            return $i
         }
         ,
-        Qr = Cr.select = function(Ko, Zo, Qo, Jo) {
-            var ri = "function" == typeof Ko && Ko, oi = !Jo && Kr(Ko = ri.selector || Ko), $o, ei, ti, ni, ai;
-            if (Qo = Qo || [],
-            1 === oi.length) {
-                if (2 < (ei = oi[0] = oi[0].slice(0)).length && "ID" === (ti = ei[0]).type && 9 === Zo.nodeType && ro && zr.relative[ei[1].type]) {
-                    if (!(Zo = (zr.find.ID(ti.matches[0].replace(Yo, Wo), Zo) || [])[0]))
-                        return Qo;
-                    ri && (Zo = Zo.parentNode),
-                    Ko = Ko.slice(ei.shift().value.length)
+        Qr = Cr.select = function(qi, Ki, Zi, Qi) {
+            var ao = "function" == typeof qi && qi, ro = !Qi && Kr(qi = ao.selector || qi), Ji, $i, eo, to, no;
+            if (Zi = Zi || [],
+            1 === ro.length) {
+                if (2 < ($i = ro[0] = ro[0].slice(0)).length && "ID" === (eo = $i[0]).type && 9 === Ki.nodeType && ri && zr.relative[$i[1].type]) {
+                    if (!(Ki = (zr.find.ID(eo.matches[0].replace(Hi, Yi), Ki) || [])[0]))
+                        return Zi;
+                    ao && (Ki = Ki.parentNode),
+                    qi = qi.slice($i.shift().value.length)
                 }
-                for ($o = Fo.needsContext.test(Ko) ? 0 : ei.length; $o-- && (ti = ei[$o],
-                !zr.relative[ni = ti.type]); )
-                    if ((ai = zr.find[ni]) && (Jo = ai(ti.matches[0].replace(Yo, Wo), Ho.test(ei[0].type) && Nr(Zo.parentNode) || Zo))) {
-                        if (ei.splice($o, 1),
-                        !(Ko = Jo.length && Br(ei)))
-                            return To.apply(Qo, Jo),
-                            Qo;
+                for (Ji = Ni.needsContext.test(qi) ? 0 : $i.length; Ji-- && (eo = $i[Ji],
+                !zr.relative[to = eo.type]); )
+                    if ((no = zr.find[to]) && (Qi = no(eo.matches[0].replace(Hi, Yi), Gi.test($i[0].type) && Nr(Ki.parentNode) || Ki))) {
+                        if ($i.splice(Ji, 1),
+                        !(qi = Qi.length && Br($i)))
+                            return vi.apply(Zi, Qi),
+                            Zi;
                         break
                     }
             }
-            return (ri || Zr(Ko, oi))(Jo, Zo, !ro, Qo, !Zo || Ho.test(Ko) && Nr(Zo.parentNode) || Zo),
-            Qo
+            return (ao || Zr(qi, ro))(Qi, Ki, !ri, Zi, !Ki || Gi.test(qi) && Nr(Ki.parentNode) || Ki),
+            Zi
         }
         ,
-        jr.sortStable = uo.split("").sort(yo).join("") === uo,
-        jr.detectDuplicates = !!eo,
-        to(),
-        jr.sortDetached = Mr(function(Ko) {
-            return 1 & Ko.compareDocumentPosition(no.createElement("fieldset"))
+        jr.sortStable = li.split("").sort(mi).join("") === li,
+        jr.detectDuplicates = !!ei,
+        ti(),
+        jr.sortDetached = Mr(function(qi) {
+            return 1 & qi.compareDocumentPosition(ni.createElement("fieldset"))
         }),
-        Mr(function(Ko) {
-            return Ko.innerHTML = "<a href='#'></a>",
-            "#" === Ko.firstChild.getAttribute("href")
-        }) || Rr("type|href|height|width", function(Ko, Zo, Qo) {
-            if (!Qo)
-                return Ko.getAttribute(Zo, "type" === Zo.toLowerCase() ? 1 : 2)
+        Mr(function(qi) {
+            return qi.innerHTML = "<a href='#'></a>",
+            "#" === qi.firstChild.getAttribute("href")
+        }) || Rr("type|href|height|width", function(qi, Ki, Zi) {
+            if (!Zi)
+                return qi.getAttribute(Ki, "type" === Ki.toLowerCase() ? 1 : 2)
         }),
-        jr.attributes && Mr(function(Ko) {
-            return Ko.innerHTML = "<input/>",
-            Ko.firstChild.setAttribute("value", ""),
-            "" === Ko.firstChild.getAttribute("value")
-        }) || Rr("value", function(Ko, Zo, Qo) {
-            if (!Qo && "input" === Ko.nodeName.toLowerCase())
-                return Ko.defaultValue
+        jr.attributes && Mr(function(qi) {
+            return qi.innerHTML = "<input/>",
+            qi.firstChild.setAttribute("value", ""),
+            "" === qi.firstChild.getAttribute("value")
+        }) || Rr("value", function(qi, Ki, Zi) {
+            if (!Zi && "input" === qi.nodeName.toLowerCase())
+                return qi.defaultValue
         }),
-        Mr(function(Ko) {
-            return null == Ko.getAttribute("disabled")
-        }) || Rr(wo, function(Ko, Zo, Qo) {
-            var Jo;
-            if (!Qo)
-                return !0 === Ko[Zo] ? Zo.toLowerCase() : (Jo = Ko.getAttributeNode(Zo)) && Jo.specified ? Jo.value : null
+        Mr(function(qi) {
+            return null == qi.getAttribute("disabled")
+        }) || Rr(Ei, function(qi, Ki, Zi) {
+            var Qi;
+            if (!Zi)
+                return !0 === qi[Ki] ? Ki.toLowerCase() : (Qi = qi.getAttributeNode(Ki)) && Qi.specified ? Qi.value : null
         }),
         Cr
     }(Bt);
@@ -1561,14 +1561,14 @@ window.SWAM_version = "2.1030401",
             return !!Wt(this, "string" == typeof wr && ta.test(wr) ? Vn(wr) : wr || [], !1).length
         }
     });
-    var oa = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/, ra;
+    var ia = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/, ra;
     (Vn.fn.init = function(wr, Cr, Ar) {
         var Pr, Mr;
         if (!wr)
             return this;
         if (Ar = Ar || ra,
         "string" == typeof wr) {
-            if (!(Pr = "<" === wr[0] && ">" === wr[wr.length - 1] && 3 <= wr.length ? [null, wr, null] : oa.exec(wr)) || !Pr[1] && Cr)
+            if (!(Pr = "<" === wr[0] && ">" === wr[wr.length - 1] && 3 <= wr.length ? [null, wr, null] : ia.exec(wr)) || !Pr[1] && Cr)
                 return !Cr || Cr.jquery ? (Cr || Ar).find(wr) : this.constructor(Cr).find(wr);
             if (Pr[1]) {
                 if (Cr = Cr instanceof Vn ? Cr[0] : Cr,
@@ -1588,7 +1588,7 @@ window.SWAM_version = "2.1030401",
     }
     ).prototype = Vn.fn,
     ra = Vn(kn);
-    var ia = /^(?:parents|prev(?:Until|All))/
+    var oa = /^(?:parents|prev(?:Until|All))/
       , sa = {
         children: !0,
         contents: !0,
@@ -1671,7 +1671,7 @@ window.SWAM_version = "2.1030401",
             return "Until" !== wr.slice(-5) && (Pr = Ar),
             Pr && "string" == typeof Pr && (Mr = Vn.filter(Pr, Mr)),
             1 < this.length && (sa[wr] || Vn.uniqueSort(Mr),
-            ia.test(wr) && Mr.reverse()),
+            oa.test(wr) && Mr.reverse()),
             this.pushStack(Mr)
         }
     });
@@ -3337,8 +3337,8 @@ window.SWAM_version = "2.1030401",
         Cr
     }
     ;
-    var or = /\[\]$/
-      , ir = /\r?\n/g
+    var ir = /\[\]$/
+      , or = /\r?\n/g
       , sr = /^(?:submit|button|image|reset|file)$/i
       , dr = /^(?:input|select|textarea|keygen)/i;
     Vn.param = function(wr, Cr) {
@@ -3372,11 +3372,11 @@ window.SWAM_version = "2.1030401",
                 return null == Ar ? null : Array.isArray(Ar) ? Vn.map(Ar, function(Pr) {
                     return {
                         name: Cr.name,
-                        value: Pr.replace(ir, "\r\n")
+                        value: Pr.replace(or, "\r\n")
                     }
                 }) : {
                     name: Cr.name,
-                    value: Ar.replace(ir, "\r\n")
+                    value: Ar.replace(or, "\r\n")
                 }
             }).get()
         }
@@ -3439,90 +3439,90 @@ window.SWAM_version = "2.1030401",
         ajaxTransport: In(mr),
         ajax: function(wr, Cr) {
             function Ar(qr, Kr, Zr, Qr) {
-                var ao = Kr, Jr, $r, eo, to, no;
+                var ai = Kr, Jr, $r, ei, ti, ni;
                 Lr || (Lr = !0,
                 Dr && Bt.clearTimeout(Dr),
                 Pr = void 0,
                 Rr = Qr || "",
                 Vr.readyState = 0 < qr ? 4 : 0,
                 Jr = 200 <= qr && 300 > qr || 304 === qr,
-                Zr && (to = function(ro, oo, io) {
-                    for (var co = ro.contents, ho = ro.dataTypes, so, lo, uo, po; "*" === ho[0]; )
-                        ho.shift(),
-                        void 0 === so && (so = ro.mimeType || oo.getResponseHeader("Content-Type"));
-                    if (so)
-                        for (lo in co)
-                            if (co[lo] && co[lo].test(so)) {
-                                ho.unshift(lo);
+                Zr && (ti = function(ri, ii, oi) {
+                    for (var pi = ri.contents, ci = ri.dataTypes, si, di, li, ui; "*" === ci[0]; )
+                        ci.shift(),
+                        void 0 === si && (si = ri.mimeType || ii.getResponseHeader("Content-Type"));
+                    if (si)
+                        for (di in pi)
+                            if (pi[di] && pi[di].test(si)) {
+                                ci.unshift(di);
                                 break
                             }
-                    if (ho[0]in io)
-                        uo = ho[0];
+                    if (ci[0]in oi)
+                        li = ci[0];
                     else {
-                        for (lo in io) {
-                            if (!ho[0] || ro.converters[lo + " " + ho[0]]) {
-                                uo = lo;
+                        for (di in oi) {
+                            if (!ci[0] || ri.converters[di + " " + ci[0]]) {
+                                li = di;
                                 break
                             }
-                            po || (po = lo)
+                            ui || (ui = di)
                         }
-                        uo = uo || po
+                        li = li || ui
                     }
-                    return uo ? (uo !== ho[0] && ho.unshift(uo),
-                    io[uo]) : void 0
+                    return li ? (li !== ci[0] && ci.unshift(li),
+                    oi[li]) : void 0
                 }(Br, Vr, Zr)),
-                to = function(ro, oo, io, so) {
-                    var fo = {}, go = ro.dataTypes.slice(), lo, uo, po, co, ho;
-                    if (go[1])
-                        for (po in ro.converters)
-                            fo[po.toLowerCase()] = ro.converters[po];
-                    for (uo = go.shift(); uo; )
-                        if (ro.responseFields[uo] && (io[ro.responseFields[uo]] = oo),
-                        !ho && so && ro.dataFilter && (oo = ro.dataFilter(oo, ro.dataType)),
-                        ho = uo,
-                        uo = go.shift())
-                            if ("*" === uo)
-                                uo = ho;
-                            else if ("*" !== ho && ho !== uo) {
-                                if (!(po = fo[ho + " " + uo] || fo["* " + uo]))
-                                    for (lo in fo)
-                                        if ((co = lo.split(" "))[1] === uo && (po = fo[ho + " " + co[0]] || fo["* " + co[0]])) {
-                                            !0 === po ? po = fo[lo] : !0 !== fo[lo] && (uo = co[0],
-                                            go.unshift(co[1]));
+                ti = function(ri, ii, oi, si) {
+                    var hi = {}, fi = ri.dataTypes.slice(), di, li, ui, pi, ci;
+                    if (fi[1])
+                        for (ui in ri.converters)
+                            hi[ui.toLowerCase()] = ri.converters[ui];
+                    for (li = fi.shift(); li; )
+                        if (ri.responseFields[li] && (oi[ri.responseFields[li]] = ii),
+                        !ci && si && ri.dataFilter && (ii = ri.dataFilter(ii, ri.dataType)),
+                        ci = li,
+                        li = fi.shift())
+                            if ("*" === li)
+                                li = ci;
+                            else if ("*" !== ci && ci !== li) {
+                                if (!(ui = hi[ci + " " + li] || hi["* " + li]))
+                                    for (di in hi)
+                                        if ((pi = di.split(" "))[1] === li && (ui = hi[ci + " " + pi[0]] || hi["* " + pi[0]])) {
+                                            !0 === ui ? ui = hi[di] : !0 !== hi[di] && (li = pi[0],
+                                            fi.unshift(pi[1]));
                                             break
                                         }
-                                if (!0 !== po)
-                                    if (po && ro.throws)
-                                        oo = po(oo);
+                                if (!0 !== ui)
+                                    if (ui && ri.throws)
+                                        ii = ui(ii);
                                     else
                                         try {
-                                            oo = po(oo)
-                                        } catch (mo) {
+                                            ii = ui(ii)
+                                        } catch (gi) {
                                             return {
                                                 state: "parsererror",
-                                                error: po ? mo : "No conversion from " + ho + " to " + uo
+                                                error: ui ? gi : "No conversion from " + ci + " to " + li
                                             }
                                         }
                             }
                     return {
                         state: "success",
-                        data: oo
+                        data: ii
                     }
-                }(Br, to, Vr, Jr),
-                Jr ? (Br.ifModified && ((no = Vr.getResponseHeader("Last-Modified")) && (Vn.lastModified[Mr] = no),
-                (no = Vr.getResponseHeader("etag")) && (Vn.etag[Mr] = no)),
-                204 === qr || "HEAD" === Br.type ? ao = "nocontent" : 304 === qr ? ao = "notmodified" : (ao = to.state,
-                $r = to.data,
-                Jr = !(eo = to.error))) : (eo = ao,
-                !qr && ao || (ao = "error",
+                }(Br, ti, Vr, Jr),
+                Jr ? (Br.ifModified && ((ni = Vr.getResponseHeader("Last-Modified")) && (Vn.lastModified[Mr] = ni),
+                (ni = Vr.getResponseHeader("etag")) && (Vn.etag[Mr] = ni)),
+                204 === qr || "HEAD" === Br.type ? ai = "nocontent" : 304 === qr ? ai = "notmodified" : (ai = ti.state,
+                $r = ti.data,
+                Jr = !(ei = ti.error))) : (ei = ai,
+                !qr && ai || (ai = "error",
                 0 > qr && (qr = 0))),
                 Vr.status = qr,
-                Vr.statusText = (Kr || ao) + "",
-                Jr ? Gr.resolveWith(Ur, [$r, ao, Vr]) : Gr.rejectWith(Ur, [Vr, ao, eo]),
+                Vr.statusText = (Kr || ai) + "",
+                Jr ? Gr.resolveWith(Ur, [$r, ai, Vr]) : Gr.rejectWith(Ur, [Vr, ai, ei]),
                 Vr.statusCode(Yr),
                 Yr = void 0,
-                kr && Xr.trigger(Jr ? "ajaxSuccess" : "ajaxError", [Vr, Br, Jr ? $r : eo]),
-                Hr.fireWith(Ur, [Vr, ao]),
+                kr && Xr.trigger(Jr ? "ajaxSuccess" : "ajaxError", [Vr, Br, Jr ? $r : ei]),
+                Hr.fireWith(Ur, [Vr, ai]),
                 kr && (Xr.trigger("ajaxComplete", [Vr, Br]),
                 --Vn.active || Vn.event.trigger("ajaxStop")))
             }
@@ -30783,9 +30783,9 @@ function loadGameCode() {
             for (var Vt = 0, jt, zt; 40 > Vt; Vt++)
                 zt = 2 * (Vt / 40) * Math.PI,
                 jt = Tools.randInt(1, 16),
-                Ht.smoke.addParticle(Yt.SHOCKWAVE_SMOKE, "smoke_" + jt, Vector.create(zt, 8), Wt.clone(), Vector.diag(2), 0, .4, Tools.randCircle());
-            Ht.smoke.addParticle(Yt.SHOCKWAVE_INNER, "shockwave", Vector.zero(), Wt.clone(), Vector.zero(), 0, 0, -.35 + Math.PI),
-            Ht.smoke.addParticle(Yt.SHOCKWAVE_OUTER, "shockwave", Vector.zero(), Wt.clone(), Vector.zero(), 0, 0, -.35)
+                Ht.explosions.addParticle(Yt.SHOCKWAVE_SMOKE, "smoke_" + jt, Vector.create(zt, 8), Wt.clone(), Vector.diag(2), 0, .4, Tools.randCircle());
+            Ht.explosions.addParticle(Yt.SHOCKWAVE_INNER, "shockwave", Vector.zero(), Wt.clone(), Vector.zero(), 0, 0, -.35 + Math.PI),
+            Ht.explosions.addParticle(Yt.SHOCKWAVE_OUTER, "shockwave", Vector.zero(), Wt.clone(), Vector.zero(), 0, 0, -.35)
         }
         ,
         Particles.count = function() {
@@ -34335,6 +34335,12 @@ function SWAM() {
         SWAM.trigger("playerRespawn", Xt)) : Bt === Network.SERVERPACKET.PLAYER_UPDATE || Bt === Network.SERVERPACKET.PLAYER_FIRE || Bt === Network.SERVERPACKET.EVENT_BOOST || Bt === Network.SERVERPACKET.EVENT_BOUNCE ? AutoPilot && AutoPilot.mimicUpdate(Bt, Xt) : void 0
     }
     ;
+    let Players_stealth = Players.stealth;
+    Players.stealth = function(Bt) {
+        Players_stealth.call(Players, Bt),
+        AutoPilot && AutoPilot.mimicStealth(Bt)
+    }
+    ;
     let Players_kill = Players.kill;
     Players.kill = function(Bt) {
         var Xt = Players.get(Bt.id);
@@ -35616,8 +35622,12 @@ window.AutoPilot = {
             Bt.preventDefault()
         }
     },
-    lastkeys: {
-        boost: !1
+    lastState: {
+        boost: !1,
+        stealthed: !1,
+        strafe: !1,
+        flagspeed: !1,
+        keystate: {}
     },
     aligned: !1,
     mimicRotation: function(Bt) {
@@ -35625,37 +35635,55 @@ window.AutoPilot = {
             let Xt = Players.getMe()
               , Gt = Players.get(this.mimicTarget)
               , Ht = Xt.rot - Gt.rot;
-            !this.rotating && 0.2 < Math.abs(Ht) && (console.log(`rotating... delta: ${Ht}   me.rot: ${Xt.rot}   player.rot: ${Gt.rot}`),
+            !this.rotating && 0.1 < Math.abs(Ht) && (console.log(`rotating... delta: ${Ht}   me.rot: ${Xt.rot}   player.rot: ${Gt.rot}`),
             AutoPilot.rotateTo(Gt.rot, Xt, 250, function() {
                 AutoPilot.aligned = !0,
                 Bt && (AutoPilot.mimicPaused = !1)
             }))
         }
     },
-    mimicUpdate: function(Bt, Xt) {
-        function Gt(zt) {
-            AutoPilot.lastkeys[zt] != jt.keystate[zt] && (console.log("sending key: " + zt + " - " + jt.keystate[zt]),
-            Network.sendKey(zt, jt.keystate[zt]))
+    mimicStealth: function(Bt) {
+        Bt.id == game.myID || Bt.id != AutoPilot.mimicTarget || (Bt.state != this.lastState.stealthed && (Network.sendKey("SPECIAL", !0),
+        setTimeout(()=>{
+            Network.sendKey("SPECIAL", !1)
         }
+        , 250)),
+        this.lastState.stealthed = Bt.state)
+    },
+    mimicUpdate: function(Bt, Xt) {
+        function Gt(zt, Vt) {
+            AutoPilot.lastState.keystate[zt] != Vt[zt] && (console.log("sending key: " + zt + " - " + Vt[zt]),
+            Network.sendKey(zt, Vt[zt]))
+        }
+        function Ht() {
+            3 != jt.type && (Yt.strafe = !1);
+            let zt = Yt.strafe
+              , Vt = AutoPilot.lastState.strafe;
+            zt != Vt && Network.sendKey("SPECIAL", zt)
+        }
+        let Yt = {
+            keystate: {}
+        };
         if (Xt.id != game.myID && Xt.id == AutoPilot.mimicTarget && !AutoPilot.mimicPaused) {
-            let Yt = {};
-            if (Yt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
-            Yt[Network.SERVERPACKET.PLAYER_FIRE] = "fire",
-            Yt[Network.SERVERPACKET.EVENT_BOOST] = "boost",
-            Yt[Network.SERVERPACKET.EVENT_BOUNCE] = "bounce",
+            let Wt = {};
+            if (Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
+            Wt[Network.SERVERPACKET.PLAYER_FIRE] = "fire",
+            Wt[Network.SERVERPACKET.EVENT_BOOST] = "boost",
+            Wt[Network.SERVERPACKET.EVENT_BOUNCE] = "bounce",
             null == Xt.keystate)
-                return void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastkeys.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
-                AutoPilot.lastkeys.boost = Xt.boost));
-            let Wt = Players.getMe()
-              , jt = {
-                keystate: {}
-            };
-            Tools.decodeKeystate(jt, Xt.keystate),
-            Gt("UP"),
-            Gt("DOWN"),
-            Gt("LEFT"),
-            Gt("RIGHT"),
-            AutoPilot.lastkeys = $.extend(AutoPilot.lastkeys, jt.keystate)
+                return Bt == Network.SERVERPACKET.PLAYER_FIRE ? (Network.sendKey("FIRE", !0),
+                void setTimeout(function() {
+                    Network.sendKey("FIRE", !1)
+                }, 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
+                AutoPilot.lastState.boost = Xt.boost));
+            Players.getMe();
+            Tools.decodeKeystate(Yt, Xt.keystate),
+            Ht(),
+            null != Xt.keystate && (Gt("UP", Yt.keystate),
+            Gt("DOWN", Yt.keystate),
+            Gt("LEFT", Yt.keystate),
+            Gt("RIGHT", Yt.keystate)),
+            AutoPilot.lastkeys = $.extend(AutoPilot.lastState, Yt)
         }
     },
     debug: !1,
