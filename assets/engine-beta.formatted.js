@@ -135,7 +135,7 @@ window.SWAM_version = "2.1030401",
                     Vn.merge(Fr, Rr.nodeType ? [Rr] : Rr);
                 else if (Aa.test(Rr)) {
                     for (Ir = Ir || Nr.appendChild(Cr.createElement("div")),
-                    Dr = (Sa.exec(Rr) || ["", ""])[1].toLowerCase(),
+                    Dr = (Ea.exec(Rr) || ["", ""])[1].toLowerCase(),
                     Or = Ca[Dr] || Ca._default,
                     Ir.innerHTML = Or[1] + Vn.htmlPrefilter(Rr) + Or[2],
                     kr = Or[0]; kr--; )
@@ -226,7 +226,7 @@ window.SWAM_version = "2.1030401",
     }
     function hn(wr, Cr) {
         var Ar = Cr.nodeName.toLowerCase();
-        "input" === Ar && Ea.test(wr.type) ? Cr.checked = wr.checked : "input" !== Ar && "textarea" !== Ar || (Cr.defaultValue = wr.defaultValue)
+        "input" === Ar && Sa.test(wr.type) ? Cr.checked = wr.checked : "input" !== Ar && "textarea" !== Ar || (Cr.defaultValue = wr.defaultValue)
     }
     function fn(wr, Cr, Ar, Pr) {
         Cr = Bn.apply([], Cr);
@@ -315,11 +315,11 @@ window.SWAM_version = "2.1030401",
     function Tn(wr, Cr, Ar, Pr, Mr) {
         return new Tn.prototype.init(wr,Cr,Ar,Pr,Mr)
     }
-    function En() {
-        Va && (!1 === kn.hidden && Bt.requestAnimationFrame ? Bt.requestAnimationFrame(En) : Bt.setTimeout(En, Vn.fx.interval),
+    function Sn() {
+        Va && (!1 === kn.hidden && Bt.requestAnimationFrame ? Bt.requestAnimationFrame(Sn) : Bt.setTimeout(Sn, Vn.fx.interval),
         Vn.fx.tick())
     }
-    function Sn() {
+    function En() {
         return Bt.setTimeout(function() {
             za = void 0
         }),
@@ -345,7 +345,7 @@ window.SWAM_version = "2.1030401",
         }), Or = function() {
             if (Mr)
                 return !1;
-            for (var Nr = za || Sn(), Fr = Math.max(0, Lr.startTime + Lr.duration - Nr), Br = 1 - (Fr / Lr.duration || 0), Ur = 0, Xr = Lr.tweens.length; Ur < Xr; Ur++)
+            for (var Nr = za || En(), Fr = Math.max(0, Lr.startTime + Lr.duration - Nr), Br = 1 - (Fr / Lr.duration || 0), Ur = 0, Xr = Lr.tweens.length; Ur < Xr; Ur++)
                 Lr.tweens[Ur].run(Br);
             return Dr.notifyWith(wr, [Lr, Br, Fr]),
             1 > Br && Xr ? Fr : (Xr || Dr.notifyWith(wr, [Lr, 1, 0]),
@@ -360,7 +360,7 @@ window.SWAM_version = "2.1030401",
             }, Ar),
             originalProperties: Cr,
             originalOptions: Ar,
-            startTime: za || Sn(),
+            startTime: za || En(),
             duration: Ar.duration,
             tweens: [],
             createTween: function(Nr, Fr) {
@@ -842,7 +842,7 @@ window.SWAM_version = "2.1030401",
                         $o(null, hi = [], oi, ri)
                     }
                     for (ii = hi.length; ii--; )
-                        (si = hi[ii]) && -1 < (oi = $o ? So(ti, si) : di[ii]) && (ti[oi] = !(ni[oi] = si))
+                        (si = hi[ii]) && -1 < (oi = $o ? Eo(ti, si) : di[ii]) && (ti[oi] = !(ni[oi] = si))
                 }
             })
         }
@@ -850,7 +850,7 @@ window.SWAM_version = "2.1030401",
             for (var $o = Ko.length, ei = zr.relative[Ko[0].type], ti = ei || zr.relative[" "], ni = ei ? 1 : 0, ai = Ur(function(ii) {
                 return ii === Zo
             }, ti, !0), ri = Ur(function(ii) {
-                return -1 < So(Zo, ii)
+                return -1 < Eo(Zo, ii)
             }, ti, !0), oi = [function(ii, si, di) {
                 var li = !ei && (di || si !== Jr) || ((Zo = si).nodeType ? ai(ii, si, di) : ri(ii, si, di));
                 return Zo = null,
@@ -874,7 +874,7 @@ window.SWAM_version = "2.1030401",
         var uo = "sizzle" + 1 * new Date, po = wr.document, co = 0, ho = 0, fo = Ar(), go = Ar(), mo = Ar(), yo = function(Ko, Zo) {
             return Ko === Zo && (eo = !0),
             0
-        }, _o = {}.hasOwnProperty, bo = [], xo = bo.pop, vo = bo.push, To = bo.push, Eo = bo.slice, So = function(Ko, Zo) {
+        }, _o = {}.hasOwnProperty, bo = [], xo = bo.pop, vo = bo.push, To = bo.push, So = bo.slice, Eo = function(Ko, Zo) {
             for (var Qo = 0, Jo = Ko.length; Qo < Jo; Qo++)
                 if (Ko[Qo] === Zo)
                     return Qo;
@@ -902,12 +902,12 @@ window.SWAM_version = "2.1030401",
             next: "legend"
         }), Wr, jr, zr, Vr, qr, Kr, Zr, Qr, Jr, $r, eo, to, no, ao, ro, oo, io, so, lo;
         try {
-            To.apply(bo = Eo.call(po.childNodes), po.childNodes),
+            To.apply(bo = So.call(po.childNodes), po.childNodes),
             bo[po.childNodes.length].nodeType
         } catch (Ko) {
             To = {
                 apply: bo.length ? function(Zo, Qo) {
-                    vo.apply(Zo, Eo.call(Qo))
+                    vo.apply(Zo, So.call(Qo))
                 }
                 : function(Zo, Qo) {
                     for (var Jo = Zo.length, $o = 0; Zo[Jo++] = Qo[$o++]; )
@@ -1043,7 +1043,7 @@ window.SWAM_version = "2.1030401",
                     return eo = !0,
                     0;
                 var ti = !$o.compareDocumentPosition - !ei.compareDocumentPosition;
-                return ti || (1 & (ti = ($o.ownerDocument || $o) === (ei.ownerDocument || ei) ? $o.compareDocumentPosition(ei) : 1) || !jr.sortDetached && ei.compareDocumentPosition($o) === ti ? $o === no || $o.ownerDocument === po && lo(po, $o) ? -1 : ei === no || ei.ownerDocument === po && lo(po, ei) ? 1 : $r ? So($r, $o) - So($r, ei) : 0 : 4 & ti ? -1 : 1)
+                return ti || (1 & (ti = ($o.ownerDocument || $o) === (ei.ownerDocument || ei) ? $o.compareDocumentPosition(ei) : 1) || !jr.sortDetached && ei.compareDocumentPosition($o) === ti ? $o === no || $o.ownerDocument === po && lo(po, $o) ? -1 : ei === no || ei.ownerDocument === po && lo(po, ei) ? 1 : $r ? Eo($r, $o) - Eo($r, ei) : 0 : 4 & ti ? -1 : 1)
             }
             : function($o, ei) {
                 if ($o === ei)
@@ -1051,7 +1051,7 @@ window.SWAM_version = "2.1030401",
                     0;
                 var ni = 0, ai = $o.parentNode, ri = ei.parentNode, oi = [$o], ii = [ei], ti;
                 if (!ai || !ri)
-                    return $o === no ? -1 : ei === no ? 1 : ai ? -1 : ri ? 1 : $r ? So($r, $o) - So($r, ei) : 0;
+                    return $o === no ? -1 : ei === no ? 1 : ai ? -1 : ri ? 1 : $r ? Eo($r, $o) - Eo($r, ei) : 0;
                 if (ai === ri)
                     return Ir($o, ei);
                 for (ti = $o; ti = ti.parentNode; )
@@ -1239,7 +1239,7 @@ window.SWAM_version = "2.1030401",
                     return Jo[uo] ? Jo(Zo) : 1 < Jo.length ? (Qo = [Ko, Ko, "", Zo],
                     zr.setFilters.hasOwnProperty(Ko.toLowerCase()) ? Pr(function($o, ei) {
                         for (var ni = Jo($o, Zo), ai = ni.length, ti; ai--; )
-                            $o[ti = So($o, ni[ai])] = !(ei[ti] = ni[ai])
+                            $o[ti = Eo($o, ni[ai])] = !(ei[ti] = ni[ai])
                     }) : function($o) {
                         return Jo($o, 0, Qo)
                     }
@@ -2111,8 +2111,8 @@ window.SWAM_version = "2.1030401",
             })
         }
     });
-    var Ea = /^(?:checkbox|radio)$/i
-      , Sa = /<([a-z][^\/\0>\x20\t\r\n\f]+)/i
+    var Sa = /^(?:checkbox|radio)$/i
+      , Ea = /<([a-z][^\/\0>\x20\t\r\n\f]+)/i
       , wa = /^$|\/(?:java|ecma)script/i
       , Ca = {
         option: [1, "<select multiple='multiple'>", "</select>"],
@@ -2522,7 +2522,7 @@ window.SWAM_version = "2.1030401",
                   , Mr = this.length;
                 if (void 0 === Cr && 1 === Ar.nodeType)
                     return Ar.innerHTML;
-                if ("string" == typeof Cr && !Oa.test(Cr) && !Ca[(Sa.exec(Cr) || ["", ""])[1].toLowerCase()]) {
+                if ("string" == typeof Cr && !Oa.test(Cr) && !Ca[(Ea.exec(Cr) || ["", ""])[1].toLowerCase()]) {
                     Cr = Vn.htmlPrefilter(Cr);
                     try {
                         for (; Pr < Mr; Pr++)
@@ -2979,7 +2979,7 @@ window.SWAM_version = "2.1030401",
     Vn.fx.interval = 13,
     Vn.fx.start = function() {
         Va || (Va = !0,
-        En())
+        Sn())
     }
     ,
     Vn.fx.stop = function() {
@@ -3366,7 +3366,7 @@ window.SWAM_version = "2.1030401",
                 return wr ? Vn.makeArray(wr) : this
             }).filter(function() {
                 var wr = this.type;
-                return this.name && !Vn(this).is(":disabled") && dr.test(this.nodeName) && !sr.test(wr) && (this.checked || !Ea.test(wr))
+                return this.name && !Vn(this).is(":disabled") && dr.test(this.nodeName) && !sr.test(wr) && (this.checked || !Sa.test(wr))
             }).map(function(wr, Cr) {
                 var Ar = Vn(this).val();
                 return null == Ar ? null : Array.isArray(Ar) ? Vn.map(Ar, function(Pr) {
@@ -4023,11 +4023,11 @@ window.SWAM_version = "2.1030401",
     "function" == typeof define && define.amd && define("jquery", [], function() {
         return Vn
     });
-    var Er = Bt.jQuery
-      , Sr = Bt.$;
+    var Sr = Bt.jQuery
+      , Er = Bt.$;
     return Vn.noConflict = function(wr) {
-        return Bt.$ === Vn && (Bt.$ = Sr),
-        wr && Bt.jQuery === Vn && (Bt.jQuery = Er),
+        return Bt.$ === Vn && (Bt.$ = Er),
+        wr && Bt.jQuery === Vn && (Bt.jQuery = Sr),
         Vn
     }
     ,
@@ -4717,12 +4717,12 @@ function Bt(Xt, Gt, Ht) {
                     function(bn, xn) {
                         var vn = Vt.scrollTop
                           , Tn = Vt.scrollLeft
-                          , En = Math.abs(bn)
-                          , Sn = Math.abs(xn);
-                        if (Sn > En) {
+                          , Sn = Math.abs(bn)
+                          , En = Math.abs(xn);
+                        if (En > Sn) {
                             if (0 > xn && vn === qt.contentHeight - qt.containerHeight || 0 < xn && 0 === vn)
                                 return !qt.settings.swipePropagation;
-                        } else if (En > Sn && (0 > bn && Tn === qt.contentWidth - qt.containerWidth || 0 < bn && 0 === Tn))
+                        } else if (Sn > En && (0 > bn && Tn === qt.contentWidth - qt.containerWidth || 0 < bn && 0 === Tn))
                             return !qt.settings.swipePropagation;
                         return !0
                     }(gn, mn) && (cn.stopPropagation(),
@@ -5247,13 +5247,13 @@ function(Bt) {
                 if (!un)
                     return pn;
                 var cn, hn, fn, gn, mn, yn, _n;
-                if (dn && (un = function(xn, vn, Tn, En) {
-                    var Mn = [], Sn, wn, Cn, An, Pn;
-                    for (Sn = 0,
-                    wn = vn.length; Sn < wn; Sn++)
-                        Cn = vn[Sn] * En,
-                        An = Sn < wn - 1 ? vn[Sn + 1] * En : xn.length,
-                        (Pn = Yt(xn, Cn, An, En, !1)) === Pn.next && (Pn.steiner = !0),
+                if (dn && (un = function(xn, vn, Tn, Sn) {
+                    var Mn = [], En, wn, Cn, An, Pn;
+                    for (En = 0,
+                    wn = vn.length; En < wn; En++)
+                        Cn = vn[En] * Sn,
+                        An = En < wn - 1 ? vn[En + 1] * Sn : xn.length,
+                        (Pn = Yt(xn, Cn, An, Sn, !1)) === Pn.next && (Pn.steiner = !0),
                         Mn.push(function(Rn) {
                             var In = Rn
                               , Dn = Rn;
@@ -5263,7 +5263,7 @@ function(Bt) {
                             while (In !== Rn);return Dn
                         }(Pn));
                     for (Mn.sort(zt),
-                    Sn = 0; Sn < Mn.length; Sn++)
+                    En = 0; En < Mn.length; En++)
                         !function(Rn, In) {
                             if (In = function(On, Ln) {
                                 var Nn = Ln, Fn = On.x, Bn = On.y, Un = -1 / 0, kn;
@@ -5296,7 +5296,7 @@ function(Bt) {
                                 var Dn = $t(In, Rn);
                                 Wt(Dn, Dn.next)
                             }
-                        }(Mn[Sn], Tn),
+                        }(Mn[En], Tn),
                         Tn = Wt(Tn, Tn.next);
                     return Tn
                 }(rn, on, un, sn)),
@@ -5356,32 +5356,32 @@ function(Bt) {
                         while (bn !== gn);bn.prevZ.nextZ = null,
                         bn.prevZ = null,
                         function(xn) {
-                            var Mn = 1, vn, Tn, En, Sn, wn, Cn, An, Pn;
+                            var Mn = 1, vn, Tn, Sn, En, wn, Cn, An, Pn;
                             do {
                                 for (Tn = xn,
                                 xn = null,
                                 wn = null,
                                 Cn = 0; Tn; ) {
                                     for (Cn++,
-                                    En = Tn,
+                                    Sn = Tn,
                                     An = 0,
                                     vn = 0; vn < Mn && (An++,
-                                    En = En.nextZ); vn++)
+                                    Sn = Sn.nextZ); vn++)
                                         ;
-                                    for (Pn = Mn; 0 < An || 0 < Pn && En; )
-                                        0 === An ? (Sn = En,
-                                        En = En.nextZ,
-                                        Pn--) : 0 !== Pn && En ? Tn.z <= En.z ? (Sn = Tn,
+                                    for (Pn = Mn; 0 < An || 0 < Pn && Sn; )
+                                        0 === An ? (En = Sn,
+                                        Sn = Sn.nextZ,
+                                        Pn--) : 0 !== Pn && Sn ? Tn.z <= Sn.z ? (En = Tn,
                                         Tn = Tn.nextZ,
-                                        An--) : (Sn = En,
-                                        En = En.nextZ,
-                                        Pn--) : (Sn = Tn,
+                                        An--) : (En = Sn,
+                                        Sn = Sn.nextZ,
+                                        Pn--) : (En = Tn,
                                         Tn = Tn.nextZ,
                                         An--),
-                                        wn ? wn.nextZ = Sn : xn = Sn,
-                                        Sn.prevZ = wn,
-                                        wn = Sn;
-                                    Tn = En
+                                        wn ? wn.nextZ = En : xn = En,
+                                        En.prevZ = wn,
+                                        wn = En;
+                                    Tn = Sn
                                 }
                                 wn.nextZ = null,
                                 Mn *= 2
@@ -5397,7 +5397,7 @@ function(Bt) {
                               , vn = gn.next;
                             if (0 <= Kt(bn, xn, vn))
                                 return !1;
-                            for (var Tn = bn.x < xn.x ? bn.x < vn.x ? bn.x : vn.x : xn.x < vn.x ? xn.x : vn.x, En = bn.y < xn.y ? bn.y < vn.y ? bn.y : vn.y : xn.y < vn.y ? xn.y : vn.y, Sn = bn.x > xn.x ? bn.x > vn.x ? bn.x : vn.x : xn.x > vn.x ? xn.x : vn.x, wn = bn.y > xn.y ? bn.y > vn.y ? bn.y : vn.y : xn.y > vn.y ? xn.y : vn.y, Cn = Vt(Tn, En, mn, yn, _n), An = Vt(Sn, wn, mn, yn, _n), Pn = gn.nextZ; Pn && Pn.z <= An; ) {
+                            for (var Tn = bn.x < xn.x ? bn.x < vn.x ? bn.x : vn.x : xn.x < vn.x ? xn.x : vn.x, Sn = bn.y < xn.y ? bn.y < vn.y ? bn.y : vn.y : xn.y < vn.y ? xn.y : vn.y, En = bn.x > xn.x ? bn.x > vn.x ? bn.x : vn.x : xn.x > vn.x ? xn.x : vn.x, wn = bn.y > xn.y ? bn.y > vn.y ? bn.y : vn.y : xn.y > vn.y ? xn.y : vn.y, Cn = Vt(Tn, Sn, mn, yn, _n), An = Vt(En, wn, mn, yn, _n), Pn = gn.nextZ; Pn && Pn.z <= An; ) {
                                 if (Pn !== gn.prev && Pn !== gn.next && qt(bn.x, bn.y, xn.x, xn.y, vn.x, vn.y, Pn.x, Pn.y) && 0 <= Kt(Pn.prev, Pn, Pn.next))
                                     return !1;
                                 Pn = Pn.nextZ
@@ -5445,15 +5445,15 @@ function(Bt) {
                                 var vn = gn;
                                 do {
                                     for (var Tn = vn.next.next; Tn !== vn.prev; ) {
-                                        if (vn.i !== Tn.i && function(Sn, wn) {
-                                            return Sn.next.i !== wn.i && Sn.prev.i !== wn.i && !function(Cn, An) {
+                                        if (vn.i !== Tn.i && function(En, wn) {
+                                            return En.next.i !== wn.i && En.prev.i !== wn.i && !function(Cn, An) {
                                                 var Pn = Cn;
                                                 do {
                                                     if (Pn.i !== Cn.i && Pn.next.i !== Cn.i && Pn.i !== An.i && Pn.next.i !== An.i && Qt(Pn, Pn.next, Cn, An))
                                                         return !0;
                                                     Pn = Pn.next
                                                 } while (Pn !== Cn);return !1
-                                            }(Sn, wn) && Jt(Sn, wn) && Jt(wn, Sn) && function(Cn, An) {
+                                            }(En, wn) && Jt(En, wn) && Jt(wn, En) && function(Cn, An) {
                                                 var Pn = Cn
                                                   , Mn = !1
                                                   , Rn = (Cn.x + An.x) / 2
@@ -5462,13 +5462,13 @@ function(Bt) {
                                                     Pn.y > In != Pn.next.y > In && Rn < (Pn.next.x - Pn.x) * (In - Pn.y) / (Pn.next.y - Pn.y) + Pn.x && (Mn = !Mn),
                                                     Pn = Pn.next;
                                                 while (Pn !== Cn);return Mn
-                                            }(Sn, wn)
+                                            }(En, wn)
                                         }(vn, Tn)) {
-                                            var En = $t(vn, Tn);
+                                            var Sn = $t(vn, Tn);
                                             return vn = Wt(vn, vn.next),
-                                            En = Wt(En, En.next),
+                                            Sn = Wt(Sn, Sn.next),
                                             jt(vn, mn, yn, _n, bn, xn),
-                                            void jt(En, mn, yn, _n, bn, xn)
+                                            void jt(Sn, mn, yn, _n, bn, xn)
                                         }
                                         Tn = Tn.next
                                     }
@@ -6788,52 +6788,52 @@ function(Bt) {
                     function Wt(Tn) {
                         throw new RangeError(_n[Tn])
                     }
-                    function jt(Tn, En) {
-                        for (var Sn = Tn.length, wn = []; Sn--; )
-                            wn[Sn] = En(Tn[Sn]);
+                    function jt(Tn, Sn) {
+                        for (var En = Tn.length, wn = []; En--; )
+                            wn[En] = Sn(Tn[En]);
                         return wn
                     }
-                    function zt(Tn, En) {
-                        var Sn = Tn.split("@")
+                    function zt(Tn, Sn) {
+                        var En = Tn.split("@")
                           , wn = "";
-                        return 1 < Sn.length && (wn = Sn[0] + "@",
-                        Tn = Sn[1]),
-                        wn + jt((Tn = Tn.replace(yn, ".")).split("."), En).join(".")
+                        return 1 < En.length && (wn = En[0] + "@",
+                        Tn = En[1]),
+                        wn + jt((Tn = Tn.replace(yn, ".")).split("."), Sn).join(".")
                     }
                     function Vt(Tn) {
-                        for (var wn = [], Cn = 0, An = Tn.length, En, Sn; Cn < An; )
-                            55296 <= (En = Tn.charCodeAt(Cn++)) && 56319 >= En && Cn < An ? 56320 == (64512 & (Sn = Tn.charCodeAt(Cn++))) ? wn.push(((1023 & En) << 10) + (1023 & Sn) + 65536) : (wn.push(En),
-                            Cn--) : wn.push(En);
+                        for (var wn = [], Cn = 0, An = Tn.length, Sn, En; Cn < An; )
+                            55296 <= (Sn = Tn.charCodeAt(Cn++)) && 56319 >= Sn && Cn < An ? 56320 == (64512 & (En = Tn.charCodeAt(Cn++))) ? wn.push(((1023 & Sn) << 10) + (1023 & En) + 65536) : (wn.push(Sn),
+                            Cn--) : wn.push(Sn);
                         return wn
                     }
                     function qt(Tn) {
-                        return jt(Tn, function(En) {
-                            var Sn = "";
-                            return 65535 < En && (Sn += vn(55296 | 1023 & (En -= 65536) >>> 10),
-                            En = 56320 | 1023 & En),
-                            Sn += vn(En)
+                        return jt(Tn, function(Sn) {
+                            var En = "";
+                            return 65535 < Sn && (En += vn(55296 | 1023 & (Sn -= 65536) >>> 10),
+                            Sn = 56320 | 1023 & Sn),
+                            En += vn(Sn)
                         }).join("")
                     }
                     function Kt(Tn) {
                         return 10 > Tn - 48 ? Tn - 22 : 26 > Tn - 65 ? Tn - 65 : 26 > Tn - 97 ? Tn - 97 : sn
                     }
-                    function Zt(Tn, En) {
-                        return Tn + 22 + 75 * (26 > Tn) - ((0 != En) << 5)
+                    function Zt(Tn, Sn) {
+                        return Tn + 22 + 75 * (26 > Tn) - ((0 != Sn) << 5)
                     }
-                    function Qt(Tn, En, Sn) {
+                    function Qt(Tn, Sn, En) {
                         var wn = 0;
-                        for (Tn = Sn ? xn(Tn / 700) : Tn >> 1,
-                        Tn += xn(Tn / En); Tn > bn * ln >> 1; wn += sn)
+                        for (Tn = En ? xn(Tn / 700) : Tn >> 1,
+                        Tn += xn(Tn / Sn); Tn > bn * ln >> 1; wn += sn)
                             Tn = xn(Tn / bn);
                         return xn(wn + (bn + 1) * Tn / (Tn + 38))
                     }
                     function Jt(Tn) {
-                        var On = [], Ln = Tn.length, kn = 0, Nn = hn, Fn = cn, En, Sn, wn, Cn, An, Pn, Mn, Rn, In, Dn;
-                        for (0 > (Sn = Tn.lastIndexOf(fn)) && (Sn = 0),
-                        wn = 0; wn < Sn; ++wn)
+                        var On = [], Ln = Tn.length, kn = 0, Nn = hn, Fn = cn, Sn, En, wn, Cn, An, Pn, Mn, Rn, In, Dn;
+                        for (0 > (En = Tn.lastIndexOf(fn)) && (En = 0),
+                        wn = 0; wn < En; ++wn)
                             128 <= Tn.charCodeAt(wn) && Wt("not-basic"),
                             On.push(Tn.charCodeAt(wn));
-                        for (Cn = 0 < Sn ? Sn + 1 : 0; Cn < Ln; ) {
+                        for (Cn = 0 < En ? En + 1 : 0; Cn < Ln; ) {
                             for (An = kn,
                             Pn = 1,
                             Mn = sn; Cn >= Ln && Wt("invalid-input"),
@@ -6843,19 +6843,19 @@ function(Bt) {
                             !(Rn < In); Mn += sn)
                                 Pn > xn(on / (Dn = sn - In)) && Wt("overflow"),
                                 Pn *= Dn;
-                            Fn = Qt(kn - An, En = On.length + 1, 0 == An),
-                            xn(kn / En) > on - Nn && Wt("overflow"),
-                            Nn += xn(kn / En),
-                            kn %= En,
+                            Fn = Qt(kn - An, Sn = On.length + 1, 0 == An),
+                            xn(kn / Sn) > on - Nn && Wt("overflow"),
+                            Nn += xn(kn / Sn),
+                            kn %= Sn,
                             On.splice(kn++, 0, Nn)
                         }
                         return qt(On)
                     }
                     function $t(Tn) {
-                        var Bn = [], En, Sn, wn, Cn, An, Pn, Mn, Rn, In, Dn, On, Ln, kn, Nn, Fn;
+                        var Bn = [], Sn, En, wn, Cn, An, Pn, Mn, Rn, In, Dn, On, Ln, kn, Nn, Fn;
                         for (Ln = (Tn = Vt(Tn)).length,
-                        En = hn,
-                        Sn = 0,
+                        Sn = hn,
+                        En = 0,
                         An = cn,
                         Pn = 0; Pn < Ln; ++Pn)
                             128 > (On = Tn[Pn]) && Bn.push(vn(On));
@@ -6863,14 +6863,14 @@ function(Bt) {
                         Cn && Bn.push(fn); wn < Ln; ) {
                             for (Mn = on,
                             Pn = 0; Pn < Ln; ++Pn)
-                                (On = Tn[Pn]) >= En && On < Mn && (Mn = On);
-                            for (Mn - En > xn((on - Sn) / (kn = wn + 1)) && Wt("overflow"),
-                            Sn += (Mn - En) * kn,
-                            En = Mn,
+                                (On = Tn[Pn]) >= Sn && On < Mn && (Mn = On);
+                            for (Mn - Sn > xn((on - En) / (kn = wn + 1)) && Wt("overflow"),
+                            En += (Mn - Sn) * kn,
+                            Sn = Mn,
                             Pn = 0; Pn < Ln; ++Pn)
-                                if ((On = Tn[Pn]) < En && ++Sn > on && Wt("overflow"),
-                                On == En) {
-                                    for (Rn = Sn,
+                                if ((On = Tn[Pn]) < Sn && ++En > on && Wt("overflow"),
+                                On == Sn) {
+                                    for (Rn = En,
                                     In = sn; Dn = In <= An ? dn : In >= An + ln ? ln : In - An,
                                     !(Rn < Dn); In += sn)
                                         Fn = Rn - Dn,
@@ -6878,12 +6878,12 @@ function(Bt) {
                                         Bn.push(vn(Zt(Dn + Fn % Nn, 0))),
                                         Rn = xn(Fn / Nn);
                                     Bn.push(vn(Zt(Rn, 0))),
-                                    An = Qt(Sn, kn, wn == Cn),
-                                    Sn = 0,
+                                    An = Qt(En, kn, wn == Cn),
+                                    En = 0,
                                     ++wn
                                 }
-                            ++Sn,
-                            ++En
+                            ++En,
+                            ++Sn
                         }
                         return Bn.join("")
                     }
@@ -6905,13 +6905,13 @@ function(Bt) {
                         decode: Jt,
                         encode: $t,
                         toASCII: function(Tn) {
-                            return zt(Tn, function(En) {
-                                return mn.test(En) ? "xn--" + $t(En) : En
+                            return zt(Tn, function(Sn) {
+                                return mn.test(Sn) ? "xn--" + $t(Sn) : Sn
                             })
                         },
                         toUnicode: function(Tn) {
-                            return zt(Tn, function(En) {
-                                return gn.test(En) ? Jt(En.slice(4).toLowerCase()) : En
+                            return zt(Tn, function(Sn) {
+                                return gn.test(Sn) ? Jt(Sn.slice(4).toLowerCase()) : Sn
                             })
                         }
                     },
@@ -7130,15 +7130,15 @@ function(Bt) {
                     this.hostname = this.hostname || "";
                     var Tn = "[" === this.hostname[0] && "]" === this.hostname[this.hostname.length - 1];
                     if (!Tn)
-                        for (var En = this.hostname.split(/\./), Sn = (_n = 0,
-                        En.length), wn; _n < Sn; _n++)
-                            if (wn = En[_n],
+                        for (var Sn = this.hostname.split(/\./), En = (_n = 0,
+                        Sn.length), wn; _n < En; _n++)
+                            if (wn = Sn[_n],
                             wn && !wn.match($t)) {
                                 for (var Cn = "", An = 0, Pn = wn.length; An < Pn; An++)
                                     Cn += 127 < wn.charCodeAt(An) ? "x" : wn[An];
                                 if (!Cn.match($t)) {
-                                    var Mn = En.slice(0, _n)
-                                      , Rn = En.slice(_n + 1)
+                                    var Mn = Sn.slice(0, _n)
+                                      , Rn = Sn.slice(_n + 1)
                                       , In = wn.match(en);
                                     In && (Mn.push(In[1]),
                                     Rn.unshift(In[2])),
@@ -7158,7 +7158,7 @@ function(Bt) {
                 }
                 if (!tn[gn])
                     for (_n = 0,
-                    Sn = Zt.length; _n < Sn; _n++) {
+                    En = Zt.length; _n < En; _n++) {
                         var Ln = Zt[_n];
                         if (-1 !== cn.indexOf(Ln)) {
                             var kn = encodeURIComponent(Ln);
@@ -7273,8 +7273,8 @@ function(Bt) {
                 }
                 var vn = dn.pathname && "/" === dn.pathname.charAt(0)
                   , Tn = on.host || on.pathname && "/" === on.pathname.charAt(0)
-                  , En = Tn || vn || dn.host && on.pathname
-                  , Sn = En
+                  , Sn = Tn || vn || dn.host && on.pathname
+                  , En = Sn
                   , wn = dn.pathname && dn.pathname.split("/") || []
                   , Cn = (_n = on.pathname && on.pathname.split("/") || [],
                 dn.protocol && !an[dn.protocol]);
@@ -7286,7 +7286,7 @@ function(Bt) {
                 on.port = null,
                 on.host && ("" === _n[0] ? _n[0] = on.host : _n.unshift(on.host)),
                 on.host = null),
-                En = En && ("" === _n[0] || "" === wn[0])),
+                Sn = Sn && ("" === _n[0] || "" === wn[0])),
                 Tn)
                     dn.host = on.host || "" === on.host ? on.host : dn.host,
                     dn.hostname = on.hostname || "" === on.hostname ? on.hostname : dn.hostname,
@@ -7317,10 +7317,10 @@ function(Bt) {
                     "." === (An = wn[Rn]) ? wn.splice(Rn, 1) : ".." === An ? (wn.splice(Rn, 1),
                     Mn++) : Mn && (wn.splice(Rn, 1),
                     Mn--);
-                if (!En && !Sn)
+                if (!Sn && !En)
                     for (; Mn--; Mn)
                         wn.unshift("..");
-                !En || "" === wn[0] || wn[0] && "/" === wn[0].charAt(0) || wn.unshift(""),
+                !Sn || "" === wn[0] || wn[0] && "/" === wn[0].charAt(0) || wn.unshift(""),
                 Pn && "/" !== wn.join("/").substr(-1) && wn.push("");
                 var In = "" === wn[0] || wn[0] && "/" === wn[0].charAt(0);
                 if (Cn) {
@@ -7329,7 +7329,7 @@ function(Bt) {
                     (Dn = !!(dn.host && 0 < dn.host.indexOf("@")) && dn.host.split("@")) && (dn.auth = Dn.shift(),
                     dn.host = dn.hostname = Dn.shift())
                 }
-                return (En = En || dn.host && wn.length) && !In && wn.unshift(""),
+                return (Sn = Sn || dn.host && wn.length) && !In && wn.unshift(""),
                 wn.length ? dn.pathname = wn.join("/") : (dn.pathname = null,
                 dn.path = null),
                 jt.isNull(dn.pathname) && jt.isNull(dn.search) || (dn.path = (dn.pathname ? dn.pathname : "") + (dn.search ? dn.search : "")),
@@ -10063,15 +10063,15 @@ function(Bt) {
                     else {
                         var vn = mn * mn + yn * yn
                           , Tn = _n * _n + bn * bn
-                          , En = mn * _n + yn * bn
-                          , Sn = hn * Math.sqrt(vn) / xn
+                          , Sn = mn * _n + yn * bn
+                          , En = hn * Math.sqrt(vn) / xn
                           , wn = hn * Math.sqrt(Tn) / xn
-                          , Cn = Sn * En / vn
-                          , An = wn * En / Tn
-                          , Pn = Sn * bn + wn * yn
-                          , Mn = Sn * _n + wn * mn
+                          , Cn = En * Sn / vn
+                          , An = wn * Sn / Tn
+                          , Pn = En * bn + wn * yn
+                          , Mn = En * _n + wn * mn
                           , Ln = Math.atan2(mn * (wn + Cn) - Mn, yn * (wn + Cn) - Pn)
-                          , kn = Math.atan2(_n * (Sn + An) - Mn, bn * (Sn + An) - Pn);
+                          , kn = Math.atan2(_n * (En + An) - Mn, bn * (En + An) - Pn);
                         this.arc(Pn + ln, Mn + un, hn, Ln, kn, yn * _n > bn * mn)
                     }
                     return this.dirty++,
@@ -10092,11 +10092,11 @@ function(Bt) {
                       , bn = this.currentPath ? this.currentPath.shape.points : null;
                     bn ? bn[bn.length - 2] === yn && bn[bn.length - 1] === _n || bn.push(yn, _n) : (this.moveTo(yn, _n),
                     bn = this.currentPath.shape.points);
-                    for (var xn = gn / (2 * mn), Tn = Math.cos(xn), En = Math.sin(xn), Sn = mn - 1, Cn = 0; Cn <= Sn; ++Cn) {
-                        var An = xn + cn + 2 * xn * (Cn + Sn % 1 / Sn * Cn)
+                    for (var xn = gn / (2 * mn), Tn = Math.cos(xn), Sn = Math.sin(xn), En = mn - 1, Cn = 0; Cn <= En; ++Cn) {
+                        var An = xn + cn + 2 * xn * (Cn + En % 1 / En * Cn)
                           , Pn = Math.cos(An)
                           , Mn = -Math.sin(An);
-                        bn.push((Tn * Pn + En * Mn) * pn + ln, (Tn * -Mn + En * Pn) * pn + un)
+                        bn.push((Tn * Pn + Sn * Mn) * pn + ln, (Tn * -Mn + Sn * Pn) * pn + un)
                     }
                     return this.dirty++,
                     this
@@ -10275,17 +10275,17 @@ function(Bt) {
                                 pn = gn - yn < pn ? gn - yn : pn,
                                 cn = gn + yn > cn ? gn + yn : cn;
                             else
-                                for (var Tn = hn.points, En = 0, Sn = 0, wn = 0, Cn = 0, An = 0, Pn = 0, Mn = 0, Rn = 0, In = 0; In + 2 < Tn.length; In += 2)
+                                for (var Tn = hn.points, Sn = 0, En = 0, wn = 0, Cn = 0, An = 0, Pn = 0, Mn = 0, Rn = 0, In = 0; In + 2 < Tn.length; In += 2)
                                     fn = Tn[In],
                                     gn = Tn[In + 1],
-                                    En = Tn[In + 2],
-                                    Sn = Tn[In + 3],
-                                    wn = Math.abs(En - fn),
-                                    Cn = Math.abs(Sn - gn),
+                                    Sn = Tn[In + 2],
+                                    En = Tn[In + 3],
+                                    wn = Math.abs(Sn - fn),
+                                    Cn = Math.abs(En - gn),
                                     yn = vn,
                                     1e-9 > (mn = Math.sqrt(wn * wn + Cn * Cn)) || (Pn = (yn / mn * wn + Cn) / 2,
-                                    Rn = (Sn + gn) / 2,
-                                    ln = (Mn = (En + fn) / 2) - (An = (yn / mn * Cn + wn) / 2) < ln ? Mn - An : ln,
+                                    Rn = (En + gn) / 2,
+                                    ln = (Mn = (Sn + fn) / 2) - (An = (yn / mn * Cn + wn) / 2) < ln ? Mn - An : ln,
                                     un = Mn + An > un ? Mn + An : un,
                                     pn = Rn - Pn < pn ? Rn - Pn : pn,
                                     cn = Rn + Pn > cn ? Rn + Pn : cn)
@@ -10929,10 +10929,10 @@ function(Bt) {
                           , xn = 0
                           , vn = 0
                           , Tn = 0
-                          , En = 0
-                          , Sn = Math.sqrt(_n * _n + bn * bn);
-                        _n /= Sn,
-                        bn /= Sn,
+                          , Sn = 0
+                          , En = Math.sqrt(_n * _n + bn * bn);
+                        _n /= En,
+                        bn /= En,
                         _n *= on,
                         bn *= on,
                         en.push(cn - _n, hn - bn, ln, un, pn, dn),
@@ -10946,14 +10946,14 @@ function(Bt) {
                             yn = Kt[2 * (wn + 1) + 1],
                             _n = -(hn - gn),
                             bn = cn - fn,
-                            _n /= Sn = Math.sqrt(_n * _n + bn * bn),
-                            bn /= Sn,
+                            _n /= En = Math.sqrt(_n * _n + bn * bn),
+                            bn /= En,
                             _n *= on,
                             bn *= on,
                             xn = -(gn - yn),
                             vn = fn - mn,
-                            xn /= Sn = Math.sqrt(xn * xn + vn * vn),
-                            vn /= Sn;
+                            xn /= En = Math.sqrt(xn * xn + vn * vn),
+                            vn /= En;
                             var Cn = -bn + hn - (-bn + gn)
                               , An = -_n + fn - (-_n + cn)
                               , Pn = (-_n + cn) * (-bn + gn) - (-_n + fn) * (-bn + hn)
@@ -10969,16 +10969,16 @@ function(Bt) {
                                 var On = (An * In - Rn * Pn) / Dn
                                   , Ln = (Mn * Pn - Cn * In) / Dn;
                                 (On - fn) * (On - fn) + (Ln - gn) * (Ln - gn) > 196 * on * on ? (Tn = _n - xn,
-                                En = bn - vn,
-                                Tn /= Sn = Math.sqrt(Tn * Tn + En * En),
-                                En /= Sn,
+                                Sn = bn - vn,
+                                Tn /= En = Math.sqrt(Tn * Tn + Sn * Sn),
+                                Sn /= En,
                                 Tn *= on,
-                                En *= on,
-                                en.push(fn - Tn, gn - En),
+                                Sn *= on,
+                                en.push(fn - Tn, gn - Sn),
                                 en.push(ln, un, pn, dn),
-                                en.push(fn + Tn, gn + En),
+                                en.push(fn + Tn, gn + Sn),
                                 en.push(ln, un, pn, dn),
-                                en.push(fn - Tn, gn - En),
+                                en.push(fn - Tn, gn - Sn),
                                 en.push(ln, un, pn, dn),
                                 an++) : (en.push(On, Ln),
                                 en.push(ln, un, pn, dn),
@@ -10991,8 +10991,8 @@ function(Bt) {
                         fn = Kt[2 * (nn - 1)],
                         _n = -(hn - (gn = Kt[2 * (nn - 1) + 1])),
                         bn = cn - fn,
-                        _n /= Sn = Math.sqrt(_n * _n + bn * bn),
-                        bn /= Sn,
+                        _n /= En = Math.sqrt(_n * _n + bn * bn),
+                        bn /= En,
                         _n *= on,
                         bn *= on,
                         en.push(fn - _n, gn - bn),
@@ -11422,18 +11422,18 @@ function(Bt) {
                     return Yt(Tn).default
                 }
             });
-            var En = Bt("./renderers/webgl/utils/Quad");
+            var Sn = Bt("./renderers/webgl/utils/Quad");
             Object.defineProperty(Gt, "Quad", {
                 enumerable: !0,
                 get: function() {
-                    return Yt(En).default
+                    return Yt(Sn).default
                 }
             });
-            var Sn = Bt("./renderers/webgl/filters/spriteMask/SpriteMaskFilter");
+            var En = Bt("./renderers/webgl/filters/spriteMask/SpriteMaskFilter");
             Object.defineProperty(Gt, "SpriteMaskFilter", {
                 enumerable: !0,
                 get: function() {
-                    return Yt(Sn).default
+                    return Yt(En).default
                 }
             });
             var wn = Bt("./renderers/webgl/filters/Filter");
@@ -15182,7 +15182,7 @@ function(Bt) {
                 ,
                 an.prototype.flush = function() {
                     if (0 !== this.currentIndex) {
-                        var rn = this.renderer.gl, on = this.MAX_TEXTURES, sn = Jt.default.nextPow2(this.currentIndex), dn = Jt.default.log2(sn), ln = this.buffers[dn], un = this.sprites, pn = this.groups, cn = ln.float32View, hn = ln.uint32View, fn = this.boundTextures, gn = this.renderer.boundTextures, mn = this.renderer.textureGC.count, yn = 0, _n, bn, xn = 1, vn = 0, Tn = pn[0], En, Sn, wn = Zt.premultiplyBlendMode[un[0]._texture.baseTexture.premultipliedAlpha ? 1 : 0][un[0].blendMode];
+                        var rn = this.renderer.gl, on = this.MAX_TEXTURES, sn = Jt.default.nextPow2(this.currentIndex), dn = Jt.default.log2(sn), ln = this.buffers[dn], un = this.sprites, pn = this.groups, cn = ln.float32View, hn = ln.uint32View, fn = this.boundTextures, gn = this.renderer.boundTextures, mn = this.renderer.textureGC.count, yn = 0, _n, bn, xn = 1, vn = 0, Tn = pn[0], Sn, En, wn = Zt.premultiplyBlendMode[un[0]._texture.baseTexture.premultipliedAlpha ? 1 : 0][un[0].blendMode];
                         Tn.textureCount = 0,
                         Tn.start = 0,
                         Tn.blend = wn,
@@ -15225,31 +15225,31 @@ function(Bt) {
                                 Tn.ids[vn] = _n._virtalBoundId,
                                 Tn.textures[vn++] = _n
                             }
-                            if (En = An.vertexData,
-                            Sn = An._texture._uvs.uvsUint32,
+                            if (Sn = An.vertexData,
+                            En = An._texture._uvs.uvsUint32,
                             this.renderer.roundPixels) {
                                 var Dn = this.renderer.resolution;
-                                cn[yn] = (0 | En[0] * Dn) / Dn,
-                                cn[yn + 1] = (0 | En[1] * Dn) / Dn,
-                                cn[yn + 5] = (0 | En[2] * Dn) / Dn,
-                                cn[yn + 6] = (0 | En[3] * Dn) / Dn,
-                                cn[yn + 10] = (0 | En[4] * Dn) / Dn,
-                                cn[yn + 11] = (0 | En[5] * Dn) / Dn,
-                                cn[yn + 15] = (0 | En[6] * Dn) / Dn,
-                                cn[yn + 16] = (0 | En[7] * Dn) / Dn
+                                cn[yn] = (0 | Sn[0] * Dn) / Dn,
+                                cn[yn + 1] = (0 | Sn[1] * Dn) / Dn,
+                                cn[yn + 5] = (0 | Sn[2] * Dn) / Dn,
+                                cn[yn + 6] = (0 | Sn[3] * Dn) / Dn,
+                                cn[yn + 10] = (0 | Sn[4] * Dn) / Dn,
+                                cn[yn + 11] = (0 | Sn[5] * Dn) / Dn,
+                                cn[yn + 15] = (0 | Sn[6] * Dn) / Dn,
+                                cn[yn + 16] = (0 | Sn[7] * Dn) / Dn
                             } else
-                                cn[yn] = En[0],
-                                cn[yn + 1] = En[1],
-                                cn[yn + 5] = En[2],
-                                cn[yn + 6] = En[3],
-                                cn[yn + 10] = En[4],
-                                cn[yn + 11] = En[5],
-                                cn[yn + 15] = En[6],
-                                cn[yn + 16] = En[7];
-                            hn[yn + 2] = Sn[0],
-                            hn[yn + 7] = Sn[1],
-                            hn[yn + 12] = Sn[2],
-                            hn[yn + 17] = Sn[3];
+                                cn[yn] = Sn[0],
+                                cn[yn + 1] = Sn[1],
+                                cn[yn + 5] = Sn[2],
+                                cn[yn + 6] = Sn[3],
+                                cn[yn + 10] = Sn[4],
+                                cn[yn + 11] = Sn[5],
+                                cn[yn + 15] = Sn[6],
+                                cn[yn + 16] = Sn[7];
+                            hn[yn + 2] = En[0],
+                            hn[yn + 7] = En[1],
+                            hn[yn + 12] = En[2],
+                            hn[yn + 17] = En[3];
                             var On = Math.min(An.worldAlpha, 1)
                               , Ln = 1 > On && _n.premultipliedAlpha ? (0,
                             Zt.premultiplyTint)(An._tintRGB, On) : An._tintRGB + (255 * On << 24);
@@ -22358,16 +22358,16 @@ function(Bt) {
                               , xn = (cn + hn + fn) / 3
                               , vn = (gn + mn + yn) / 3
                               , Tn = cn - xn
-                              , En = gn - vn
-                              , Sn = Math.sqrt(Tn * Tn + En * En);
-                            cn = xn + Tn / Sn * (Sn + _n),
-                            gn = vn + En / Sn * (Sn + bn),
-                            En = mn - vn,
-                            hn = xn + (Tn = hn - xn) / (Sn = Math.sqrt(Tn * Tn + En * En)) * (Sn + _n),
-                            mn = vn + En / Sn * (Sn + bn),
-                            En = yn - vn,
-                            fn = xn + (Tn = fn - xn) / (Sn = Math.sqrt(Tn * Tn + En * En)) * (Sn + _n),
-                            yn = vn + En / Sn * (Sn + bn)
+                              , Sn = gn - vn
+                              , En = Math.sqrt(Tn * Tn + Sn * Sn);
+                            cn = xn + Tn / En * (En + _n),
+                            gn = vn + Sn / En * (En + bn),
+                            Sn = mn - vn,
+                            hn = xn + (Tn = hn - xn) / (En = Math.sqrt(Tn * Tn + Sn * Sn)) * (En + _n),
+                            mn = vn + Sn / En * (En + bn),
+                            Sn = yn - vn,
+                            fn = xn + (Tn = fn - xn) / (En = Math.sqrt(Tn * Tn + Sn * Sn)) * (En + _n),
+                            yn = vn + Sn / En * (En + bn)
                         }
                         Zt.save(),
                         Zt.beginPath(),
@@ -27955,9 +27955,9 @@ function loadGameCode() {
                         -1 != Vt) {
                             rn(vn);
                             var Tn = game.timeNetwork
-                              , En = vn - Vt - (Tn - qt)
-                              , Sn = En - (Kt = .8 * Kt + En / 5);
-                            100 > Math.abs(Sn) && (game.jitter = Sn)
+                              , Sn = vn - Vt - (Tn - qt)
+                              , En = Sn - (Kt = .8 * Kt + Sn / 5);
+                            100 > Math.abs(En) && (game.jitter = En)
                         }
                     }(bn.clock / 100)
                 } else
@@ -28202,14 +28202,14 @@ function loadGameCode() {
             }
         }
           , un = function(bn) {
-            var Tn = 1, En = [], Sn = mn[bn.c], vn;
-            if (null == Sn)
+            var Tn = 1, Sn = [], En = mn[bn.c], vn;
+            if (null == En)
                 return null;
-            for (vn = 0; vn < Sn.length; vn++)
-                switch (Sn[vn][1]) {
+            for (vn = 0; vn < En.length; vn++)
+                switch (En[vn][1]) {
                 case fn.text:
-                    var wn = Tools.encodeUTF8(bn[Sn[vn][0]]);
-                    En.push(wn),
+                    var wn = Tools.encodeUTF8(bn[En[vn][0]]);
+                    Sn.push(wn),
                     Tn += 1 + wn.length;
                     break;
                 case fn.array:
@@ -28236,15 +28236,15 @@ function loadGameCode() {
               , Pn = 0
               , Mn = 1;
             for (An.setUint8(0, bn.c, !0),
-            vn = 0; vn < Sn.length; vn++)
-                switch (Sn[vn][1]) {
+            vn = 0; vn < En.length; vn++)
+                switch (En[vn][1]) {
                 case fn.text:
-                    var Rn = En[Pn].length;
+                    var Rn = Sn[Pn].length;
                     An.setUint8(Mn, Rn, !0),
                     Mn += 1;
                     for (var In = 0; In < Rn; In++)
-                        An.setUint8(Mn + In, En[Pn][In], !0);
-                    En[Pn],
+                        An.setUint8(Mn + In, Sn[Pn][In], !0);
+                    Sn[Pn],
                     Pn++,
                     Mn += Rn;
                     break;
@@ -28252,27 +28252,27 @@ function loadGameCode() {
                 case fn.arraysmall:
                     break;
                 case fn.uint8:
-                    An.setUint8(Mn, bn[Sn[vn][0]], !0),
+                    An.setUint8(Mn, bn[En[vn][0]], !0),
                     Mn += 1;
                     break;
                 case fn.uint16:
-                    An.setUint16(Mn, bn[Sn[vn][0]], !0),
+                    An.setUint16(Mn, bn[En[vn][0]], !0),
                     Mn += 2;
                     break;
                 case fn.uint32:
-                    An.setUint32(Mn, bn[Sn[vn][0]], !0),
+                    An.setUint32(Mn, bn[En[vn][0]], !0),
                     Mn += 4;
                     break;
                 case fn.float32:
-                    An.setFloat32(Mn, bn[Sn[vn][0]], !0),
+                    An.setFloat32(Mn, bn[En[vn][0]], !0),
                     Mn += 4;
                     break;
                 case fn.float64:
-                    An.setFloat64(Mn, bn[Sn[vn][0]], !0),
+                    An.setFloat64(Mn, bn[En[vn][0]], !0),
                     Mn += 8;
                     break;
                 case fn.boolean:
-                    An.setUint8(Mn, !1 === bn[Sn[vn][0]] ? 0 : 1),
+                    An.setUint8(Mn, !1 === bn[En[vn][0]] ? 0 : 1),
                     Mn += 1;
                 }
             return Cn
@@ -28282,182 +28282,182 @@ function loadGameCode() {
               , Tn = {
                 c: vn.getUint8(0, !0)
             }
-              , En = 1
-              , Sn = _n[Tn.c];
-            if (null == Sn)
+              , Sn = 1
+              , En = _n[Tn.c];
+            if (null == En)
                 return null;
-            for (var wn = 0, Cn; wn < Sn.length; wn++)
-                switch (Cn = Sn[wn][0],
-                Sn[wn][1]) {
+            for (var wn = 0, Cn; wn < En.length; wn++)
+                switch (Cn = En[wn][0],
+                En[wn][1]) {
                 case fn.text:
                 case fn.textbig:
-                    if (Sn[wn][1] == fn.text) {
-                        var An = vn.getUint8(En, !0);
-                        En += 1
+                    if (En[wn][1] == fn.text) {
+                        var An = vn.getUint8(Sn, !0);
+                        Sn += 1
                     } else
-                        An = vn.getUint16(En, !0),
-                        En += 2;
+                        An = vn.getUint16(Sn, !0),
+                        Sn += 2;
                     for (var Pn = new Uint8Array(An), Mn = 0; Mn < An; Mn++)
-                        Pn[Mn] = vn.getUint8(En + Mn, !0);
+                        Pn[Mn] = vn.getUint8(Sn + Mn, !0);
                     var Rn = Tools.decodeUTF8(Pn);
                     Tn[Cn] = Rn,
-                    En += An;
+                    Sn += An;
                     break;
                 case fn.array:
                 case fn.arraysmall:
-                    if (Sn[wn][1] == fn.arraysmall) {
-                        var In = vn.getUint8(En, !0);
-                        En += 1
+                    if (En[wn][1] == fn.arraysmall) {
+                        var In = vn.getUint8(Sn, !0);
+                        Sn += 1
                     } else
-                        In = vn.getUint16(En, !0),
-                        En += 2;
+                        In = vn.getUint16(Sn, !0),
+                        Sn += 2;
                     Tn[Cn] = [];
-                    for (var Dn = Sn[wn][2], On = 0; On < In; On++) {
+                    for (var Dn = En[wn][2], On = 0; On < In; On++) {
                         for (var Ln = {}, kn = 0, Nn; kn < Dn.length; kn++)
                             switch (Nn = Dn[kn][0],
                             Dn[kn][1]) {
                             case fn.text:
                             case fn.textbig:
-                                for (Dn[kn][1] == fn.text ? (An = vn.getUint8(En, !0),
-                                En += 1) : (An = vn.getUint16(En, !0),
-                                En += 2),
+                                for (Dn[kn][1] == fn.text ? (An = vn.getUint8(Sn, !0),
+                                Sn += 1) : (An = vn.getUint16(Sn, !0),
+                                Sn += 2),
                                 Pn = new Uint8Array(An),
                                 Mn = 0; Mn < An; Mn++)
-                                    Pn[Mn] = vn.getUint8(En + Mn, !0);
+                                    Pn[Mn] = vn.getUint8(Sn + Mn, !0);
                                 Rn = Tools.decodeUTF8(Pn),
                                 Ln[Nn] = Rn,
-                                En += An;
+                                Sn += An;
                                 break;
                             case fn.uint8:
-                                Ln[Nn] = vn.getUint8(En, !0),
-                                En += 1;
+                                Ln[Nn] = vn.getUint8(Sn, !0),
+                                Sn += 1;
                                 break;
                             case fn.uint16:
-                                Ln[Nn] = vn.getUint16(En, !0),
-                                En += 2;
+                                Ln[Nn] = vn.getUint16(Sn, !0),
+                                Sn += 2;
                                 break;
                             case fn.uint24:
-                                var Fn = 256 * vn.getUint16(En, !0);
-                                En += 2,
-                                Tn[Nn] = Fn + vn.getUint8(En, !0),
-                                En += 1;
+                                var Fn = 256 * vn.getUint16(Sn, !0);
+                                Sn += 2,
+                                Tn[Nn] = Fn + vn.getUint8(Sn, !0),
+                                Sn += 1;
                                 break;
                             case fn.uint32:
-                                Ln[Nn] = vn.getUint32(En, !0),
-                                En += 4;
+                                Ln[Nn] = vn.getUint32(Sn, !0),
+                                Sn += 4;
                                 break;
                             case fn.float32:
-                                Ln[Nn] = vn.getFloat32(En, !0),
-                                En += 4;
+                                Ln[Nn] = vn.getFloat32(Sn, !0),
+                                Sn += 4;
                                 break;
                             case fn.float64:
-                                Ln[Nn] = vn.getFloat64(En, !0),
-                                En += 8;
+                                Ln[Nn] = vn.getFloat64(Sn, !0),
+                                Sn += 8;
                                 break;
                             case fn.boolean:
-                                Ln[Nn] = 0 != vn.getUint8(En, !0),
-                                En += 1;
+                                Ln[Nn] = 0 != vn.getUint8(Sn, !0),
+                                Sn += 1;
                                 break;
                             case fn.speed:
-                                Ln[Nn] = Tools.decodeSpeed(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeSpeed(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.accel:
-                                Ln[Nn] = Tools.decodeAccel(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeAccel(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.coordx:
-                                Ln[Nn] = Tools.decodeCoordX(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeCoordX(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.coordy:
-                                Ln[Nn] = Tools.decodeCoordY(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeCoordY(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.coord24:
-                                Fn = 256 * vn.getUint16(En, !0),
-                                En += 2,
-                                Tn[Nn] = Tools.decodeCoord24(Fn + vn.getUint8(En, !0)),
-                                En += 1;
+                                Fn = 256 * vn.getUint16(Sn, !0),
+                                Sn += 2,
+                                Tn[Nn] = Tools.decodeCoord24(Fn + vn.getUint8(Sn, !0)),
+                                Sn += 1;
                                 break;
                             case fn.rotation:
-                                Ln[Nn] = Tools.decodeRotation(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeRotation(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.regen:
-                                Ln[Nn] = Tools.decodeRegen(vn.getUint16(En, !0)),
-                                En += 2;
+                                Ln[Nn] = Tools.decodeRegen(vn.getUint16(Sn, !0)),
+                                Sn += 2;
                                 break;
                             case fn.healthnergy:
-                                Ln[Nn] = Tools.decodeHealthnergy(vn.getUint8(En, !0)),
-                                En += 1;
+                                Ln[Nn] = Tools.decodeHealthnergy(vn.getUint8(Sn, !0)),
+                                Sn += 1;
                             }
                         Tn[Cn].push(Ln)
                     }
                     break;
                 case fn.uint8:
-                    Tn[Cn] = vn.getUint8(En, !0),
-                    En += 1;
+                    Tn[Cn] = vn.getUint8(Sn, !0),
+                    Sn += 1;
                     break;
                 case fn.uint16:
-                    Tn[Cn] = vn.getUint16(En, !0),
-                    En += 2;
+                    Tn[Cn] = vn.getUint16(Sn, !0),
+                    Sn += 2;
                     break;
                 case fn.uint24:
-                    Fn = 256 * vn.getUint16(En, !0),
-                    En += 2,
-                    Tn[Cn] = Fn + vn.getUint8(En, !0),
-                    En += 1;
+                    Fn = 256 * vn.getUint16(Sn, !0),
+                    Sn += 2,
+                    Tn[Cn] = Fn + vn.getUint8(Sn, !0),
+                    Sn += 1;
                     break;
                 case fn.uint32:
-                    Tn[Cn] = vn.getUint32(En, !0),
-                    En += 4;
+                    Tn[Cn] = vn.getUint32(Sn, !0),
+                    Sn += 4;
                     break;
                 case fn.float32:
-                    Tn[Cn] = vn.getFloat32(En, !0),
-                    En += 4;
+                    Tn[Cn] = vn.getFloat32(Sn, !0),
+                    Sn += 4;
                     break;
                 case fn.float64:
-                    Tn[Cn] = vn.getFloat64(En, !0),
-                    En += 8;
+                    Tn[Cn] = vn.getFloat64(Sn, !0),
+                    Sn += 8;
                     break;
                 case fn.boolean:
-                    Tn[Cn] = 0 != vn.getUint8(En, !0),
-                    En += 1;
+                    Tn[Cn] = 0 != vn.getUint8(Sn, !0),
+                    Sn += 1;
                     break;
                 case fn.speed:
-                    Tn[Cn] = Tools.decodeSpeed(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeSpeed(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.accel:
-                    Tn[Cn] = Tools.decodeAccel(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeAccel(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.coordx:
-                    Tn[Cn] = Tools.decodeCoordX(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeCoordX(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.coordy:
-                    Tn[Cn] = Tools.decodeCoordY(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeCoordY(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.coord24:
-                    Fn = 256 * vn.getUint16(En, !0),
-                    En += 2,
-                    Tn[Cn] = Tools.decodeCoord24(Fn + vn.getUint8(En, !0)),
-                    En += 1;
+                    Fn = 256 * vn.getUint16(Sn, !0),
+                    Sn += 2,
+                    Tn[Cn] = Tools.decodeCoord24(Fn + vn.getUint8(Sn, !0)),
+                    Sn += 1;
                     break;
                 case fn.rotation:
-                    Tn[Cn] = Tools.decodeRotation(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeRotation(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.regen:
-                    Tn[Cn] = Tools.decodeRegen(vn.getUint16(En, !0)),
-                    En += 2;
+                    Tn[Cn] = Tools.decodeRegen(vn.getUint16(Sn, !0)),
+                    Sn += 2;
                     break;
                 case fn.healthnergy:
-                    Tn[Cn] = Tools.decodeHealthnergy(vn.getUint8(En, !0)),
-                    En += 1;
+                    Tn[Cn] = Tools.decodeHealthnergy(vn.getUint8(Sn, !0)),
+                    Sn += 1;
                     break;
                 default:
                     return null;
@@ -28833,13 +28833,13 @@ function loadGameCode() {
                 null != Qt && gn(Tn))
                     vn.preventDefault();
                 else {
-                    var En = Input.getBind(Tn);
+                    var Sn = Input.getBind(Tn);
                     if (!cn(Tn))
-                        return null == tn[En] ? (Yt[Tn] || (Yt[Tn] = !0,
-                        UI.controlKey(Tn, En, !0)),
+                        return null == tn[Sn] ? (Yt[Tn] || (Yt[Tn] = !0,
+                        UI.controlKey(Tn, Sn, !0)),
                         vn.preventDefault(),
-                        !1) : (Gt[En] || (Gt[En] = !0,
-                        bn(En)),
+                        !1) : (Gt[Sn] || (Gt[Sn] = !0,
+                        bn(Sn)),
                         Ht[Tn] || (Ht[Tn] = !0),
                         vn.preventDefault(),
                         !1)
@@ -28849,11 +28849,11 @@ function loadGameCode() {
           , pn = function(vn) {
             if (game.state == Network.STATE.PLAYING || game.state == Network.STATE.CONNECTING) {
                 var Tn = vn.which
-                  , En = Input.getBind(Tn);
-                if (null == tn[En] && Yt[Tn] && (Yt[Tn] = !1),
+                  , Sn = Input.getBind(Tn);
+                if (null == tn[Sn] && Yt[Tn] && (Yt[Tn] = !1),
                 !cn(Tn))
-                    return Gt[En] && (Gt[En] = !1,
-                    xn(En)),
+                    return Gt[Sn] && (Gt[Sn] = !1,
+                    xn(Sn)),
                     Ht[Tn] && (Ht[Tn] = !1),
                     vn.preventDefault(),
                     !1
@@ -28884,9 +28884,9 @@ function loadGameCode() {
             return null == Tn ? null : Tn
         }
         ,
-        Input.bindKey = function(vn, Tn, En) {
+        Input.bindKey = function(vn, Tn, Sn) {
             null == Qt && (Qt = Tn,
-            Jt = En,
+            Jt = Sn,
             $(vn.target).html("press key"))
         }
         ,
@@ -28911,21 +28911,21 @@ function loadGameCode() {
             var Tn = on[vn];
             if (27 == vn && (Tn = ""),
             null != Tn) {
-                for (var En in $t)
-                    $t[En][0] == Tn && ($t[En][0] = ""),
-                    1 < $t[En].length && $t[En][1] == Tn && ($t[En][1] = "");
-                for (En in $t[Qt][Jt] = Tn,
+                for (var Sn in $t)
+                    $t[Sn][0] == Tn && ($t[Sn][0] = ""),
+                    1 < $t[Sn].length && $t[Sn][1] == Tn && ($t[Sn][1] = "");
+                for (Sn in $t[Qt][Jt] = Tn,
                 $t)
-                    1 < $t[En].length && "" == $t[En][0] && "" != $t[En][1] && ($t[En] = [$t[En][1]]),
-                    2 == $t[En].length && "" === $t[En][1] && $t[En].splice(-1, 1);
+                    1 < $t[Sn].length && "" == $t[Sn][0] && "" != $t[Sn][1] && ($t[Sn] = [$t[Sn][1]]),
+                    2 == $t[Sn].length && "" === $t[Sn][1] && $t[Sn].splice(-1, 1);
                 return mn(),
                 function() {
-                    var Sn = {}
+                    var En = {}
                       , wn = "";
                     for (var Cn in $t)
-                        null != en[Cn] && (wn = JSON.stringify($t[Cn])) !== JSON.stringify(en[Cn]) && (Sn[Cn] = JSON.parse(wn));
-                    0 < Object.keys(Sn).length ? Tools.setSettings({
-                        keybinds: Sn
+                        null != en[Cn] && (wn = JSON.stringify($t[Cn])) !== JSON.stringify(en[Cn]) && (En[Cn] = JSON.parse(wn));
+                    0 < Object.keys(En).length ? Tools.setSettings({
+                        keybinds: En
                     }) : Tools.removeSetting("keybinds")
                 }(),
                 Qt = null,
@@ -28935,15 +28935,15 @@ function loadGameCode() {
         }
           , mn = function(vn) {
             var Tn = ""
-              , En = ""
               , Sn = ""
+              , En = ""
               , wn = null;
             Tn += "<div class=\"left-binds\">";
             for (var Cn = 0; Cn < rn.length; Cn++)
-                null != rn[Cn][0] && ("" == rn[Cn][0] ? Tn += "<div class=\"item empty\"></div>" : (null == (wn = $t[rn[Cn][1]]) ? (En = "&nbsp;",
-                Sn = "&nbsp;") : ("" == (En = wn[0]) && (En = "&nbsp;"),
-                "" == (Sn = 1 == wn.length ? "" : wn[1]) && (Sn = "&nbsp;")),
-                Tn += "<div class=\"item\"><div class=\"name\">" + rn[Cn][0] + "</div><div class=\"bind" + ("&nbsp;" == En ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',0)\">" + En + "</div><div class=\"bind" + ("&nbsp;" == Sn ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',1)\">" + Sn + "</div></div>",
+                null != rn[Cn][0] && ("" == rn[Cn][0] ? Tn += "<div class=\"item empty\"></div>" : (null == (wn = $t[rn[Cn][1]]) ? (Sn = "&nbsp;",
+                En = "&nbsp;") : ("" == (Sn = wn[0]) && (Sn = "&nbsp;"),
+                "" == (En = 1 == wn.length ? "" : wn[1]) && (En = "&nbsp;")),
+                Tn += "<div class=\"item\"><div class=\"name\">" + rn[Cn][0] + "</div><div class=\"bind" + ("&nbsp;" == Sn ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',0)\">" + Sn + "</div><div class=\"bind" + ("&nbsp;" == En ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',1)\">" + En + "</div></div>",
                 13 == Cn && (Tn += "</div><div class=\"right-binds\">")));
             Tn += "</div>",
             null == vn && $("#keybinds-list").html(Tn),
@@ -28975,16 +28975,16 @@ function loadGameCode() {
                 if (null != vn && null != vn.length && 0 != vn.length && null != vn[0]) {
                     var Tn = vn[0];
                     if (!(16 > Tn.buttons.length)) {
-                        var En = Tn.buttons[12].pressed
-                          , Sn = Tn.buttons[13].pressed
+                        var Sn = Tn.buttons[12].pressed
+                          , En = Tn.buttons[13].pressed
                           , wn = Tn.buttons[15].pressed
                           , Cn = Tn.buttons[14].pressed
                           , An = Tn.buttons[0].pressed || Tn.buttons[2].pressed
                           , Pn = Tn.buttons[1].pressed || Tn.buttons[3].pressed;
-                        Kt.up != En && (yn("UP", En),
-                        Kt.up = En),
-                        Kt.down != Sn && (yn("DOWN", Sn),
-                        Kt.down = Sn),
+                        Kt.up != Sn && (yn("UP", Sn),
+                        Kt.up = Sn),
+                        Kt.down != En && (yn("DOWN", En),
+                        Kt.down = En),
                         Kt.right != wn && (yn("RIGHT", wn),
                         Kt.right = wn),
                         Kt.left != Cn && (yn("LEFT", Cn),
@@ -28998,7 +28998,7 @@ function loadGameCode() {
                           , In = -Mn.angle() + Math.PI / 2
                           , Dn = In = (In % zt + zt) % zt;
                         .2 < Rn ? (Kt.forward = !0,
-                        _n(Dn, Rn)) : (Kt.forward && !En && yn("UP", !1),
+                        _n(Dn, Rn)) : (Kt.forward && !Sn && yn("UP", !1),
                         Kt.forward = !1)
                     }
                 } else
@@ -29023,8 +29023,8 @@ function loadGameCode() {
                         Gt[Tn] = !1,
                         xn(Tn)
                     }
-                for (var En in Ht)
-                    vn && (38 == En || 40 == En || 37 == En || 39 == En) || (Ht[En] = !1)
+                for (var Sn in Ht)
+                    vn && (38 == Sn || 40 == Sn || 37 == Sn || 39 == Sn) || (Ht[Sn] = !1)
             }
         }
         ,
@@ -29120,8 +29120,8 @@ function loadGameCode() {
         Input.mouseDown = function(vn) {
             var Tn = vn.originalEvent;
             if ((0 == Tn.button || 2 == Tn.button) && null != Tn.target.tagName && "canvas" == Tn.target.tagName.toLowerCase()) {
-                var En = 0 == Tn.button ? "FIRE" : "SPECIAL";
-                yn(En, !0),
+                var Sn = 0 == Tn.button ? "FIRE" : "SPECIAL";
+                yn(Sn, !0),
                 vn.preventDefault()
             }
         }
@@ -29130,8 +29130,8 @@ function loadGameCode() {
             var Tn = vn.originalEvent;
             if (0 == Tn.button || 2 == Tn.button)
                 if (null != Tn.target.tagName && "canvas" == Tn.target.tagName.toLowerCase()) {
-                    var En = 0 == Tn.button ? "FIRE" : "SPECIAL";
-                    yn(En, !1),
+                    var Sn = 0 == Tn.button ? "FIRE" : "SPECIAL";
+                    yn(Sn, !1),
                     vn.preventDefault()
                 } else
                     yn("FIRE", !1),
@@ -29143,17 +29143,17 @@ function loadGameCode() {
             Gt[vn] = Tn)
         }
           , _n = function(vn, Tn) {
-            var En = Players.getMe();
-            if (null != En) {
-                var Sn = vn - En.rot;
-                Sn > Math.PI && (Sn -= 2 * Math.PI),
-                Sn < -Math.PI && (Sn += 2 * Math.PI);
-                var wn = Math.round(1e3 * (Math.abs(Sn) / (60 * config.ships[En.type].turnFactor)));
+            var Sn = Players.getMe();
+            if (null != Sn) {
+                var En = vn - Sn.rot;
+                En > Math.PI && (En -= 2 * Math.PI),
+                En < -Math.PI && (En += 2 * Math.PI);
+                var wn = Math.round(1e3 * (Math.abs(En) / (60 * config.ships[Sn.type].turnFactor)));
                 if (!(10 > (wn -= Math.round(game.ping)) || 100 > game.time - jt)) {
                     null != Wt && clearTimeout(Wt),
                     jt = game.time;
-                    var Cn = 0 < Sn ? "RIGHT" : "LEFT"
-                      , An = 0 >= Sn ? "RIGHT" : "LEFT";
+                    var Cn = 0 < En ? "RIGHT" : "LEFT"
+                      , An = 0 >= En ? "RIGHT" : "LEFT";
                     yn("UP", !(null != Tn && .5 > Tn)),
                     yn(Cn, !0),
                     yn(An, !1),
@@ -29164,9 +29164,9 @@ function loadGameCode() {
             }
         };
         Input.touchMove = function(vn, Tn) {
-            var En = -Tn.angle.radian + Math.PI / 2
-              , Sn = En = (En % zt + zt) % zt;
-            _n(Sn, Tn.force)
+            var Sn = -Tn.angle.radian + Math.PI / 2
+              , En = Sn = (Sn % zt + zt) % zt;
+            _n(En, Tn.force)
         }
         ,
         Input.touchEnd = function() {
@@ -30995,7 +30995,7 @@ function loadGameCode() {
             "<span id=\"alert-update\" class=\"" + Nn + "\">" + Fn + Math.abs(On) + "</span>"
         }
         ;
-        var En = function(On) {
+        var Sn = function(On) {
             On.sprite.position.set(game.screenX - config.minimapPaddingX - config.minimapSize * ((16384 - On.x) / 32768), game.screenY - config.minimapPaddingY - config.minimapSize / 2 * ((8192 - On.y) / 16384))
         };
         UI.wipeAllMinimapMobs = function() {
@@ -31070,7 +31070,7 @@ function loadGameCode() {
                     y: Vn.y
                 }) : (Gt[Ln[Qn].id].x = Vn.x,
                 Gt[Ln[Qn].id].y = Vn.y),
-                En(Gt[Ln[Qn].id])));
+                Sn(Gt[Ln[Qn].id])));
             for (var Jn in Gt)
                 null == Wn[Jn] && (game.graphics.layers.ui1.removeChild(Gt[Jn].sprite),
                 Gt[Jn].sprite.destroy(),
@@ -31094,7 +31094,7 @@ function loadGameCode() {
                 2 == game.gameType && (qn = " team-" + Fn.team),
                 Kn = "",
                 4 == (Bn + "").length && (Kn = " bigger"),
-                Yn += "<div class=\"line" + Un + "\" player-id=\"" + Fn.id + "\"><span class=\"place" + Kn + "\">" + Bn + "</span><span class=\"flag small flag-" + Fn.flag + "\"></span><span class=\"nick" + qn + "\">" + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</span>" + (0 == Gn ? "" : "<span class=\"holder\">&nbsp;<span class=\"rank\">" + Gn + "</span></span>") + "<span class=\"score\">" + Sn(Xn) + "</span></div>",
+                Yn += "<div class=\"line" + Un + "\" player-id=\"" + Fn.id + "\"><span class=\"place" + Kn + "\">" + Bn + "</span><span class=\"flag small flag-" + Fn.flag + "\"></span><span class=\"nick" + qn + "\">" + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</span>" + (0 == Gn ? "" : "<span class=\"holder\">&nbsp;<span class=\"rank\">" + Gn + "</span></span>") + "<span class=\"score\">" + En(Xn) + "</span></div>",
                 !jn)); Qn++)
                     ;
                 $("#scoreboard").html(Yn),
@@ -31103,7 +31103,7 @@ function loadGameCode() {
             SWAM && SWAM.OnScoreboardUpdate(On, Ln, kn)
         }
         ;
-        var Sn = function(On) {
+        var En = function(On) {
             var Ln = "";
             On += "";
             for (var kn = 0; kn < On.length; kn++)
@@ -31278,7 +31278,7 @@ function loadGameCode() {
             game.graphics.gui.minimap.position.set(game.screenX - config.minimapPaddingX, game.screenY - config.minimapPaddingY),
             game.graphics.gui.minimap_box.scale.set(.03 + 2 * config.minimapSize * (game.screenX / game.scale / 32768) / 64, .03 + config.minimapSize * (game.screenY / game.scale / 16384) / 64),
             Gt)
-                En(Gt[On]);
+                Sn(Gt[On]);
             Games.update(!0)
         }
         ,
@@ -32132,23 +32132,23 @@ function loadGameCode() {
             4: "Flag Pack #1"
         };
         Games.setup = function() {
-            $("#playregion").on("click", function(Sn) {
-                Games.updateRegion(!0, Sn)
+            $("#playregion").on("click", function(En) {
+                Games.updateRegion(!0, En)
             }),
-            $("#playtype").on("click", function(Sn) {
-                Games.updateType(!0, Sn)
+            $("#playtype").on("click", function(En) {
+                Games.updateType(!0, En)
             }),
-            $("#open-menu").on("click", function(Sn) {
+            $("#open-menu").on("click", function(En) {
                 Games.popGames(),
-                Sn.stopPropagation()
+                En.stopPropagation()
             }),
-            $("#gameselector").on("click", function(Sn) {
-                Sn.stopPropagation()
+            $("#gameselector").on("click", function(En) {
+                En.stopPropagation()
             }),
             $("#invite-copy").on("click", Games.copyInviteLink),
-            $("#loginbutton").on("click", function(Sn) {
+            $("#loginbutton").on("click", function(En) {
                 UI.openLogin(),
-                Sn.stopPropagation()
+                En.stopPropagation()
             }),
             $("#login-facebook").on("click", function() {
                 Games.popupLogin(1)
@@ -32165,8 +32165,8 @@ function loadGameCode() {
             $("#login-twitch").on("click", function() {
                 Games.popupLogin(5)
             }),
-            $("#loginselector").on("click", function(Sn) {
-                Sn.stopPropagation()
+            $("#loginselector").on("click", function(En) {
+                En.stopPropagation()
             }),
             $("#gotomainpage").on("click", Games.redirRoot),
             $("#lifetime-signin").on("click", Games.redirRoot),
@@ -32185,21 +32185,21 @@ function loadGameCode() {
             }, !0)
         }
         ,
-        Games.popupLogin = function(Sn) {
-            ln("/auth_" + ["", "facebook", "google", "twitter", "reddit", "twitch"][Sn], "Login", 4 == Sn ? 900 : 500, 500)
+        Games.popupLogin = function(En) {
+            ln("/auth_" + ["", "facebook", "google", "twitter", "reddit", "twitch"][En], "Login", 4 == En ? 900 : 500, 500)
         }
         ;
-        var ln = function(Sn, wn, Cn, An) {
+        var ln = function(En, wn, Cn, An) {
             var Pn = void 0 == window.screenLeft ? window.screenX : window.screenLeft
               , Mn = void 0 == window.screenTop ? window.screenY : window.screenTop
               , Rn = (window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width) / 2 - Cn / 2 + Pn
               , In = (window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height) / 2 - An / 2 + Mn;
-            window.open(Sn, wn, "width=" + Cn + ", height=" + An + ", top=" + In + ", left=" + Rn)
+            window.open(En, wn, "width=" + Cn + ", height=" + An + ", top=" + In + ", left=" + Rn)
         };
-        window.loginSuccess = function(Sn) {
-            config.settings.session = Sn,
+        window.loginSuccess = function(En) {
+            config.settings.session = En,
             Tools.setSettings({
-                session: Sn
+                session: En
             }),
             Tools.removeSetting("flag"),
             Games.playerAuth(),
@@ -32216,12 +32216,12 @@ function loadGameCode() {
         Games.playerAuth = function() {
             Tools.ajaxPost("/auth", {
                 session: config.settings.session
-            }, function(Sn) {
-                if (null != Sn) {
+            }, function(En) {
+                if (null != En) {
                     game.loggedIn = !0,
-                    game.myUserID = Sn.user;
-                    var wn = UI.escapeHTML(Sn.authName.substr(0, 30)) + "<span class=\"grey\">(" + ["", "Facebook", "Google", "Twitter", "Reddit", "Twitch"][Sn.authType] + ")</span>";
-                    null != Sn.name && $("#playername").val(Sn.name),
+                    game.myUserID = En.user;
+                    var wn = UI.escapeHTML(En.authName.substr(0, 30)) + "<span class=\"grey\">(" + ["", "Facebook", "Google", "Twitter", "Reddit", "Twitch"][En.authType] + ")</span>";
+                    null != En.name && $("#playername").val(En.name),
                     $("#logout").html(wn + "<span class=\"link\" onclick=\"Games.logout()\">Logout</span>"),
                     $("#logout-mainmenu").html("Logged in as " + wn + "<span class=\"button\" onclick=\"Games.logout()\">LOG OUT</span>"),
                     $("#loginbutton").remove(),
@@ -32240,7 +32240,7 @@ function loadGameCode() {
             window.location = "/"
         }
         ;
-        var un = function(Sn, wn) {
+        var un = function(En, wn) {
             var Cn = "/games";
             wn && (Cn += "?main=1"),
             $.ajax({
@@ -32268,18 +32268,18 @@ function loadGameCode() {
                             type: "protocolretry"
                         })
                     }
-                    Sn()
+                    En()
                 },
                 error: function() {}
             })
         }
           , pn = function() {
             zt = 0;
-            for (var Sn = 0, wn = 0; wn < en.length; wn++)
+            for (var En = 0, wn = 0; wn < en.length; wn++)
                 for (var Cn = 0; Cn < en[wn].games.length; Cn++)
                     zt += en[wn].games[Cn].players,
-                    Sn++;
-            if (0 == Sn)
+                    En++;
+            if (0 == En)
                 tn = !0,
                 UI.showMessage("alert", "<span class=\"mainerror\">We are currently performing server maintenance<br>Please try again in a few minutes</span>", 3e4);
             else {
@@ -32287,21 +32287,21 @@ function loadGameCode() {
                 $("#gameinfo").html(An)
             }
         }
-          , cn = function(Sn) {
-            if ("closest" === Sn)
+          , cn = function(En) {
+            if ("closest" === En)
                 return {
                     name: "Closest"
                 };
             for (var wn = 0; wn < en.length; wn++)
-                if (en[wn].id === Sn)
+                if (en[wn].id === En)
                     return en[wn];
             return game.playRegion = "closest",
             {
                 name: "Closest"
             }
         }
-          , hn = function(Sn, wn) {
-            var Cn = cn(Sn);
+          , hn = function(En, wn) {
+            var Cn = cn(En);
             if (null == Cn)
                 return null;
             if (null == Cn.games)
@@ -32319,29 +32319,29 @@ function loadGameCode() {
             return null
         }
           , fn = function() {
-            var Sn = window.location.hash;
+            var En = window.location.hash;
             if (history.replaceState(null, null, "/"),
-            "#reload" !== Sn && null != Sn && !(4 > Sn.length || 20 < Sn.length)) {
-                var wn = (Sn = Sn.substr(1)).indexOf("-");
+            "#reload" !== En && null != En && !(4 > En.length || 20 < En.length)) {
+                var wn = (En = En.substr(1)).indexOf("-");
                 if (-1 != wn) {
-                    var Cn = Sn.substr(0, wn)
-                      , An = Sn.substr(wn + 1);
+                    var Cn = En.substr(0, wn)
+                      , An = En.substr(wn + 1);
                     null != hn(Cn, An) && (game.playRegion = Cn,
                     game.playRoom = An,
                     game.playInvited = !0)
                 }
             }
         };
-        Games.selectRegion = function(Sn, wn) {
-            Sn.stopPropagation(),
+        Games.selectRegion = function(En, wn) {
+            En.stopPropagation(),
             Sound.UIClick(),
             game.playRegion = wn,
             Games.updateRegion(!1),
             Games.updateType()
         }
         ,
-        Games.selectGame = function(Sn, wn) {
-            Sn.stopPropagation(),
+        Games.selectGame = function(En, wn) {
+            En.stopPropagation(),
             Sound.UIClick(),
             game.playRoom = wn,
             Games.updateType(!1)
@@ -32352,15 +32352,15 @@ function loadGameCode() {
             Gt && Games.updateRegion(!1)
         }
         ,
-        Games.updateRegion = function(Sn, wn) {
+        Games.updateRegion = function(En, wn) {
             var Cn = ""
               , An = null;
             if (Jt && !tn) {
                 if (null != wn && (wn.stopPropagation(),
                 Gt || Sound.UIClick()),
-                Sn && UI.closeLogin(),
-                null == Sn && (Sn = Gt),
-                Sn) {
+                En && UI.closeLogin(),
+                null == En && (En = Gt),
+                En) {
                     Ht && Games.updateType(!1),
                     Cn += "<div class=\"item\"><div class=\"region header\">REGION</div><div class=\"players header\">PLAYERS</div><div class=\"ping header\">PING</div><div class=\"clear\"></div></div>";
                     var Pn = "";
@@ -32392,33 +32392,33 @@ function loadGameCode() {
                     $("#playregion").addClass("hoverable");
                 $("#playregion").html(Cn),
                 $("#playregion").css(An),
-                Gt = Sn
+                Gt = En
             }
         }
         ;
         var gn = function() {
-            var Sn = game.playRegion;
-            if ("closest" === Sn) {
+            var En = game.playRegion;
+            if ("closest" === En) {
                 if (null == Zt)
                     return null;
-                Sn = en[Zt].id
+                En = en[Zt].id
             }
-            return Sn
+            return En
         }
-          , mn = function(Sn) {
+          , mn = function(En) {
             var wn = "<div class=\"infott\">";
-            return 1 == Sn ? wn += "Everyone versus everyone deathmatch. No teams." : 2 == Sn ? wn += "Players split into 2 teams. 2 flags are placed inside each base. The objective is to move the enemy flag from their base to your base." : 3 == Sn && (wn += "Players spawn at random locations all across the map. Destroyed players will not respawn. Last player standing wins."),
+            return 1 == En ? wn += "Everyone versus everyone deathmatch. No teams." : 2 == En ? wn += "Players split into 2 teams. 2 flags are placed inside each base. The objective is to move the enemy flag from their base to your base." : 3 == En && (wn += "Players spawn at random locations all across the map. Destroyed players will not respawn. Last player standing wins."),
             wn += "<div class=\"arrow\"></div></div>"
         };
-        Games.updateType = function(Sn, wn) {
+        Games.updateType = function(En, wn) {
             var Cn = ""
               , An = null;
             if (Jt && !tn) {
                 if (null != wn && (wn.stopPropagation(),
                 Ht || Sound.UIClick()),
-                Sn && UI.closeLogin(),
-                null == Sn && (Sn = Ht),
-                Sn) {
+                En && UI.closeLogin(),
+                null == En && (En = Ht),
+                En) {
                     if (Gt && Games.updateRegion(!1),
                     Cn += "<div class=\"item\"><div class=\"gametype header\">GAME</div><div class=\"players header\">PLAYERS</div><div class=\"clear\"></div></div>",
                     null == (Dn = gn()))
@@ -32458,16 +32458,16 @@ function loadGameCode() {
                 }
                 $("#playtype").html(Cn),
                 $("#playtype").css(An),
-                Ht = Sn
+                Ht = En
             }
         }
         ,
         Games.popGames = function() {
             if (!Yt) {
                 UI.closeAllPanels("games");
-                var Sn = yn();
+                var En = yn();
                 UI.hide("#menu"),
-                $("#gameselector").html(Sn),
+                $("#gameselector").html(En),
                 UI.show("#gameselector"),
                 Yt = !0,
                 _n(),
@@ -32476,21 +32476,21 @@ function loadGameCode() {
         }
         ;
         var yn = function() {
-            var Sn = "";
-            Sn += "<div class=\"header\">" + game.roomName + "<span class=\"region\">&nbsp;&nbsp;&bull;&nbsp;&nbsp;" + game.regionName + "</span></div><div class=\"buttons\"><div class=\"button\" onclick=\"Games.redirRoot()\">CHANGE REGION</div></div>";
+            var En = "";
+            En += "<div class=\"header\">" + game.roomName + "<span class=\"region\">&nbsp;&nbsp;&bull;&nbsp;&nbsp;" + game.regionName + "</span></div><div class=\"buttons\"><div class=\"button\" onclick=\"Games.redirRoot()\">CHANGE REGION</div></div>";
             var An = cn(game.playRegion).games, Pn = [[], [], [], [], [], [], [], [], []], wn, Cn;
             for (wn = 0; wn < An.length; wn++)
                 Pn[An[wn].type].push(An[wn]);
             var Mn, Rn;
             for (wn = 1; wn < Pn.length; wn++)
                 if (0 != Pn[wn].length)
-                    for (Sn += "<div class=\"item head\"><div class=\"gametype chooser section\">" + Wt[wn] + "<span class=\"infocontainer\">&nbsp;<div class=\"infoicon\">" + mn(wn) + "</div></span></div><div class=\"clear\"></div></div>",
+                    for (En += "<div class=\"item head\"><div class=\"gametype chooser section\">" + Wt[wn] + "<span class=\"infocontainer\">&nbsp;<div class=\"infoicon\">" + mn(wn) + "</div></span></div><div class=\"clear\"></div></div>",
                     Cn = 0; Cn < Pn[wn].length; Cn++)
                         Pn[wn][Cn].id === game.playRoom ? (Mn = " sel",
                         Rn = "") : (Mn = " selectable",
                         Rn = " onclick=\"Games.switchGame(&quot;" + Pn[wn][Cn].id + "&quot;)\""),
-                        Sn += "<div class=\"item" + Mn + "\"" + Rn + "><div class=\"gametype chooser\">" + Pn[wn][Cn].nameShort + "</div><div class=\"players number\">" + Pn[wn][Cn].players + "</div><div class=\"clear\"></div></div>";
-            return Sn
+                        En += "<div class=\"item" + Mn + "\"" + Rn + "><div class=\"gametype chooser\">" + Pn[wn][Cn].nameShort + "</div><div class=\"players number\">" + Pn[wn][Cn].players + "</div><div class=\"clear\"></div></div>";
+            return En
         };
         Games.redirRoot = function() {
             game.reloading = !0,
@@ -32499,8 +32499,8 @@ function loadGameCode() {
         ;
         var _n = function() {
             un(function() {
-                var Sn = yn();
-                $("#gameselector").html(Sn)
+                var En = yn();
+                $("#gameselector").html(En)
             })
         };
         Games.closeGames = function() {
@@ -32514,9 +32514,9 @@ function loadGameCode() {
             Yt ? Games.closeGames() : Games.popGames()
         }
         ,
-        Games.switchGame = function(Sn) {
+        Games.switchGame = function(En) {
             Games.closeGames(),
-            null != Sn && (game.playRoom = Sn),
+            null != En && (game.playRoom = En),
             game.myScore = 0,
             game.state = Network.STATE.CONNECTING,
             Network.shutdown(),
@@ -32530,9 +32530,9 @@ function loadGameCode() {
         var bn = function() {
             Vt = {},
             qt = 0;
-            for (var wn = 0, Sn; wn < en.length; wn++)
-                Sn = en[wn].games[Tools.randInt(0, en[wn].games.length - 1)].host,
-                null == Vt[Sn] && (Vt[Sn] = {
+            for (var wn = 0, En; wn < en.length; wn++)
+                En = en[wn].games[Tools.randInt(0, en[wn].games.length - 1)].host,
+                null == Vt[En] && (Vt[En] = {
                     ping: 9999,
                     num: 0,
                     threshold: 0,
@@ -32545,12 +32545,12 @@ function loadGameCode() {
         };
         Games.performPing = function() {
             if (!(3 < qt || Qt)) {
-                var Sn = 9999
+                var En = 9999
                   , wn = null;
                 for (var Cn in Vt)
-                    Vt[Cn].num < Sn && (Sn = Vt[Cn].num,
+                    Vt[Cn].num < En && (En = Vt[Cn].num,
                     wn = Cn);
-                if (6 < Sn)
+                if (6 < En)
                     null != Kt && clearInterval(Kt);
                 else {
                     Vt[wn].num++;
@@ -32563,8 +32563,8 @@ function loadGameCode() {
             }
         }
         ;
-        var xn = function(Sn, wn, Cn) {
-            if (null != Vt[Sn] && !Qt) {
+        var xn = function(En, wn, Cn) {
+            if (null != Vt[En] && !Qt) {
                 qt++;
                 var An = performance.now();
                 $.ajax({
@@ -32574,16 +32574,16 @@ function loadGameCode() {
                     timeout: 2e3,
                     success: function(Pn) {
                         if (!Qt && (qt--,
-                        1 == Pn.pong && null != Vt[Sn])) {
+                        1 == Pn.pong && null != Vt[En])) {
                             var Mn = performance.now() - An;
-                            if (Math.abs(Vt[Sn].ping - Mn) < .1 * Mn && Vt[Sn].threshold++,
-                            2 <= Vt[Sn].threshold)
-                                return Mn < Vt[Sn].ping && (en[Vt[Sn].server].ping = Mn,
+                            if (Math.abs(Vt[En].ping - Mn) < .1 * Mn && Vt[En].threshold++,
+                            2 <= Vt[En].threshold)
+                                return Mn < Vt[En].ping && (en[Vt[En].server].ping = Mn,
                                 Games.findClosest(),
                                 Games.updateRegion()),
-                                void delete Vt[Sn];
-                            Mn < Vt[Sn].ping && (Vt[Sn].ping = Mn,
-                            en[Vt[Sn].server].ping = Mn,
+                                void delete Vt[En];
+                            Mn < Vt[En].ping && (Vt[En].ping = Mn,
+                            en[Vt[En].server].ping = Mn,
                             Games.findClosest(),
                             Games.updateRegion(),
                             null != Cn && Cn())
@@ -32596,27 +32596,27 @@ function loadGameCode() {
             }
         };
         Games.findClosest = function() {
-            for (var Sn = 9999, wn = !1, Cn = 0; Cn < en.length; Cn++)
-                null != en[Cn].ping && en[Cn].ping < Sn && (Sn = en[Cn].ping,
+            for (var En = 9999, wn = !1, Cn = 0; Cn < en.length; Cn++)
+                null != en[Cn].ping && en[Cn].ping < En && (En = en[Cn].ping,
                 Zt = Cn,
                 wn = !0);
             wn && "closest" === game.playRegion && Games.updateType()
         }
         ,
-        Games.highlightInput = function(Sn) {
-            $(Sn).css({
+        Games.highlightInput = function(En) {
+            $(En).css({
                 transition: "none",
                 transform: "scale(1.1)",
                 "background-color": "rgb(90, 30, 30)"
             }),
-            $(Sn).width(),
-            $(Sn).css({
+            $(En).width(),
+            $(En).css({
                 transition: "all 0.5s ease-in-out",
                 transform: "scale(1)",
                 "background-color": "rgb(30, 30, 30)"
             }),
             setTimeout(function() {
-                $(Sn).focus()
+                $(En).focus()
             }, 200)
         }
         ,
@@ -32628,9 +32628,9 @@ function loadGameCode() {
             }, 2e3))
         }
         ;
-        var vn = function(Sn) {
+        var vn = function(En) {
             var wn = document.createElement("span");
-            wn.textContent = Sn,
+            wn.textContent = En,
             wn.style.whiteSpace = "pre";
             var Cn = document.createElement("iframe");
             Cn.sandbox = "allow-same-origin",
@@ -32653,7 +32653,7 @@ function loadGameCode() {
             Cn.remove(),
             Rn
         };
-        Games.start = function(Sn, wn) {
+        Games.start = function(En, wn) {
             if (!(tn || wn && game.state == Network.STATE.CONNECTING)) {
                 var Cn = game.playRegion
                   , An = gn();
@@ -32676,14 +32676,14 @@ function loadGameCode() {
                     game.state == Network.STATE.LOGIN && Tools.wipeReel(),
                     game.state = Network.STATE.CONNECTING;
                     var Ln = {
-                        name: Sn
+                        name: En
                     };
                     game.playInvited || (Ln.region = Cn),
                     Tools.setSettings(Ln),
-                    UI.gameStart(Sn, wn),
+                    UI.gameStart(En, wn),
                     wn && Tools.ajaxPost("/enter", {
                         id: config.settings.id,
-                        name: Sn,
+                        name: En,
                         game: game.playRegion + "-" + game.playRoom,
                         source: null == document.referrer ? "" : document.referrer,
                         mode: config.mobile ? 1 : 0
@@ -32742,7 +32742,7 @@ function loadGameCode() {
         }
         ,
         Games.wipe = function() {
-            En(),
+            Sn(),
             nn.flagBlue && nn.flagRed && (game.graphics.layers.flags.removeChild(nn.flagBlue.sprite),
             game.graphics.layers.flags.removeChild(nn.flagRed.sprite),
             game.graphics.layers.shadows.removeChild(nn.flagBlue.spriteShadow),
@@ -32761,10 +32761,10 @@ function loadGameCode() {
             nn.flagRed.minimapBase.destroy())
         }
         ,
-        Games.networkFlag = function(Sn) {
-            var wn = 1 == Sn.flag ? nn.flagBlue : nn.flagRed
-              , Cn = 1 == Sn.flag ? "#blueflag-name" : "#redflag-name"
-              , An = 1 == Sn.flag ? Sn.blueteam : Sn.redteam;
+        Games.networkFlag = function(En) {
+            var wn = 1 == En.flag ? nn.flagBlue : nn.flagRed
+              , Cn = 1 == En.flag ? "#blueflag-name" : "#redflag-name"
+              , An = 1 == En.flag ? En.blueteam : En.redteam;
             wn.momentum = 0,
             wn.direction = 1,
             wn.sprite.scale.x = .4,
@@ -32772,125 +32772,125 @@ function loadGameCode() {
             wn.spriteShadow.scale.x = 1.1 * .4,
             wn.spriteShadow.rotation = 0;
             var Pn = "<span class=\"rounds\">" + An + "<span class=\"divider\">/</span>3</span>";
-            if (1 == Sn.type) {
+            if (1 == En.type) {
                 wn.playerId = null,
-                wn.position.x = Sn.posX,
-                wn.position.y = Sn.posY,
-                wn.sprite.position.set(Sn.posX, Sn.posY);
-                var Mn = Graphics.shadowCoords(new Vector(Sn.posX,Sn.posY));
+                wn.position.x = En.posX,
+                wn.position.y = En.posY,
+                wn.sprite.position.set(En.posX, En.posY);
+                var Mn = Graphics.shadowCoords(new Vector(En.posX,En.posY));
                 wn.spriteShadow.position.set(Mn.x, Mn.y),
-                Graphics.minimapMob(wn.minimapSprite, Sn.posX, Sn.posY),
+                Graphics.minimapMob(wn.minimapSprite, En.posX, En.posY),
                 $(Cn).html(Pn)
             } else {
-                wn.playerId = Sn.id;
-                var Rn = Players.get(Sn.id);
-                null != Rn && (1 == Sn.flag ? Pn = UI.escapeHTML(Rn.name) + Pn : Pn += UI.escapeHTML(Rn.name)),
+                wn.playerId = En.id;
+                var Rn = Players.get(En.id);
+                null != Rn && (1 == En.flag ? Pn = UI.escapeHTML(Rn.name) + Pn : Pn += UI.escapeHTML(Rn.name)),
                 wn.diffX = Rn.pos.x,
                 $(Cn).html(Pn)
             }
             Tn(wn, !1)
         }
         ;
-        var Tn = function(Sn, wn) {
-            if (wn && (Graphics.minimapMob(Sn.minimapSprite, Sn.position.x, Sn.position.y),
-            Graphics.minimapMob(Sn.minimapBase, Sn.basePos.x, Sn.basePos.y)),
-            null != Sn.playerId) {
-                var Cn = Players.get(Sn.playerId);
-                if (null != Cn && (Cn.render != Sn.visible && (Sn.visible = Cn.render,
-                Sn.sprite.visible = Cn.render,
-                Sn.spriteShadow.visible = Cn.render,
-                Cn.render && (Sn.momentum = 0,
-                Sn.direction = 1,
-                Sn.diffX = Cn.pos.x)),
-                Cn.render ? Graphics.minimapMob(Sn.minimapSprite, Cn.pos.x, Cn.pos.y) : Graphics.minimapMob(Sn.minimapSprite, Cn.lowResPos.x, Cn.lowResPos.y),
-                Sn.visible)) {
-                    Sn.position.x = Cn.pos.x,
-                    Sn.position.y = Cn.pos.y,
-                    Sn.sprite.position.set(Cn.pos.x, Cn.pos.y);
+        var Tn = function(En, wn) {
+            if (wn && (Graphics.minimapMob(En.minimapSprite, En.position.x, En.position.y),
+            Graphics.minimapMob(En.minimapBase, En.basePos.x, En.basePos.y)),
+            null != En.playerId) {
+                var Cn = Players.get(En.playerId);
+                if (null != Cn && (Cn.render != En.visible && (En.visible = Cn.render,
+                En.sprite.visible = Cn.render,
+                En.spriteShadow.visible = Cn.render,
+                Cn.render && (En.momentum = 0,
+                En.direction = 1,
+                En.diffX = Cn.pos.x)),
+                Cn.render ? Graphics.minimapMob(En.minimapSprite, Cn.pos.x, Cn.pos.y) : Graphics.minimapMob(En.minimapSprite, Cn.lowResPos.x, Cn.lowResPos.y),
+                En.visible)) {
+                    En.position.x = Cn.pos.x,
+                    En.position.y = Cn.pos.y,
+                    En.sprite.position.set(Cn.pos.x, Cn.pos.y);
                     var An = Graphics.shadowCoords(Cn.pos);
-                    Sn.spriteShadow.position.set(An.x, An.y),
-                    Sn.momentum = Tools.clamp(Sn.momentum + (Cn.pos.x - Sn.diffX) * game.timeFactor, -40, 40);
-                    var Pn = 0 < Sn.momentum ? .1 : -.1;
-                    Sn.direction = Tools.clamp(Sn.direction - Pn * game.timeFactor, -.4, .4),
-                    Sn.sprite.scale.x = Sn.direction,
-                    Sn.spriteShadow.scale.x = 1.1 * Sn.direction;
-                    var Mn = .04 * -(Cn.pos.x - Sn.diffX) * game.timeFactor;
-                    Sn.sprite.rotation = Mn,
-                    Sn.spriteShadow.rotation = Mn,
-                    Sn.diffX = Cn.pos.x
+                    En.spriteShadow.position.set(An.x, An.y),
+                    En.momentum = Tools.clamp(En.momentum + (Cn.pos.x - En.diffX) * game.timeFactor, -40, 40);
+                    var Pn = 0 < En.momentum ? .1 : -.1;
+                    En.direction = Tools.clamp(En.direction - Pn * game.timeFactor, -.4, .4),
+                    En.sprite.scale.x = En.direction,
+                    En.spriteShadow.scale.x = 1.1 * En.direction;
+                    var Mn = .04 * -(Cn.pos.x - En.diffX) * game.timeFactor;
+                    En.sprite.rotation = Mn,
+                    En.spriteShadow.rotation = Mn,
+                    En.diffX = Cn.pos.x
                 }
             } else {
-                var Rn = Graphics.inScreen(Sn.position, 128);
-                Rn != Sn.visible && (Sn.visible = Rn,
-                Sn.sprite.visible = Rn,
-                Sn.spriteShadow.visible = Rn)
+                var Rn = Graphics.inScreen(En.position, 128);
+                Rn != En.visible && (En.visible = Rn,
+                En.sprite.visible = Rn,
+                En.spriteShadow.visible = Rn)
             }
         };
-        Games.spectate = function(Sn) {
+        Games.spectate = function(En) {
             null == game.spectatingID && 3 != game.gameType && UI.showMessage("alert", "<span class=\"info\">SPECTATOR MODE</span>Click on Respawn to resume playing", 4e3),
-            game.spectatingID = Sn;
-            var wn = Players.get(Sn)
+            game.spectatingID = En;
+            var wn = Players.get(En)
               , Cn = "<div id=\"spectator-tag\" class=\"spectating\">Spectating " + (null == wn ? "" : UI.escapeHTML(wn.name)) + "</div><div class=\"buttons\"><div onclick=\"Network.spectateNext()\" class=\"changeplayer left\"><div class=\"arrow\"></div></div><div onclick=\"Network.spectatePrev()\" class=\"changeplayer right\"><div class=\"arrow\"></div></div></div>";
             UI.showSpectator(Cn)
         }
         ,
-        Games.spectatorSwitch = function(Sn) {
+        Games.spectatorSwitch = function(En) {
             setTimeout(function() {
-                Sn == game.spectatingID && Network.spectateNext()
+                En == game.spectatingID && Network.spectateNext()
             }, 2e3)
         }
         ,
-        Games.playersAlive = function(Sn) {
+        Games.playersAlive = function(En) {
             var wn = "";
-            1 < Sn && (wn = "<div class=\"playersalive\">" + Sn + " players alive</div>"),
+            1 < En && (wn = "<div class=\"playersalive\">" + En + " players alive</div>"),
             $("#gamespecific").html(wn)
         }
         ,
-        Games.showBTRWin = function(Sn) {
+        Games.showBTRWin = function(En) {
             if (!$("#custom-msg").length) {
-                var wn = "<div id=\"custom-msg\" class=\"btrwin\"><div class=\"trophy\"></div><div class=\"winner\"><div class=\"player\"><span class=\"flag big flag-" + Sn.f + "\"></span>" + UI.escapeHTML(Sn.p) + "</div></div><div class=\"bounty\"><span class=\"stat\">" + Sn.k + " KILL" + (1 == Sn.k ? "" : "S") + "</span>+" + Sn.b + " BOUNTY</div></div>";
+                var wn = "<div id=\"custom-msg\" class=\"btrwin\"><div class=\"trophy\"></div><div class=\"winner\"><div class=\"player\"><span class=\"flag big flag-" + En.f + "\"></span>" + UI.escapeHTML(En.p) + "</div></div><div class=\"bounty\"><span class=\"stat\">" + En.k + " KILL" + (1 == En.k ? "" : "S") + "</span>+" + En.b + " BOUNTY</div></div>";
                 $("body").append(wn),
                 UI.showPanel("#custom-msg"),
                 setTimeout(function() {
                     UI.hidePanel("#custom-msg", !1, !0)
-                }, 1e3 * Sn.t),
+                }, 1e3 * En.t),
                 Sound.gameComplete()
             }
         }
         ,
-        Games.showCTFWin = function(Sn) {
+        Games.showCTFWin = function(En) {
             if (!$("#custom-msg").length) {
-                var wn = "<div id=\"custom-msg\" class=\"ctfwin\"><div class=\"trophy\"></div><div class=\"winner\">" + (1 == Sn.w ? "<div class=\"player blue\">BLUE TEAM</div>" : "<div class=\"player red\">RED TEAM</div>") + "</div><div class=\"bounty\">+" + Sn.b + " BOUNTY</div></div>";
+                var wn = "<div id=\"custom-msg\" class=\"ctfwin\"><div class=\"trophy\"></div><div class=\"winner\">" + (1 == En.w ? "<div class=\"player blue\">BLUE TEAM</div>" : "<div class=\"player red\">RED TEAM</div>") + "</div><div class=\"bounty\">+" + En.b + " BOUNTY</div></div>";
                 $("body").append(wn),
                 UI.showPanel("#custom-msg"),
                 setTimeout(function() {
                     UI.hidePanel("#custom-msg", !1, !0)
-                }, 1e3 * Sn.t),
+                }, 1e3 * En.t),
                 Sound.gameComplete()
             }
         }
         ,
-        Games.showLevelUP = function(Sn) {
+        Games.showLevelUP = function(En) {
             $("#custom-msg").length && $("#custom-msg").remove();
             var wn = ""
               , Cn = " lvlsmaller";
-            null != dn[Sn + ""] && (Cn = "",
-            wn = "<div class=\"unlocked\">FEATURE UNLOCKED<br><div class=\"unlockedtext\">" + dn[Sn + ""] + "</div></div>");
-            var An = "<div id=\"custom-msg\" class=\"levelup" + Cn + "\"><div class=\"leveltext\">NEW LEVEL REACHED</div><div class=\"levelbadge\"></div><div class=\"levelnum\">" + Sn + "</div>" + wn + "</div>";
+            null != dn[En + ""] && (Cn = "",
+            wn = "<div class=\"unlocked\">FEATURE UNLOCKED<br><div class=\"unlockedtext\">" + dn[En + ""] + "</div></div>");
+            var An = "<div id=\"custom-msg\" class=\"levelup" + Cn + "\"><div class=\"leveltext\">NEW LEVEL REACHED</div><div class=\"levelbadge\"></div><div class=\"levelnum\">" + En + "</div>" + wn + "</div>";
             $("body").append(An),
             UI.showPanel("#custom-msg"),
             Sound.levelUp(),
-            UI.showChatLevel(Sn)
+            UI.showChatLevel(En)
         }
         ,
-        Games.popFirewall = function(Sn, wn) {
+        Games.popFirewall = function(En, wn) {
             0 >= wn && (wn = 0),
             on || (on = !0,
             rn = new PIXI.Graphics,
             game.graphics.gui.minimap.mask = rn),
             rn.clear(),
             rn.beginFill(16777215),
-            rn.drawCircle(game.screenX - config.minimapPaddingX - config.minimapSize * (16384 - Sn.x) / 32768, game.screenY - config.minimapPaddingY - config.minimapSize / 2 * (8192 - Sn.y) / 16384, 2 * wn / (256 * (256 / config.minimapSize))),
+            rn.drawCircle(game.screenX - config.minimapPaddingX - config.minimapSize * (16384 - En.x) / 32768, game.screenY - config.minimapPaddingY - config.minimapSize / 2 * (8192 - En.y) / 16384, 2 * wn / (256 * (256 / config.minimapSize))),
             rn.endFill();
             var Cn = Graphics.getCamera()
               , An = Math.ceil((game.halfScreenX + 64) / game.scale / 64)
@@ -32905,12 +32905,12 @@ function loadGameCode() {
               , Nn = new Vector(Cn.x + game.halfScreenX / game.scale + 64,Cn.y - game.halfScreenY / game.scale - 64)
               , Fn = new Vector(Cn.x - game.halfScreenX / game.scale - 64,Cn.y + game.halfScreenY / game.scale + 64)
               , Bn = new Vector(Cn.x + game.halfScreenX / game.scale + 64,Cn.y + game.halfScreenY / game.scale + 64);
-            if (Tools.distance(Sn.x, Sn.y, kn.x, kn.y) > wn || Tools.distance(Sn.x, Sn.y, Nn.x, Nn.y) > wn || Tools.distance(Sn.x, Sn.y, Fn.x, Fn.y) > wn || Tools.distance(Sn.x, Sn.y, Bn.x, Bn.y) > wn)
+            if (Tools.distance(En.x, En.y, kn.x, kn.y) > wn || Tools.distance(En.x, En.y, Nn.x, Nn.y) > wn || Tools.distance(En.x, En.y, Fn.x, Fn.y) > wn || Tools.distance(En.x, En.y, Bn.x, Bn.y) > wn)
                 for (var Un = -An; Un <= An; Un++)
                     for (var Xn = -Pn; Xn <= Pn; Xn++)
                         if (Mn = 64 * (Math.floor(Cn.x / 64) + .5) + 64 * Un,
                         Rn = 64 * (Math.floor(Cn.y / 64) + .5) + 64 * Xn,
-                        !((On = Tools.distance(Mn, Rn, Sn.x, Sn.y)) < wn) && (In = Mn + "_" + Rn,
+                        !((On = Tools.distance(Mn, Rn, En.x, En.y)) < wn) && (In = Mn + "_" + Rn,
                         Dn[In] = !0,
                         null == an[In])) {
                             var Gn = Textures.sprite("hotsmoke_" + Tools.randInt(1, 4));
@@ -32946,11 +32946,11 @@ function loadGameCode() {
                 an[Hn].sprite.tint = Tools.colorLerp(16427014, 16404230, an[Hn].color))
         }
         ;
-        var En = function() {
+        var Sn = function() {
             if (on) {
-                for (var Sn in an)
-                    game.graphics.layers.powerups.removeChild(an[Sn].sprite),
-                    an[Sn].sprite.destroy();
+                for (var En in an)
+                    game.graphics.layers.powerups.removeChild(an[En].sprite),
+                    an[En].sprite.destroy();
                 an = {},
                 game.graphics.gui.minimap.mask = null,
                 null != rn && (rn.destroy(),
@@ -32958,17 +32958,17 @@ function loadGameCode() {
                 on = !1
             }
         };
-        Games.handleFirewall = function(Sn) {
-            0 == Sn.status ? En() : (sn.radius = Sn.radius,
-            sn.pos.x = Sn.posX,
-            sn.pos.y = Sn.posY,
-            sn.speed = Sn.speed,
+        Games.handleFirewall = function(En) {
+            0 == En.status ? Sn() : (sn.radius = En.radius,
+            sn.pos.x = En.posX,
+            sn.pos.y = En.posY,
+            sn.speed = En.speed,
             Games.popFirewall(sn.pos, sn.radius))
         }
         ,
-        Games.update = function(Sn) {
-            2 == game.gameType && nn.flagBlue && (Tn(nn.flagBlue, Sn),
-            Tn(nn.flagRed, Sn)),
+        Games.update = function(En) {
+            2 == game.gameType && nn.flagBlue && (Tn(nn.flagBlue, En),
+            Tn(nn.flagRed, En)),
             3 == game.gameType && on && (sn.radius += sn.speed / 60 * game.timeFactor,
             Games.popFirewall(sn.pos, sn.radius))
         }
@@ -33031,15 +33031,15 @@ function loadGameCode() {
         };
         SWAM && SWAM.injectSounds(gn),
         Sound.setup = function() {
-            var Sn = {};
+            var En = {};
             for (var wn in fn) {
-                if (Sn = {
+                if (En = {
                     src: ["/assets/sounds/" + wn + ".wav"]
                 },
                 0 < Object.keys(fn[wn]).length)
                     for (var Cn in fn[wn])
-                        Sn[Cn] = fn[wn][Cn];
-                Ht[wn] = new Howl(Sn)
+                        En[Cn] = fn[wn][Cn];
+                Ht[wn] = new Howl(En)
             }
             Gt = new Howl(gn)
         }
@@ -33056,86 +33056,86 @@ function loadGameCode() {
         var mn = function() {
             config.settings.sound || Gt.stop()
         }
-          , yn = function(Sn) {
-            var wn = hn[Sn];
+          , yn = function(En) {
+            var wn = hn[En];
             return null == wn ? 1 : wn
         };
-        Sound.mobExplosion = function(Sn, wn) {
+        Sound.mobExplosion = function(En, wn) {
             var Cn = rn[wn] * .3
-              , An = Tn(Sn) * Cn
+              , An = Tn(En) * Cn
               , Pn = "explosion" + Tools.randInt(1, 6);
-            .01 > An || _n("mobexplosions", 4) || bn(Pn, An, Sn, Tools.rand(.8, 1.2))
+            .01 > An || _n("mobexplosions", 4) || bn(Pn, An, En, Tools.rand(.8, 1.2))
         }
         ,
-        Sound.playerKill = function(Sn) {
-            var wn = dn[Sn.type] * 1
-              , Cn = Tn(Sn.pos) * wn
+        Sound.playerKill = function(En) {
+            var wn = dn[En.type] * 1
+              , Cn = Tn(En.pos) * wn
               , An = "explosion" + Tools.randInt(1, 6);
-            .01 > Cn || _n("playerkills", 3) || bn(An, Cn, Sn.pos, Tools.rand(.8, 1.2))
+            .01 > Cn || _n("playerkills", 3) || bn(An, Cn, En.pos, Tools.rand(.8, 1.2))
         }
         ,
         Sound.playerUpgrade = function() {
             if (!_n("upgrades", 1)) {
-                var Sn = yn("upgrade");
-                bn("upgrade", Sn)
+                var En = yn("upgrade");
+                bn("upgrade", En)
             }
         }
         ,
-        Sound.playerRespawn = function(Sn) {
-            var wn = yn("respawn") * (Sn.me() ? 1 : Tn(Sn.pos))
-              , Cn = Sn.me() ? null : Sn.pos;
+        Sound.playerRespawn = function(En) {
+            var wn = yn("respawn") * (En.me() ? 1 : Tn(En.pos))
+              , Cn = En.me() ? null : En.pos;
             bn("respawn", wn, Cn)
         }
         ,
         Sound.gameComplete = function() {
-            var Sn = yn("complete");
-            bn("complete", Sn)
+            var En = yn("complete");
+            bn("complete", En)
         }
         ,
         Sound.levelUp = function() {
-            var Sn = yn("levelup");
-            bn("levelup", Sn)
+            var En = yn("levelup");
+            bn("levelup", En)
         }
         ,
         Sound.UIClick = function() {
             if (!_n("uiclick", 1, 200)) {
-                var Sn = yn("click");
-                bn("click", Sn)
+                var En = yn("click");
+                bn("click", En)
             }
         }
         ,
-        Sound.effectRepel = function(Sn) {
-            var wn = Tn(Sn) * .3;
-            bn("repel", wn, Sn, 1.5)
+        Sound.effectRepel = function(En) {
+            var wn = Tn(En) * .3;
+            bn("repel", wn, En, 1.5)
         }
         ,
-        Sound.powerup = function(Sn, wn) {
+        Sound.powerup = function(En, wn) {
             var Cn = (null == wn ? 1 : Tn(wn)) * .25
               , An = "";
-            4 == Sn ? An = "powerup_upgrade" : 8 == Sn ? An = "powerup_shield" : 9 == Sn && (An = "powerup_rampage"),
+            4 == En ? An = "powerup_upgrade" : 8 == En ? An = "powerup_shield" : 9 == En && (An = "powerup_rampage"),
             bn(An, Cn * yn(An), wn)
         }
         ,
-        Sound.missileLaunch = function(Sn, wn) {
+        Sound.missileLaunch = function(En, wn) {
             var Cn = on[wn] * .3
-              , An = Tn(Sn) * Cn
+              , An = Tn(En) * Cn
               , Pn = sn[wn]
               , Mn = "launch" + Tools.randInt(1, 2);
-            .01 > An || _n("launches", 5) || bn(Mn, An, Sn, Pn)
+            .01 > An || _n("launches", 5) || bn(Mn, An, En, Pn)
         }
         ,
-        Sound.playerImpact = function(Sn, wn, Cn) {
+        Sound.playerImpact = function(En, wn, Cn) {
             var An = .05 * Tools.clamp(Cn, 0, 1)
-              , Pn = Tn(Sn) * An
+              , Pn = Tn(En) * An
               , Mn = cn[wn];
-            bn("impact", Pn, Sn, Mn)
+            bn("impact", Pn, En, Mn)
         }
         ,
         Sound.update = function() {
             if (!(100 > game.time - qt)) {
-                var Sn = game.focus ? 300 : 1e3;
+                var En = game.focus ? 300 : 1e3;
                 for (var wn in Yt)
-                    game.time - Yt[wn].last > Sn && Sound.clearThruster(wn);
+                    game.time - Yt[wn].last > En && Sound.clearThruster(wn);
                 for (var Cn in zt)
                     game.time >= zt[Cn].time && (vn(zt[Cn].id, zt[Cn].sound),
                     delete zt[Cn]);
@@ -33143,39 +33143,39 @@ function loadGameCode() {
             }
         }
         ;
-        var _n = function(Sn, wn, Cn) {
-            if (null == Kt[Sn])
-                return Kt[Sn] = {
+        var _n = function(En, wn, Cn) {
+            if (null == Kt[En])
+                return Kt[En] = {
                     num: 1,
                     time: game.time
                 },
                 !1;
             var An = null == Cn ? 1e3 : Cn;
-            return game.time - Kt[Sn].time > An ? (Kt[Sn].num = 1,
-            Kt[Sn].time = game.time,
-            !1) : (Kt[Sn].num++,
-            Kt[Sn].num > wn)
+            return game.time - Kt[En].time > An ? (Kt[En].num = 1,
+            Kt[En].time = game.time,
+            !1) : (Kt[En].num++,
+            Kt[En].num > wn)
         }
-          , bn = function(Sn, wn, Cn, An, Pn, Mn) {
+          , bn = function(En, wn, Cn, An, Pn, Mn) {
             if (config.settings.sound) {
                 if (Mn) {
-                    if (null == Ht[Sn])
+                    if (null == Ht[En])
                         return;
-                    var Rn = Ht[Sn]
+                    var Rn = Ht[En]
                 } else
                     Rn = Gt;
                 if (!(null != wn && .01 > wn)) {
-                    var In = Rn.play(Mn ? void 0 : Sn);
-                    if ("thruster" === Sn || "missile" === Sn || "chopper" === Sn) {
+                    var In = Rn.play(Mn ? void 0 : En);
+                    if ("thruster" === En || "missile" === En || "chopper" === En) {
                         var Dn = Rn.seek(null, In);
                         Rn.seek(Dn + Tools.rand(0, 1), In)
                     }
-                    return xn(In, Sn, wn, Cn, An, Pn, Mn),
+                    return xn(In, En, wn, Cn, An, Pn, Mn),
                     In
                 }
             }
         }
-          , xn = function(Sn, wn, Cn, An, Pn, Mn, Rn) {
+          , xn = function(En, wn, Cn, An, Pn, Mn, Rn) {
             if (config.settings.sound) {
                 if (Rn) {
                     if (null == Ht[wn])
@@ -33183,41 +33183,41 @@ function loadGameCode() {
                     var In = Ht[wn]
                 } else
                     In = Gt;
-                null != Cn && In.volume(Cn, Sn),
-                null != Mn && In.fade(Mn[0], Mn[1], Mn[2], Sn, 4 == Mn.length || null),
-                null != Pn && In.rate(Pn, Sn),
-                null == An || config.ios || In.stereo(En(An), Sn)
+                null != Cn && In.volume(Cn, En),
+                null != Mn && In.fade(Mn[0], Mn[1], Mn[2], En, 4 == Mn.length || null),
+                null != Pn && In.rate(Pn, En),
+                null == An || config.ios || In.stereo(Sn(An), En)
             }
         }
-          , vn = function(Sn, wn, Cn) {
+          , vn = function(En, wn, Cn) {
             if (Cn) {
                 if (null == Ht[wn])
                     return;
                 var An = Ht[wn]
             } else
                 An = Gt;
-            An.stop(Sn)
+            An.stop(En)
         };
-        Sound.clearThruster = function(Sn) {
-            if (null != Yt[Sn]) {
-                var wn = Yt[Sn].soundId
-                  , Cn = Yt[Sn].vol;
-                xn(wn, Yt[Sn].sound, null, null, null, [Cn, 0, 200, !0]),
+        Sound.clearThruster = function(En) {
+            if (null != Yt[En]) {
+                var wn = Yt[En].soundId
+                  , Cn = Yt[En].vol;
+                xn(wn, Yt[En].sound, null, null, null, [Cn, 0, 200, !0]),
                 function(An, Pn, Mn) {
                     zt[++Vt] = {
                         id: An,
                         sound: Pn,
                         time: game.time + Mn
                     }
-                }(wn, Yt[Sn].sound, 300),
-                0 == Yt[Sn].type ? Wt-- : jt--,
-                delete Yt[Sn]
+                }(wn, Yt[En].sound, 300),
+                0 == Yt[En].type ? Wt-- : jt--,
+                delete Yt[En]
             }
         }
         ,
-        Sound.updateThruster = function(Sn, wn, Cn) {
+        Sound.updateThruster = function(En, wn, Cn) {
             if (config.settings.sound) {
-                if (0 == Sn) {
+                if (0 == En) {
                     if (3 == wn.type) {
                         Cn = wn.render;
                         var An = "chopper"
@@ -33231,13 +33231,13 @@ function loadGameCode() {
                 if (!Cn)
                     null != Yt[Pn] && Sound.clearThruster(Pn);
                 else if (null == Yt[Pn]) {
-                    if (0 == Sn) {
+                    if (0 == En) {
                         if (!wn.me() && 5 <= Wt)
                             return;
                     } else if (5 <= jt)
                         return;
                     var Mn = Tn(wn.pos);
-                    if (0 == Sn)
+                    if (0 == En)
                         var Rn = Mn * un[wn.type] * $t
                           , In = ln[wn.type];
                     else
@@ -33247,24 +33247,24 @@ function loadGameCode() {
                         return;
                     var Dn = bn(An, null, wn.pos, In, [0, Rn, 200]);
                     Yt[Pn] = {
-                        type: Sn,
+                        type: En,
                         started: game.time,
                         last: game.time,
                         sound: An,
                         soundId: Dn,
                         vol: Rn
                     },
-                    0 == Sn ? Wt++ : jt++
+                    0 == En ? Wt++ : jt++
                 } else {
                     if (100 > game.time - Yt[Pn].last)
                         return;
                     if (Mn = Tn(wn.pos),
-                    0 == Sn ? (Rn = Mn * un[wn.type] * $t,
+                    0 == En ? (Rn = Mn * un[wn.type] * $t,
                     wn.boost && (Rn *= 3)) : Rn = Mn * en,
                     .01 > Rn)
                         return void Sound.clearThruster(Pn);
                     if (In = null,
-                    0 == Sn && 3 == wn.type && (In = ln[wn.type] + wn.speed.length() / 20),
+                    0 == En && 3 == wn.type && (In = ln[wn.type] + wn.speed.length() / 20),
                     250 > game.time - Yt[Pn].started)
                         return;
                     xn(Yt[Pn].soundId, Yt[Pn].sound, null, wn.pos, In, [Yt[Pn].vol, Rn, 100, !0]),
@@ -33274,15 +33274,15 @@ function loadGameCode() {
             }
         }
         ;
-        var Tn = function(Sn) {
+        var Tn = function(En) {
             var wn = Graphics.getCamera()
-              , Cn = Tools.length(Sn.x - wn.x, Sn.y - wn.y)
+              , Cn = Tools.length(En.x - wn.x, En.y - wn.y)
               , An = (game.halfScreenX / game.scale + game.halfScreenY / game.scale) / 2;
             return Tools.clamp(1.5 * (1 - Cn / An), 0, 1)
         }
-          , En = function(Sn) {
+          , Sn = function(En) {
             var wn = Graphics.getCamera()
-              , Cn = Sn.x - wn.x
+              , Cn = En.x - wn.x
               , An = game.halfScreenX / game.scale;
             return Tools.clamp(.8 * Cn / An, -1, 1)
         }
@@ -33354,15 +33354,15 @@ function loadGameCode() {
             }
         };
         Sound.setup = function() {
-            var Sn = {};
+            var En = {};
             for (var wn in fn) {
-                if (Sn = {
+                if (En = {
                     src: ["/assets/sounds/" + wn + ".wav"]
                 },
                 0 < Object.keys(fn[wn]).length)
                     for (var Cn in fn[wn])
-                        Sn[Cn] = fn[wn][Cn];
-                Ht[wn] = new Howl(Sn)
+                        En[Cn] = fn[wn][Cn];
+                Ht[wn] = new Howl(En)
             }
             Gt = new Howl(gn)
         }
@@ -33379,86 +33379,86 @@ function loadGameCode() {
         var mn = function() {
             config.settings.sound || Gt.stop()
         }
-          , yn = function(Sn) {
-            var wn = hn[Sn];
+          , yn = function(En) {
+            var wn = hn[En];
             return null == wn ? 1 : wn
         };
-        Sound.mobExplosion = function(Sn, wn) {
+        Sound.mobExplosion = function(En, wn) {
             var Cn = rn[wn] * .3
-              , An = Tn(Sn) * Cn
+              , An = Tn(En) * Cn
               , Pn = "explosion" + Tools.randInt(1, 6);
-            .01 > An || _n("mobexplosions", 4) || bn(Pn, An, Sn, Tools.rand(.8, 1.2))
+            .01 > An || _n("mobexplosions", 4) || bn(Pn, An, En, Tools.rand(.8, 1.2))
         }
         ,
-        Sound.playerKill = function(Sn) {
-            var wn = dn[Sn.type] * 1
-              , Cn = Tn(Sn.pos) * wn
+        Sound.playerKill = function(En) {
+            var wn = dn[En.type] * 1
+              , Cn = Tn(En.pos) * wn
               , An = "explosion" + Tools.randInt(1, 6);
-            .01 > Cn || _n("playerkills", 3) || bn(An, Cn, Sn.pos, Tools.rand(.8, 1.2))
+            .01 > Cn || _n("playerkills", 3) || bn(An, Cn, En.pos, Tools.rand(.8, 1.2))
         }
         ,
         Sound.playerUpgrade = function() {
             if (!_n("upgrades", 1)) {
-                var Sn = yn("upgrade");
-                bn("upgrade", Sn)
+                var En = yn("upgrade");
+                bn("upgrade", En)
             }
         }
         ,
-        Sound.playerRespawn = function(Sn) {
-            var wn = yn("respawn") * (Sn.me() ? 1 : Tn(Sn.pos))
-              , Cn = Sn.me() ? null : Sn.pos;
+        Sound.playerRespawn = function(En) {
+            var wn = yn("respawn") * (En.me() ? 1 : Tn(En.pos))
+              , Cn = En.me() ? null : En.pos;
             bn("respawn", wn, Cn)
         }
         ,
         Sound.gameComplete = function() {
-            var Sn = yn("complete");
-            bn("complete", Sn)
+            var En = yn("complete");
+            bn("complete", En)
         }
         ,
         Sound.levelUp = function() {
-            var Sn = yn("levelup");
-            bn("levelup", Sn)
+            var En = yn("levelup");
+            bn("levelup", En)
         }
         ,
         Sound.UIClick = function() {
             if (!_n("uiclick", 1, 200)) {
-                var Sn = yn("click");
-                bn("click", Sn)
+                var En = yn("click");
+                bn("click", En)
             }
         }
         ,
-        Sound.effectRepel = function(Sn) {
-            var wn = Tn(Sn) * .3;
-            bn("repel", wn, Sn, 1.5)
+        Sound.effectRepel = function(En) {
+            var wn = Tn(En) * .3;
+            bn("repel", wn, En, 1.5)
         }
         ,
-        Sound.powerup = function(Sn, wn) {
+        Sound.powerup = function(En, wn) {
             var Cn = (null == wn ? 1 : Tn(wn)) * .25
               , An = "";
-            4 == Sn ? An = "powerup_upgrade" : 8 == Sn ? An = "powerup_shield" : 9 == Sn && (An = "powerup_rampage"),
+            4 == En ? An = "powerup_upgrade" : 8 == En ? An = "powerup_shield" : 9 == En && (An = "powerup_rampage"),
             bn(An, Cn * yn(An), wn)
         }
         ,
-        Sound.missileLaunch = function(Sn, wn) {
+        Sound.missileLaunch = function(En, wn) {
             var Cn = on[wn] * .3
-              , An = Tn(Sn) * Cn
+              , An = Tn(En) * Cn
               , Pn = sn[wn]
               , Mn = "launch" + Tools.randInt(1, 2);
-            .01 > An || _n("launches", 5) || bn(Mn, An, Sn, Pn)
+            .01 > An || _n("launches", 5) || bn(Mn, An, En, Pn)
         }
         ,
-        Sound.playerImpact = function(Sn, wn, Cn) {
+        Sound.playerImpact = function(En, wn, Cn) {
             var An = .05 * Tools.clamp(Cn, 0, 1)
-              , Pn = Tn(Sn) * An
+              , Pn = Tn(En) * An
               , Mn = cn[wn];
-            bn("impact", Pn, Sn, Mn)
+            bn("impact", Pn, En, Mn)
         }
         ,
         Sound.update = function() {
             if (!(100 > game.time - qt)) {
-                var Sn = game.focus ? 300 : 1e3;
+                var En = game.focus ? 300 : 1e3;
                 for (var wn in Yt)
-                    game.time - Yt[wn].last > Sn && Sound.clearThruster(wn);
+                    game.time - Yt[wn].last > En && Sound.clearThruster(wn);
                 for (var Cn in zt)
                     game.time >= zt[Cn].time && (vn(zt[Cn].id, zt[Cn].sound),
                     delete zt[Cn]);
@@ -33466,39 +33466,39 @@ function loadGameCode() {
             }
         }
         ;
-        var _n = function(Sn, wn, Cn) {
-            if (null == Kt[Sn])
-                return Kt[Sn] = {
+        var _n = function(En, wn, Cn) {
+            if (null == Kt[En])
+                return Kt[En] = {
                     num: 1,
                     time: game.time
                 },
                 !1;
             var An = null == Cn ? 1e3 : Cn;
-            return game.time - Kt[Sn].time > An ? (Kt[Sn].num = 1,
-            Kt[Sn].time = game.time,
-            !1) : (Kt[Sn].num++,
-            Kt[Sn].num > wn)
+            return game.time - Kt[En].time > An ? (Kt[En].num = 1,
+            Kt[En].time = game.time,
+            !1) : (Kt[En].num++,
+            Kt[En].num > wn)
         }
-          , bn = function(Sn, wn, Cn, An, Pn, Mn) {
+          , bn = function(En, wn, Cn, An, Pn, Mn) {
             if (config.settings.sound) {
                 if (Mn) {
-                    if (null == Ht[Sn])
+                    if (null == Ht[En])
                         return;
-                    var Rn = Ht[Sn]
+                    var Rn = Ht[En]
                 } else
                     Rn = Gt;
                 if (!(null != wn && .01 > wn)) {
-                    var In = Rn.play(Mn ? void 0 : Sn);
-                    if ("thruster" === Sn || "missile" === Sn || "chopper" === Sn) {
+                    var In = Rn.play(Mn ? void 0 : En);
+                    if ("thruster" === En || "missile" === En || "chopper" === En) {
                         var Dn = Rn.seek(null, In);
                         Rn.seek(Dn + Tools.rand(0, 1), In)
                     }
-                    return xn(In, Sn, wn, Cn, An, Pn, Mn),
+                    return xn(In, En, wn, Cn, An, Pn, Mn),
                     In
                 }
             }
         }
-          , xn = function(Sn, wn, Cn, An, Pn, Mn, Rn) {
+          , xn = function(En, wn, Cn, An, Pn, Mn, Rn) {
             if (config.settings.sound) {
                 if (Rn) {
                     if (null == Ht[wn])
@@ -33506,41 +33506,41 @@ function loadGameCode() {
                     var In = Ht[wn]
                 } else
                     In = Gt;
-                null != Cn && In.volume(Cn, Sn),
-                null != Mn && In.fade(Mn[0], Mn[1], Mn[2], Sn, 4 == Mn.length || null),
-                null != Pn && In.rate(Pn, Sn),
-                null == An || config.ios || In.stereo(En(An), Sn)
+                null != Cn && In.volume(Cn, En),
+                null != Mn && In.fade(Mn[0], Mn[1], Mn[2], En, 4 == Mn.length || null),
+                null != Pn && In.rate(Pn, En),
+                null == An || config.ios || In.stereo(Sn(An), En)
             }
         }
-          , vn = function(Sn, wn, Cn) {
+          , vn = function(En, wn, Cn) {
             if (Cn) {
                 if (null == Ht[wn])
                     return;
                 var An = Ht[wn]
             } else
                 An = Gt;
-            An.stop(Sn)
+            An.stop(En)
         };
-        Sound.clearThruster = function(Sn) {
-            if (null != Yt[Sn]) {
-                var wn = Yt[Sn].soundId
-                  , Cn = Yt[Sn].vol;
-                xn(wn, Yt[Sn].sound, null, null, null, [Cn, 0, 200, !0]),
+        Sound.clearThruster = function(En) {
+            if (null != Yt[En]) {
+                var wn = Yt[En].soundId
+                  , Cn = Yt[En].vol;
+                xn(wn, Yt[En].sound, null, null, null, [Cn, 0, 200, !0]),
                 function(An, Pn, Mn) {
                     zt[++Vt] = {
                         id: An,
                         sound: Pn,
                         time: game.time + Mn
                     }
-                }(wn, Yt[Sn].sound, 300),
-                0 == Yt[Sn].type ? Wt-- : jt--,
-                delete Yt[Sn]
+                }(wn, Yt[En].sound, 300),
+                0 == Yt[En].type ? Wt-- : jt--,
+                delete Yt[En]
             }
         }
         ,
-        Sound.updateThruster = function(Sn, wn, Cn) {
+        Sound.updateThruster = function(En, wn, Cn) {
             if (config.settings.sound) {
-                if (0 == Sn) {
+                if (0 == En) {
                     Cn = wn.keystate.UP || wn.keystate.DOWN;
                     var An = "";
                     switch (wn.type) {
@@ -33566,13 +33566,13 @@ function loadGameCode() {
                 if (!Cn)
                     null != Yt[Pn] && Sound.clearThruster(Pn);
                 else if (null == Yt[Pn]) {
-                    if (0 == Sn) {
+                    if (0 == En) {
                         if (!wn.me() && 5 <= Wt)
                             return;
                     } else if (5 <= jt)
                         return;
                     var Mn = Tn(wn.pos);
-                    if (0 == Sn)
+                    if (0 == En)
                         var Rn = Mn * un[wn.type] * $t
                           , In = ln[wn.type];
                     else
@@ -33582,24 +33582,24 @@ function loadGameCode() {
                         return;
                     var Dn = bn(An, null, wn.pos, In, [0, Rn, 200]);
                     Yt[Pn] = {
-                        type: Sn,
+                        type: En,
                         started: game.time,
                         last: game.time,
                         sound: An,
                         soundId: Dn,
                         vol: Rn
                     },
-                    0 == Sn ? Wt++ : jt++
+                    0 == En ? Wt++ : jt++
                 } else {
                     if (100 > game.time - Yt[Pn].last)
                         return;
                     if (Mn = Tn(wn.pos),
-                    0 == Sn ? (Rn = Mn * un[wn.type] * $t,
+                    0 == En ? (Rn = Mn * un[wn.type] * $t,
                     wn.boost && (Rn *= 3)) : Rn = Mn * en,
                     .01 > Rn)
                         return void Sound.clearThruster(Pn);
                     if (In = null,
-                    0 == Sn && 3 == wn.type && (In = ln[wn.type] + wn.speed.length() / 20),
+                    0 == En && 3 == wn.type && (In = ln[wn.type] + wn.speed.length() / 20),
                     250 > game.time - Yt[Pn].started)
                         return;
                     xn(Yt[Pn].soundId, Yt[Pn].sound, null, wn.pos, In, [Yt[Pn].vol, Rn, 100, !0]),
@@ -33609,15 +33609,15 @@ function loadGameCode() {
             }
         }
         ;
-        var Tn = function(Sn) {
+        var Tn = function(En) {
             var wn = Graphics.getCamera()
-              , Cn = Tools.length(Sn.x - wn.x, Sn.y - wn.y)
+              , Cn = Tools.length(En.x - wn.x, En.y - wn.y)
               , An = (game.halfScreenX / game.scale + game.halfScreenY / game.scale) / 2;
             return Tools.clamp(1.5 * (1 - Cn / An), 0, 1)
         }
-          , En = function(Sn) {
+          , Sn = function(En) {
             var wn = Graphics.getCamera()
-              , Cn = Sn.x - wn.x
+              , Cn = En.x - wn.x
               , An = game.halfScreenX / game.scale;
             return Tools.clamp(.8 * Cn / An, -1, 1)
         }
@@ -34341,6 +34341,16 @@ function SWAM() {
         null != Xt && (0 != Bt.killer || 0 != Bt.posX || 0 != Bt.posY) && (SWAM.addKilledLine(Bt.killer, Bt.id),
         SWAM.trigger("playerKilled", [Bt, Xt])),
         Players_kill.call(Players, Bt)
+    }
+    ;
+    let Players_whisper = Players.whisper;
+    Players.whisper = function(Bt) {
+        Players_whisper.call(Players, Bt),
+        Sound.UIClick(),
+        setTimeout(()=>{
+            Sound.UIClick()
+        }
+        , 200)
     }
     ;
     let Mobs_add = Mobs.add;
@@ -35759,7 +35769,12 @@ SWAM.Audio = {
 function getFilePath(Bt) {
     return "https://molesmalo.github.io/StarWarsMod4AirMash/assets/" + Bt + "?" + SWAM_version
 }
-$(function() {}),
+$(function() {
+    addLoading()
+});
+function addLoading() {
+    $("body").append($("<div id='LoadingMainScreen' style='position: fixed; top:0px; left:0px; width: 100%; height: 100%; background-color: black; z-index: 1000; '><div id='LoadingText' style='position: absolute; top: calc(50% - 15px); width: 100%; font-size: 30px; color: #555555; text-align: center;  font-family: \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; '>Loading...</div></div>")).css("overflow", "hidden")
+}
 SWAM.loadExtensions(()=>{
     SWAM.trigger("extensionsLoaded"),
     SWAM.loadTheme(),
@@ -35769,6 +35784,9 @@ SWAM.loadExtensions(()=>{
     SWAM.trigger("gameLoaded"),
     RunGame(),
     SWAM(),
+    setTimeout(function() {
+        $("#LoadingMainScreen").remove()
+    }, 1e3),
     SWAM.trigger("gameRunning")
 }
 );
