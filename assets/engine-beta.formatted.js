@@ -35667,14 +35667,11 @@ window.AutoPilot = {
         };
         if (Xt.id != game.myID && Xt.id == AutoPilot.mimicTarget && !AutoPilot.mimicPaused) {
             let Wt = {};
-            return (Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
+            return Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
             Wt[Network.SERVERPACKET.PLAYER_FIRE] = "fire",
             Wt[Network.SERVERPACKET.EVENT_BOOST] = "boost",
             Wt[Network.SERVERPACKET.EVENT_BOUNCE] = "bounce",
-            null == Xt.keystate) ? Bt == Network.SERVERPACKET.PLAYER_FIRE ? (Network.sendKey("FIRE", !0),
-            void setTimeout(function() {
-                Network.sendKey("FIRE", !1)
-            }, 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
+            null == Xt.keystate ? void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
             AutoPilot.lastState.boost = Xt.boost)) : void (Tools.decodeKeystate(Yt, Xt.keystate),
             Ht(),
             null != Xt.keystate && (Gt("UP", Yt.keystate),
