@@ -35604,10 +35604,10 @@ window.AutoPilot = {
         }
     },
     mimic_keydown_handler: function(Bt) {
-        if (this.mimicTarget != game.myID && (45 == Bt.keyCode && (this.mimicRotation(!1),
+        if (this.mimicTarget != game.myID && ((45 == Bt.keyCode || 188 == Bt.keyCode) && (this.mimicRotation(!1),
         Bt.stopImmediatePropagation(),
         Bt.preventDefault()),
-        36 == Bt.keyCode)) {
+        36 == Bt.keyCode || 190 == Bt.keyCode)) {
             if (AutoPilot.mimicPaused = !AutoPilot.mimicPaused,
             AutoPilot.mimicPaused) {
                 let Xt = Players.getMe();
@@ -35651,35 +35651,27 @@ window.AutoPilot = {
         this.lastState.stealthed = Bt.state)
     },
     mimicUpdate: function(Bt, Xt) {
-        function Gt(jt, zt) {
-            AutoPilot.lastState.keystate[jt] != zt[jt] && (console.log("sending key: " + jt + " - " + zt[jt]),
-            Network.sendKey(jt, zt[jt]))
-        }
-        function Ht() {
-            let jt = Players.getMe();
-            3 != jt.type && (Yt.strafe = !1);
-            let zt = Yt.strafe
-              , Vt = AutoPilot.lastState.strafe;
-            zt != Vt && Network.sendKey("SPECIAL", zt)
+        function Gt(Wt, jt) {
+            AutoPilot.lastState.keystate[Wt] != jt[Wt] && (console.log("sending key: " + Wt + " - " + jt[Wt]),
+            Network.sendKey(Wt, jt[Wt]))
         }
         let Yt = {
             keystate: {}
         };
-        if (Xt.id != game.myID && Xt.id == AutoPilot.mimicTarget && !AutoPilot.mimicPaused) {
-            let Wt = {};
-            return Wt[Network.SERVERPACKET.PLAYER_UPDATE] = "update",
-            Wt[Network.SERVERPACKET.PLAYER_FIRE] = "fire",
-            Wt[Network.SERVERPACKET.EVENT_BOOST] = "boost",
-            Wt[Network.SERVERPACKET.EVENT_BOUNCE] = "bounce",
-            null == Xt.keystate ? void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
-            AutoPilot.lastState.boost = Xt.boost)) : void (Tools.decodeKeystate(Yt, Xt.keystate),
-            Ht(),
-            null != Xt.keystate && (Gt("UP", Yt.keystate),
-            Gt("DOWN", Yt.keystate),
-            Gt("LEFT", Yt.keystate),
-            Gt("RIGHT", Yt.keystate)),
-            AutoPilot.lastkeys = $.extend(AutoPilot.lastState, Yt))
-        }
+        return Xt.id == game.myID ? void 0 : Xt.id == AutoPilot.mimicTarget ? AutoPilot.mimicPaused ? void 0 : null == Xt.keystate ? void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Xt.boost && (Network.sendKey("SPECIAL", Xt.boost),
+        AutoPilot.lastState.boost = Xt.boost)) : void (Tools.decodeKeystate(Yt, Xt.keystate),
+        function() {
+            let Wt = Players.getMe();
+            3 != Wt.type && (Yt.strafe = !1);
+            let jt = Yt.strafe
+              , zt = AutoPilot.lastState.strafe;
+            jt != zt && Network.sendKey("SPECIAL", jt)
+        }(),
+        null != Xt.keystate && (Gt("UP", Yt.keystate),
+        Gt("DOWN", Yt.keystate),
+        Gt("LEFT", Yt.keystate),
+        Gt("RIGHT", Yt.keystate)),
+        AutoPilot.lastkeys = $.extend(AutoPilot.lastState, Yt)) : void 0
     },
     debug: !1,
     logMoves: !1
