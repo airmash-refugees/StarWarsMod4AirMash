@@ -273,16 +273,16 @@ StarMash_2.prototype.start = function() {
                 z = V.x,
                 Y = V.y;
                 let H = Tools.rand(0.2, 0.85)
-                  , E = 0.5 * (1 / (H / 0.85)) + 0.5
-                  , W = j[Tools.randInt(0, j.length - 1)]
-                  , Z = S(W, {
-                    distanceFactor: [I.baseDistanceFactor * E, I.baseDistanceFactor * E],
+                  , W = 0.5 * (1 / (H / 0.85)) + 0.5
+                  , E = j[Tools.randInt(0, j.length - 1)]
+                  , Z = S(E, {
+                    distanceFactor: [I.baseDistanceFactor * W, I.baseDistanceFactor * W],
                     scale: [H, H],
                     basePosition: [z, Y],
                     position: [z, Y],
                     anchor: [0.5, 0.5]
                 });
-                Z.textureName = W,
+                Z.textureName = E,
                 Z.angleUsed = X,
                 SWAM.Ships.push(Z)
             }
@@ -1165,7 +1165,7 @@ StPatricksDay2018.prototype.injectTextures = function(h) {
     const w = ["map_forest.jpg", "map_rock.jpg", "map_sand.jpg", "map_sea.jpg", "aircraft.png"];
     for (let f in h) {
         let _ = getFileName(h[f]);
-        -1 < $.inArray(_, w) && (h[f] = "//raw.githubusercontent.com/Molesmalo/AirMashChristmasMod/master/assets/themes/StPatricksDay2018/" + getFileName(h[f]))
+        -1 < $.inArray(_, w) && (h[f] = "//molesmalo.github.io/StarWarsMod4AirMash/assets/themes/StPatricksDay2018/" + getFileName(h[f]))
     }
 }
 ,
