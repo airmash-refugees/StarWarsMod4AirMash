@@ -1,14 +1,3 @@
-function BaseTheme() {}
-BaseTheme.prototype = {
-    loadGameModules: function() {
-        loadGraphics_Default(),
-        loadSounds_Default()
-    },
-    start: function() {},
-    injectTextures: function() {},
-    injectSounds: function() {},
-    settingsProvider: null
-},
 window.HyperSpace = function() {
     this.sprite = null;
     let h = PIXI.Texture.fromImage("hyperspace");
@@ -154,21 +143,21 @@ StarMash_2.prototype.start = function() {
     function d() {
         function F(X) {
             for (let O = 0; 3 > O; O++)
-                N[O].visible = X
+                j[O].visible = X
         }
         function R(X) {
             for (let O = 0; 3 > O; O++)
-                N[O].renderable = X
+                j[O].renderable = X
         }
-        let j = game.graphics.layers.map
-          , N = [j.children[1], j.children[3], j.children[5]];
-        j.visible = !1,
+        let N = game.graphics.layers.map
+          , j = [N.children[1], N.children[3], N.children[5]];
+        N.visible = !1,
         function() {
             for (let X = 0; 3 > X; X++) {
-                j.children[2 * X].mask = null;
-                let O = Tools.randInt(0, N.length - 1);
-                j.children[2 * X].mask = N[O],
-                SWAM.debug && console.log(`${j.children[2 * X].layerName}: ${N[O].layerName}`)
+                N.children[2 * X].mask = null;
+                let O = Tools.randInt(0, j.length - 1);
+                N.children[2 * X].mask = j[O],
+                SWAM.debug && console.log(`${N.children[2 * X].layerName}: ${j[O].layerName}`)
             }
             R(!0)
         }(),
@@ -177,11 +166,11 @@ StarMash_2.prototype.start = function() {
             let X = config.mapWidth * game.scale - game.screenX / game.scale
               , O = config.mapHeight * game.scale - game.screenY / game.scale;
             for (let z = 0; 3 > z; z++)
-                j.children[2 * z + 1].position.set(Tools.randInt(-X, 0), Tools.randInt(-O, 0));
+                N.children[2 * z + 1].position.set(Tools.randInt(-X, 0), Tools.randInt(-O, 0));
             Graphics.renderbackground(),
             F(!1)
         }(),
-        j.visible = !0;
+        N.visible = !0;
         let U = 1 == Tools.randInt(0, 1);
         SWAM.MoveBackgroundTiles = U,
         R(!1),
@@ -190,29 +179,29 @@ StarMash_2.prototype.start = function() {
     }
     function c() {
         for (let A in B) {
-            let j = B[A];
-            j.scale = j.scale || 1;
-            let N = Graphics.renderer
+            let N = B[A];
+            N.scale = N.scale || 1;
+            let j = Graphics.renderer
               , U = PIXI.Texture.fromImage(A)
               , X = null;
-            for (let O in j.useMask && (X = PIXI.Texture.fromImage(A + "_Mask")),
-            j.items) {
-                let z = j.items[O]
-                  , Y = new PIXI.Texture(U,new PIXI.Rectangle(z[0] * j.scale,z[1] * j.scale,z[2] * j.scale,z[3] * j.scale))
+            for (let O in N.useMask && (X = PIXI.Texture.fromImage(A + "_Mask")),
+            N.items) {
+                let z = N.items[O]
+                  , Y = new PIXI.Texture(U,new PIXI.Rectangle(z[0] * N.scale,z[1] * N.scale,z[2] * N.scale,z[3] * N.scale))
                   , V = new PIXI.Sprite(Y);
-                V.scale.set(j.resultScale, j.resultScale);
+                V.scale.set(N.resultScale, N.resultScale);
                 var F = null;
-                if (j.useMask) {
-                    var R = j.maskScale || 1
-                      , I = new PIXI.Texture(X,new PIXI.Rectangle(z[0] * j.scale / R,z[1] * j.scale / R,z[2] * j.scale / R,z[3] * j.scale / R))
+                if (N.useMask) {
+                    var R = N.maskScale || 1
+                      , I = new PIXI.Texture(X,new PIXI.Rectangle(z[0] * N.scale / R,z[1] * N.scale / R,z[2] * N.scale / R,z[3] * N.scale / R))
                       , F = new PIXI.Sprite(I);
                     F.scale.set(R, R),
                     V.addChild(F),
                     V.filters = [new PIXI.SpriteMaskFilter(F)],
-                    F.position.set(-z[0] * j.scale, -z[1] * j.scale)
+                    F.position.set(-z[0] * N.scale, -z[1] * N.scale)
                 }
                 let H = PIXI.RenderTexture.create(V.width, V.height);
-                N.render(V, H, !0),
+                j.render(V, H, !0),
                 SWAM.Textures[O] = H
             }
         }
@@ -242,9 +231,9 @@ StarMash_2.prototype.start = function() {
         return I.distanceFactor = R.distanceFactor ? R.distanceFactor : [1, 1],
         I.basePosition = R.basePosition ? R.basePosition : [0, 0],
         I.update = function() {
-            let N = Graphics.getCamera()
-              , U = N.x + (I.basePosition[0] - N.x) / I.distanceFactor[0]
-              , X = N.y + (I.basePosition[1] - N.y) / I.distanceFactor[1];
+            let j = Graphics.getCamera()
+              , U = j.x + (I.basePosition[0] - j.x) / I.distanceFactor[0]
+              , X = j.y + (I.basePosition[1] - j.y) / I.distanceFactor[1];
             I.position.set(U, X)
         }
         ,
@@ -260,12 +249,12 @@ StarMash_2.prototype.start = function() {
             I.baseDistanceFactor = I.baseDistanceFactor || 8,
             I.textures = I.textures || B.ImperialShips.items;
             var A = I.count
-              , j = [];
+              , N = [];
             for (let U in I.textures)
-                j.push(U);
-            let N = 2 * Math.PI / A;
+                N.push(U);
+            let j = 2 * Math.PI / A;
             for (let U = 0, X = 0; U < A; U++,
-            X += N) {
+            X += j) {
                 let O = Tools.randInt(I.radius[0], I.radius[1])
                   , z = Tools.randInt(I.x[0], I.x[1])
                   , Y = Tools.randInt(I.y[0], I.y[1])
@@ -274,7 +263,7 @@ StarMash_2.prototype.start = function() {
                 Y = V.y;
                 let H = Tools.rand(0.2, 0.85)
                   , W = 0.5 * (1 / (H / 0.85)) + 0.5
-                  , E = j[Tools.randInt(0, j.length - 1)]
+                  , E = N[Tools.randInt(0, N.length - 1)]
                   , Z = S(E, {
                     distanceFactor: [I.baseDistanceFactor * W, I.baseDistanceFactor * W],
                     scale: [H, H],
@@ -319,11 +308,11 @@ StarMash_2.prototype.start = function() {
         }
     }
     function _(F, R, I, A) {
-        let j = I * Math.cos(A) + F
-          , N = I * Math.sin(A) + R;
+        let N = I * Math.cos(A) + F
+          , j = I * Math.sin(A) + R;
         return {
-            x: j,
-            y: N
+            x: N,
+            y: j
         }
     }
     function D() {
@@ -336,68 +325,68 @@ StarMash_2.prototype.start = function() {
     }
     function k(F, R, I) {
         var A = Graphics.renderer.width
-          , j = Graphics.renderer.height;
-        let N = Textures.tile(F, A, j);
-        return N.layerName = R,
-        game.graphics.layers.map.addChildAt(N, D()),
-        N.tileScale.set(I, I),
-        N
+          , N = Graphics.renderer.height;
+        let j = Textures.tile(F, A, N);
+        return j.layerName = R,
+        game.graphics.layers.map.addChildAt(j, D()),
+        j.tileScale.set(I, I),
+        j
     }
     function L(F=-1) {
         let I = [];
-        for (let N in T)
-            I.push(N);
+        for (let j in T)
+            I.push(j);
         let A = Tools.randInt(0, I.length - 1);
         0 <= F && F < I.length && (A = F);
-        let j = new PIXI.loaders.Loader;
-        j.add(I[A], T[I[A]].texture),
-        j.add(I[A] + "_Mask", T[I[A]].mask),
-        j.load(function() {
-            let N = C(Graphics.renderer, I[A]);
-            N.layerName = "planet",
-            N.scaleModifier = Tools.rand(0.1, 0.65),
-            N.scale.set(0.5 * N.scaleModifier, 0.5 * N.scaleModifier);
-            let U = 4 * N.scaleModifier;
-            N.basePosition = [Tools.randInt(-25000, 7e4), Tools.randInt(-2e4 * U, 4e4 * U)],
-            N.distanceFactor = [30, 30],
+        let N = new PIXI.loaders.Loader;
+        N.add(I[A], T[I[A]].texture),
+        N.add(I[A] + "_Mask", T[I[A]].mask),
+        N.load(function() {
+            let j = C(Graphics.renderer, I[A]);
+            j.layerName = "planet",
+            j.scaleModifier = Tools.rand(0.1, 0.65),
+            j.scale.set(0.5 * j.scaleModifier, 0.5 * j.scaleModifier);
+            let U = 4 * j.scaleModifier;
+            j.basePosition = [Tools.randInt(-25000, 7e4), Tools.randInt(-2e4 * U, 4e4 * U)],
+            j.distanceFactor = [30, 30],
             SWAM.debug && (console.log("planet: " + I[A]),
-            console.log("planet scale: " + N.scale.x.toFixed(2) + "    modifier: " + N.scaleModifier.toFixed(2)),
-            console.log("planet pos: " + N.basePosition[0] + ", " + N.basePosition[1])),
-            N.update = function(O, z) {
-                let Y = (O + N.basePosition[0] * game.scale) / N.distanceFactor[0]
-                  , V = (z + N.basePosition[1] * game.scale) / N.distanceFactor[1];
-                N.position.set(Y, V)
+            console.log("planet scale: " + j.scale.x.toFixed(2) + "    modifier: " + j.scaleModifier.toFixed(2)),
+            console.log("planet pos: " + j.basePosition[0] + ", " + j.basePosition[1])),
+            j.update = function(O, z) {
+                let Y = (O + j.basePosition[0] * game.scale) / j.distanceFactor[0]
+                  , V = (z + j.basePosition[1] * game.scale) / j.distanceFactor[1];
+                j.position.set(Y, V)
             }
             ,
             null != SWAM.planet && game.graphics.layers.map.removeChild(SWAM.planet),
-            SWAM.planet = N,
+            SWAM.planet = j,
             game.graphics.layers.map.addChildAt(SWAM.planet, 6);
             let X = f();
-            N.update(-X.x * game.scale, -X.y * game.scale),
+            j.update(-X.x * game.scale, -X.y * game.scale),
             SWAM.loadSettings()
         })
     }
     function C(F, R) {
         var I = PIXI.Texture.fromImage(R)
           , A = new PIXI.Sprite(I)
-          , j = PIXI.Sprite.fromImage(R + "_Mask");
-        j.scale.set(1, 1);
-        let N = PIXI.RenderTexture.create(2 * A.width, 2 * A.height)
-          , U = new PIXI.Sprite(N);
-        return A.addChild(j),
-        A.filters = [new PIXI.SpriteMaskFilter(j)],
+          , N = PIXI.Sprite.fromImage(R + "_Mask");
+        N.scale.set(1, 1);
+        let j = PIXI.RenderTexture.create(2 * A.width, 2 * A.height)
+          , U = new PIXI.Sprite(j);
+        return A.addChild(N),
+        A.filters = [new PIXI.SpriteMaskFilter(N)],
         A.scale.set(2, 2),
         A.position.set(0, 0),
-        F.render(A, N),
+        F.render(A, j),
         U.update = M,
         U
     }
     function M() {
         var I = SWAM.planet;
         let A = Graphics.getCamera()
-          , j = game.halfScreenX / game.scale
-          , N = game.halfScreenY / game.scale
-          , U = A.x - j + 16384
+          , N = game.halfScreenX / game.scale
+          , j = game.halfScreenY / game.scale
+          , U = A.x - N + 16384
           , X = game.screenX - I.width
           , O = config.mapWidth - game.screenX / game.scale
           , Y = A.y + 8192
@@ -405,7 +394,7 @@ StarMash_2.prototype.start = function() {
         if (5e3 > Y)
             V = game.screenY;
         else {
-            let H = config.mapHeight - N - 5e3;
+            let H = config.mapHeight - j - 5e3;
             V = game.screenY - I.height * (Y - 5e3) / H
         }
         I.position.set(U * X / O, V)
@@ -1016,7 +1005,8 @@ StarMash_1.prototype.getFilePath = StarMash_2.prototype.getFilePath = function(h
 StarMash_1.prototype.injectTextures = StarMash_2.prototype.injectTextures,
 StarMash_1.prototype.loadGameModules = StarMash_2.prototype.loadGameModules;
 function VanillaTheme() {
-    let c = new SettingsProvider({
+    let d = this
+      , m = new SettingsProvider({
         map: {
             sea: !0,
             forest: !0,
@@ -1027,72 +1017,70 @@ function VanillaTheme() {
         layers: {
             shadows: !0,
             smoke: !0
+        },
+        gameplay: {
+            colorMissiles: !0,
+            colorPlayers: !0
         }
-    },function(S) {
-        let w = S
-          , f = game.graphics.layers.sea
-          , _ = f.children[1]
-          , D = game.graphics.layers.map
-          , k = D.children[0]
-          , L = D.children[1]
-          , G = D.children[3]
-          , C = D.children[6];
-        if (w && w.map) {
-            function M() {
-                C = D.children[6],
-                w.map.polygons ? (C.visible = !0,
-                D.mask = C) : (D.mask = null,
-                C.visible = !1)
+    },function(w) {
+        d.settings = w;
+        let f = w
+          , _ = game.graphics.layers.sea
+          , D = _.children[1]
+          , k = game.graphics.layers.map
+          , L = k.children[0]
+          , G = k.children[1]
+          , C = k.children[3]
+          , M = k.children[6];
+        if (f && f.map) {
+            function B() {
+                M = k.children[6],
+                f.map.polygons ? (M.visible = !0,
+                k.mask = M) : (k.mask = null,
+                M.visible = !1)
             }
-            if (_.visible = w.map.sea,
-            k.visible = w.map.forest,
-            f.visible = w.map.forest && !w.map.polygons ? !1 : !0,
-            L.visible = w.map.sand,
-            G.visible = w.map.rock,
-            C)
-                M();
+            if (D.visible = f.map.sea,
+            L.visible = f.map.forest,
+            _.visible = f.map.forest && !f.map.polygons ? !1 : !0,
+            G.visible = f.map.sand,
+            C.visible = f.map.rock,
+            M)
+                B();
             else {
-                let B = setInterval(function() {
-                    game.graphics.layers.map.children[6] && (clearInterval(B),
-                    M())
+                let T = setInterval(function() {
+                    game.graphics.layers.map.children[6] && (clearInterval(T),
+                    B())
                 }, 500)
             }
         }
-        w && w.layers && (game.graphics.layers.shadows.visible = w.layers.shadows,
-        game.graphics.layers.smoke.visible = w.layers.smoke)
+        f && f.layers && (game.graphics.layers.shadows.visible = f.layers.shadows,
+        game.graphics.layers.smoke.visible = f.layers.smoke),
+        forEachPlayer(B=>{
+            d.tintPlayer(B)
+        }
+        )
     }
     );
-    c.root = "",
-    c.title = "Mod Settings";
-    let m = c.addSection("Background");
-    m.addBoolean("map.sea", "Sea depth"),
-    m.addBoolean("map.forest", "Forest"),
-    m.addBoolean("map.sand", "Sand"),
-    m.addBoolean("map.rock", "Rocks"),
-    m.addBoolean("map.polygons", "Continents"),
-    m.addBoolean("layers.shadows", "Shadows"),
-    m.addBoolean("layers.smoke", "Missile's Smoke"),
-    this.settingsProvider = c
+    m.root = "",
+    m.title = "Mod Settings";
+    let S = m.addSection("Background");
+    S.addBoolean("map.sea", "Sea depth"),
+    S.addBoolean("map.forest", "Forest"),
+    S.addBoolean("map.sand", "Sand"),
+    S.addBoolean("map.rock", "Rocks"),
+    S.addBoolean("map.polygons", "Continents"),
+    S.addBoolean("layers.shadows", "Shadows"),
+    S.addBoolean("layers.smoke", "Missile's Smoke"),
+    S = m.addSection("Gameplay"),
+    S.addBoolean("gameplay.colorMissiles", "Use team colors for missiles."),
+    S.addBoolean("gameplay.colorPlayers", "Use team colors for players."),
+    this.settingsProvider = m
 }
 VanillaTheme.themeName = "Vanilla Theme",
 VanillaTheme.author = "Bombita",
 VanillaTheme.version = SWAM_version,
 VanillaTheme.prototype.start = function() {
     var h = this;
-    SWAM.on("playerAdded", function(d) {
-        h.tintPlayer(d);
-        let c = d.setupGraphics;
-        d.setupGraphics = function(S) {
-            c.call(d, S),
-            h.tintPlayer(d)
-        }
-        ;
-        let m = d.reteam;
-        d.reteam = function(S) {
-            m.call(d, S),
-            h.tintPlayer(d)
-        }
-    }),
     SWAM.on("playerAdded", function(d) {
         "function" == typeof window.Glow && Glow(d),
         h.tintPlayer(d);
@@ -1110,28 +1098,30 @@ VanillaTheme.prototype.start = function() {
         }
     }),
     SWAM.on("mobAdded", function(d, c, m) {
-        let S = Mobs.get(d.id)
-          , w = -1 < $.inArray(S.type, [1, 2, 3, 5, 6, 7]);
-        if (w) {
-            if (2 == game.gameType)
-                if (m) {
-                    var f = Players.get(m);
-                    1 == f.team ? (S.sprites.sprite.tint = 5592575,
-                    S.sprites.thruster.tint = 5592575) : (S.sprites.sprite.tint = 16733525,
-                    S.sprites.thruster.tint = 16733525)
-                } else
-                    1 == Players.getMe().team ? (S.sprites.sprite.tint = 16733525,
-                    S.sprites.thruster.tint = 16733525) : (S.sprites.sprite.tint = 5592575,
-                    S.sprites.thruster.tint = 5592575);
-            S.sprites.smokeGlow.alpha = 0,
-            2 == S.type ? S.sprites.sprite.scale.set(.3, .4) : 3 == S.type ? S.sprites.sprite.scale.set(.56, .4) : S.sprites.sprite.scale.set(.3, .3)
+        if (h.settings.gameplay.colorMissiles) {
+            let S = Mobs.get(d.id)
+              , w = -1 < $.inArray(S.type, [1, 2, 3, 5, 6, 7]);
+            if (w) {
+                if (2 == game.gameType)
+                    if (m) {
+                        var f = Players.get(m);
+                        1 == f.team ? (S.sprites.sprite.tint = 5592575,
+                        S.sprites.thruster.tint = 5592575) : (S.sprites.sprite.tint = 16733525,
+                        S.sprites.thruster.tint = 16733525)
+                    } else
+                        1 == Players.getMe().team ? (S.sprites.sprite.tint = 16733525,
+                        S.sprites.thruster.tint = 16733525) : (S.sprites.sprite.tint = 5592575,
+                        S.sprites.thruster.tint = 5592575);
+                S.sprites.smokeGlow.alpha = 0,
+                2 == S.type ? S.sprites.sprite.scale.set(.3, .4) : 3 == S.type ? S.sprites.sprite.scale.set(.56, .4) : S.sprites.sprite.scale.set(.3, .3)
+            }
         }
     }),
     SWAM.Theme.settingsProvider.apply(SWAM.Settings)
 }
 ,
 VanillaTheme.prototype.tintPlayer = function(h) {
-    h.sprites.sprite.tint = 1 == h.team ? 10539263 : 2 == h.team ? 16756912 : 16777215
+    h.sprites.sprite.tint = this.settings && this.settings.gameplay.colorPlayers ? 1 == h.team ? 10539263 : 2 == h.team ? 16756912 : 16777215 : 16777215
 }
 ,
 VanillaTheme.prototype.getFilePath = function(h) {
@@ -1147,28 +1137,27 @@ VanillaTheme.prototype.loadGameModules = function() {
     loadSounds_Default()
 }
 ;
-function StPatricksDay2018() {
-    VanillaTheme.prototype.constructor.call(this),
-    $("#logon,#redditPanel,#changelogPanel").css("backgroundColor", "rgba(6, 51, 16, 0.75)")
+class StPatricksDay2018 extends VanillaTheme {
+    constructor() {
+        super(),
+        $("#logon").css("backgroundColor", "rgba(6, 51, 16, 0.75)")
+    }
+    injectTextures(h) {
+        const w = ["map_forest.jpg", "map_rock.jpg", "map_sand.jpg", "map_sea.jpg", "aircraft.png"];
+        for (let f in h) {
+            let _ = getFileName(h[f]);
+            -1 < $.inArray(_, w) && (h[f] = "//molesmalo.github.io/StarWarsMod4AirMash/assets/themes/StPatricksDay2018/" + getFileName(h[f]))
+        }
+    }
 }
-extend(StPatricksDay2018, VanillaTheme),
 StPatricksDay2018.themeName = "St. Patrick's Day 2018 Theme",
 StPatricksDay2018.description = "A lucky theme for AirMash!!",
-StPatricksDay2018.author = "Bombita",
-StPatricksDay2018.thumbnail = "";
+StPatricksDay2018.author = "Bombita";
 function getFileName(h) {
     return h = h.substring(h.lastIndexOf("/") + 1),
     -1 < h.indexOf("?") && (h = h.substr(0, h.indexOf("?"))),
     h
 }
-StPatricksDay2018.prototype.injectTextures = function(h) {
-    const w = ["map_forest.jpg", "map_rock.jpg", "map_sand.jpg", "map_sea.jpg", "aircraft.png"];
-    for (let f in h) {
-        let _ = getFileName(h[f]);
-        -1 < $.inArray(_, w) && (h[f] = "//molesmalo.github.io/StarWarsMod4AirMash/assets/themes/StPatricksDay2018/" + getFileName(h[f]))
-    }
-}
-,
 SWAM.registerExtension({
     name: "StarMash Themes",
     id: "StarMashThemes",
