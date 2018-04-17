@@ -464,7 +464,7 @@ StarMash_2.prototype.start = function() {
         }
     }
       , B = {};
-    for (let F, P = 2; 11 >= P; P++)
+    for (let F, P = 2; 12 >= P; P++)
         F = ("0" + P).slice(-2),
         B["Planet" + F] = {
             texture: getFilePath("planets/planet" + F + ".jpg"),
@@ -556,9 +556,7 @@ StarMash_2.addGraphicsSetButton = function() {
 }
 ,
 StarMash_2.aircraftSelected = function() {
-    var d = 0 == game.myGraphicsSet ? "teamImperial" : "teamRebel";
-    console.log("aircraftSelected");
-    for (var c = 1; 5 >= c; c++)
+    for (var d = 0 == game.myGraphicsSet ? "teamImperial" : "teamRebel", c = 1; 5 >= c; c++)
         $("#selectaircraft-" + c).removeClass("teamImperial").removeClass("teamRebel").addClass(d);
     StarMash_2.updateShipNames()
 }
