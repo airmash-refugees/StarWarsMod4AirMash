@@ -1,18 +1,18 @@
 "use strict";
 window.HyperSpace = function() {
     this.sprite = null;
-    let h = PIXI.Texture.fromImage("hyperspace");
-    this.sprite = new PIXI.Sprite(h)
+    let d = PIXI.Texture.fromImage("hyperspace");
+    this.sprite = new PIXI.Sprite(d)
 }
 ,
 window.HyperSpace.prototype = {
     sprite: null,
     initialize: function() {
-        let h = PIXI.Texture.fromImage("hyperspace");
-        this.sprite = new PIXI.Sprite(h)
+        let d = PIXI.Texture.fromImage("hyperspace");
+        this.sprite = new PIXI.Sprite(d)
     },
     show: function() {
-        function d() {
+        function h() {
             for (name in m)
                 "game" != name && (m[name].visible = m[name].prevVisible,
                 delete m[name].prevVisible);
@@ -47,7 +47,7 @@ window.HyperSpace.prototype = {
             0 < S.strength ? setTimeout(function() {
                 A()
             }, 10) : (S.strength = 0,
-            d())
+            h())
         };
         this.sprite.filters = [S, w],
         A()
@@ -115,7 +115,7 @@ StarMash_2.themeName = "StarMash v.2",
 StarMash_2.author = "Bombita",
 StarMash_2.version = SWAM_version,
 StarMash_2.prototype.start = function() {
-    function h() {
+    function d() {
         let P = $("#regenerateBackground");
         if (0 == P.length) {
             var F = getTemplate("#regenerateBackground");
@@ -127,21 +127,21 @@ StarMash_2.prototype.start = function() {
             })
         }
         P.slideDown(),
-        h.timer && clearInterval(h.timer);
+        d.timer && clearInterval(d.timer);
         let V = $(".timerIndicator", P);
-        h.width = 100,
+        d.width = 100,
         V.css("width", "100%"),
-        h.timer = setInterval(function() {
-            h.width--,
+        d.timer = setInterval(function() {
+            d.width--,
             V.animate({
-                width: h.width + "%"
+                width: d.width + "%"
             }, 90),
-            0 == h.width && (clearInterval(h.timer),
-            delete h.timer,
+            0 == d.width && (clearInterval(d.timer),
+            delete d.timer,
             P.slideUp())
         }, 100)
     }
-    function d() {
+    function h() {
         function P(X) {
             for (let U = 0; 3 > U; U++)
                 N[U].visible = X
@@ -166,8 +166,8 @@ StarMash_2.prototype.start = function() {
             P(!0);
             let X = config.mapWidth * game.scale - game.screenX / game.scale
               , U = config.mapHeight * game.scale - game.screenY / game.scale;
-            for (let q = 0; 3 > q; q++)
-                O.children[2 * q + 1].position.set(Tools.randInt(-X, 0), Tools.randInt(-U, 0));
+            for (let H = 0; 3 > H; H++)
+                O.children[2 * H + 1].position.set(Tools.randInt(-X, 0), Tools.randInt(-U, 0));
             Graphics.renderbackground(),
             P(!1)
         }(),
@@ -187,23 +187,23 @@ StarMash_2.prototype.start = function() {
               , X = null;
             for (let U in O.useMask && (X = PIXI.Texture.fromImage(z + "_Mask")),
             O.items) {
-                let q = O.items[U]
-                  , H = new PIXI.Texture(I,new PIXI.Rectangle(q[0] * O.scale,q[1] * O.scale,q[2] * O.scale,q[3] * O.scale))
-                  , Q = new PIXI.Sprite(H);
+                let H = O.items[U]
+                  , q = new PIXI.Texture(I,new PIXI.Rectangle(H[0] * O.scale,H[1] * O.scale,H[2] * O.scale,H[3] * O.scale))
+                  , Q = new PIXI.Sprite(q);
                 Q.scale.set(O.resultScale, O.resultScale);
                 var P = null;
                 if (O.useMask) {
                     var F = O.maskScale || 1
-                      , V = new PIXI.Texture(X,new PIXI.Rectangle(q[0] * O.scale / F,q[1] * O.scale / F,q[2] * O.scale / F,q[3] * O.scale / F))
+                      , V = new PIXI.Texture(X,new PIXI.Rectangle(H[0] * O.scale / F,H[1] * O.scale / F,H[2] * O.scale / F,H[3] * O.scale / F))
                       , P = new PIXI.Sprite(V);
                     P.scale.set(F, F),
                     Q.addChild(P),
                     Q.filters = [new PIXI.SpriteMaskFilter(P)],
-                    P.position.set(-q[0] * O.scale, -q[1] * O.scale)
+                    P.position.set(-H[0] * O.scale, -H[1] * O.scale)
                 }
-                let j = PIXI.RenderTexture.create(Q.width, Q.height);
-                N.render(Q, j, !0),
-                SWAM.Textures[U] = j
+                let E = PIXI.RenderTexture.create(Q.width, Q.height);
+                N.render(Q, E, !0),
+                SWAM.Textures[U] = E
             }
         }
     }
@@ -257,24 +257,24 @@ StarMash_2.prototype.start = function() {
             for (let I = 0, X = 0; I < z; I++,
             X += N) {
                 let U = Tools.randInt(V.radius[0], V.radius[1])
-                  , q = Tools.randInt(V.x[0], V.x[1])
-                  , H = Tools.randInt(V.y[0], V.y[1])
-                  , Q = f(q, H, U, X);
-                q = Q.x,
-                H = Q.y;
-                let j = Tools.rand(0.2, 0.85)
-                  , E = 0.5 * (1 / (j / 0.85)) + 0.5
-                  , W = O[Tools.randInt(0, O.length - 1)]
-                  , _ = S(W, {
-                    distanceFactor: [V.baseDistanceFactor * E, V.baseDistanceFactor * E],
-                    scale: [j, j],
-                    basePosition: [q, H],
-                    position: [q, H],
+                  , H = Tools.randInt(V.x[0], V.x[1])
+                  , q = Tools.randInt(V.y[0], V.y[1])
+                  , Q = f(H, q, U, X);
+                H = Q.x,
+                q = Q.y;
+                let E = Tools.rand(0.2, 0.85)
+                  , j = 0.5 * (1 / (E / 0.85)) + 0.5
+                  , _ = O[Tools.randInt(0, O.length - 1)]
+                  , W = S(_, {
+                    distanceFactor: [V.baseDistanceFactor * j, V.baseDistanceFactor * j],
+                    scale: [E, E],
+                    basePosition: [H, q],
+                    position: [H, q],
                     anchor: [0.5, 0.5]
                 });
-                _.textureName = W,
-                _.angleUsed = X,
-                SWAM.Ships.push(_)
+                W.textureName = _,
+                W.angleUsed = X,
+                SWAM.Ships.push(W)
             }
         }
         var F = SWAM.ShipContainer;
@@ -353,10 +353,10 @@ StarMash_2.prototype.start = function() {
             SWAM.debug && (console.log("planet: " + V[z]),
             console.log("planet scale: " + N.scale.x.toFixed(2) + "    modifier: " + N.scaleModifier.toFixed(2)),
             console.log("planet pos: " + N.basePosition[0] + ", " + N.basePosition[1])),
-            N.update = function(U, q) {
-                let H = (U + N.basePosition[0] * game.scale) / N.distanceFactor[0]
-                  , Q = (q + N.basePosition[1] * game.scale) / N.distanceFactor[1];
-                N.position.set(H, Q)
+            N.update = function(U, H) {
+                let q = (U + N.basePosition[0] * game.scale) / N.distanceFactor[0]
+                  , Q = (H + N.basePosition[1] * game.scale) / N.distanceFactor[1];
+                N.position.set(q, Q)
             }
             ,
             null != SWAM.planet && game.graphics.layers.map.removeChild(SWAM.planet),
@@ -390,13 +390,13 @@ StarMash_2.prototype.start = function() {
           , I = z.x - O + 16384
           , X = game.screenX - V.width
           , U = config.mapWidth - game.screenX / game.scale
-          , H = z.y + 8192
+          , q = z.y + 8192
           , Q = 0;
-        if (5e3 > H)
+        if (5e3 > q)
             Q = game.screenY;
         else {
-            let j = config.mapHeight - N - 5e3;
-            Q = game.screenY - V.height * (H - 5e3) / j
+            let E = config.mapHeight - N - 5e3;
+            Q = game.screenY - V.height * (q - 5e3) / E
         }
         V.position.set(I * X / U, Q)
     }
@@ -488,13 +488,13 @@ StarMash_2.prototype.start = function() {
     }
     ),
     SWAM.RandomizeBackground = function(P=-1) {
-        h(),
         d(),
+        h(),
         G(P),
         w()
     }
     ,
-    SWAM.debug && (SWAM.ShowRegenerateButton = h),
+    SWAM.debug && (SWAM.ShowRegenerateButton = d),
     SWAM.MoveBackgroundTiles = !0,
     SWAM.debug && (SWAM.createShips = w),
     SWAM.BackgroundFactor = 100,
@@ -534,10 +534,10 @@ StarMash_2.prototype.start = function() {
 }
 ,
 StarMash_2.addGraphicsSetButton = function() {
-    const h = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAC/VBMVEUAAAD////////////////////////+/v4LCwv///8ODg7//////////////////////////////v59fHz///////////////8VFRX5+fn//v7//v7///////8SEhL////////////++vr///8bGxsUFBQbGxsuLi7///////////8gICA0NDRcXFxAQED////////SCQkxMTEmJiZBQUFiYmKwsLDa2trOzs7q6uqlpaX////////9/f3////KCwsuLi47OjpUVFRQUFDhV1eBgYFsbGzupqa8vLzS0tLk5OTw8PDl5eX////////////79fXskpLxCgrbCQnOFxfZGRncFBT0GxsqKiraJyf1NzcgICBGRkbjQEDUPT3VVlZDQ0PYZWWHh4fqjo6hBQVHR0f09PTBCgryvb3R0dH43d31xcX+5uY5OTn////uAwPDERG6Cgq/FxfVDw/aIiJPT0/eTEzJHBw5OTncdHR0dHSCgoLULS3WPT1RUVGvAgJ0dHS+vr7ExMTyycn7h4fTLy/sJCT75+fOVFRra2vmenqgoKCampr55ub88fH///+Tk5PY2NioqKjpenrGxsbzwMDQQUH4+PjvWlr209Pr6+v86urs7OzEDAzlDQ3mICDOS0vXKirha2v2YWEzMzODg4PiRESTk5NcWlqhoaHBAgKmpqbreXnPFRXxsbGDg4OzDg5qamrsb2/ehYXuvLzLHh61tbX67e3oVFTmRkZUVFTgVVX2zMy8Gxv6mJjzt7ewsLBpaWn30ND8sLDyra323991dXXtoaHtQkLdYGD////0r6+Ghob////xp6d8fHz56OhVVVXuVFT0w8PafX30zs7toqLrOzvKysrvtbXrnZ3hd3fa2tr1qqq7u7vorKz2trbbaGjtwcHwwcH71dXdfHz12Njzk5P85eUHBwcJCQncAADfAQHIAADtAADqAADmAADRAADiAADWAQHZAADMAADFAADDAQHAAQHxAADKAADOAQG6AADkAADTAQHFcXUqAAAA6XRSTlMAAgUJDzASwP4e/VozIUgYOl4s3VNAPDb6wGRQQiT7Pg1NHBX49/XockpF8u/m11Um/PLy7eHQx8PBiYFubGf58+/o5uXc3NLKycXDt5CHencx/Pv49/f29PHu7Ovq6eXi4drX08zCsKqmpZeOjCn++fj39vTp6Ojk3dzb2tbU09LNzMnJw8O8vLKwo52amZaVlJCNioeHenFwbWVi+/r16OPg3Nzb2NfW09PSz87Nzc3My8jGxsTDwsLAvr29vLu3trOxsa+sqaalo6KhoJqak5GMiIeDgX54eHh2cG9ubGZlYltPTkJCOwDD0BUAAARNSURBVDjLZZRldBNBFIXTrCfZjbunSZqkCVBKgQrFpS20FHd3d3d3d3d3d3d3d99NGwhV2sJhdgsFDu/fzPnOvfe8N294f1VICASHEiQhhiF+CO+/CuGKD6EEIlGqEBIFFFd/I3w+BEF8Pkyo9Y/HP9CrSRic2JsiDCAWGEVhGLaJFPeH5a++W1xkg7krC/Qb40OwmCBTU20EYp0/PC8r2GK+HiFsqakgHcoas0IgiUz0esF7GUKV61Q+PSv441wchfT4+HCRSIaUCIVCWDOURJRP9y/4oDYs7TqxJYAGTOy61KD+tGjCnRdClREFUnwLIaKeDBz/1mB4M2ng4Or1siKqt218+JVS9e7SrshpQgkJ83mQGHEvHlZ+rt7gude7oFfLeln1q9TPrDvXYKa6ygVh8xQiMcSDSxh0R/OHL7aqVC8n9cnNKZ8XEZHR4NBziTqmhtaHjyjnMcI8sVp4o29wis6DIJRrb6+c9Lz8YN1ttSmkO16yaiXcMVUoEvOMVO0NGX0v6swlSLV0RuucbJC8ygydpLsGZxh7I1OxJUqShwivNsjo10knIUKNVMq+5dnpeRE7Yq3dffKSDNOsdEnHHLeMpyq3x5/Zr1O8xGYRq3VdWgCo8Zlyt33RmFzAVNJWxScrRDxPSvM0f/2TLqUNQmXC6azfgC435VptmTYavGJiDUExoYRnTV6Z5q/bNtZqhNEeiluDc7PTq3TrHF22akUBY6qGlQ1vKjXzFLVWfE3zV+kCQhEioJSbk31ZGjtKQ9MMw1TGaoY5pEpe8Vpfvqf5G1RPFqrUbtf5VQW5HWXW2q1oDiqlrTlIIDUA6PMXINX8WHK8Lm7m2D4FHW2I+3+oDqD8mc3HXp955WDLgo4IohTGVjP9Y6dPbviZNcxovKZ62xa9j+v0emlK5+gxci/+JzgV26Qna5iZEVGvfG67TbMXLpy9O1KOdWBbUCpxNNcCpWttzwBnGMxPb0ebvKc6e020JiqJbWZ/7VDmNGimWneiTiDwmTUMtmNAkhoJApBa4BtaOBYNO5Yeim5NvgUCrOFIwND2MtGNaFA4N+AKhQMmzHHj6nxjDUcyrJA3CWuG01xVkFdiNNxTQWWsFKC2V2QAJeiPYVECDokq3cHHFD46CyGJP9vwW2ACNrqyhmFwr3x9RaBkKlUaw4qeLx8tQbnGNdwSVQZLqlrKXmjk8A5JxBKH4OG/FiEECpXpU6aEMa0OaLHoNpHACrfLy2BYjcp002tCM7dSYKfEiLV4zDrGOapsknazTyOotFHboezOcDpsltDMLSe7nRabUaJ/dsTBOKO2JiRE2scklK4WTpvaP1KoAAOEOApCSREljGnvxBlnBQHeKJxmHMVmSd1qYyHzmyJkKuuymAvtw5xOuzOy2OSYZXozQqBFDKCAZSiJqCiFND7O5YqLlxZ3mxGjGP798RSJwWJSJpIoPRTlMahEMvKvT/En4U+imSkuVtwAAAAASUVORK5CYII=')"
-      , m = [h, "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAACi1BMVEUAAAD///8LCwv///////8ODg4QEBD////7+/sWFhb///////////8NDQ3///82Njb///////////////////////8ZGRn///////////////////////////8UFBQUFBQmJiZhYWH///////////////////////8cHBwaGhouLi4xMTFHR0dpaWl7e3v///8fHx8fHx8uLi5ubm5+fn7BwcHS0tLv7+/4+Pj///////////////////////////8gICAgICBXV1dkZGSAgICCgoLb29vo6Ojx8fGmpqb///////////////////8YGBgoKCgzMzM/Pz8zMzMqKipLS0tTU1NRUVFbW1tDQ0N5eXkxMTGEhISKioq9vb3Y2NhOTk7l5eXl5eX09PT9/f3///////////////////////8SEhIVFRUrKysiIiI7OztDQ0MkJCRPT091dXVjY2NqamqpqalHR0e0tLS6urrMzMxISEjh4eG+vr7z8/P19fXOzs52dnadnZ2vr6////8aGhpdXV05OTkwMDAqKipOTk5cXFxFRUWSkpI6OjpVVVWfn5+lpaVwcHA/Pz+tra2qqqqvr6+BgYFZWVloaGhnZ2fs7OzOzs7S0tJVVVXt7e3a2tqwsLDR0dHPz89+fn7R0dGKioq6urqWlpba2tqurq6oqKj+/v7AwMD////k5OTe3t74+Pjc3Nz////4+Pj////r6+v19fXq6urw8PD///////8jIyM7Ozs7OztxcXF0dHRbW1tPT094eHjFxcWxsbG1tbW8vLzIyMhoaGhra2tra2ufn5+hoaGYmJicnJzMzMzS0tKSkpLDw8PIyMjKysrPz88HBwcKCgrXv00AAAAA13RSTlMAv/4DAf39IcD6Qgk9/grwPzstJBYS9F5aU0hGHQ/7+PXkV086MRgH+Pjz8uvi3Tf49Ojg3MzIw8BnXDQyLyoU8u3n49zbxsPCilVSUEoN+fTv7evr6ujo5ePd3dvZzcfGxbd+eXNiXyYOAvr19PDv7e3p393Z0dDPzsrKxcXCwL6skoNM8eXk5OPg3tvX1tXU09PT0dHQzs7Nx8PDwL+8uLitp6ajoJWUkpGQhYOBgX12b25ubW1lY18jH/Xh4Nva1tXQy8XEwsC2tbKkop6cmZeVi4l4dpOI3Z0AAAP8SURBVDjLdVRnVxNREN23cVt6JwkhhSRAAoTQkSBGIDE0QVREBRQ79t4Vxd5777333nvvdefnuG+DkuM5vi/75Z6Zu3MLEXs9JLIkPVNaopEmWiyJUk2wlElJkkl6EHFvQmo/PdNLYzEn9Lw5Zsz1nuPMFrnnnr5fKoZ1j7GWalbcXb5sYY7RXmccOHfZ8jsuudZqwMO6MEoDU5JoqhyxEvi6egXpCABpnNtZbMm611vZhZIoe+uyXNcOTeLt67cuWODw5hfMmZ0N9hG/qjXj9THUBJlB5zZXDoNJ294UsjvLbXTTFjZ6cHc2rDmTLB/fWyYRlqUmMe6qzrX8kJcdaH+Lg+Z5OtC8CLGv18H0Uya5zpDag5D0s2ZVncsB53BU2Nzg5cXnbfC3oUWPyemfTW6mXULI9FrXlUeQyaL8Ro7nwZc7U6UAsGXMQ8hPrflhLkmREe2Muuc+yCjMz1XhGeQMFjlpHgDSM+cXrYLNNxJ1SYS+V/XpbMhoxhD8VEvQIIUwEcMqyoD7mFySQtzX3N6j8KWBsIHCoLThfX0ggCgbCZA2md5wS80QpYkXQ4GdgwEcQ5003je/AH+oMn86QMaO9LrztVrC4zoBziKngsxEbGYdT/c/eqy/jeea9gu0oZENw7vqIJFVNQLmRAeR1NDIEtTyYPOXUaPP7nX42aJIC0dObWtVbEp2E3LTMNtiVMGBQjU0v+/xUWOra8aNPnl4QXgqDXQuOhDqU6wm1MV9pixF5RSAQGTWhbFSTy918aVtnPiDg9HIAfYEKSFNMA48gspIDOIHXK7xWK3aFVeH8CJoGjtyNfUfUO2/oPh15PrYOtOl2RP/rMsR1mHidpE4mT6zFROvcWHiL/wqUiQ+RSCOT0DOWYJPMDyKNjqefsUnqM9jOyLNHNnQ1krhE3hqTkA5Kx4T5XrFYw4QjuksRHkUzCgKw1tzEMuSHdhVBlCflzkR0+2SpSmMZZmXbseyMKLAAQDgaIgJPBkLreCwwD5RYMEqZmyVChUAYPVVUTaD5MXn8zcC9wFbpZ2RCqYbhE2HUdQMhJyiZyaXzxNM9wybLmbfh9i+rYM5ALJ/XniqMImetgsJ1HO+C/ZVikFIFoIwK4IKKxrSYos41cxFqO0JGfpk0jBJEiFSBsad3JkDQ14Vob4tDkrg7M2LILR4Hd8nFqkJceE0Pl8aZbc02ejGjWzHwd0hfu03HE6lBFcBjrkbxxyMs7YWFOCY75gd4icu/Nkd81hhBC2myoUrSQj4aLI+mwf79jMJtVk6XBh/q8dg1cpx9cwdaEzzGqdvf195x6XW3jco4wtKLDF5d4lV1co9upT2WInF91gKUxrsqkN5UBtfh78BLbSeZWMjzYgAAAAASUVORK5CYII=')", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAADAFBMVEUAAAD////////////////////////////////////++/v////////////////////////////////////////////////////////////////////vAwP////////////////////////////////////////////////////zBATICgr////////////////////dBATFBATqAwPRCgrqDAzXDw/oHR36iIj64OD////95OT//////////////////f3////////jBQXXBgbBBQXNEhLFERHdFBT0GBjbGBjUFBTaJCT1JCTTPT32QEDhQEDqSkrbSUnYUlL0bW3wp6f4s7Pvubn//////Pz////yo6P////////////TAgLSBwfnBgbzCQntCQm6CAjxDQ3cCAjvGBjQHBzAHBy7EBDgKCjwODjuJSXtOjriVFTbWFjSV1f0T0/abm7zYmLjdnbfPT3mjo7nbW30sLDyycn66en75+f40NDpWVn8sLD31tb3xcX////4yMj////0oqL5x8f55eX88fH0wMD55ub+6+vwdHTzwMDfQkL////+8vLuq6v98vL209PvsbH88PDvwcHoh4f539/ohYXvoKDMGxvVKSnRLCzqJCT1MzPyNDTFJSXOQkLrFRXgTEzOS0voDg7oQEDlW1vXKirMEhLXYmLYZGTha2vqGxvTMzPUQkLsh4fuLy/UJyfulpbqoaHrqqrXODj6enrreXn2oKDwu7vehYXehYXVMzPuvLzLHh7oVFTmRkb519fQLCzpICDPWVn6mJjzt7f3goLNT0/4o6P0cnLkdHT32tr5wcH239/toaHtQkLtwcH0r6/jfn7uVFT80dH0w8PafX33np7NODj++/v0zs7hd3fvXl784ODuVlb99fX85ubbaGj71dXIAADLAADCAADpAAC6AADfAADQAADkAADaAADXAAC/AADFAADmAAC3AAC1AADcAADrAAC8AADwAADtAADhAADNAADUAADuAADSAADyAABVO9ozAAAA5nRSTlMAAhAIBB4xBjoSGgxkSTdDNVJPHGE8LywlCnJM/lhVRz4rIRaIXUAoIxT++pCNg3wi/v7++/r59sihlI9ubGpbUUYY/v39+fn49/f39PPt6+vp6ebX0a+ql3t3dWdZJv79/fz8/Pr69/b29u/u7uvm5ePi39/d3dfRzMnEvLu6sa6ppKGfnZybmZmWjYyHhICAfHdwaWJeSD4yMPby8fHv7uzr6ejo6Ofk4+Pi4eDf3dzZ2dbU09DQz8/OzcnIx8bGwsLBv769vLu7u7e3trW1r6mmpaKOjIqIh4aEg4N2dXNuaGdlT3CF9PkAAARHSURBVDjLZZRldNpQGIZDQkIIJLhDcVtXmUu9c3d3d3d3d3d3d3d3d/cChQLtWlrWdtsNbO3O2ffv3vOc93mTe+6F/hkGA4GNIgNqhBEmA/pvGKFhImxUilskUgMbUKH5F2GyEARhsWCUL1x0flEyZYDBCuwwizCAcGA2G+bAIkzw7kD+rpcRfBEc3iryMhGYQGNXryJQqWreQYejw/B5QgwlVq2ORQm2IkwxQBM99vXNCj2mTWwRmebwdGieQGLWFfM/YTKDXcGkGRZswCzvL85fSfGWzRo7EEBbx07/wuOv/HDtOY9vsyMMIOOgGNlm99XlPN7y25uGHa/uKNvsUJ/LSy2Sb4+3z1VRsTCLASGpUnLJkchnQh7vVe/0Gk16OuoMqO3tPpenI9vs3/I6mS/iMCC4PY87Pv/EEpVEsvR6L3/pSEfZjr6al9rgVMqy8a7DH1UyOwsiqKRpdTz3PqdgUq3yXA1nmiPfU/XUYlIq05mnlStzl6tDFZCcXDy8oPwjrq59LGWeuceZCZoPmMnFDbG4eVa/QL8XAj0MYUlPa/vqtuDiqF1OxlyIBFDHUQuEVjvBN0/vH+hyi0ulQpKEkaV8dSe1xQlOKsWdWB9AaycmgpWRL57UN6gerOShUEqrHaW8tW8qLSIFLNPM3gt8jSuZpWwFgSc8WB9U14tW2SBhdAV3Tvejb1VyGNYLZg8B0MAZ7aRs2EbGnC4XzOscJbBCgqhyP9zenZVAKRGWNGOI35nZpJKYj6KUuNJQVzCvREmNHooo2SnDnVOzmSlJQpHKh9tynZn177dWURJN9KgKNFRZIwNQmawMt7fhOFOiOL7y6N7pfmfkmZZKcdvocY2yQlA7GuriyvqR4204emrLyWMGZafn+p2Nx0xuOfVKoyoZrgCAgC7Z1CPgAsKqdfcdG7G5a/Z3QJWuP6LZsD6l3AAqLFEywgqRCzaqXbSwoGz1GtXSvwPK7yxdvU55n9edkRUorGUSyiGLcqg6SAt9P/PTnH6ayvXTZxOG1A1itAaIz73RrZAWen0eR5ozNz07G0QBqMCb8yPLpW4aLyEgqyBuQ15hICT0ODKdubQQRHl++mioR3MzZodQXXzFznmFf4WZQBiKyqehjDKDF5JyDsSWRcxp8CsvSH8hENK1QCvnn1IVmnMpAoEUIrzthHq/wrUKAEULgY8u5a7StBUph5kQC26vVVas9W+tcBTwlWoUp8GMCANcO6NMGHOyFhAW1wpHVW04RYyjHCZ9gRUEJmhVsZ4a1ApTQEhHlW08hWuxgRsVego4IkyonNCgW5mivwWiqq0ZGSfWydk0E6YIWQp3TsW+5TpVoWulla7WtdegFq01uI2NFD8rCqMcFyTE3Wnav0LN8uV7rmty9slCsRZDQ64iCoFFeolQHB9jioqKMkW3Tmyn5cuNnD9McRhbZOXrtEJBhCBZxcOlttTiR/E3AYEOqmgNZcgAAAAASUVORK5CYII=')"];
+    const d = "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAC/VBMVEUAAAD////////////////////////+/v4LCwv///8ODg7//////////////////////////////v59fHz///////////////8VFRX5+fn//v7//v7///////8SEhL////////////++vr///8bGxsUFBQbGxsuLi7///////////8gICA0NDRcXFxAQED////////SCQkxMTEmJiZBQUFiYmKwsLDa2trOzs7q6uqlpaX////////9/f3////KCwsuLi47OjpUVFRQUFDhV1eBgYFsbGzupqa8vLzS0tLk5OTw8PDl5eX////////////79fXskpLxCgrbCQnOFxfZGRncFBT0GxsqKiraJyf1NzcgICBGRkbjQEDUPT3VVlZDQ0PYZWWHh4fqjo6hBQVHR0f09PTBCgryvb3R0dH43d31xcX+5uY5OTn////uAwPDERG6Cgq/FxfVDw/aIiJPT0/eTEzJHBw5OTncdHR0dHSCgoLULS3WPT1RUVGvAgJ0dHS+vr7ExMTyycn7h4fTLy/sJCT75+fOVFRra2vmenqgoKCampr55ub88fH///+Tk5PY2NioqKjpenrGxsbzwMDQQUH4+PjvWlr209Pr6+v86urs7OzEDAzlDQ3mICDOS0vXKirha2v2YWEzMzODg4PiRESTk5NcWlqhoaHBAgKmpqbreXnPFRXxsbGDg4OzDg5qamrsb2/ehYXuvLzLHh61tbX67e3oVFTmRkZUVFTgVVX2zMy8Gxv6mJjzt7ewsLBpaWn30ND8sLDyra323991dXXtoaHtQkLdYGD////0r6+Ghob////xp6d8fHz56OhVVVXuVFT0w8PafX30zs7toqLrOzvKysrvtbXrnZ3hd3fa2tr1qqq7u7vorKz2trbbaGjtwcHwwcH71dXdfHz12Njzk5P85eUHBwcJCQncAADfAQHIAADtAADqAADmAADRAADiAADWAQHZAADMAADFAADDAQHAAQHxAADKAADOAQG6AADkAADTAQHFcXUqAAAA6XRSTlMAAgUJDzASwP4e/VozIUgYOl4s3VNAPDb6wGRQQiT7Pg1NHBX49/XockpF8u/m11Um/PLy7eHQx8PBiYFubGf58+/o5uXc3NLKycXDt5CHencx/Pv49/f29PHu7Ovq6eXi4drX08zCsKqmpZeOjCn++fj39vTp6Ojk3dzb2tbU09LNzMnJw8O8vLKwo52amZaVlJCNioeHenFwbWVi+/r16OPg3Nzb2NfW09PSz87Nzc3My8jGxsTDwsLAvr29vLu3trOxsa+sqaalo6KhoJqak5GMiIeDgX54eHh2cG9ubGZlYltPTkJCOwDD0BUAAARNSURBVDjLZZRldBNBFIXTrCfZjbunSZqkCVBKgQrFpS20FHd3d3d3d3d3d3d3d99NGwhV2sJhdgsFDu/fzPnOvfe8N294f1VICASHEiQhhiF+CO+/CuGKD6EEIlGqEBIFFFd/I3w+BEF8Pkyo9Y/HP9CrSRic2JsiDCAWGEVhGLaJFPeH5a++W1xkg7krC/Qb40OwmCBTU20EYp0/PC8r2GK+HiFsqakgHcoas0IgiUz0esF7GUKV61Q+PSv441wchfT4+HCRSIaUCIVCWDOURJRP9y/4oDYs7TqxJYAGTOy61KD+tGjCnRdClREFUnwLIaKeDBz/1mB4M2ng4Or1siKqt218+JVS9e7SrshpQgkJ83mQGHEvHlZ+rt7gude7oFfLeln1q9TPrDvXYKa6ygVh8xQiMcSDSxh0R/OHL7aqVC8n9cnNKZ8XEZHR4NBziTqmhtaHjyjnMcI8sVp4o29wis6DIJRrb6+c9Lz8YN1ttSmkO16yaiXcMVUoEvOMVO0NGX0v6swlSLV0RuucbJC8ygydpLsGZxh7I1OxJUqShwivNsjo10knIUKNVMq+5dnpeRE7Yq3dffKSDNOsdEnHHLeMpyq3x5/Zr1O8xGYRq3VdWgCo8Zlyt33RmFzAVNJWxScrRDxPSvM0f/2TLqUNQmXC6azfgC435VptmTYavGJiDUExoYRnTV6Z5q/bNtZqhNEeiluDc7PTq3TrHF22akUBY6qGlQ1vKjXzFLVWfE3zV+kCQhEioJSbk31ZGjtKQ9MMw1TGaoY5pEpe8Vpfvqf5G1RPFqrUbtf5VQW5HWXW2q1oDiqlrTlIIDUA6PMXINX8WHK8Lm7m2D4FHW2I+3+oDqD8mc3HXp955WDLgo4IohTGVjP9Y6dPbviZNcxovKZ62xa9j+v0emlK5+gxci/+JzgV26Qna5iZEVGvfG67TbMXLpy9O1KOdWBbUCpxNNcCpWttzwBnGMxPb0ebvKc6e020JiqJbWZ/7VDmNGimWneiTiDwmTUMtmNAkhoJApBa4BtaOBYNO5Yeim5NvgUCrOFIwND2MtGNaFA4N+AKhQMmzHHj6nxjDUcyrJA3CWuG01xVkFdiNNxTQWWsFKC2V2QAJeiPYVECDokq3cHHFD46CyGJP9vwW2ACNrqyhmFwr3x9RaBkKlUaw4qeLx8tQbnGNdwSVQZLqlrKXmjk8A5JxBKH4OG/FiEECpXpU6aEMa0OaLHoNpHACrfLy2BYjcp002tCM7dSYKfEiLV4zDrGOapsknazTyOotFHboezOcDpsltDMLSe7nRabUaJ/dsTBOKO2JiRE2scklK4WTpvaP1KoAAOEOApCSREljGnvxBlnBQHeKJxmHMVmSd1qYyHzmyJkKuuymAvtw5xOuzOy2OSYZXozQqBFDKCAZSiJqCiFND7O5YqLlxZ3mxGjGP798RSJwWJSJpIoPRTlMahEMvKvT/En4U+imSkuVtwAAAAASUVORK5CYII=')"
+      , m = [d, "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAACi1BMVEUAAAD///8LCwv///////8ODg4QEBD////7+/sWFhb///////////8NDQ3///82Njb///////////////////////8ZGRn///////////////////////////8UFBQUFBQmJiZhYWH///////////////////////8cHBwaGhouLi4xMTFHR0dpaWl7e3v///8fHx8fHx8uLi5ubm5+fn7BwcHS0tLv7+/4+Pj///////////////////////////8gICAgICBXV1dkZGSAgICCgoLb29vo6Ojx8fGmpqb///////////////////8YGBgoKCgzMzM/Pz8zMzMqKipLS0tTU1NRUVFbW1tDQ0N5eXkxMTGEhISKioq9vb3Y2NhOTk7l5eXl5eX09PT9/f3///////////////////////8SEhIVFRUrKysiIiI7OztDQ0MkJCRPT091dXVjY2NqamqpqalHR0e0tLS6urrMzMxISEjh4eG+vr7z8/P19fXOzs52dnadnZ2vr6////8aGhpdXV05OTkwMDAqKipOTk5cXFxFRUWSkpI6OjpVVVWfn5+lpaVwcHA/Pz+tra2qqqqvr6+BgYFZWVloaGhnZ2fs7OzOzs7S0tJVVVXt7e3a2tqwsLDR0dHPz89+fn7R0dGKioq6urqWlpba2tqurq6oqKj+/v7AwMD////k5OTe3t74+Pjc3Nz////4+Pj////r6+v19fXq6urw8PD///////8jIyM7Ozs7OztxcXF0dHRbW1tPT094eHjFxcWxsbG1tbW8vLzIyMhoaGhra2tra2ufn5+hoaGYmJicnJzMzMzS0tKSkpLDw8PIyMjKysrPz88HBwcKCgrXv00AAAAA13RSTlMAv/4DAf39IcD6Qgk9/grwPzstJBYS9F5aU0hGHQ/7+PXkV086MRgH+Pjz8uvi3Tf49Ojg3MzIw8BnXDQyLyoU8u3n49zbxsPCilVSUEoN+fTv7evr6ujo5ePd3dvZzcfGxbd+eXNiXyYOAvr19PDv7e3p393Z0dDPzsrKxcXCwL6skoNM8eXk5OPg3tvX1tXU09PT0dHQzs7Nx8PDwL+8uLitp6ajoJWUkpGQhYOBgX12b25ubW1lY18jH/Xh4Nva1tXQy8XEwsC2tbKkop6cmZeVi4l4dpOI3Z0AAAP8SURBVDjLdVRnVxNREN23cVt6JwkhhSRAAoTQkSBGIDE0QVREBRQ79t4Vxd5777333nvvdefnuG+DkuM5vi/75Z6Zu3MLEXs9JLIkPVNaopEmWiyJUk2wlElJkkl6EHFvQmo/PdNLYzEn9Lw5Zsz1nuPMFrnnnr5fKoZ1j7GWalbcXb5sYY7RXmccOHfZ8jsuudZqwMO6MEoDU5JoqhyxEvi6egXpCABpnNtZbMm611vZhZIoe+uyXNcOTeLt67cuWODw5hfMmZ0N9hG/qjXj9THUBJlB5zZXDoNJ294UsjvLbXTTFjZ6cHc2rDmTLB/fWyYRlqUmMe6qzrX8kJcdaH+Lg+Z5OtC8CLGv18H0Uya5zpDag5D0s2ZVncsB53BU2Nzg5cXnbfC3oUWPyemfTW6mXULI9FrXlUeQyaL8Ro7nwZc7U6UAsGXMQ8hPrflhLkmREe2Muuc+yCjMz1XhGeQMFjlpHgDSM+cXrYLNNxJ1SYS+V/XpbMhoxhD8VEvQIIUwEcMqyoD7mFySQtzX3N6j8KWBsIHCoLThfX0ggCgbCZA2md5wS80QpYkXQ4GdgwEcQ5003je/AH+oMn86QMaO9LrztVrC4zoBziKngsxEbGYdT/c/eqy/jeea9gu0oZENw7vqIJFVNQLmRAeR1NDIEtTyYPOXUaPP7nX42aJIC0dObWtVbEp2E3LTMNtiVMGBQjU0v+/xUWOra8aNPnl4QXgqDXQuOhDqU6wm1MV9pixF5RSAQGTWhbFSTy918aVtnPiDg9HIAfYEKSFNMA48gspIDOIHXK7xWK3aFVeH8CJoGjtyNfUfUO2/oPh15PrYOtOl2RP/rMsR1mHidpE4mT6zFROvcWHiL/wqUiQ+RSCOT0DOWYJPMDyKNjqefsUnqM9jOyLNHNnQ1krhE3hqTkA5Kx4T5XrFYw4QjuksRHkUzCgKw1tzEMuSHdhVBlCflzkR0+2SpSmMZZmXbseyMKLAAQDgaIgJPBkLreCwwD5RYMEqZmyVChUAYPVVUTaD5MXn8zcC9wFbpZ2RCqYbhE2HUdQMhJyiZyaXzxNM9wybLmbfh9i+rYM5ALJ/XniqMImetgsJ1HO+C/ZVikFIFoIwK4IKKxrSYos41cxFqO0JGfpk0jBJEiFSBsad3JkDQ14Vob4tDkrg7M2LILR4Hd8nFqkJceE0Pl8aZbc02ejGjWzHwd0hfu03HE6lBFcBjrkbxxyMs7YWFOCY75gd4icu/Nkd81hhBC2myoUrSQj4aLI+mwf79jMJtVk6XBh/q8dg1cpx9cwdaEzzGqdvf195x6XW3jco4wtKLDF5d4lV1co9upT2WInF91gKUxrsqkN5UBtfh78BLbSeZWMjzYgAAAAASUVORK5CYII=')", "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAADAFBMVEUAAAD////////////////////////////////////++/v////////////////////////////////////////////////////////////////////vAwP////////////////////////////////////////////////////zBATICgr////////////////////dBATFBATqAwPRCgrqDAzXDw/oHR36iIj64OD////95OT//////////////////f3////////jBQXXBgbBBQXNEhLFERHdFBT0GBjbGBjUFBTaJCT1JCTTPT32QEDhQEDqSkrbSUnYUlL0bW3wp6f4s7Pvubn//////Pz////yo6P////////////TAgLSBwfnBgbzCQntCQm6CAjxDQ3cCAjvGBjQHBzAHBy7EBDgKCjwODjuJSXtOjriVFTbWFjSV1f0T0/abm7zYmLjdnbfPT3mjo7nbW30sLDyycn66en75+f40NDpWVn8sLD31tb3xcX////4yMj////0oqL5x8f55eX88fH0wMD55ub+6+vwdHTzwMDfQkL////+8vLuq6v98vL209PvsbH88PDvwcHoh4f539/ohYXvoKDMGxvVKSnRLCzqJCT1MzPyNDTFJSXOQkLrFRXgTEzOS0voDg7oQEDlW1vXKirMEhLXYmLYZGTha2vqGxvTMzPUQkLsh4fuLy/UJyfulpbqoaHrqqrXODj6enrreXn2oKDwu7vehYXehYXVMzPuvLzLHh7oVFTmRkb519fQLCzpICDPWVn6mJjzt7f3goLNT0/4o6P0cnLkdHT32tr5wcH239/toaHtQkLtwcH0r6/jfn7uVFT80dH0w8PafX33np7NODj++/v0zs7hd3fvXl784ODuVlb99fX85ubbaGj71dXIAADLAADCAADpAAC6AADfAADQAADkAADaAADXAAC/AADFAADmAAC3AAC1AADcAADrAAC8AADwAADtAADhAADNAADUAADuAADSAADyAABVO9ozAAAA5nRSTlMAAhAIBB4xBjoSGgxkSTdDNVJPHGE8LywlCnJM/lhVRz4rIRaIXUAoIxT++pCNg3wi/v7++/r59sihlI9ubGpbUUYY/v39+fn49/f39PPt6+vp6ebX0a+ql3t3dWdZJv79/fz8/Pr69/b29u/u7uvm5ePi39/d3dfRzMnEvLu6sa6ppKGfnZybmZmWjYyHhICAfHdwaWJeSD4yMPby8fHv7uzr6ejo6Ofk4+Pi4eDf3dzZ2dbU09DQz8/OzcnIx8bGwsLBv769vLu7u7e3trW1r6mmpaKOjIqIh4aEg4N2dXNuaGdlT3CF9PkAAARHSURBVDjLZZRldNpQGIZDQkIIJLhDcVtXmUu9c3d3d3d3d3d3d3d3d/cChQLtWlrWdtsNbO3O2ffv3vOc93mTe+6F/hkGA4GNIgNqhBEmA/pvGKFhImxUilskUgMbUKH5F2GyEARhsWCUL1x0flEyZYDBCuwwizCAcGA2G+bAIkzw7kD+rpcRfBEc3iryMhGYQGNXryJQqWreQYejw/B5QgwlVq2ORQm2IkwxQBM99vXNCj2mTWwRmebwdGieQGLWFfM/YTKDXcGkGRZswCzvL85fSfGWzRo7EEBbx07/wuOv/HDtOY9vsyMMIOOgGNlm99XlPN7y25uGHa/uKNvsUJ/LSy2Sb4+3z1VRsTCLASGpUnLJkchnQh7vVe/0Gk16OuoMqO3tPpenI9vs3/I6mS/iMCC4PY87Pv/EEpVEsvR6L3/pSEfZjr6al9rgVMqy8a7DH1UyOwsiqKRpdTz3PqdgUq3yXA1nmiPfU/XUYlIq05mnlStzl6tDFZCcXDy8oPwjrq59LGWeuceZCZoPmMnFDbG4eVa/QL8XAj0MYUlPa/vqtuDiqF1OxlyIBFDHUQuEVjvBN0/vH+hyi0ulQpKEkaV8dSe1xQlOKsWdWB9AaycmgpWRL57UN6gerOShUEqrHaW8tW8qLSIFLNPM3gt8jSuZpWwFgSc8WB9U14tW2SBhdAV3Tvejb1VyGNYLZg8B0MAZ7aRs2EbGnC4XzOscJbBCgqhyP9zenZVAKRGWNGOI35nZpJKYj6KUuNJQVzCvREmNHooo2SnDnVOzmSlJQpHKh9tynZn177dWURJN9KgKNFRZIwNQmawMt7fhOFOiOL7y6N7pfmfkmZZKcdvocY2yQlA7GuriyvqR4204emrLyWMGZafn+p2Nx0xuOfVKoyoZrgCAgC7Z1CPgAsKqdfcdG7G5a/Z3QJWuP6LZsD6l3AAqLFEywgqRCzaqXbSwoGz1GtXSvwPK7yxdvU55n9edkRUorGUSyiGLcqg6SAt9P/PTnH6ayvXTZxOG1A1itAaIz73RrZAWen0eR5ozNz07G0QBqMCb8yPLpW4aLyEgqyBuQ15hICT0ODKdubQQRHl++mioR3MzZodQXXzFznmFf4WZQBiKyqehjDKDF5JyDsSWRcxp8CsvSH8hENK1QCvnn1IVmnMpAoEUIrzthHq/wrUKAEULgY8u5a7StBUph5kQC26vVVas9W+tcBTwlWoUp8GMCANcO6NMGHOyFhAW1wpHVW04RYyjHCZ9gRUEJmhVsZ4a1ApTQEhHlW08hWuxgRsVego4IkyonNCgW5mivwWiqq0ZGSfWydk0E6YIWQp3TsW+5TpVoWulla7WtdegFq01uI2NFD8rCqMcFyTE3Wnav0LN8uV7rmty9slCsRZDQ64iCoFFeolQHB9jioqKMkW3Tmyn5cuNnD9McRhbZOXrtEJBhCBZxcOlttTiR/E3AYEOqmgNZcgAAAAASUVORK5CYII=')"];
     game.chosenGraphicsSet = -1;
-    let S = $("<div class=\"\" style=\"position: relative; width: 44px; height: 44px; cursor: pointer; background-color: rgba(0, 0, 0, 0.3); background-repeat: no-repeat; background-position: center; display: none;\" id=\"graphicsSet\" cgs= \"-1\" title= \"Switch style between Imperial / Rebel / Random\" ></div > ").css("background-image", h).click(function() {
+    let S = $("<div class=\"\" style=\"position: relative; width: 44px; height: 44px; cursor: pointer; background-color: rgba(0, 0, 0, 0.3); background-repeat: no-repeat; background-position: center; display: none;\" id=\"graphicsSet\" cgs= \"-1\" title= \"Switch style between Imperial / Rebel / Random\" ></div > ").css("background-image", d).click(function() {
         if (2 != game.gameType) {
             let A = parseInt($(S).attr("cgs"));
             A++,
@@ -556,13 +556,13 @@ StarMash_2.addGraphicsSetButton = function() {
 }
 ,
 StarMash_2.aircraftSelected = function() {
-    for (var d = 0 == game.myGraphicsSet ? "teamImperial" : "teamRebel", c = 1; 5 >= c; c++)
-        $("#selectaircraft-" + c).removeClass("teamImperial").removeClass("teamRebel").addClass(d);
+    for (var h = 0 == game.myGraphicsSet ? "teamImperial" : "teamRebel", c = 1; 5 >= c; c++)
+        $("#selectaircraft-" + c).removeClass("teamImperial").removeClass("teamRebel").addClass(h);
     StarMash_2.updateShipNames()
 }
 ,
 StarMash_2.updateShipNames = function() {
-    let h = {
+    let d = {
         1: ["X-Wing"],
         2: ["B-Wing"],
         3: ["A-Wing"],
@@ -573,7 +573,7 @@ StarMash_2.updateShipNames = function() {
         103: ["Energy Regen"],
         104: ["Laser Speed"]
     }
-      , d = {
+      , h = {
         1: ["Tie Fighter"],
         2: ["Tie Bomber"],
         3: ["Tie Interceptor"],
@@ -585,11 +585,11 @@ StarMash_2.updateShipNames = function() {
         104: ["Laser Speed"]
     };
     for (var c in game.tooltipValues)
-        game.tooltipValues[c][0] = 0 == game.myGraphicsSet ? d[c][0] : h[c][0]
+        game.tooltipValues[c][0] = 0 == game.myGraphicsSet ? h[c][0] : d[c][0]
 }
 ,
-StarMash_2.mobAdded = function(h, d, c) {
-    let m = Mobs.get(h.id)
+StarMash_2.mobAdded = function(d, h, c) {
+    let m = Mobs.get(d.id)
       , S = -1 < $.inArray(m.type, [1, 2, 3, 5, 6, 7]);
     if (S) {
         if (c) {
@@ -627,23 +627,23 @@ StarMash_2.onScoreboardUpdate = function() {
     )
 }
 ,
-StarMash_2.overridePlayerMethods = function(h) {
-    h.setGraphicsSet = function() {
+StarMash_2.overridePlayerMethods = function(d) {
+    d.setGraphicsSet = function() {
         this.graphicsSet = 2 == game.gameType ? this.team - 1 : this.id == game.myID && -1 != game.chosenGraphicsSet ? game.chosenGraphicsSet : Tools.randInt(0, 1),
         this.id == game.myID && (game.myGraphicsSet = this.graphicsSet)
     }
     ,
-    h.setupThrusterColor = function() {
-        var d = new PIXI.filters.ColorMatrixFilter
+    d.setupThrusterColor = function() {
+        var h = new PIXI.filters.ColorMatrixFilter
           , c = new PIXI.filters.ColorMatrixFilter;
-        0 == this.graphicsSet ? d.hue(-20) : (c.saturate(1, !0),
-        d.hue(165)),
-        this.sprites.thruster && (this.sprites.thruster.filters = [c, d]),
-        this.sprites.thruster1 && (this.sprites.thruster1.filters = [c, d]),
-        this.sprites.thruster2 && (this.sprites.thruster2.filters = [c, d])
+        0 == this.graphicsSet ? h.hue(-20) : (c.saturate(1, !0),
+        h.hue(165)),
+        this.sprites.thruster && (this.sprites.thruster.filters = [c, h]),
+        this.sprites.thruster1 && (this.sprites.thruster1.filters = [c, h]),
+        this.sprites.thruster2 && (this.sprites.thruster2.filters = [c, h])
     }
     ,
-    h.setupGraphics = function(d) {
+    d.setupGraphics = function(h) {
         this.setGraphicsSet();
         var c = 0 == this.graphicsSet ? "" : "_2"
           , m = null;
@@ -726,7 +726,7 @@ StarMash_2.overridePlayerMethods = function(h) {
         }
         if ("function" == typeof window.Glow && Glow(this),
         this.setupThrusterColor(),
-        (this.reel || d || (this.setupNameplate(),
+        (this.reel || h || (this.setupNameplate(),
         this.setupChatBubbles(),
         null != this.level && this.setupLevelPlate()),
         config.debug.collisions)) {
@@ -739,9 +739,9 @@ StarMash_2.overridePlayerMethods = function(h) {
         }
     }
     ,
-    h.reteam = function(d) {
+    d.reteam = function(h) {
         var c = this.team;
-        this.team = d,
+        this.team = h,
         this.sprites.name.style = new PIXI.TextStyle(this.nameplateTextStyle()),
         UI.changeMinimapTeam(this.id, this.team),
         c != this.team && (this.destroy(!1),
@@ -749,7 +749,7 @@ StarMash_2.overridePlayerMethods = function(h) {
         this.visibilityUpdate(!0))
     }
     ,
-    h.updateGraphics = function() {
+    d.updateGraphics = function() {
         var c = Tools.oscillator(.025, 1e3, this.randomness) * this.scale
           , m = 1.5 * this.state.thrustLevel
           , S = this.rot
@@ -850,24 +850,24 @@ StarMash_2.overridePlayerMethods = function(h) {
         this.col.rotation = this.rot)
     }
     ,
-    h.resetGraphics = function() {
+    d.resetGraphics = function() {
         try {
             this.destroy(!1),
             this.setupGraphics(!0),
             this.visibilityUpdate(!0)
-        } catch (d) {}
+        } catch (h) {}
     }
     ,
-    h.resetGraphics(),
-    h.me() && UI.aircraftSelected(h.type)
+    d.resetGraphics(),
+    d.me() && UI.aircraftSelected(d.type)
 }
 ,
-StarMash_2.prototype.injectTextures = function(h, d, c, m) {
-    for (let C in h) {
-        var w = h[C];
+StarMash_2.prototype.injectTextures = function(d, h, c, m) {
+    for (let C in d) {
+        var w = d[C];
         w = w.replace("assets/", ""),
         -1 < w.indexOf("?") && (w = w.substr(0, w.indexOf("?"))),
-        h[C] = getFilePath(w)
+        d[C] = getFilePath(w)
     }
     var A = {
         map_forest_mask: getFilePath("map_forest_mask.jpg"),
@@ -876,7 +876,7 @@ StarMash_2.prototype.injectTextures = function(h, d, c, m) {
         asteroids3: getFilePath("asteroids/asteroids3.png")
     };
     for (let C in A)
-        h[C] = A[C];
+        d[C] = A[C];
     var f = {
         ui_minimap_1: ["gui", [500, 596, 16, 16]],
         ui_minimap_2: ["gui", [516, 596, 16, 16]],
@@ -896,7 +896,7 @@ StarMash_2.prototype.injectTextures = function(h, d, c, m) {
         comanche_shadow_2: ["shadows", [812, 200, 64, 128]]
     };
     for (let C in f)
-        d[C] = f[C];
+        h[C] = f[C];
     var D = {
         minimap1: {
             texture: "ui_minimap_1",
@@ -1059,157 +1059,164 @@ StarMash_1.prototype.start = function() {
 ,
 StarMash_1.prototype.injectTextures = StarMash_2.prototype.injectTextures,
 StarMash_1.prototype.loadGameModules = StarMash_2.prototype.loadGameModules;
-function VanillaTheme() {
-    let d = this
-      , m = new SettingsProvider({
-        map: {
-            sea: !0,
-            forest: !0,
-            sand: !0,
-            rock: !0,
-            polygons: !0
-        },
-        layers: {
-            shadows: !0,
-            smoke: !0
-        },
-        gameplay: {
-            colorMissiles: !0,
-            colorPlayers: !0
-        }
-    },function(w) {
-        d.settings = w;
-        let A = w
-          , f = game.graphics.layers.sea
-          , D = f.children[1]
-          , C = game.graphics.layers.map
-          , G = C.children[0]
-          , L = C.children[1]
-          , M = C.children[3]
-          , k = C.children[6];
-        if (A && A.map) {
-            function T() {
-                k = C.children[6],
-                A.map.polygons ? (k.visible = !0,
-                C.mask = k) : (C.mask = null,
-                k.visible = !1)
+class VanillaTheme {
+    constructor() {
+        let h = this;
+        this.teamColors = {
+            1: {
+                player: 10539263,
+                mob: 5592575
+            },
+            2: {
+                player: 16756912,
+                mob: 16733525
             }
-            if (D.visible = A.map.sea,
-            G.visible = A.map.forest,
-            f.visible = A.map.forest && !A.map.polygons ? !1 : !0,
-            L.visible = A.map.sand,
-            M.visible = A.map.rock,
-            k)
-                T();
-            else {
-                let B = setInterval(function() {
-                    game.graphics.layers.map.children[6] && (clearInterval(B),
-                    T())
-                }, 500)
+        };
+        let m = new SettingsProvider({
+            map: {
+                sea: !0,
+                forest: !0,
+                sand: !0,
+                rock: !0,
+                polygons: !0
+            },
+            layers: {
+                shadows: !0,
+                smoke: !0
+            },
+            gameplay: {
+                colorMissiles: !0,
+                colorPlayers: !0
             }
+        },function(w) {
+            h.settings = w;
+            let A = w
+              , f = game.graphics.layers.sea
+              , D = f.children[1]
+              , C = game.graphics.layers.map
+              , G = C.children[0]
+              , L = C.children[1]
+              , M = C.children[3]
+              , k = C.children[6];
+            if (A && A.map) {
+                function T() {
+                    k = C.children[6],
+                    A.map.polygons ? (k.visible = !0,
+                    C.mask = k) : (C.mask = null,
+                    k.visible = !1)
+                }
+                if (D.visible = A.map.sea,
+                G.visible = A.map.forest,
+                f.visible = A.map.forest && !A.map.polygons ? !1 : !0,
+                L.visible = A.map.sand,
+                M.visible = A.map.rock,
+                k)
+                    T();
+                else {
+                    let B = setInterval(function() {
+                        game.graphics.layers.map.children[6] && (clearInterval(B),
+                        T())
+                    }, 500)
+                }
+            }
+            A && A.layers && (game.graphics.layers.shadows.visible = A.layers.shadows,
+            game.graphics.layers.smoke.visible = A.layers.smoke,
+            config.disableSmoke = !A.layers.smoke),
+            forEachPlayer(T=>{
+                h.tintPlayer(T)
+            }
+            )
         }
-        A && A.layers && (game.graphics.layers.shadows.visible = A.layers.shadows,
-        game.graphics.layers.smoke.visible = A.layers.smoke),
-        forEachPlayer(T=>{
-            d.tintPlayer(T)
-        }
-        )
+        );
+        m.root = "",
+        m.title = "Mod Settings";
+        let S = m.addSection("Background");
+        S.addBoolean("map.sea", "Sea depth"),
+        S.addBoolean("map.forest", "Forest"),
+        S.addBoolean("map.sand", "Sand"),
+        S.addBoolean("map.rock", "Rocks"),
+        S.addBoolean("map.polygons", "Continents"),
+        S.addBoolean("layers.shadows", "Shadows"),
+        S.addBoolean("layers.smoke", "Missile's Smoke"),
+        S = m.addSection("Gameplay"),
+        S.addBoolean("gameplay.colorMissiles", "Use team colors for missiles."),
+        S.addBoolean("gameplay.colorPlayers", "Use team colors for players."),
+        this.settingsProvider = m
     }
-    );
-    m.root = "",
-    m.title = "Mod Settings";
-    let S = m.addSection("Background");
-    S.addBoolean("map.sea", "Sea depth"),
-    S.addBoolean("map.forest", "Forest"),
-    S.addBoolean("map.sand", "Sand"),
-    S.addBoolean("map.rock", "Rocks"),
-    S.addBoolean("map.polygons", "Continents"),
-    S.addBoolean("layers.shadows", "Shadows"),
-    S.addBoolean("layers.smoke", "Missile's Smoke"),
-    S = m.addSection("Gameplay"),
-    S.addBoolean("gameplay.colorMissiles", "Use team colors for missiles."),
-    S.addBoolean("gameplay.colorPlayers", "Use team colors for players."),
-    this.settingsProvider = m
+    start() {
+        config.overdraw = 256,
+        config.overdrawOptimize = !0;
+        var d = this;
+        SWAM.on("playerAdded", function(h) {
+            "function" == typeof window.Glow && Glow(h),
+            d.tintPlayer(h);
+            let c = h.setupGraphics;
+            h.setupGraphics = function(S) {
+                c.call(h, S),
+                "function" == typeof window.Glow && Glow(h),
+                d.tintPlayer(h)
+            }
+            ;
+            let m = h.reteam;
+            h.reteam = function(S) {
+                m.call(h, S),
+                d.tintPlayer(h)
+            }
+        }),
+        SWAM.on("mobAdded", this.tintMob.bind(this)),
+        SWAM.Theme.settingsProvider.apply(SWAM.Settings)
+    }
+    tintPlayer(d) {
+        d.sprites.sprite.tint = this.settings && this.settings.gameplay.colorPlayers ? 1 == d.team || 2 == d.team ? this.teamColors[d.team].player : 16777215 : 16777215
+    }
+    tintMob(d, h, c) {
+        if (this.settings.gameplay.colorMissiles) {
+            let m = Mobs.get(d.id)
+              , S = [1, 2, 3, 5, 6, 7].includes(m.type);
+            if (S) {
+                if (game.gameType == SWAM.GAME_TYPE.CTF) {
+                    let w = 0;
+                    w = c ? Players.get(c).team : 1 == Players.getMe().team ? 2 : 1,
+                    m.sprites.sprite.tint = m.sprites.thruster.tint = this.teamColors[w].mob
+                }
+                this.setMobScale(m)
+            }
+        }
+    }
+    setMobScale(d) {
+        d.sprites.smokeGlow.alpha = 0,
+        2 == d.type ? d.sprites.sprite.scale.set(.3, .4) : 3 == d.type ? d.sprites.sprite.scale.set(.56, .4) : d.sprites.sprite.scale.set(.3, .3)
+    }
+    injectTextures() {}
+    injectSounds() {}
+    loadGameModules() {
+        loadGraphics_Default(),
+        loadSounds_Default()
+    }
 }
 VanillaTheme.themeName = "Vanilla Theme",
 VanillaTheme.author = "Bombita",
-VanillaTheme.version = SWAM_version,
-VanillaTheme.prototype.start = function() {
-    config.overdraw = 256,
-    config.overdrawOptimize = !0;
-    var h = this;
-    SWAM.on("playerAdded", function(d) {
-        "function" == typeof window.Glow && Glow(d),
-        h.tintPlayer(d);
-        let c = d.setupGraphics;
-        d.setupGraphics = function(S) {
-            c.call(d, S),
-            "function" == typeof window.Glow && Glow(d),
-            h.tintPlayer(d)
-        }
-        ;
-        let m = d.reteam;
-        d.reteam = function(S) {
-            m.call(d, S),
-            h.tintPlayer(d)
-        }
-    }),
-    SWAM.on("mobAdded", function(d, c, m) {
-        if (h.settings.gameplay.colorMissiles) {
-            let S = Mobs.get(d.id)
-              , w = -1 < $.inArray(S.type, [1, 2, 3, 5, 6, 7]);
-            if (w) {
-                if (2 == game.gameType)
-                    if (m) {
-                        var A = Players.get(m);
-                        1 == A.team ? (S.sprites.sprite.tint = 5592575,
-                        S.sprites.thruster.tint = 5592575) : (S.sprites.sprite.tint = 16733525,
-                        S.sprites.thruster.tint = 16733525)
-                    } else
-                        1 == Players.getMe().team ? (S.sprites.sprite.tint = 16733525,
-                        S.sprites.thruster.tint = 16733525) : (S.sprites.sprite.tint = 5592575,
-                        S.sprites.thruster.tint = 5592575);
-                S.sprites.smokeGlow.alpha = 0,
-                2 == S.type ? S.sprites.sprite.scale.set(.3, .4) : 3 == S.type ? S.sprites.sprite.scale.set(.56, .4) : S.sprites.sprite.scale.set(.3, .3)
-            }
-        }
-    }),
-    SWAM.Theme.settingsProvider.apply(SWAM.Settings)
-}
-,
-VanillaTheme.prototype.tintPlayer = function(h) {
-    h.sprites.sprite.tint = this.settings && this.settings.gameplay.colorPlayers ? 1 == h.team ? 10539263 : 2 == h.team ? 16756912 : 16777215 : 16777215
-}
-,
-VanillaTheme.prototype.injectTextures = function() {}
-,
-VanillaTheme.prototype.injectSounds = function() {}
-,
-VanillaTheme.prototype.loadGameModules = function() {
-    loadGraphics_Default(),
-    loadSounds_Default()
-}
-;
+VanillaTheme.version = SWAM_version;
 class StPatricksDay2018 extends VanillaTheme {
     constructor() {
         super(),
         $("#logon").css("backgroundColor", "rgba(6, 51, 16, 0.75)")
     }
-    injectTextures(h) {
+    injectTextures(d) {
         const w = ["map_forest.jpg", "map_rock.jpg", "map_sand.jpg", "map_sea.jpg", "aircraft.png"];
-        for (let A in h) {
-            let f = getFileName(h[A]);
-            -1 < $.inArray(f, w) && (h[A] = "//molesmalo.github.io/StarWarsMod4AirMash/assets/themes/StPatricksDay2018/" + getFileName(h[A]))
+        for (let A in d) {
+            let f = getFileName(d[A]);
+            -1 < $.inArray(f, w) && (d[A] = "//molesmalo.github.io/StarWarsMod4AirMash/assets/themes/StPatricksDay2018/" + getFileName(d[A]))
         }
     }
 }
 StPatricksDay2018.themeName = "St. Patrick's Day 2018 Theme",
 StPatricksDay2018.description = "A lucky theme for AirMash!!",
 StPatricksDay2018.author = "Bombita";
-function getFileName(h) {
-    return h = h.substring(h.lastIndexOf("/") + 1),
-    -1 < h.indexOf("?") && (h = h.substr(0, h.indexOf("?"))),
-    h
+function getFileName(d) {
+    return d = d.substring(d.lastIndexOf("/") + 1),
+    -1 < d.indexOf("?") && (d = d.substr(0, d.indexOf("?"))),
+    d
 }
 SWAM.registerExtension({
     name: "StarMash Themes",
