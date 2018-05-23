@@ -18,7 +18,7 @@ window.HyperSpace.prototype = {
                 delete m[name].prevVisible);
             game.graphics.layers.game.removeChild(c.sprite),
             c.sprite.filters = null,
-            Graphics.renderbackground()
+            Graphics.renderBackground()
         }
         let c = this
           , m = game.graphics.layers;
@@ -83,7 +83,7 @@ function StarMash_2() {
             for (let f = 0; 3 > f; f++)
                 A[f].visible = f < w.asteroidLayers
         }
-        Graphics.renderbackground()
+        Graphics.renderBackground()
     }
     );
     c.root = "",
@@ -168,7 +168,7 @@ StarMash_2.prototype.start = function() {
               , U = config.mapHeight * game.scale - game.screenY / game.scale;
             for (let H = 0; 3 > H; H++)
                 O.children[2 * H + 1].position.set(Tools.randInt(-X, 0), Tools.randInt(-U, 0));
-            Graphics.renderbackground(),
+            Graphics.renderBackground(),
             P(!1)
         }(),
         O.visible = !0;
@@ -263,16 +263,16 @@ StarMash_2.prototype.start = function() {
                 H = Q.x,
                 q = Q.y;
                 let E = Tools.rand(0.2, 0.85)
-                  , j = 0.5 * (1 / (E / 0.85)) + 0.5
-                  , _ = O[Tools.randInt(0, O.length - 1)]
-                  , W = S(_, {
-                    distanceFactor: [V.baseDistanceFactor * j, V.baseDistanceFactor * j],
+                  , _ = 0.5 * (1 / (E / 0.85)) + 0.5
+                  , j = O[Tools.randInt(0, O.length - 1)]
+                  , W = S(j, {
+                    distanceFactor: [V.baseDistanceFactor * _, V.baseDistanceFactor * _],
                     scale: [E, E],
                     basePosition: [H, q],
                     position: [H, q],
                     anchor: [0.5, 0.5]
                 });
-                W.textureName = _,
+                W.textureName = j,
                 W.angleUsed = X,
                 SWAM.Ships.push(W)
             }
@@ -1028,7 +1028,7 @@ function StarMash_1() {
         game.graphics.layers.map.children[2].visible = w.nebulas.green,
         game.graphics.layers.map.children[4].alpha = 0.8,
         game.graphics.layers.map.children[4].visible = w.nebulas.red,
-        Graphics.renderbackground()
+        Graphics.renderBackground()
     }
     );
     c.root = "",
@@ -1116,12 +1116,13 @@ class VanillaTheme {
                     let B = setInterval(function() {
                         game.graphics.layers.map.children[6] && (clearInterval(B),
                         T())
-                    }, 500)
+                    }, 200)
                 }
             }
             A && A.layers && (game.graphics.layers.shadows.visible = A.layers.shadows,
             game.graphics.layers.smoke.visible = A.layers.smoke,
-            config.disableSmoke = !A.layers.smoke),
+            Particles.missileSmoke = A.layers.smoke && Particles._missileSmoke ? Particles._missileSmoke : function() {}
+            ),
             forEachPlayer(T=>{
                 h.tintPlayer(T)
             }
@@ -1145,7 +1146,8 @@ class VanillaTheme {
     }
     start() {
         config.overdraw = 256,
-        config.overdrawOptimize = !0;
+        config.overdrawOptimize = !0,
+        Particles._missileSmoke = Particles.missileSmoke;
         var d = this;
         SWAM.on("playerAdded", function(h) {
             "function" == typeof window.Glow && Glow(h),
@@ -1164,6 +1166,14 @@ class VanillaTheme {
             }
         }),
         SWAM.on("mobAdded", this.tintMob.bind(this)),
+        SWAM.on("mobsRepeled", (h,c)=>{
+            if (this.settings.gameplay.colorMissiles && game.gameType == SWAM.GAME_TYPE.CTF)
+                for (let m of c) {
+                    let S = h.team;
+                    m.sprites.sprite.tint = m.sprites.thruster.tint = this.teamColors[S].mob
+                }
+        }
+        ),
         SWAM.Theme.settingsProvider.apply(SWAM.Settings)
     }
     tintPlayer(d) {
