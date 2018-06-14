@@ -121,19 +121,19 @@ StarMash_2.prototype.start = function() {
             var z = getTemplate("#regenerateBackground");
             F = $(z),
             $("body").append(F);
-            let N = $("#btnRegenerate", F);
-            N.click(function() {
+            let O = $("#btnRegenerate", F);
+            O.click(function() {
                 SWAM.RandomizeBackground()
             })
         }
         F.slideDown(),
         d.timer && clearInterval(d.timer);
-        let O = $(".timerIndicator", F);
+        let N = $(".timerIndicator", F);
         d.width = 100,
-        O.css("width", "100%"),
+        N.css("width", "100%"),
         d.timer = setInterval(function() {
             d.width--,
-            O.animate({
+            N.animate({
                 width: d.width + "%"
             }, 90),
             0 == d.width && (clearInterval(d.timer),
@@ -142,32 +142,32 @@ StarMash_2.prototype.start = function() {
         }, 100)
     }
     function h() {
-        function F(U) {
-            for (let H = 0; 3 > H; H++)
-                I[H].visible = U
+        function F(_) {
+            for (let U = 0; 3 > U; U++)
+                I[U].visible = _
         }
-        function z(U) {
-            for (let H = 0; 3 > H; H++)
-                I[H].renderable = U
+        function z(_) {
+            for (let U = 0; 3 > U; U++)
+                I[U].renderable = _
         }
         let V = game.graphics.layers.map
           , I = [V.children[1], V.children[3], V.children[5]];
         V.visible = !1,
         function() {
-            for (let U = 0; 3 > U; U++) {
-                V.children[2 * U].mask = null;
-                let H = Tools.randInt(0, I.length - 1);
-                V.children[2 * U].mask = I[H],
-                SWAM.debug && console.log(`${V.children[2 * U].layerName}: ${I[H].layerName}`)
+            for (let _ = 0; 3 > _; _++) {
+                V.children[2 * _].mask = null;
+                let U = Tools.randInt(0, I.length - 1);
+                V.children[2 * _].mask = I[U],
+                SWAM.debug && console.log(`${V.children[2 * _].layerName}: ${I[U].layerName}`)
             }
             z(!0)
         }(),
         function() {
             F(!0);
-            let U = config.mapWidth * game.scale - game.screenX / game.scale
-              , H = config.mapHeight * game.scale - game.screenY / game.scale;
-            for (let q = 0; 3 > q; q++)
-                V.children[2 * q + 1].position.set(Tools.randInt(-U, 0), Tools.randInt(-H, 0));
+            let _ = config.mapWidth * game.scale - game.screenX / game.scale
+              , U = config.mapHeight * game.scale - game.screenY / game.scale;
+            for (let H = 0; 3 > H; H++)
+                V.children[2 * H + 1].position.set(Tools.randInt(-_, 0), Tools.randInt(-U, 0));
             Graphics.renderBackground(),
             F(!1)
         }(),
@@ -179,101 +179,101 @@ StarMash_2.prototype.start = function() {
         SWAM.debug && console.log("movable nebulas: " + X)
     }
     function c() {
-        for (let N in B) {
-            let V = B[N];
+        for (let O in B) {
+            let V = B[O];
             V.scale = V.scale || 1;
             let I = Graphics.renderer
-              , X = PIXI.Texture.fromImage(N)
-              , U = null;
-            for (let H in V.useMask && (U = PIXI.Texture.fromImage(N + "_Mask")),
+              , X = PIXI.Texture.fromImage(O)
+              , _ = null;
+            for (let U in V.useMask && (_ = PIXI.Texture.fromImage(O + "_Mask")),
             V.items) {
-                let q = V.items[H]
-                  , _ = new PIXI.Texture(X,new PIXI.Rectangle(q[0] * V.scale,q[1] * V.scale,q[2] * V.scale,q[3] * V.scale))
-                  , Q = new PIXI.Sprite(_);
-                Q.scale.set(V.resultScale, V.resultScale);
+                let H = V.items[U]
+                  , q = new PIXI.Texture(X,new PIXI.Rectangle(H[0] * V.scale,H[1] * V.scale,H[2] * V.scale,H[3] * V.scale))
+                  , j = new PIXI.Sprite(q);
+                j.scale.set(V.resultScale, V.resultScale);
                 var F = null;
                 if (V.useMask) {
                     var z = V.maskScale || 1
-                      , O = new PIXI.Texture(U,new PIXI.Rectangle(q[0] * V.scale / z,q[1] * V.scale / z,q[2] * V.scale / z,q[3] * V.scale / z))
-                      , F = new PIXI.Sprite(O);
+                      , N = new PIXI.Texture(_,new PIXI.Rectangle(H[0] * V.scale / z,H[1] * V.scale / z,H[2] * V.scale / z,H[3] * V.scale / z))
+                      , F = new PIXI.Sprite(N);
                     F.scale.set(z, z),
-                    Q.addChild(F),
-                    Q.filters = [new PIXI.SpriteMaskFilter(F)],
-                    F.position.set(-q[0] * V.scale, -q[1] * V.scale)
+                    j.addChild(F),
+                    j.filters = [new PIXI.SpriteMaskFilter(F)],
+                    F.position.set(-H[0] * V.scale, -H[1] * V.scale)
                 }
-                let j = PIXI.RenderTexture.create(Q.width, Q.height);
-                I.render(Q, j, !0),
-                SWAM.Textures[H] = j
+                let Q = PIXI.RenderTexture.create(j.width, j.height);
+                I.render(j, Q, !0),
+                SWAM.Textures[U] = Q
             }
         }
     }
     function m(F, z) {
-        let O = SWAM.Textures[F]
-          , N = new PIXI.Sprite(O);
+        let N = SWAM.Textures[F]
+          , O = new PIXI.Sprite(N);
         return "undefined" == typeof z && (z = {}),
-        N.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
-        N.basePosition = z.basePosition ? z.basePosition : [0, 0],
-        z.position && N.position.set(z.position[0], z.position[1]),
-        z.anchor && N.anchor.set(z.anchor[0], z.anchor[1]),
-        z.pivot && N.pivot.set(z.pivot[0], z.pivot[1]),
-        z.scale && (Array.isArray(z.scale) ? N.scale.set(z.scale[0], z.scale[1]) : N.scale.set(z.scale)),
-        z.rotation && (N.rotation = z.rotation),
-        z.alpha && (N.alpha = z.alpha),
-        z.blend && (N.blendMode = PIXI.BLEND_MODES[z.blend]),
-        z.tint && (N.tint = z.tint),
-        z.mask && (N.mask = z.mask),
-        z.visible && (N.visible = z.visible),
-        z.container && z.container.addChild(N),
-        N
+        O.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
+        O.basePosition = z.basePosition ? z.basePosition : [0, 0],
+        z.position && O.position.set(z.position[0], z.position[1]),
+        z.anchor && O.anchor.set(z.anchor[0], z.anchor[1]),
+        z.pivot && O.pivot.set(z.pivot[0], z.pivot[1]),
+        z.scale && (Array.isArray(z.scale) ? O.scale.set(z.scale[0], z.scale[1]) : O.scale.set(z.scale)),
+        z.rotation && (O.rotation = z.rotation),
+        z.alpha && (O.alpha = z.alpha),
+        z.blend && (O.blendMode = PIXI.BLEND_MODES[z.blend]),
+        z.tint && (O.tint = z.tint),
+        z.mask && (O.mask = z.mask),
+        z.visible && (O.visible = z.visible),
+        z.container && z.container.addChild(O),
+        O
     }
     function S(F, z) {
         "undefined" == typeof z && (z = {});
-        let O = m(F, z);
-        return O.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
-        O.basePosition = z.basePosition ? z.basePosition : [0, 0],
-        O.update = function() {
+        let N = m(F, z);
+        return N.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
+        N.basePosition = z.basePosition ? z.basePosition : [0, 0],
+        N.update = function() {
             let I = Graphics.getCamera()
-              , X = I.x + (O.basePosition[0] - I.x) / O.distanceFactor[0]
-              , U = I.y + (O.basePosition[1] - I.y) / O.distanceFactor[1];
-            O.position.set(X, U)
+              , X = I.x + (N.basePosition[0] - I.x) / N.distanceFactor[0]
+              , _ = I.y + (N.basePosition[1] - I.y) / N.distanceFactor[1];
+            N.position.set(X, _)
         }
         ,
-        O
+        N
     }
     function A() {
-        function F(O) {
-            O = O || {},
-            O.count = O.count || 12,
-            O.x = O.x || [-14000, -10000],
-            O.y = O.y || [-1000, 1000],
-            O.radius = O.radius || [5000, 13000],
-            O.baseDistanceFactor = O.baseDistanceFactor || 8,
-            O.textures = O.textures || B.ImperialShips.items;
-            var N = O.count
+        function F(N) {
+            N = N || {},
+            N.count = N.count || 12,
+            N.x = N.x || [-14000, -10000],
+            N.y = N.y || [-1000, 1000],
+            N.radius = N.radius || [5000, 13000],
+            N.baseDistanceFactor = N.baseDistanceFactor || 8,
+            N.textures = N.textures || B.ImperialShips.items;
+            var O = N.count
               , V = [];
-            for (let X in O.textures)
+            for (let X in N.textures)
                 V.push(X);
-            let I = 2 * Math.PI / N;
-            for (let X = 0, U = 0; X < N; X++,
-            U += I) {
-                let H = Tools.randInt(O.radius[0], O.radius[1])
-                  , q = Tools.randInt(O.x[0], O.x[1])
-                  , _ = Tools.randInt(O.y[0], O.y[1])
-                  , Q = D(q, _, H, U);
-                q = Q.x,
-                _ = Q.y;
-                let j = Tools.rand(0.2, 0.85)
-                  , E = 0.5 * (1 / (j / 0.85)) + 0.5
+            let I = 2 * Math.PI / O;
+            for (let X = 0, _ = 0; X < O; X++,
+            _ += I) {
+                let U = Tools.randInt(N.radius[0], N.radius[1])
+                  , H = Tools.randInt(N.x[0], N.x[1])
+                  , q = Tools.randInt(N.y[0], N.y[1])
+                  , j = D(H, q, U, _);
+                H = j.x,
+                q = j.y;
+                let Q = Tools.rand(0.2, 0.85)
+                  , E = 0.5 * (1 / (Q / 0.85)) + 0.5
                   , W = V[Tools.randInt(0, V.length - 1)]
                   , K = S(W, {
-                    distanceFactor: [O.baseDistanceFactor * E, O.baseDistanceFactor * E],
-                    scale: [j, j],
-                    basePosition: [q, _],
-                    position: [q, _],
+                    distanceFactor: [N.baseDistanceFactor * E, N.baseDistanceFactor * E],
+                    scale: [Q, Q],
+                    basePosition: [H, q],
+                    position: [H, q],
                     anchor: [0.5, 0.5]
                 });
                 K.textureName = W,
-                K.angleUsed = U,
+                K.angleUsed = _,
                 SWAM.Ships.push(K)
             }
         }
@@ -293,24 +293,24 @@ StarMash_2.prototype.start = function() {
             radius: [5000, 10000],
             textures: B.RebelShips.items
         }),
-        SWAM.Ships.sort(function(O, N) {
-            return N.distanceFactor[0] - O.distanceFactor[0]
+        SWAM.Ships.sort(function(N, O) {
+            return O.distanceFactor[0] - N.distanceFactor[0]
         });
-        for (let O of SWAM.Ships)
-            z.addChild(O)
+        for (let N of SWAM.Ships)
+            z.addChild(N)
     }
     function f() {
         let F = Graphics.getCamera()
           , z = F.x - game.halfScreenX / game.scale
-          , O = F.y - game.halfScreenY / game.scale;
+          , N = F.y - game.halfScreenY / game.scale;
         return {
             x: z,
-            y: O
+            y: N
         }
     }
-    function D(F, z, O, N) {
-        let V = O * Math.cos(N) + F
-          , I = O * Math.sin(N) + z;
+    function D(F, z, N, O) {
+        let V = N * Math.cos(O) + F
+          , I = N * Math.sin(O) + z;
         return {
             x: V,
             y: I
@@ -319,86 +319,86 @@ StarMash_2.prototype.start = function() {
     function C() {
         let F = game.graphics.layers.map
           , z = game.graphics.layers.doodads
-          , O = 0;
-        for (var N = 0; N < F.children.length; N++)
-            F.children[N] == z && (O = N);
-        return O
+          , N = 0;
+        for (var O = 0; O < F.children.length; O++)
+            F.children[O] == z && (N = O);
+        return N
     }
-    function G(F, z, O) {
-        var N = Graphics.renderer.width
+    function G(F, z, N) {
+        var O = Graphics.renderer.width
           , V = Graphics.renderer.height;
-        let I = Textures.tile(F, N, V);
+        let I = Textures.tile(F, O, V);
         return I.layerName = z,
         game.graphics.layers.map.addChildAt(I, C()),
-        I.tileScale.set(O, O),
+        I.tileScale.set(N, N),
         I
     }
     function L(F=-1) {
-        let O = [];
-        for (let I in P)
-            O.push(I);
-        let N = Tools.randInt(0, O.length - 1);
-        0 <= F && F < O.length && (N = F);
+        let N = [];
+        for (let I in R)
+            N.push(I);
+        let O = Tools.randInt(0, N.length - 1);
+        0 <= F && F < N.length && (O = F);
         let V = new PIXI.loaders.Loader;
-        V.add(O[N], P[O[N]].texture),
-        V.add(O[N] + "_Mask", P[O[N]].mask),
+        V.add(N[O], R[N[O]].texture),
+        V.add(N[O] + "_Mask", R[N[O]].mask),
         V.load(function() {
-            let I = k(Graphics.renderer, O[N]);
+            let I = M(Graphics.renderer, N[O]);
             I.layerName = "planet",
             I.scaleModifier = Tools.rand(0.1, 0.65),
             I.scale.set(0.5 * I.scaleModifier, 0.5 * I.scaleModifier);
             let X = 4 * I.scaleModifier;
             I.basePosition = [Tools.randInt(-25000, 7e4), Tools.randInt(-2e4 * X, 4e4 * X)],
             I.distanceFactor = [30, 30],
-            SWAM.debug && (console.log("planet: " + O[N]),
+            SWAM.debug && (console.log("planet: " + N[O]),
             console.log("planet scale: " + I.scale.x.toFixed(2) + "    modifier: " + I.scaleModifier.toFixed(2)),
             console.log("planet pos: " + I.basePosition[0] + ", " + I.basePosition[1])),
-            I.update = function(H, q) {
-                let _ = (H + I.basePosition[0] * game.scale) / I.distanceFactor[0]
-                  , Q = (q + I.basePosition[1] * game.scale) / I.distanceFactor[1];
-                I.position.set(_, Q)
+            I.update = function(U, H) {
+                let q = (U + I.basePosition[0] * game.scale) / I.distanceFactor[0]
+                  , j = (H + I.basePosition[1] * game.scale) / I.distanceFactor[1];
+                I.position.set(q, j)
             }
             ,
             null != SWAM.planet && game.graphics.layers.map.removeChild(SWAM.planet),
             SWAM.planet = I,
             game.graphics.layers.map.addChildAt(SWAM.planet, 6);
-            let U = f();
-            I.update(-U.x * game.scale, -U.y * game.scale),
+            let _ = f();
+            I.update(-_.x * game.scale, -_.y * game.scale),
             SWAM.loadSettings()
         })
     }
-    function k(F, z) {
-        var O = PIXI.Texture.fromImage(z)
-          , N = new PIXI.Sprite(O)
+    function M(F, z) {
+        var N = PIXI.Texture.fromImage(z)
+          , O = new PIXI.Sprite(N)
           , V = PIXI.Sprite.fromImage(z + "_Mask");
         V.scale.set(1, 1);
-        let I = PIXI.RenderTexture.create(2 * N.width, 2 * N.height)
+        let I = PIXI.RenderTexture.create(2 * O.width, 2 * O.height)
           , X = new PIXI.Sprite(I);
-        return N.addChild(V),
-        N.filters = [new PIXI.SpriteMaskFilter(V)],
-        N.scale.set(2, 2),
-        N.position.set(0, 0),
-        F.render(N, I),
+        return O.addChild(V),
+        O.filters = [new PIXI.SpriteMaskFilter(V)],
+        O.scale.set(2, 2),
+        O.position.set(0, 0),
+        F.render(O, I),
         X.update = T,
         X
     }
     function T() {
-        var O = SWAM.planet;
-        let N = Graphics.getCamera()
+        var N = SWAM.planet;
+        let O = Graphics.getCamera()
           , V = game.halfScreenX / game.scale
           , I = game.halfScreenY / game.scale
-          , X = N.x - V + 16384
-          , U = game.screenX - O.width
-          , H = config.mapWidth - game.screenX / game.scale
-          , _ = N.y + 8192
-          , Q = 0;
-        if (5e3 > _)
-            Q = game.screenY;
+          , X = O.x - V + 16384
+          , _ = game.screenX - N.width
+          , U = config.mapWidth - game.screenX / game.scale
+          , q = O.y + 8192
+          , j = 0;
+        if (5e3 > q)
+            j = game.screenY;
         else {
-            let j = config.mapHeight - I - 5e3;
-            Q = game.screenY - O.height * (_ - 5e3) / j
+            let Q = config.mapHeight - I - 5e3;
+            j = game.screenY - N.height * (q - 5e3) / Q
         }
-        O.position.set(X * U / H, Q)
+        N.position.set(X * _ / U, j)
     }
     config.overdraw = 0,
     config.overdrawOptimize = !0,
@@ -463,20 +463,20 @@ StarMash_2.prototype.start = function() {
             }
         }
     }
-      , P = {};
+      , R = {};
     for (let z, F = 2; 12 >= F; F++)
         z = ("0" + F).slice(-2),
-        P["Planet" + z] = {
+        R["Planet" + z] = {
             texture: getFilePath("planets/planet" + z + ".jpg"),
             mask: getFilePath("planets/planet" + z + "-mask.jpg")
         };
-    let R = new PIXI.loaders.Loader;
-    R.add("hyperspace", getFilePath("hyperspace.jpg")),
-    R.add("ImperialShips", getFilePath("ships/ships1.jpg")),
-    R.add("ImperialShips_Mask", getFilePath("ships/ships1-mask-50.jpg")),
-    R.add("RebelShips", getFilePath("ships/RebelShips1.jpg")),
-    R.add("RebelShips_Mask", getFilePath("ships/RebelShips-mask.jpg")),
-    R.load(()=>{
+    let P = new PIXI.loaders.Loader;
+    P.add("hyperspace", getFilePath("hyperspace.jpg")),
+    P.add("ImperialShips", getFilePath("ships/ships1.jpg")),
+    P.add("ImperialShips_Mask", getFilePath("ships/ships1-mask-50.jpg")),
+    P.add("RebelShips", getFilePath("ships/RebelShips1.jpg")),
+    P.add("RebelShips_Mask", getFilePath("ships/RebelShips-mask.jpg")),
+    P.load(()=>{
         c(),
         SWAM.RandomizeBackground(),
         SWAM.asteroids3 = G("asteroids1", "asteroids3", game.scale / 3),
@@ -499,8 +499,8 @@ StarMash_2.prototype.start = function() {
     SWAM.debug && (SWAM.createShips = A),
     SWAM.BackgroundFactor = 100,
     SWAM.resizeLayers = function(F, z) {
-        let O = F / game.scale
-          , N = z / game.scale;
+        let N = F / game.scale
+          , O = z / game.scale;
         SWAM.planet,
         SWAM.ShipContainer && SWAM.ShipContainer.scale.set(game.scale, game.scale),
         SWAM.asteroids1 && (SWAM.asteroids1.width = F,
@@ -517,8 +517,8 @@ StarMash_2.prototype.start = function() {
         0 < SWAM.Settings.themes.StarMash_2.asteroidLayers && this.updateAsteroids(F, z),
         SWAM.Settings.themes.StarMash_2.decorations.ships && SWAM.ShipContainer && (SWAM.ShipContainer.position.set(F, z),
         SWAM.Ships)))
-            for (let N in SWAM.Ships)
-                SWAM.Ships[N].update(F, z)
+            for (let O in SWAM.Ships)
+                SWAM.Ships[O].update(F, z)
     }
     ,
     SWAM.updateAsteroids = function(F, z) {
@@ -1095,8 +1095,8 @@ class VanillaTheme {
               , C = D.children[1]
               , G = game.graphics.layers.map
               , L = G.children[0]
-              , M = G.children[1]
-              , k = G.children[3]
+              , k = G.children[1]
+              , M = G.children[3]
               , T = G.children[6];
             if (f && f.map) {
                 function B() {
@@ -1108,13 +1108,13 @@ class VanillaTheme {
                 if (C.visible = f.map.sea,
                 L.visible = f.map.forest,
                 D.visible = f.map.forest && !f.map.polygons ? !1 : !0,
-                M.visible = f.map.sand,
-                k.visible = f.map.rock,
+                k.visible = f.map.sand,
+                M.visible = f.map.rock,
                 T)
                     B();
                 else {
-                    let P = setInterval(function() {
-                        game.graphics.layers.map.children[6] && (clearInterval(P),
+                    let R = setInterval(function() {
+                        game.graphics.layers.map.children[6] && (clearInterval(R),
                         B())
                     }, 200)
                 }
@@ -1223,6 +1223,30 @@ class StPatricksDay2018 extends VanillaTheme {
 StPatricksDay2018.themeName = "St. Patrick's Day 2018 Theme",
 StPatricksDay2018.description = "A lucky theme for AirMash!!",
 StPatricksDay2018.author = "Bombita";
+class RealisticSprites extends VanillaTheme {
+    constructor() {
+        super()
+    }
+    injectTextures(d) {
+        const A = {
+            "map_sea.jpg": "https://image.ibb.co/c5MWKd/map_sea.jpg",
+            "map_forest.jpg": "https://image.ibb.co/db9ked/map_forest.jpg",
+            "map_rock.jpg": "https://image.ibb.co/bXBnsy/map_rock.jpg",
+            "map_sand.jpg": "https://image.ibb.co/nADBKd/map_sand.jpg",
+            "aircraft.png": "https://image.ibb.co/k3uJzd/aircraft.png",
+            "shadows.png": "https://image.ibb.co/nc75ed/shadows.png",
+            "items.png": "https://image.ibb.co/k8JNQJ/items.png",
+            "mountains.png": "https://image.ibb.co/neRyzd/mountains.png"
+        };
+        for (let f in d) {
+            let D = getFileName(d[f]);
+            "undefined" != typeof A[D] && (SWAM.debug ? d[f] = getFilePath("themes/RealisticSprites/" + D) : d[f] = A[D] ? A[D] : getFilePath("themes/RealisticSprites/" + D))
+        }
+    }
+}
+RealisticSprites.themeName = "Realistic Sprites [BETA 1]",
+RealisticSprites.description = "WORK IN PROGRES. More detailed/realistic graphics!",
+RealisticSprites.author = "Bombita";
 class PixelArt_8Bits extends VanillaTheme {
     constructor() {
         function d(h) {
@@ -1325,6 +1349,6 @@ SWAM.registerExtension({
     id: "StarMashThemes",
     author: "Bombita",
     version: SWAM_version,
-    themes: [VanillaTheme, StarMash_1, StarMash_2, StPatricksDay2018, PixelArt_8Bits],
+    themes: [VanillaTheme, StarMash_1, StarMash_2, StPatricksDay2018, RealisticSprites, PixelArt_8Bits],
     dependencies: []
 });
