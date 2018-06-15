@@ -116,19 +116,19 @@ StarMash_2.author = "Bombita",
 StarMash_2.version = SWAM_version,
 StarMash_2.prototype.start = function() {
     function d() {
-        let F = $("#regenerateBackground");
-        if (0 == F.length) {
-            var z = getTemplate("#regenerateBackground");
-            F = $(z),
-            $("body").append(F);
-            let O = $("#btnRegenerate", F);
-            O.click(function() {
+        let P = $("#regenerateBackground");
+        if (0 == P.length) {
+            var F = getTemplate("#regenerateBackground");
+            P = $(F),
+            $("body").append(P);
+            let z = $("#btnRegenerate", P);
+            z.click(function() {
                 SWAM.RandomizeBackground()
             })
         }
-        F.slideDown(),
+        P.slideDown(),
         d.timer && clearInterval(d.timer);
-        let N = $(".timerIndicator", F);
+        let N = $(".timerIndicator", P);
         d.width = 100,
         N.css("width", "100%"),
         d.timer = setInterval(function() {
@@ -138,110 +138,110 @@ StarMash_2.prototype.start = function() {
             }, 90),
             0 == d.width && (clearInterval(d.timer),
             delete d.timer,
-            F.slideUp())
+            P.slideUp())
         }, 100)
     }
     function h() {
-        function F(_) {
-            for (let U = 0; 3 > U; U++)
-                I[U].visible = _
+        function P(V) {
+            for (let X = 0; 3 > X; X++)
+                j[X].visible = V
         }
-        function z(_) {
-            for (let U = 0; 3 > U; U++)
-                I[U].renderable = _
+        function F(V) {
+            for (let X = 0; 3 > X; X++)
+                j[X].renderable = V
         }
-        let V = game.graphics.layers.map
-          , I = [V.children[1], V.children[3], V.children[5]];
-        V.visible = !1,
+        let O = game.graphics.layers.map
+          , j = [O.children[1], O.children[3], O.children[5]];
+        O.visible = !1,
         function() {
-            for (let _ = 0; 3 > _; _++) {
-                V.children[2 * _].mask = null;
-                let U = Tools.randInt(0, I.length - 1);
-                V.children[2 * _].mask = I[U],
-                SWAM.debug && console.log(`${V.children[2 * _].layerName}: ${I[U].layerName}`)
+            for (let V = 0; 3 > V; V++) {
+                O.children[2 * V].mask = null;
+                let X = Tools.randInt(0, j.length - 1);
+                O.children[2 * V].mask = j[X],
+                SWAM.debug && console.log(`${O.children[2 * V].layerName}: ${j[X].layerName}`)
             }
-            z(!0)
+            F(!0)
         }(),
         function() {
-            F(!0);
-            let _ = config.mapWidth * game.scale - game.screenX / game.scale
-              , U = config.mapHeight * game.scale - game.screenY / game.scale;
-            for (let H = 0; 3 > H; H++)
-                V.children[2 * H + 1].position.set(Tools.randInt(-_, 0), Tools.randInt(-U, 0));
+            P(!0);
+            let V = config.mapWidth * game.scale - game.screenX / game.scale
+              , X = config.mapHeight * game.scale - game.screenY / game.scale;
+            for (let U = 0; 3 > U; U++)
+                O.children[2 * U + 1].position.set(Tools.randInt(-V, 0), Tools.randInt(-X, 0));
             Graphics.renderBackground(),
-            F(!1)
+            P(!1)
         }(),
-        V.visible = !0;
-        let X = 1 == Tools.randInt(0, 1);
-        SWAM.MoveBackgroundTiles = X,
-        z(!1),
-        F(X),
-        SWAM.debug && console.log("movable nebulas: " + X)
+        O.visible = !0;
+        let I = 1 == Tools.randInt(0, 1);
+        SWAM.MoveBackgroundTiles = I,
+        F(!1),
+        P(I),
+        SWAM.debug && console.log("movable nebulas: " + I)
     }
     function c() {
-        for (let O in B) {
-            let V = B[O];
-            V.scale = V.scale || 1;
-            let I = Graphics.renderer
-              , X = PIXI.Texture.fromImage(O)
-              , _ = null;
-            for (let U in V.useMask && (_ = PIXI.Texture.fromImage(O + "_Mask")),
-            V.items) {
-                let H = V.items[U]
-                  , q = new PIXI.Texture(X,new PIXI.Rectangle(H[0] * V.scale,H[1] * V.scale,H[2] * V.scale,H[3] * V.scale))
-                  , j = new PIXI.Sprite(q);
-                j.scale.set(V.resultScale, V.resultScale);
-                var F = null;
-                if (V.useMask) {
-                    var z = V.maskScale || 1
-                      , N = new PIXI.Texture(_,new PIXI.Rectangle(H[0] * V.scale / z,H[1] * V.scale / z,H[2] * V.scale / z,H[3] * V.scale / z))
-                      , F = new PIXI.Sprite(N);
-                    F.scale.set(z, z),
-                    j.addChild(F),
-                    j.filters = [new PIXI.SpriteMaskFilter(F)],
-                    F.position.set(-H[0] * V.scale, -H[1] * V.scale)
+        for (let z in B) {
+            let O = B[z];
+            O.scale = O.scale || 1;
+            let j = Graphics.renderer
+              , I = PIXI.Texture.fromImage(z)
+              , V = null;
+            for (let X in O.useMask && (V = PIXI.Texture.fromImage(z + "_Mask")),
+            O.items) {
+                let U = O.items[X]
+                  , H = new PIXI.Texture(I,new PIXI.Rectangle(U[0] * O.scale,U[1] * O.scale,U[2] * O.scale,U[3] * O.scale))
+                  , q = new PIXI.Sprite(H);
+                q.scale.set(O.resultScale, O.resultScale);
+                var P = null;
+                if (O.useMask) {
+                    var F = O.maskScale || 1
+                      , N = new PIXI.Texture(V,new PIXI.Rectangle(U[0] * O.scale / F,U[1] * O.scale / F,U[2] * O.scale / F,U[3] * O.scale / F))
+                      , P = new PIXI.Sprite(N);
+                    P.scale.set(F, F),
+                    q.addChild(P),
+                    q.filters = [new PIXI.SpriteMaskFilter(P)],
+                    P.position.set(-U[0] * O.scale, -U[1] * O.scale)
                 }
-                let Q = PIXI.RenderTexture.create(j.width, j.height);
-                I.render(j, Q, !0),
-                SWAM.Textures[U] = Q
+                let W = PIXI.RenderTexture.create(q.width, q.height);
+                j.render(q, W, !0),
+                SWAM.Textures[X] = W
             }
         }
     }
-    function m(F, z) {
-        let N = SWAM.Textures[F]
-          , O = new PIXI.Sprite(N);
-        return "undefined" == typeof z && (z = {}),
-        O.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
-        O.basePosition = z.basePosition ? z.basePosition : [0, 0],
-        z.position && O.position.set(z.position[0], z.position[1]),
-        z.anchor && O.anchor.set(z.anchor[0], z.anchor[1]),
-        z.pivot && O.pivot.set(z.pivot[0], z.pivot[1]),
-        z.scale && (Array.isArray(z.scale) ? O.scale.set(z.scale[0], z.scale[1]) : O.scale.set(z.scale)),
-        z.rotation && (O.rotation = z.rotation),
-        z.alpha && (O.alpha = z.alpha),
-        z.blend && (O.blendMode = PIXI.BLEND_MODES[z.blend]),
-        z.tint && (O.tint = z.tint),
-        z.mask && (O.mask = z.mask),
-        z.visible && (O.visible = z.visible),
-        z.container && z.container.addChild(O),
-        O
+    function m(P, F) {
+        let N = SWAM.Textures[P]
+          , z = new PIXI.Sprite(N);
+        return "undefined" == typeof F && (F = {}),
+        z.distanceFactor = F.distanceFactor ? F.distanceFactor : [1, 1],
+        z.basePosition = F.basePosition ? F.basePosition : [0, 0],
+        F.position && z.position.set(F.position[0], F.position[1]),
+        F.anchor && z.anchor.set(F.anchor[0], F.anchor[1]),
+        F.pivot && z.pivot.set(F.pivot[0], F.pivot[1]),
+        F.scale && (Array.isArray(F.scale) ? z.scale.set(F.scale[0], F.scale[1]) : z.scale.set(F.scale)),
+        F.rotation && (z.rotation = F.rotation),
+        F.alpha && (z.alpha = F.alpha),
+        F.blend && (z.blendMode = PIXI.BLEND_MODES[F.blend]),
+        F.tint && (z.tint = F.tint),
+        F.mask && (z.mask = F.mask),
+        F.visible && (z.visible = F.visible),
+        F.container && F.container.addChild(z),
+        z
     }
-    function S(F, z) {
-        "undefined" == typeof z && (z = {});
-        let N = m(F, z);
-        return N.distanceFactor = z.distanceFactor ? z.distanceFactor : [1, 1],
-        N.basePosition = z.basePosition ? z.basePosition : [0, 0],
+    function S(P, F) {
+        "undefined" == typeof F && (F = {});
+        let N = m(P, F);
+        return N.distanceFactor = F.distanceFactor ? F.distanceFactor : [1, 1],
+        N.basePosition = F.basePosition ? F.basePosition : [0, 0],
         N.update = function() {
-            let I = Graphics.getCamera()
-              , X = I.x + (N.basePosition[0] - I.x) / N.distanceFactor[0]
-              , _ = I.y + (N.basePosition[1] - I.y) / N.distanceFactor[1];
-            N.position.set(X, _)
+            let j = Graphics.getCamera()
+              , I = j.x + (N.basePosition[0] - j.x) / N.distanceFactor[0]
+              , V = j.y + (N.basePosition[1] - j.y) / N.distanceFactor[1];
+            N.position.set(I, V)
         }
         ,
         N
     }
     function A() {
-        function F(N) {
+        function P(N) {
             N = N || {},
             N.count = N.count || 12,
             N.x = N.x || [-14000, -10000],
@@ -249,156 +249,156 @@ StarMash_2.prototype.start = function() {
             N.radius = N.radius || [5000, 13000],
             N.baseDistanceFactor = N.baseDistanceFactor || 8,
             N.textures = N.textures || B.ImperialShips.items;
-            var O = N.count
-              , V = [];
-            for (let X in N.textures)
-                V.push(X);
-            let I = 2 * Math.PI / O;
-            for (let X = 0, _ = 0; X < O; X++,
-            _ += I) {
-                let U = Tools.randInt(N.radius[0], N.radius[1])
-                  , H = Tools.randInt(N.x[0], N.x[1])
-                  , q = Tools.randInt(N.y[0], N.y[1])
-                  , j = D(H, q, U, _);
-                H = j.x,
-                q = j.y;
-                let Q = Tools.rand(0.2, 0.85)
-                  , E = 0.5 * (1 / (Q / 0.85)) + 0.5
-                  , W = V[Tools.randInt(0, V.length - 1)]
-                  , K = S(W, {
-                    distanceFactor: [N.baseDistanceFactor * E, N.baseDistanceFactor * E],
-                    scale: [Q, Q],
-                    basePosition: [H, q],
-                    position: [H, q],
+            var z = N.count
+              , O = [];
+            for (let I in N.textures)
+                O.push(I);
+            let j = 2 * Math.PI / z;
+            for (let I = 0, V = 0; I < z; I++,
+            V += j) {
+                let X = Tools.randInt(N.radius[0], N.radius[1])
+                  , U = Tools.randInt(N.x[0], N.x[1])
+                  , H = Tools.randInt(N.y[0], N.y[1])
+                  , q = D(U, H, X, V);
+                U = q.x,
+                H = q.y;
+                let W = Tools.rand(0.2, 0.85)
+                  , Q = 0.5 * (1 / (W / 0.85)) + 0.5
+                  , E = O[Tools.randInt(0, O.length - 1)]
+                  , K = S(E, {
+                    distanceFactor: [N.baseDistanceFactor * Q, N.baseDistanceFactor * Q],
+                    scale: [W, W],
+                    basePosition: [U, H],
+                    position: [U, H],
                     anchor: [0.5, 0.5]
                 });
-                K.textureName = W,
-                K.angleUsed = _,
+                K.textureName = E,
+                K.angleUsed = V,
                 SWAM.Ships.push(K)
             }
         }
-        var z = SWAM.ShipContainer;
-        null == z ? (z = new PIXI.Container,
-        z.scale.set(game.scale, game.scale),
-        game.graphics.layers.map.addChildAt(z, C()),
-        SWAM.ShipContainer = z) : (z.removeChildren(),
+        var F = SWAM.ShipContainer;
+        null == F ? (F = new PIXI.Container,
+        F.scale.set(game.scale, game.scale),
+        game.graphics.layers.map.addChildAt(F, C()),
+        SWAM.ShipContainer = F) : (F.removeChildren(),
         SWAM.Ships = []),
-        F({
+        P({
             count: 12,
             x: [-17000, -13000]
         }),
-        F({
+        P({
             count: 16,
             x: [13000, 17000],
             radius: [5000, 10000],
             textures: B.RebelShips.items
         }),
-        SWAM.Ships.sort(function(N, O) {
-            return O.distanceFactor[0] - N.distanceFactor[0]
+        SWAM.Ships.sort(function(N, z) {
+            return z.distanceFactor[0] - N.distanceFactor[0]
         });
         for (let N of SWAM.Ships)
-            z.addChild(N)
+            F.addChild(N)
     }
     function f() {
-        let F = Graphics.getCamera()
-          , z = F.x - game.halfScreenX / game.scale
-          , N = F.y - game.halfScreenY / game.scale;
+        let P = Graphics.getCamera()
+          , F = P.x - game.halfScreenX / game.scale
+          , N = P.y - game.halfScreenY / game.scale;
         return {
-            x: z,
+            x: F,
             y: N
         }
     }
-    function D(F, z, N, O) {
-        let V = N * Math.cos(O) + F
-          , I = N * Math.sin(O) + z;
+    function D(P, F, N, z) {
+        let O = N * Math.cos(z) + P
+          , j = N * Math.sin(z) + F;
         return {
-            x: V,
-            y: I
+            x: O,
+            y: j
         }
     }
     function C() {
-        let F = game.graphics.layers.map
-          , z = game.graphics.layers.doodads
+        let P = game.graphics.layers.map
+          , F = game.graphics.layers.doodads
           , N = 0;
-        for (var O = 0; O < F.children.length; O++)
-            F.children[O] == z && (N = O);
+        for (var z = 0; z < P.children.length; z++)
+            P.children[z] == F && (N = z);
         return N
     }
-    function G(F, z, N) {
-        var O = Graphics.renderer.width
-          , V = Graphics.renderer.height;
-        let I = Textures.tile(F, O, V);
-        return I.layerName = z,
-        game.graphics.layers.map.addChildAt(I, C()),
-        I.tileScale.set(N, N),
-        I
+    function k(P, F, N) {
+        var z = Graphics.renderer.width
+          , O = Graphics.renderer.height;
+        let j = Textures.tile(P, z, O);
+        return j.layerName = F,
+        game.graphics.layers.map.addChildAt(j, C()),
+        j.tileScale.set(N, N),
+        j
     }
-    function L(F=-1) {
+    function G(P=-1) {
         let N = [];
-        for (let I in R)
-            N.push(I);
-        let O = Tools.randInt(0, N.length - 1);
-        0 <= F && F < N.length && (O = F);
-        let V = new PIXI.loaders.Loader;
-        V.add(N[O], R[N[O]].texture),
-        V.add(N[O] + "_Mask", R[N[O]].mask),
-        V.load(function() {
-            let I = M(Graphics.renderer, N[O]);
-            I.layerName = "planet",
-            I.scaleModifier = Tools.rand(0.1, 0.65),
-            I.scale.set(0.5 * I.scaleModifier, 0.5 * I.scaleModifier);
-            let X = 4 * I.scaleModifier;
-            I.basePosition = [Tools.randInt(-25000, 7e4), Tools.randInt(-2e4 * X, 4e4 * X)],
-            I.distanceFactor = [30, 30],
-            SWAM.debug && (console.log("planet: " + N[O]),
-            console.log("planet scale: " + I.scale.x.toFixed(2) + "    modifier: " + I.scaleModifier.toFixed(2)),
-            console.log("planet pos: " + I.basePosition[0] + ", " + I.basePosition[1])),
-            I.update = function(U, H) {
-                let q = (U + I.basePosition[0] * game.scale) / I.distanceFactor[0]
-                  , j = (H + I.basePosition[1] * game.scale) / I.distanceFactor[1];
-                I.position.set(q, j)
+        for (let j in R)
+            N.push(j);
+        let z = Tools.randInt(0, N.length - 1);
+        0 <= P && P < N.length && (z = P);
+        let O = new PIXI.loaders.Loader;
+        O.add(N[z], R[N[z]].texture),
+        O.add(N[z] + "_Mask", R[N[z]].mask),
+        O.load(function() {
+            let j = M(Graphics.renderer, N[z]);
+            j.layerName = "planet",
+            j.scaleModifier = Tools.rand(0.1, 0.65),
+            j.scale.set(0.5 * j.scaleModifier, 0.5 * j.scaleModifier);
+            let I = 4 * j.scaleModifier;
+            j.basePosition = [Tools.randInt(-25000, 7e4), Tools.randInt(-2e4 * I, 4e4 * I)],
+            j.distanceFactor = [30, 30],
+            SWAM.debug && (console.log("planet: " + N[z]),
+            console.log("planet scale: " + j.scale.x.toFixed(2) + "    modifier: " + j.scaleModifier.toFixed(2)),
+            console.log("planet pos: " + j.basePosition[0] + ", " + j.basePosition[1])),
+            j.update = function(X, U) {
+                let H = (X + j.basePosition[0] * game.scale) / j.distanceFactor[0]
+                  , q = (U + j.basePosition[1] * game.scale) / j.distanceFactor[1];
+                j.position.set(H, q)
             }
             ,
             null != SWAM.planet && game.graphics.layers.map.removeChild(SWAM.planet),
-            SWAM.planet = I,
+            SWAM.planet = j,
             game.graphics.layers.map.addChildAt(SWAM.planet, 6);
-            let _ = f();
-            I.update(-_.x * game.scale, -_.y * game.scale),
+            let V = f();
+            j.update(-V.x * game.scale, -V.y * game.scale),
             SWAM.loadSettings()
         })
     }
-    function M(F, z) {
-        var N = PIXI.Texture.fromImage(z)
-          , O = new PIXI.Sprite(N)
-          , V = PIXI.Sprite.fromImage(z + "_Mask");
-        V.scale.set(1, 1);
-        let I = PIXI.RenderTexture.create(2 * O.width, 2 * O.height)
-          , X = new PIXI.Sprite(I);
-        return O.addChild(V),
-        O.filters = [new PIXI.SpriteMaskFilter(V)],
-        O.scale.set(2, 2),
-        O.position.set(0, 0),
-        F.render(O, I),
-        X.update = T,
-        X
+    function M(P, F) {
+        var N = PIXI.Texture.fromImage(F)
+          , z = new PIXI.Sprite(N)
+          , O = PIXI.Sprite.fromImage(F + "_Mask");
+        O.scale.set(1, 1);
+        let j = PIXI.RenderTexture.create(2 * z.width, 2 * z.height)
+          , I = new PIXI.Sprite(j);
+        return z.addChild(O),
+        z.filters = [new PIXI.SpriteMaskFilter(O)],
+        z.scale.set(2, 2),
+        z.position.set(0, 0),
+        P.render(z, j),
+        I.update = T,
+        I
     }
     function T() {
         var N = SWAM.planet;
-        let O = Graphics.getCamera()
-          , V = game.halfScreenX / game.scale
-          , I = game.halfScreenY / game.scale
-          , X = O.x - V + 16384
-          , _ = game.screenX - N.width
-          , U = config.mapWidth - game.screenX / game.scale
-          , q = O.y + 8192
-          , j = 0;
-        if (5e3 > q)
-            j = game.screenY;
+        let z = Graphics.getCamera()
+          , O = game.halfScreenX / game.scale
+          , j = game.halfScreenY / game.scale
+          , I = z.x - O + 16384
+          , V = game.screenX - N.width
+          , X = config.mapWidth - game.screenX / game.scale
+          , H = z.y + 8192
+          , q = 0;
+        if (5e3 > H)
+            q = game.screenY;
         else {
-            let Q = config.mapHeight - I - 5e3;
-            j = game.screenY - N.height * (q - 5e3) / Q
+            let W = config.mapHeight - j - 5e3;
+            q = game.screenY - N.height * (H - 5e3) / W
         }
-        N.position.set(X * _ / U, j)
+        N.position.set(I * V / X, q)
     }
     config.overdraw = 0,
     config.overdrawOptimize = !0,
@@ -464,33 +464,33 @@ StarMash_2.prototype.start = function() {
         }
     }
       , R = {};
-    for (let z, F = 2; 12 >= F; F++)
-        z = ("0" + F).slice(-2),
-        R["Planet" + z] = {
-            texture: getFilePath("planets/planet" + z + ".jpg"),
-            mask: getFilePath("planets/planet" + z + "-mask.jpg")
+    for (let F, P = 2; 12 >= P; P++)
+        F = ("0" + P).slice(-2),
+        R["Planet" + F] = {
+            texture: getFilePath("planets/planet" + F + ".jpg"),
+            mask: getFilePath("planets/planet" + F + "-mask.jpg")
         };
-    let P = new PIXI.loaders.Loader;
-    P.add("hyperspace", getFilePath("hyperspace.jpg")),
-    P.add("ImperialShips", getFilePath("ships/ships1.jpg")),
-    P.add("ImperialShips_Mask", getFilePath("ships/ships1-mask-50.jpg")),
-    P.add("RebelShips", getFilePath("ships/RebelShips1.jpg")),
-    P.add("RebelShips_Mask", getFilePath("ships/RebelShips-mask.jpg")),
-    P.load(()=>{
+    let _ = new PIXI.loaders.Loader;
+    _.add("hyperspace", getFilePath("hyperspace.jpg")),
+    _.add("ImperialShips", getFilePath("ships/ships1.jpg")),
+    _.add("ImperialShips_Mask", getFilePath("ships/ships1-mask-50.jpg")),
+    _.add("RebelShips", getFilePath("ships/RebelShips1.jpg")),
+    _.add("RebelShips_Mask", getFilePath("ships/RebelShips-mask.jpg")),
+    _.load(()=>{
         c(),
         SWAM.RandomizeBackground(),
-        SWAM.asteroids3 = G("asteroids1", "asteroids3", game.scale / 3),
-        SWAM.asteroids2 = G("asteroids2", "asteroids2", game.scale),
-        SWAM.asteroids1 = G("asteroids1", "asteroids1", game.scale),
+        SWAM.asteroids3 = k("asteroids1", "asteroids3", game.scale / 3),
+        SWAM.asteroids2 = k("asteroids2", "asteroids2", game.scale),
+        SWAM.asteroids1 = k("asteroids1", "asteroids1", game.scale),
         SWAM.hyperSpace = new HyperSpace,
         SWAM.loadSettings(),
         Graphics.setCamera(0, 0)
     }
     ),
-    SWAM.RandomizeBackground = function(F=-1) {
+    SWAM.RandomizeBackground = function(P=-1) {
         d(),
         h(),
-        L(F),
+        G(P),
         A()
     }
     ,
@@ -498,33 +498,33 @@ StarMash_2.prototype.start = function() {
     SWAM.MoveBackgroundTiles = !0,
     SWAM.debug && (SWAM.createShips = A),
     SWAM.BackgroundFactor = 100,
-    SWAM.resizeLayers = function(F, z) {
-        let N = F / game.scale
-          , O = z / game.scale;
+    SWAM.resizeLayers = function(P, F) {
+        let N = P / game.scale
+          , z = F / game.scale;
         SWAM.planet,
         SWAM.ShipContainer && SWAM.ShipContainer.scale.set(game.scale, game.scale),
-        SWAM.asteroids1 && (SWAM.asteroids1.width = F,
-        SWAM.asteroids1.height = z),
-        SWAM.asteroids2 && (SWAM.asteroids2.width = F,
-        SWAM.asteroids2.height = z),
-        SWAM.asteroids3 && (SWAM.asteroids3.width = F,
-        SWAM.asteroids3.height = z)
+        SWAM.asteroids1 && (SWAM.asteroids1.width = P,
+        SWAM.asteroids1.height = F),
+        SWAM.asteroids2 && (SWAM.asteroids2.width = P,
+        SWAM.asteroids2.height = F),
+        SWAM.asteroids3 && (SWAM.asteroids3.width = P,
+        SWAM.asteroids3.height = F)
     }
     ,
     SWAM.doUpdates = !0,
-    SWAM.updateLayers = function(F, z) {
-        if (SWAM.doUpdates && SWAM.Settings && (SWAM.Settings.themes.StarMash_2.decorations.planets && this.planet && this.planet.update(F, z),
-        0 < SWAM.Settings.themes.StarMash_2.asteroidLayers && this.updateAsteroids(F, z),
-        SWAM.Settings.themes.StarMash_2.decorations.ships && SWAM.ShipContainer && (SWAM.ShipContainer.position.set(F, z),
+    SWAM.updateLayers = function(P, F) {
+        if (SWAM.doUpdates && SWAM.Settings && (SWAM.Settings.themes.StarMash_2.decorations.planets && this.planet && this.planet.update(P, F),
+        0 < SWAM.Settings.themes.StarMash_2.asteroidLayers && this.updateAsteroids(P, F),
+        SWAM.Settings.themes.StarMash_2.decorations.ships && SWAM.ShipContainer && (SWAM.ShipContainer.position.set(P, F),
         SWAM.Ships)))
-            for (let O in SWAM.Ships)
-                SWAM.Ships[O].update(F, z)
+            for (let z in SWAM.Ships)
+                SWAM.Ships[z].update(P, F)
     }
     ,
-    SWAM.updateAsteroids = function(F, z) {
-        SWAM.asteroids1 && SWAM.asteroids1.tilePosition.set(F / 2, z / 2),
-        SWAM.asteroids2 && SWAM.asteroids2.tilePosition.set(F / 4, z / 4),
-        SWAM.asteroids3 && SWAM.asteroids3.tilePosition.set(F / 6, z / 6)
+    SWAM.updateAsteroids = function(P, F) {
+        SWAM.asteroids1 && SWAM.asteroids1.tilePosition.set(P / 2, F / 2),
+        SWAM.asteroids2 && SWAM.asteroids2.tilePosition.set(P / 4, F / 4),
+        SWAM.asteroids3 && SWAM.asteroids3.tilePosition.set(P / 6, F / 6)
     }
     ,
     SWAM.on("playerAdded", StarMash_2.overridePlayerMethods),
@@ -763,21 +763,21 @@ StarMash_2.overridePlayerMethods = function(d) {
             Graphics.transform(this.sprites.powerupCircle, this.pos.x, this.pos.y - 80, this.state.powerupAngle, 1.35 * f, 1.35 * f, D)
         }
         var C = Tools.oscillator(.1, .5, this.randomness)
-          , G = .01 > Math.abs(this.state.thrustLevel) ? 0 : this.state.thrustLevel / 2 + (0 < this.state.thrustLevel ? .5 : -.5)
-          , L = Tools.clamp(2 * Math.abs(this.state.thrustLevel) - .1, 0, 1);
+          , k = .01 > Math.abs(this.state.thrustLevel) ? 0 : this.state.thrustLevel / 2 + (0 < this.state.thrustLevel ? .5 : -.5)
+          , G = Tools.clamp(2 * Math.abs(this.state.thrustLevel) - .1, 0, 1);
         if (0 == this.graphicsSet)
             switch (this.type) {
             case 1:
-                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-S) * (5 * c), this.pos.y + Math.cos(-S) * (5 * c), S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
+                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-S) * (5 * c), this.pos.y + Math.cos(-S) * (5 * c), S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
                 this.sprites.thruster.alpha = 0.05,
                 Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-S - .5 * this.state.thrustDir) * (40 * c), this.pos.y + Math.cos(-S - .5 * this.state.thrustDir) * (40 * c), null, 1.5 * m * this.scale, 1 * m * this.scale, .3 * this.state.thrustLevel);
                 break;
             case 2:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .5) * (15 * c), this.pos.y + Math.cos(-S - .5) * (15 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale, .6 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.5 - S) * (15 * c), this.pos.y + Math.cos(.5 - S) * (15 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale, .6 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .5) * (10 * c) / config.shadowScaling, A.y + Math.cos(-S - .5) * (10 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * G * this.scale * (4 / config.shadowScaling), .6 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.5 - S) * (10 * c) / config.shadowScaling, A.y + Math.cos(.5 - S) * (10 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * G * this.scale * (4 / config.shadowScaling), .6 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .5) * (15 * c), this.pos.y + Math.cos(-S - .5) * (15 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale, .6 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.5 - S) * (15 * c), this.pos.y + Math.cos(.5 - S) * (15 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale, .6 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .5) * (10 * c) / config.shadowScaling, A.y + Math.cos(-S - .5) * (10 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * k * this.scale * (4 / config.shadowScaling), .6 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.5 - S) * (10 * c) / config.shadowScaling, A.y + Math.cos(.5 - S) * (10 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * k * this.scale * (4 / config.shadowScaling), .6 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-S - .3) * (50 * c), this.pos.y + Math.cos(-S - .3) * (50 * c), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - S) * (50 * c), this.pos.y + Math.cos(.3 - S) * (50 * c), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel);
                 break;
@@ -787,34 +787,34 @@ StarMash_2.overridePlayerMethods = function(d) {
                 break;
             case 4:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .25) * (5 * c), this.pos.y + Math.cos(-S - .25) * (5 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.25 - S) * (5 * c), this.pos.y + Math.cos(.25 - S) * (5 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .15) * (28 * c) / config.shadowScaling, A.y + Math.cos(-S - .15) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale * (4 / config.shadowScaling), .5 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.15 - S) * (28 * c) / config.shadowScaling, A.y + Math.cos(.15 - S) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale * (4 / config.shadowScaling), .5 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .25) * (5 * c), this.pos.y + Math.cos(-S - .25) * (5 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.25 - S) * (5 * c), this.pos.y + Math.cos(.25 - S) * (5 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .15) * (28 * c) / config.shadowScaling, A.y + Math.cos(-S - .15) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale * (4 / config.shadowScaling), .5 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.15 - S) * (28 * c) / config.shadowScaling, A.y + Math.cos(.15 - S) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale * (4 / config.shadowScaling), .5 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-S - .2) * (45 * c), this.pos.y + Math.cos(-S - .2) * (45 * c), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - S) * (45 * c), this.pos.y + Math.cos(.2 - S) * (45 * c), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel);
                 break;
             case 5:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .35) * (20 * c), this.pos.y + Math.cos(-S - .35) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .4 * C * G * this.scale, L * this.alpha),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.35 - S) * (20 * c), this.pos.y + Math.cos(.35 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .4 * C * G * this.scale, L * this.alpha),
-                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .35) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S - .35) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale * (4 / config.shadowScaling), .4 * C * G * this.scale * (4 / config.shadowScaling), L * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.35 - S) * (20 * c) / config.shadowScaling, A.y + Math.cos(.35 - S) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale * (4 / config.shadowScaling), .4 * C * G * this.scale * (4 / config.shadowScaling), L * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - .35) * (20 * c), this.pos.y + Math.cos(-S - .35) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .4 * C * k * this.scale, G * this.alpha),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(.35 - S) * (20 * c), this.pos.y + Math.cos(.35 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .4 * C * k * this.scale, G * this.alpha),
+                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .35) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S - .35) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale * (4 / config.shadowScaling), .4 * C * k * this.scale * (4 / config.shadowScaling), G * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.35 - S) * (20 * c) / config.shadowScaling, A.y + Math.cos(.35 - S) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale * (4 / config.shadowScaling), .4 * C * k * this.scale * (4 / config.shadowScaling), G * this.alpha / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-S - .2 - 0 * this.state.thrustDir) * (35 * c), this.pos.y + Math.cos(-S - .2 - 0 * this.state.thrustDir) * (35 * c), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - S - 0 * this.state.thrustDir) * (35 * c), this.pos.y + Math.cos(.2 - S - 0 * this.state.thrustDir) * (35 * c), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
             }
         else
             switch (this.type) {
             case 1:
-                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-S) * (20 * c), this.pos.y + Math.cos(-S) * (20 * c), S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thrusterShadow, A.x + Math.sin(-S) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S) * (20 * c) / config.shadowScaling, S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale * (4 / config.shadowScaling), .5 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
+                Graphics.transform(this.sprites.thruster, this.pos.x + Math.sin(-S) * (20 * c), this.pos.y + Math.cos(-S) * (20 * c), S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thrusterShadow, A.x + Math.sin(-S) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S) * (20 * c) / config.shadowScaling, S + (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale * (4 / config.shadowScaling), .5 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
                 Graphics.transform(this.sprites.thrusterGlow, this.pos.x + Math.sin(-S - .5 * this.state.thrustDir) * (40 * c), this.pos.y + Math.cos(-S - .5 * this.state.thrustDir) * (40 * c), null, 1.5 * m * this.scale, 1 * m * this.scale, .3 * this.state.thrustLevel),
                 this.sprites.thruster.scale.x = this.sprites.thruster.scale.y = 0.25;
                 break;
             case 2:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.8 - S) * (50 * c), this.pos.y + Math.cos(.8 - S) * (50 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale, .6 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.5 - S) * (32 * c) / config.shadowScaling, A.y + Math.cos(.5 - S) * (32 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * G * this.scale * (4 / config.shadowScaling), .6 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.8 - S) * (50 * c), this.pos.y + Math.cos(.8 - S) * (50 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale, .6 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.5 - S) * (32 * c) / config.shadowScaling, A.y + Math.cos(.5 - S) * (32 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .5 * C * k * this.scale * (4 / config.shadowScaling), .6 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.3 - S) * (50 * c), this.pos.y + Math.cos(.3 - S) * (50 * c), null, 2.5 * this.scale, 1.5 * this.scale, .3 * this.state.thrustLevel),
                 this.sprites.thruster1.visible = !1,
                 this.sprites.thruster1Glow.visible = !1,
@@ -826,10 +826,10 @@ StarMash_2.overridePlayerMethods = function(d) {
                 break;
             case 4:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - 1) * (20 * c), this.pos.y + Math.cos(-S - 1) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(1 - S) * (20 * c), this.pos.y + Math.cos(1 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .5 * C * G * this.scale, L),
-                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .15) * (28 * c) / config.shadowScaling, A.y + Math.cos(-S - .15) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale * (4 / config.shadowScaling), .5 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.15 - S) * (28 * c) / config.shadowScaling, A.y + Math.cos(.15 - S) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale * (4 / config.shadowScaling), .5 * C * G * this.scale * (4 / config.shadowScaling), L / 2.5),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - 1) * (20 * c), this.pos.y + Math.cos(-S - 1) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(1 - S) * (20 * c), this.pos.y + Math.cos(1 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .5 * C * k * this.scale, G),
+                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .15) * (28 * c) / config.shadowScaling, A.y + Math.cos(-S - .15) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale * (4 / config.shadowScaling), .5 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.15 - S) * (28 * c) / config.shadowScaling, A.y + Math.cos(.15 - S) * (28 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale * (4 / config.shadowScaling), .5 * C * k * this.scale * (4 / config.shadowScaling), G / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-S - .2) * (45 * c), this.pos.y + Math.cos(-S - .2) * (45 * c), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - S) * (45 * c), this.pos.y + Math.cos(.2 - S) * (45 * c), null, 2.5 * this.scale, 1.5 * this.scale, .25 * this.state.thrustLevel),
                 this.sprites.thruster1.scale.x = this.sprites.thruster1.scale.y = 0.35,
@@ -837,10 +837,10 @@ StarMash_2.overridePlayerMethods = function(d) {
                 break;
             case 5:
                 0 > this.state.thrustLevel && (C *= .7),
-                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - 0.3) * (20 * c), this.pos.y + Math.cos(-S - .35) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .4 * C * G * this.scale, L * this.alpha),
-                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.3 - S) * (20 * c), this.pos.y + Math.cos(.35 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * G * this.scale, .4 * C * G * this.scale, L * this.alpha),
-                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .35) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S - .35) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale * (4 / config.shadowScaling), .4 * C * G * this.scale * (4 / config.shadowScaling), L * this.alpha / 2.5),
-                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.35 - S) * (20 * c) / config.shadowScaling, A.y + Math.cos(.35 - S) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * G * this.scale * (4 / config.shadowScaling), .4 * C * G * this.scale * (4 / config.shadowScaling), L * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster1, this.pos.x + Math.sin(-S - 0.3) * (20 * c), this.pos.y + Math.cos(-S - .35) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .4 * C * k * this.scale, G * this.alpha),
+                Graphics.transform(this.sprites.thruster2, this.pos.x + Math.sin(0.3 - S) * (20 * c), this.pos.y + Math.cos(.35 - S) * (20 * c), S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .3 * C * k * this.scale, .4 * C * k * this.scale, G * this.alpha),
+                Graphics.transform(this.sprites.thruster1Shadow, A.x + Math.sin(-S - .35) * (20 * c) / config.shadowScaling, A.y + Math.cos(-S - .35) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale * (4 / config.shadowScaling), .4 * C * k * this.scale * (4 / config.shadowScaling), G * this.alpha / 2.5),
+                Graphics.transform(this.sprites.thruster2Shadow, A.x + Math.sin(.35 - S) * (20 * c) / config.shadowScaling, A.y + Math.cos(.35 - S) * (20 * c) / config.shadowScaling, S + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * C * k * this.scale * (4 / config.shadowScaling), .4 * C * k * this.scale * (4 / config.shadowScaling), G * this.alpha / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-S - .2 - 0 * this.state.thrustDir) * (35 * c), this.pos.y + Math.cos(-S - .2 - 0 * this.state.thrustDir) * (35 * c), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
                 Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - S - 0 * this.state.thrustDir) * (35 * c), this.pos.y + Math.cos(.2 - S - 0 * this.state.thrustDir) * (35 * c), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
             }
@@ -863,11 +863,11 @@ StarMash_2.overridePlayerMethods = function(d) {
 }
 ,
 StarMash_2.prototype.injectTextures = function(d, h, c, m) {
-    for (let G in d) {
-        var A = d[G];
+    for (let k in d) {
+        var A = d[k];
         A = A.replace("assets/", ""),
         -1 < A.indexOf("?") && (A = A.substr(0, A.indexOf("?"))),
-        d[G] = getFilePath(A)
+        d[k] = getFilePath(A)
     }
     var f = {
         map_forest_mask: getFilePath("map_forest_mask.jpg"),
@@ -875,8 +875,8 @@ StarMash_2.prototype.injectTextures = function(d, h, c, m) {
         asteroids2: getFilePath("asteroids/asteroids2.png"),
         asteroids3: getFilePath("asteroids/asteroids3.png")
     };
-    for (let G in f)
-        d[G] = f[G];
+    for (let k in f)
+        d[k] = f[k];
     var D = {
         ui_minimap_1: ["gui", [500, 596, 16, 16]],
         ui_minimap_2: ["gui", [516, 596, 16, 16]],
@@ -895,8 +895,8 @@ StarMash_2.prototype.injectTextures = function(d, h, c, m) {
         prowler_shadow_2: ["shadows", [676, 200, 128, 128]],
         comanche_shadow_2: ["shadows", [812, 200, 64, 128]]
     };
-    for (let G in D)
-        h[G] = D[G];
+    for (let k in D)
+        h[k] = D[k];
     var C = {
         minimap1: {
             texture: "ui_minimap_1",
@@ -1000,8 +1000,8 @@ StarMash_2.prototype.injectTextures = function(d, h, c, m) {
             anchor: [0.5, 0.5]
         }
     };
-    for (let G in C)
-        m[G] = C[G];
+    for (let k in C)
+        m[k] = C[k];
     m.missile.scale = [0.3, 0.3],
     m.missileFat.scale = [0.2, 0.3],
     m.missileSmall.scale = [20, 20]
@@ -1093,22 +1093,22 @@ class VanillaTheme {
             let f = A
               , D = game.graphics.layers.sea
               , C = D.children[1]
-              , G = game.graphics.layers.map
-              , L = G.children[0]
-              , k = G.children[1]
-              , M = G.children[3]
-              , T = G.children[6];
+              , k = game.graphics.layers.map
+              , G = k.children[0]
+              , L = k.children[1]
+              , M = k.children[3]
+              , T = k.children[6];
             if (f && f.map) {
                 function B() {
-                    T = G.children[6],
+                    T = k.children[6],
                     f.map.polygons ? (T.visible = !0,
-                    G.mask = T) : (G.mask = null,
+                    k.mask = T) : (k.mask = null,
                     T.visible = !1)
                 }
                 if (C.visible = f.map.sea,
-                L.visible = f.map.forest,
+                G.visible = f.map.forest,
                 D.visible = f.map.forest && !f.map.polygons ? !1 : !0,
-                k.visible = f.map.sand,
+                L.visible = f.map.sand,
                 M.visible = f.map.rock,
                 T)
                     B();
@@ -1313,10 +1313,10 @@ class PixelArt_8Bits extends VanillaTheme {
         SWAM.on("gameRunning", function() {
             $("canvas").hide(),
             Graphics.ticker && Graphics.ticker.stop(),
-            SWAM.resizeMap = function(c) {
-                config.scalingFactor = c,
+            SWAM.resizeMap = function(h) {
+                config.scalingFactor = h,
                 Graphics.resizeRenderer(window.innerWidth, window.innerHeight),
-                d(c)
+                d(h)
             }
         }),
         SWAM.on("gamePrep", function() {
@@ -1339,6 +1339,65 @@ class PixelArt_8Bits extends VanillaTheme {
 PixelArt_8Bits.themeName = "PixelArt 8-Bits",
 PixelArt_8Bits.description = "With love from the 80's, celebrating 6 months of Airmash!",
 PixelArt_8Bits.author = "Bombita";
+class Russia2018WC extends VanillaTheme {
+    constructor() {
+        super();
+        let d = $.getJSON;
+        $.getJSON = function(S) {
+            return "assets/map.json" === S ? ($.getJSON = d,
+            $.getJSON.call(arguments)) : d.call(arguments)
+        }
+        ,
+        SWAM.on("settingsApplied", S=>{
+            S = SWAM.getThemeSettings();
+            let A = S
+              , f = game.graphics.layers.sea
+              , D = f.children[1]
+              , C = game.graphics.layers.map
+              , k = C.children[0]
+              , G = C.children[1]
+              , L = C.children[3]
+              , M = C.children[6];
+            A && A.map && (D.visible = !1,
+            f.visible = !1,
+            k.visible = !0)
+        }
+        );
+        const h = ["https://image.ibb.co/dzvO0J/2018_FIFA_World_Cup_Background_Wallpapers_33995.jpg", "https://image.ibb.co/mkui0J/2018_FIFA_World_Cup_HQ_Background_Wallpaper_34006.jpg", "https://image.ibb.co/cKQLVJ/2018_FIFA_World_Cup_Best_HD_Wallpaper_33996.jpg", "https://image.ibb.co/etF6LJ/shutterstock_466076552_1.jpg", "https://image.ibb.co/kUit0J/FIFA_World_Cup_2018_Players_Wallpaper1.jpg"];
+        let c = Math.floor(Math.random() * h.length)
+          , m = h[c];
+        $("body").css({
+            background: `black url("${m}") no-repeat fixed center`
+        }),
+        $("body").append(`<style>
+        #logon .logo { background-image: url('https://image.ibb.co/etyFVJ/logo.png'); }
+        #logon { background: url('https://image.ibb.co/kCrU9d/logon2.jpg') no-repeat center;/* opacity: 0.9;*/}
+
+        </style>`)
+    }
+    injectTextures(d) {
+        const A = {
+            "map_forest.jpg": "https://image.ibb.co/chTbpd/map_forest.jpg",
+            "map_rock.jpg": "https://image.ibb.co/jyJ47y/map_rock.jpg",
+            "map_sand.jpg": "https://image.ibb.co/niQTZd/map_sand.jpg",
+            "map_rock_mask.jpg": "https://image.ibb.co/ceFTZd/map_rock_mask.jpg",
+            "map_sand_mask.jpg": "https://image.ibb.co/cDCWny/map_sand_mask.jpg",
+            "items.png": "https://image.ibb.co/hi7xSy/items.png",
+            "mountains.png": "https://image.ibb.co/mpL6LJ/mountains.png"
+        };
+        for (let f in d) {
+            let D = getFileName(d[f]);
+            "undefined" != typeof A[D] && (SWAM.debug ? d[f] = getFilePath("themes/Russia2018WC/" + D) : d[f] = A[D] ? A[D] : getFilePath("themes/Russia2018WC/" + D))
+        }
+    }
+    setMobScale(d) {
+        super.setMobScale(d),
+        d.sprites.thruster.alpha = 0
+    }
+}
+Russia2018WC.themeName = "World Cup Russia 2018",
+Russia2018WC.description = "Vamos Argentina!",
+Russia2018WC.author = "Bombita";
 function getFileName(d) {
     return d = d.substring(d.lastIndexOf("/") + 1),
     -1 < d.indexOf("?") && (d = d.substr(0, d.indexOf("?"))),
@@ -1349,6 +1408,6 @@ SWAM.registerExtension({
     id: "StarMashThemes",
     author: "Bombita",
     version: SWAM_version,
-    themes: [VanillaTheme, StarMash_1, StarMash_2, StPatricksDay2018, RealisticSprites, PixelArt_8Bits],
+    themes: [VanillaTheme, RealisticSprites, StarMash_1, StarMash_2, StPatricksDay2018, PixelArt_8Bits, Russia2018WC],
     dependencies: []
 });
