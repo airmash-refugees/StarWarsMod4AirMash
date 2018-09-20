@@ -189,21 +189,21 @@ StarMash_2.prototype.start = function() {
             z.items) {
                 let U = z.items[X]
                   , H = new PIXI.Texture(I,new PIXI.Rectangle(U[0] * z.scale,U[1] * z.scale,U[2] * z.scale,U[3] * z.scale))
-                  , q = new PIXI.Sprite(H);
-                q.scale.set(z.resultScale, z.resultScale);
+                  , W = new PIXI.Sprite(H);
+                W.scale.set(z.resultScale, z.resultScale);
                 var P = null;
                 if (z.useMask) {
                     var F = z.maskScale || 1
                       , N = new PIXI.Texture(V,new PIXI.Rectangle(U[0] * z.scale / F,U[1] * z.scale / F,U[2] * z.scale / F,U[3] * z.scale / F))
                       , P = new PIXI.Sprite(N);
                     P.scale.set(F, F),
-                    q.addChild(P),
-                    q.filters = [new PIXI.SpriteMaskFilter(P)],
+                    W.addChild(P),
+                    W.filters = [new PIXI.SpriteMaskFilter(P)],
                     P.position.set(-U[0] * z.scale, -U[1] * z.scale)
                 }
-                let W = PIXI.RenderTexture.create(q.width, q.height);
-                j.render(q, W, !0),
-                SWAM.Textures[X] = W
+                let q = PIXI.RenderTexture.create(W.width, W.height);
+                j.render(W, q, !0),
+                SWAM.Textures[X] = q
             }
         }
     }
@@ -259,15 +259,15 @@ StarMash_2.prototype.start = function() {
                 let X = Tools.randInt(N.radius[0], N.radius[1])
                   , U = Tools.randInt(N.x[0], N.x[1])
                   , H = Tools.randInt(N.y[0], N.y[1])
-                  , q = D(U, H, X, V);
-                U = q.x,
-                H = q.y;
-                let W = Tools.rand(0.2, 0.85)
-                  , Q = 0.5 * (1 / (W / 0.85)) + 0.5
+                  , W = D(U, H, X, V);
+                U = W.x,
+                H = W.y;
+                let q = Tools.rand(0.2, 0.85)
+                  , Q = 0.5 * (1 / (q / 0.85)) + 0.5
                   , E = z[Tools.randInt(0, z.length - 1)]
                   , K = S(E, {
                     distanceFactor: [N.baseDistanceFactor * Q, N.baseDistanceFactor * Q],
-                    scale: [W, W],
+                    scale: [q, q],
                     basePosition: [U, H],
                     position: [U, H],
                     anchor: [0.5, 0.5]
@@ -355,8 +355,8 @@ StarMash_2.prototype.start = function() {
             console.log("planet pos: " + j.basePosition[0] + ", " + j.basePosition[1])),
             j.update = function(X, U) {
                 let H = (X + j.basePosition[0] * game.scale) / j.distanceFactor[0]
-                  , q = (U + j.basePosition[1] * game.scale) / j.distanceFactor[1];
-                j.position.set(H, q)
+                  , W = (U + j.basePosition[1] * game.scale) / j.distanceFactor[1];
+                j.position.set(H, W)
             }
             ,
             null != SWAM.planet && game.graphics.layers.map.removeChild(SWAM.planet),
@@ -391,14 +391,14 @@ StarMash_2.prototype.start = function() {
           , V = game.screenX - N.width
           , X = config.mapWidth - game.screenX / game.scale
           , H = O.y + 8192
-          , q = 0;
+          , W = 0;
         if (5e3 > H)
-            q = game.screenY;
+            W = game.screenY;
         else {
-            let W = config.mapHeight - j - 5e3;
-            q = game.screenY - N.height * (H - 5e3) / W
+            let q = config.mapHeight - j - 5e3;
+            W = game.screenY - N.height * (H - 5e3) / q
         }
-        N.position.set(I * V / X, q)
+        N.position.set(I * V / X, W)
     }
     config.overdraw = 0,
     config.overdrawOptimize = !0,
@@ -863,12 +863,13 @@ StarMash_2.overridePlayerMethods = function(d) {
 }
 ,
 StarMash_2.prototype.injectTextures = function(d, h, c, m) {
-    for (let k in d) {
-        var A = d[k];
-        A = A.replace("assets/", ""),
-        -1 < A.indexOf("?") && (A = A.substr(0, A.indexOf("?"))),
-        d[k] = getFilePath(A)
-    }
+    for (let k in d)
+        if (!d[k].startsWith("http")) {
+            var A = d[k];
+            A = A.replace("assets/", ""),
+            -1 < A.indexOf("?") && (A = A.substr(0, A.indexOf("?"))),
+            d[k] = getFilePath(A)
+        }
     var f = {
         map_forest_mask: getFilePath("map_forest_mask.jpg"),
         asteroids1: getFilePath("asteroids/asteroids1.png"),
