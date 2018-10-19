@@ -1436,7 +1436,7 @@ class HellMash extends VanillaTheme {
             let A = SWAM.getThemeSettings();
             A.other.bgAnimation ? this.startBackgroundAnimation() : this.stopBackgroundAnimation(),
             A.other.pranked || 0 != $("#prankStyles").length || $("body").append("<style id='prankStyles'>#selTheme{display: none;} .SWAM_Extensions .sectionsContainer > div:nth-child(1) > div.values::before { content:'\uD83D\uDE08 YOU NEED TO DIE AT LEAST ONE TIME, TO EXIT THIS HELL! \uD83D\uDD25'; } </style>"),
-            A.other.repeatPrank && (SWAM.off("playerKilled", S),
+            (A.other.repeatPrank || !A.other.pranked) && (SWAM.off("playerKilled", S),
             SWAM.on("playerKilled", S)),
             this.audio.ambient(A.other.ambientSound)
         }
@@ -1506,8 +1506,7 @@ class HellMash extends VanillaTheme {
                 SWAM.saveSettings()
             }
         };
-        SWAM.on("playerImpacted", this.audio.mourn.bind(this.audio)),
-        SWAM.on("playerKilled", S)
+        SWAM.on("playerImpacted", this.audio.mourn.bind(this.audio))
     }
     changeBackgrounds(d, h) {
         this.backgrounds = this.backgrounds || [getFilePath("themes/HellMash/bg1.jpg")];
