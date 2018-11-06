@@ -1105,43 +1105,43 @@ class VanillaTheme {
                 colorMissiles: !0,
                 colorPlayers: !0
             }
-        },function(A) {
-            h.settings = A;
-            let D = A
-              , k = game.graphics.layers.sea
-              , C = k.children[1]
-              , M = game.graphics.layers.map
-              , L = M.children[0]
-              , G = M.children[1]
-              , T = M.children[3]
-              , _ = M.children[6];
-            if (D && D.map) {
-                function B() {
-                    _ = M.children[6],
-                    D.map.polygons ? (_.visible = !0,
-                    M.mask = _) : (M.mask = null,
-                    _.visible = !1)
+        },function(f) {
+            h.settings = f;
+            let A = f
+              , D = game.graphics.layers.sea
+              , k = D.children[1]
+              , C = game.graphics.layers.map
+              , M = C.children[0]
+              , L = C.children[1]
+              , G = C.children[3]
+              , T = C.children[6];
+            if (A && A.map) {
+                function _() {
+                    T = C.children[6],
+                    A.map.polygons ? (T.visible = !0,
+                    C.mask = T) : (C.mask = null,
+                    T.visible = !1)
                 }
-                if (C.visible = D.map.sea,
-                L.visible = D.map.forest,
-                k.visible = D.map.forest && !D.map.polygons ? !1 : !0,
-                G.visible = D.map.sand,
-                T.visible = D.map.rock,
-                _)
-                    B();
+                if (k.visible = A.map.sea,
+                M.visible = A.map.forest,
+                D.visible = A.map.forest && !A.map.polygons ? !1 : !0,
+                L.visible = A.map.sand,
+                G.visible = A.map.rock,
+                T)
+                    _();
                 else {
-                    let P = setInterval(function() {
-                        game.graphics.layers.map.children[6] && (clearInterval(P),
-                        B())
+                    let B = setInterval(function() {
+                        game.graphics.layers.map.children[6] && (clearInterval(B),
+                        _())
                     }, 200)
                 }
             }
-            D && D.layers && (game.graphics.layers.shadows.visible = D.layers.shadows,
-            game.graphics.layers.smoke.visible = D.layers.smoke,
-            Particles.missileSmoke = D.layers.smoke && Particles._missileSmoke ? Particles._missileSmoke : function() {}
+            A && A.layers && (game.graphics.layers.shadows.visible = A.layers.shadows,
+            game.graphics.layers.smoke.visible = A.layers.smoke,
+            Particles.missileSmoke = A.layers.smoke && Particles._missileSmoke ? Particles._missileSmoke : function() {}
             ),
-            forEachPlayer(B=>{
-                h.tintPlayer(B)
+            forEachPlayer(_=>{
+                h.tintPlayer(_)
             }
             )
         }
@@ -1159,11 +1159,7 @@ class VanillaTheme {
         S = m.addSection("Gameplay"),
         S.addBoolean("gameplay.colorMissiles", "Use team colors for missiles."),
         S.addBoolean("gameplay.colorPlayers", "Use team colors for players."),
-        this.settingsProvider = m;
-        const f = getFilePath("themes/HellMash/logon.jpg");
-        $("#logon").css({
-            background: `url(${f}) no-repeat center`
-        })
+        this.settingsProvider = m
     }
     start() {
         config.overdraw = 256,
