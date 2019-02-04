@@ -1612,7 +1612,7 @@ class Christmas2017Theme extends VanillaTheme {
                 )
             }
             ),
-            Christmas2017Theme.setImages(),
+            SWAM.getThemeFunction() == Christmas2017Theme && Christmas2017Theme.setImages(),
             Christmas2017Theme.SnowWeather()
         }
     }
