@@ -32895,7 +32895,8 @@ function loadGameCode() {
                 else {
                     Vt[wn].num++;
                     var Pn;
-                    Pn = DEVELOPMENT ? "/ping" : "https://game-" + wn + ".airma.sh/ping",
+                    Pn = DEVELOPMENT ? "/ping" : "https://" + wn + "/ping",
+                    console.log(Pn),
                     xn(wn, Pn, (function() {
                         xn(wn, Pn)
                     }
@@ -32908,32 +32909,31 @@ function loadGameCode() {
             if (null != Vt[En] && !Qt) {
                 qt++;
                 var Pn = performance.now();
-                $.ajax({
-                    url: wn,
-                    dataType: "json",
-                    cache: !1,
-                    timeout: 2e3,
-                    success: function(An) {
-                        if (!Qt && (qt--,
-                        1 == An.pong && null != Vt[En])) {
-                            var Mn = performance.now() - Pn;
-                            if (Math.abs(Vt[En].ping - Mn) < .1 * Mn && Vt[En].threshold++,
-                            2 <= Vt[En].threshold)
-                                return Mn < Vt[En].ping && (en[Vt[En].server].ping = Mn,
-                                Games.findClosest(),
-                                Games.updateRegion()),
-                                void delete Vt[En];
-                            Mn < Vt[En].ping && (Vt[En].ping = Mn,
-                            en[Vt[En].server].ping = Mn,
+                fetch(wn, {
+                    method: "GET",
+                    mode: "no-cors",
+                    cache: "no-cache"
+                }).then(()=>{
+                    if (!Qt && (qt--,
+                    null != Vt[En])) {
+                        var Mn = performance.now() - Pn;
+                        if (Math.abs(Vt[En].ping - Mn) < .1 * Mn && Vt[En].threshold++,
+                        2 <= Vt[En].threshold)
+                            return Mn < Vt[En].ping && (en[Vt[En].server].ping = Mn,
                             Games.findClosest(),
-                            Games.updateRegion(),
-                            null != Cn && Cn())
-                        }
-                    },
-                    error: function() {
-                        qt--
+                            Games.updateRegion()),
+                            void delete Vt[En];
+                        Mn < Vt[En].ping && (Vt[En].ping = Mn,
+                        en[Vt[En].server].ping = Mn,
+                        Games.findClosest(),
+                        Games.updateRegion(),
+                        null != Cn && Cn())
                     }
-                })
+                }
+                ).catch(()=>{
+                    qt--
+                }
+                )
             }
         };
         Games.findClosest = function() {
@@ -35822,7 +35822,7 @@ function SWAM() {
     ;
     let Games_performPing = Games.performPing;
     Games.performPing = function() {
-        "airma.sh" != window.location.host.toLowerCase() || SWAM.debug || Games_performPing.call(Games)
+        SWAM.debug || Games_performPing.call(Games)
     }
     ;
     let games_prep = Games.prep;
