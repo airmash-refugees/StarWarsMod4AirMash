@@ -26414,6 +26414,8 @@ function loadGameCode() {
                     }
                     ))
                 }
+            } else {
+                null != callback && callback()
             }
         }
         ;
