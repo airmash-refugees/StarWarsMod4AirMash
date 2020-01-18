@@ -26088,11 +26088,13 @@ function() {
     game.serviceUrls = {
         enter: backendRoot + "enter",
         clienterror: backendRoot + "clienterror",
-        games: backendRoot + "games"
+        games: backendRoot + "games",
+        login: "https://login.airmash.online"
     };
     window.config = {
         storage: {},
         settings: {},
+        auth: {},
         ships: [{}, {
             name: "raptor",
             turnFactor: .065,
@@ -26392,12 +26394,32 @@ function loadGameCode() {
             "#forcemobile" == window.location.hash && (config.mobile = !0),
             "#nomobile" == window.location.hash && (config.mobile = !1)
         };
+        var loadObjectFromLocalStorage = function(key) {
+            if (null == window.localStorage)
+                return {};
+            var e = null
+              , t = {};
+            try {
+                e = localStorage.getItem(key)
+            } catch (e) {}
+            if (null != e)
+                try {
+                    t = JSON.parse(e)
+                } catch (e) {}
+            return t
+        };
+        var saveObjectToLocalStorage = function(key, obj) {
+            if (null != window.localStorage) {
+                try {
+                    localStorage.setItem(key, JSON.stringify(obj))
+                } catch (e) {}
+            }
+        };
         Tools.loadSettings = function() {
             var Jt = Vt();
             config.storage = Jt,
             DEVELOPMENT && console.log(Jt),
             null != Jt.id && (config.settings.id = Jt.id),
-            null != Jt.session && (config.settings.session = Jt.session),
             null != Jt.name && (config.settings.name = Jt.name),
             null != Jt.region && (config.settings.region = Jt.region),
             null != Jt.helpshown && (config.settings.helpshown = Jt.helpshown),
@@ -26464,6 +26486,24 @@ function loadGameCode() {
                     localStorage.setItem("settings", JSON.stringify(config.storage))
                 } catch (Jt) {}
             }
+        }
+        ;
+        var checkAuth = function() {
+            if (undefined === config.auth.tokens || undefined === config.auth.tokens.settings || undefined === config.auth.tokens.game || undefined === config.auth.identityprovider || undefined === config.auth.loginname) {
+                config.auth = {};
+                saveObjectToLocalStorage("auth", config.auth)
+            }
+        };
+        Tools.loadAuth = function() {
+            config.auth = loadObjectFromLocalStorage("auth");
+            checkAuth();
+            return !$.isEmptyObject(config.auth)
+        }
+        ;
+        Tools.setAuth = function(auth) {
+            config.auth = auth;
+            saveObjectToLocalStorage("auth", config.auth);
+            checkAuth()
         }
         ;
         var Vt = function() {
@@ -28409,7 +28449,9 @@ function loadGameCode() {
                     c: gn.LOGIN,
                     protocol: game.protocol,
                     name: game.myName,
-                    session: config.settings.session ? config.settings.session : "none",
+                    session: config.auth.tokens && config.auth.tokens.game ? JSON.stringify({
+                        token: config.auth.tokens.game
+                    }) : "none",
                     horizonX: Math.ceil(16e3 / game.scale),
                     horizonY: Math.ceil(8e3 / game.scale),
                     flag: game.myFlag
@@ -32454,7 +32496,10 @@ function loadGameCode() {
             2: "Custom country flags",
             3: "Emotes",
             4: "Flag Pack #1"
-        };
+        }
+          , loginOrigin = game.serviceUrls.login
+          , loginIdentityProvider = 0
+          , loginNonce = null;
         Games.setup = function() {
             $("#playregion").on("click", (function(En) {
                 Games.updateRegion(!0, En)
@@ -32479,7 +32524,7 @@ function loadGameCode() {
                 En.stopPropagation()
             }
             )),
-            $("#login-facebook").on("click", (function() {
+            $("#login-microsoft").on("click", (function() {
                 Games.popupLogin(1)
             }
             )),
@@ -32504,8 +32549,8 @@ function loadGameCode() {
             }
             )),
             $("#gotomainpage").on("click", Games.redirRoot),
-            $("#lifetime-signin").on("click", Games.redirRoot),
-            null == config.settings.session ? Games.playerGuest() : Games.playerAuth(),
+            $("#lifetime-signin").on("click", Games.redirRoot);
+            Tools.loadAuth() ? Games.playerAuth() : Games.playerGuest();
             un((function() {
                 return (Jt = !0,
                 pn(),
@@ -32520,9 +32565,36 @@ function loadGameCode() {
             }
             ), !0)
         }
-        ,
-        Games.popupLogin = function(En) {
-            ln("/auth_" + ["", "facebook", "google", "twitter", "reddit", "twitch"][En], "Login", 4 == En ? 900 : 500, 500)
+        ;
+        var receiveLoginMessage = function(e) {
+            if (e.origin !== loginOrigin) {
+                console.log("bad origin for login message: " + e.origin);
+                return
+            }
+            if (e.data.provider !== loginIdentityProvider) {
+                console.log("identity provider does not match: " + e.data.provider);
+                return
+            }
+            loginIdentityProvider = 0;
+            if (e.data.nonce !== loginNonce) {
+                console.log("nonce does not match: " + e.data.nonce);
+                return
+            }
+            loginNonce = null;
+            window.loginSuccess({
+                tokens: e.data.tokens,
+                identityprovider: e.data.provider,
+                loginname: e.data.loginname
+            })
+        };
+        Games.popupLogin = function(identityProvider) {
+            window.addEventListener("message", receiveLoginMessage, {
+                once: true
+            });
+            loginIdentityProvider = identityProvider;
+            loginNonce = Tools.randomID(32);
+            var url = loginOrigin + "/login?provider=" + loginIdentityProvider.toString() + "&nonce=" + loginNonce + "&origin=" + window.origin;
+            ln(url, "Login", 4 == identityProvider ? 900 : 500, 5 == identityProvider ? 800 : 600)
         }
         ;
         var ln = function(En, wn, Cn, Pn) {
@@ -32533,11 +32605,7 @@ function loadGameCode() {
             window.open(En, wn, "width=" + Cn + ", height=" + Pn + ", top=" + In + ", left=" + Rn)
         };
         window.loginSuccess = function(En) {
-            config.settings.session = En,
-            Tools.setSettings({
-                session: En
-            }),
-            Tools.removeSetting("flag"),
+            Tools.setAuth(En),
             Games.playerAuth(),
             UI.closeLogin()
         }
@@ -32550,28 +32618,20 @@ function loadGameCode() {
         }
         ,
         Games.playerAuth = function() {
-            Tools.ajaxPost("/auth", {
-                session: config.settings.session
-            }, (function(En) {
-                if (null != En) {
-                    game.loggedIn = !0,
-                    game.myUserID = En.user;
-                    var wn = UI.escapeHTML(En.authName.substr(0, 30)) + '<span class="grey">(' + ["", "Facebook", "Google", "Twitter", "Reddit", "Twitch"][En.authType] + ")</span>";
-                    null != En.name && $("#playername").val(En.name),
-                    $("#logout").html(wn + '<span class="link" onclick="Games.logout()">Logout</span>'),
-                    $("#logout-mainmenu").html("Logged in as " + wn + '<span class="button" onclick="Games.logout()">LOG OUT</span>'),
-                    $("#loginbutton").remove(),
-                    $("#lifetime-account").remove(),
-                    $("#playbutton").html("PLAY"),
-                    UI.show("#playbutton", !0)
-                } else
-                    Games.playerGuest()
-            }
-            ))
+            game.loggedIn = true;
+            var t = UI.escapeHTML((config.auth.loginname || "").substr(0, 30)) + '<span class="grey">(' + ["", "Microsoft", "Google", "Twitter", "Reddit", "Twitch"][config.auth.identityprovider || 0] + ")</span>"
+              , n = t + '<span class="link" onclick="Games.logout()">Logout</span>'
+              , r = "Logged in as " + t + '<span class="button" onclick="Games.logout()">LOG OUT</span>';
+            $("#logout").html(n),
+            $("#logout-mainmenu").html(r),
+            $("#loginbutton").remove(),
+            $("#lifetime-account").remove(),
+            $("#playbutton").html("PLAY"),
+            UI.show("#playbutton", true)
         }
         ,
         Games.logout = function() {
-            Tools.removeSetting("session"),
+            Tools.setAuth({});
             Tools.removeSetting("name"),
             Tools.removeSetting("flag"),
             window.location = "/"
