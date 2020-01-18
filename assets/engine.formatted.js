@@ -31812,7 +31812,7 @@ function loadGameCode() {
         ,
         UI.openInvite = function() {
             sn || (UI.closeAllPanels("invite"),
-            game.inviteLink = "https://airma.sh/#" + game.playRegion + "-" + game.playRoom,
+            game.inviteLink = document.URL + "#" + game.playRegion + "-" + game.playRoom,
             $("#invite-link").html(game.inviteLink),
             $("#invite-link").attr("href", game.inviteLink),
             UI.showPanel("#invitefriends"),
@@ -36664,7 +36664,7 @@ function SWAM() {
             };
             let Zt = "";
             for (let Qt in Kt)
-                Zt += `.emote-${Qt} { width: 32px; height: 32px; background: url(https://airma.sh/assets/gui.png) -${Kt[Qt][0] / 2}px  -${Kt[Qt][1] / 2}px; background-size: 512px; background-repeat: no-repeat; } `;
+                Zt += `.emote-${Qt} { width: 32px; height: 32px; background: url(${document.URL}/assets/gui.png) -${Kt[Qt][0] / 2}px  -${Kt[Qt][1] / 2}px; background-size: 512px; background-repeat: no-repeat; } `;
             return Zt
         }
         let Wt = null
