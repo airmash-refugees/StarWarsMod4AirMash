@@ -32429,8 +32429,8 @@ function loadGameCode() {
         var Xt = !1
           , Yt = !1
           , Ht = !1
-          , jt = ["", "Free For All", "Capture The Flag", "Battle Royale"]
-          , Wt = ["", "ffa", "ctf", "br"]
+          , jt = ["", "Free For All", "Capture The Flag", "Battle Royale", "Development"]
+          , Wt = ["", "ffa", "ctf", "br", "dev"]
           , zt = 0
           , Vt = {}
           , qt = 0
@@ -32746,7 +32746,7 @@ function loadGameCode() {
         }
           , mn = function(En) {
             var wn = '<div class="infott">';
-            return 1 == En ? wn += "Everyone versus everyone deathmatch. No teams." : 2 == En ? wn += "Players split into 2 teams. 2 flags are placed inside each base. The objective is to move the enemy flag from their base to your base." : 3 == En && (wn += "Players spawn at random locations all across the map. Destroyed players will not respawn. Last player standing wins."),
+            return 1 == En ? wn += "Everyone versus everyone deathmatch. No teams." : 2 == En ? wn += "Players split into 2 teams. 2 flags are placed inside each base. The objective is to move the enemy flag from their base to your base." : 3 == En ? wn += "Players spawn at random locations all across the map. Destroyed players will not respawn. Last player standing wins." : 4 == En && (wn += "Game environments for development and testing."),
             wn += '<div class="arrow"></div></div>'
         };
         Games.updateType = function(En, wn) {
