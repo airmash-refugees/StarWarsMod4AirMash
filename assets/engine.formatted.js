@@ -26080,7 +26080,16 @@ function() {
         graphics: {},
         debug: {},
         buckets: []
-    },
+    };
+    let backendRoot = window.origin + "/";
+    if (window.origin.endsWith(".airmash.online") || /^http:\/\/127\.0\.0\.1:[0-9]{1,5}\/?$/m.test(window.origin)) {
+        backendRoot = "https://data.airmash.online/"
+    }
+    game.serviceUrls = {
+        enter: backendRoot + "enter",
+        clienterror: backendRoot + "clienterror",
+        games: backendRoot + "games"
+    };
     window.config = {
         storage: {},
         settings: {},
@@ -26729,7 +26738,7 @@ function loadGameCode() {
         };
         Tools.handleError = function(Jt) {
             5 < ++Yt || (null != Jt.error && (Jt.error = JSON.stringify(Jt.error, Qt)),
-            Tools.ajaxPost("/clienterror", {
+            Tools.ajaxPost(game.serviceUrls.clienterror, {
                 type: "runtime",
                 error: JSON.stringify(Jt, null, "\t\t")
             }))
@@ -32569,7 +32578,7 @@ function loadGameCode() {
         }
         ;
         var un = function(En, wn) {
-            var Cn = "/games";
+            var Cn = game.serviceUrls.games;
             wn && (Cn += "?main=1"),
             $.ajax({
                 url: Cn,
@@ -32584,7 +32593,7 @@ function loadGameCode() {
                     if ("xx" == game.myFlag && (game.myFlag = Pn.country),
                     wn && game.protocol != Pn.protocol) {
                         if ("#reload" !== window.location.hash)
-                            return void Tools.ajaxPost("/clienterror", {
+                            return void Tools.ajaxPost(game.serviceUrls.clienterror, {
                                 type: "protocol"
                             }, (function() {
                                 UI.showMessage("alert", '<span class="mainerror">Protocol update<br>Your client is being updated to the new version</span>', 3e4),
@@ -32594,7 +32603,7 @@ function loadGameCode() {
                                 ), 5e3)
                             }
                             ));
-                        Tools.ajaxPost("/clienterror", {
+                        Tools.ajaxPost(game.serviceUrls.clienterror, {
                             type: "protocolretry"
                         })
                     }
@@ -33015,7 +33024,7 @@ function loadGameCode() {
                     game.playInvited || (Ln.region = Cn),
                     Tools.setSettings(Ln),
                     UI.gameStart(En, wn),
-                    wn && Tools.ajaxPost("/enter", {
+                    wn && Tools.ajaxPost(game.serviceUrls.enter, {
                         id: config.settings.id,
                         name: En,
                         game: game.playRegion + "-" + game.playRoom,
