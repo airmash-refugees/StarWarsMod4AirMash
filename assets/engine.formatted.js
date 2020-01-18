@@ -6,7 +6,7 @@
         return Gt(Xt)
     }
     : Gt(Bt)
-}("undefined" == typeof window ? this : window, function(Bt, Gt) {
+}("undefined" == typeof window ? this : window, (function(Bt, Gt) {
     function Xt(Cr, Pr) {
         var Ar = (Pr = Pr || kn).createElement("script");
         Ar.text = Cr,
@@ -21,16 +21,20 @@
         return Cr.nodeName && Cr.nodeName.toLowerCase() === Pr.toLowerCase()
     }
     function jt(Cr, Pr, Ar) {
-        return Vn.isFunction(Pr) ? Vn.grep(Cr, function(Mr, Rr) {
+        return Vn.isFunction(Pr) ? Vn.grep(Cr, (function(Mr, Rr) {
             return !!Pr.call(Mr, Rr, Mr) !== Ar
-        }) : Pr.nodeType ? Vn.grep(Cr, function(Mr) {
+        }
+        )) : Pr.nodeType ? Vn.grep(Cr, (function(Mr) {
             return Mr === Pr !== Ar
-        }) : "string" == typeof Pr ? aa.test(Pr) ? Vn.filter(Pr, Cr, Ar) : (Pr = Vn.filter(Pr, Cr),
-        Vn.grep(Cr, function(Mr) {
+        }
+        )) : "string" == typeof Pr ? aa.test(Pr) ? Vn.filter(Pr, Cr, Ar) : (Pr = Vn.filter(Pr, Cr),
+        Vn.grep(Cr, (function(Mr) {
             return -1 < Gn.call(Pr, Mr) !== Ar && 1 === Mr.nodeType
-        })) : Vn.grep(Cr, function(Mr) {
+        }
+        ))) : Vn.grep(Cr, (function(Mr) {
             return -1 < Gn.call(Pr, Mr) !== Ar
-        })
+        }
+        ))
     }
     function Wt(Cr, Pr) {
         for (; (Cr = Cr[Pr]) && 1 !== Cr.nodeType; )
@@ -86,10 +90,10 @@
             kr = kr || Nr[3],
             Ar = Ar || [],
             Nr = +Lr || 1;
-            do
+            do {
                 Nr /= Ir = Ir || ".5",
-                Vn.style(Cr, Pr, Nr + kr);
-            while (Ir != (Ir = Or() / Lr) && 1 != Ir && --Dr)
+                Vn.style(Cr, Pr, Nr + kr)
+            } while (Ir != (Ir = Or() / Lr) && 1 != Ir && --Dr)
         }
         return Ar && (Nr = +Nr || +Lr || 0,
         Rr = Ar[1] ? Nr + (Ar[1] + 1) * Ar[2] : +Ar[2],
@@ -190,9 +194,10 @@
             Dr.apply(this, arguments)
         }
         ).guid = Dr.guid || (Dr.guid = Vn.guid++)),
-        Cr.each(function() {
+        Cr.each((function() {
             Vn.event.add(this, Pr, Rr, Mr, Ar)
-        })
+        }
+        ))
     }
     function ln(Cr, Pr) {
         return Ht(Cr, "table") && Ht(11 === Pr.nodeType ? Pr.firstChild : Pr, "tr") ? Vn(">tbody", Cr)[0] || Cr : Cr
@@ -231,11 +236,12 @@
         Pr = Bn.apply([], Pr);
         var Nr = 0, Fr = Cr.length, Ur = Pr[0], Gr = Vn.isFunction(Ur), Rr, Ir, Dr, Or, Lr, kr;
         if (Gr || 1 < Fr && "string" == typeof Ur && !zn.checkClone && La.test(Ur))
-            return Cr.each(function(Xr) {
+            return Cr.each((function(Xr) {
                 var Yr = Cr.eq(Xr);
                 Gr && (Pr[0] = Ur.call(this, Xr, Yr.html())),
                 fn(Yr, Pr, Ar, Mr)
-            });
+            }
+            ));
         if (Fr && (Rr = an(Pr, Cr[0].ownerDocument, !1, Cr, Mr),
         Ir = Rr.firstChild,
         1 === Rr.childNodes.length && (Rr = Ir),
@@ -319,9 +325,10 @@
         Vn.fx.tick())
     }
     function En() {
-        return Bt.setTimeout(function() {
+        return Bt.setTimeout((function() {
             za = void 0
-        }),
+        }
+        )),
         za = Vn.now()
     }
     function wn(Cr, Pr) {
@@ -339,9 +346,10 @@
                 return Mr
     }
     function Pn(Cr, Pr, Ar) {
-        var Ir = 0, Dr = Pn.prefilters.length, Or = Vn.Deferred().always(function() {
+        var Ir = 0, Dr = Pn.prefilters.length, Or = Vn.Deferred().always((function() {
             delete Lr.elem
-        }), Lr = function() {
+        }
+        )), Lr = function() {
             if (Rr)
                 return !1;
             for (var Fr = za || En(), Br = Math.max(0, kr.startTime + kr.duration - Fr), Ur = 1 - (Br / kr.duration || 0), Gr = 0, Xr = kr.tweens.length; Gr < Xr; Gr++)
@@ -389,11 +397,11 @@
                 Yr = Fr[Ur] = Yr[0]),
                 Ur !== Gr && (Fr[Gr] = Yr,
                 delete Fr[Ur]),
-                (Hr = Vn.cssHooks[Gr]) && ("expand"in Hr))
+                (Hr = Vn.cssHooks[Gr]) && "expand"in Hr)
                     for (Ur in Yr = Hr.expand(Yr),
                     delete Fr[Gr],
                     Yr)
-                        (Ur in Fr) || (Fr[Ur] = Yr[Ur],
+                        Ur in Fr || (Fr[Ur] = Yr[Ur],
                         Br[Ur] = Xr);
                 else
                     Br[Gr] = Xr
@@ -419,9 +427,10 @@
     }
     function Rn(Cr, Pr, Ar, Mr) {
         if (Array.isArray(Pr))
-            Vn.each(Pr, function(Ir, Dr) {
+            Vn.each(Pr, (function(Ir, Dr) {
                 Ar || ir.test(Cr) ? Mr(Cr, Dr) : Rn(Cr + "[" + ("object" == typeof Dr && null != Dr ? Ir : "") + "]", Dr, Ar, Mr)
-            });
+            }
+            ));
         else if (Ar || "object" !== Vn.type(Pr))
             Mr(Cr, Pr);
         else
@@ -443,12 +452,13 @@
         function Rr(Or) {
             var Lr;
             return Ir[Or] = !0,
-            Vn.each(Cr[Or] || [], function(kr, Nr) {
+            Vn.each(Cr[Or] || [], (function(kr, Nr) {
                 var Fr = Nr(Pr, Ar, Mr);
                 return "string" != typeof Fr || Dr || Ir[Fr] ? Dr ? !(Lr = Fr) : void 0 : (Pr.dataTypes.unshift(Fr),
                 Rr(Fr),
                 !1)
-            }),
+            }
+            )),
             Lr
         }
         var Ir = {}
@@ -503,9 +513,10 @@
             return Vn.each(this, Cr)
         },
         map: function(Cr) {
-            return this.pushStack(Vn.map(this, function(Pr, Ar) {
+            return this.pushStack(Vn.map(this, (function(Pr, Ar) {
                 return Cr.call(Pr, Ar, Pr)
-            }))
+            }
+            )))
         },
         slice: function() {
             return this.pushStack(Fn.apply(this, arguments))
@@ -642,9 +653,10 @@
         support: zn
     }),
     "function" == typeof Symbol && (Vn.fn[Symbol.iterator] = Ln[Symbol.iterator]),
-    Vn.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "), function(Cr, Pr) {
+    Vn.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "), (function(Cr, Pr) {
         Xn["[object " + Pr + "]"] = Pr.toLowerCase()
-    });
+    }
+    ));
     var Jn = function(Cr) {
         function Pr(Ki, Zi, Qi, Ji) {
             var oo = Zi && Zi.ownerDocument, so = Zi ? Zi.nodeType : 9, $i, eo, to, no, ao, ro, io;
@@ -748,13 +760,15 @@
             }
         }
         function Nr(Ki) {
-            return Mr(function(Zi) {
+            return Mr((function(Zi) {
                 return Zi = +Zi,
-                Mr(function(Qi, Ji) {
+                Mr((function(Qi, Ji) {
                     for (var eo = Ki([], Qi.length, Zi), to = eo.length, $i; to--; )
                         Qi[$i = eo[to]] && (Qi[$i] = !(Ji[$i] = Qi[$i]))
-                })
-            })
+                }
+                ))
+            }
+            ))
         }
         function Fr(Ki) {
             return Ki && void 0 !== Ki.getElementsByTagName && Ki
@@ -782,7 +796,7 @@
                 if (io) {
                     for (; ao = ao[Ji]; )
                         if ((1 === ao.nodeType || to) && Ki(ao, ro, io))
-                            return !0;
+                            return !0
                 } else
                     for (; ao = ao[Ji]; )
                         if (1 === ao.nodeType || to)
@@ -818,7 +832,7 @@
         function Hr(Ki, Zi, Qi, Ji, $i, eo) {
             return Ji && !Ji[ui] && (Ji = Hr(Ji)),
             $i && !$i[ui] && ($i = Hr($i, eo)),
-            Mr(function(to, no, ao, ro) {
+            Mr((function(to, no, ao, ro) {
                 var lo = [], uo = [], po = no.length, co = to || function(go, mo, yo) {
                     for (var _o = 0, bo = mo.length; _o < bo; _o++)
                         Pr(go, mo[_o], yo);
@@ -843,14 +857,17 @@
                     for (oo = fo.length; oo--; )
                         (so = fo[oo]) && -1 < (io = $i ? Ei(to, so) : lo[oo]) && (to[io] = !(no[io] = so))
                 }
-            })
+            }
+            ))
         }
         function jr(Ki) {
-            for (var $i = Ki.length, eo = Vr.relative[Ki[0].type], to = eo || Vr.relative[" "], no = eo ? 1 : 0, ao = Gr(function(oo) {
+            for (var $i = Ki.length, eo = Vr.relative[Ki[0].type], to = eo || Vr.relative[" "], no = eo ? 1 : 0, ao = Gr((function(oo) {
                 return oo === Zi
-            }, to, !0), ro = Gr(function(oo) {
+            }
+            ), to, !0), ro = Gr((function(oo) {
                 return -1 < Ei(Zi, oo)
-            }, to, !0), io = [function(oo, so, lo) {
+            }
+            ), to, !0), io = [function(oo, so, lo) {
                 var uo = !eo && (lo || so !== $r) || ((Zi = so).nodeType ? ao(oo, so, lo) : ro(oo, so, lo));
                 return Zi = null,
                 uo
@@ -887,16 +904,17 @@
             CHILD: /^:(only|first|last|nth|nth-last)-(child|of-type)(?:\([\x20\t\r\n\f]*(even|odd|(([+-]|)(\d*)n|)[\x20\t\r\n\f]*(?:([+-]|)[\x20\t\r\n\f]*(\d+)|))[\x20\t\r\n\f]*\)|)/i,
             bool: /^(?:checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped)$/i,
             needsContext: /^[\x20\t\r\n\f]*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\([\x20\t\r\n\f]*((?:-\d)?\d*)[\x20\t\r\n\f]*\)|)(?=[^-]|$)/i
-        }, Bi = /^(?:input|select|textarea|button)$/i, Ui = /^h\d$/i, Gi = /^[^{]+\{\s*\[native \w/, Xi = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Yi = /[+~]/, Hi = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/ig, ji = function(Ki, Zi, Qi) {
+        }, Bi = /^(?:input|select|textarea|button)$/i, Ui = /^h\d$/i, Gi = /^[^{]+\{\s*\[native \w/, Xi = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/, Yi = /[+~]/, Hi = /\\([\da-f]{1,6}[\x20\t\r\n\f]?|([\x20\t\r\n\f])|.)/gi, ji = function(Ki, Zi, Qi) {
             var Ji = "0x" + Zi - 65536;
             return Ji != Ji || Qi ? Zi : 0 > Ji ? String.fromCharCode(Ji + 65536) : String.fromCharCode(55296 | Ji >> 10, 56320 | 1023 & Ji)
         }, Wi = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g, zi = function(Ki, Zi) {
-            return Zi ? "\0" === Ki ? "\uFFFD" : Ki.slice(0, -1) + "\\" + Ki.charCodeAt(Ki.length - 1).toString(16) + " " : "\\" + Ki
+            return Zi ? "\0" === Ki ? "�" : Ki.slice(0, -1) + "\\" + Ki.charCodeAt(Ki.length - 1).toString(16) + " " : "\\" + Ki
         }, Vi = function() {
             ni()
-        }, qi = Gr(function(Ki) {
+        }, qi = Gr((function(Ki) {
             return !0 === Ki.disabled && ("form"in Ki || "label"in Ki)
-        }, {
+        }
+        ), {
             dir: "parentNode",
             next: "legend"
         }), Wr, zr, Vr, qr, Kr, Zr, Qr, Jr, $r, ei, ti, ni, ai, ri, ii, oi, si, di, li;
@@ -927,19 +945,22 @@
             ri = ai.documentElement,
             ii = !Kr(ai),
             pi !== ai && (Qi = ai.defaultView) && Qi.top !== Qi && (Qi.addEventListener ? Qi.addEventListener("unload", Vi, !1) : Qi.attachEvent && Qi.attachEvent("onunload", Vi)),
-            zr.attributes = Rr(function($i) {
+            zr.attributes = Rr((function($i) {
                 return $i.className = "i",
                 !$i.getAttribute("className")
-            }),
-            zr.getElementsByTagName = Rr(function($i) {
+            }
+            )),
+            zr.getElementsByTagName = Rr((function($i) {
                 return $i.appendChild(ai.createComment("")),
                 !$i.getElementsByTagName("*").length
-            }),
+            }
+            )),
             zr.getElementsByClassName = Gi.test(ai.getElementsByClassName),
-            zr.getById = Rr(function($i) {
+            zr.getById = Rr((function($i) {
                 return ri.appendChild($i).id = ui,
                 !ai.getElementsByName || !ai.getElementsByName(ui).length
-            }),
+            }
+            )),
             zr.getById ? (Vr.filter.ID = function($i) {
                 var eo = $i.replace(Hi, ji);
                 return function(to) {
@@ -996,15 +1017,16 @@
             ,
             si = [],
             oi = [],
-            (zr.qsa = Gi.test(ai.querySelectorAll)) && (Rr(function($i) {
+            (zr.qsa = Gi.test(ai.querySelectorAll)) && (Rr((function($i) {
                 ri.appendChild($i).innerHTML = "<a id='" + ui + "'></a><select id='" + ui + "-\r\\' msallowcapture=''><option selected=''></option></select>",
                 $i.querySelectorAll("[msallowcapture^='']").length && oi.push("[*^$]=" + Ci + "*(?:''|\"\")"),
                 $i.querySelectorAll("[selected]").length || oi.push("\\[" + Ci + "*(?:value|" + wi + ")"),
                 $i.querySelectorAll("[id~=" + ui + "-]").length || oi.push("~="),
                 $i.querySelectorAll(":checked").length || oi.push(":checked"),
                 $i.querySelectorAll("a#" + ui + "+*").length || oi.push(".#.+[+~]")
-            }),
-            Rr(function($i) {
+            }
+            )),
+            Rr((function($i) {
                 $i.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
                 var eo = ai.createElement("input");
                 eo.setAttribute("type", "hidden"),
@@ -1015,12 +1037,14 @@
                 2 !== $i.querySelectorAll(":disabled").length && oi.push(":enabled", ":disabled"),
                 $i.querySelectorAll("*,:x"),
                 oi.push(",.*:")
-            })),
-            (zr.matchesSelector = Gi.test(di = ri.matches || ri.webkitMatchesSelector || ri.mozMatchesSelector || ri.oMatchesSelector || ri.msMatchesSelector)) && Rr(function($i) {
+            }
+            ))),
+            (zr.matchesSelector = Gi.test(di = ri.matches || ri.webkitMatchesSelector || ri.mozMatchesSelector || ri.oMatchesSelector || ri.msMatchesSelector)) && Rr((function($i) {
                 zr.disconnectedMatch = di.call($i, "*"),
                 di.call($i, "[s!='']:x"),
                 si.push("!=", ":(" + Pi + ")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|" + ("\\[" + Ci + "*(" + Pi + ")(?:" + Ci + "*([*^$|!~]?=)" + Ci + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + Pi + "))|)" + Ci + "*\\]") + ")*)|.*)\\)|)")
-            }),
+            }
+            )),
             oi = oi.length && new RegExp(oi.join("|")),
             si = si.length && new RegExp(si.join("|")),
             Zi = Gi.test(ri.compareDocumentPosition),
@@ -1186,9 +1210,10 @@
                 },
                 CLASS: function(Ki) {
                     var Zi = fi[Ki + " "];
-                    return Zi || (Zi = new RegExp("(^|" + Ci + ")" + Ki + "(" + Ci + "|$)")) && fi(Ki, function(Qi) {
+                    return Zi || (Zi = new RegExp("(^|" + Ci + ")" + Ki + "(" + Ci + "|$)")) && fi(Ki, (function(Qi) {
                         return Zi.test("string" == typeof Qi.className && Qi.className || void 0 !== Qi.getAttribute && Qi.getAttribute("class") || "")
-                    })
+                    }
+                    ))
                 },
                 ATTR: function(Ki, Zi, Qi) {
                     return function(Ji) {
@@ -1236,52 +1261,58 @@
                 PSEUDO: function(Ki, Zi) {
                     var Ji = Vr.pseudos[Ki] || Vr.setFilters[Ki.toLowerCase()] || Pr.error("unsupported pseudo: " + Ki), Qi;
                     return Ji[ui] ? Ji(Zi) : 1 < Ji.length ? (Qi = [Ki, Ki, "", Zi],
-                    Vr.setFilters.hasOwnProperty(Ki.toLowerCase()) ? Mr(function($i, eo) {
+                    Vr.setFilters.hasOwnProperty(Ki.toLowerCase()) ? Mr((function($i, eo) {
                         for (var no = Ji($i, Zi), ao = no.length, to; ao--; )
                             $i[to = Ei($i, no[ao])] = !(eo[to] = no[ao])
-                    }) : function($i) {
+                    }
+                    )) : function($i) {
                         return Ji($i, 0, Qi)
                     }
                     ) : Ji
                 }
             },
             pseudos: {
-                not: Mr(function(Ki) {
+                not: Mr((function(Ki) {
                     var Zi = []
                       , Qi = []
                       , Ji = Qr(Ki.replace(Ii, "$1"));
-                    return Ji[ui] ? Mr(function($i, eo, to, no) {
+                    return Ji[ui] ? Mr((function($i, eo, to, no) {
                         for (var ro = Ji($i, null, no, []), io = $i.length, ao; io--; )
                             (ao = ro[io]) && ($i[io] = !(eo[io] = ao))
-                    }) : function($i, eo, to) {
+                    }
+                    )) : function($i, eo, to) {
                         return Zi[0] = $i,
                         Ji(Zi, null, to, Qi),
                         Zi[0] = null,
                         !Qi.pop()
                     }
-                }),
-                has: Mr(function(Ki) {
+                }
+                )),
+                has: Mr((function(Ki) {
                     return function(Zi) {
                         return 0 < Pr(Ki, Zi).length
                     }
-                }),
-                contains: Mr(function(Ki) {
+                }
+                )),
+                contains: Mr((function(Ki) {
                     return Ki = Ki.replace(Hi, ji),
                     function(Zi) {
                         return -1 < (Zi.textContent || Zi.innerText || qr(Zi)).indexOf(Ki)
                     }
-                }),
-                lang: Mr(function(Ki) {
+                }
+                )),
+                lang: Mr((function(Ki) {
                     return Ni.test(Ki || "") || Pr.error("unsupported lang: " + Ki),
                     Ki = Ki.replace(Hi, ji).toLowerCase(),
                     function(Zi) {
                         var Qi;
-                        do
+                        do {
                             if (Qi = ii ? Zi.lang : Zi.getAttribute("xml:lang") || Zi.getAttribute("lang"))
-                                return (Qi = Qi.toLowerCase()) === Ki || 0 === Qi.indexOf(Ki + "-");
-                        while ((Zi = Zi.parentNode) && 1 === Zi.nodeType);return !1
+                                return (Qi = Qi.toLowerCase()) === Ki || 0 === Qi.indexOf(Ki + "-")
+                        } while ((Zi = Zi.parentNode) && 1 === Zi.nodeType);return !1
                     }
-                }),
+                }
+                )),
                 target: function(Ki) {
                     var Zi = Cr.location && Cr.location.hash;
                     return Zi && Zi.slice(1) === Ki.id
@@ -1325,35 +1356,42 @@
                     var Zi;
                     return "input" === Ki.nodeName.toLowerCase() && "text" === Ki.type && (null == (Zi = Ki.getAttribute("type")) || "text" === Zi.toLowerCase())
                 },
-                first: Nr(function() {
+                first: Nr((function() {
                     return [0]
-                }),
-                last: Nr(function(Ki, Zi) {
+                }
+                )),
+                last: Nr((function(Ki, Zi) {
                     return [Zi - 1]
-                }),
-                eq: Nr(function(Ki, Zi, Qi) {
+                }
+                )),
+                eq: Nr((function(Ki, Zi, Qi) {
                     return [0 > Qi ? Qi + Zi : Qi]
-                }),
-                even: Nr(function(Ki, Zi) {
+                }
+                )),
+                even: Nr((function(Ki, Zi) {
                     for (var Qi = 0; Qi < Zi; Qi += 2)
                         Ki.push(Qi);
                     return Ki
-                }),
-                odd: Nr(function(Ki, Zi) {
+                }
+                )),
+                odd: Nr((function(Ki, Zi) {
                     for (var Qi = 1; Qi < Zi; Qi += 2)
                         Ki.push(Qi);
                     return Ki
-                }),
-                lt: Nr(function(Ki, Zi, Qi) {
+                }
+                )),
+                lt: Nr((function(Ki, Zi, Qi) {
                     for (var Ji = 0 > Qi ? Qi + Zi : Qi; 0 <= --Ji; )
                         Ki.push(Ji);
                     return Ki
-                }),
-                gt: Nr(function(Ki, Zi, Qi) {
+                }
+                )),
+                gt: Nr((function(Ki, Zi, Qi) {
                     for (var Ji = 0 > Qi ? Qi + Zi : Qi; ++Ji < Zi; )
                         Ki.push(Ji);
                     return Ki
-                })
+                }
+                ))
             }
         }).pseudos.nth = Vr.pseudos.eq,
         {
@@ -1476,31 +1514,38 @@
         zr.sortStable = ui.split("").sort(yi).join("") === ui,
         zr.detectDuplicates = !!ti,
         ni(),
-        zr.sortDetached = Rr(function(Ki) {
+        zr.sortDetached = Rr((function(Ki) {
             return 1 & Ki.compareDocumentPosition(ai.createElement("fieldset"))
-        }),
-        Rr(function(Ki) {
+        }
+        )),
+        Rr((function(Ki) {
             return Ki.innerHTML = "<a href='#'></a>",
             "#" === Ki.firstChild.getAttribute("href")
-        }) || Ir("type|href|height|width", function(Ki, Zi, Qi) {
+        }
+        )) || Ir("type|href|height|width", (function(Ki, Zi, Qi) {
             if (!Qi)
                 return Ki.getAttribute(Zi, "type" === Zi.toLowerCase() ? 1 : 2)
-        }),
-        zr.attributes && Rr(function(Ki) {
+        }
+        )),
+        zr.attributes && Rr((function(Ki) {
             return Ki.innerHTML = "<input/>",
             Ki.firstChild.setAttribute("value", ""),
             "" === Ki.firstChild.getAttribute("value")
-        }) || Ir("value", function(Ki, Zi, Qi) {
+        }
+        )) || Ir("value", (function(Ki, Zi, Qi) {
             if (!Qi && "input" === Ki.nodeName.toLowerCase())
                 return Ki.defaultValue
-        }),
-        Rr(function(Ki) {
+        }
+        )),
+        Rr((function(Ki) {
             return null == Ki.getAttribute("disabled")
-        }) || Ir(wi, function(Ki, Zi, Qi) {
+        }
+        )) || Ir(wi, (function(Ki, Zi, Qi) {
             var Ji;
             if (!Qi)
                 return !0 === Ki[Zi] ? Zi.toLowerCase() : (Ji = Ki.getAttributeNode(Zi)) && Ji.specified ? Ji.value : null
-        }),
+        }
+        )),
         Pr
     }(Bt);
     Vn.find = Jn,
@@ -1531,20 +1576,22 @@
     Vn.filter = function(Cr, Pr, Ar) {
         var Mr = Pr[0];
         return Ar && (Cr = ":not(" + Cr + ")"),
-        1 === Pr.length && 1 === Mr.nodeType ? Vn.find.matchesSelector(Mr, Cr) ? [Mr] : [] : Vn.find.matches(Cr, Vn.grep(Pr, function(Rr) {
+        1 === Pr.length && 1 === Mr.nodeType ? Vn.find.matchesSelector(Mr, Cr) ? [Mr] : [] : Vn.find.matches(Cr, Vn.grep(Pr, (function(Rr) {
             return 1 === Rr.nodeType
-        }))
+        }
+        )))
     }
     ,
     Vn.fn.extend({
         find: function(Cr) {
             var Mr = this.length, Rr = this, Pr, Ar;
             if ("string" != typeof Cr)
-                return this.pushStack(Vn(Cr).filter(function() {
+                return this.pushStack(Vn(Cr).filter((function() {
                     for (Pr = 0; Pr < Mr; Pr++)
                         if (Vn.contains(Rr[Pr], this))
                             return !0
-                }));
+                }
+                )));
             for (Ar = this.pushStack([]),
             Pr = 0; Pr < Mr; Pr++)
                 Vn.find(Cr, Rr[Pr], Ar);
@@ -1598,11 +1645,12 @@
         has: function(Cr) {
             var Pr = Vn(Cr, this)
               , Ar = Pr.length;
-            return this.filter(function() {
+            return this.filter((function() {
                 for (var Mr = 0; Mr < Ar; Mr++)
                     if (Vn.contains(this, Pr[Mr]))
                         return !0
-            })
+            }
+            ))
         },
         closest: function(Cr, Pr) {
             var Mr = 0, Rr = this.length, Ir = [], Dr = "string" != typeof Cr && Vn(Cr), Ar;
@@ -1664,7 +1712,7 @@
             return Ht(Cr, "iframe") ? Cr.contentDocument : (Ht(Cr, "template") && (Cr = Cr.content || Cr),
             Vn.merge([], Cr.childNodes))
         }
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.fn[Cr] = function(Ar, Mr) {
             var Rr = Vn.map(this, Pr, Ar);
             return "Until" !== Cr.slice(-5) && (Mr = Ar),
@@ -1673,14 +1721,16 @@
             oa.test(Cr) && Rr.reverse()),
             this.pushStack(Rr)
         }
-    });
+    }
+    ));
     var da = /[^\x20\t\r\n\f]+/g;
     Vn.Callbacks = function(Cr) {
         Cr = "string" == typeof Cr ? function(Nr) {
             var Fr = {};
-            return Vn.each(Nr.match(da) || [], function(Br, Ur) {
+            return Vn.each(Nr.match(da) || [], (function(Br, Ur) {
                 Fr[Ur] = !0
-            }),
+            }
+            )),
             Fr
         }(Cr) : Vn.extend({}, Cr);
         var Ir = [], Dr = [], Or = -1, Lr = function() {
@@ -1697,19 +1747,21 @@
                 return Ir && (Ar && !Pr && (Or = Ir.length - 1,
                 Dr.push(Ar)),
                 function Nr(Fr) {
-                    Vn.each(Fr, function(Br, Ur) {
+                    Vn.each(Fr, (function(Br, Ur) {
                         Vn.isFunction(Ur) ? Cr.unique && kr.has(Ur) || Ir.push(Ur) : Ur && Ur.length && "string" !== Vn.type(Ur) && Nr(Ur)
-                    })
+                    }
+                    ))
                 }(arguments),
                 Ar && !Pr && Lr()),
                 this
             },
             remove: function() {
-                return Vn.each(arguments, function(Nr, Fr) {
+                return Vn.each(arguments, (function(Nr, Fr) {
                     for (var Br; -1 < (Br = Vn.inArray(Fr, Ir, Br)); )
                         Ir.splice(Br, 1),
                         Br <= Or && Or--
-                }),
+                }
+                )),
                 this
             },
             has: function(Nr) {
@@ -1769,16 +1821,19 @@
                 },
                 pipe: function() {
                     var Ir = arguments;
-                    return Vn.Deferred(function(Dr) {
-                        Vn.each(Pr, function(Or, Lr) {
+                    return Vn.Deferred((function(Dr) {
+                        Vn.each(Pr, (function(Or, Lr) {
                             var kr = Vn.isFunction(Ir[Lr[4]]) && Ir[Lr[4]];
-                            Rr[Lr[1]](function() {
+                            Rr[Lr[1]]((function() {
                                 var Nr = kr && kr.apply(this, arguments);
                                 Nr && Vn.isFunction(Nr.promise) ? Nr.promise().progress(Dr.notify).done(Dr.resolve).fail(Dr.reject) : Dr[Lr[0] + "With"](this, kr ? [Nr] : arguments)
-                            })
-                        }),
+                            }
+                            ))
+                        }
+                        )),
                         Ir = null
-                    }).promise()
+                    }
+                    )).promise()
                 },
                 then: function(Ir, Dr, Or) {
                     function Lr(Nr, Fr, Br, Ur) {
@@ -1813,24 +1868,26 @@
                         }
                     }
                     var kr = 0;
-                    return Vn.Deferred(function(Nr) {
+                    return Vn.Deferred((function(Nr) {
                         Pr[0][3].add(Lr(0, Nr, Vn.isFunction(Or) ? Or : zt, Nr.notifyWith)),
                         Pr[1][3].add(Lr(0, Nr, Vn.isFunction(Ir) ? Ir : zt)),
                         Pr[2][3].add(Lr(0, Nr, Vn.isFunction(Dr) ? Dr : Vt))
-                    }).promise()
+                    }
+                    )).promise()
                 },
                 promise: function(Ir) {
                     return null == Ir ? Mr : Vn.extend(Ir, Mr)
                 }
             }
               , Rr = {};
-            return Vn.each(Pr, function(Ir, Dr) {
+            return Vn.each(Pr, (function(Ir, Dr) {
                 var Or = Dr[2]
                   , Lr = Dr[5];
                 Mr[Dr[1]] = Or.add,
-                Lr && Or.add(function() {
+                Lr && Or.add((function() {
                     Ar = Lr
-                }, Pr[3 - Ir][2].disable, Pr[0][2].lock),
+                }
+                ), Pr[3 - Ir][2].disable, Pr[0][2].lock),
                 Or.add(Dr[3].fire),
                 Rr[Dr[0]] = function() {
                     return Rr[Dr[0] + "With"](this === Rr ? void 0 : this, arguments),
@@ -1838,7 +1895,8 @@
                 }
                 ,
                 Rr[Dr[0] + "With"] = Or.fireWith
-            }),
+            }
+            )),
             Mr.promise(Rr),
             Cr && Cr.call(Rr, Rr),
             Rr
@@ -1870,16 +1928,18 @@
     }
     ,
     Vn.readyException = function(Cr) {
-        Bt.setTimeout(function() {
+        Bt.setTimeout((function() {
             throw Cr
-        })
+        }
+        ))
     }
     ;
     var ua = Vn.Deferred();
     Vn.fn.ready = function(Cr) {
-        return ua.then(Cr).catch(function(Pr) {
+        return ua.then(Cr).catch((function(Pr) {
             Vn.readyException(Pr)
-        }),
+        }
+        )),
         this
     }
     ,
@@ -1949,7 +2009,7 @@
             var Mr = Cr[this.expando], Ar;
             if (void 0 !== Mr) {
                 if (void 0 !== Pr)
-                    for (Ar = (Pr = Array.isArray(Pr) ? Pr.map(Vn.camelCase) : ((Pr = Vn.camelCase(Pr))in Mr) ? [Pr] : Pr.match(da) || []).length; Ar--; )
+                    for ((Ar = (Pr = Array.isArray(Pr) ? Pr.map(Vn.camelCase) : (Pr = Vn.camelCase(Pr))in Mr ? [Pr] : Pr.match(da) || []).length); Ar--; )
                         delete Mr[Pr[Ar]];
                 (void 0 === Pr || Vn.isEmptyObject(Mr)) && (Cr.nodeType ? Cr[this.expando] = void 0 : delete Cr[this.expando])
             }
@@ -1993,9 +2053,10 @@
                 }
                 return Rr
             }
-            return "object" == typeof Cr ? this.each(function() {
+            return "object" == typeof Cr ? this.each((function() {
                 fa.set(this, Cr)
-            }) : pa(this, function(Or) {
+            }
+            )) : pa(this, (function(Or) {
                 var Lr;
                 if (Ir && void 0 === Or) {
                     if (void 0 !== (Lr = fa.get(Ir, Cr)))
@@ -2003,15 +2064,18 @@
                     if (void 0 !== (Lr = Qt(Ir, Cr)))
                         return Lr
                 } else
-                    this.each(function() {
+                    this.each((function() {
                         fa.set(this, Cr, Or)
-                    })
-            }, null, Pr, 1 < arguments.length, null, !0)
+                    }
+                    ))
+            }
+            ), null, Pr, 1 < arguments.length, null, !0)
         },
         removeData: function(Cr) {
-            return this.each(function() {
+            return this.each((function() {
                 fa.remove(this, Cr)
-            })
+            }
+            ))
         }
     }),
     Vn.extend({
@@ -2033,17 +2097,19 @@
             Mr--),
             Rr && ("fx" === Pr && Ar.unshift("inprogress"),
             delete Ir.stop,
-            Rr.call(Cr, function() {
+            Rr.call(Cr, (function() {
                 Vn.dequeue(Cr, Pr)
-            }, Ir)),
+            }
+            ), Ir)),
             !Mr && Ir && Ir.empty.fire()
         },
         _queueHooks: function(Cr, Pr) {
             var Ar = Pr + "queueHooks";
             return ha.get(Cr, Ar) || ha.access(Cr, Ar, {
-                empty: Vn.Callbacks("once memory").add(function() {
+                empty: Vn.Callbacks("once memory").add((function() {
                     ha.remove(Cr, [Pr + "queue", Ar])
-                })
+                }
+                ))
             })
         }
     }),
@@ -2053,16 +2119,18 @@
             return "string" != typeof Cr && (Pr = Cr,
             Cr = "fx",
             Ar--),
-            arguments.length < Ar ? Vn.queue(this[0], Cr) : void 0 === Pr ? this : this.each(function() {
+            arguments.length < Ar ? Vn.queue(this[0], Cr) : void 0 === Pr ? this : this.each((function() {
                 var Mr = Vn.queue(this, Cr, Pr);
                 Vn._queueHooks(this, Cr),
                 "fx" === Cr && "inprogress" !== Mr[0] && Vn.dequeue(this, Cr)
-            })
+            }
+            ))
         },
         dequeue: function(Cr) {
-            return this.each(function() {
+            return this.each((function() {
                 Vn.dequeue(this, Cr)
-            })
+            }
+            ))
         },
         clearQueue: function(Cr) {
             return this.queue(Cr || "fx", [])
@@ -2105,9 +2173,10 @@
             return en(this)
         },
         toggle: function(Cr) {
-            return "boolean" == typeof Cr ? Cr ? this.show() : this.hide() : this.each(function() {
+            return "boolean" == typeof Cr ? Cr ? this.show() : this.hide() : this.each((function() {
                 xa(this) ? Vn(this).show() : Vn(this).hide()
-            })
+            }
+            ))
         }
     });
     var Sa = /^(?:checkbox|radio)$/i
@@ -2384,7 +2453,7 @@
         mouseleave: "mouseout",
         pointerenter: "pointerover",
         pointerleave: "pointerout"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.event.special[Cr] = {
             delegateType: Pr,
             bindType: Pr,
@@ -2396,7 +2465,8 @@
                 Mr
             }
         }
-    }),
+    }
+    )),
     Vn.fn.extend({
         on: function(Cr, Pr, Ar, Mr) {
             return dn(this, Cr, Pr, Ar, Mr)
@@ -2418,9 +2488,10 @@
             return !1 !== Pr && "function" != typeof Pr || (Ar = Pr,
             Pr = void 0),
             !1 === Ar && (Ar = on),
-            this.each(function() {
+            this.each((function() {
                 Vn.event.remove(this, Cr, Ar, Pr)
-            })
+            }
+            ))
         }
     });
     var Da = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi
@@ -2472,34 +2543,40 @@
             return gn(this, Cr)
         },
         text: function(Cr) {
-            return pa(this, function(Pr) {
-                return void 0 === Pr ? Vn.text(this) : this.empty().each(function() {
+            return pa(this, (function(Pr) {
+                return void 0 === Pr ? Vn.text(this) : this.empty().each((function() {
                     1 !== this.nodeType && 11 !== this.nodeType && 9 !== this.nodeType || (this.textContent = Pr)
-                })
-            }, null, Cr, arguments.length)
+                }
+                ))
+            }
+            ), null, Cr, arguments.length)
         },
         append: function() {
-            return fn(this, arguments, function(Cr) {
+            return fn(this, arguments, (function(Cr) {
                 (1 === this.nodeType || 11 === this.nodeType || 9 === this.nodeType) && ln(this, Cr).appendChild(Cr)
-            })
+            }
+            ))
         },
         prepend: function() {
-            return fn(this, arguments, function(Cr) {
+            return fn(this, arguments, (function(Cr) {
                 if (1 === this.nodeType || 11 === this.nodeType || 9 === this.nodeType) {
                     var Pr = ln(this, Cr);
                     Pr.insertBefore(Cr, Pr.firstChild)
                 }
-            })
+            }
+            ))
         },
         before: function() {
-            return fn(this, arguments, function(Cr) {
+            return fn(this, arguments, (function(Cr) {
                 this.parentNode && this.parentNode.insertBefore(Cr, this)
-            })
+            }
+            ))
         },
         after: function() {
-            return fn(this, arguments, function(Cr) {
+            return fn(this, arguments, (function(Cr) {
                 this.parentNode && this.parentNode.insertBefore(Cr, this.nextSibling)
-            })
+            }
+            ))
         },
         empty: function() {
             for (var Pr = 0, Cr; null != (Cr = this[Pr]); Pr++)
@@ -2510,12 +2587,13 @@
         clone: function(Cr, Pr) {
             return Cr = null != Cr && Cr,
             Pr = null == Pr ? Cr : Pr,
-            this.map(function() {
+            this.map((function() {
                 return Vn.clone(this, Cr, Pr)
-            })
+            }
+            ))
         },
         html: function(Cr) {
-            return pa(this, function(Pr) {
+            return pa(this, (function(Pr) {
                 var Ar = this[0] || {}
                   , Mr = 0
                   , Rr = this.length;
@@ -2531,15 +2609,17 @@
                     } catch (Ir) {}
                 }
                 Ar && this.empty().append(Pr)
-            }, null, Cr, arguments.length)
+            }
+            ), null, Cr, arguments.length)
         },
         replaceWith: function() {
             var Cr = [];
-            return fn(this, arguments, function(Pr) {
+            return fn(this, arguments, (function(Pr) {
                 var Ar = this.parentNode;
                 0 > Vn.inArray(this, Cr) && (Vn.cleanData(tn(this)),
                 Ar && Ar.replaceChild(Pr, this))
-            }, Cr)
+            }
+            ), Cr)
         }
     }),
     Vn.each({
@@ -2548,7 +2628,7 @@
         insertBefore: "before",
         insertAfter: "after",
         replaceAll: "replaceWith"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.fn[Cr] = function(Ar) {
             for (var Rr = [], Ir = Vn(Ar), Dr = Ir.length - 1, Or = 0, Mr; Or <= Dr; Or++)
                 Mr = Or === Dr ? this : this.clone(!0),
@@ -2556,7 +2636,8 @@
                 Un.apply(Rr, Mr.get());
             return this.pushStack(Rr)
         }
-    });
+    }
+    ));
     var Fa = /^margin/
       , Ba = new RegExp("^(" + ya + ")(?!px)[a-z%]+$","i")
       , Ua = function(Cr) {
@@ -2671,13 +2752,14 @@
             !0 === Ar || isFinite(Ir) ? Ir || 0 : Rr) : Rr
         }
     }),
-    Vn.each(["height", "width"], function(Cr, Pr) {
+    Vn.each(["height", "width"], (function(Cr, Pr) {
         Vn.cssHooks[Pr] = {
             get: function(Ar, Mr, Rr) {
                 if (Mr)
-                    return !Ga.test(Vn.css(Ar, "display")) || Ar.getClientRects().length && Ar.getBoundingClientRect().width ? vn(Ar, Pr, Rr) : va(Ar, Ya, function() {
+                    return !Ga.test(Vn.css(Ar, "display")) || Ar.getClientRects().length && Ar.getBoundingClientRect().width ? vn(Ar, Pr, Rr) : va(Ar, Ya, (function() {
                         return vn(Ar, Pr, Rr)
-                    })
+                    }
+                    ))
             },
             set: function(Ar, Mr, Rr) {
                 var Dr = Rr && Ua(Ar), Or = Rr && xn(Ar, Pr, Rr, "border-box" === Vn.css(Ar, "boxSizing", !1, Dr), Dr), Ir;
@@ -2686,20 +2768,23 @@
                 bn(0, Mr, Or)
             }
         }
-    }),
-    Vn.cssHooks.marginLeft = yn(zn.reliableMarginLeft, function(Cr, Pr) {
+    }
+    )),
+    Vn.cssHooks.marginLeft = yn(zn.reliableMarginLeft, (function(Cr, Pr) {
         if (Pr)
             return (parseFloat(mn(Cr, "marginLeft")) || Cr.getBoundingClientRect().left - va(Cr, {
                 marginLeft: 0
-            }, function() {
+            }, (function() {
                 return Cr.getBoundingClientRect().left
-            })) + "px"
-    }),
+            }
+            ))) + "px"
+    }
+    )),
     Vn.each({
         margin: "",
         padding: "",
         border: "Width"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.cssHooks[Cr + Pr] = {
             expand: function(Ar) {
                 for (var Mr = 0, Rr = {}, Ir = "string" == typeof Ar ? Ar.split(" ") : [Ar]; 4 > Mr; Mr++)
@@ -2708,10 +2793,11 @@
             }
         },
         Fa.test(Cr) || (Vn.cssHooks[Cr + Pr].set = bn)
-    }),
+    }
+    )),
     Vn.fn.extend({
         css: function(Cr, Pr) {
-            return pa(this, function(Ar, Mr, Rr) {
+            return pa(this, (function(Ar, Mr, Rr) {
                 var Or = {}, Lr = 0, Ir, Dr;
                 if (Array.isArray(Mr)) {
                     for (Ir = Ua(Ar),
@@ -2720,7 +2806,8 @@
                     return Or
                 }
                 return void 0 === Rr ? Vn.css(Ar, Mr) : Vn.style(Ar, Mr, Rr)
-            }, Cr, Pr, 1 < arguments.length)
+            }
+            ), Cr, Pr, 1 < arguments.length)
         }
     }),
     Vn.Tween = Tn,
@@ -2801,12 +2888,14 @@
             }
             ),
             Dr.unqueued++,
-            Br.always(function() {
-                Br.always(function() {
+            Br.always((function() {
+                Br.always((function() {
                     Dr.unqueued--,
                     Vn.queue(Cr, "fx").length || Dr.empty.fire()
-                })
-            })),
+                }
+                ))
+            }
+            ))),
             Pr)
                 if (Rr = Pr[Mr],
                 qa.test(Rr)) {
@@ -2826,18 +2915,20 @@
                 kr = Cr.style.display || kr,
                 Nr = Vn.css(Cr, "display"),
                 en([Cr]))),
-                ("inline" === Nr || "inline-block" === Nr && null != kr) && "none" === Vn.css(Cr, "float") && (Lr || (Br.done(function() {
+                ("inline" === Nr || "inline-block" === Nr && null != kr) && "none" === Vn.css(Cr, "float") && (Lr || (Br.done((function() {
                     Gr.display = kr
-                }),
+                }
+                )),
                 null == kr && (Nr = Gr.display,
                 kr = "none" === Nr ? "" : Nr)),
                 Gr.display = "inline-block")),
                 Ar.overflow && (Gr.overflow = "hidden",
-                Br.always(function() {
+                Br.always((function() {
                     Gr.overflow = Ar.overflow[0],
                     Gr.overflowX = Ar.overflow[1],
                     Gr.overflowY = Ar.overflow[2]
-                })),
+                }
+                ))),
                 Lr = !1,
                 Ur)
                     Lr || (Yr ? "hidden"in Yr && (Xr = Yr.hidden) : Yr = ha.access(Cr, "fxshow", {
@@ -2845,12 +2936,13 @@
                     }),
                     Ir && (Yr.hidden = !Xr),
                     Xr && en([Cr], !0),
-                    Br.done(function() {
+                    Br.done((function() {
                         for (Mr in Xr || en([Cr]),
                         ha.remove(Cr, "fxshow"),
                         Ur)
                             Vn.style(Cr, Mr, Ur[Mr])
-                    })),
+                    }
+                    ))),
                     Lr = Cn(Xr ? Yr[Mr] : 0, Mr, Br),
                     Mr in Yr || (Yr[Mr] = Lr.start,
                     Xr && (Lr.end = Lr.start,
@@ -2904,7 +2996,7 @@
             Pr = Cr,
             Cr = void 0),
             Pr && !1 !== Cr && this.queue(Cr || "fx", []),
-            this.each(function() {
+            this.each((function() {
                 var Rr = !0
                   , Ir = null != Cr && Cr + "queueHooks"
                   , Dr = Vn.timers
@@ -2919,11 +3011,12 @@
                     Rr = !1,
                     Dr.splice(Ir, 1));
                 !Rr && Ar || Vn.dequeue(this, Cr)
-            })
+            }
+            ))
         },
         finish: function(Cr) {
             return !1 !== Cr && (Cr = Cr || "fx"),
-            this.each(function() {
+            this.each((function() {
                 var Ar = ha.get(this), Mr = Ar[Cr + "queue"], Rr = Ar[Cr + "queueHooks"], Ir = Vn.timers, Dr = Mr ? Mr.length : 0, Pr;
                 for (Ar.finish = !0,
                 Vn.queue(this, Cr, []),
@@ -2934,15 +3027,17 @@
                 for (Pr = 0; Pr < Dr; Pr++)
                     Mr[Pr] && Mr[Pr].finish && Mr[Pr].finish.call(this);
                 delete Ar.finish
-            })
+            }
+            ))
         }
     }),
-    Vn.each(["toggle", "show", "hide"], function(Cr, Pr) {
+    Vn.each(["toggle", "show", "hide"], (function(Cr, Pr) {
         var Ar = Vn.fn[Pr];
         Vn.fn[Pr] = function(Mr, Rr, Ir) {
             return null == Mr || "boolean" == typeof Mr ? Ar.apply(this, arguments) : this.animate(wn(Pr, !0), Mr, Rr, Ir)
         }
-    }),
+    }
+    )),
     Vn.each({
         slideDown: wn("show"),
         slideUp: wn("hide"),
@@ -2956,11 +3051,12 @@
         fadeToggle: {
             opacity: "toggle"
         }
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.fn[Cr] = function(Ar, Mr, Rr) {
             return this.animate(Pr, Ar, Mr, Rr)
         }
-    }),
+    }
+    )),
     Vn.timers = [],
     Vn.fx.tick = function() {
         var Pr = 0, Ar = Vn.timers, Cr;
@@ -2993,12 +3089,13 @@
     Vn.fn.delay = function(Cr, Pr) {
         return Cr = Vn.fx ? Vn.fx.speeds[Cr] || Cr : Cr,
         Pr = Pr || "fx",
-        this.queue(Pr, function(Ar, Mr) {
+        this.queue(Pr, (function(Ar, Mr) {
             var Rr = Bt.setTimeout(Ar, Cr);
             Mr.stop = function() {
                 Bt.clearTimeout(Rr)
             }
-        })
+        }
+        ))
     }
     ,
     function() {
@@ -3017,9 +3114,10 @@
             return pa(this, Vn.attr, Cr, Pr, 1 < arguments.length)
         },
         removeAttr: function(Cr) {
-            return this.each(function() {
+            return this.each((function() {
                 Vn.removeAttr(this, Cr)
-            })
+            }
+            ))
         }
     }),
     Vn.extend({
@@ -3055,7 +3153,7 @@
             Ar
         }
     },
-    Vn.each(Vn.expr.match.bool.source.match(/\w+/g), function(Cr, Pr) {
+    Vn.each(Vn.expr.match.bool.source.match(/\w+/g), (function(Cr, Pr) {
         var Ar = Qa[Pr] || Vn.find.attr;
         Qa[Pr] = function(Mr, Rr, Ir) {
             var Lr = Rr.toLowerCase(), Dr, Or;
@@ -3065,7 +3163,8 @@
             Qa[Lr] = Or),
             Dr
         }
-    });
+    }
+    ));
     var Ja = /^(?:input|select|textarea|button)$/i
       , $a = /^(?:a|area)$/i;
     Vn.fn.extend({
@@ -3073,9 +3172,10 @@
             return pa(this, Vn.prop, Cr, Pr, 1 < arguments.length)
         },
         removeProp: function(Cr) {
-            return this.each(function() {
+            return this.each((function() {
                 delete this[Vn.propFix[Cr] || Cr]
-            })
+            }
+            ))
         }
     }),
     Vn.extend({
@@ -3111,16 +3211,18 @@
             Pr.parentNode && Pr.parentNode.selectedIndex)
         }
     }),
-    Vn.each(["tabIndex", "readOnly", "maxLength", "cellSpacing", "cellPadding", "rowSpan", "colSpan", "useMap", "frameBorder", "contentEditable"], function() {
+    Vn.each(["tabIndex", "readOnly", "maxLength", "cellSpacing", "cellPadding", "rowSpan", "colSpan", "useMap", "frameBorder", "contentEditable"], (function() {
         Vn.propFix[this.toLowerCase()] = this
-    }),
+    }
+    )),
     Vn.fn.extend({
         addClass: function(Cr) {
             var Lr = 0, Pr, Ar, Mr, Rr, Ir, Dr, Or;
             if (Vn.isFunction(Cr))
-                return this.each(function(kr) {
+                return this.each((function(kr) {
                     Vn(this).addClass(Cr.call(this, kr, Mn(this)))
-                });
+                }
+                ));
             if ("string" == typeof Cr && Cr)
                 for (Pr = Cr.match(da) || []; Ar = this[Lr++]; )
                     if (Rr = Mn(Ar),
@@ -3134,9 +3236,10 @@
         removeClass: function(Cr) {
             var Lr = 0, Pr, Ar, Mr, Rr, Ir, Dr, Or;
             if (Vn.isFunction(Cr))
-                return this.each(function(kr) {
+                return this.each((function(kr) {
                     Vn(this).removeClass(Cr.call(this, kr, Mn(this)))
-                });
+                }
+                ));
             if (!arguments.length)
                 return this.attr("class", "");
             if ("string" == typeof Cr && Cr)
@@ -3152,9 +3255,10 @@
         },
         toggleClass: function(Cr, Pr) {
             var Ar = typeof Cr;
-            return "boolean" == typeof Pr && "string" == Ar ? Pr ? this.addClass(Cr) : this.removeClass(Cr) : Vn.isFunction(Cr) ? this.each(function(Mr) {
+            return "boolean" == typeof Pr && "string" == Ar ? Pr ? this.addClass(Cr) : this.removeClass(Cr) : Vn.isFunction(Cr) ? this.each((function(Mr) {
                 Vn(this).toggleClass(Cr.call(this, Mr, Mn(this), Pr), Pr)
-            }) : this.each(function() {
+            }
+            )) : this.each((function() {
                 var Mr, Rr, Ir, Dr;
                 if ("string" == Ar)
                     for (Rr = 0,
@@ -3164,7 +3268,8 @@
                 else
                     void 0 !== Cr && "boolean" != Ar || ((Mr = Mn(this)) && ha.set(this, "__className__", Mr),
                     this.setAttribute && this.setAttribute("class", Mr || !1 === Cr ? "" : ha.get(this, "__className__") || ""))
-            })
+            }
+            ))
         },
         hasClass: function(Cr) {
             var Mr = 0, Pr, Ar;
@@ -3179,13 +3284,15 @@
         val: function(Cr) {
             var Rr = this[0], Pr, Ar, Mr;
             return arguments.length ? (Mr = Vn.isFunction(Cr),
-            this.each(function(Ir) {
+            this.each((function(Ir) {
                 var Dr;
-                1 === this.nodeType && (null == (Dr = Mr ? Cr.call(this, Ir, Vn(this).val()) : Cr) ? Dr = "" : "number" == typeof Dr ? Dr += "" : Array.isArray(Dr) && (Dr = Vn.map(Dr, function(Or) {
+                1 === this.nodeType && (null == (Dr = Mr ? Cr.call(this, Ir, Vn(this).val()) : Cr) ? Dr = "" : "number" == typeof Dr ? Dr += "" : Array.isArray(Dr) && (Dr = Vn.map(Dr, (function(Or) {
                     return null == Or ? "" : Or + ""
-                })),
+                }
+                ))),
                 (Pr = Vn.valHooks[this.type] || Vn.valHooks[this.nodeName.toLowerCase()]) && "set"in Pr && void 0 !== Pr.set(this, Dr, "value") || (this.value = Dr))
-            })) : Rr ? (Pr = Vn.valHooks[Rr.type] || Vn.valHooks[Rr.nodeName.toLowerCase()]) && "get"in Pr && void 0 !== (Ar = Pr.get(Rr, "value")) ? Ar : "string" == typeof (Ar = Rr.value) ? Ar.replace(er, "") : null == Ar ? "" : Ar : void 0
+            }
+            ))) : Rr ? (Pr = Vn.valHooks[Rr.type] || Vn.valHooks[Rr.nodeName.toLowerCase()]) && "get"in Pr && void 0 !== (Ar = Pr.get(Rr, "value")) ? Ar : "string" == typeof (Ar = Rr.value) ? Ar.replace(er, "") : null == Ar ? "" : Ar : void 0
         }
     }),
     Vn.extend({
@@ -3217,7 +3324,7 @@
             }
         }
     }),
-    Vn.each(["radio", "checkbox"], function() {
+    Vn.each(["radio", "checkbox"], (function() {
         Vn.valHooks[this] = {
             set: function(Cr, Pr) {
                 if (Array.isArray(Pr))
@@ -3228,7 +3335,8 @@
             return null === Cr.getAttribute("value") ? "on" : Cr.value
         }
         )
-    });
+    }
+    ));
     var tr = /^(?:focusinfocus|focusoutblur)$/;
     Vn.extend(Vn.event, {
         trigger: function(Cr, Pr, Ar, Mr) {
@@ -3277,9 +3385,10 @@
     }),
     Vn.fn.extend({
         trigger: function(Cr, Pr) {
-            return this.each(function() {
+            return this.each((function() {
                 Vn.event.trigger(Cr, Pr, this)
-            })
+            }
+            ))
         },
         triggerHandler: function(Cr, Pr) {
             var Ar = this[0];
@@ -3287,11 +3396,12 @@
                 return Vn.event.trigger(Cr, Pr, Ar, !0)
         }
     }),
-    Vn.each("blur focus focusin focusout resize scroll click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup contextmenu".split(" "), function(Cr, Pr) {
+    Vn.each("blur focus focusin focusout resize scroll click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup contextmenu".split(" "), (function(Cr, Pr) {
         Vn.fn[Pr] = function(Ar, Mr) {
             return 0 < arguments.length ? this.on(Pr, null, Ar, Mr) : this.trigger(Pr)
         }
-    }),
+    }
+    )),
     Vn.fn.extend({
         hover: function(Cr, Pr) {
             return this.mouseenter(Cr).mouseleave(Pr || Cr)
@@ -3301,7 +3411,7 @@
     zn.focusin || Vn.each({
         focus: "focusin",
         blur: "focusout"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         var Ar = function(Mr) {
             Vn.event.simulate(Pr, Mr.target, Vn.event.fix(Mr))
         };
@@ -3319,7 +3429,8 @@
                 ha.remove(Mr, Pr))
             }
         }
-    });
+    }
+    ));
     var nr = Bt.location
       , ar = Vn.now()
       , rr = /\?/;
@@ -3328,7 +3439,7 @@
         if (!Cr || "string" != typeof Cr)
             return null;
         try {
-            Pr = new Bt.DOMParser().parseFromString(Cr, "text/xml")
+            Pr = (new Bt.DOMParser).parseFromString(Cr, "text/xml")
         } catch (Ar) {
             Pr = void 0
         }
@@ -3346,9 +3457,10 @@
             Mr[Mr.length] = encodeURIComponent(Ir) + "=" + encodeURIComponent(null == Or ? "" : Or)
         }, Ar;
         if (Array.isArray(Cr) || Cr.jquery && !Vn.isPlainObject(Cr))
-            Vn.each(Cr, function() {
+            Vn.each(Cr, (function() {
                 Rr(this.name, this.value)
-            });
+            }
+            ));
         else
             for (Ar in Cr)
                 Rn(Ar, Cr[Ar], Pr, Rr);
@@ -3360,24 +3472,28 @@
             return Vn.param(this.serializeArray())
         },
         serializeArray: function() {
-            return this.map(function() {
+            return this.map((function() {
                 var Cr = Vn.prop(this, "elements");
                 return Cr ? Vn.makeArray(Cr) : this
-            }).filter(function() {
+            }
+            )).filter((function() {
                 var Cr = this.type;
                 return this.name && !Vn(this).is(":disabled") && dr.test(this.nodeName) && !sr.test(Cr) && (this.checked || !Sa.test(Cr))
-            }).map(function(Cr, Pr) {
+            }
+            )).map((function(Cr, Pr) {
                 var Ar = Vn(this).val();
-                return null == Ar ? null : Array.isArray(Ar) ? Vn.map(Ar, function(Mr) {
+                return null == Ar ? null : Array.isArray(Ar) ? Vn.map(Ar, (function(Mr) {
                     return {
                         name: Pr.name,
                         value: Mr.replace(or, "\r\n")
                     }
-                }) : {
+                }
+                )) : {
                     name: Pr.name,
                     value: Ar.replace(or, "\r\n")
                 }
-            }).get()
+            }
+            )).get()
         }
     });
     var lr = /%20/g
@@ -3613,9 +3729,10 @@
                 Nr && Xr.trigger("ajaxSend", [qr, Ur]),
                 kr)
                     return qr;
-                Ur.async && 0 < Ur.timeout && (Or = Bt.setTimeout(function() {
+                Ur.async && 0 < Ur.timeout && (Or = Bt.setTimeout((function() {
                     qr.abort("timeout")
-                }, Ur.timeout));
+                }
+                ), Ur.timeout));
                 try {
                     kr = !1,
                     Mr.send(Wr, Ar)
@@ -3635,7 +3752,7 @@
             return Vn.get(Cr, void 0, Pr, "script")
         }
     }),
-    Vn.each(["get", "post"], function(Cr, Pr) {
+    Vn.each(["get", "post"], (function(Cr, Pr) {
         Vn[Pr] = function(Ar, Mr, Rr, Ir) {
             return Vn.isFunction(Mr) && (Ir = Ir || Rr,
             Rr = Mr,
@@ -3648,7 +3765,8 @@
                 success: Rr
             }, Vn.isPlainObject(Ar) && Ar))
         }
-    }),
+    }
+    )),
     Vn._evalUrl = function(Cr) {
         return Vn.ajax({
             url: Cr,
@@ -3667,32 +3785,37 @@
             return this[0] && (Vn.isFunction(Cr) && (Cr = Cr.call(this[0])),
             Pr = Vn(Cr, this[0].ownerDocument).eq(0).clone(!0),
             this[0].parentNode && Pr.insertBefore(this[0]),
-            Pr.map(function() {
+            Pr.map((function() {
                 for (var Ar = this; Ar.firstElementChild; )
                     Ar = Ar.firstElementChild;
                 return Ar
-            }).append(this)),
+            }
+            )).append(this)),
             this
         },
         wrapInner: function(Cr) {
-            return Vn.isFunction(Cr) ? this.each(function(Pr) {
+            return Vn.isFunction(Cr) ? this.each((function(Pr) {
                 Vn(this).wrapInner(Cr.call(this, Pr))
-            }) : this.each(function() {
+            }
+            )) : this.each((function() {
                 var Pr = Vn(this)
                   , Ar = Pr.contents();
                 Ar.length ? Ar.wrapAll(Cr) : Pr.append(Cr)
-            })
+            }
+            ))
         },
         wrap: function(Cr) {
             var Pr = Vn.isFunction(Cr);
-            return this.each(function(Ar) {
+            return this.each((function(Ar) {
                 Vn(this).wrapAll(Pr ? Cr.call(this, Ar) : Cr)
-            })
+            }
+            ))
         },
         unwrap: function(Cr) {
-            return this.parent(Cr).not("body").each(function() {
+            return this.parent(Cr).not("body").each((function() {
                 Vn(this).replaceWith(this.childNodes)
-            }),
+            }
+            )),
             this
         }
     }),
@@ -3717,7 +3840,7 @@
       , vr = Vn.ajaxSettings.xhr();
     zn.cors = !!vr && "withCredentials"in vr,
     zn.ajax = vr = !!vr,
-    Vn.ajaxTransport(function(Cr) {
+    Vn.ajaxTransport((function(Cr) {
         var Pr, Ar;
         if (zn.cors || vr && !Cr.crossDomain)
             return {
@@ -3745,9 +3868,10 @@
                     Dr.onload = Pr(),
                     Ar = Dr.onerror = Pr("error"),
                     void 0 === Dr.onabort ? Dr.onreadystatechange = function() {
-                        4 === Dr.readyState && Bt.setTimeout(function() {
+                        4 === Dr.readyState && Bt.setTimeout((function() {
                             Pr && Ar()
-                        })
+                        }
+                        ))
                     }
                     : Dr.onabort = Ar,
                     Pr = Pr("abort");
@@ -3762,10 +3886,12 @@
                     Pr && Pr()
                 }
             }
-    }),
-    Vn.ajaxPrefilter(function(Cr) {
+    }
+    )),
+    Vn.ajaxPrefilter((function(Cr) {
         Cr.crossDomain && (Cr.contents.script = !1)
-    }),
+    }
+    )),
     Vn.ajaxSetup({
         accepts: {
             script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
@@ -3780,11 +3906,12 @@
             }
         }
     }),
-    Vn.ajaxPrefilter("script", function(Cr) {
+    Vn.ajaxPrefilter("script", (function(Cr) {
         void 0 === Cr.cache && (Cr.cache = !1),
         Cr.crossDomain && (Cr.type = "GET")
-    }),
-    Vn.ajaxTransport("script", function(Cr) {
+    }
+    )),
+    Vn.ajaxTransport("script", (function(Cr) {
         if (Cr.crossDomain) {
             var Pr, Ar;
             return {
@@ -3805,7 +3932,8 @@
                 }
             }
         }
-    });
+    }
+    ));
     var Tr = []
       , Sr = /(=)\?(?=&|$)|\?\?/;
     Vn.ajaxSetup({
@@ -3816,7 +3944,7 @@
             Cr
         }
     }),
-    Vn.ajaxPrefilter("json jsonp", function(Cr, Pr, Ar) {
+    Vn.ajaxPrefilter("json jsonp", (function(Cr, Pr, Ar) {
         var Dr = !1 !== Cr.jsonp && (Sr.test(Cr.url) ? "url" : "string" == typeof Cr.data && 0 === (Cr.contentType || "").indexOf("application/x-www-form-urlencoded") && Sr.test(Cr.data) && "data"), Mr, Rr, Ir;
         if (Dr || "jsonp" === Cr.dataTypes[0])
             return Mr = Cr.jsonpCallback = Vn.isFunction(Cr.jsonpCallback) ? Cr.jsonpCallback() : Cr.jsonpCallback,
@@ -3832,15 +3960,17 @@
                 Ir = arguments
             }
             ,
-            Ar.always(function() {
+            Ar.always((function() {
                 void 0 === Rr ? Vn(Bt).removeProp(Mr) : Bt[Mr] = Rr,
                 Cr[Mr] && (Cr.jsonpCallback = Pr.jsonpCallback,
                 Tr.push(Mr)),
                 Ir && Vn.isFunction(Rr) && Rr(Ir[0]),
                 Ir = Rr = void 0
-            }),
+            }
+            )),
             "script"
-    }),
+    }
+    )),
     zn.createHTMLDocument = function() {
         var Cr = kn.implementation.createHTMLDocument("").body;
         return Cr.innerHTML = "<form></form><form></form>",
@@ -3872,27 +4002,31 @@
             type: Rr || "GET",
             dataType: "html",
             data: Pr
-        }).done(function(Lr) {
+        }).done((function(Lr) {
             Ir = arguments,
             Dr.html(Mr ? Vn("<div>").append(Vn.parseHTML(Lr)).find(Mr) : Lr)
-        }).always(Ar && function(Lr, kr) {
-            Dr.each(function() {
+        }
+        )).always(Ar && function(Lr, kr) {
+            Dr.each((function() {
                 Ar.apply(this, Ir || [Lr.responseText, kr, Lr])
-            })
+            }
+            ))
         }
         ),
         this
     }
     ,
-    Vn.each(["ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend"], function(Cr, Pr) {
+    Vn.each(["ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend"], (function(Cr, Pr) {
         Vn.fn[Pr] = function(Ar) {
             return this.on(Pr, Ar)
         }
-    }),
+    }
+    )),
     Vn.expr.pseudos.animated = function(Cr) {
-        return Vn.grep(Vn.timers, function(Pr) {
+        return Vn.grep(Vn.timers, (function(Pr) {
             return Cr === Pr.elem
-        }).length
+        }
+        )).length
     }
     ,
     Vn.offset = {
@@ -3914,9 +4048,10 @@
     Vn.fn.extend({
         offset: function(Cr) {
             if (arguments.length)
-                return void 0 === Cr ? this : this.each(function(Dr) {
+                return void 0 === Cr ? this : this.each((function(Dr) {
                     Vn.offset.setOffset(this, Cr, Dr)
-                });
+                }
+                ));
             var Ir = this[0], Pr, Ar, Mr, Rr;
             if (Ir)
                 return Ir.getClientRects().length ? (Mr = Ir.getBoundingClientRect(),
@@ -3951,53 +4086,61 @@
             }
         },
         offsetParent: function() {
-            return this.map(function() {
+            return this.map((function() {
                 for (var Cr = this.offsetParent; Cr && "static" === Vn.css(Cr, "position"); )
                     Cr = Cr.offsetParent;
                 return Cr || Aa
-            })
+            }
+            ))
         }
     }),
     Vn.each({
         scrollLeft: "pageXOffset",
         scrollTop: "pageYOffset"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         var Ar = "pageYOffset" === Pr;
         Vn.fn[Cr] = function(Mr) {
-            return pa(this, function(Rr, Ir, Dr) {
+            return pa(this, (function(Rr, Ir, Dr) {
                 var Or;
                 return (Vn.isWindow(Rr) ? Or = Rr : 9 === Rr.nodeType && (Or = Rr.defaultView),
                 void 0 === Dr) ? Or ? Or[Pr] : Rr[Ir] : void (Or ? Or.scrollTo(Ar ? Or.pageXOffset : Dr, Ar ? Dr : Or.pageYOffset) : Rr[Ir] = Dr)
-            }, Cr, Mr, arguments.length)
+            }
+            ), Cr, Mr, arguments.length)
         }
-    }),
-    Vn.each(["top", "left"], function(Cr, Pr) {
-        Vn.cssHooks[Pr] = yn(zn.pixelPosition, function(Ar, Mr) {
+    }
+    )),
+    Vn.each(["top", "left"], (function(Cr, Pr) {
+        Vn.cssHooks[Pr] = yn(zn.pixelPosition, (function(Ar, Mr) {
             if (Mr)
                 return Mr = mn(Ar, Pr),
                 Ba.test(Mr) ? Vn(Ar).position()[Pr] + "px" : Mr
-        })
-    }),
+        }
+        ))
+    }
+    )),
     Vn.each({
         Height: "height",
         Width: "width"
-    }, function(Cr, Pr) {
+    }, (function(Cr, Pr) {
         Vn.each({
             padding: "inner" + Cr,
             content: Pr,
             "": "outer" + Cr
-        }, function(Ar, Mr) {
+        }, (function(Ar, Mr) {
             Vn.fn[Mr] = function(Rr, Ir) {
                 var Dr = arguments.length && (Ar || "boolean" != typeof Rr)
                   , Or = Ar || (!0 === Rr || !0 === Ir ? "margin" : "border");
-                return pa(this, function(Lr, kr, Nr) {
+                return pa(this, (function(Lr, kr, Nr) {
                     var Fr;
                     return Vn.isWindow(Lr) ? 0 === Mr.indexOf("outer") ? Lr["inner" + Cr] : Lr.document.documentElement["client" + Cr] : 9 === Lr.nodeType ? (Fr = Lr.documentElement,
                     Math.max(Lr.body["scroll" + Cr], Fr["scroll" + Cr], Lr.body["offset" + Cr], Fr["offset" + Cr], Fr["client" + Cr])) : void 0 === Nr ? Vn.css(Lr, kr, Or) : Vn.style(Lr, kr, Nr, Or)
-                }, Pr, Dr ? Rr : void 0, Dr)
+                }
+                ), Pr, Dr ? Rr : void 0, Dr)
             }
-        })
-    }),
+        }
+        ))
+    }
+    )),
     Vn.fn.extend({
         bind: function(Cr, Pr, Ar) {
             return this.on(Cr, null, Pr, Ar)
@@ -4019,9 +4162,10 @@
     Vn.isArray = Array.isArray,
     Vn.parseJSON = JSON.parse,
     Vn.nodeName = Ht,
-    "function" == typeof define && define.amd && define("jquery", [], function() {
+    "function" == typeof define && define.amd && define("jquery", [], (function() {
         return Vn
-    });
+    }
+    ));
     var Er = Bt.jQuery
       , wr = Bt.$;
     return Vn.noConflict = function(Cr) {
@@ -4032,7 +4176,8 @@
     ,
     Gt || (Bt.jQuery = Bt.$ = Vn),
     Vn
-}),
+}
+)),
 function Bt(Gt, Xt, Yt) {
     function Ht(zt, Vt) {
         if (!Xt[zt]) {
@@ -4049,10 +4194,11 @@ function Bt(Gt, Xt, Yt) {
             var Zt = Xt[zt] = {
                 exports: {}
             };
-            Gt[zt][0].call(Zt.exports, function(Qt) {
+            Gt[zt][0].call(Zt.exports, (function(Qt) {
                 var Jt = Gt[zt][1][Qt];
                 return Ht(Jt || Qt)
-            }, Zt, Zt.exports, Bt, Gt, Xt, Yt)
+            }
+            ), Zt, Zt.exports, Bt, Gt, Xt, Yt)
         }
         return Xt[zt].exports
     }
@@ -4063,14 +4209,15 @@ function Bt(Gt, Xt, Yt) {
     1: [function(Bt, Gt) {
         function Yt(zt) {
             zt.fn.perfectScrollbar = function(Vt) {
-                return this.each(function() {
+                return this.each((function() {
                     if ("object" == typeof Vt || void 0 === Vt) {
                         jt.get(this) || Ht.initialize(this, Vt)
                     } else {
                         var Kt = Vt;
                         "update" === Kt ? Ht.update(this) : "destroy" === Kt && Ht.destroy(this)
                     }
-                })
+                }
+                ))
             }
         }
         var Ht = Bt("../main")
@@ -4126,9 +4273,10 @@ function Bt(Gt, Xt, Yt) {
         }
         ,
         Yt.queryChildren = function(Ht, jt) {
-            return Array.prototype.filter.call(Ht.childNodes, function(Wt) {
+            return Array.prototype.filter.call(Ht.childNodes, (function(Wt) {
                 return Yt.matches(Wt, jt)
-            })
+            }
+            ))
         }
         ,
         Gt.exports = Yt
@@ -4146,10 +4294,11 @@ function Bt(Gt, Xt, Yt) {
         }
         ,
         Yt.prototype.unbind = function(jt, Wt) {
-            this.events[jt] = this.events[jt].filter(function(Vt) {
+            this.events[jt] = this.events[jt].filter((function(Vt) {
                 return void 0 !== Wt && Vt !== Wt || (this.element.removeEventListener(jt, Vt, !1),
                 !1)
-            }, this)
+            }
+            ), this)
         }
         ,
         Yt.prototype.unbindAll = function() {
@@ -4161,9 +4310,10 @@ function Bt(Gt, Xt, Yt) {
             this.eventElements = []
         };
         Ht.prototype.eventElement = function(jt) {
-            var Wt = this.eventElements.filter(function(zt) {
+            var Wt = this.eventElements.filter((function(zt) {
                 return zt.element === jt
-            })[0];
+            }
+            ))[0];
             return void 0 === Wt && (Wt = new Yt(jt),
             this.eventElements.push(Wt)),
             Wt
@@ -4317,19 +4467,21 @@ function Bt(Gt, Xt, Yt) {
                     Zt.stopPropagation()
                 };
                 Vt.event.bind(Vt.scrollbarY, "click", Kt),
-                Vt.event.bind(Vt.scrollbarYRail, "click", function(Zt) {
+                Vt.event.bind(Vt.scrollbarYRail, "click", (function(Zt) {
                     var Qt = Zt.pageY - window.pageYOffset - qt(Vt.scrollbarYRail).top > Vt.scrollbarYTop ? 1 : -1;
                     jt(zt, "top", zt.scrollTop + Qt * Vt.containerHeight),
                     Ht(zt),
                     Zt.stopPropagation()
-                }),
+                }
+                )),
                 Vt.event.bind(Vt.scrollbarX, "click", Kt),
-                Vt.event.bind(Vt.scrollbarXRail, "click", function(Zt) {
+                Vt.event.bind(Vt.scrollbarXRail, "click", (function(Zt) {
                     var Qt = Zt.pageX - window.pageXOffset - qt(Vt.scrollbarXRail).left > Vt.scrollbarXLeft ? 1 : -1;
                     jt(zt, "left", zt.scrollLeft + Qt * Vt.containerWidth),
                     Ht(zt),
                     Zt.stopPropagation()
-                })
+                }
+                ))
             }(Wt, Yt.get(Wt))
         }
     }
@@ -4358,7 +4510,7 @@ function Bt(Gt, Xt, Yt) {
                 jt.stopScrolling(Kt, "x"),
                 Zt.event.unbind(Zt.ownerDocument, "mousemove", $t)
             };
-            Zt.event.bind(Zt.scrollbarX, "mousedown", function(tn) {
+            Zt.event.bind(Zt.scrollbarX, "mousedown", (function(tn) {
                 Jt = tn.pageX,
                 Qt = jt.toInt(Wt.css(Zt.scrollbarX, "left")) * Zt.railXRatio,
                 jt.startScrolling(Kt, "x"),
@@ -4366,7 +4518,8 @@ function Bt(Gt, Xt, Yt) {
                 Zt.event.once(Zt.ownerDocument, "mouseup", en),
                 tn.stopPropagation(),
                 tn.preventDefault()
-            })
+            }
+            ))
         }
         function Ht(Kt, Zt) {
             var Qt = null
@@ -4387,7 +4540,7 @@ function Bt(Gt, Xt, Yt) {
                 jt.stopScrolling(Kt, "y"),
                 Zt.event.unbind(Zt.ownerDocument, "mousemove", $t)
             };
-            Zt.event.bind(Zt.scrollbarY, "mousedown", function(tn) {
+            Zt.event.bind(Zt.scrollbarY, "mousedown", (function(tn) {
                 Jt = tn.pageY,
                 Qt = jt.toInt(Wt.css(Zt.scrollbarY, "top")) * Zt.railYRatio,
                 jt.startScrolling(Kt, "y"),
@@ -4395,7 +4548,8 @@ function Bt(Gt, Xt, Yt) {
                 Zt.event.once(Zt.ownerDocument, "mouseup", en),
                 tn.stopPropagation(),
                 tn.preventDefault()
-            })
+            }
+            ))
         }
         var jt = Bt("../../lib/helper")
           , Wt = Bt("../../lib/dom")
@@ -4418,14 +4572,16 @@ function Bt(Gt, Xt, Yt) {
     11: [function(Bt, Gt) {
         function Yt(qt, Kt) {
             var Zt = !1;
-            Kt.event.bind(qt, "mouseenter", function() {
+            Kt.event.bind(qt, "mouseenter", (function() {
                 Zt = !0
-            }),
-            Kt.event.bind(qt, "mouseleave", function() {
+            }
+            )),
+            Kt.event.bind(qt, "mouseleave", (function() {
                 Zt = !1
-            });
+            }
+            ));
             var Qt = !1;
-            Kt.event.bind(Kt.ownerDocument, "keydown", function(Jt) {
+            Kt.event.bind(Kt.ownerDocument, "keydown", (function(Jt) {
                 if (!(Jt.isDefaultPrevented && Jt.isDefaultPrevented() || Jt.defaultPrevented)) {
                     var $t = jt.matches(Kt.scrollbarX, ":focus") || jt.matches(Kt.scrollbarY, ":focus");
                     if (Zt || $t) {
@@ -4470,7 +4626,7 @@ function Bt(Gt, Xt, Yt) {
                             nn = Jt.ctrlKey ? qt.scrollTop : Kt.containerHeight;
                             break;
                         default:
-                            return;
+                            return
                         }
                         Vt(qt, "top", qt.scrollTop - nn),
                         Vt(qt, "left", qt.scrollLeft + tn),
@@ -4494,7 +4650,8 @@ function Bt(Gt, Xt, Yt) {
                         }(tn, nn)) && Jt.preventDefault()
                     }
                 }
-            })
+            }
+            ))
         }
         var Ht = Bt("../../lib/helper")
           , jt = Bt("../../lib/dom")
@@ -4588,9 +4745,10 @@ function Bt(Gt, Xt, Yt) {
           , Ht = Bt("../update-geometry");
         Gt.exports = function(jt) {
             !function(Wt, zt) {
-                zt.event.bind(Wt, "scroll", function() {
+                zt.event.bind(Wt, "scroll", (function() {
                     Ht(Wt)
-                })
+                }
+                ))
             }(jt, Yt.get(jt))
         }
     }
@@ -4611,22 +4769,25 @@ function Bt(Gt, Xt, Yt) {
                 left: 0
             }
               , Jt = !1;
-            qt.event.bind(qt.ownerDocument, "selectionchange", function() {
+            qt.event.bind(qt.ownerDocument, "selectionchange", (function() {
                 Vt.contains(function() {
                     var $t = window.getSelection ? window.getSelection() : document.getSelection ? document.getSelection() : "";
                     return 0 === $t.toString().length ? null : $t.getRangeAt(0).commonAncestorContainer
                 }()) ? Jt = !0 : (Jt = !1,
                 Kt())
-            }),
-            qt.event.bind(window, "mouseup", function() {
+            }
+            )),
+            qt.event.bind(window, "mouseup", (function() {
                 Jt && (Jt = !1,
                 Kt())
-            }),
-            qt.event.bind(window, "keyup", function() {
+            }
+            )),
+            qt.event.bind(window, "keyup", (function() {
                 Jt && (Jt = !1,
                 Kt())
-            }),
-            qt.event.bind(window, "mousemove", function($t) {
+            }
+            )),
+            qt.event.bind(window, "mousemove", (function($t) {
                 if (Jt) {
                     var en = {
                         x: $t.pageX,
@@ -4644,13 +4805,15 @@ function Bt(Gt, Xt, Yt) {
                     en.y < tn.top + 3 ? (Qt.top = 5 > tn.top + 3 - en.y ? -5 : -20,
                     Ht.startScrolling(Vt, "y")) : en.y > tn.bottom - 3 ? (Qt.top = 5 > en.y - tn.bottom + 3 ? 5 : 20,
                     Ht.startScrolling(Vt, "y")) : Qt.top = 0,
-                    0 === Qt.top && 0 === Qt.left ? Kt() : Zt || (Zt = setInterval(function() {
+                    0 === Qt.top && 0 === Qt.left ? Kt() : Zt || (Zt = setInterval((function() {
                         jt.get(Vt) ? (zt(Vt, "top", Vt.scrollTop + Qt.top),
                         zt(Vt, "left", Vt.scrollLeft + Qt.left),
                         Wt(Vt)) : clearInterval(Zt)
-                    }, 50))
+                    }
+                    ), 50))
                 }
-            })
+            }
+            ))
         }
         var Ht = Bt("../../lib/helper")
           , jt = Bt("../instances")
@@ -4691,7 +4854,7 @@ function Bt(Gt, Xt, Yt) {
                     var hn = en(cn);
                     on.pageX = hn.pageX,
                     on.pageY = hn.pageY,
-                    sn = new Date().getTime(),
+                    sn = (new Date).getTime(),
                     null !== ln && clearInterval(ln),
                     cn.stopPropagation()
                 }
@@ -4708,7 +4871,7 @@ function Bt(Gt, Xt, Yt) {
                       , mn = fn.pageY - on.pageY;
                     Qt(gn, mn),
                     on = fn;
-                    var yn = new Date().getTime()
+                    var yn = (new Date).getTime()
                       , _n = yn - sn;
                     0 < _n && (dn.x = gn / _n,
                     dn.y = mn / _n,
@@ -4720,7 +4883,7 @@ function Bt(Gt, Xt, Yt) {
                           , En = Math.abs(xn);
                         if (En > Sn) {
                             if (0 > xn && vn === qt.contentHeight - qt.containerHeight || 0 < xn && 0 === vn)
-                                return !qt.settings.swipePropagation;
+                                return !qt.settings.swipePropagation
                         } else if (Sn > En && (0 > bn && Tn === qt.contentWidth - qt.containerWidth || 0 < bn && 0 === Tn))
                             return !qt.settings.swipePropagation;
                         return !0
@@ -4731,11 +4894,12 @@ function Bt(Gt, Xt, Yt) {
             function rn() {
                 !un && pn && (pn = !1,
                 qt.settings.swipeEasing && (clearInterval(ln),
-                ln = setInterval(function() {
+                ln = setInterval((function() {
                     jt.get(Vt) && (dn.x || dn.y) ? .01 > Math.abs(dn.x) && .01 > Math.abs(dn.y) ? clearInterval(ln) : (Qt(30 * dn.x, 30 * dn.y),
                     dn.x *= .8,
                     dn.y *= .8) : clearInterval(ln)
-                }, 10)))
+                }
+                ), 10)))
             }
             var on = {}
               , sn = 0
@@ -4787,9 +4951,10 @@ function Bt(Gt, Xt, Yt) {
             zt.classList.add("ps");
             var qt = Yt.add(zt, "object" == typeof Vt ? Vt : {});
             zt.classList.add("ps--theme_" + qt.settings.theme),
-            qt.settings.handlers.forEach(function(Kt) {
+            qt.settings.handlers.forEach((function(Kt) {
                 jt[Kt](zt)
-            }),
+            }
+            )),
             Wt(zt),
             Ht(zt)
         }
@@ -4921,13 +5086,15 @@ function Bt(Gt, Xt, Yt) {
             qt.contentWidth = Vt.scrollWidth,
             qt.contentHeight = Vt.scrollHeight;
             var Kt;
-            Vt.contains(qt.scrollbarXRail) || (0 < (Kt = jt.queryChildren(Vt, ".ps__scrollbar-x-rail")).length && Kt.forEach(function(Zt) {
+            Vt.contains(qt.scrollbarXRail) || (0 < (Kt = jt.queryChildren(Vt, ".ps__scrollbar-x-rail")).length && Kt.forEach((function(Zt) {
                 jt.remove(Zt)
-            }),
+            }
+            )),
             jt.appendTo(qt.scrollbarXRail, Vt)),
-            Vt.contains(qt.scrollbarYRail) || (0 < (Kt = jt.queryChildren(Vt, ".ps__scrollbar-y-rail")).length && Kt.forEach(function(Zt) {
+            Vt.contains(qt.scrollbarYRail) || (0 < (Kt = jt.queryChildren(Vt, ".ps__scrollbar-y-rail")).length && Kt.forEach((function(Zt) {
                 jt.remove(Zt)
-            }),
+            }
+            )),
             jt.appendTo(qt.scrollbarYRail, Vt)),
             !qt.settings.suppressScrollX && qt.containerWidth + qt.settings.scrollXMarginOffset < qt.contentWidth ? (qt.scrollbarXActive = !0,
             qt.railXWidth = qt.containerWidth - qt.railXMarginWidth,
@@ -5049,7 +5216,7 @@ function Bt(Gt, Xt, Yt) {
 }, {}, [1]),
 function(Bt) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = Bt() : "function" == typeof define && define.amd ? define([], Bt) : ("undefined" == typeof window ? "undefined" == typeof global ? "undefined" == typeof self ? this : self : global : window).PIXI = Bt()
-}(function() {
+}((function() {
     return function Bt(Gt, Xt, Yt) {
         function Ht(zt, Vt) {
             if (!Xt[zt]) {
@@ -5066,10 +5233,11 @@ function(Bt) {
                 var Zt = Xt[zt] = {
                     exports: {}
                 };
-                Gt[zt][0].call(Zt.exports, function(Qt) {
+                Gt[zt][0].call(Zt.exports, (function(Qt) {
                     var Jt = Gt[zt][1][Qt];
                     return Ht(Jt || Qt)
-                }, Zt, Zt.exports, Bt, Gt, Xt, Yt)
+                }
+                ), Zt, Zt.exports, Bt, Gt, Xt, Yt)
             }
             return Xt[zt].exports
         }
@@ -5256,10 +5424,10 @@ function(Bt) {
                         Mn.push(function(Rn) {
                             var In = Rn
                               , Dn = Rn;
-                            do
+                            do {
                                 In.x < Dn.x && (Dn = In),
-                                In = In.next;
-                            while (In !== Rn);return Dn
+                                In = In.next
+                            } while (In !== Rn);return Dn
                         }(An));
                     for (Mn.sort(zt),
                     En = 0; En < Mn.length; En++)
@@ -5331,7 +5499,7 @@ function(Bt) {
                     return rn;
                 on || (on = rn);
                 var dn = rn, sn;
-                do
+                do {
                     if (sn = !1,
                     dn.steiner || !Zt(dn, dn.next) && 0 !== Kt(dn.prev, dn, dn.next))
                         dn = dn.next;
@@ -5341,18 +5509,18 @@ function(Bt) {
                             return null;
                         sn = !0
                     }
-                while (sn || dn !== on);return on
+                } while (sn || dn !== on);return on
             }
             function Wt(rn, on, sn, dn, ln, un, pn) {
                 if (rn) {
                     !pn && un && function(gn, mn, yn, _n) {
                         var bn = gn;
-                        do
+                        do {
                             null === bn.z && (bn.z = Vt(bn.x, bn.y, mn, yn, _n)),
                             bn.prevZ = bn.prev,
                             bn.nextZ = bn.next,
-                            bn = bn.next;
-                        while (bn !== gn);bn.prevZ.nextZ = null,
+                            bn = bn.next
+                        } while (bn !== gn);bn.prevZ.nextZ = null,
                         bn.prevZ = null,
                         function(xn) {
                             var Mn = 1, vn, Tn, Sn, En, wn, Cn, Pn, An;
@@ -5457,10 +5625,10 @@ function(Bt) {
                                                   , Mn = !1
                                                   , Rn = (Cn.x + Pn.x) / 2
                                                   , In = (Cn.y + Pn.y) / 2;
-                                                do
+                                                do {
                                                     An.y > In != An.next.y > In && Rn < (An.next.x - An.x) * (In - An.y) / (An.next.y - An.y) + An.x && (Mn = !Mn),
-                                                    An = An.next;
-                                                while (An !== Cn);return Mn
+                                                    An = An.next
+                                                } while (An !== Cn);return Mn
                                             }(En, wn)
                                         }(vn, Tn)) {
                                             var Sn = $t(vn, Tn);
@@ -5607,7 +5775,7 @@ function(Bt) {
             var Wt = Object.prototype.hasOwnProperty
               , zt = "~";
             Object.create && (Yt.prototype = Object.create(null),
-            new Yt().__proto__ || (zt = !1)),
+            (new Yt).__proto__ || (zt = !1)),
             jt.prototype.eventNames = function() {
                 var Kt = [], Vt, qt;
                 if (0 === this._eventsCount)
@@ -5656,7 +5824,7 @@ function(Bt) {
                         !0;
                     case 6:
                         return nn.fn.call(nn.context, qt, Kt, Zt, Qt, Jt),
-                        !0;
+                        !0
                     }
                     for (tn = 1,
                     en = Array(an - 1); tn < an; tn++)
@@ -5684,7 +5852,7 @@ function(Bt) {
                                 for (rn = 1,
                                 en = Array(an - 1); rn < an; rn++)
                                     en[rn - 1] = arguments[rn];
-                            nn[tn].fn.apply(nn[tn].context, en);
+                            nn[tn].fn.apply(nn[tn].context, en)
                         }
                 }
                 return !0
@@ -5827,14 +5995,16 @@ function(Bt) {
                         return !1;
                     for (var zt = {}, Vt = 0; 10 > Vt; Vt++)
                         zt["_" + String.fromCharCode(Vt)] = Vt;
-                    if ("0123456789" !== Object.getOwnPropertyNames(zt).map(function(Kt) {
+                    if ("0123456789" !== Object.getOwnPropertyNames(zt).map((function(Kt) {
                         return zt[Kt]
-                    }).join(""))
+                    }
+                    )).join(""))
                         return !1;
                     var qt = {};
-                    return "abcdefghijklmnopqrst".split("").forEach(function(Kt) {
+                    return "abcdefghijklmnopqrst".split("").forEach((function(Kt) {
                         qt[Kt] = Kt
-                    }),
+                    }
+                    )),
                     "abcdefghijklmnopqrst" === Object.keys(Object.assign({}, qt)).join("")
                 } catch (Kt) {
                     return !1
@@ -6575,18 +6745,20 @@ function(Bt) {
                         Qt && (qt = Qt + "/" + qt,
                         Kt = "/" === Qt.charAt(0))
                     }
-                    return qt = Ht(jt(qt.split("/"), function(Jt) {
+                    return qt = Ht(jt(qt.split("/"), (function(Jt) {
                         return !!Jt
-                    }), !Kt).join("/"),
+                    }
+                    )), !Kt).join("/"),
                     (Kt ? "/" : "") + qt || "."
                 }
                 ,
                 Xt.normalize = function(qt) {
                     var Kt = Xt.isAbsolute(qt)
                       , Zt = "/" === Vt(qt, -1);
-                    return (qt = Ht(jt(qt.split("/"), function(Qt) {
+                    return (qt = Ht(jt(qt.split("/"), (function(Qt) {
                         return !!Qt
-                    }), !Kt).join("/")) || Kt || (qt = "."),
+                    }
+                    )), !Kt).join("/")) || Kt || (qt = "."),
                     qt && Zt && (qt += "/"),
                     (Kt ? "/" : "") + qt
                 }
@@ -6597,11 +6769,12 @@ function(Bt) {
                 ,
                 Xt.join = function() {
                     var qt = Array.prototype.slice.call(arguments, 0);
-                    return Xt.normalize(jt(qt, function(Kt) {
+                    return Xt.normalize(jt(qt, (function(Kt) {
                         if ("string" != typeof Kt)
                             throw new TypeError("Arguments to path.join must be strings");
                         return Kt
-                    }).join("/"))
+                    }
+                    )).join("/"))
                 }
                 ,
                 Xt.relative = function(qt, Kt) {
@@ -6806,12 +6979,13 @@ function(Bt) {
                         return wn
                     }
                     function qt(Tn) {
-                        return Wt(Tn, function(Sn) {
+                        return Wt(Tn, (function(Sn) {
                             var En = "";
                             return 65535 < Sn && (En += vn(55296 | 1023 & (Sn -= 65536) >>> 10),
                             Sn = 56320 | 1023 & Sn),
                             En += vn(Sn)
-                        }).join("")
+                        }
+                        )).join("")
                     }
                     function Kt(Tn) {
                         return 10 > Tn - 48 ? Tn - 22 : 26 > Tn - 65 ? Tn - 65 : 26 > Tn - 97 ? Tn - 97 : sn
@@ -6904,14 +7078,16 @@ function(Bt) {
                         decode: Jt,
                         encode: $t,
                         toASCII: function(Tn) {
-                            return zt(Tn, function(Sn) {
+                            return zt(Tn, (function(Sn) {
                                 return mn.test(Sn) ? "xn--" + $t(Sn) : Sn
-                            })
+                            }
+                            ))
                         },
                         toUnicode: function(Tn) {
-                            return zt(Tn, function(Sn) {
+                            return zt(Tn, (function(Sn) {
                                 return gn.test(Sn) ? Jt(Sn.slice(4).toLowerCase()) : Sn
-                            })
+                            }
+                            ))
                         }
                     },
                     en && tn))
@@ -6976,19 +7152,21 @@ function(Bt) {
                 case "number":
                     return isFinite(zt) ? zt : "";
                 default:
-                    return "";
+                    return ""
                 }
             };
             Gt.exports = function(zt, Vt, qt, Kt) {
                 return Vt = Vt || "&",
                 qt = qt || "=",
                 null === zt && (zt = void 0),
-                "object" == typeof zt ? Yt(Wt(zt), function(Zt) {
+                "object" == typeof zt ? Yt(Wt(zt), (function(Zt) {
                     var Qt = encodeURIComponent(Ht(Zt)) + qt;
-                    return jt(zt[Zt]) ? Yt(zt[Zt], function(Jt) {
+                    return jt(zt[Zt]) ? Yt(zt[Zt], (function(Jt) {
                         return Qt + encodeURIComponent(Ht(Jt))
-                    }).join(Vt) : Qt + encodeURIComponent(Ht(zt[Zt]))
-                }).join(Vt) : Kt ? encodeURIComponent(Ht(Kt)) + qt + encodeURIComponent(Ht(zt)) : ""
+                    }
+                    )).join(Vt) : Qt + encodeURIComponent(Ht(zt[Zt]))
+                }
+                )).join(Vt) : Kt ? encodeURIComponent(Ht(Kt)) + qt + encodeURIComponent(Ht(zt)) : ""
             }
             ;
             var jt = Array.isArray || function(zt) {
@@ -7052,7 +7230,7 @@ function(Bt) {
             var zt = /^([a-z0-9.+-]+:)/i
               , Vt = /:[0-9]*$/
               , qt = /^(\/\/?(?!\/)[^\?\s]*)(\?[^\s]*)?$/
-              , Kt = ["{", "}", "|", "\\", "^", "`"].concat(["<", ">", "\"", "`", " ", "\r", "\n", "\t"])
+              , Kt = ["{", "}", "|", "\\", "^", "`"].concat(["<", ">", '"', "`", " ", "\r", "\n", "\t"])
               , Zt = ["'"].concat(Kt)
               , Qt = ["%", "/", "?", ";", "#"].concat(Zt)
               , Jt = ["/", "?", "#"]
@@ -7203,9 +7381,10 @@ function(Bt) {
                 dn && "/" !== dn.charAt(0) && (dn = "/" + dn)) : un || (un = ""),
                 ln && "#" !== ln.charAt(0) && (ln = "#" + ln),
                 cn && "?" !== cn.charAt(0) && (cn = "?" + cn),
-                dn = dn.replace(/[?#]/g, function(hn) {
+                dn = dn.replace(/[?#]/g, (function(hn) {
                     return encodeURIComponent(hn)
-                }),
+                }
+                )),
                 cn = cn.replace("#", "%23"),
                 sn + un + dn + cn + ln
             }
@@ -7456,7 +7635,7 @@ function(Bt) {
                     this.loading && (!$t || !$t.parentResource))
                         throw new Error("Cannot add resources while the loader is running.");
                     if (this.resources[Qt])
-                        throw new Error("Resource named \"" + Qt + "\" already exists.");
+                        throw new Error('Resource named "' + Qt + '" already exists.');
                     if (Jt = this._prepareUrl(Jt),
                     this.resources[Qt] = new Vt.default(Qt,Jt,$t),
                     "function" == typeof en && this.resources[Qt].onAfterMiddleware.once(en),
@@ -7527,14 +7706,17 @@ function(Bt) {
                 Zt.prototype._loadResource = function(Qt, Jt) {
                     var $t = this;
                     Qt._dequeue = Jt,
-                    zt.eachSeries(this._beforeMiddleware, function(en, tn) {
-                        en.call($t, Qt, function() {
+                    zt.eachSeries(this._beforeMiddleware, (function(en, tn) {
+                        en.call($t, Qt, (function() {
                             tn(Qt.isComplete ? {} : null)
-                        })
-                    }, function() {
+                        }
+                        ))
+                    }
+                    ), (function() {
                         Qt.isComplete ? $t._onLoad(Qt) : (Qt._onLoadBinding = Qt.onComplete.once($t._onLoad, $t),
                         Qt.load())
-                    }, !0)
+                    }
+                    ), !0)
                 }
                 ,
                 Zt.prototype._onComplete = function() {
@@ -7547,9 +7729,10 @@ function(Bt) {
                     Qt._onLoadBinding = null,
                     this._resourcesParsing.push(Qt),
                     Qt._dequeue(),
-                    zt.eachSeries(this._afterMiddleware, function($t, en) {
+                    zt.eachSeries(this._afterMiddleware, (function($t, en) {
                         $t.call(Jt, Qt, en)
-                    }, function() {
+                    }
+                    ), (function() {
                         Qt.onAfterMiddleware.dispatch(Qt),
                         Jt.progress += Qt.progressChunk,
                         Jt.onProgress.dispatch(Jt, Qt),
@@ -7557,7 +7740,8 @@ function(Bt) {
                         Jt._resourcesParsing.splice(Jt._resourcesParsing.indexOf(Qt), 1),
                         Jt._queue.idle() && 0 === Jt._resourcesParsing.length && (Jt.progress = 100,
                         Jt._onComplete())
-                    }, !0)
+                    }
+                    ), !0)
                 }
                 ,
                 Zt
@@ -7690,9 +7874,10 @@ function(Bt) {
                     var en = this;
                     if (!this.isLoading)
                         if (this.isComplete)
-                            $t && setTimeout(function() {
+                            $t && setTimeout((function() {
                                 return $t(en)
-                            }, 1);
+                            }
+                            ), 1);
                         else
                             switch ($t && this.onComplete.once($t),
                             this._setFlag(Jt.STATUS_FLAGS.LOADING, !0),
@@ -7713,7 +7898,7 @@ function(Bt) {
                                 break;
                             case Jt.LOAD_TYPE.XHR:
                             default:
-                                Kt && this.crossOrigin ? this._loadXdr() : this._loadXhr();
+                                Kt && this.crossOrigin ? this._loadXdr() : this._loadXhr()
                             }
                 }
                 ,
@@ -7777,9 +7962,10 @@ function(Bt) {
                     $t.onprogress = this._boundOnProgress,
                     $t.onload = this._boundXhrOnLoad,
                     $t.open("GET", this.url, !0),
-                    setTimeout(function() {
+                    setTimeout((function() {
                         return $t.send()
-                    }, 1)
+                    }
+                    ), 1)
                 }
                 ,
                 Jt.prototype._createSource = function($t, en, tn) {
@@ -7800,7 +7986,7 @@ function(Bt) {
                 ,
                 Jt.prototype._xhrOnError = function() {
                     var $t = this.xhr;
-                    this.abort(Wt($t) + " Request failed. Status: " + $t.status + ", text: \"" + $t.statusText + "\"")
+                    this.abort(Wt($t) + " Request failed. Status: " + $t.status + ', text: "' + $t.statusText + '"')
                 }
                 ,
                 Jt.prototype._xhrOnAbort = function() {
@@ -7899,7 +8085,7 @@ function(Bt) {
                     case Jt.XHR_RESPONSE_TYPE.DEFAULT:
                     case Jt.XHR_RESPONSE_TYPE.TEXT:
                     default:
-                        return "text/plain";
+                        return "text/plain"
                     }
                 }
                 ,
@@ -8014,9 +8200,10 @@ function(Bt) {
                 var qt = 0
                   , Kt = jt.length;
                 !function Zt(Qt) {
-                    Qt || qt === Kt ? zt && zt(Qt) : Vt ? setTimeout(function() {
+                    Qt || qt === Kt ? zt && zt(Qt) : Vt ? setTimeout((function() {
                         Wt(jt[qt++], Zt)
-                    }, 1) : Wt(jt[qt++], Zt)
+                    }
+                    ), 1) : Wt(jt[qt++], Zt)
                 }()
             }
             ,
@@ -8026,18 +8213,20 @@ function(Bt) {
                         throw new Error("task callback must be a function");
                     if (qt.started = !0,
                     null == Kt && qt.idle())
-                        setTimeout(function() {
+                        setTimeout((function() {
                             return qt.drain()
-                        }, 1);
+                        }
+                        ), 1);
                     else {
                         var Jt = {
                             data: Kt,
                             callback: "function" == typeof Qt ? Qt : Yt
                         };
                         Zt ? qt._tasks.unshift(Jt) : qt._tasks.push(Jt),
-                        setTimeout(function() {
+                        setTimeout((function() {
                             return qt.process()
-                        }, 1)
+                        }
+                        ), 1)
                     }
                 }
                 if (null == Wt)
@@ -8125,7 +8314,7 @@ function(Bt) {
                         Vt[2] = 64;
                         break;
                     case 1:
-                        Vt[3] = 64;
+                        Vt[3] = 64
                     }
                     for (var Kt = 0; Kt < Vt.length; ++Kt)
                         jt += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(Vt[Kt])
@@ -8363,9 +8552,10 @@ function(Bt) {
                 }, Wt = jt.parser[Ht.strictMode ? "strict" : "loose"].exec(Yt), zt = {}, Vt = 14; Vt--; )
                     zt[jt.key[Vt]] = Wt[Vt] || "";
                 return zt[jt.q.name] = {},
-                zt[jt.key[12]].replace(jt.q.parser, function(qt, Kt, Zt) {
+                zt[jt.key[12]].replace(jt.q.parser, (function(qt, Kt, Zt) {
                     Kt && (zt[jt.q.name][Kt] = Zt)
-                }),
+                }
+                )),
                 zt
             }
         }
@@ -8429,11 +8619,12 @@ function(Bt) {
                     $t.style.zIndex = 2,
                     $t.style.backgroundColor = "#FF0000",
                     $t.title = "HOOK DIV",
-                    $t.addEventListener("focus", function() {
+                    $t.addEventListener("focus", (function() {
                         Jt.isMobileAccessabillity = !0,
                         Jt.activate(),
                         document.body.removeChild($t)
-                    }),
+                    }
+                    )),
                     document.body.appendChild($t)
                 }
                 ,
@@ -11194,23 +11385,25 @@ function(Bt) {
             Xt.__esModule = !0,
             Xt.autoDetectRenderer = Xt.Application = Xt.Filter = Xt.SpriteMaskFilter = Xt.Quad = Xt.RenderTarget = Xt.ObjectRenderer = Xt.WebGLManager = Xt.Shader = Xt.CanvasRenderTarget = Xt.TextureUvs = Xt.VideoBaseTexture = Xt.BaseRenderTexture = Xt.RenderTexture = Xt.BaseTexture = Xt.Texture = Xt.Spritesheet = Xt.CanvasGraphicsRenderer = Xt.GraphicsRenderer = Xt.GraphicsData = Xt.Graphics = Xt.TextMetrics = Xt.TextStyle = Xt.Text = Xt.SpriteRenderer = Xt.CanvasTinter = Xt.CanvasSpriteRenderer = Xt.Sprite = Xt.TransformBase = Xt.TransformStatic = Xt.Transform = Xt.Container = Xt.DisplayObject = Xt.Bounds = Xt.glCore = Xt.WebGLRenderer = Xt.CanvasRenderer = Xt.ticker = Xt.utils = Xt.settings = void 0;
             var jt = Bt("./const");
-            Object.keys(jt).forEach(function(On) {
+            Object.keys(jt).forEach((function(On) {
                 "default" !== On && "__esModule" !== On && Object.defineProperty(Xt, On, {
                     enumerable: !0,
                     get: function() {
                         return jt[On]
                     }
                 })
-            });
+            }
+            ));
             var Wt = Bt("./math");
-            Object.keys(Wt).forEach(function(On) {
+            Object.keys(Wt).forEach((function(On) {
                 "default" !== On && "__esModule" !== On && Object.defineProperty(Xt, On, {
                     enumerable: !0,
                     get: function() {
                         return Wt[On]
                     }
                 })
-            });
+            }
+            ));
             var zt = Bt("pixi-gl-core");
             Object.defineProperty(Xt, "glCore", {
                 enumerable: !0,
@@ -14805,7 +14998,7 @@ function(Bt) {
                 Jt.fromFrame = function($t) {
                     var en = Wt.TextureCache[$t];
                     if (!en)
-                        throw new Error("The frameId \"" + $t + "\" does not exist in the texture cache");
+                        throw new Error('The frameId "' + $t + '" does not exist in the texture cache');
                     return new Jt(en)
                 }
                 ,
@@ -15749,7 +15942,7 @@ function(Bt) {
                       , Vt = jt._canvas
                       , qt = jt._context;
                     qt.font = Wt;
-                    var Kt = Math.ceil(qt.measureText("|M\xC9q").width)
+                    var Kt = Math.ceil(qt.measureText("|MÉq").width)
                       , Zt = Math.ceil(qt.measureText("M").width)
                       , Qt = 2 * Zt;
                     Zt = 0 | 1.4 * Zt,
@@ -15760,7 +15953,7 @@ function(Bt) {
                     qt.font = Wt,
                     qt.textBaseline = "alphabetic",
                     qt.fillStyle = "#000",
-                    qt.fillText("|M\xC9q", 0, Zt);
+                    qt.fillText("|MÉq", 0, Zt);
                     var Jt = qt.getImageData(0, 0, Kt, Qt).data
                       , $t = Jt.length
                       , en = 4 * Kt
@@ -15894,7 +16087,7 @@ function(Bt) {
                     Array.isArray(this.fontFamily) || (Qt = this.fontFamily.split(","));
                     for (var Jt = Qt.length - 1, $t; 0 <= Jt; Jt--)
                         $t = Qt[Jt].trim(),
-                        /([\"\'])[^\'\"]+\1/.test($t) || ($t = "\"" + $t + "\""),
+                        /([\"\'])[^\'\"]+\1/.test($t) || ($t = '"' + $t + '"'),
                         Qt[Jt] = $t;
                     return this.fontStyle + " " + this.fontVariant + " " + this.fontWeight + " " + Zt + " " + Qt.join(",")
                 }
@@ -16335,24 +16528,26 @@ function(Bt) {
                         var en = this;
                         $t && (window.createImageBitmap && !Qt.getContext ? (en.hasLoaded = !0,
                         en.update(!0),
-                        window.createImageBitmap(Qt).then(function(tn) {
+                        window.createImageBitmap(Qt).then((function(tn) {
                             en.source = tn,
                             en.emit("loaded", en)
-                        })) : (this._sourceLoaded(),
+                        }
+                        ))) : (this._sourceLoaded(),
                         en.emit("loaded", en)))
                     } else if (!Qt.getContext && (this.isLoading = !0,
                     en = this,
-                    (Qt.onload = function() {
+                    Qt.onload = function() {
                         en._updateImageType(),
                         Qt.onload = null,
                         Qt.onerror = null,
                         en.isLoading && (en.isLoading = !1,
                         "svg" === en.imageType ? en._loadSvgSource() : window.createImageBitmap ? (en.hasLoaded = !0,
                         en.update(!0),
-                        window.createImageBitmap(Qt).then(function(tn) {
+                        window.createImageBitmap(Qt).then((function(tn) {
                             en.source = tn,
                             en.emit("loaded", en)
-                        })) : (en._sourceLoaded(),
+                        }
+                        ))) : (en._sourceLoaded(),
                         en.emit("loaded", en)))
                     }
                     ,
@@ -16363,7 +16558,7 @@ function(Bt) {
                         en.emit("error", en))
                     }
                     ,
-                    Qt.complete && Qt.src))) {
+                    Qt.complete && Qt.src)) {
                         if (Qt.onload = null,
                         Qt.onerror = null,
                         "svg" === en.imageType)
@@ -16371,10 +16566,11 @@ function(Bt) {
                         this.isLoading = !1,
                         Qt.width && Qt.height ? Jt && (window.createImageBitmap ? (en.hasLoaded = !0,
                         en.update(!0),
-                        window.createImageBitmap(Qt).then(function(tn) {
+                        window.createImageBitmap(Qt).then((function(tn) {
                             en.source = tn,
                             en.emit("loaded", en)
-                        })) : (this._sourceLoaded(),
+                        }
+                        ))) : (this._sourceLoaded(),
                         en.emit("loaded", en))) : Jt && this.emit("error", this)
                     }
                 }
@@ -16711,9 +16907,10 @@ function(Bt) {
                     var Vt = this;
                     this._processFrames(this._batchIndex * zt.BATCH_SIZE),
                     this._batchIndex++,
-                    setTimeout(function() {
+                    setTimeout((function() {
                         Vt._batchIndex * zt.BATCH_SIZE < Vt._frameKeys.length ? Vt._nextBatch() : Vt._parseComplete()
-                    }, 0)
+                    }
+                    ), 0)
                 }
                 ,
                 zt.prototype.destroy = function() {
@@ -16875,7 +17072,7 @@ function(Bt) {
                 en.fromFrame = function(tn) {
                     var nn = Zt.TextureCache[tn];
                     if (!nn)
-                        throw new Error("The frameId \"" + tn + "\" does not exist in the texture cache");
+                        throw new Error('The frameId "' + tn + '" does not exist in the texture cache');
                     return nn
                 }
                 ,
@@ -16984,7 +17181,7 @@ function(Bt) {
                 en
             }(qt.default);
             Xt.default = Jt,
-            Jt.EMPTY = new Jt(new Wt.default()),
+            Jt.EMPTY = new Jt(new Wt.default),
             Ht(Jt.EMPTY),
             Ht(Jt.EMPTY.baseTexture),
             Jt.WHITE = function() {
@@ -17578,7 +17775,7 @@ function(Bt) {
             Xt.sayHello = function(an) {
                 if (!$t) {
                     if (-1 < navigator.userAgent.toLowerCase().indexOf("chrome")) {
-                        var rn = ["\n %c %c %c PixiJS " + jt.VERSION + " - \u2730 " + an + " \u2730  %c  %c  http://www.pixijs.com/  %c %c \u2665%c\u2665%c\u2665 \n\n", "background: #ff66a5; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff66a5; background: #030307; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "background: #ffc3dc; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;"];
+                        var rn = ["\n %c %c %c PixiJS " + jt.VERSION + " - ✰ " + an + " ✰  %c  %c  http://www.pixijs.com/  %c %c ♥%c♥%c♥ \n\n", "background: #ff66a5; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff66a5; background: #030307; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "background: #ffc3dc; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;"];
                         window.console.log.apply(console, rn)
                     } else
                         window.console && window.console.log("PixiJS " + jt.VERSION + " - " + an + " - http://www.pixijs.com/");
@@ -17811,7 +18008,7 @@ function(Bt) {
         , {}],
         130: [function(Bt, Gt, Xt) {
             function Yt(Ht) {
-                var jt = new Error().stack;
+                var jt = (new Error).stack;
                 void 0 === jt ? console.warn("Deprecation Warning: ", Ht) : (jt = jt.split("\n").splice(3).join("\n"),
                 console.groupCollapsed ? (console.groupCollapsed("%cDeprecation Warning: %c%s", "color:#614108;background:#fffbe6", "font-weight:normal;color:#614108;background:#fffbe6", Ht),
                 console.warn(jt),
@@ -18759,10 +18956,10 @@ function(Bt) {
                     Jt._text = Zt,
                     Jt._maxWidth = 0,
                     Jt._maxLineHeight = 0,
-                    Jt._anchor = new Wt.default(function() {
+                    Jt._anchor = new Wt.default((function() {
                         Jt.dirty = !0
                     }
-                    ,Jt,0,0),
+                    ),Jt,0,0),
                     Jt.dirty = !1,
                     Jt.updateText(),
                     Jt
@@ -19225,7 +19422,7 @@ function(Bt) {
                 Zt.fromFrame = function(Qt, Jt, $t) {
                     var en = jt.utils.TextureCache[Qt];
                     if (!en)
-                        throw new Error("The frameId \"" + Qt + "\" does not exist in the texture cache " + this);
+                        throw new Error('The frameId "' + Qt + '" does not exist in the texture cache ' + this);
                     return new Zt(en,Jt,$t)
                 }
                 ,
@@ -20084,12 +20281,12 @@ function(Bt) {
             }
             ;
             var Yt = {
-                5: [0.153388, 0.221461, 0.250301],
-                7: [0.071303, 0.131514, 0.189879, 0.214607],
-                9: [0.028532, 0.067234, 0.124009, 0.179044, 0.20236],
-                11: [0.0093, 0.028002, 0.065984, 0.121703, 0.175713, 0.198596],
-                13: [0.002406, 0.009255, 0.027867, 0.065666, 0.121117, 0.174868, 0.197641],
-                15: [0.000489, 0.002403, 0.009246, 0.02784, 0.065602, 0.120999, 0.174697, 0.197448]
+                5: [.153388, .221461, .250301],
+                7: [.071303, .131514, .189879, .214607],
+                9: [.028532, .067234, .124009, .179044, .20236],
+                11: [.0093, .028002, .065984, .121703, .175713, .198596],
+                13: [.002406, .009255, .027867, .065666, .121117, .174868, .197641],
+                15: [489e-6, .002403, .009246, .02784, .065602, .120999, .174697, .197448]
             }
               , Ht = ["varying vec2 vBlurTexCoords[%size%];", "uniform sampler2D uSampler;", "void main(void)", "{", "    gl_FragColor = vec4(0.0);", "    %blur%", "}"].join("\n")
         }
@@ -20224,7 +20421,7 @@ function(Bt) {
                 }
                 ,
                 zt.prototype.blackAndWhite = function(Vt) {
-                    this._loadMatrix([0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([.3, .6, .1, 0, 0, .3, .6, .1, 0, 0, .3, .6, .1, 0, 0, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.hue = function(Vt, qt) {
@@ -20259,15 +20456,15 @@ function(Bt) {
                 }
                 ,
                 zt.prototype.sepia = function(Vt) {
-                    this._loadMatrix([0.393, 0.7689999, 0.18899999, 0, 0, 0.349, 0.6859999, 0.16799999, 0, 0, 0.272, 0.5339999, 0.13099999, 0, 0, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([.393, .7689999, .18899999, 0, 0, .349, .6859999, .16799999, 0, 0, .272, .5339999, .13099999, 0, 0, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.technicolor = function(Vt) {
-                    this._loadMatrix([1.9125277891456083, -0.8545344976951645, -0.09155508482755585, 0, 11.793603434377337, -0.3087833385928097, 1.7658908555458428, -0.10601743074722245, 0, -70.35205161461398, -0.231103377548616, -0.7501899197440212, 1.847597816108189, 0, 30.950940869491138, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([1.9125277891456083, -.8545344976951645, -.09155508482755585, 0, 11.793603434377337, -.3087833385928097, 1.7658908555458428, -.10601743074722245, 0, -70.35205161461398, -.231103377548616, -.7501899197440212, 1.847597816108189, 0, 30.950940869491138, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.polaroid = function(Vt) {
-                    this._loadMatrix([1.438, -0.062, -0.062, 0, 0, -0.122, 1.378, -0.122, 0, 0, -0.016, -0.016, 1.483, 0, 0, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([1.438, -.062, -.062, 0, 0, -.122, 1.378, -.122, 0, 0, -.016, -.016, 1.483, 0, 0, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.toBGR = function(Vt) {
@@ -20275,15 +20472,15 @@ function(Bt) {
                 }
                 ,
                 zt.prototype.kodachrome = function(Vt) {
-                    this._loadMatrix([1.1285582396593525, -0.3967382283601348, -0.03992559172921793, 0, 63.72958762196502, -0.16404339962244616, 1.0835251566291304, -0.05498805115633132, 0, 24.732407896706203, -0.16786010706155763, -0.5603416277695248, 1.6014850761964943, 0, 35.62982807460946, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([1.1285582396593525, -.3967382283601348, -.03992559172921793, 0, 63.72958762196502, -.16404339962244616, 1.0835251566291304, -.05498805115633132, 0, 24.732407896706203, -.16786010706155763, -.5603416277695248, 1.6014850761964943, 0, 35.62982807460946, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.browni = function(Vt) {
-                    this._loadMatrix([0.5997023498159715, 0.34553243048391263, -0.2708298674538042, 0, 47.43192855600873, -0.037703249837783157, 0.8609577587992641, 0.15059552388459913, 0, -36.96841498319127, 0.24113635128153335, -0.07441037908422492, 0.44972182064877153, 0, -7.562075277591283, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([.5997023498159715, .34553243048391263, -.2708298674538042, 0, 47.43192855600873, -.037703249837783157, .8609577587992641, .15059552388459913, 0, -36.96841498319127, .24113635128153335, -.07441037908422492, .44972182064877153, 0, -7.562075277591283, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.vintage = function(Vt) {
-                    this._loadMatrix([0.6279345635605994, 0.3202183420819367, -0.03965408211312453, 0, 9.651285835294123, 0.02578397704808868, 0.6441188644374771, 0.03259127616149294, 0, 7.462829176470591, 0.0466055556782719, -0.0851232987247891, 0.5241648018700465, 0, 5.159190588235296, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([.6279345635605994, .3202183420819367, -.03965408211312453, 0, 9.651285835294123, .02578397704808868, .6441188644374771, .03259127616149294, 0, 7.462829176470591, .0466055556782719, -.0851232987247891, .5241648018700465, 0, 5.159190588235296, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.colorTone = function(Vt, qt, Kt, Zt, Qt) {
@@ -20309,7 +20506,7 @@ function(Bt) {
                 }
                 ,
                 zt.prototype.lsd = function(Vt) {
-                    this._loadMatrix([2, -0.4, 0.5, 0, 0, -0.5, 2, -0.4, 0, 0, -0.4, -0.5, 3, 0, 0, 0, 0, 0, 1, 0], Vt)
+                    this._loadMatrix([2, -.4, .5, 0, 0, -.5, 2, -.4, 0, 0, -.4, -.5, 3, 0, 0, 0, 0, 0, 1, 0], Vt)
                 }
                 ,
                 zt.prototype.reset = function() {
@@ -20456,7 +20653,7 @@ function(Bt) {
                         if (!zt)
                             throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
                         return Vt && ("object" == typeof Vt || "function" == typeof Vt) ? Vt : zt
-                    }(this, jt.call(this, "\nattribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nuniform mat3 projectionMatrix;\n\nvarying vec2 v_rgbNW;\nvarying vec2 v_rgbNE;\nvarying vec2 v_rgbSW;\nvarying vec2 v_rgbSE;\nvarying vec2 v_rgbM;\n\nuniform vec4 filterArea;\n\nvarying vec2 vTextureCoord;\n\nvec2 mapCoord( vec2 coord )\n{\n    coord *= filterArea.xy;\n    coord += filterArea.zw;\n\n    return coord;\n}\n\nvec2 unmapCoord( vec2 coord )\n{\n    coord -= filterArea.zw;\n    coord /= filterArea.xy;\n\n    return coord;\n}\n\nvoid texcoords(vec2 fragCoord, vec2 resolution,\n               out vec2 v_rgbNW, out vec2 v_rgbNE,\n               out vec2 v_rgbSW, out vec2 v_rgbSE,\n               out vec2 v_rgbM) {\n    vec2 inverseVP = 1.0 / resolution.xy;\n    v_rgbNW = (fragCoord + vec2(-1.0, -1.0)) * inverseVP;\n    v_rgbNE = (fragCoord + vec2(1.0, -1.0)) * inverseVP;\n    v_rgbSW = (fragCoord + vec2(-1.0, 1.0)) * inverseVP;\n    v_rgbSE = (fragCoord + vec2(1.0, 1.0)) * inverseVP;\n    v_rgbM = vec2(fragCoord * inverseVP);\n}\n\nvoid main(void) {\n\n   gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);\n\n   vTextureCoord = aTextureCoord;\n\n   vec2 fragCoord = vTextureCoord * filterArea.xy;\n\n   texcoords(fragCoord, filterArea.xy, v_rgbNW, v_rgbNE, v_rgbSW, v_rgbSE, v_rgbM);\n}", "varying vec2 v_rgbNW;\nvarying vec2 v_rgbNE;\nvarying vec2 v_rgbSW;\nvarying vec2 v_rgbSE;\nvarying vec2 v_rgbM;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\n\n/**\n Basic FXAA implementation based on the code on geeks3d.com with the\n modification that the texture2DLod stuff was removed since it's\n unsupported by WebGL.\n \n --\n \n From:\n https://github.com/mitsuhiko/webgl-meincraft\n \n Copyright (c) 2011 by Armin Ronacher.\n \n Some rights reserved.\n \n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions are\n met:\n \n * Redistributions of source code must retain the above copyright\n notice, this list of conditions and the following disclaimer.\n \n * Redistributions in binary form must reproduce the above\n copyright notice, this list of conditions and the following\n disclaimer in the documentation and/or other materials provided\n with the distribution.\n \n * The names of the contributors may not be used to endorse or\n promote products derived from this software without specific\n prior written permission.\n \n THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n */\n\n#ifndef FXAA_REDUCE_MIN\n#define FXAA_REDUCE_MIN   (1.0/ 128.0)\n#endif\n#ifndef FXAA_REDUCE_MUL\n#define FXAA_REDUCE_MUL   (1.0 / 8.0)\n#endif\n#ifndef FXAA_SPAN_MAX\n#define FXAA_SPAN_MAX     8.0\n#endif\n\n//optimized version for mobile, where dependent\n//texture reads can be a bottleneck\nvec4 fxaa(sampler2D tex, vec2 fragCoord, vec2 resolution,\n          vec2 v_rgbNW, vec2 v_rgbNE,\n          vec2 v_rgbSW, vec2 v_rgbSE,\n          vec2 v_rgbM) {\n    vec4 color;\n    mediump vec2 inverseVP = vec2(1.0 / resolution.x, 1.0 / resolution.y);\n    vec3 rgbNW = texture2D(tex, v_rgbNW).xyz;\n    vec3 rgbNE = texture2D(tex, v_rgbNE).xyz;\n    vec3 rgbSW = texture2D(tex, v_rgbSW).xyz;\n    vec3 rgbSE = texture2D(tex, v_rgbSE).xyz;\n    vec4 texColor = texture2D(tex, v_rgbM);\n    vec3 rgbM  = texColor.xyz;\n    vec3 luma = vec3(0.299, 0.587, 0.114);\n    float lumaNW = dot(rgbNW, luma);\n    float lumaNE = dot(rgbNE, luma);\n    float lumaSW = dot(rgbSW, luma);\n    float lumaSE = dot(rgbSE, luma);\n    float lumaM  = dot(rgbM,  luma);\n    float lumaMin = min(lumaM, min(min(lumaNW, lumaNE), min(lumaSW, lumaSE)));\n    float lumaMax = max(lumaM, max(max(lumaNW, lumaNE), max(lumaSW, lumaSE)));\n    \n    mediump vec2 dir;\n    dir.x = -((lumaNW + lumaNE) - (lumaSW + lumaSE));\n    dir.y =  ((lumaNW + lumaSW) - (lumaNE + lumaSE));\n    \n    float dirReduce = max((lumaNW + lumaNE + lumaSW + lumaSE) *\n                          (0.25 * FXAA_REDUCE_MUL), FXAA_REDUCE_MIN);\n    \n    float rcpDirMin = 1.0 / (min(abs(dir.x), abs(dir.y)) + dirReduce);\n    dir = min(vec2(FXAA_SPAN_MAX, FXAA_SPAN_MAX),\n              max(vec2(-FXAA_SPAN_MAX, -FXAA_SPAN_MAX),\n                  dir * rcpDirMin)) * inverseVP;\n    \n    vec3 rgbA = 0.5 * (\n                       texture2D(tex, fragCoord * inverseVP + dir * (1.0 / 3.0 - 0.5)).xyz +\n                       texture2D(tex, fragCoord * inverseVP + dir * (2.0 / 3.0 - 0.5)).xyz);\n    vec3 rgbB = rgbA * 0.5 + 0.25 * (\n                                     texture2D(tex, fragCoord * inverseVP + dir * -0.5).xyz +\n                                     texture2D(tex, fragCoord * inverseVP + dir * 0.5).xyz);\n    \n    float lumaB = dot(rgbB, luma);\n    if ((lumaB < lumaMin) || (lumaB > lumaMax))\n        color = vec4(rgbA, texColor.a);\n    else\n        color = vec4(rgbB, texColor.a);\n    return color;\n}\n\nvoid main() {\n\n      vec2 fragCoord = vTextureCoord * filterArea.xy;\n\n      vec4 color;\n\n    color = fxaa(uSampler, fragCoord, filterArea.xy, v_rgbNW, v_rgbNE, v_rgbSW, v_rgbSE, v_rgbM);\n\n      gl_FragColor = color;\n}\n"))
+                    }(this, jt.call(this, "\nattribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nuniform mat3 projectionMatrix;\n\nvarying vec2 v_rgbNW;\nvarying vec2 v_rgbNE;\nvarying vec2 v_rgbSW;\nvarying vec2 v_rgbSE;\nvarying vec2 v_rgbM;\n\nuniform vec4 filterArea;\n\nvarying vec2 vTextureCoord;\n\nvec2 mapCoord( vec2 coord )\n{\n    coord *= filterArea.xy;\n    coord += filterArea.zw;\n\n    return coord;\n}\n\nvec2 unmapCoord( vec2 coord )\n{\n    coord -= filterArea.zw;\n    coord /= filterArea.xy;\n\n    return coord;\n}\n\nvoid texcoords(vec2 fragCoord, vec2 resolution,\n               out vec2 v_rgbNW, out vec2 v_rgbNE,\n               out vec2 v_rgbSW, out vec2 v_rgbSE,\n               out vec2 v_rgbM) {\n    vec2 inverseVP = 1.0 / resolution.xy;\n    v_rgbNW = (fragCoord + vec2(-1.0, -1.0)) * inverseVP;\n    v_rgbNE = (fragCoord + vec2(1.0, -1.0)) * inverseVP;\n    v_rgbSW = (fragCoord + vec2(-1.0, 1.0)) * inverseVP;\n    v_rgbSE = (fragCoord + vec2(1.0, 1.0)) * inverseVP;\n    v_rgbM = vec2(fragCoord * inverseVP);\n}\n\nvoid main(void) {\n\n   gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);\n\n   vTextureCoord = aTextureCoord;\n\n   vec2 fragCoord = vTextureCoord * filterArea.xy;\n\n   texcoords(fragCoord, filterArea.xy, v_rgbNW, v_rgbNE, v_rgbSW, v_rgbSE, v_rgbM);\n}", 'varying vec2 v_rgbNW;\nvarying vec2 v_rgbNE;\nvarying vec2 v_rgbSW;\nvarying vec2 v_rgbSE;\nvarying vec2 v_rgbM;\n\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\nuniform vec4 filterArea;\n\n/**\n Basic FXAA implementation based on the code on geeks3d.com with the\n modification that the texture2DLod stuff was removed since it\'s\n unsupported by WebGL.\n \n --\n \n From:\n https://github.com/mitsuhiko/webgl-meincraft\n \n Copyright (c) 2011 by Armin Ronacher.\n \n Some rights reserved.\n \n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions are\n met:\n \n * Redistributions of source code must retain the above copyright\n notice, this list of conditions and the following disclaimer.\n \n * Redistributions in binary form must reproduce the above\n copyright notice, this list of conditions and the following\n disclaimer in the documentation and/or other materials provided\n with the distribution.\n \n * The names of the contributors may not be used to endorse or\n promote products derived from this software without specific\n prior written permission.\n \n THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n */\n\n#ifndef FXAA_REDUCE_MIN\n#define FXAA_REDUCE_MIN   (1.0/ 128.0)\n#endif\n#ifndef FXAA_REDUCE_MUL\n#define FXAA_REDUCE_MUL   (1.0 / 8.0)\n#endif\n#ifndef FXAA_SPAN_MAX\n#define FXAA_SPAN_MAX     8.0\n#endif\n\n//optimized version for mobile, where dependent\n//texture reads can be a bottleneck\nvec4 fxaa(sampler2D tex, vec2 fragCoord, vec2 resolution,\n          vec2 v_rgbNW, vec2 v_rgbNE,\n          vec2 v_rgbSW, vec2 v_rgbSE,\n          vec2 v_rgbM) {\n    vec4 color;\n    mediump vec2 inverseVP = vec2(1.0 / resolution.x, 1.0 / resolution.y);\n    vec3 rgbNW = texture2D(tex, v_rgbNW).xyz;\n    vec3 rgbNE = texture2D(tex, v_rgbNE).xyz;\n    vec3 rgbSW = texture2D(tex, v_rgbSW).xyz;\n    vec3 rgbSE = texture2D(tex, v_rgbSE).xyz;\n    vec4 texColor = texture2D(tex, v_rgbM);\n    vec3 rgbM  = texColor.xyz;\n    vec3 luma = vec3(0.299, 0.587, 0.114);\n    float lumaNW = dot(rgbNW, luma);\n    float lumaNE = dot(rgbNE, luma);\n    float lumaSW = dot(rgbSW, luma);\n    float lumaSE = dot(rgbSE, luma);\n    float lumaM  = dot(rgbM,  luma);\n    float lumaMin = min(lumaM, min(min(lumaNW, lumaNE), min(lumaSW, lumaSE)));\n    float lumaMax = max(lumaM, max(max(lumaNW, lumaNE), max(lumaSW, lumaSE)));\n    \n    mediump vec2 dir;\n    dir.x = -((lumaNW + lumaNE) - (lumaSW + lumaSE));\n    dir.y =  ((lumaNW + lumaSW) - (lumaNE + lumaSE));\n    \n    float dirReduce = max((lumaNW + lumaNE + lumaSW + lumaSE) *\n                          (0.25 * FXAA_REDUCE_MUL), FXAA_REDUCE_MIN);\n    \n    float rcpDirMin = 1.0 / (min(abs(dir.x), abs(dir.y)) + dirReduce);\n    dir = min(vec2(FXAA_SPAN_MAX, FXAA_SPAN_MAX),\n              max(vec2(-FXAA_SPAN_MAX, -FXAA_SPAN_MAX),\n                  dir * rcpDirMin)) * inverseVP;\n    \n    vec3 rgbA = 0.5 * (\n                       texture2D(tex, fragCoord * inverseVP + dir * (1.0 / 3.0 - 0.5)).xyz +\n                       texture2D(tex, fragCoord * inverseVP + dir * (2.0 / 3.0 - 0.5)).xyz);\n    vec3 rgbB = rgbA * 0.5 + 0.25 * (\n                                     texture2D(tex, fragCoord * inverseVP + dir * -0.5).xyz +\n                                     texture2D(tex, fragCoord * inverseVP + dir * 0.5).xyz);\n    \n    float lumaB = dot(rgbB, luma);\n    if ((lumaB < lumaMin) || (lumaB > lumaMax))\n        color = vec4(rgbA, texColor.a);\n    else\n        color = vec4(rgbB, texColor.a);\n    return color;\n}\n\nvoid main() {\n\n      vec2 fragCoord = vTextureCoord * filterArea.xy;\n\n      vec4 color;\n\n    color = fxaa(uSampler, fragCoord, filterArea.xy, v_rgbNW, v_rgbNE, v_rgbSW, v_rgbSE, v_rgbM);\n\n      gl_FragColor = color;\n}\n'))
                 }
                 return function(zt, Vt) {
                     if ("function" != typeof Vt && null !== Vt)
@@ -20991,7 +21188,7 @@ function(Bt) {
                                 nn(tn);
                                 break;
                             case "object":
-                                Object.assign(this.interactionDOMElement.style, nn);
+                                Object.assign(this.interactionDOMElement.style, nn)
                             }
                         else
                             "string" != typeof tn || Object.prototype.hasOwnProperty.call(this.cursorStyles, tn) || (this.interactionDOMElement.style.cursor = tn)
@@ -21484,10 +21681,11 @@ function(Bt) {
                                 metadata: Vt.metadata.imageMetadata,
                                 parentResource: Vt
                             };
-                            this.add(Vt.name + "_image", Zt, Qt, function(Jt) {
+                            this.add(Vt.name + "_image", Zt, Qt, (function(Jt) {
                                 Yt(Vt, Jt.texture),
                                 qt()
-                            })
+                            }
+                            ))
                         }
                     } else
                         qt()
@@ -21622,21 +21820,26 @@ function(Bt) {
                     Wt.default.call(nn);
                     for (var an = 0; an < $t._pixiMiddleware.length; ++an)
                         nn.use($t._pixiMiddleware[an]());
-                    return nn.onStart.add(function(rn) {
+                    return nn.onStart.add((function(rn) {
                         return nn.emit("start", rn)
-                    }),
-                    nn.onProgress.add(function(rn, on) {
+                    }
+                    )),
+                    nn.onProgress.add((function(rn, on) {
                         return nn.emit("progress", rn, on)
-                    }),
-                    nn.onError.add(function(rn, on, sn) {
+                    }
+                    )),
+                    nn.onError.add((function(rn, on, sn) {
                         return nn.emit("error", rn, on, sn)
-                    }),
-                    nn.onLoad.add(function(rn, on) {
+                    }
+                    )),
+                    nn.onLoad.add((function(rn, on) {
                         return nn.emit("load", rn, on)
-                    }),
-                    nn.onComplete.add(function(rn, on) {
+                    }
+                    )),
+                    nn.onComplete.add((function(rn, on) {
                         return nn.emit("complete", rn, on)
-                    }),
+                    }
+                    )),
                     nn
                 }
                 return function(en, tn) {
@@ -21694,14 +21897,16 @@ function(Bt) {
                             parentResource: zt
                         }
                           , Zt = Yt(zt, this.baseUrl);
-                        this.add(qt, Zt, Kt, function(Qt) {
+                        this.add(qt, Zt, Kt, (function(Qt) {
                             var Jt = new Wt.Spritesheet(Qt.texture.baseTexture,zt.data,zt.url);
-                            Jt.parse(function() {
+                            Jt.parse((function() {
                                 zt.spritesheet = Jt,
                                 zt.textures = Jt.textures,
                                 Vt()
-                            })
-                        })
+                            }
+                            ))
+                        }
+                        ))
                     } else
                         Vt()
                 }
@@ -22669,9 +22874,10 @@ function(Bt) {
                 Vt.prototype.renderWebGL = function(qt) {
                     var Kt = this;
                     this.visible && !(0 >= this.worldAlpha) && this.children.length && this.renderable && (this.baseTexture || (this.baseTexture = this.children[0]._texture.baseTexture,
-                    this.baseTexture.hasLoaded || this.baseTexture.once("update", function() {
+                    this.baseTexture.hasLoaded || this.baseTexture.once("update", (function() {
                         return Kt.onChildrenChange(0)
-                    })),
+                    }
+                    ))),
                     qt.setObjectRenderer(qt.plugins.particle),
                     qt.plugins.particle.render(this))
                 }
@@ -23197,7 +23403,7 @@ function(Bt) {
         181: [function() {
             (function(Yt) {
                 if (Date.now && Date.prototype.getTime || (Date.now = function() {
-                    return new Date().getTime()
+                    return (new Date).getTime()
                 }
                 ),
                 !Yt.performance || !Yt.performance.now) {
@@ -23218,10 +23424,11 @@ function(Bt) {
                       , Zt = 16 + jt - Kt;
                     return 0 > Zt && (Zt = 0),
                     jt = Kt,
-                    setTimeout(function() {
+                    setTimeout((function() {
                         jt = Date.now(),
                         qt(performance.now())
-                    }, Zt)
+                    }
+                    ), Zt)
                 }
                 ),
                 Yt.cancelAnimationFrame || (Yt.cancelAnimationFrame = function(qt) {
@@ -23657,23 +23864,25 @@ function(Bt) {
                 Xt.__esModule = !0,
                 Xt.loader = Xt.prepare = Xt.particles = Xt.mesh = Xt.loaders = Xt.interaction = Xt.filters = Xt.extras = Xt.extract = Xt.accessibility = void 0;
                 var jt = Bt("./polyfill");
-                Object.keys(jt).forEach(function(an) {
+                Object.keys(jt).forEach((function(an) {
                     "default" !== an && "__esModule" !== an && Object.defineProperty(Xt, an, {
                         enumerable: !0,
                         get: function() {
                             return jt[an]
                         }
                     })
-                });
+                }
+                ));
                 var Wt = Bt("./core");
-                Object.keys(Wt).forEach(function(an) {
+                Object.keys(Wt).forEach((function(an) {
                     "default" !== an && "__esModule" !== an && Object.defineProperty(Xt, an, {
                         enumerable: !0,
                         get: function() {
                             return Wt[an]
                         }
                     })
-                });
+                }
+                ));
                 var zt = function(an) {
                     return an && an.__esModule ? an : {
                         default: an
@@ -23721,7 +23930,8 @@ function(Bt) {
             "./prepare": 184
         }]
     }, {}, [188])(188)
-}),
+}
+)),
 function() {
     var Bt = function() {
         this.init()
@@ -23793,14 +24003,14 @@ function() {
             !Kt.usingWebAudio)
                 if ("undefined" != typeof Audio)
                     try {
-                        void 0 === new Audio().oncanplaythrough && (Kt._canPlayEvent = "canplay")
+                        void 0 === (new Audio).oncanplaythrough && (Kt._canPlayEvent = "canplay")
                     } catch (Zt) {
                         Kt.noAudio = !0
                     }
                 else
                     Kt.noAudio = !0;
             try {
-                new Audio().muted && (Kt.noAudio = !0)
+                (new Audio).muted && (Kt.noAudio = !0)
             } catch (Zt) {}
             return Kt.noAudio || Kt._setupCodecs(),
             Kt
@@ -23821,17 +24031,17 @@ function() {
             return Kt._codecs = {
                 mp3: !$t && (Qt || Zt.canPlayType("audio/mp3;").replace(/^no$/, "")),
                 mpeg: !!Qt,
-                opus: !!Zt.canPlayType("audio/ogg; codecs=\"opus\"").replace(/^no$/, ""),
-                ogg: !!Zt.canPlayType("audio/ogg; codecs=\"vorbis\"").replace(/^no$/, ""),
-                oga: !!Zt.canPlayType("audio/ogg; codecs=\"vorbis\"").replace(/^no$/, ""),
-                wav: !!Zt.canPlayType("audio/wav; codecs=\"1\"").replace(/^no$/, ""),
+                opus: !!Zt.canPlayType('audio/ogg; codecs="opus"').replace(/^no$/, ""),
+                ogg: !!Zt.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ""),
+                oga: !!Zt.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ""),
+                wav: !!Zt.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ""),
                 aac: !!Zt.canPlayType("audio/aac;").replace(/^no$/, ""),
                 caf: !!Zt.canPlayType("audio/x-caf;").replace(/^no$/, ""),
                 m4a: !!(Zt.canPlayType("audio/x-m4a;") || Zt.canPlayType("audio/m4a;") || Zt.canPlayType("audio/aac;")).replace(/^no$/, ""),
                 mp4: !!(Zt.canPlayType("audio/x-mp4;") || Zt.canPlayType("audio/mp4;") || Zt.canPlayType("audio/aac;")).replace(/^no$/, ""),
-                weba: !!Zt.canPlayType("audio/webm; codecs=\"vorbis\"").replace(/^no$/, ""),
-                webm: !!Zt.canPlayType("audio/webm; codecs=\"vorbis\"").replace(/^no$/, ""),
-                dolby: !!Zt.canPlayType("audio/mp4; codecs=\"ec-3\"").replace(/^no$/, ""),
+                weba: !!Zt.canPlayType('audio/webm; codecs="vorbis"').replace(/^no$/, ""),
+                webm: !!Zt.canPlayType('audio/webm; codecs="vorbis"').replace(/^no$/, ""),
+                dolby: !!Zt.canPlayType('audio/mp4; codecs="ec-3"').replace(/^no$/, ""),
                 flac: !!(Zt.canPlayType("audio/x-flac;") || Zt.canPlayType("audio/flac;")).replace(/^no$/, "")
             },
             Kt
@@ -23874,15 +24084,17 @@ function() {
                             if (!Kt._howls[Zt]._sounds[Qt]._paused)
                                 return Kt;
                 return Kt._suspendTimer && clearTimeout(Kt._suspendTimer),
-                Kt._suspendTimer = setTimeout(function() {
+                Kt._suspendTimer = setTimeout((function() {
                     Kt.autoSuspend && (Kt._suspendTimer = null,
                     Kt.state = "suspending",
-                    Kt.ctx.suspend().then(function() {
+                    Kt.ctx.suspend().then((function() {
                         Kt.state = "suspended",
                         Kt._resumeAfterSuspend && (delete Kt._resumeAfterSuspend,
                         Kt._autoResume())
-                    }))
-                }, 3e4),
+                    }
+                    )))
+                }
+                ), 3e4),
                 Kt
             }
         },
@@ -23890,11 +24102,12 @@ function() {
             var Kt = this;
             if (Kt.ctx && void 0 !== Kt.ctx.resume && Gt.usingWebAudio)
                 return "running" === Kt.state && Kt._suspendTimer ? (clearTimeout(Kt._suspendTimer),
-                Kt._suspendTimer = null) : "suspended" === Kt.state ? (Kt.ctx.resume().then(function() {
+                Kt._suspendTimer = null) : "suspended" === Kt.state ? (Kt.ctx.resume().then((function() {
                     Kt.state = "running";
                     for (var Zt = 0; Zt < Kt._howls.length; Zt++)
                         Kt._howls[Zt]._emit("resume")
-                }),
+                }
+                )),
                 Kt._suspendTimer && (clearTimeout(Kt._suspendTimer),
                 Kt._suspendTimer = null)) : "suspending" === Kt.state && (Kt._resumeAfterSuspend = !0),
                 Kt
@@ -23992,7 +24205,7 @@ function() {
                         (Qt = /^data:audio\/([^;,]+);/i.exec(Jt)) || (Qt = /\.([^.]+)$/.exec(Jt.split("?", 1)[0])),
                         Qt && (Qt = Qt[1].toLowerCase())
                     }
-                    if (Qt || console.warn("No file extension was found. Consider using the \"format\" property or specify an extension."),
+                    if (Qt || console.warn('No file extension was found. Consider using the "format" property or specify an extension.'),
                     Qt && Gt.codecs(Qt)) {
                         Kt = this._src[Zt];
                         break
@@ -24043,9 +24256,10 @@ function() {
                 nn
             }
             if (Jt && !tn._paused)
-                return Zt || setTimeout(function() {
+                return Zt || setTimeout((function() {
                     Qt._emit("play", tn._id)
-                }, 0),
+                }
+                ), 0),
                 tn._id;
             Qt._webAudio && Gt._autoResume();
             var an = Math.max(0, 0 < tn._seek ? tn._seek : Qt._sprite[Kt][0] / 1e3)
@@ -24067,9 +24281,10 @@ function() {
                     tn._playStart = Gt.ctx.currentTime,
                     void 0 === sn.bufferSource.start ? tn._loop ? sn.bufferSource.noteGrainOn(0, an, 86400) : sn.bufferSource.noteGrainOn(0, an, rn) : tn._loop ? sn.bufferSource.start(0, an, 86400) : sn.bufferSource.start(0, an, rn),
                     on != 1 / 0 && (Qt._endTimers[tn._id] = setTimeout(Qt._ended.bind(Qt, tn), on)),
-                    Zt || setTimeout(function() {
+                    Zt || setTimeout((function() {
                         Qt._emit("play", tn._id)
-                    }, 0)
+                    }
+                    ), 0)
                 };
                 "running" === Gt.state ? dn() : (Qt.once("resume", dn),
                 Qt._clearTimer(tn._id))
@@ -24237,7 +24452,7 @@ function() {
               , rn = 0 < an ? Jt / an : Jt;
             4 > rn && (an = Math.ceil(an / (4 / rn)),
             rn = 4),
-            Kt._interval = setInterval(function() {
+            Kt._interval = setInterval((function() {
                 0 < an && (tn += "in" == nn ? .01 : -.01),
                 tn = Math.max(0, tn),
                 tn = Math.min(1, tn),
@@ -24248,7 +24463,8 @@ function() {
                 Kt._interval = null,
                 en.volume(Qt, Kt._id),
                 en._emit("fade", Kt._id))
-            }, rn)
+            }
+            ), rn)
         },
         _stopFade: function(Kt) {
             var Zt = this._soundById(Kt);
@@ -24438,10 +24654,11 @@ function() {
             var Kt = this;
             if (0 < Kt._queue.length) {
                 var Zt = Kt._queue[0];
-                Kt.once(Zt.event, function() {
+                Kt.once(Zt.event, (function() {
                     Kt._queue.shift(),
                     Kt._loadQueue()
-                }),
+                }
+                )),
                 Zt.action()
             }
             return Kt
@@ -24642,12 +24859,14 @@ function() {
         }
     }
       , zt = function(Kt, Zt) {
-        Gt.ctx.decodeAudioData(Kt, function(Qt) {
+        Gt.ctx.decodeAudioData(Kt, (function(Qt) {
             Qt && 0 < Zt._sounds.length && (Ht[Zt._src] = Qt,
             Vt(Zt, Qt))
-        }, function() {
+        }
+        ), (function() {
             Zt._emit("loaderror", null, "Decoding audio data failed.")
-        })
+        }
+        ))
     }
       , Vt = function(Kt, Zt) {
         Zt && !Kt._duration && (Kt._duration = Zt.duration),
@@ -24676,12 +24895,13 @@ function() {
         Gt.masterGain.connect(Gt.ctx.destination)),
         Gt._setup()
     };
-    "function" == typeof define && define.amd && define([], function() {
+    "function" == typeof define && define.amd && define([], (function() {
         return {
             Howler: Gt,
             Howl: Xt
         }
-    }),
+    }
+    )),
     "undefined" != typeof exports && (exports.Howler = Gt,
     exports.Howl = Xt),
     "undefined" == typeof window ? "undefined" != typeof global && (global.HowlerGlobal = Bt,
@@ -24843,7 +25063,7 @@ function() {
                 if ("number" != typeof Gt)
                     return Vt._orientation;
                 Vt._orientation = [Gt, Xt, Yt],
-                Vt._node && (Vt._panner || (Vt._pos || (Vt._pos = jt._pos || [0, 0, -0.5]),
+                Vt._node && (Vt._panner || (Vt._pos || (Vt._pos = jt._pos || [0, 0, -.5]),
                 Bt(Vt, "spatial")),
                 Vt._panner.setOrientation(Gt, Xt, Yt)),
                 jt._emit("orientation", Vt._id)
@@ -24905,7 +25125,7 @@ function() {
                 Vt.maxDistance = zt.maxDistance,
                 Vt.refDistance = zt.refDistance,
                 Vt.rolloffFactor = zt.rolloffFactor,
-                Vt.panningModel = zt.panningModel) : (Yt._pos || (Yt._pos = this._pos || [0, 0, -0.5]),
+                Vt.panningModel = zt.panningModel) : (Yt._pos || (Yt._pos = this._pos || [0, 0, -.5]),
                 Bt(Yt, "spatial"))
             }
         return this
@@ -24949,7 +25169,7 @@ function() {
 }(),
 function(Bt) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = Bt() : "function" == typeof define && define.amd ? define([], Bt) : ("undefined" == typeof window ? "undefined" == typeof global ? "undefined" == typeof self ? this : self : global : window).nipplejs = Bt()
-}(function() {
+}((function() {
     function Bt() {}
     function Gt(Qt, Jt) {
         return this.identifier = Jt.identifier,
@@ -25035,21 +25255,25 @@ function(Bt) {
         Jt.config(Qt),
         Jt.prepareCollections();
         var $t;
-        return Kt.bindEvt(window, "resize", function() {
+        return Kt.bindEvt(window, "resize", (function() {
             clearTimeout($t),
-            $t = setTimeout(function() {
+            $t = setTimeout((function() {
                 var nn = Kt.getScroll(), tn;
-                Jt.collections.forEach(function(an) {
-                    an.forEach(function(rn) {
+                Jt.collections.forEach((function(an) {
+                    an.forEach((function(rn) {
                         tn = rn.el.getBoundingClientRect(),
                         rn.position = {
                             x: nn.x + tn.left,
                             y: nn.y + tn.top
                         }
-                    })
-                })
-            }, 100)
-        }),
+                    }
+                    ))
+                }
+                ))
+            }
+            ), 100)
+        }
+        )),
         Jt.collections
     }
     var jt = !!("ontouchstart"in window), Wt = !!window.PointerEvent, zt = !!window.MSPointerEvent, Vt = {
@@ -25160,9 +25384,10 @@ function(Bt) {
     Kt.configStylePropertyObject = function(Qt) {
         var Jt = {};
         return Jt[Qt] = "",
-        ["webkit", "Moz", "o"].forEach(function($t) {
+        ["webkit", "Moz", "o"].forEach((function($t) {
             Jt[$t + Qt.charAt(0).toUpperCase() + Qt.slice(1)] = ""
-        }),
+        }
+        )),
         Jt
     }
     ,
@@ -25208,12 +25433,13 @@ function(Bt) {
         en._handlers_ = en._handlers_ || {};
         for (var nn = 0; nn < tn.length; nn += 1)
             $t = tn[nn],
-            en._handlers_[$t] && en._handlers_[$t].length && en._handlers_[$t].forEach(function(an) {
+            en._handlers_[$t] && en._handlers_[$t].length && en._handlers_[$t].forEach((function(an) {
                 an.call(en, {
                     type: $t,
                     target: en
                 }, Jt)
-            })
+            }
+            ))
     }
     ,
     Bt.prototype.config = function(Qt) {
@@ -25225,7 +25451,7 @@ function(Bt) {
         var $t = this;
         return $t._domHandlers_ = $t._domHandlers_ || {},
         $t._domHandlers_[Jt] = function() {
-            "function" == typeof $t["on" + Jt] ? $t["on" + Jt].apply($t, arguments) : console.warn("[WARNING] : Missing \"on" + Jt + "\" handler.")
+            "function" == typeof $t["on" + Jt] ? $t["on" + Jt].apply($t, arguments) : console.warn('[WARNING] : Missing "on' + Jt + '" handler.')
         }
         ,
         Kt.bindEvt(Qt, Ht[Jt], $t._domHandlers_[Jt]),
@@ -25332,13 +25558,15 @@ function(Bt) {
         clearTimeout(Jt.restTimeout),
         Jt.addToDom(),
         Jt.restCallback(),
-        setTimeout(function() {
+        setTimeout((function() {
             Jt.ui.el.style.opacity = 1
-        }, 0),
-        Jt.showTimeout = setTimeout(function() {
+        }
+        ), 0),
+        Jt.showTimeout = setTimeout((function() {
             Jt.trigger("shown", Jt.instance),
             "function" == typeof Qt && Qt.call(this)
-        }, Jt.options.fadeTime),
+        }
+        ), Jt.options.fadeTime),
         Jt)
     }
     ,
@@ -25348,12 +25576,13 @@ function(Bt) {
         clearTimeout(Jt.removeTimeout),
         clearTimeout(Jt.showTimeout),
         clearTimeout(Jt.restTimeout),
-        Jt.removeTimeout = setTimeout(function() {
+        Jt.removeTimeout = setTimeout((function() {
             var $t = "dynamic" === Jt.options.mode ? "none" : "block";
             Jt.ui.el.style.display = $t,
             "function" == typeof Qt && Qt.call(Jt),
             Jt.trigger("hidden", Jt.instance)
-        }, Jt.options.fadeTime),
+        }
+        ), Jt.options.fadeTime),
         Jt.restPosition(),
         Jt)
     }
@@ -25376,10 +25605,11 @@ function(Bt) {
         },
         Jt.applyStyles(en),
         Jt.applyStyles(tn),
-        Jt.restTimeout = setTimeout(function() {
+        Jt.restTimeout = setTimeout((function() {
             "function" == typeof Qt && Qt.call(Jt),
             Jt.restCallback()
-        }, Jt.options.fadeTime)
+        }
+        ), Jt.options.fadeTime)
     }
     ,
     Gt.prototype.restCallback = function() {
@@ -25547,11 +25777,12 @@ function(Bt) {
           , $t = Jt.options;
         return Qt = Kt.prepareEvent(Qt),
         Jt.updateBox(),
-        (Kt.map(Qt, function(en) {
+        Kt.map(Qt, (function(en) {
             Jt.actives.length < $t.maxNumberOfNipples && Jt.processOnStart(en)
-        }),
+        }
+        )),
         Jt.manager.bindDocument(),
-        !1)
+        !1
     }
     ,
     Xt.prototype.processOnStart = function(Qt) {
@@ -25638,12 +25869,13 @@ function(Bt) {
           , en = Jt.manager.getIdentifier(Qt)
           , tn = Jt.nipples.get(en)
           , nn = Jt.manager.removeIdentifier(tn.identifier);
-        tn && ($t.dataOnly || tn.hide(function() {
+        tn && ($t.dataOnly || tn.hide((function() {
             "dynamic" === $t.mode && (tn.trigger("removed", tn),
             Jt.trigger("removed " + tn.id + ":removed", tn),
             Jt.manager.trigger("removed " + tn.id + ":removed", tn),
             tn.destroy())
-        }),
+        }
+        )),
         clearInterval(Jt.pressureIntervals[tn.identifier]),
         tn.resetDirection(),
         tn.trigger("end", tn),
@@ -25666,9 +25898,10 @@ function(Bt) {
     ,
     Xt.prototype.destroy = function() {
         for (var Qt in this.unbindEvt(this.options.zone, "start"),
-        this.nipples.forEach(function(Jt) {
+        this.nipples.forEach((function(Jt) {
             Jt.destroy()
-        }),
+        }
+        )),
         this.pressureIntervals)
             this.pressureIntervals.hasOwnProperty(Qt) && clearInterval(this.pressureIntervals[Qt]);
         this.trigger("destroyed", this.nipples),
@@ -25686,9 +25919,10 @@ function(Bt) {
         Qt.collections.destroy = Qt.destroy.bind(Qt),
         Qt.collections.get = function(Jt) {
             var $t;
-            return Qt.collections.every(function(en) {
+            return Qt.collections.every((function(en) {
                 return !($t = en.get(Jt))
-            }),
+            }
+            )),
             $t
         }
     }
@@ -25759,7 +25993,7 @@ function(Bt) {
     Yt.prototype.onAny = function(Qt, Jt) {
         var en = this, tn = "processOn" + Qt.charAt(0).toUpperCase() + Qt.slice(1), $t;
         return Jt = Kt.prepareEvent(Jt),
-        Kt.map(Jt, function(nn) {
+        Kt.map(Jt, (function(nn) {
             $t = en.getIdentifier(nn),
             Kt.map(en.collections, function(an, rn, on) {
                 0 <= on.ids.indexOf(rn) && (on[tn](an),
@@ -25767,7 +26001,8 @@ function(Bt) {
             }
             .bind(null, nn, $t)),
             nn._found_ || en.removeIdentifier($t)
-        }),
+        }
+        )),
         !1
     }
     ,
@@ -25775,9 +26010,10 @@ function(Bt) {
         this.unbindDocument(!0),
         this.ids = {},
         this.index = 0,
-        this.collections.forEach(function(Qt) {
+        this.collections.forEach((function(Qt) {
             Qt.destroy()
-        }),
+        }
+        )),
         this.off()
     }
     ,
@@ -25792,7 +26028,8 @@ function(Bt) {
         },
         factory: Zt
     }
-}),
+}
+)),
 function() {
     window.DEVELOPMENT = !1,
     window.game = {
@@ -25895,22 +26132,22 @@ function() {
         }],
         mobs: [{}, {
             exhaust: 20,
-            thruster: [0.2, 0.4]
+            thruster: [.2, .4]
         }, {
             exhaust: 30,
-            thruster: [0.3, 0.6]
+            thruster: [.3, .6]
         }, {
             exhaust: 18,
-            thruster: [0.14, 0.3]
+            thruster: [.14, .3]
         }, {}, {
             exhaust: 20,
-            thruster: [0.2, 0.4]
+            thruster: [.2, .4]
         }, {
             exhaust: 20,
-            thruster: [0.2, 0.4]
+            thruster: [.2, .4]
         }, {
             exhaust: 20,
-            thruster: [0.2, 0.4]
+            thruster: [.2, .4]
         }],
         upgrades: {
             speed: {
@@ -25930,9 +26167,9 @@ function() {
                 factor: [1, 1.05, 1.1, 1.15, 1.2, 1.25]
             }
         },
-        doodads: [[1009, -2308, 1, 0.9, 0.2, null, null], [1241, -2490, 4, 0.5, -0.2, null, null], [1157, -2379, 2, 0.7, -0.1, null, null], [622, -2126, 3, 0.4, null, null, null], [669, -2187, 2, 0.6, null, null, null], [-392, -1669, 1, 1.1, 0.1, null, null], [-273, -1746, 4, 0.5, -0.1, null, null], [-252, -1504, 2, 1, null, null, null], [1553, -2016, 2, 0.4, 0.2, null, null], [1637, -1972, 1, 0.5, 0.1, null, null], [1736, -1922, 2, 0.5, 0.7, null, null], [2150, -2406, 2, 0.6, null, null, null], [2238, -2318, 3, 0.9, null, null, null], [2364, -2391, 4, 0.6, 0, null, null], [2491, -2682, 1, 0.6, -0.1, null, null], [2596, -2671, 2, 0.9, 0.2, null, null], [-150, -3147, 4, 0.4, -0.4, null, null], [-155, -3044, 2, 0.7, 0, null, null], [-427, -3600, 2, 0.4, null, null, null], [-259, -2982, 2, 0.5, null, null, null], [-379, -3529, 1, 0.6, 0.1, 1, null], [-665, -3052, 2, 0.5, null, null, null], [20, -1816, 4, 0.5, 0.3, null, null], [127, -1799, 1, 0.5, null, null, null], [263, -2572, 3, 0.4, 0.4, null, null], [405, -2570, 1, 0.9, -0.2, null, null], [851, -4183, 1, 1, null, null, null], [754, -3971, 2, 0.9, -0.1, 1, null], [1757, -5065, 4, 1.1, null, null, null], [1169, -4453, 3, 0.9, null, null, null], [2054, -5244, 3, 0.9, null, null, null], [1631, -4901, 1, 0.9, 0, null, null], [2305, -5281, 2, 0.9, 0.2, 1, null], [1007, -4281, 1, 0.8, 0.1, null, null], [2766, -5202, 1, 0.8, 0.1, 1, null], [2927, -5204, 2, 0.7, null, 1, null], [3206, -5218, 2, 0.3, 0.6, 1, null], [3099, -5193, 4, 0.6, 0.1, 1, null], [1417, -4726, 2, 1, null, null, null], [2844, -1513, 4, 0.5, 0.1, null, null], [3206, -1464, 1, 1, 0.1, 1, null], [2881, -1403, 2, 0.9, null, null, null], [3804, -2025, 1, 0.7, -0.1, null, null], [4116, -1778, 2, 0.9, -0.3, null, null], [3715, -1508, 3, 0.6, 0.1, null, null], [4247, -1126, 1, 0.6, 0.1, 1, null], [3860, 268, 1, 0.5, 0.5, 1, null], [4334, -1011, 2, 1.1, -0.1, null, null], [3849, 349, 3, 0.6, null, null, null], [3956, 490, 4, 0.8, -0.4, null, null], [4073, 667, 2, 0.9, -0.5, null, null], [3583, -864, 4, 0.8, 0.1, 0.8, 15723705], [4135, 836, 2, 1, -0.2, null, null], [4785, -743, 2, 1, 0.1, null, null], [4993, -839, 1, 0.9, 0.3, 1, null], [5224, -482, 3, 0.7, null, null, null], [5235, -1238, 4, 1.1, null, 1, null], [5419, -1346, 2, 0.6, -0.5, 0.8, null], [6075, -5099, 1, 0.8, null, null, null], [5767, -4953, 2, 0.9, -0.3, 1, null], [5896, -4967, 2, 0.9, 0.1, 1, null], [5384, -4642, 4, 0.9, null, null, null], [5704, -4857, 4, 0.9, null, null, null], [5563, -4697, 2, 0.9, null, null, null], [5406, -4470, 1, 1.1, null, null, null], [5352, -3964, 3, 0.9, null, null, null], [5309, -3665, 1, 1.1, null, null, null], [5247, -3464, 4, 0.9, -0.5, null, null], [5300, -3121, 1, 0.9, null, null, null], [3524, -3340, 1, 1.1, 0, null, null], [3661, -3589, 2, 0.9, -0.7, null, null], [7236, -1376, 2, 0.6, -0.3, null, null], [7624, -1610, 2, 0.8, null, null, null], [7403, -1555, 2, 0.7, null, null, null], [7514, -1568, 2, 0.9, 0, null, null], [3660, -2705, 1, 0.9, 0.2, null, null], [3374, -2813, 2, 0.8, null, null, null], [7347, -1447, 1, 0.9, 0.1, null, null], [7236, -775, 4, 0.5, -0.9, null, null], [7207, -631, 2, 0.9, 0, null, null], [7303, -468, 1, 0.9, -0.3, null, null], [7262, -1263, 4, 0.9, -0.6, null, null], [7404, -350, 2, 1, 0.6, null, null], [7589, -305, 3, 0.9, 0.6, null, null], [7741, -1589, 4, 1, 0.2, null, null], [7949, -1594, 1, 1, -0.2, null, null], [8152, -1599, 2, 1.1, 0.1, null, null], [8378, -1602, 4, 1.2, 0, null, null], [7873, -321, 2, 0.6, 0.3, null, null], [8543, -1661, 1, 0.7, 0, null, null], [7790, -259, 1, 1, 0.1, null, null], [8675, -1573, 2, 1, 0.1, null, null], [8163, -245, 2, 0.7, 0.3, null, null], [8329, -311, 2, 0.7, 0.5, null, null], [8275, -229, 1, 1, 0.1, null, null], [8447, -277, 3, 1, 0, null, null], [8824, -1447, 1, 0.9, -0.4, null, null], [7221, -1140, 1, 0.5, -0.2, null, null], [8924, -1273, 2, 0.9, -0.5, null, null], [6844, -950, 3, 1, 0.1, null, null], [8949, -1060, 3, 1.1, -0.3, null, null], [8904, -920, 4, 0.8, -0.7, null, null], [8582, -338, 2, 0.7, null, null, null], [8963, -803, 1, 1, -0.4, null, null], [8680, -322, 4, 0.9, 0, null, null], [8811, -449, 1, 0.9, -0.3, null, null], [8910, -610, 2, 0.9, -0.4, null, null], [6855, 114, 1, 0.8, null, null, null], [6971, 241, 2, 1, -0.1, null, null], [6852, 656, 2, 0.5, 0.3, null, null], [6980, 706, 1, 0.9, -0.4, null, null], [6946, 939, 4, 1, -0.2, null, null], [6027, -560, 1, 0.6, 0, null, null], [7521, 425, 2, 0.4, 0.1, null, null], [7599, 389, 1, 0.5, -0.5, null, null], [5863, -431, 2, 0.9, 0.1, null, null], [9392, 262, 2, 0.9, -0.1, null, null], [7521, 512, 3, 0.6, null, null, null], [9807, 1027, 1, 0.5, -0.1, null, null], [9554, 237, 1, 1, -0.2, 1, null], [9346, 392, 4, 1.2, -0.3, null, null], [9789, 1142, 3, 0.7, null, null, null], [9747, -532, 4, 0.8, 0.2, 1, null], [8591, 347, 4, 0.6, -0.2, null, null], [9951, -509, 1, 1, null, null, null], [9308, 2417, 1, 0.5, 0.1, null, null], [10185, -522, 2, 0.9, null, 1, null], [10330, 2147, 1, 0.6, 0, null, null], [9350, 2480, 3, 0.7, null, null, null], [10503, 2124, 2, 0.9, null, null, null], [12500, 2628, 4, 0.5, 0.3, null, null], [13188, 2864, 4, 0.5, -0.1, null, null], [12637, 2659, 2, 0.7, 0.1, null, null], [13262, 2899, 1, 0.5, null, null, null], [13777, 5168, 1, 0.5, -0.3, null, null], [15709, 6399, 1, 0.4, null, null, null], [13539, 5664, 3, 0.5, null, 1, null], [15660, 6474, 2, 0.4, -0.3, null, null], [13743, 5248, 2, 0.7, -0.1, null, null], [15482, 6600, 2, 0.4, -0.1, null, null], [15591, 6525, 4, 0.3, null, null, null], [13487, 5738, 4, 0.7, null, null, null], [15407, 6702, 1, 0.6, 0.1, null, null], [8171, -2568, 2, 0.5, 0.1, null, null], [16001, 6015, 3, 0.6, null, null, null], [16017, 6110, 1, 0.4, null, 1, null], [6496, -1491, 1, 0.5, 0.3, null, null], [6626, -1480, 2, 0.7, null, null, null], [6190, -1022, 4, 0.8, null, null, null], [8325, -2615, 2, 1, -0.3, null, null], [8222, -2412, 4, 1, null, null, null], [9204, -2288, 1, 0.9, -0.1, null, null], [9279, -2216, 2, 1, null, null, null], [10375, -1558, 2, 0.8, -0.3, null, null], [10309, -1421, 1, 0.9, null, null, null], [10247, -1216, 4, 1.2, -0.5, null, null], [10079, -2310, 4, 0.9, 0.3, null, null], [10320, -2330, 3, 1, null, null, null], [10942, -2963, 2, 0.9, -0.3, null, null], [10807, -2778, 4, 1.1, -0.5, null, null], [12989, -1929, 3, 0.6, null, null, null], [12613, -1181, 1, 0.4, 0, 1, null], [12559, -1120, 2, 0.5, null, null, null], [11642, -1900, 4, 0.7, -0.5, null, null], [11558, -1692, 1, 0.9, -0.2, null, null], [11509, -1479, 2, 0.5, null, null, null], [12559, -2673, 1, 0.8, null, null, null], [12446, -2487, 4, 1, -0.5, null, null], [12375, -2303, 3, 0.9, -0.2, null, null], [10363, -3514, 4, 0.7, -0.4, null, null], [10290, -3340, 1, 0.9, -0.2, null, null], [10162, -3207, 2, 0.7, null, null, null], [9003, -3048, 4, 0.9, -0.1, null, null], [9161, -3119, 1, 0.6, null, null, null], [14550, -3462, 2, 0.9, -0.2, null, null], [14407, -3335, 4, 0.9, -0.2, null, null], [14366, -4493, 2, 0.9, 0.5, null, null], [14477, -4437, 3, 1, null, null, null], [15305, -4230, 4, 0.9, 0.1, null, null], [15481, -4283, 2, 0.9, null, null, null], [15349, -5009, 4, 0.4, 0.3, null, null], [11874, -4879, 2, 0.6, null, null, null], [15453, -4984, 1, 0.7, null, null, null], [11907, -4742, 4, 0.8, -0.6, null, null], [12440, -4278, 4, 0.5, 0.3, null, null], [11980, -4582, 2, 0.9, null, null, null], [12131, -4387, 1, 1.1, null, null, null], [15681, -4973, 4, 1, null, null, null], [12591, -4252, 1, 0.8, null, null, null], [12777, -4244, 2, 0.9, 0.2, null, null], [12969, -4227, 3, 0.9, null, null, null], [15897, -5071, 2, 0.9, -0.2, null, null], [13204, -4228, 4, 1, null, null, null], [11592, -5261, 1, 0.7, 0.2, null, null], [12743, -4826, 1, 0.4, 0.3, null, null], [10102, -5078, 2, 0.7, 0.4, null, null], [12854, -4782, 3, 0.9, 0.1, null, null], [10191, -5033, 1, 0.7, null, null, null], [10523, -5133, 2, 1, null, null, null], [10336, -4977, 4, 1.1, -0.3, null, null], [10667, -5250, 2, 0.8, -0.1, null, null], [9665, -6403, 4, 0.7, 0.3, null, null], [10798, -5379, 1, 0.5, null, null, null], [9670, -5547, 1, 0.9, -0.1, null, null], [9834, -6369, 3, 1, null, null, null], [9864, -5572, 2, 1.1, -0.1, null, null], [11362, -3957, 2, 0.9, null, 1, null], [11162, -3830, 4, 1, -0.1, null, null], [8922, -6173, 4, 1, null, null, null], [9003, -5368, 1, 0.5, null, null, null], [8453, -6153, 1, 0.6, 0.2, null, null], [8954, -5229, 3, 0.9, -0.2, null, null], [8905, -5072, 1, 0.8, -0.3, null, null], [8704, -3873, 3, 0.9, null, null, null], [8578, -6105, 2, 0.8, 0.4, null, null], [8508, -3710, 1, 0.7, 0, null, null], [8614, -5400, 4, 0.5, null, null, null], [8788, -4922, 4, 1.1, null, null, null], [8936, -3905, 4, 0.6, 0.3, null, null], [9701, -4613, 4, 0.9, -0.1, null, null], [6973, -4776, 2, 0.6, null, null, null], [7016, -4674, 1, 0.9, null, null, null], [9124, -3853, 1, 0.9, 0.2, null, null], [7253, -4648, 4, 0.8, 0.2, null, null], [6602, -4591, 1, 0.6, 0.2, null, null], [8510, -5322, 2, 0.9, null, null, null], [6687, -3810, 4, 0.7, 0.3, null, null], [9525, -4492, 3, 1.1, null, null, null], [7461, -4705, 2, 0.9, null, null, null], [9280, -3812, 2, 0.8, -0.3, null, null], [6467, -2811, 1, 0.3, null, null, null], [6842, -3820, 1, 0.8, 0.3, null, null], [6483, -2725, 4, 0.6, 0.3, null, null], [7675, -4864, 1, 1.1, null, null, null], [6991, -2885, 4, 0.9, 0.2, null, null], [6610, -2664, 4, 0.9, null, null, null], [6822, -2736, 2, 0.9, null, null, null], [6763, -4582, 3, 0.9, null, null, null], [6509, -2490, 2, 0.9, -0.3, null, null], [7216, -3865, 4, 1.1, 0.2, 1, null], [7018, -3708, 2, 1, 0.2, null, null], [2254, -3301, 1, 0.8, 0.5, null, null], [6378, -2310, 1, 0.8, 0.2, null, null], [7197, -2857, 2, 0.9, null, null, null], [2609, -3483, 4, 0.5, null, null, null], [2449, -3385, 2, 0.9, 0.3, 1, null], [4585, -2889, 4, 0.7, -0.2, null, null], [4470, -2768, 3, 0.8, 0.2, null, null], [4083, -4033, 1, 0.9, 0.5, 1, null], [1568, -2869, 1, 0.4, null, null, null], [4336, -4105, 2, 1.2, null, null, null], [1977, -1678, 2, 0.5, null, null, null], [1412, -3642, 1, 0.5, 0, 1, null], [1570, -2792, 4, 0.6, null, null, null], [1932, -1586, 1, 0.6, null, null, null], [1310, -3547, 2, 0.6, 0, null, null], [3611, 1391, 2, 1, null, null, null], [3558, 2174, 2, 0.9, null, null, null], [3431, 1563, 1, 0.9, 0.3, null, null], [3142, 2813, 2, 0.7, null, null, null], [3330, 2296, 4, 1.1, null, null, null], [3001, 2818, 1, 0.6, 0.3, null, null], [3703, 2044, 1, 0.4, null, null, null], [2872, 3863, 1, 0.9, -0.2, null, null], [3125, 2942, 3, 1.1, null, null, null], [2841, 4018, 4, 1.1, 0.1, null, null], [2402, 5140, 4, 0.6, 0.3, null, null], [2511, 5167, 3, 0.8, null, null, null], [-14607, -5112, 4, 0.9, 0.1, null, null], [-14430, -5180, 1, 0.9, 0, null, null], [-14197, -5222, 2, 1.2, -0.1, null, null], [-14895, -4703, 4, 0.5, 0.2, null, null], [-14797, -4728, 2, 0.4, null, null, null], [-14697, -4739, 1, 0.4, null, null, null], [-13919, -5281, 1, 1.1, 0, null, null], [-13646, -5170, 3, 0.7, null, null, null], [-13400, -5068, 2, 1.2, 0.2, null, null], [-13099, -5108, 4, 1.1, 0.2, null, null], [-12824, -5092, 1, 0.9, null, null, null], [-12631, -5044, 2, 0.9, -0.2, null, null], [-12427, -4914, 1, 0.9, null, null, null], [-12270, -4816, 2, 0.7, -0.3, null, null], [-11772, -4983, 2, 0.7, 0, null, null], [-11940, -4867, 1, 0.9, null, null, null], [-12091, -4699, 3, 0.9, null, null, null], [-12270, -4529, 4, 0.7, null, null, null], [-12460, -4396, 1, 0.9, 0.4, null, null], [-13058, -4252, 1, 0.9, null, null, null], [-12894, -4096, 4, 0.7, 0.2, null, null], [-12738, -4077, 2, 0.7, null, null, null], [-13546, -4341, 1, 0.4, null, null, null], [-13428, -4299, 3, 0.9, null, null, null], [-14679, -4192, 1, 0.7, -0.1, null, null], [-14368, -4308, 4, 0.7, -0.2, null, null], [-14495, -4133, 2, 1.1, -0.1, null, null], [-12072, -3824, 2, 0.8, -0.1, null, null], [-11904, -3648, 1, 1, 0, null, null], [-11654, -3569, 3, 0.7, null, null, null], [-11648, -3357, 4, 0.9, 0, null, null], [-11420, -3359, 1, 0.9, null, null, null], [-11296, -3135, 2, 0.7, null, null, null], [-10782, -2838, 1, 0.8, -0.1, null, null], [-11410, -3039, 1, 0.3, 0.6, null, null], [-10581, -2773, 2, 1.1, 0.1, null, null], [-11118, -5114, 4, 0.8, 0.2, null, null], [-10675, -5079, 1, 0.9, null, null, null], [-10205, -4890, 1, 0.8, 0.1, null, null], [-11543, -4164, 4, 0.8, 0.3, null, null], [-11287, -4244, 2, 0.5, null, null, null], [-10018, -4747, 2, 1, -0.2, null, null], [-9278, 419, 3, 0.5, null, null, null], [-9341, 470, 4, 0.5, 0.3, null, null], [-9180, 496, 1, 0.8, 0.6, null, null], [-11365, -4131, 3, 1, null, null, null], [-9353, 0, 3, 0.6, 0.3, null, null], [-8975, 528, 2, 1, 0.1, null, null], [-9413, 89, 4, 0.9, null, null, null], [-8230, 770, 1, 0.4, null, null, null], [-9231, 17, 1, 0.7, 0, null, null], [-6808, 1667, 3, 0.5, -0.2, null, null], [-6694, 1622, 2, 0.8, -0.4, null, null], [-8285, 855, 3, 0.6, null, null, null], [-6793, 1796, 2, 0.8, 0.4, null, null], [-6865, 1935, 1, 0.5, -0.1, null, null], [-7043, 2222, 3, 0.6, -0.2, null, null], [-7083, 2368, 1, 0.6, -0.2, null, null], [-7103, 2533, 4, 0.7, -0.4, null, null], [-7099, 2721, 2, 0.8, -0.3, null, null], [-7178, 2874, 1, 0.4, null, null, null], [-6964, 3110, 4, 0.7, 0.2, null, null], [-6246, 4191, 1, 0.6, -0.1, null, null], [-6735, 3446, 1, 0.4, 0.1, null, null], [-6722, 3537, 4, 0.7, 0.4, null, null], [-6396, 3388, 4, 0.9, null, null, null], [-6787, 3140, 2, 0.9, null, null, null], [-6227, 4488, 2, 0.7, -0.5, null, null], [-6281, 3953, 1, 0.6, 0.2, null, null], [-6530, 3576, 1, 1.1, null, null, null], [-6147, 3994, 3, 1.1, null, null, null], [-6141, 4292, 2, 1.2, -0.3, null, null], [-6377, 5578, 2, 0.7, -0.5, null, null], [-6152, 4569, 1, 0.9, -0.2, null, null], [-6222, 4769, 4, 0.7, -0.5, null, null], [-6266, 4956, 1, 0.6, -0.2, null, null], [-6233, 5414, 1, 0.9, -0.4, null, null], [-6347, 5646, 3, 0.7, -0.1, 1, null], [-6400, 6066, 2, 0.7, -0.2, null, null], [-6411, 6261, 1, 0.8, null, null, null], [-6565, 7043, 1, 0.6, -0.3, null, null], [-6377, 6415, 4, 0.9, -0.3, null, null], [-6440, 6614, 1, 0.7, -0.2, null, null], [-5944, 1954, 3, 0.5, -0.4, null, null], [-6001, 2039, 1, 0.8, 0.2, null, null], [-6467, 7070, 3, 0.9, null, null, null], [-4963, 3608, 1, 0.6, -0.3, 1, null], [-4776, 3510, 2, 0.4, -0.1, 1, null], [-5785, 1998, 2, 1.1, -0.2, null, null], [-3708, 3449, 1, 0.6, -0.3, null, null], [-3790, 3582, 1, 0.9, null, null, null], [-4031, 3697, 4, 0.7, -0.1, null, null], [-4859, 3634, 3, 1, null, null, null], [-3850, 3730, 2, 1, 0.2, null, null], [-4689, 4605, 4, 0.9, -0.2, null, null], [-3492, 2892, 1, 0.6, -0.2, null, null], [-4507, 4483, 1, 0.6, null, null, null], [-4829, 2745, 1, 0.9, -0.2, null, null], [-4435, 4273, 2, 0.9, -0.6, null, null], [-3383, 2930, 2, 0.9, null, null, null], [-4888, 2821, 2, 0.9, 0.1, null, null], [-5372, 5172, 1, 0.5, null, null, null], [-5036, 2981, 4, 0.9, 0.3, null, null], [-9895, -1942, 1, 1, 0.1, null, null], [-9371, -2159, 4, 0.6, null, null, null], [-9995, -1773, 4, 0.9, -0.5, null, null], [-5280, 5218, 4, 0.9, 0, null, null], [-5079, 5183, 1, 0.9, -0.3, null, null], [-5149, 3079, 1, 0.6, 0.2, null, null], [-9695, -2048, 2, 1, -0.1, null, null], [-5063, 5374, 2, 0.9, -0.2, null, null], [-9504, -2059, 1, 1, 0.2, null, null], [-8948, -2140, 4, 0.7, 0.3, null, null], [-9262, -2081, 2, 1.1, 0.4, null, null], [-9068, -2071, 4, 1, 0.2, null, null], [-8861, -2045, 2, 1.1, 0, null, null], [-8654, -2083, 1, 1, 0.3, null, null], [-8473, -2048, 3, 1, 0, null, null], [-8283, -1965, 1, 1, 0.5, null, null], [-8182, -1863, 2, 0.9, -0.2, null, null], [-10037, -1579, 1, 0.9, -0.4, null, null], [-10063, -1365, 2, 0.9, -0.1, null, null], [-10074, -1190, 1, 0.9, -0.4, null, null], [-8167, -1225, 1, 0.5, -0.7, null, null], [-8188, -1087, 4, 0.8, -0.5, null, null], [-9975, -1022, 1, 0.9, 0.3, null, null], [-9835, -910, 2, 1, 0.1, null, null], [-9709, -848, 4, 1, 0.3, null, null], [-9532, -792, 2, 1, 0.1, null, null], [-9348, -779, 1, 1, 0, null, null], [-9131, -784, 2, 1.1, 0.1, null, null], [-8754, -795, 3, 0.7, null, null, null], [-8587, -797, 4, 1, 0, null, null], [-8424, -856, 1, 0.9, null, null, null], [-8246, -921, 2, 0.9, -0.4, null, null], [-8153, -1701, 4, 0.7, -0.7, null, null], [-6447, -2137, 1, 0.6, -0.2, null, null], [-8153, -1591, 1, 0.5, -0.6, null, null], [-7694, -1393, 4, 1, -0.1, null, null], [-6541, -2030, 2, 0.7, null, null, null], [-7135, -1547, 2, 0.7, 0.1, null, null], [-5885, -2958, 1, 0.6, 0.3, null, null], [-7171, -1440, 1, 0.8, -0.2, null, null], [-5620, -3123, 2, 0.6, -0.4, null, null], [-6631, -1866, 4, 0.8, null, null, null], [-5882, -3696, 2, 0.8, -0.4, null, null], [-5716, -2944, 3, 0.9, null, null, null], [-5949, -3528, 1, 0.5, -0.1, null, null], [-6869, -4052, 4, 0.8, null, null, null], [-7081, -2673, 3, 0.5, null, null, null], [-6725, -4069, 1, 0.6, -0.2, null, null], [-10487, -2295, 2, 0.5, 0.1, 1, null], [-7032, -2749, 2, 0.6, -0.4, null, null], [-10769, -3817, 3, 0.6, -0.2, null, null], [-6607, -4081, 2, 0.5, null, null, null], [-10849, -1824, 1, 0.7, 0.1, null, null], [-10479, -2146, 4, 0.9, -0.1, null, null], [-7003, -2611, 4, 0.9, -0.2, null, null], [-10749, -1511, 2, 0.6, -0.4, null, null], [-10697, -1953, 2, 1, 0.1, null, null], [-10848, -1330, 3, 0.9, null, null, null], [-10912, -1220, 4, 0.5, 0, null, null], [-9843, -2685, 4, 0.7, null, null, null], [-10823, -3717, 2, 0.7, null, null, null], [-9697, -2713, 1, 0.6, 0.3, null, null], [-10080, -3431, 2, 0.4, null, null, null], [-10648, -3844, 1, 0.9, null, null, null], [-9530, -2695, 2, 1, null, null, null], [-2387, -6791, 1, 0.9, null, null, null], [-8465, -5037, 2, 0.7, null, null, null], [-2550, -6627, 2, 0.9, -0.1, null, null], [-9325, -2822, 1, 0.7, -0.1, null, null], [-10140, -3346, 1, 0.8, null, null, null], [-8461, -4908, 4, 0.9, null, null, null], [8116, -1076, 2, 0.8, -0.3, null, null], [8115, -940, 4, 0.8, -0.3, null, null], [-2503, -6359, 4, 1.4, -0.6, null, null], [-9062, -1580, 2, 0.8, -0.5, null, null], [8120, -790, 1, 0.8, null, null, null], [-9065, -1444, 4, 0.8, -0.3, null, null], [-2615, -6159, 1, 1, null, null, null], [-2744, -5943, 2, 1.1, null, null, null], [-3713, -4955, 3, 0.9, null, null, null], [-9061, -1292, 1, 0.8, 0, null, null], [-1551, -4718, 4, 0.5, null, null, null], [5251, -6249, 1, 0.5, null, 1, null], [5192, -6181, 2, 0.4, -0.1, null, null], [-2898, -5732, 3, 0.9, null, null, null], [-1705, -4629, 3, 0.8, null, null, null], [1618, -7035, 1, 0.5, null, null, null], [-3829, -4776, 4, 0.9, null, null, null], [-2851, -5589, 4, 1.1, -0.2, null, null], [-2974, -5399, 2, 1.1, null, null, null], [-3952, -4568, 1, 0.9, null, null, null], [-4135, -4368, 2, 1.1, 0.1, 1, null], [-3428, -5104, 1, 1.1, null, null, null], [-3167, -5254, 4, 0.9, 0.1, null, null], [-3049, -6916, 2, 1, null, null, null], [-3097, -6722, 1, 0.9, -0.3, null, null], [-3190, -6493, 3, 1, null, null, null], [-3318, -6284, 4, 1.1, null, null, null], [-4672, -5861, 1, 1.1, 1, null, null], [-4480, -5668, 1, 1, null, null, null], [-4294, -5548, 2, 0.9, 1.1, null, null], [-3433, -6072, 1, 1, -0.2, null, null], [-3568, -5881, 3, 1, null, null, null], [-3736, -5698, 2, 1.2, null, null, null], [-3978, -7517, 3, 0.9, 0.1, null, null], [-3956, -5572, 4, 1, null, null, null], [-4103, -5400, 1, 1, null, null, null], [-4281, -5240, 2, 1, null, null, null], [-4409, -5034, 3, 1, null, null, null], [-4475, -4808, 4, 0.9, null, null, null], [-2777, -7546, 3, 1, 0.8, null, null], [-2542, -7502, 2, 0.9, 0.4, null, null], [-2398, -7364, 1, 0.9, -0.7, null, null], [-2350, -7151, 2, 0.9, -0.4, null, null], [-2315, -6976, 4, 0.8, -0.8, null, null], [-3749, -7488, 4, 1, null, null, null], [-2995, -7596, 2, 1.2, 0.5, null, null], [-3253, -7558, 3, 1.1, 0.3, null, null], [-3468, -7472, 4, 1, null, null, null], [-5028, -6473, 2, 1, 0.4, null, null], [-3604, -7301, 1, 1.1, null, null, null], [-3678, -7078, 2, 1.1, null, null, null], [-3835, -6826, 3, 1.1, null, null, null], [-3935, -6595, 2, 1, null, null, null], [-5214, -7381, 3, 1, null, null, null], [-4065, -6416, 3, 1.1, null, null, null], [-4174, -6231, 4, 0.7, null, null, null], [-4556, -6940, 3, 1, null, null, null], [-4663, -6781, 4, 1, null, null, null], [-4748, -6548, 2, 1.3, null, null, null], [-4847, -6257, 2, 1.1, -0.4, null, null], [-4806, -6016, 4, 0.9, 1.2, null, null], [-4950, -7410, 1, 1.4, 0.2, null, null], [-5470, -7251, 4, 1.3, -0.2, null, null], [-5637, -7038, 2, 1, -0.3, null, null], [-5593, -6819, 4, 1, null, null, null], [-5406, -6727, 3, 1, 0.6, null, null], [-5263, -6580, 1, 1, 0.4, null, null], [-4636, -7476, 2, 1, 0.2, null, null], [-4399, -7496, 2, 0.9, -0.2, null, null], [-6769, -7571, 2, 0.9, -0.4, null, null], [-6853, -7377, 1, 0.9, null, null, null], [-8273, -7231, 4, 0.5, 0.4, null, null], [-4182, -7512, 4, 0.9, 0.1, null, null], [-7525, -5855, 2, 0.9, null, null, null], [-7495, -6329, 3, 0.5, null, null, null], [-7297, -6946, 2, 0.9, null, null, null], [-8148, -7137, 1, 0.7, null, null, null], [-7030, -7301, 4, 0.7, null, null, null]],
+        doodads: [[1009, -2308, 1, .9, .2, null, null], [1241, -2490, 4, .5, -.2, null, null], [1157, -2379, 2, .7, -.1, null, null], [622, -2126, 3, .4, null, null, null], [669, -2187, 2, .6, null, null, null], [-392, -1669, 1, 1.1, .1, null, null], [-273, -1746, 4, .5, -.1, null, null], [-252, -1504, 2, 1, null, null, null], [1553, -2016, 2, .4, .2, null, null], [1637, -1972, 1, .5, .1, null, null], [1736, -1922, 2, .5, .7, null, null], [2150, -2406, 2, .6, null, null, null], [2238, -2318, 3, .9, null, null, null], [2364, -2391, 4, .6, 0, null, null], [2491, -2682, 1, .6, -.1, null, null], [2596, -2671, 2, .9, .2, null, null], [-150, -3147, 4, .4, -.4, null, null], [-155, -3044, 2, .7, 0, null, null], [-427, -3600, 2, .4, null, null, null], [-259, -2982, 2, .5, null, null, null], [-379, -3529, 1, .6, .1, 1, null], [-665, -3052, 2, .5, null, null, null], [20, -1816, 4, .5, .3, null, null], [127, -1799, 1, .5, null, null, null], [263, -2572, 3, .4, .4, null, null], [405, -2570, 1, .9, -.2, null, null], [851, -4183, 1, 1, null, null, null], [754, -3971, 2, .9, -.1, 1, null], [1757, -5065, 4, 1.1, null, null, null], [1169, -4453, 3, .9, null, null, null], [2054, -5244, 3, .9, null, null, null], [1631, -4901, 1, .9, 0, null, null], [2305, -5281, 2, .9, .2, 1, null], [1007, -4281, 1, .8, .1, null, null], [2766, -5202, 1, .8, .1, 1, null], [2927, -5204, 2, .7, null, 1, null], [3206, -5218, 2, .3, .6, 1, null], [3099, -5193, 4, .6, .1, 1, null], [1417, -4726, 2, 1, null, null, null], [2844, -1513, 4, .5, .1, null, null], [3206, -1464, 1, 1, .1, 1, null], [2881, -1403, 2, .9, null, null, null], [3804, -2025, 1, .7, -.1, null, null], [4116, -1778, 2, .9, -.3, null, null], [3715, -1508, 3, .6, .1, null, null], [4247, -1126, 1, .6, .1, 1, null], [3860, 268, 1, .5, .5, 1, null], [4334, -1011, 2, 1.1, -.1, null, null], [3849, 349, 3, .6, null, null, null], [3956, 490, 4, .8, -.4, null, null], [4073, 667, 2, .9, -.5, null, null], [3583, -864, 4, .8, .1, .8, 15723705], [4135, 836, 2, 1, -.2, null, null], [4785, -743, 2, 1, .1, null, null], [4993, -839, 1, .9, .3, 1, null], [5224, -482, 3, .7, null, null, null], [5235, -1238, 4, 1.1, null, 1, null], [5419, -1346, 2, .6, -.5, .8, null], [6075, -5099, 1, .8, null, null, null], [5767, -4953, 2, .9, -.3, 1, null], [5896, -4967, 2, .9, .1, 1, null], [5384, -4642, 4, .9, null, null, null], [5704, -4857, 4, .9, null, null, null], [5563, -4697, 2, .9, null, null, null], [5406, -4470, 1, 1.1, null, null, null], [5352, -3964, 3, .9, null, null, null], [5309, -3665, 1, 1.1, null, null, null], [5247, -3464, 4, .9, -.5, null, null], [5300, -3121, 1, .9, null, null, null], [3524, -3340, 1, 1.1, 0, null, null], [3661, -3589, 2, .9, -.7, null, null], [7236, -1376, 2, .6, -.3, null, null], [7624, -1610, 2, .8, null, null, null], [7403, -1555, 2, .7, null, null, null], [7514, -1568, 2, .9, 0, null, null], [3660, -2705, 1, .9, .2, null, null], [3374, -2813, 2, .8, null, null, null], [7347, -1447, 1, .9, .1, null, null], [7236, -775, 4, .5, -.9, null, null], [7207, -631, 2, .9, 0, null, null], [7303, -468, 1, .9, -.3, null, null], [7262, -1263, 4, .9, -.6, null, null], [7404, -350, 2, 1, .6, null, null], [7589, -305, 3, .9, .6, null, null], [7741, -1589, 4, 1, .2, null, null], [7949, -1594, 1, 1, -.2, null, null], [8152, -1599, 2, 1.1, .1, null, null], [8378, -1602, 4, 1.2, 0, null, null], [7873, -321, 2, .6, .3, null, null], [8543, -1661, 1, .7, 0, null, null], [7790, -259, 1, 1, .1, null, null], [8675, -1573, 2, 1, .1, null, null], [8163, -245, 2, .7, .3, null, null], [8329, -311, 2, .7, .5, null, null], [8275, -229, 1, 1, .1, null, null], [8447, -277, 3, 1, 0, null, null], [8824, -1447, 1, .9, -.4, null, null], [7221, -1140, 1, .5, -.2, null, null], [8924, -1273, 2, .9, -.5, null, null], [6844, -950, 3, 1, .1, null, null], [8949, -1060, 3, 1.1, -.3, null, null], [8904, -920, 4, .8, -.7, null, null], [8582, -338, 2, .7, null, null, null], [8963, -803, 1, 1, -.4, null, null], [8680, -322, 4, .9, 0, null, null], [8811, -449, 1, .9, -.3, null, null], [8910, -610, 2, .9, -.4, null, null], [6855, 114, 1, .8, null, null, null], [6971, 241, 2, 1, -.1, null, null], [6852, 656, 2, .5, .3, null, null], [6980, 706, 1, .9, -.4, null, null], [6946, 939, 4, 1, -.2, null, null], [6027, -560, 1, .6, 0, null, null], [7521, 425, 2, .4, .1, null, null], [7599, 389, 1, .5, -.5, null, null], [5863, -431, 2, .9, .1, null, null], [9392, 262, 2, .9, -.1, null, null], [7521, 512, 3, .6, null, null, null], [9807, 1027, 1, .5, -.1, null, null], [9554, 237, 1, 1, -.2, 1, null], [9346, 392, 4, 1.2, -.3, null, null], [9789, 1142, 3, .7, null, null, null], [9747, -532, 4, .8, .2, 1, null], [8591, 347, 4, .6, -.2, null, null], [9951, -509, 1, 1, null, null, null], [9308, 2417, 1, .5, .1, null, null], [10185, -522, 2, .9, null, 1, null], [10330, 2147, 1, .6, 0, null, null], [9350, 2480, 3, .7, null, null, null], [10503, 2124, 2, .9, null, null, null], [12500, 2628, 4, .5, .3, null, null], [13188, 2864, 4, .5, -.1, null, null], [12637, 2659, 2, .7, .1, null, null], [13262, 2899, 1, .5, null, null, null], [13777, 5168, 1, .5, -.3, null, null], [15709, 6399, 1, .4, null, null, null], [13539, 5664, 3, .5, null, 1, null], [15660, 6474, 2, .4, -.3, null, null], [13743, 5248, 2, .7, -.1, null, null], [15482, 6600, 2, .4, -.1, null, null], [15591, 6525, 4, .3, null, null, null], [13487, 5738, 4, .7, null, null, null], [15407, 6702, 1, .6, .1, null, null], [8171, -2568, 2, .5, .1, null, null], [16001, 6015, 3, .6, null, null, null], [16017, 6110, 1, .4, null, 1, null], [6496, -1491, 1, .5, .3, null, null], [6626, -1480, 2, .7, null, null, null], [6190, -1022, 4, .8, null, null, null], [8325, -2615, 2, 1, -.3, null, null], [8222, -2412, 4, 1, null, null, null], [9204, -2288, 1, .9, -.1, null, null], [9279, -2216, 2, 1, null, null, null], [10375, -1558, 2, .8, -.3, null, null], [10309, -1421, 1, .9, null, null, null], [10247, -1216, 4, 1.2, -.5, null, null], [10079, -2310, 4, .9, .3, null, null], [10320, -2330, 3, 1, null, null, null], [10942, -2963, 2, .9, -.3, null, null], [10807, -2778, 4, 1.1, -.5, null, null], [12989, -1929, 3, .6, null, null, null], [12613, -1181, 1, .4, 0, 1, null], [12559, -1120, 2, .5, null, null, null], [11642, -1900, 4, .7, -.5, null, null], [11558, -1692, 1, .9, -.2, null, null], [11509, -1479, 2, .5, null, null, null], [12559, -2673, 1, .8, null, null, null], [12446, -2487, 4, 1, -.5, null, null], [12375, -2303, 3, .9, -.2, null, null], [10363, -3514, 4, .7, -.4, null, null], [10290, -3340, 1, .9, -.2, null, null], [10162, -3207, 2, .7, null, null, null], [9003, -3048, 4, .9, -.1, null, null], [9161, -3119, 1, .6, null, null, null], [14550, -3462, 2, .9, -.2, null, null], [14407, -3335, 4, .9, -.2, null, null], [14366, -4493, 2, .9, .5, null, null], [14477, -4437, 3, 1, null, null, null], [15305, -4230, 4, .9, .1, null, null], [15481, -4283, 2, .9, null, null, null], [15349, -5009, 4, .4, .3, null, null], [11874, -4879, 2, .6, null, null, null], [15453, -4984, 1, .7, null, null, null], [11907, -4742, 4, .8, -.6, null, null], [12440, -4278, 4, .5, .3, null, null], [11980, -4582, 2, .9, null, null, null], [12131, -4387, 1, 1.1, null, null, null], [15681, -4973, 4, 1, null, null, null], [12591, -4252, 1, .8, null, null, null], [12777, -4244, 2, .9, .2, null, null], [12969, -4227, 3, .9, null, null, null], [15897, -5071, 2, .9, -.2, null, null], [13204, -4228, 4, 1, null, null, null], [11592, -5261, 1, .7, .2, null, null], [12743, -4826, 1, .4, .3, null, null], [10102, -5078, 2, .7, .4, null, null], [12854, -4782, 3, .9, .1, null, null], [10191, -5033, 1, .7, null, null, null], [10523, -5133, 2, 1, null, null, null], [10336, -4977, 4, 1.1, -.3, null, null], [10667, -5250, 2, .8, -.1, null, null], [9665, -6403, 4, .7, .3, null, null], [10798, -5379, 1, .5, null, null, null], [9670, -5547, 1, .9, -.1, null, null], [9834, -6369, 3, 1, null, null, null], [9864, -5572, 2, 1.1, -.1, null, null], [11362, -3957, 2, .9, null, 1, null], [11162, -3830, 4, 1, -.1, null, null], [8922, -6173, 4, 1, null, null, null], [9003, -5368, 1, .5, null, null, null], [8453, -6153, 1, .6, .2, null, null], [8954, -5229, 3, .9, -.2, null, null], [8905, -5072, 1, .8, -.3, null, null], [8704, -3873, 3, .9, null, null, null], [8578, -6105, 2, .8, .4, null, null], [8508, -3710, 1, .7, 0, null, null], [8614, -5400, 4, .5, null, null, null], [8788, -4922, 4, 1.1, null, null, null], [8936, -3905, 4, .6, .3, null, null], [9701, -4613, 4, .9, -.1, null, null], [6973, -4776, 2, .6, null, null, null], [7016, -4674, 1, .9, null, null, null], [9124, -3853, 1, .9, .2, null, null], [7253, -4648, 4, .8, .2, null, null], [6602, -4591, 1, .6, .2, null, null], [8510, -5322, 2, .9, null, null, null], [6687, -3810, 4, .7, .3, null, null], [9525, -4492, 3, 1.1, null, null, null], [7461, -4705, 2, .9, null, null, null], [9280, -3812, 2, .8, -.3, null, null], [6467, -2811, 1, .3, null, null, null], [6842, -3820, 1, .8, .3, null, null], [6483, -2725, 4, .6, .3, null, null], [7675, -4864, 1, 1.1, null, null, null], [6991, -2885, 4, .9, .2, null, null], [6610, -2664, 4, .9, null, null, null], [6822, -2736, 2, .9, null, null, null], [6763, -4582, 3, .9, null, null, null], [6509, -2490, 2, .9, -.3, null, null], [7216, -3865, 4, 1.1, .2, 1, null], [7018, -3708, 2, 1, .2, null, null], [2254, -3301, 1, .8, .5, null, null], [6378, -2310, 1, .8, .2, null, null], [7197, -2857, 2, .9, null, null, null], [2609, -3483, 4, .5, null, null, null], [2449, -3385, 2, .9, .3, 1, null], [4585, -2889, 4, .7, -.2, null, null], [4470, -2768, 3, .8, .2, null, null], [4083, -4033, 1, .9, .5, 1, null], [1568, -2869, 1, .4, null, null, null], [4336, -4105, 2, 1.2, null, null, null], [1977, -1678, 2, .5, null, null, null], [1412, -3642, 1, .5, 0, 1, null], [1570, -2792, 4, .6, null, null, null], [1932, -1586, 1, .6, null, null, null], [1310, -3547, 2, .6, 0, null, null], [3611, 1391, 2, 1, null, null, null], [3558, 2174, 2, .9, null, null, null], [3431, 1563, 1, .9, .3, null, null], [3142, 2813, 2, .7, null, null, null], [3330, 2296, 4, 1.1, null, null, null], [3001, 2818, 1, .6, .3, null, null], [3703, 2044, 1, .4, null, null, null], [2872, 3863, 1, .9, -.2, null, null], [3125, 2942, 3, 1.1, null, null, null], [2841, 4018, 4, 1.1, .1, null, null], [2402, 5140, 4, .6, .3, null, null], [2511, 5167, 3, .8, null, null, null], [-14607, -5112, 4, .9, .1, null, null], [-14430, -5180, 1, .9, 0, null, null], [-14197, -5222, 2, 1.2, -.1, null, null], [-14895, -4703, 4, .5, .2, null, null], [-14797, -4728, 2, .4, null, null, null], [-14697, -4739, 1, .4, null, null, null], [-13919, -5281, 1, 1.1, 0, null, null], [-13646, -5170, 3, .7, null, null, null], [-13400, -5068, 2, 1.2, .2, null, null], [-13099, -5108, 4, 1.1, .2, null, null], [-12824, -5092, 1, .9, null, null, null], [-12631, -5044, 2, .9, -.2, null, null], [-12427, -4914, 1, .9, null, null, null], [-12270, -4816, 2, .7, -.3, null, null], [-11772, -4983, 2, .7, 0, null, null], [-11940, -4867, 1, .9, null, null, null], [-12091, -4699, 3, .9, null, null, null], [-12270, -4529, 4, .7, null, null, null], [-12460, -4396, 1, .9, .4, null, null], [-13058, -4252, 1, .9, null, null, null], [-12894, -4096, 4, .7, .2, null, null], [-12738, -4077, 2, .7, null, null, null], [-13546, -4341, 1, .4, null, null, null], [-13428, -4299, 3, .9, null, null, null], [-14679, -4192, 1, .7, -.1, null, null], [-14368, -4308, 4, .7, -.2, null, null], [-14495, -4133, 2, 1.1, -.1, null, null], [-12072, -3824, 2, .8, -.1, null, null], [-11904, -3648, 1, 1, 0, null, null], [-11654, -3569, 3, .7, null, null, null], [-11648, -3357, 4, .9, 0, null, null], [-11420, -3359, 1, .9, null, null, null], [-11296, -3135, 2, .7, null, null, null], [-10782, -2838, 1, .8, -.1, null, null], [-11410, -3039, 1, .3, .6, null, null], [-10581, -2773, 2, 1.1, .1, null, null], [-11118, -5114, 4, .8, .2, null, null], [-10675, -5079, 1, .9, null, null, null], [-10205, -4890, 1, .8, .1, null, null], [-11543, -4164, 4, .8, .3, null, null], [-11287, -4244, 2, .5, null, null, null], [-10018, -4747, 2, 1, -.2, null, null], [-9278, 419, 3, .5, null, null, null], [-9341, 470, 4, .5, .3, null, null], [-9180, 496, 1, .8, .6, null, null], [-11365, -4131, 3, 1, null, null, null], [-9353, 0, 3, .6, .3, null, null], [-8975, 528, 2, 1, .1, null, null], [-9413, 89, 4, .9, null, null, null], [-8230, 770, 1, .4, null, null, null], [-9231, 17, 1, .7, 0, null, null], [-6808, 1667, 3, .5, -.2, null, null], [-6694, 1622, 2, .8, -.4, null, null], [-8285, 855, 3, .6, null, null, null], [-6793, 1796, 2, .8, .4, null, null], [-6865, 1935, 1, .5, -.1, null, null], [-7043, 2222, 3, .6, -.2, null, null], [-7083, 2368, 1, .6, -.2, null, null], [-7103, 2533, 4, .7, -.4, null, null], [-7099, 2721, 2, .8, -.3, null, null], [-7178, 2874, 1, .4, null, null, null], [-6964, 3110, 4, .7, .2, null, null], [-6246, 4191, 1, .6, -.1, null, null], [-6735, 3446, 1, .4, .1, null, null], [-6722, 3537, 4, .7, .4, null, null], [-6396, 3388, 4, .9, null, null, null], [-6787, 3140, 2, .9, null, null, null], [-6227, 4488, 2, .7, -.5, null, null], [-6281, 3953, 1, .6, .2, null, null], [-6530, 3576, 1, 1.1, null, null, null], [-6147, 3994, 3, 1.1, null, null, null], [-6141, 4292, 2, 1.2, -.3, null, null], [-6377, 5578, 2, .7, -.5, null, null], [-6152, 4569, 1, .9, -.2, null, null], [-6222, 4769, 4, .7, -.5, null, null], [-6266, 4956, 1, .6, -.2, null, null], [-6233, 5414, 1, .9, -.4, null, null], [-6347, 5646, 3, .7, -.1, 1, null], [-6400, 6066, 2, .7, -.2, null, null], [-6411, 6261, 1, .8, null, null, null], [-6565, 7043, 1, .6, -.3, null, null], [-6377, 6415, 4, .9, -.3, null, null], [-6440, 6614, 1, .7, -.2, null, null], [-5944, 1954, 3, .5, -.4, null, null], [-6001, 2039, 1, .8, .2, null, null], [-6467, 7070, 3, .9, null, null, null], [-4963, 3608, 1, .6, -.3, 1, null], [-4776, 3510, 2, .4, -.1, 1, null], [-5785, 1998, 2, 1.1, -.2, null, null], [-3708, 3449, 1, .6, -.3, null, null], [-3790, 3582, 1, .9, null, null, null], [-4031, 3697, 4, .7, -.1, null, null], [-4859, 3634, 3, 1, null, null, null], [-3850, 3730, 2, 1, .2, null, null], [-4689, 4605, 4, .9, -.2, null, null], [-3492, 2892, 1, .6, -.2, null, null], [-4507, 4483, 1, .6, null, null, null], [-4829, 2745, 1, .9, -.2, null, null], [-4435, 4273, 2, .9, -.6, null, null], [-3383, 2930, 2, .9, null, null, null], [-4888, 2821, 2, .9, .1, null, null], [-5372, 5172, 1, .5, null, null, null], [-5036, 2981, 4, .9, .3, null, null], [-9895, -1942, 1, 1, .1, null, null], [-9371, -2159, 4, .6, null, null, null], [-9995, -1773, 4, .9, -.5, null, null], [-5280, 5218, 4, .9, 0, null, null], [-5079, 5183, 1, .9, -.3, null, null], [-5149, 3079, 1, .6, .2, null, null], [-9695, -2048, 2, 1, -.1, null, null], [-5063, 5374, 2, .9, -.2, null, null], [-9504, -2059, 1, 1, .2, null, null], [-8948, -2140, 4, .7, .3, null, null], [-9262, -2081, 2, 1.1, .4, null, null], [-9068, -2071, 4, 1, .2, null, null], [-8861, -2045, 2, 1.1, 0, null, null], [-8654, -2083, 1, 1, .3, null, null], [-8473, -2048, 3, 1, 0, null, null], [-8283, -1965, 1, 1, .5, null, null], [-8182, -1863, 2, .9, -.2, null, null], [-10037, -1579, 1, .9, -.4, null, null], [-10063, -1365, 2, .9, -.1, null, null], [-10074, -1190, 1, .9, -.4, null, null], [-8167, -1225, 1, .5, -.7, null, null], [-8188, -1087, 4, .8, -.5, null, null], [-9975, -1022, 1, .9, .3, null, null], [-9835, -910, 2, 1, .1, null, null], [-9709, -848, 4, 1, .3, null, null], [-9532, -792, 2, 1, .1, null, null], [-9348, -779, 1, 1, 0, null, null], [-9131, -784, 2, 1.1, .1, null, null], [-8754, -795, 3, .7, null, null, null], [-8587, -797, 4, 1, 0, null, null], [-8424, -856, 1, .9, null, null, null], [-8246, -921, 2, .9, -.4, null, null], [-8153, -1701, 4, .7, -.7, null, null], [-6447, -2137, 1, .6, -.2, null, null], [-8153, -1591, 1, .5, -.6, null, null], [-7694, -1393, 4, 1, -.1, null, null], [-6541, -2030, 2, .7, null, null, null], [-7135, -1547, 2, .7, .1, null, null], [-5885, -2958, 1, .6, .3, null, null], [-7171, -1440, 1, .8, -.2, null, null], [-5620, -3123, 2, .6, -.4, null, null], [-6631, -1866, 4, .8, null, null, null], [-5882, -3696, 2, .8, -.4, null, null], [-5716, -2944, 3, .9, null, null, null], [-5949, -3528, 1, .5, -.1, null, null], [-6869, -4052, 4, .8, null, null, null], [-7081, -2673, 3, .5, null, null, null], [-6725, -4069, 1, .6, -.2, null, null], [-10487, -2295, 2, .5, .1, 1, null], [-7032, -2749, 2, .6, -.4, null, null], [-10769, -3817, 3, .6, -.2, null, null], [-6607, -4081, 2, .5, null, null, null], [-10849, -1824, 1, .7, .1, null, null], [-10479, -2146, 4, .9, -.1, null, null], [-7003, -2611, 4, .9, -.2, null, null], [-10749, -1511, 2, .6, -.4, null, null], [-10697, -1953, 2, 1, .1, null, null], [-10848, -1330, 3, .9, null, null, null], [-10912, -1220, 4, .5, 0, null, null], [-9843, -2685, 4, .7, null, null, null], [-10823, -3717, 2, .7, null, null, null], [-9697, -2713, 1, .6, .3, null, null], [-10080, -3431, 2, .4, null, null, null], [-10648, -3844, 1, .9, null, null, null], [-9530, -2695, 2, 1, null, null, null], [-2387, -6791, 1, .9, null, null, null], [-8465, -5037, 2, .7, null, null, null], [-2550, -6627, 2, .9, -.1, null, null], [-9325, -2822, 1, .7, -.1, null, null], [-10140, -3346, 1, .8, null, null, null], [-8461, -4908, 4, .9, null, null, null], [8116, -1076, 2, .8, -.3, null, null], [8115, -940, 4, .8, -.3, null, null], [-2503, -6359, 4, 1.4, -.6, null, null], [-9062, -1580, 2, .8, -.5, null, null], [8120, -790, 1, .8, null, null, null], [-9065, -1444, 4, .8, -.3, null, null], [-2615, -6159, 1, 1, null, null, null], [-2744, -5943, 2, 1.1, null, null, null], [-3713, -4955, 3, .9, null, null, null], [-9061, -1292, 1, .8, 0, null, null], [-1551, -4718, 4, .5, null, null, null], [5251, -6249, 1, .5, null, 1, null], [5192, -6181, 2, .4, -.1, null, null], [-2898, -5732, 3, .9, null, null, null], [-1705, -4629, 3, .8, null, null, null], [1618, -7035, 1, .5, null, null, null], [-3829, -4776, 4, .9, null, null, null], [-2851, -5589, 4, 1.1, -.2, null, null], [-2974, -5399, 2, 1.1, null, null, null], [-3952, -4568, 1, .9, null, null, null], [-4135, -4368, 2, 1.1, .1, 1, null], [-3428, -5104, 1, 1.1, null, null, null], [-3167, -5254, 4, .9, .1, null, null], [-3049, -6916, 2, 1, null, null, null], [-3097, -6722, 1, .9, -.3, null, null], [-3190, -6493, 3, 1, null, null, null], [-3318, -6284, 4, 1.1, null, null, null], [-4672, -5861, 1, 1.1, 1, null, null], [-4480, -5668, 1, 1, null, null, null], [-4294, -5548, 2, .9, 1.1, null, null], [-3433, -6072, 1, 1, -.2, null, null], [-3568, -5881, 3, 1, null, null, null], [-3736, -5698, 2, 1.2, null, null, null], [-3978, -7517, 3, .9, .1, null, null], [-3956, -5572, 4, 1, null, null, null], [-4103, -5400, 1, 1, null, null, null], [-4281, -5240, 2, 1, null, null, null], [-4409, -5034, 3, 1, null, null, null], [-4475, -4808, 4, .9, null, null, null], [-2777, -7546, 3, 1, .8, null, null], [-2542, -7502, 2, .9, .4, null, null], [-2398, -7364, 1, .9, -.7, null, null], [-2350, -7151, 2, .9, -.4, null, null], [-2315, -6976, 4, .8, -.8, null, null], [-3749, -7488, 4, 1, null, null, null], [-2995, -7596, 2, 1.2, .5, null, null], [-3253, -7558, 3, 1.1, .3, null, null], [-3468, -7472, 4, 1, null, null, null], [-5028, -6473, 2, 1, .4, null, null], [-3604, -7301, 1, 1.1, null, null, null], [-3678, -7078, 2, 1.1, null, null, null], [-3835, -6826, 3, 1.1, null, null, null], [-3935, -6595, 2, 1, null, null, null], [-5214, -7381, 3, 1, null, null, null], [-4065, -6416, 3, 1.1, null, null, null], [-4174, -6231, 4, .7, null, null, null], [-4556, -6940, 3, 1, null, null, null], [-4663, -6781, 4, 1, null, null, null], [-4748, -6548, 2, 1.3, null, null, null], [-4847, -6257, 2, 1.1, -.4, null, null], [-4806, -6016, 4, .9, 1.2, null, null], [-4950, -7410, 1, 1.4, .2, null, null], [-5470, -7251, 4, 1.3, -.2, null, null], [-5637, -7038, 2, 1, -.3, null, null], [-5593, -6819, 4, 1, null, null, null], [-5406, -6727, 3, 1, .6, null, null], [-5263, -6580, 1, 1, .4, null, null], [-4636, -7476, 2, 1, .2, null, null], [-4399, -7496, 2, .9, -.2, null, null], [-6769, -7571, 2, .9, -.4, null, null], [-6853, -7377, 1, .9, null, null, null], [-8273, -7231, 4, .5, .4, null, null], [-4182, -7512, 4, .9, .1, null, null], [-7525, -5855, 2, .9, null, null, null], [-7495, -6329, 3, .5, null, null, null], [-7297, -6946, 2, .9, null, null, null], [-8148, -7137, 1, .7, null, null, null], [-7030, -7301, 4, .7, null, null, null]],
         walls: [[1009, -2308, 108], [1241, -2490, 60], [1157, -2379, 84], [622, -2126, 48], [669, -2187, 72], [-392, -1669, 132], [-273, -1746, 60], [-252, -1504, 120], [1553, -2016, 48], [1637, -1972, 60], [1736, -1922, 60], [2150, -2406, 72], [2238, -2318, 108], [2364, -2391, 72], [2491, -2682, 72], [2596, -2671, 108], [-150, -3147, 48], [-155, -3044, 84], [-427, -3600, 48], [-259, -2982, 60], [-379, -3529, 72], [-665, -3052, 60], [20, -1816, 60], [127, -1799, 60], [263, -2572, 48], [405, -2570, 108], [851, -4183, 120], [754, -3971, 108], [1757, -5065, 132], [1169, -4453, 108], [2054, -5244, 108], [1631, -4901, 108], [2305, -5281, 108], [1007, -4281, 96], [2766, -5202, 96], [2927, -5204, 84], [3206, -5218, 36], [3099, -5193, 72], [1417, -4726, 120], [2844, -1513, 60], [3206, -1464, 120], [2881, -1403, 108], [3804, -2025, 84], [4116, -1778, 108], [3715, -1508, 72], [4247, -1126, 72], [3860, 268, 60], [4334, -1011, 132], [3849, 349, 72], [3956, 490, 96], [4073, 667, 108], [3583, -864, 96], [4135, 836, 120], [4785, -743, 120], [4993, -839, 108], [5224, -482, 84], [5235, -1238, 132], [5419, -1346, 72], [6075, -5099, 96], [5767, -4953, 108], [5896, -4967, 108], [5384, -4642, 108], [5704, -4857, 108], [5563, -4697, 108], [5406, -4470, 132], [5352, -3964, 108], [5309, -3665, 132], [5247, -3464, 108], [5300, -3121, 108], [3524, -3340, 132], [3661, -3589, 108], [7236, -1376, 72], [7624, -1610, 96], [7403, -1555, 84], [7514, -1568, 108], [3660, -2705, 108], [3374, -2813, 96], [7347, -1447, 108], [7236, -775, 60], [7207, -631, 108], [7303, -468, 108], [7262, -1263, 108], [7404, -350, 120], [7589, -305, 108], [7741, -1589, 120], [7949, -1594, 120], [8152, -1599, 132], [8378, -1602, 144], [7873, -321, 72], [8543, -1661, 84], [7790, -259, 120], [8675, -1573, 120], [8163, -245, 84], [8329, -311, 84], [8275, -229, 120], [8447, -277, 120], [8824, -1447, 108], [7221, -1140, 60], [8924, -1273, 108], [6844, -950, 120], [8949, -1060, 132], [8904, -920, 96], [8582, -338, 84], [8963, -803, 120], [8680, -322, 108], [8811, -449, 108], [8910, -610, 108], [6855, 114, 96], [6971, 241, 120], [6852, 656, 60], [6980, 706, 108], [6946, 939, 120], [6027, -560, 72], [7521, 425, 48], [7599, 389, 60], [5863, -431, 108], [9392, 262, 108], [7521, 512, 72], [9807, 1027, 60], [9554, 237, 120], [9346, 392, 144], [9789, 1142, 84], [9747, -532, 96], [8591, 347, 72], [9951, -509, 120], [9308, 2417, 60], [10185, -522, 108], [10330, 2147, 72], [9350, 2480, 84], [10503, 2124, 108], [12500, 2628, 60], [13188, 2864, 60], [12637, 2659, 84], [13262, 2899, 60], [13777, 5168, 60], [15709, 6399, 48], [13539, 5664, 60], [15660, 6474, 48], [13743, 5248, 84], [15482, 6600, 48], [15591, 6525, 36], [13487, 5738, 84], [15407, 6702, 72], [8171, -2568, 60], [16001, 6015, 72], [16017, 6110, 48], [6496, -1491, 60], [6626, -1480, 84], [6190, -1022, 96], [8325, -2615, 120], [8222, -2412, 120], [9204, -2288, 108], [9279, -2216, 120], [10375, -1558, 96], [10309, -1421, 108], [10247, -1216, 144], [10079, -2310, 108], [10320, -2330, 120], [10942, -2963, 108], [10807, -2778, 132], [12989, -1929, 72], [12613, -1181, 48], [12559, -1120, 60], [11642, -1900, 84], [11558, -1692, 108], [11509, -1479, 60], [12559, -2673, 96], [12446, -2487, 120], [12375, -2303, 108], [10363, -3514, 84], [10290, -3340, 108], [10162, -3207, 84], [9003, -3048, 108], [9161, -3119, 72], [14550, -3462, 108], [14407, -3335, 108], [14366, -4493, 108], [14477, -4437, 120], [15305, -4230, 108], [15481, -4283, 108], [15349, -5009, 48], [11874, -4879, 72], [15453, -4984, 84], [11907, -4742, 96], [12440, -4278, 60], [11980, -4582, 108], [12131, -4387, 132], [15681, -4973, 120], [12591, -4252, 96], [12777, -4244, 108], [12969, -4227, 108], [15897, -5071, 108], [13204, -4228, 120], [11592, -5261, 84], [12743, -4826, 48], [10102, -5078, 84], [12854, -4782, 108], [10191, -5033, 84], [10523, -5133, 120], [10336, -4977, 132], [10667, -5250, 96], [9665, -6403, 84], [10798, -5379, 60], [9670, -5547, 108], [9834, -6369, 120], [9864, -5572, 132], [11362, -3957, 108], [11162, -3830, 120], [8922, -6173, 120], [9003, -5368, 60], [8453, -6153, 72], [8954, -5229, 108], [8905, -5072, 96], [8704, -3873, 108], [8578, -6105, 96], [8508, -3710, 84], [8614, -5400, 60], [8788, -4922, 132], [8936, -3905, 72], [9701, -4613, 108], [6973, -4776, 72], [7016, -4674, 108], [9124, -3853, 108], [7253, -4648, 96], [6602, -4591, 72], [8510, -5322, 108], [6687, -3810, 84], [9525, -4492, 132], [7461, -4705, 108], [9280, -3812, 96], [6467, -2811, 36], [6842, -3820, 96], [6483, -2725, 72], [7675, -4864, 132], [6991, -2885, 108], [6610, -2664, 108], [6822, -2736, 108], [6763, -4582, 108], [6509, -2490, 108], [7216, -3865, 132], [7018, -3708, 120], [2254, -3301, 96], [6378, -2310, 96], [7197, -2857, 108], [2609, -3483, 60], [2449, -3385, 108], [4585, -2889, 84], [4470, -2768, 96], [4083, -4033, 108], [1568, -2869, 48], [4336, -4105, 144], [1977, -1678, 60], [1412, -3642, 60], [1570, -2792, 72], [1932, -1586, 72], [1310, -3547, 72], [3611, 1391, 120], [3558, 2174, 108], [3431, 1563, 108], [3142, 2813, 84], [3330, 2296, 132], [3001, 2818, 72], [3703, 2044, 48], [2872, 3863, 108], [3125, 2942, 132], [2841, 4018, 132], [2402, 5140, 72], [2511, 5167, 96], [-14607, -5112, 108], [-14430, -5180, 108], [-14197, -5222, 144], [-14895, -4703, 60], [-14797, -4728, 48], [-14697, -4739, 48], [-13919, -5281, 132], [-13646, -5170, 84], [-13400, -5068, 144], [-13099, -5108, 132], [-12824, -5092, 108], [-12631, -5044, 108], [-12427, -4914, 108], [-12270, -4816, 84], [-11772, -4983, 84], [-11940, -4867, 108], [-12091, -4699, 108], [-12270, -4529, 84], [-12460, -4396, 108], [-13058, -4252, 108], [-12894, -4096, 84], [-12738, -4077, 84], [-13546, -4341, 48], [-13428, -4299, 108], [-14679, -4192, 84], [-14368, -4308, 84], [-14495, -4133, 132], [-12072, -3824, 96], [-11904, -3648, 120], [-11654, -3569, 84], [-11648, -3357, 108], [-11420, -3359, 108], [-11296, -3135, 84], [-10782, -2838, 96], [-11410, -3039, 36], [-10581, -2773, 132], [-11118, -5114, 96], [-10675, -5079, 108], [-10205, -4890, 96], [-11543, -4164, 96], [-11287, -4244, 60], [-10018, -4747, 120], [-9278, 419, 60], [-9341, 470, 60], [-9180, 496, 96], [-11365, -4131, 120], [-9353, 0, 72], [-8975, 528, 120], [-9413, 89, 108], [-8230, 770, 48], [-9231, 17, 84], [-6808, 1667, 60], [-6694, 1622, 96], [-8285, 855, 72], [-6793, 1796, 96], [-6865, 1935, 60], [-7043, 2222, 72], [-7083, 2368, 72], [-7103, 2533, 84], [-7099, 2721, 96], [-7178, 2874, 48], [-6964, 3110, 84], [-6246, 4191, 72], [-6735, 3446, 48], [-6722, 3537, 84], [-6396, 3388, 108], [-6787, 3140, 108], [-6227, 4488, 84], [-6281, 3953, 72], [-6530, 3576, 132], [-6147, 3994, 132], [-6141, 4292, 144], [-6377, 5578, 84], [-6152, 4569, 108], [-6222, 4769, 84], [-6266, 4956, 72], [-6233, 5414, 108], [-6347, 5646, 84], [-6400, 6066, 84], [-6411, 6261, 96], [-6565, 7043, 72], [-6377, 6415, 108], [-6440, 6614, 84], [-5944, 1954, 60], [-6001, 2039, 96], [-6467, 7070, 108], [-4963, 3608, 72], [-4776, 3510, 48], [-5785, 1998, 132], [-3708, 3449, 72], [-3790, 3582, 108], [-4031, 3697, 84], [-4859, 3634, 120], [-3850, 3730, 120], [-4689, 4605, 108], [-3492, 2892, 72], [-4507, 4483, 72], [-4829, 2745, 108], [-4435, 4273, 108], [-3383, 2930, 108], [-4888, 2821, 108], [-5372, 5172, 60], [-5036, 2981, 108], [-9895, -1942, 120], [-9371, -2159, 72], [-9995, -1773, 108], [-5280, 5218, 108], [-5079, 5183, 108], [-5149, 3079, 72], [-9695, -2048, 120], [-5063, 5374, 108], [-9504, -2059, 120], [-8948, -2140, 84], [-9262, -2081, 132], [-9068, -2071, 120], [-8861, -2045, 132], [-8654, -2083, 120], [-8473, -2048, 120], [-8283, -1965, 120], [-8182, -1863, 108], [-10037, -1579, 108], [-10063, -1365, 108], [-10074, -1190, 108], [-8167, -1225, 60], [-8188, -1087, 96], [-9975, -1022, 108], [-9835, -910, 120], [-9709, -848, 120], [-9532, -792, 120], [-9348, -779, 120], [-9131, -784, 132], [-8754, -795, 84], [-8587, -797, 120], [-8424, -856, 108], [-8246, -921, 108], [-8153, -1701, 84], [-6447, -2137, 72], [-8153, -1591, 60], [-7694, -1393, 120], [-6541, -2030, 84], [-7135, -1547, 84], [-5885, -2958, 72], [-7171, -1440, 96], [-5620, -3123, 72], [-6631, -1866, 96], [-5882, -3696, 96], [-5716, -2944, 108], [-5949, -3528, 60], [-6869, -4052, 96], [-7081, -2673, 60], [-6725, -4069, 72], [-10487, -2295, 60], [-7032, -2749, 72], [-10769, -3817, 72], [-6607, -4081, 60], [-10849, -1824, 84], [-10479, -2146, 108], [-7003, -2611, 108], [-10749, -1511, 72], [-10697, -1953, 120], [-10848, -1330, 108], [-10912, -1220, 60], [-9843, -2685, 84], [-10823, -3717, 84], [-9697, -2713, 72], [-10080, -3431, 48], [-10648, -3844, 108], [-9530, -2695, 120], [-2387, -6791, 108], [-8465, -5037, 84], [-2550, -6627, 108], [-9325, -2822, 84], [-10140, -3346, 96], [-8461, -4908, 108], [8116, -1076, 96], [8115, -940, 96], [-2503, -6359, 168], [-9062, -1580, 96], [8120, -790, 96], [-9065, -1444, 96], [-2615, -6159, 120], [-2744, -5943, 132], [-3713, -4955, 108], [-9061, -1292, 96], [-1551, -4718, 60], [5251, -6249, 60], [5192, -6181, 48], [-2898, -5732, 108], [-1705, -4629, 96], [1618, -7035, 60], [-3829, -4776, 108], [-2851, -5589, 132], [-2974, -5399, 132], [-3952, -4568, 108], [-4135, -4368, 132], [-3428, -5104, 132], [-3167, -5254, 108], [-3049, -6916, 120], [-3097, -6722, 108], [-3190, -6493, 120], [-3318, -6284, 132], [-4672, -5861, 132], [-4480, -5668, 120], [-4294, -5548, 108], [-3433, -6072, 120], [-3568, -5881, 120], [-3736, -5698, 144], [-3978, -7517, 108], [-3956, -5572, 120], [-4103, -5400, 120], [-4281, -5240, 120], [-4409, -5034, 120], [-4475, -4808, 108], [-2777, -7546, 120], [-2542, -7502, 108], [-2398, -7364, 108], [-2350, -7151, 108], [-2315, -6976, 96], [-3749, -7488, 120], [-2995, -7596, 144], [-3253, -7558, 132], [-3468, -7472, 120], [-5028, -6473, 120], [-3604, -7301, 132], [-3678, -7078, 132], [-3835, -6826, 132], [-3935, -6595, 120], [-5214, -7381, 120], [-4065, -6416, 132], [-4174, -6231, 84], [-4556, -6940, 120], [-4663, -6781, 120], [-4748, -6548, 156], [-4847, -6257, 132], [-4806, -6016, 108], [-4950, -7410, 168], [-5470, -7251, 156], [-5637, -7038, 120], [-5593, -6819, 120], [-5406, -6727, 120], [-5263, -6580, 120], [-4636, -7476, 120], [-4399, -7496, 108], [-6769, -7571, 108], [-6853, -7377, 108], [-8273, -7231, 60], [-4182, -7512, 108], [-7525, -5855, 108], [-7495, -6329, 60], [-7297, -6946, 108], [-8148, -7137, 84], [-7030, -7301, 84]],
-        groundDoodads: [[-9670, -1470, "doodadField", 0.5, 0, null, null], [8600, -940, "doodadField", 0.5, 0, null, null], [920, -2800, "doodadField", 0.5, 0, null, null]],
+        groundDoodads: [[-9670, -1470, "doodadField", .5, 0, null, null], [8600, -940, "doodadField", .5, 0, null, null], [920, -2800, "doodadField", .5, 0, null, null]],
         debug: {
             show: !0,
             collisions: !1
@@ -26123,7 +26360,7 @@ function loadGameCode() {
         }
         ,
         Tools.startupMsg = function() {
-            console.log("%c\u039BIRM\u039BSH Engine " + game.version + " starting up!", "font-size: 20px;"),
+            console.log("%cΛIRMΛSH Engine " + game.version + " starting up!", "font-size: 20px;"),
             console.log(""),
             console.log("%c*** Important message ***", "font-size: 16px; color: red;"),
             console.log("%cDo not paste any commands given by players in this console window", "font-size: 14px; color: red;"),
@@ -26322,8 +26559,8 @@ function loadGameCode() {
         }
         ;
         var qt = {
-            shockwave: [0.1, 0.1, 0.11, 0.12, 0.12, 0.13, 0.14, 0.14, 0.15, 0.16, 0.17, 0.18, 0.2, 0.21, 0.22, 0.24, 0.26, 0.29, 0.31, 0.35, 0.38, 0.42, 0.47, 0.52, 0.58, 0.64, 0.71, 0.78, 0.84, 0.9, 0.95, 0.98, 1, 1, 1, 0.98, 0.97, 0.94, 0.9, 0.85, 0.78, 0.7, 0.62, 0.52, 0.43, 0.34, 0.26, 0.18, 0.11, 0.05, 0],
-            explosionSmoke: [0, 0, 0.02, 0.06, 0.13, 0.26, 0.45, 0.71, 0.91, 0.99, 0.99, 0.97, 0.94, 0.92, 0.89, 0.86, 0.83, 0.8, 0.77, 0.74, 0.71, 0.68, 0.65, 0.63, 0.6, 0.57, 0.54, 0.51, 0.48, 0.45, 0.42, 0.4, 0.37, 0.34, 0.31, 0.29, 0.26, 0.24, 0.21, 0.19, 0.16, 0.14, 0.12, 0.1, 0.08, 0.06, 0.04, 0.02, 0.01, 0, 0]
+            shockwave: [.1, .1, .11, .12, .12, .13, .14, .14, .15, .16, .17, .18, .2, .21, .22, .24, .26, .29, .31, .35, .38, .42, .47, .52, .58, .64, .71, .78, .84, .9, .95, .98, 1, 1, 1, .98, .97, .94, .9, .85, .78, .7, .62, .52, .43, .34, .26, .18, .11, .05, 0],
+            explosionSmoke: [0, 0, .02, .06, .13, .26, .45, .71, .91, .99, .99, .97, .94, .92, .89, .86, .83, .8, .77, .74, .71, .68, .65, .63, .6, .57, .54, .51, .48, .45, .42, .4, .37, .34, .31, .29, .26, .24, .21, .19, .16, .14, .12, .1, .08, .06, .04, .02, .01, 0, 0]
         };
         Tools.easing = {
             outElastic: function(Jt, $t) {
@@ -26353,7 +26590,7 @@ function loadGameCode() {
         }
         ,
         Tools.debugLine = function(Jt, $t) {
-            return "<div class=\"line\"><span class=\"attr\">" + UI.escapeHTML(Jt) + "</span><span class=\"val\">" + UI.escapeHTML($t) + "</span></div>"
+            return '<div class="line"><span class="attr">' + UI.escapeHTML(Jt) + '</span><span class="val">' + UI.escapeHTML($t) + "</span></div>"
         }
         ,
         Tools.updateDebug = function() {
@@ -26365,7 +26602,7 @@ function loadGameCode() {
               , an = ""
               , rn = Players.getMe();
             null != rn && (an = Tools.debugLine("Coords", Math.round(rn.pos.x) + ", " + Math.round(rn.pos.y)));
-            var on = Tools.debugLine("FPS", Math.round($t)) + Tools.debugLine("Ticks", (100 * (game.debug.ticks / (Jt - game.debug.last))).toFixed(2) + "%") + Tools.debugLine("Ping", game.ping.toFixed(2) + " ms") + Tools.debugLine("Res", game.screenX + " x " + game.screenY) + "<div class=\"spacer\"></div>" + Tools.debugLine("Players", en[0] + " / " + en[1]) + Tools.debugLine("Mobs", tn[0] + " / " + tn[1]) + Tools.debugLine("Particles", Particles.count()) + Tools.debugLine("Doodads", nn[0] + " / " + nn[1]) + "<div class=\"spacer\"></div>" + an + Tools.debugLine("Scale", game.scale.toFixed(2)) + Tools.debugLine("Jitter", game.jitter.toFixed(3)) + "<div class=\"close\" onclick=\"Tools.hideDebug()\">x</div>";
+            var on = Tools.debugLine("FPS", Math.round($t)) + Tools.debugLine("Ticks", (100 * (game.debug.ticks / (Jt - game.debug.last))).toFixed(2) + "%") + Tools.debugLine("Ping", game.ping.toFixed(2) + " ms") + Tools.debugLine("Res", game.screenX + " x " + game.screenY) + '<div class="spacer"></div>' + Tools.debugLine("Players", en[0] + " / " + en[1]) + Tools.debugLine("Mobs", tn[0] + " / " + tn[1]) + Tools.debugLine("Particles", Particles.count()) + Tools.debugLine("Doodads", nn[0] + " / " + nn[1]) + '<div class="spacer"></div>' + an + Tools.debugLine("Scale", game.scale.toFixed(2)) + Tools.debugLine("Jitter", game.jitter.toFixed(3)) + '<div class="close" onclick="Tools.hideDebug()">x</div>';
             $("#debug").html(on),
             game.debug.last = Jt,
             game.debug.ticks = 0,
@@ -26482,9 +26719,10 @@ function loadGameCode() {
         var Qt = function(Jt, $t) {
             if ($t instanceof Error) {
                 var en = {};
-                return Object.getOwnPropertyNames($t).forEach(function(tn) {
+                return Object.getOwnPropertyNames($t).forEach((function(tn) {
                     en[tn] = $t[tn]
-                }),
+                }
+                )),
                 en
             }
             return $t
@@ -26864,249 +27102,249 @@ function loadGameCode() {
             minimapBox: {
                 texture: "ui_minimap_box",
                 layer: "ui4",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 alpha: .6
             },
             minimapMob: {
                 texture: "ui_minimap_mob",
                 layer: "ui1",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 alpha: .5,
                 scale: .8
             },
             minimapBlue: {
                 texture: "ui_minimap_blue",
                 layer: "ui1",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 alpha: .5,
                 scale: .8
             },
             minimapFlagBlue: {
                 texture: "ui_minimap_flag_blue",
                 layer: "ui3",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 scale: .5
             },
             minimapFlagRed: {
                 texture: "ui_minimap_flag_red",
                 layer: "ui3",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 scale: .5
             },
             minimapBaseBlue: {
                 texture: "ui_minimap_base_blue",
                 layer: "ui2",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 scale: .5
             },
             minimapBaseRed: {
                 texture: "ui_minimap_base_red",
                 layer: "ui2",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 scale: .5
             },
             thrusterShadow: {
                 texture: "afterburner_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.1]
+                anchor: [.5, .1]
             },
             missile: {
                 texture: "missile",
                 layer: "projectiles",
-                anchor: [0.5, 0],
-                scale: [0.2, 0.15]
+                anchor: [.5, 0],
+                scale: [.2, .15]
             },
             missileFat: {
                 texture: "missile_fat",
                 layer: "projectiles",
-                anchor: [0.5, 0],
-                scale: [0.2, 0.2]
+                anchor: [.5, 0],
+                scale: [.2, .2]
             },
             missileSmall: {
                 texture: "missile_small",
                 layer: "projectiles",
-                anchor: [0.5, 0],
-                scale: [0.2, 0.2]
+                anchor: [.5, 0],
+                scale: [.2, .2]
             },
             missileShadow: {
                 texture: "missile_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.25]
+                anchor: [.5, .25]
             },
             missileThruster: {
                 texture: "afterburner",
                 layer: "thrusters",
-                anchor: [0.5, 0.1],
-                scale: [0.15, 0.15]
+                anchor: [.5, .1],
+                scale: [.15, .15]
             },
             thrusterGlowSmall: {
                 texture: "glowsmall_copy",
                 layer: "glows",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 blend: "ADD"
             },
             smokeGlow: {
                 texture: "glowdirectional",
                 layer: "glows",
-                anchor: [0.5, 0.3],
+                anchor: [.5, .3],
                 blend: "ADD"
             },
             crateShadow: {
                 texture: "crate_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             crateUpgrade: {
                 texture: "crate_upgrade",
                 layer: "crates",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             crateShield: {
                 texture: "crate_shield",
                 layer: "crates",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             crateRampage: {
                 texture: "crate_rampage",
                 layer: "crates",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             powerupCircle: {
                 texture: "powerup_circle",
                 layer: "powerups",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 blend: "ADD"
             },
             powerupShield: {
                 texture: "powerup_shield",
                 layer: "powerups",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 blend: "ADD"
             },
             powerupRampage: {
                 texture: "powerup_rampage",
                 layer: "powerups",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 blend: "ADD"
             },
             powerupRampage: {
                 texture: "powerup_rampage",
                 layer: "powerups",
-                anchor: [0.5, 0.5],
+                anchor: [.5, .5],
                 blend: "ADD"
             },
             ctfFlagRed: {
                 texture: "ctf_flag_red",
                 layer: "flags",
-                anchor: [0.1171875, 0.9296875]
+                anchor: [.1171875, .9296875]
             },
             ctfFlagBlue: {
                 texture: "ctf_flag_blue",
                 layer: "flags",
-                anchor: [0.1171875, 0.9296875]
+                anchor: [.1171875, .9296875]
             },
             ctfFlagShadow: {
                 texture: "ctf_flag_shadow",
                 layer: "shadows",
-                anchor: [0.09375, 0.71875]
+                anchor: [.09375, .71875]
             },
             shipRaptor: {
                 texture: "raptor",
                 layer: "aircraft",
-                anchor: [0.5, 0.6]
+                anchor: [.5, .6]
             },
             shipRaptorShadow: {
                 texture: "raptor_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.57]
+                anchor: [.5, .57]
             },
             shipRaptorThruster: {
                 texture: "afterburner",
                 layer: "thrusters",
-                anchor: [0.5, 0.1],
-                scale: [0.25, 0.25]
+                anchor: [.5, .1],
+                scale: [.25, .25]
             },
             shipSpirit: {
                 texture: "spirit",
                 layer: "aircraft",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             shipSpiritShadow: {
                 texture: "spirit_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             shipSpiritThruster: {
                 texture: "afterburner",
                 layer: "thrusters",
-                anchor: [0.5, 0.1],
-                scale: [0.25, 0.25]
+                anchor: [.5, .1],
+                scale: [.25, .25]
             },
             shipComanche: {
                 texture: "comanche",
                 layer: "aircraft",
-                anchor: [0.5, 0.4]
+                anchor: [.5, .4]
             },
             shipComancheShadow: {
                 texture: "comanche_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.43]
+                anchor: [.5, .43]
             },
             shipComancheRotor: {
                 texture: "comanche_rotor",
                 layer: "aircraft",
-                anchor: [0.5, 0.5],
-                scale: [0.25, 0.25]
+                anchor: [.5, .5],
+                scale: [.25, .25]
             },
             shipComancheRotorShadow: {
                 texture: "comanche_rotor_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             shipTornado: {
                 texture: "tornado",
                 layer: "aircraft",
-                anchor: [0.5, 0.65]
+                anchor: [.5, .65]
             },
             shipTornadoShadow: {
                 texture: "tornado_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.605]
+                anchor: [.5, .605]
             },
             shipProwler: {
                 texture: "prowler",
                 layer: "aircraft",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             shipProwlerShadow: {
                 texture: "prowler_shadow",
                 layer: "shadows",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             mountain1: {
                 texture: "mountain1",
                 layer: "doodads",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             mountain2: {
                 texture: "mountain2",
                 layer: "doodads",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             mountain3: {
                 texture: "mountain3",
                 layer: "doodads",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             mountain4: {
                 texture: "mountain4",
                 layer: "doodads",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             },
             doodadField: {
                 texture: "doodad_field",
                 layer: "fields",
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             }
         }
           , Wt = {};
@@ -27261,7 +27499,7 @@ function loadGameCode() {
                 hidpi: !0
             }) : Tools.removeSetting("hidpi"),
             UI.updateMainMenuSettings(),
-            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", "Reload game to apply HiDPI settings<br><span class=\"button\" onclick=\"Games.redirRoot()\">RELOAD</span>", 1e4)
+            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
         }
         ;
         var Kt = function(an, rn) {
@@ -27330,7 +27568,7 @@ function loadGameCode() {
             Ht.polygons.scale.y = game.scale)
         }
           , tn = function() {
-            $.getJSON("assets/map.json", function(an) {
+            $.getJSON("assets/map.json", (function(an) {
                 Ht.polygons = new PIXI.Graphics,
                 Ht.polygons.beginFill();
                 var cn = 0, hn = 0, fn = 0, rn, on, sn, dn, ln, un, pn;
@@ -27353,7 +27591,8 @@ function loadGameCode() {
                 en(),
                 Wt.map.addChild(Ht.polygons),
                 Wt.map.mask = Ht.polygons
-            })
+            }
+            ))
         };
         Graphics.initSprite = function(an, rn, on) {
             var sn = Textures.sprite(an);
@@ -27601,7 +27840,7 @@ function loadGameCode() {
                 hidpi: !0
             }) : Tools.removeSetting("hidpi"),
             UI.updateMainMenuSettings(),
-            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", "Reload game to apply HiDPI settings<br><span class=\"button\" onclick=\"Games.redirRoot()\">RELOAD</span>", 1e4)
+            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
         }
         ;
         var Kt = function(an, rn) {
@@ -28120,7 +28359,7 @@ function loadGameCode() {
                     Games.handleFirewall(bn);
                     break;
                 case yn.COMMAND_REPLY:
-                    UI.showCommandReply(bn);
+                    UI.showCommandReply(bn)
                 }
             }
         }
@@ -28144,7 +28383,7 @@ function loadGameCode() {
             !1)
         };
         Network.reconnectMessage = function() {
-            game.reloading || UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>Connection reset<br><span class=\"button\" onclick=\"Network.reconnect()\">RECONNECT</span>", 6e5)
+            game.reloading || UI.showMessage("alert", '<span class="info">DISCONNECTED</span>Connection reset<br><span class="button" onclick="Network.reconnect()">RECONNECT</span>', 6e5)
         }
         ,
         Network.reconnect = function() {
@@ -28162,7 +28401,7 @@ function loadGameCode() {
                     protocol: game.protocol,
                     name: game.myName,
                     session: config.settings.session ? config.settings.session : "none",
-                    horizonX: Math.ceil(16000 / game.scale),
+                    horizonX: Math.ceil(16e3 / game.scale),
                     horizonY: Math.ceil(8e3 / game.scale),
                     flag: game.myFlag
                 })
@@ -28231,7 +28470,7 @@ function loadGameCode() {
                     Tn += 8;
                     break;
                 case fn.boolean:
-                    Tn += 1;
+                    Tn += 1
                 }
             var Cn = new ArrayBuffer(Tn)
               , Pn = new DataView(Cn)
@@ -28275,7 +28514,7 @@ function loadGameCode() {
                     break;
                 case fn.boolean:
                     Pn.setUint8(Mn, !1 === bn[En[vn][0]] ? 0 : 1),
-                    Mn += 1;
+                    Mn += 1
                 }
             return Cn
         }
@@ -28392,7 +28631,7 @@ function loadGameCode() {
                                 break;
                             case fn.healthnergy:
                                 Ln[Nn] = Tools.decodeHealthnergy(vn.getUint8(Sn, !0)),
-                                Sn += 1;
+                                Sn += 1
                             }
                         Tn[Cn].push(Ln)
                     }
@@ -28462,7 +28701,7 @@ function loadGameCode() {
                     Sn += 1;
                     break;
                 default:
-                    return null;
+                    return null
                 }
             return Tn
         }
@@ -28816,16 +29055,18 @@ function loadGameCode() {
             mn(!0),
             $(window).on("keydown", un),
             $(window).on("keyup", pn),
-            $(window).on("gamepadconnected", function(Tn) {
-                UI.showMessage("alert", "<span class=\"info\">GAMEPAD CONNECTED</span>" + UI.escapeHTML(Tn.originalEvent.gamepad.id), 3e3),
+            $(window).on("gamepadconnected", (function(Tn) {
+                UI.showMessage("alert", '<span class="info">GAMEPAD CONNECTED</span>' + UI.escapeHTML(Tn.originalEvent.gamepad.id), 3e3),
                 qt = !0,
                 hn()
-            }),
-            $(window).on("gamepaddisconnected", function(Tn) {
-                UI.showMessage("alert", "<span class=\"info\">GAMEPAD DISCONNECTED</span>" + UI.escapeHTML(Tn.originalEvent.gamepad.id), 3e3),
+            }
+            )),
+            $(window).on("gamepaddisconnected", (function(Tn) {
+                UI.showMessage("alert", '<span class="info">GAMEPAD DISCONNECTED</span>' + UI.escapeHTML(Tn.originalEvent.gamepad.id), 3e3),
                 qt = !1,
                 hn()
-            })
+            }
+            ))
         }
         ;
         var un = function(vn) {
@@ -28940,13 +29181,13 @@ function loadGameCode() {
               , Sn = ""
               , En = ""
               , wn = null;
-            Tn += "<div class=\"left-binds\">";
+            Tn += '<div class="left-binds">';
             for (var Cn = 0; Cn < rn.length; Cn++)
-                null != rn[Cn][0] && ("" == rn[Cn][0] ? Tn += "<div class=\"item empty\"></div>" : (null == (wn = $t[rn[Cn][1]]) ? (Sn = "&nbsp;",
+                null != rn[Cn][0] && ("" == rn[Cn][0] ? Tn += '<div class="item empty"></div>' : (null == (wn = $t[rn[Cn][1]]) ? (Sn = "&nbsp;",
                 En = "&nbsp;") : ("" == (Sn = wn[0]) && (Sn = "&nbsp;"),
                 "" == (En = 1 == wn.length ? "" : wn[1]) && (En = "&nbsp;")),
-                Tn += "<div class=\"item\"><div class=\"name\">" + rn[Cn][0] + "</div><div class=\"bind" + ("&nbsp;" == Sn ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',0)\">" + Sn + "</div><div class=\"bind" + ("&nbsp;" == En ? " blank" : "") + "\" onclick=\"Input.bindKey(event,'" + rn[Cn][1] + "',1)\">" + En + "</div></div>",
-                13 == Cn && (Tn += "</div><div class=\"right-binds\">")));
+                Tn += '<div class="item"><div class="name">' + rn[Cn][0] + '</div><div class="bind' + ("&nbsp;" == Sn ? " blank" : "") + '" onclick="Input.bindKey(event,\'' + rn[Cn][1] + "',0)\">" + Sn + '</div><div class="bind' + ("&nbsp;" == En ? " blank" : "") + '" onclick="Input.bindKey(event,\'' + rn[Cn][1] + "',1)\">" + En + "</div></div>",
+                13 == Cn && (Tn += '</div><div class="right-binds">')));
             Tn += "</div>",
             null == vn && $("#keybinds-list").html(Tn),
             nn = {},
@@ -29037,57 +29278,65 @@ function loadGameCode() {
         }
         ,
         Input.addTouchRejection = function(vn) {
-            $(vn).on("touchstart", function(Tn) {
+            $(vn).on("touchstart", (function(Tn) {
                 Tn.stopPropagation()
-            }),
-            $(vn).on("touchmove", function(Tn) {
+            }
+            )),
+            $(vn).on("touchmove", (function(Tn) {
                 Tn.preventDefault(),
                 Tn.stopPropagation()
-            })
+            }
+            ))
         }
         ,
         Input.setupLogin = function() {
-            $(window).on("touchstart", function(vn) {
+            $(window).on("touchstart", (function(vn) {
                 Input.touchCloseAll(),
                 vn.preventDefault()
-            }),
+            }
+            )),
             Input.addTouchRejection("#logon,#big-message,#loginselector")
         }
         ,
         Input.setupTouch = function() {
-            $(window).on("touchcancel", function(Tn) {
+            $(window).on("touchcancel", (function(Tn) {
                 null != Vt && Vt.processOnEnd(Tn)
-            }),
+            }
+            )),
             Input.addTouchRejection("#settings,#sidebar,#roomnamecontainer,#menu,#gameselector,#mainmenu,#scoredetailed,#invitefriends,#msg-alert,#msg-information"),
-            $("body").append("<div id=\"touch-joystick\"></div><div id=\"touch-fire\"><div class=\"circle\"></div></div><div id=\"touch-special\"><div class=\"circle\"></div></div>"),
-            $("#touch-fire").on("touchstart", function(Tn) {
+            $("body").append('<div id="touch-joystick"></div><div id="touch-fire"><div class="circle"></div></div><div id="touch-special"><div class="circle"></div></div>'),
+            $("#touch-fire").on("touchstart", (function(Tn) {
                 yn("FIRE", !0),
                 $("#touch-fire > .circle").css({
                     "background-color": "rgba(255, 255, 255, 0.5)"
                 }),
                 Tn.preventDefault()
-            }),
-            $("#touch-fire").on("touchend", function(Tn) {
+            }
+            )),
+            $("#touch-fire").on("touchend", (function(Tn) {
                 yn("FIRE", !1),
                 $("#touch-fire > .circle").css({
                     "background-color": "rgba(255, 255, 255, 0.2)"
                 }),
                 Tn.preventDefault()
-            }),
-            $("#touch-special").on("touchstart", function(Tn) {
+            }
+            )),
+            $("#touch-special").on("touchstart", (function(Tn) {
                 yn("SPECIAL", !0),
                 $("#touch-special > .circle").css({
                     "background-color": "rgba(255, 255, 255, 0.5)"
                 }),
                 Tn.preventDefault()
-            }),
-            $("#touch-special").on("touchend", function(Tn) {
+            }
+            )),
+            $("#touch-special").on("touchend", (function(Tn) {
                 yn("SPECIAL", !1),
                 $("#touch-special > .circle").css({
                     "background-color": "rgba(255, 255, 255, 0.2)"
                 }),
                 Tn.preventDefault()
-            });
+            }
+            ));
             var vn = {
                 zone: $("#touch-joystick")[0],
                 mode: "static",
@@ -29110,12 +29359,12 @@ function loadGameCode() {
                     $(window).on("mouseup", Input.mouseUp),
                     vn)
                         return;
-                    UI.showMessage("alert", "<span class=\"info\">MOUSE MODE</span>Enabled<div class=\"mousemode\"><span class=\"info\">LEFT CLICK</span>Fire&nbsp;&nbsp;&nbsp;<span class=\"info\">RIGHT CLICK</span>Special&nbsp;&nbsp;&nbsp;<span class=\"info\">WASD</span>Move</div>", 7e3),
+                    UI.showMessage("alert", '<span class="info">MOUSE MODE</span>Enabled<div class="mousemode"><span class="info">LEFT CLICK</span>Fire&nbsp;&nbsp;&nbsp;<span class="info">RIGHT CLICK</span>Special&nbsp;&nbsp;&nbsp;<span class="info">WASD</span>Move</div>', 7e3),
                     Tools.setSettings({
                         mousemode: !0
                     })
                 } else
-                    UI.showMessage("alert", "<span class=\"info\">MOUSE MODE</span>Disabled", 3e3),
+                    UI.showMessage("alert", '<span class="info">MOUSE MODE</span>Disabled', 3e3),
                     Tools.removeSetting("mousemode")
         }
         ,
@@ -29159,9 +29408,10 @@ function loadGameCode() {
                     yn("UP", !(null != Tn && .5 > Tn)),
                     yn(Cn, !0),
                     yn(Pn, !1),
-                    jt = setTimeout(function() {
+                    jt = setTimeout((function() {
                         yn(Cn, !1)
-                    }, wn)
+                    }
+                    ), wn)
                 }
             }
         };
@@ -29345,7 +29595,7 @@ function loadGameCode() {
                 this.sprites.thruster1Glow = Textures.init("thrusterGlowSmall"),
                 this.sprites.thruster2Glow = Textures.init("thrusterGlowSmall"),
                 this.sprites.thruster1Shadow = Textures.init("thrusterShadow"),
-                this.sprites.thruster2Shadow = Textures.init("thrusterShadow");
+                this.sprites.thruster2Shadow = Textures.init("thrusterShadow")
             }
             if (this.reel || Xt || (this.setupNameplate(),
             this.setupChatBubbles(),
@@ -29381,7 +29631,7 @@ function loadGameCode() {
         }
         setupNameplate() {
             var Xt = "";
-            2 == game.gameType && (Xt = "  \u25A0"),
+            2 == game.gameType && (Xt = "  ■"),
             this.sprites.name = new PIXI.Text(this.name + Xt,this.nameplateTextStyle()),
             this.sprites.name.scale.set(.5, .5),
             this.sprites.flag = Textures.sprite("flag_" + this.flag),
@@ -29410,7 +29660,7 @@ function loadGameCode() {
             }),
             this.sprites.emote = Graphics.initSprite("emote_tf", this.sprites.bubble, {
                 scale: .6,
-                anchor: [0.5, 0.5]
+                anchor: [.5, .5]
             }),
             this.sprites.bubbleText = new PIXI.Text("a",{
                 fontFamily: "MontserratWeb, Helvetica, sans-serif",
@@ -29453,7 +29703,7 @@ function loadGameCode() {
                     break;
                 case 3:
                     this.sprites.rotor.visible = Yt,
-                    this.sprites.rotorShadow.visible = Yt;
+                    this.sprites.rotorShadow.visible = Yt
                 }
                 this.render = Yt,
                 Yt || Sound.clearThruster(this.id)
@@ -29511,7 +29761,7 @@ function loadGameCode() {
                 case 3:
                 case 4:
                 case 5:
-                    Particles.explosion(this.pos.clone(), Tools.rand(1.5, 2), Tools.randInt(2, 3));
+                    Particles.explosion(this.pos.clone(), Tools.rand(1.5, 2), Tools.randInt(2, 3))
                 }
                 Graphics.shakeCamera(this.pos, this.me() ? 20 : 10),
                 Sound.clearThruster(this.id),
@@ -29556,7 +29806,7 @@ function loadGameCode() {
                 Yt.removeChild(this.sprites.rotor),
                 this.sprites.rotor.destroy(),
                 game.graphics.layers.shadows.removeChild(this.sprites.rotorShadow),
-                this.sprites.rotorShadow.destroy();
+                this.sprites.rotorShadow.destroy()
             }
             Xt && !this.reel && (game.graphics.layers.playernames.removeChild(this.sprites.badge, this.sprites.name, this.sprites.flag),
             null != this.sprites.level && (game.graphics.layers.playernames.removeChild(this.sprites.level, this.sprites.levelBorder),
@@ -29860,7 +30110,7 @@ function loadGameCode() {
                 !1 !== (Ht = this.keystate.UP ? 1 : this.keystate.DOWN ? -1 : 0) && (this.state.thrustLevel = Tools.converge(this.state.thrustLevel, Ht * jt, .2 * Xt));
                 break;
             case 3:
-                this.state.thrustDir += (.2 + this.speed.length() / 50) * Xt;
+                this.state.thrustDir += (.2 + this.speed.length() / 50) * Xt
             }
             this.culled || this.render && (!this.stealthed && .4 > this.health && Particles.planeDamage(this),
             !this.stealthed && .2 > this.health && Particles.planeDamage(this),
@@ -29929,7 +30179,7 @@ function loadGameCode() {
                 Graphics.transform(this.sprites.thruster1Shadow, Wt.x + Math.sin(-jt - .35) * (20 * Yt) / config.shadowScaling, Wt.y + Math.cos(-jt - .35) * (20 * Yt) / config.shadowScaling, jt + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * qt * Kt * this.scale * (4 / config.shadowScaling), .4 * qt * Kt * this.scale * (4 / config.shadowScaling), Zt * this.alpha / 2.5),
                 Graphics.transform(this.sprites.thruster2Shadow, Wt.x + Math.sin(.35 - jt) * (20 * Yt) / config.shadowScaling, Wt.y + Math.cos(.35 - jt) * (20 * Yt) / config.shadowScaling, jt + .5 * (0 < this.state.thrustLevel ? this.state.thrustDir : 0), .4 * qt * Kt * this.scale * (4 / config.shadowScaling), .4 * qt * Kt * this.scale * (4 / config.shadowScaling), Zt * this.alpha / 2.5),
                 Graphics.transform(this.sprites.thruster1Glow, this.pos.x + Math.sin(-jt - .2 - 0 * this.state.thrustDir) * (35 * Yt), this.pos.y + Math.cos(-jt - .2 - 0 * this.state.thrustDir) * (35 * Yt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha),
-                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - jt - 0 * this.state.thrustDir) * (35 * Yt), this.pos.y + Math.cos(.2 - jt - 0 * this.state.thrustDir) * (35 * Yt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha);
+                Graphics.transform(this.sprites.thruster2Glow, this.pos.x + Math.sin(.2 - jt - 0 * this.state.thrustDir) * (35 * Yt), this.pos.y + Math.cos(.2 - jt - 0 * this.state.thrustDir) * (35 * Yt), null, 2.5 * this.scale, 1.5 * this.scale, .2 * this.state.thrustLevel * this.alpha)
             }
             this.updateNameplate(),
             this.state.bubble && this.updateBubble(),
@@ -30086,7 +30336,7 @@ function loadGameCode() {
                         UI.visibilityHUD(!1);
                         var zt = Xt[jt.killer];
                         null != zt && UI.killedBy(zt),
-                        UI.showSpectator("<div onclick=\"Network.spectateNext()\" class=\"spectate\">ENTER SPECTATOR MODE</div>")
+                        UI.showSpectator('<div onclick="Network.spectateNext()" class="spectate">ENTER SPECTATOR MODE</div>')
                     } else
                         jt.killer === game.myID && UI.killed(Wt);
                     Wt.me() || Wt.id != game.spectatingID || 3 != game.gameType || Games.spectatorSwitch(Wt.id)
@@ -30176,7 +30426,7 @@ function loadGameCode() {
             case 7:
                 this.sprites.sprite = Textures.init("missile"),
                 this.sprites.shadow = Textures.init("missileShadow", {
-                    scale: [0.25, 0.2]
+                    scale: [.25, .2]
                 }),
                 this.sprites.thrusterGlow.scale.set(3, 2),
                 this.sprites.thrusterGlow.alpha = .2,
@@ -30186,7 +30436,7 @@ function loadGameCode() {
             case 2:
                 this.sprites.sprite = Textures.init("missileFat"),
                 this.sprites.shadow = Textures.init("missileShadow", {
-                    scale: [0.5, 0.25]
+                    scale: [.5, .25]
                 }),
                 this.sprites.thrusterGlow.scale.set(4, 3),
                 this.sprites.thrusterGlow.alpha = .25,
@@ -30195,10 +30445,10 @@ function loadGameCode() {
                 break;
             case 3:
                 this.sprites.sprite = Textures.init("missileSmall", {
-                    scale: [0.28, 0.2]
+                    scale: [.28, .2]
                 }),
                 this.sprites.shadow = Textures.init("missileShadow", {
-                    scale: [0.18, 0.14]
+                    scale: [.18, .14]
                 }),
                 this.sprites.thrusterGlow.scale.set(3, 2),
                 this.sprites.thrusterGlow.alpha = .2,
@@ -30217,7 +30467,7 @@ function loadGameCode() {
                 }),
                 this.sprites.shadow = Textures.init("crateShadow", {
                     scale: this.state.baseScaleShadow
-                });
+                })
             }
         }
         despawn(Xt) {
@@ -30254,7 +30504,7 @@ function loadGameCode() {
             case 8:
             case 9:
                 game.graphics.layers.crates.removeChild(this.sprites.sprite),
-                game.graphics.layers.shadows.removeChild(this.sprites.shadow);
+                game.graphics.layers.shadows.removeChild(this.sprites.shadow)
             }
             this.sprites.sprite.destroy(),
             this.sprites.shadow.destroy(),
@@ -30308,7 +30558,7 @@ function loadGameCode() {
                         this.clientCalcs(zt)
                     }
                 this.missile && !this.state.inactive && Sound.updateThruster(1, this, this.visibility),
-                this.state.inactive && 0 < this.sprites.sprite.alpha && (this.sprites.sprite.alpha -= 0.2)
+                this.state.inactive && 0 < this.sprites.sprite.alpha && (this.sprites.sprite.alpha -= .2)
             }
         }
         clientCalcs(Xt) {
@@ -30342,7 +30592,7 @@ function loadGameCode() {
                 case 9:
                     if (this.state.inactive && (this.state.despawnTicker += .05 * Xt,
                     1 < this.state.despawnTicker))
-                        return void (this.forDeletion = !0);
+                        return void (this.forDeletion = !0)
                 }
         }
         updateGraphics() {
@@ -30370,7 +30620,7 @@ function loadGameCode() {
                 Wt = 0 == this.state.despawnType ? 1 - this.state.despawnTicker : 1 + 2 * this.state.despawnTicker,
                 Wt *= Tools.oscillator(.08, 500, this.randomness),
                 Graphics.transform(this.sprites.sprite, this.pos.x, this.pos.y + 20 * (Tools.oscillator(.08, 330, this.randomness) - 1.04), null, this.state.baseScale * Wt, this.state.baseScale * Wt, 1 - this.state.despawnTicker),
-                Graphics.transform(this.sprites.shadow, Yt.x, Yt.y, null, this.state.baseScaleShadow * Wt, this.state.baseScaleShadow * Wt, 1 - this.state.despawnTicker);
+                Graphics.transform(this.sprites.shadow, Yt.x, Yt.y, null, this.state.baseScaleShadow * Wt, this.state.baseScaleShadow * Wt, 1 - this.state.despawnTicker)
             }
         }
     }
@@ -30552,7 +30802,7 @@ function loadGameCode() {
                     switch ((zt = this.emitters[Wt]).type) {
                     case Ht.EMITTER_EXPLOSION_FRAGMENT:
                         zt.life += .02 * jt,
-                        zt.speed.multiply(1 - .02 * jt);
+                        zt.speed.multiply(1 - .02 * jt)
                     }
                     if (1 < zt.life)
                         delete this.emitters[Wt];
@@ -30567,7 +30817,7 @@ function loadGameCode() {
                               , Zt = Tools.rand(-.1, .1)
                               , Qt = Tools.randCircle();
                             this.addParticle(Ht.FRAGMENT_SMOKE, "smoke_" + Vt, Vector.zero(), zt.pos.clone(), Vector.diag(qt), 1, Zt, Qt, null, null, null, null, Kt + .2),
-                            zt.shadowLayer && zt.shadowLayer.addParticle(Ht.FRAGMENT_SMOKE, "smokeshadow_" + Vt, Vector.zero(), zt.pos.clone(), Vector.diag(qt), 1, Zt, Qt, null, null, null, null, Kt + .2);
+                            zt.shadowLayer && zt.shadowLayer.addParticle(Ht.FRAGMENT_SMOKE, "smokeshadow_" + Vt, Vector.zero(), zt.pos.clone(), Vector.diag(qt), 1, Zt, Qt, null, null, null, null, Kt + .2)
                         }
                 }
             }
@@ -30656,7 +30906,7 @@ function loadGameCode() {
                     case Ht.PLANE_DAMAGE:
                         Wt.life += .02 * jt,
                         Wt.alpha = 2 * (1 - Wt.life),
-                        Wt.speed.multiply(1 - .1 * jt);
+                        Wt.speed.multiply(1 - .1 * jt)
                     }
                     if (1 < Wt.life)
                         zt = this.destroy(zt);
@@ -30902,7 +31152,7 @@ function loadGameCode() {
             for (var kn = 0; kn < vn.length; kn++)
                 if (Ln) {
                     if (On === ":" + vn[kn] + ":")
-                        return vn[kn];
+                        return vn[kn]
                 } else if (On === vn[kn])
                     return vn[kn];
             return !1
@@ -30930,10 +31180,11 @@ function loadGameCode() {
         UI.hideMessage = function(On) {
             $("#msg-" + On).addClass("hidemsg"),
             fn[On] = !1,
-            hn[On] = setTimeout(function(Ln) {
+            hn[On] = setTimeout((function(Ln) {
                 $("#msg-" + On).removeClass("popmsg").removeClass("hidemsg"),
                 $("#msg-" + Ln).html("")
-            }, 2500, On)
+            }
+            ), 2500, On)
         }
         ,
         UI.wipeAllMessages = function() {
@@ -30966,9 +31217,9 @@ function loadGameCode() {
                     if (Sound.powerup(4, null),
                     mn && (mn.msg += "<br>"),
                     fn.default)
-                        return kn += "&nbsp;&nbsp;<span class=\"upgrade\">+" + Nn + "</span>",
+                        return kn += '&nbsp;&nbsp;<span class="upgrade">+' + Nn + "</span>",
                         void $("#alert-update").append(kn);
-                    kn += "<span id=\"alert-update\"><span class=\"upgrade\">+" + Nn + "<span class=\"bold\"> upgrade</span></span></span>"
+                    kn += '<span id="alert-update"><span class="upgrade">+' + Nn + '<span class="bold"> upgrade</span></span></span>'
                 }
             }
             if (On.earnings != gn.earnings && 0 != game.myLevel) {
@@ -30997,7 +31248,7 @@ function loadGameCode() {
             return 0 > On && (Nn = "negative",
             Fn = "-"),
             Ln && (Nn = Ln),
-            "<span id=\"alert-update\" class=\"" + Nn + "\">" + Fn + Math.abs(On) + "</span>"
+            '<span id="alert-update" class="' + Nn + '">' + Fn + Math.abs(On) + "</span>"
         }
         ;
         var Sn = function(On) {
@@ -31012,8 +31263,8 @@ function loadGameCode() {
         ,
         UI.showSpectator = function(On) {
             if (!un) {
-                var Ln = config.mobile ? " class=\"mobile\"" : "";
-                $("body").append("<div id=\"spectator\"" + Ln + "></div>"),
+                var Ln = config.mobile ? ' class="mobile"' : "";
+                $("body").append('<div id="spectator"' + Ln + "></div>"),
                 un = !0
             }
             $("#spectator").html(On),
@@ -31027,15 +31278,16 @@ function loadGameCode() {
         ,
         UI.addPowerup = function(On, Ln) {
             null != ln && clearTimeout(ln);
-            var kn = "<div class=\"powerup\" id=\"powerup-" + On + "\"><div class=\"percent " + (1 == On ? "shield" : "rampage") + "\" id=\"powerup-" + On + "-percent\" style=\"transition: width " + Ln + "ms linear;\"></div><div class=\"name\">" + Tn[On] + "</div></div>";
+            var kn = '<div class="powerup" id="powerup-' + On + '"><div class="percent ' + (1 == On ? "shield" : "rampage") + '" id="powerup-' + On + '-percent" style="transition: width ' + Ln + 'ms linear;"></div><div class="name">' + Tn[On] + "</div></div>";
             $("#powerups").html(kn),
             $("#powerup-" + On + "-percent").width(),
             $("#powerup-" + On + "-percent").css({
                 width: "7%"
             }),
-            ln = setTimeout(function() {
+            ln = setTimeout((function() {
                 $("#powerup-" + On).remove()
-            }, Ln)
+            }
+            ), Ln)
         }
         ,
         UI.resetPowerups = function() {
@@ -31091,11 +31343,11 @@ function loadGameCode() {
                 Qn = 0; Qn < kn && !Wn; Qn++)
                     Fn = Players.get(On[Qn].id),
                     null == Fn || (Yn++,
-                    Bn = 1 == Yn ? "<span class=\"badge scoreboard gold\"></span>" : 2 == Yn ? "<span class=\"badge scoreboard silver\"></span>" : 3 == Yn ? "<span class=\"badge scoreboard bronze\"></span>" : Yn + ".",
+                    Bn = 1 == Yn ? '<span class="badge scoreboard gold"></span>' : 2 == Yn ? '<span class="badge scoreboard silver"></span>' : 3 == Yn ? '<span class="badge scoreboard bronze"></span>' : Yn + ".",
                     Un = Fn.me() ? " sel" : "",
                     Gn = On[Qn].score,
                     Xn = On[Qn].level,
-                    zn > kn && Yn == kn - 1 && (Hn += "<div class=\"line dottedline\">&middot; &middot; &middot;</div>",
+                    zn > kn && Yn == kn - 1 && (Hn += '<div class="line dottedline">&middot; &middot; &middot;</div>',
                     Fn = Players.get(game.myID),
                     Bn = zn + ".",
                     Gn = game.myScore,
@@ -31106,7 +31358,7 @@ function loadGameCode() {
                     2 == game.gameType && (qn = " team-" + Fn.team),
                     Kn = "",
                     4 == (Bn + "").length && (Kn = " bigger"),
-                    Hn += "<div class=\"line" + Un + "\" data-playerid=\"" + Fn.id + "\"><span class=\"place" + Kn + "\">" + Bn + "</span><span class=\"flag small flag-" + Fn.flag + "\"></span><span class=\"nick" + qn + "\">" + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</span>" + (0 == Xn ? "" : "<span class=\"holder\">&nbsp;<span class=\"rank\">" + Xn + "</span></span>") + "<span class=\"score\">" + En(Gn) + "</span></div>");
+                    Hn += '<div class="line' + Un + '" data-playerid="' + Fn.id + '"><span class="place' + Kn + '">' + Bn + '</span><span class="flag small flag-' + Fn.flag + '"></span><span class="nick' + qn + '">' + (Fn.removedFromMap ? UI.escapeHTML(Fn.name).strike() : UI.escapeHTML(Fn.name)) + "</span>" + (0 == Xn ? "" : '<span class="holder">&nbsp;<span class="rank">' + Xn + "</span></span>") + '<span class="score">' + En(Gn) + "</span></div>");
                 $("#scoreboard").html(Hn)
             }
         }
@@ -31185,14 +31437,14 @@ function loadGameCode() {
                 0 == kn) {
                     var Fn = "";
                     2 == game.gameType && (Fn = "style = 'color: " + (1 == On.team ? "#4076E2" : "#EA4242") + ";' ");
-                    var Bn = "<div id=\"chat-" + Wt + "\" class=\"line\"><span class=\"playersel\" data-playerid=\"" + On.id + "\"><span class=\"flag small flag-" + On.flag + "\"></span><span class=\"nick\" " + Fn + " >" + UI.escapeHTML(On.name) + "</span></span><span class=\"text\">" + Ln + "</span></div>"
+                    var Bn = '<div id="chat-' + Wt + '" class="line"><span class="playersel" data-playerid="' + On.id + '"><span class="flag small flag-' + On.flag + '"></span><span class="nick" ' + Fn + " >" + UI.escapeHTML(On.name) + '</span></span><span class="text">' + Ln + "</span></div>"
                 } else if (1 == kn || 2 == kn) {
                     var Un = 1 == kn ? "TO" : "FROM";
                     2 == kn && (pn = An(On.name)),
-                    Bn = "<div id=\"chat-" + Wt + "\" class=\"line\"><span class=\"tag whisper\">" + Un + "</span><span class=\"playersel\" data-playerid=\"" + On.id + "\"><span class=\"nick green\">" + UI.escapeHTML(On.name) + "</span></span><span class=\"text green\">" + Ln + "</span></div>",
+                    Bn = '<div id="chat-' + Wt + '" class="line"><span class="tag whisper">' + Un + '</span><span class="playersel" data-playerid="' + On.id + '"><span class="nick green">' + UI.escapeHTML(On.name) + '</span></span><span class="text green">' + Ln + "</span></div>",
                     Vt = -1
                 } else
-                    Bn = "<div id=\"chat-" + Wt + "\" class=\"line\"><span class=\"tag team\">TEAM</span><span class=\"playersel\" data-playerid=\"" + On.id + "\"><span class=\"nick blue\">" + UI.escapeHTML(On.name) + "</span></span><span class=\"text blue\">" + Ln + "</span></div>",
+                    Bn = '<div id="chat-' + Wt + '" class="line"><span class="tag team">TEAM</span><span class="playersel" data-playerid="' + On.id + '"><span class="nick blue">' + UI.escapeHTML(On.name) + '</span></span><span class="text blue">' + Ln + "</span></div>",
                     Vt = -1;
                 var Gn = "#chat-" + (Wt - config.maxChatLines);
                 if ($(Gn).length && $(Gn).remove(),
@@ -31212,7 +31464,7 @@ function loadGameCode() {
         UI.addChatMessage = function(On, Ln) {
             qt = 0,
             Vt = -1;
-            var kn = "<div id=\"chat-" + ++Wt + "\" class=\"line\">" + (Ln ? "" : "<span class=\"nick\">\u26A0</span>") + "<span class=\"text\">" + On + "</span></div>"
+            var kn = '<div id="chat-' + ++Wt + '" class="line">' + (Ln ? "" : '<span class="nick">⚠</span>') + '<span class="text">' + On + "</span></div>"
               , Nn = "#chat-" + (Wt - config.maxChatLines);
             $(Nn).length && $(Nn).remove(),
             $("#chatlines").append(kn);
@@ -31230,7 +31482,7 @@ function loadGameCode() {
         UI.updateStats = function(On) {
             var Ln = On.playerstotal
               , kn = "";
-            kn += "<div class=\"item\"><span class=\"icon-container\"><div class=\"icon players\"></div></span><span class=\"greyed\">" + On.playersgame + "&nbsp;/&nbsp;</span>" + Ln + "<span class=\"icon-container padded\"><div class=\"icon ping\"></div></span>" + On.ping + "<span class=\"millis\">ms</span></div>",
+            kn += '<div class="item"><span class="icon-container"><div class="icon players"></div></span><span class="greyed">' + On.playersgame + "&nbsp;/&nbsp;</span>" + Ln + '<span class="icon-container padded"><div class="icon ping"></div></span>' + On.ping + '<span class="millis">ms</span></div>',
             $("#gameinfo").html(kn),
             game.ping = On.ping
         }
@@ -31247,9 +31499,10 @@ function loadGameCode() {
             var On = window.innerWidth
               , Ln = window.innerHeight;
             On == game.screenX && Ln == game.screenY || (clearTimeout(Ht),
-            Ht = setTimeout(function() {
+            Ht = setTimeout((function() {
                 Graphics.resizeRenderer(On, Ln)
-            }, 250))
+            }
+            ), 250))
         };
         UI.controlKey = function(On, Ln, kn) {
             if (game.state != Network.STATE.PLAYING)
@@ -31342,14 +31595,14 @@ function loadGameCode() {
         }
         ,
         UI.killed = function(On) {
-            var Ln = null == On.level ? "" : "<span class=\"level\">" + On.level + "</span>";
+            var Ln = null == On.level ? "" : '<span class="level">' + On.level + "</span>";
             (1500 < game.time - bn || 6 <= _n.length) && (_n = []),
             bn = game.time,
             _n.push([On.flag, On.name, Ln]);
             for (var kn = "", Nn = "", Fn = 0; Fn < _n.length; Fn++)
                 Nn = _n[Fn][1],
                 1 != _n.length && 10 < Nn.length && (Nn = Nn.substr(0, 10) + "..."),
-                kn += "<span class=\"player\"><span class=\"flag big flag-" + _n[Fn][0] + "\"></span>" + UI.escapeHTML(Nn) + _n[Fn][2] + "</span>";
+                kn += '<span class="player"><span class="flag big flag-' + _n[Fn][0] + '"></span>' + UI.escapeHTML(Nn) + _n[Fn][2] + "</span>";
             mn = {
                 type: "default",
                 duration: 3e3,
@@ -31358,26 +31611,26 @@ function loadGameCode() {
         }
         ,
         UI.killedBy = function(On) {
-            var Ln = null == On.level ? "" : "<span class=\"level\">" + On.level + "</span>";
+            var Ln = null == On.level ? "" : '<span class="level">' + On.level + "</span>";
             mn = {
                 type: "destroyed",
                 duration: 3e3,
-                msg: "Destroyed by<span class=\"playerbig\"><span class=\"flag big flag-" + On.flag + "\"></span>" + UI.escapeHTML(On.name) + Ln + "</span>"
+                msg: 'Destroyed by<span class="playerbig"><span class="flag big flag-' + On.flag + '"></span>' + UI.escapeHTML(On.name) + Ln + "</span>"
             }
         }
         ,
         UI.errorHandler = function(On) {
             switch (On.error) {
             case 1:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>Packet flooding detected", 2e4),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>Packet flooding detected', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 2:
-                UI.showMessage("alert", "<span class=\"info\">BANNED</span>Packet flooding detected", 2e4),
+                UI.showMessage("alert", '<span class="info">BANNED</span>Packet flooding detected', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 3:
-                UI.showMessage("alert", "<span class=\"info\">BANNED</span>You have been globally banned", 2e4),
+                UI.showMessage("alert", '<span class="info">BANNED</span>You have been globally banned', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 4:
@@ -31385,49 +31638,49 @@ function loadGameCode() {
                 Games.redirRoot();
                 break;
             case 5:
-                UI.showMessage("alert", "<span class=\"info\">RESPAWN</span>Full health and 2 seconds of inactivity required", 3e3);
+                UI.showMessage("alert", '<span class="info">RESPAWN</span>Full health and 2 seconds of inactivity required', 3e3);
                 break;
             case 6:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>AFK for more than 10 minutes<br><span class=\"button\" onclick=\"Network.reconnect()\">RECONNECT</span>", 72e5),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>AFK for more than 10 minutes<br><span class="button" onclick="Network.reconnect()">RECONNECT</span>', 72e5),
                 Network.receivedError(On.error);
                 break;
             case 7:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>You have been kicked out", 2e4),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>You have been kicked out', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 8:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>Invalid login data", 2e4),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>Invalid login data', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 9:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>Incorrect protocol level<br>Please clear your browser cache and refresh", 2e4),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>Incorrect protocol level<br>Please clear your browser cache and refresh', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 10:
-                UI.showMessage("alert", "<span class=\"info\">BANNED</span>Account banned", 2e4),
+                UI.showMessage("alert", '<span class="info">BANNED</span>Account banned', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 11:
-                UI.showMessage("alert", "<span class=\"info\">DISCONNECTED</span>Account already logged in<br><span class=\"button\" onclick=\"Network.reconnect()\">RECONNECT</span>", 2e4),
+                UI.showMessage("alert", '<span class="info">DISCONNECTED</span>Account already logged in<br><span class="button" onclick="Network.reconnect()">RECONNECT</span>', 2e4),
                 Network.receivedError(On.error);
                 break;
             case 12:
-                UI.showMessage("alert", "<span class=\"info\">RESPAWN</span>Cannot respawn or change aircraft in a Battle Royale game", 3e3);
+                UI.showMessage("alert", '<span class="info">RESPAWN</span>Cannot respawn or change aircraft in a Battle Royale game', 3e3);
                 break;
             case 13:
-                UI.showMessage("alert", "<span class=\"info\">SPECTATE</span>Full health and 2 seconds of inactivity required", 3e3);
+                UI.showMessage("alert", '<span class="info">SPECTATE</span>Full health and 2 seconds of inactivity required', 3e3);
                 break;
             case 20:
-                UI.showMessage("information", "<span class=\"info\">UPGRADE</span>Not enough upgrade points", 3e3);
+                UI.showMessage("information", '<span class="info">UPGRADE</span>Not enough upgrade points', 3e3);
                 break;
             case 30:
                 UI.addChatMessage("Chat throttled to prevent spamming");
                 break;
             case 31:
-                UI.showMessage("alert", "<span class=\"info\">THROTTLED</span>Flag change too fast");
+                UI.showMessage("alert", '<span class="info">THROTTLED</span>Flag change too fast');
                 break;
             case 100:
-                UI.addChatMessage("Unknown command");
+                UI.addChatMessage("Unknown command")
             }
         }
         ,
@@ -31436,8 +31689,8 @@ function loadGameCode() {
                 UI.addChatMessage(UI.escapeHTML(On.text));
             else {
                 var Ln = JSON.stringify(JSON.parse(On.text), null, "    ")
-                  , kn = "<div class=\"close\" onclick=\"$(this).parent().remove()\"></div><div class=\"text\"><pre>" + UI.escapeHTML(Ln) + "</pre></div>";
-                $("body").append("<div id=\"debugpopup\" oncontextmenu=\"event.stopPropagation()\">" + kn + "</div>")
+                  , kn = '<div class="close" onclick="$(this).parent().remove()"></div><div class="text"><pre>' + UI.escapeHTML(Ln) + "</pre></div>";
+                $("body").append('<div id="debugpopup" oncontextmenu="event.stopPropagation()">' + kn + "</div>")
             }
         }
         ,
@@ -31533,7 +31786,7 @@ function loadGameCode() {
                     "pointer-events": "none"
                 }),
                 Sound.UIClick(),
-                setTimeout(function(Fn) {
+                setTimeout((function(Fn) {
                     if ("#mainmenu" === Fn ? !nn : "#scoredetailed" === Fn ? !Qt : "#howtoplay" === Fn ? !tn : "#invitefriends" === Fn ? !sn : "#loginselector" === Fn ? !dn : !Ln) {
                         if (kn)
                             return void $(Fn).remove();
@@ -31543,7 +31796,8 @@ function loadGameCode() {
                             transition: "none"
                         })
                     }
-                }, 800, On)
+                }
+                ), 800, On)
             }
         }
         ,
@@ -31603,28 +31857,29 @@ function loadGameCode() {
             if (Qt) {
                 var Ln = On.scores
                   , kn = ["gold", "silver", "bronze"];
-                Ln.sort(function(Qn, Jn) {
+                Ln.sort((function(Qn, Jn) {
                     return Jn.score - Qn.score
-                });
+                }
+                ));
                 var Nn = [["name", "&nbsp;"], ["kills", "Kills"], ["deaths", "Deaths"], ["damage", "Damage"], ["bounty", "Bounty"], ["rank", "Level"], ["ping", "Ping"]];
                 On.c == Network.SERVERPACKET.SCORE_DETAILED_BTR ? Nn = [["name", "&nbsp;"], ["wins", "&nbsp;"], ["kills", "Kills"], ["deaths", "Deaths"], ["bounty", "Bounty"], ["rank", "Level"], ["ping", "Ping"]] : On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (Nn = [["name", "&nbsp;"], ["captures", "&nbsp;"], ["kills", "Kills"], ["deaths", "Deaths"], ["bounty", "Bounty"], ["rank", "Level"], ["ping", "Ping"]]);
                 for (var Fn = "", Bn = 0; Bn < Nn.length; Bn++)
-                    Fn += "<div class=\"" + Nn[Bn][0] + "\">" + Nn[Bn][1] + "</div>";
+                    Fn += '<div class="' + Nn[Bn][0] + '">' + Nn[Bn][1] + "</div>";
                 for (var Yn = "", Hn = "", jn = -1, Wn = -1, zn = 0, Un, Gn, Xn; zn < Ln.length; zn++)
-                    null != (Un = Players.get(Ln[zn].id)) && (Gn = 2 >= zn ? "&nbsp;<div class=\"badge detail " + kn[zn] + "\"></div>" : zn + 1 + ".",
+                    null != (Un = Players.get(Ln[zn].id)) && (Gn = 2 >= zn ? '&nbsp;<div class="badge detail ' + kn[zn] + '"></div>' : zn + 1 + ".",
                     Xn = Un.me() ? " sel" : "",
                     Yn = On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? " team-" + Un.team : On.c != Network.SERVERPACKET.SCORE_DETAILED_BTR || Ln[zn].alive ? "" : " inactive",
-                    Hn += "<div class=\"item" + Xn + "\" data-playerid=\"" + Un.id + "\"><div class=\"name\"><div class=\"position\">",
-                    Hn += Gn + "</div><div class=\"flag small flag-" + Un.flag + "\"></div>",
-                    Hn += "<div class=\"player" + Yn + "\">" + (Un.removedFromMap ? UI.escapeHTML(Un.name).strike() : UI.escapeHTML(Un.name)) + "</div></div>",
-                    On.c == Network.SERVERPACKET.SCORE_DETAILED_BTR && (0 == Ln[zn].wins ? Hn += "<div class=\"wins\">&nbsp;</div>" : Hn += "<div class=\"wins\">" + Ln[zn].wins + "<div class=\"wins-container\">&nbsp;<div class=\"wins-icon\"></div></div></div>"),
-                    On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (0 == Ln[zn].captures ? Hn += "<div class=\"captures\">&nbsp;</div>" : Hn += "<div class=\"captures\">" + Ln[zn].captures + "<div class=\"captures-container\">&nbsp;<div class=\"captures-icon\"></div></div></div>"),
-                    Hn += "<div class=\"kills\">" + Ln[zn].kills + "</div>",
-                    Hn += "<div class=\"deaths\">" + Ln[zn].deaths + "</div>",
-                    On.c == Network.SERVERPACKET.SCORE_DETAILED && (Hn += "<div class=\"damage\">" + Pn(Ln[zn].damage) + "</div>"),
-                    Hn += "<div class=\"bounty\">" + Ln[zn].score + "</div>",
-                    Hn += "<div class=\"rank\">" + (0 == Ln[zn].level ? "&nbsp;" : Ln[zn].level) + "</div>",
-                    Hn += "<div class=\"ping\">" + Ln[zn].ping + "<span class=\"ms\">ms</span></div>",
+                    Hn += '<div class="item' + Xn + '" data-playerid="' + Un.id + '"><div class="name"><div class="position">',
+                    Hn += Gn + '</div><div class="flag small flag-' + Un.flag + '"></div>',
+                    Hn += '<div class="player' + Yn + '">' + (Un.removedFromMap ? UI.escapeHTML(Un.name).strike() : UI.escapeHTML(Un.name)) + "</div></div>",
+                    On.c == Network.SERVERPACKET.SCORE_DETAILED_BTR && (0 == Ln[zn].wins ? Hn += '<div class="wins">&nbsp;</div>' : Hn += '<div class="wins">' + Ln[zn].wins + '<div class="wins-container">&nbsp;<div class="wins-icon"></div></div></div>'),
+                    On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF && (0 == Ln[zn].captures ? Hn += '<div class="captures">&nbsp;</div>' : Hn += '<div class="captures">' + Ln[zn].captures + '<div class="captures-container">&nbsp;<div class="captures-icon"></div></div></div>'),
+                    Hn += '<div class="kills">' + Ln[zn].kills + "</div>",
+                    Hn += '<div class="deaths">' + Ln[zn].deaths + "</div>",
+                    On.c == Network.SERVERPACKET.SCORE_DETAILED && (Hn += '<div class="damage">' + Pn(Ln[zn].damage) + "</div>"),
+                    Hn += '<div class="bounty">' + Ln[zn].score + "</div>",
+                    Hn += '<div class="rank">' + (0 == Ln[zn].level ? "&nbsp;" : Ln[zn].level) + "</div>",
+                    Hn += '<div class="ping">' + Ln[zn].ping + '<span class="ms">ms</span></div>',
                     Hn += "</div>",
                     On.c == Network.SERVERPACKET.SCORE_DETAILED ? Ln[zn].damage > jn && (jn = Ln[zn].damage,
                     Wn = Un) : On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? Ln[zn].captures > jn && (jn = Ln[zn].captures,
@@ -31641,7 +31896,7 @@ function loadGameCode() {
                         Kn = jn + "",
                         Zn = On.c == Network.SERVERPACKET.SCORE_DETAILED_CTF ? " capture" : " kill",
                         1 < jn && (Zn += "s");
-                    qn = "<div class=\"mvpbadge\">MVP</div><div class=\"flag flag-" + Wn.flag + "\"></div><div class=\"name\">" + UI.escapeHTML(Wn.name) + "</div><div class=\"damage\">&nbsp;&nbsp;&bull;&nbsp;&nbsp;" + Kn + Zn + "</div>"
+                    qn = '<div class="mvpbadge">MVP</div><div class="flag flag-' + Wn.flag + '"></div><div class="name">' + UI.escapeHTML(Wn.name) + '</div><div class="damage">&nbsp;&nbsp;&bull;&nbsp;&nbsp;' + Kn + Zn + "</div>"
                 }
                 $("#scoreplayers").html(Vn),
                 $("#scoretable").html(Fn),
@@ -31688,7 +31943,7 @@ function loadGameCode() {
                 $t || (Bn.display = "block",
                 $t = !0);
                 let Un = null == Yt[Fn.id] ? "Ignore" : "Unignore"
-                  , Gn = "<div class=\"header\">" + UI.escapeHTML(Fn.name) + "</div><div class=\"item\" onclick=\"UI.contextWhisper()\">Whisper</div><div class=\"item\" onclick=\"UI.context" + Un + "()\">" + Un + "</div><div class=\"item\" onclick=\"UI.contextVotemute()\">Vote mute</div>";
+                  , Gn = '<div class="header">' + UI.escapeHTML(Fn.name) + '</div><div class="item" onclick="UI.contextWhisper()">Whisper</div><div class="item" onclick="UI.context' + Un + '()">' + Un + '</div><div class="item" onclick="UI.contextVotemute()">Vote mute</div>';
                 return SWAM.PopMenuItems && (Gn += SWAM.PopMenuItems),
                 $("#contextmenu").html(Gn).css(Bn),
                 kn(On, $("#contextmenu")),
@@ -31801,7 +32056,7 @@ function loadGameCode() {
             if (null != kn) {
                 if (0 != kn) {
                     var Gn = "+" + Math.round(100 * (config.upgrades[Fn[kn]].factor[yn[Fn[kn]]] - 1)) + "% " + ["", "Speed", "Defense", "Energy Regen", "Missile Speed"][kn];
-                    UI.showMessage("information", "<span class=\"info\">UPGRADE</span>" + Gn, 3e3),
+                    UI.showMessage("information", '<span class="info">UPGRADE</span>' + Gn, 3e3),
                     Sound.playerUpgrade()
                 }
                 gn.upgrades = Ln,
@@ -31816,9 +32071,9 @@ function loadGameCode() {
         ,
         UI.popBigMsg = function(On) {
             if (1 == On)
-                var Ln = "<div id=\"big-message\" onclick=\"UI.closeBigMsg()\"><div class=\"msg\">Mobile mode</div><div class=\"small\">Mobile mode has touch controls and requires latest phone/tablet hardware.</div><div class=\"small nopadtop\">For the full experience please play on a PC with a physical keyboard.</div><div class=\"greyed\">Tap anywhere to close</div></div>";
+                var Ln = '<div id="big-message" onclick="UI.closeBigMsg()"><div class="msg">Mobile mode</div><div class="small">Mobile mode has touch controls and requires latest phone/tablet hardware.</div><div class="small nopadtop">For the full experience please play on a PC with a physical keyboard.</div><div class="greyed">Tap anywhere to close</div></div>';
             else
-                Ln = "<div id=\"big-message\"><div class=\"msg\">WebGL required</div><div class=\"small\">This game requires a WebGL enabled browser in order to run.<br>Please allow WebGL for this domain to continue.</div>";
+                Ln = '<div id="big-message"><div class="msg">WebGL required</div><div class="small">This game requires a WebGL enabled browser in order to run.<br>Please allow WebGL for this domain to continue.</div>';
             $("body").append(Ln)
         }
         ,
@@ -31852,7 +32107,7 @@ function loadGameCode() {
             $("#mainmenu-sound-icon").addClass("soundoff"),
             $("#mainmenu-sound-icon").removeClass("soundon"),
             $("#mainmenu-sound-text").html("Enable Sound")),
-            On && UI.showMessage("alert", "<span class=\"info\">SOUND</span>" + (config.settings.sound ? "Enabled" : "Disabled"), 3e3)
+            On && UI.showMessage("alert", '<span class="info">SOUND</span>' + (config.settings.sound ? "Enabled" : "Disabled"), 3e3)
         }
         ,
         UI.gameStart = function(On, Ln) {
@@ -31890,7 +32145,7 @@ function loadGameCode() {
         }
           , Dn = function() {
             $("#howtoplay").addClass("mobile"),
-            $("#howtoplay").html("<div class=\"header\">HOW TO PLAY</div><div class=\"mobile-graphic\"></div><div class=\"commands\">For the best game experience play on a PC</div>")
+            $("#howtoplay").html('<div class="header">HOW TO PLAY</div><div class="mobile-graphic"></div><div class="commands">For the best game experience play on a PC</div>')
         };
         UI.reconnection = function() {
             Wt = 0,
@@ -31924,7 +32179,7 @@ function loadGameCode() {
         UI.loggedIn = function() {
             $("#roomname").html(game.roomName),
             $("#scoreheader").html(game.roomName + "&nbsp;&nbsp;"),
-            $("#open-menu").html("<span class=\"arrowdown\"></span>" + game.roomName + "&nbsp;&nbsp;<span class=\"region\">&bull;&nbsp;&nbsp;" + game.regionName + "</span>"),
+            $("#open-menu").html('<span class="arrowdown"></span>' + game.roomName + '&nbsp;&nbsp;<span class="region">&bull;&nbsp;&nbsp;' + game.regionName + "</span>"),
             UI.visibilityHUD(!0),
             UI.visibilityMinimap(!0),
             UI.updateHUD(1, 1)
@@ -31940,23 +32195,23 @@ function loadGameCode() {
             if (100 > kn) {
                 var Bn = xn[kn]
                   , Un = ["", "Agility", "Defense", "Regen", "Damage"];
-                Fn += "<div class=\"header\">" + Bn[0] + "</div>";
+                Fn += '<div class="header">' + Bn[0] + "</div>";
                 for (var Gn = 1; 4 >= Gn; Gn++)
-                    Fn += "<div class=\"item\"><div class=\"name\">" + Un[Gn] + "</div><div class=\"val\">&nbsp;<div class=\"bar\"><div class=\"progress\" style=\"width: " + Bn[Gn] + "%\"></div></div></div></div>";
-                Fn += "<div class=\"item\"><div class=\"special\">" + Bn[5] + "</div><div class=\"desc\">" + Bn[6] + "</div></div>",
-                Fn += "<div class=\"item\"><div class=\"clickto\">Click to respawn</div></div>"
+                    Fn += '<div class="item"><div class="name">' + Un[Gn] + '</div><div class="val">&nbsp;<div class="bar"><div class="progress" style="width: ' + Bn[Gn] + '%"></div></div></div></div>';
+                Fn += '<div class="item"><div class="special">' + Bn[5] + '</div><div class="desc">' + Bn[6] + "</div></div>",
+                Fn += '<div class="item"><div class="clickto">Click to respawn</div></div>'
             } else {
                 var Xn = ["", "speed", "defense", "energy", "missile"]
                   , Yn = kn - 100
                   , Hn = yn[Xn[Yn]]
                   , jn = "+" + Math.round(100 * (config.upgrades[Xn[Yn]].factor[yn[Xn[Yn]]] - 1)) + "%";
-                (Fn += "<div class=\"header\">" + xn[kn][0] + "</div>",
-                Fn += "<div class=\"item\"><div class=\"level\">" + Hn + " / " + (config.upgrades[Xn[Yn]].factor.length - 1) + "</div>",
-                0 < Hn && (Fn += "<div class=\"percent\">" + jn + "</div></div>"),
-                Hn < config.upgrades[Xn[Yn]].factor.length - 1) ? (Fn += "<div class=\"item smaller\"><div class=\"requires\">Requires 1 upgrade point</div></div>",
-                Fn += "<div class=\"item smaller\"><div class=\"clickto\">Click to upgrade to " + (jn = "+" + Math.round(100 * (config.upgrades[Xn[Yn]].factor[yn[Xn[Yn]] + 1] - 1)) + "%") + "</div></div>") : Fn += "<div class=\"item smaller\"><div class=\"clickto\">Max upgrade reached</div></div>"
+                (Fn += '<div class="header">' + xn[kn][0] + "</div>",
+                Fn += '<div class="item"><div class="level">' + Hn + " / " + (config.upgrades[Xn[Yn]].factor.length - 1) + "</div>",
+                0 < Hn && (Fn += '<div class="percent">' + jn + "</div></div>"),
+                Hn < config.upgrades[Xn[Yn]].factor.length - 1) ? (Fn += '<div class="item smaller"><div class="requires">Requires 1 upgrade point</div></div>',
+                Fn += '<div class="item smaller"><div class="clickto">Click to upgrade to ' + (jn = "+" + Math.round(100 * (config.upgrades[Xn[Yn]].factor[yn[Xn[Yn]] + 1] - 1)) + "%") + "</div></div>") : Fn += '<div class="item smaller"><div class="clickto">Max upgrade reached</div></div>'
             }
-            Fn += "<div class=\"arrow\"></div>",
+            Fn += '<div class="arrow"></div>',
             null == Ln && $("#tooltip").css({
                 left: Math.round(Nn.left + 60) + "px",
                 top: Math.round(Nn.top - 10) + "px"
@@ -31970,12 +32225,13 @@ function loadGameCode() {
         ,
         UI.closeTooltip = function() {
             an && (null != rn && clearTimeout(rn),
-            rn = setTimeout(function() {
+            rn = setTimeout((function() {
                 an && (UI.hide("#tooltip"),
                 $("#tooltip").html(""),
                 an = !1,
                 rn = null)
-            }, 250))
+            }
+            ), 250))
         }
         ,
         UI.startDragChat = function(On) {
@@ -32022,35 +32278,42 @@ function loadGameCode() {
         UI.setup = function() {
             $(window).resize(Cn),
             $(window).on("orientationchange", Cn),
-            $(window).on("contextmenu", function(Ln) {
+            $(window).on("contextmenu", (function(Ln) {
                 return UI.popMenu(Ln, !0),
                 Ln.preventDefault(),
                 !1
-            }),
+            }
+            )),
             $(window).on("focus", Input.gameFocus),
             $(window).on("blur", Input.gameBlur),
             $(window).on("click", UI.popMenu),
             $("#minimizechat").on("click", UI.minimizeChat),
             $("#maximizechat").on("click", UI.maximizeChat),
-            $("#viewscore").on("click", function(Ln) {
+            $("#viewscore").on("click", (function(Ln) {
                 game.state == Network.STATE.PLAYING && (UI.openScore(),
                 Ln.stopPropagation())
-            }),
-            $("#selectaircraft-1").on("click", function() {
+            }
+            )),
+            $("#selectaircraft-1").on("click", (function() {
                 UI.selectAircraft(1)
-            }),
-            $("#selectaircraft-2").on("click", function() {
+            }
+            )),
+            $("#selectaircraft-2").on("click", (function() {
                 UI.selectAircraft(2)
-            }),
-            $("#selectaircraft-3").on("click", function() {
+            }
+            )),
+            $("#selectaircraft-3").on("click", (function() {
                 UI.selectAircraft(3)
-            }),
-            $("#selectaircraft-4").on("click", function() {
+            }
+            )),
+            $("#selectaircraft-4").on("click", (function() {
                 UI.selectAircraft(4)
-            }),
-            $("#selectaircraft-5").on("click", function() {
+            }
+            )),
+            $("#selectaircraft-5").on("click", (function() {
                 UI.selectAircraft(5)
-            }),
+            }
+            )),
             $("#mainmenu-fullscreen").on("click", Graphics.toggleFullscreen),
             $("#mainmenu-invite").on("click", UI.openInvite),
             $("#mainmenu-score").on("click", UI.openScore),
@@ -32062,54 +32325,66 @@ function loadGameCode() {
             $(".keybind").css({
                 display: "none"
             })) : $("#mainmenu-keybinds").on("click", Input.openKeybinds),
-            $("#settings-mainmenu").on("click", function(Ln) {
+            $("#settings-mainmenu").on("click", (function(Ln) {
                 UI.toggleMainMenu(),
                 Ln.stopPropagation()
-            }),
-            $("#settings-sound").on("click", function(Ln) {
+            }
+            )),
+            $("#settings-sound").on("click", (function(Ln) {
                 Sound.toggle(),
                 Ln.stopPropagation()
-            }),
-            $("#mainmenu").on("click", function(Ln) {
+            }
+            )),
+            $("#mainmenu").on("click", (function(Ln) {
                 Ln.stopPropagation()
-            }),
-            $("#scoredetailed").on("click", function(Ln) {
+            }
+            )),
+            $("#scoredetailed").on("click", (function(Ln) {
                 Ln.stopPropagation()
-            }),
-            $("#invitefriends").on("click", function(Ln) {
+            }
+            )),
+            $("#invitefriends").on("click", (function(Ln) {
                 Ln.stopPropagation()
-            }),
-            $("#keybinds").on("click", function(Ln) {
+            }
+            )),
+            $("#keybinds").on("click", (function(Ln) {
                 Ln.stopPropagation()
-            }),
-            $("#invite-link").on("contextmenu", function(Ln) {
+            }
+            )),
+            $("#invite-link").on("contextmenu", (function(Ln) {
                 Ln.stopPropagation()
-            }),
+            }
+            )),
             $("#resetbinds").on("click", Input.resetBinds),
             config.mobile || ($("#chatbox").perfectScrollbar({
                 suppressScrollX: !0,
                 handlers: ["click-rail", "drag-scrollbar", "wheel", "touch"]
             }),
-            $("#chatinput").on("blur", function() {
+            $("#chatinput").on("blur", (function() {
                 jt && UI.toggleChatBox(!1)
-            }),
+            }
+            )),
             $("#resizechat").on("mousedown", UI.startDragChat)),
             $("#scorecontainer").perfectScrollbar({
                 suppressScrollX: !0,
                 handlers: ["click-rail", "drag-scrollbar", "wheel", "touch"]
             }),
-            $("#selectupgrade-1").on("click", function() {
+            $("#selectupgrade-1").on("click", (function() {
                 UI.selectUpgrade(1)
-            }),
-            $("#selectupgrade-2").on("click", function() {
+            }
+            )),
+            $("#selectupgrade-2").on("click", (function() {
                 UI.selectUpgrade(2)
-            }),
-            $("#selectupgrade-3").on("click", function() {
+            }
+            )),
+            $("#selectupgrade-3").on("click", (function() {
                 UI.selectUpgrade(3)
-            }),
-            $("#selectupgrade-4").on("click", function() {
+            }
+            )),
+            $("#selectupgrade-4").on("click", (function() {
                 UI.selectUpgrade(4)
-            });
+            }
+            ));
             var On;
             for (On = 1; 5 >= On; On++)
                 $("#selectaircraft-" + On).on("mouseenter", {
@@ -32121,13 +32396,15 @@ function loadGameCode() {
                     t: 100 + On
                 }, UI.popTooltip),
                 $("#selectupgrade-" + On).on("mouseleave", UI.closeTooltip);
-            $("#playbutton").on("click", function() {
+            $("#playbutton").on("click", (function() {
                 Sound.UIClick(),
                 UI.nameEntered()
-            }),
-            $("#playername").on("keypress", function(Ln) {
+            }
+            )),
+            $("#playername").on("keypress", (function(Ln) {
                 13 === Ln.which && UI.nameEntered()
-            }),
+            }
+            )),
             window.onerror = function(Ln, kn, Nn, Fn, Bn) {
                 game.state !== Network.STATE.PLAYING && game.state !== Network.STATE.CONNECTING || Tools.handleError({
                     msg: Ln,
@@ -32170,46 +32447,57 @@ function loadGameCode() {
             4: "Flag Pack #1"
         };
         Games.setup = function() {
-            $("#playregion").on("click", function(En) {
+            $("#playregion").on("click", (function(En) {
                 Games.updateRegion(!0, En)
-            }),
-            $("#playtype").on("click", function(En) {
+            }
+            )),
+            $("#playtype").on("click", (function(En) {
                 Games.updateType(!0, En)
-            }),
-            $("#open-menu").on("click", function(En) {
+            }
+            )),
+            $("#open-menu").on("click", (function(En) {
                 Games.popGames(),
                 En.stopPropagation()
-            }),
-            $("#gameselector").on("click", function(En) {
+            }
+            )),
+            $("#gameselector").on("click", (function(En) {
                 En.stopPropagation()
-            }),
+            }
+            )),
             $("#invite-copy").on("click", Games.copyInviteLink),
-            $("#loginbutton").on("click", function(En) {
+            $("#loginbutton").on("click", (function(En) {
                 UI.openLogin(),
                 En.stopPropagation()
-            }),
-            $("#login-facebook").on("click", function() {
+            }
+            )),
+            $("#login-facebook").on("click", (function() {
                 Games.popupLogin(1)
-            }),
-            $("#login-google").on("click", function() {
+            }
+            )),
+            $("#login-google").on("click", (function() {
                 Games.popupLogin(2)
-            }),
-            $("#login-twitter").on("click", function() {
+            }
+            )),
+            $("#login-twitter").on("click", (function() {
                 Games.popupLogin(3)
-            }),
-            $("#login-reddit").on("click", function() {
+            }
+            )),
+            $("#login-reddit").on("click", (function() {
                 Games.popupLogin(4)
-            }),
-            $("#login-twitch").on("click", function() {
+            }
+            )),
+            $("#login-twitch").on("click", (function() {
                 Games.popupLogin(5)
-            }),
-            $("#loginselector").on("click", function(En) {
+            }
+            )),
+            $("#loginselector").on("click", (function(En) {
                 En.stopPropagation()
-            }),
+            }
+            )),
             $("#gotomainpage").on("click", Games.redirRoot),
             $("#lifetime-signin").on("click", Games.redirRoot),
             null == config.settings.session ? Games.playerGuest() : Games.playerAuth(),
-            un(function() {
+            un((function() {
                 return (Jt = !0,
                 pn(),
                 DEVELOPMENT && "#tony" == window.location.hash) ? (game.playRegion = "eu",
@@ -32220,7 +32508,8 @@ function loadGameCode() {
                 Games.updateRegion(!1),
                 Games.updateType(!1),
                 bn()))
-            }, !0)
+            }
+            ), !0)
         }
         ,
         Games.popupLogin = function(En) {
@@ -32254,21 +32543,22 @@ function loadGameCode() {
         Games.playerAuth = function() {
             Tools.ajaxPost("/auth", {
                 session: config.settings.session
-            }, function(En) {
+            }, (function(En) {
                 if (null != En) {
                     game.loggedIn = !0,
                     game.myUserID = En.user;
-                    var wn = UI.escapeHTML(En.authName.substr(0, 30)) + "<span class=\"grey\">(" + ["", "Facebook", "Google", "Twitter", "Reddit", "Twitch"][En.authType] + ")</span>";
+                    var wn = UI.escapeHTML(En.authName.substr(0, 30)) + '<span class="grey">(' + ["", "Facebook", "Google", "Twitter", "Reddit", "Twitch"][En.authType] + ")</span>";
                     null != En.name && $("#playername").val(En.name),
-                    $("#logout").html(wn + "<span class=\"link\" onclick=\"Games.logout()\">Logout</span>"),
-                    $("#logout-mainmenu").html("Logged in as " + wn + "<span class=\"button\" onclick=\"Games.logout()\">LOG OUT</span>"),
+                    $("#logout").html(wn + '<span class="link" onclick="Games.logout()">Logout</span>'),
+                    $("#logout-mainmenu").html("Logged in as " + wn + '<span class="button" onclick="Games.logout()">LOG OUT</span>'),
                     $("#loginbutton").remove(),
                     $("#lifetime-account").remove(),
                     $("#playbutton").html("PLAY"),
                     UI.show("#playbutton", !0)
                 } else
                     Games.playerGuest()
-            })
+            }
+            ))
         }
         ,
         Games.logout = function() {
@@ -32296,12 +32586,14 @@ function loadGameCode() {
                         if ("#reload" !== window.location.hash)
                             return void Tools.ajaxPost("/clienterror", {
                                 type: "protocol"
-                            }, function() {
-                                UI.showMessage("alert", "<span class=\"mainerror\">Protocol update<br>Your client is being updated to the new version</span>", 3e4),
-                                setTimeout(function() {
+                            }, (function() {
+                                UI.showMessage("alert", '<span class="mainerror">Protocol update<br>Your client is being updated to the new version</span>', 3e4),
+                                setTimeout((function() {
                                     window.location = "/?" + Tools.randomID(10) + "#reload"
-                                }, 5e3)
-                            });
+                                }
+                                ), 5e3)
+                            }
+                            ));
                         Tools.ajaxPost("/clienterror", {
                             type: "protocolretry"
                         })
@@ -32319,9 +32611,9 @@ function loadGameCode() {
                     En++;
             if (0 == En)
                 tn = !0,
-                UI.showMessage("alert", "<span class=\"mainerror\">We are currently performing server maintenance<br>Please try again in a few minutes</span>", 3e4);
+                UI.showMessage("alert", '<span class="mainerror">We are currently performing server maintenance<br>Please try again in a few minutes</span>', 3e4);
             else {
-                var Pn = "<div class=\"item smallerpad\">" + zt + "</div>player" + (1 < zt ? "s" : "") + " online";
+                var Pn = '<div class="item smallerpad">' + zt + "</div>player" + (1 < zt ? "s" : "") + " online";
                 $("#gameinfo").html(Pn)
             }
         }
@@ -32400,18 +32692,18 @@ function loadGameCode() {
                 null == En && (En = Xt),
                 En) {
                     Yt && Games.updateType(!1),
-                    Cn += "<div class=\"item\"><div class=\"region header\">REGION</div><div class=\"players header\">PLAYERS</div><div class=\"ping header\">PING</div><div class=\"clear\"></div></div>";
+                    Cn += '<div class="item"><div class="region header">REGION</div><div class="players header">PLAYERS</div><div class="ping header">PING</div><div class="clear"></div></div>';
                     var An = "";
-                    null != Zt && (An = "<span class=\"autoregion\">(" + en[Zt].name + ")</span>"),
-                    Cn += "<div class=\"item selectable" + ("closest" === game.playRegion ? " sel" : "") + "\" onclick=\"Games.selectRegion(event, &quot;closest&quot;)\"><div class=\"region chooser\">Closest" + An + "</div><div class=\"clear\"></div></div>";
+                    null != Zt && (An = '<span class="autoregion">(' + en[Zt].name + ")</span>"),
+                    Cn += '<div class="item selectable' + ("closest" === game.playRegion ? " sel" : "") + '" onclick="Games.selectRegion(event, &quot;closest&quot;)"><div class="region chooser">Closest' + An + '</div><div class="clear"></div></div>';
                     for (var Mn = 0; Mn < en.length; Mn++) {
                         for (var Rn = 0, In = 0; In < en[Mn].games.length; In++)
                             Rn += en[Mn].games[In].players;
                         var Dn;
-                        Dn = null == en[Mn].ping ? "&nbsp;" : Math.round(en[Mn].ping) + "<span class=\"ms\">ms</span>",
-                        Cn += "<div class=\"item selectable" + (game.playRegion === en[Mn].id ? " sel" : "") + "\" onclick=\"Games.selectRegion(event, &quot;" + en[Mn].id + "&quot;)\"><div class=\"region chooser\">" + en[Mn].name + "</div><div class=\"players number\">" + Rn + "</div><div class=\"ping chooser nopadding\">" + Dn + "</div><div class=\"clear\"></div></div>"
+                        Dn = null == en[Mn].ping ? "&nbsp;" : Math.round(en[Mn].ping) + '<span class="ms">ms</span>',
+                        Cn += '<div class="item selectable' + (game.playRegion === en[Mn].id ? " sel" : "") + '" onclick="Games.selectRegion(event, &quot;' + en[Mn].id + '&quot;)"><div class="region chooser">' + en[Mn].name + '</div><div class="players number">' + Rn + '</div><div class="ping chooser nopadding">' + Dn + '</div><div class="clear"></div></div>'
                     }
-                    Cn += "<div class=\"item\"></div>",
+                    Cn += '<div class="item"></div>',
                     Pn = {
                         width: "240px",
                         height: "auto",
@@ -32419,9 +32711,9 @@ function loadGameCode() {
                     },
                     $("#playregion").removeClass("hoverable")
                 } else
-                    Cn += "<div class=\"arrowdown\"></div>",
-                    Cn += "<div class=\"playtop\">REGION</div>",
-                    Cn += "<div class=\"playbottom\">" + cn(game.playRegion).name + "</div>",
+                    Cn += '<div class="arrowdown"></div>',
+                    Cn += '<div class="playtop">REGION</div>',
+                    Cn += '<div class="playbottom">' + cn(game.playRegion).name + "</div>",
                     Pn = {
                         width: "130px",
                         height: "40px",
@@ -32444,9 +32736,9 @@ function loadGameCode() {
             return En
         }
           , mn = function(En) {
-            var wn = "<div class=\"infott\">";
+            var wn = '<div class="infott">';
             return 1 == En ? wn += "Everyone versus everyone deathmatch. No teams." : 2 == En ? wn += "Players split into 2 teams. 2 flags are placed inside each base. The objective is to move the enemy flag from their base to your base." : 3 == En && (wn += "Players spawn at random locations all across the map. Destroyed players will not respawn. Last player standing wins."),
-            wn += "<div class=\"arrow\"></div></div>"
+            wn += '<div class="arrow"></div></div>'
         };
         Games.updateType = function(En, wn) {
             var Cn = ""
@@ -32458,7 +32750,7 @@ function loadGameCode() {
                 null == En && (En = Yt),
                 En) {
                     if (Xt && Games.updateRegion(!1),
-                    Cn += "<div class=\"item\"><div class=\"gametype header\">GAME</div><div class=\"players header\">PLAYERS</div><div class=\"clear\"></div></div>",
+                    Cn += '<div class="item"><div class="gametype header">GAME</div><div class="players header">PLAYERS</div><div class="clear"></div></div>',
                     null == (Dn = gn()))
                         return;
                     null == hn(Dn, game.playRoom) && (game.playRoom = Wt[1]);
@@ -32467,10 +32759,10 @@ function loadGameCode() {
                         In[Rn[An].type].push(Rn[An]);
                     for (An = 1; An < In.length; An++)
                         if (0 != In[An].length)
-                            for (Cn += "<div class=\"item selectable" + (Wt[An] === game.playRoom ? " sel" : "") + "\" onclick=\"Games.selectGame(event, &quot;" + Wt[An] + "&quot;)\"><div class=\"gametype chooser\">" + jt[An] + "<span class=\"infocontainer\">&nbsp;<div class=\"infoicon\">" + mn(An) + "</div></span></div><div class=\"clear\"></div></div>",
+                            for (Cn += '<div class="item selectable' + (Wt[An] === game.playRoom ? " sel" : "") + '" onclick="Games.selectGame(event, &quot;' + Wt[An] + '&quot;)"><div class="gametype chooser">' + jt[An] + '<span class="infocontainer">&nbsp;<div class="infoicon">' + mn(An) + '</div></span></div><div class="clear"></div></div>',
                             Mn = 0; Mn < In[An].length; Mn++)
-                                Cn += "<div class=\"item selectable" + (In[An][Mn].id === game.playRoom ? " sel" : "") + "\" onclick=\"Games.selectGame(event, &quot;" + In[An][Mn].id + "&quot;)\"><div class=\"gametype chooser\">" + In[An][Mn].nameShort + "</div><div class=\"players number\">" + In[An][Mn].players + "</div><div class=\"clear\"></div></div>";
-                    Cn += "<div class=\"item\"></div>",
+                                Cn += '<div class="item selectable' + (In[An][Mn].id === game.playRoom ? " sel" : "") + '" onclick="Games.selectGame(event, &quot;' + In[An][Mn].id + '&quot;)"><div class="gametype chooser">' + In[An][Mn].nameShort + '</div><div class="players number">' + In[An][Mn].players + '</div><div class="clear"></div></div>';
+                    Cn += '<div class="item"></div>',
                     Pn = {
                         width: "240px",
                         height: "auto",
@@ -32478,15 +32770,15 @@ function loadGameCode() {
                     },
                     $("#playtype").removeClass("hoverable")
                 } else {
-                    Cn += "<div class=\"arrowdown\"></div>",
-                    Cn += "<div class=\"playtop\">GAME</div>";
+                    Cn += '<div class="arrowdown"></div>',
+                    Cn += '<div class="playtop">GAME</div>';
                     var Dn;
                     if (null == (Dn = gn()))
                         return;
                     var On = hn(Dn, game.playRoom);
                     null == On ? (name = jt[1],
                     game.playRoom = Wt[1]) : name = On.name,
-                    Cn += "<div class=\"playbottom\">" + name + "</div>",
+                    Cn += '<div class="playbottom">' + name + "</div>",
                     Pn = {
                         width: "190px",
                         height: "40px",
@@ -32515,19 +32807,19 @@ function loadGameCode() {
         ;
         var yn = function() {
             var En = "";
-            En += "<div class=\"header\">" + game.roomName + "<span class=\"region\">&nbsp;&nbsp;&bull;&nbsp;&nbsp;" + game.regionName + "</span></div><div class=\"buttons\"><div class=\"button\" onclick=\"Games.redirRoot()\">CHANGE REGION</div></div>";
+            En += '<div class="header">' + game.roomName + '<span class="region">&nbsp;&nbsp;&bull;&nbsp;&nbsp;' + game.regionName + '</span></div><div class="buttons"><div class="button" onclick="Games.redirRoot()">CHANGE REGION</div></div>';
             var Pn = cn(game.playRegion).games, An = [[], [], [], [], [], [], [], [], []], wn, Cn;
             for (wn = 0; wn < Pn.length; wn++)
                 An[Pn[wn].type].push(Pn[wn]);
             var Mn, Rn;
             for (wn = 1; wn < An.length; wn++)
                 if (0 != An[wn].length)
-                    for (En += "<div class=\"item head\"><div class=\"gametype chooser section\">" + jt[wn] + "<span class=\"infocontainer\">&nbsp;<div class=\"infoicon\">" + mn(wn) + "</div></span></div><div class=\"clear\"></div></div>",
+                    for (En += '<div class="item head"><div class="gametype chooser section">' + jt[wn] + '<span class="infocontainer">&nbsp;<div class="infoicon">' + mn(wn) + '</div></span></div><div class="clear"></div></div>',
                     Cn = 0; Cn < An[wn].length; Cn++)
                         An[wn][Cn].id === game.playRoom ? (Mn = " sel",
                         Rn = "") : (Mn = " selectable",
-                        Rn = " onclick=\"Games.switchGame(&quot;" + An[wn][Cn].id + "&quot;)\""),
-                        En += "<div class=\"item" + Mn + "\"" + Rn + "><div class=\"gametype chooser\">" + An[wn][Cn].nameShort + "</div><div class=\"players number\">" + An[wn][Cn].players + "</div><div class=\"clear\"></div></div>";
+                        Rn = ' onclick="Games.switchGame(&quot;' + An[wn][Cn].id + '&quot;)"'),
+                        En += '<div class="item' + Mn + '"' + Rn + '><div class="gametype chooser">' + An[wn][Cn].nameShort + '</div><div class="players number">' + An[wn][Cn].players + '</div><div class="clear"></div></div>';
             return En
         };
         Games.redirRoot = function() {
@@ -32536,10 +32828,11 @@ function loadGameCode() {
         }
         ;
         var _n = function() {
-            un(function() {
+            un((function() {
                 var En = yn();
                 $("#gameselector").html(En)
-            })
+            }
+            ))
         };
         Games.closeGames = function() {
             Ht && (UI.hide("#gameselector"),
@@ -32594,9 +32887,10 @@ function loadGameCode() {
                     Vt[wn].num++;
                     var Pn;
                     Pn = DEVELOPMENT ? "/ping" : "https://game-" + wn + ".airma.sh/ping",
-                    xn(wn, Pn, function() {
+                    xn(wn, Pn, (function() {
                         xn(wn, Pn)
-                    })
+                    }
+                    ))
                 }
             }
         }
@@ -32653,17 +32947,19 @@ function loadGameCode() {
                 transform: "scale(1)",
                 "background-color": "rgb(30, 30, 30)"
             }),
-            setTimeout(function() {
+            setTimeout((function() {
                 $(En).focus()
-            }, 200)
+            }
+            ), 200)
         }
         ,
         Games.copyInviteLink = function() {
             vn(game.inviteLink) && (UI.show("#invite-copied"),
             null != $t && clearTimeout($t),
-            $t = setTimeout(function() {
+            $t = setTimeout((function() {
                 UI.hide("#invite-copied")
-            }, 2e3))
+            }
+            ), 2e3))
         }
         ;
         var vn = function(En) {
@@ -32732,7 +33028,7 @@ function loadGameCode() {
         ,
         Games.prep = function() {
             (Games.wipe(),
-            2 == game.gameType) ? ($("#gamespecific").html("<div class=\"blueflag\"></div><div id=\"blueflag-name\" class=\"blueflag-player\">&nbsp;</div><div class=\"redflag\"></div><div id=\"redflag-name\" class=\"redflag-player\">&nbsp;</div>"),
+            2 == game.gameType) ? ($("#gamespecific").html('<div class="blueflag"></div><div id="blueflag-name" class="blueflag-player">&nbsp;</div><div class="redflag"></div><div id="redflag-name" class="redflag-player">&nbsp;</div>'),
             UI.show("#gamespecific"),
             nn = {
                 flagBlue: {
@@ -32809,7 +33105,7 @@ function loadGameCode() {
             wn.sprite.rotation = 0,
             wn.spriteShadow.scale.x = 1.1 * .4,
             wn.spriteShadow.rotation = 0;
-            var An = "<span class=\"rounds\">" + Pn + "<span class=\"divider\">/</span>3</span>";
+            var An = '<span class="rounds">' + Pn + '<span class="divider">/</span>3</span>';
             if (1 == En.type) {
                 wn.playerId = null,
                 wn.position.x = En.posX,
@@ -32865,45 +33161,48 @@ function loadGameCode() {
             }
         };
         Games.spectate = function(En) {
-            null == game.spectatingID && 3 != game.gameType && UI.showMessage("alert", "<span class=\"info\">SPECTATOR MODE</span>Click on Respawn to resume playing", 4e3),
+            null == game.spectatingID && 3 != game.gameType && UI.showMessage("alert", '<span class="info">SPECTATOR MODE</span>Click on Respawn to resume playing', 4e3),
             game.spectatingID = En;
             var wn = Players.get(En)
-              , Cn = "<div id=\"spectator-tag\" class=\"spectating\">Spectating " + (null == wn ? "" : UI.escapeHTML(wn.name)) + "</div><div class=\"buttons\"><div onclick=\"Network.spectateNext()\" class=\"changeplayer left\"><div class=\"arrow\"></div></div><div onclick=\"Network.spectatePrev()\" class=\"changeplayer right\"><div class=\"arrow\"></div></div></div>";
+              , Cn = '<div id="spectator-tag" class="spectating">Spectating ' + (null == wn ? "" : UI.escapeHTML(wn.name)) + '</div><div class="buttons"><div onclick="Network.spectateNext()" class="changeplayer left"><div class="arrow"></div></div><div onclick="Network.spectatePrev()" class="changeplayer right"><div class="arrow"></div></div></div>';
             UI.showSpectator(Cn)
         }
         ,
         Games.spectatorSwitch = function(En) {
-            setTimeout(function() {
+            setTimeout((function() {
                 En == game.spectatingID && Network.spectateNext()
-            }, 2e3)
+            }
+            ), 2e3)
         }
         ,
         Games.playersAlive = function(En) {
             var wn = "";
-            1 < En && (wn = "<div class=\"playersalive\">" + En + " players alive</div>"),
+            1 < En && (wn = '<div class="playersalive">' + En + " players alive</div>"),
             $("#gamespecific").html(wn)
         }
         ,
         Games.showBTRWin = function(En) {
             if (!$("#custom-msg").length) {
-                var wn = "<div id=\"custom-msg\" class=\"btrwin\"><div class=\"trophy\"></div><div class=\"winner\"><div class=\"player\"><span class=\"flag big flag-" + En.f + "\"></span>" + UI.escapeHTML(En.p) + "</div></div><div class=\"bounty\"><span class=\"stat\">" + En.k + " KILL" + (1 == En.k ? "" : "S") + "</span>+" + En.b + " BOUNTY</div></div>";
+                var wn = '<div id="custom-msg" class="btrwin"><div class="trophy"></div><div class="winner"><div class="player"><span class="flag big flag-' + En.f + '"></span>' + UI.escapeHTML(En.p) + '</div></div><div class="bounty"><span class="stat">' + En.k + " KILL" + (1 == En.k ? "" : "S") + "</span>+" + En.b + " BOUNTY</div></div>";
                 $("body").append(wn),
                 UI.showPanel("#custom-msg"),
-                setTimeout(function() {
+                setTimeout((function() {
                     UI.hidePanel("#custom-msg", !1, !0)
-                }, 1e3 * En.t),
+                }
+                ), 1e3 * En.t),
                 Sound.gameComplete()
             }
         }
         ,
         Games.showCTFWin = function(En) {
             if (!$("#custom-msg").length) {
-                var wn = "<div id=\"custom-msg\" class=\"ctfwin\"><div class=\"trophy\"></div><div class=\"winner\">" + (1 == En.w ? "<div class=\"player blue\">BLUE TEAM</div>" : "<div class=\"player red\">RED TEAM</div>") + "</div><div class=\"bounty\">+" + En.b + " BOUNTY</div></div>";
+                var wn = '<div id="custom-msg" class="ctfwin"><div class="trophy"></div><div class="winner">' + (1 == En.w ? '<div class="player blue">BLUE TEAM</div>' : '<div class="player red">RED TEAM</div>') + '</div><div class="bounty">+' + En.b + " BOUNTY</div></div>";
                 $("body").append(wn),
                 UI.showPanel("#custom-msg"),
-                setTimeout(function() {
+                setTimeout((function() {
                     UI.hidePanel("#custom-msg", !1, !0)
-                }, 1e3 * En.t),
+                }
+                ), 1e3 * En.t),
                 Sound.gameComplete()
             }
         }
@@ -32913,8 +33212,8 @@ function loadGameCode() {
             var wn = ""
               , Cn = " lvlsmaller";
             null != dn[En + ""] && (Cn = "",
-            wn = "<div class=\"unlocked\">FEATURE UNLOCKED<br><div class=\"unlockedtext\">" + dn[En + ""] + "</div></div>");
-            var Pn = "<div id=\"custom-msg\" class=\"levelup" + Cn + "\"><div class=\"leveltext\">NEW LEVEL REACHED</div><div class=\"levelbadge\"></div><div class=\"levelnum\">" + En + "</div>" + wn + "</div>";
+            wn = '<div class="unlocked">FEATURE UNLOCKED<br><div class="unlockedtext">' + dn[En + ""] + "</div></div>");
+            var Pn = '<div id="custom-msg" class="levelup' + Cn + '"><div class="leveltext">NEW LEVEL REACHED</div><div class="levelbadge"></div><div class="levelnum">' + En + "</div>" + wn + "</div>";
             $("body").append(Pn),
             UI.showPanel("#custom-msg"),
             Sound.levelUp(),
@@ -33023,14 +33322,14 @@ function loadGameCode() {
           , Kt = {}
           , $t = .06
           , en = .08
-          , rn = [0, 0.7, 1, 0.4, 0, 0.7, 0.4, 0.7]
-          , on = [0, 0.7, 1, 0.4, 0, 0.7, 1, 0.7]
-          , sn = [0, 0.8, 0.5, 1, 0, 0.8, 0.5, 0.8]
-          , dn = [0, 0.8, 1, 0.7, 0.8, 0.8]
-          , ln = [0, 1.5, 1.2, 0.8, 1.35, 1.7]
-          , un = [0, 1, 1, 0.35, 1, 1]
-          , pn = [0, 0.8, 0.5, 1, 0, 0.8, 0.8, 0.8]
-          , cn = [0, 1.5, 0.8, 2, 1, 1.5]
+          , rn = [0, .7, 1, .4, 0, .7, .4, .7]
+          , on = [0, .7, 1, .4, 0, .7, 1, .7]
+          , sn = [0, .8, .5, 1, 0, .8, .5, .8]
+          , dn = [0, .8, 1, .7, .8, .8]
+          , ln = [0, 1.5, 1.2, .8, 1.35, 1.7]
+          , un = [0, 1, 1, .35, 1, 1]
+          , pn = [0, .8, .5, 1, 0, .8, .8, .8]
+          , cn = [0, 1.5, .8, 2, 1, 1.5]
           , hn = {
             powerup_shield: .5,
             upgrade: .2,
@@ -33045,26 +33344,26 @@ function loadGameCode() {
             volume: 0,
             sprite: {
                 chopper: [0, 3206.1451247165533, !0],
-                click: [5000, 374.9886621315195],
-                complete: [7000, 1910.9750566893417],
-                explosion1: [10000, 4137.460317460316],
-                explosion2: [16000, 4155.44217687075],
-                explosion3: [22000, 4168.367346938776],
-                explosion4: [28000, 4580.272108843537],
-                explosion5: [34000, 4144.943310657595],
-                explosion6: [40000, 4191.360544217688],
-                impact: [46000, 3730.7709750566855],
-                launch1: [51000, 1492.4943310657568],
-                launch2: [54000, 1511.2244897959215],
-                levelup: [57000, 1886.4172335600883],
-                missile: [60000, 8335.351473922898, !0],
-                powerup_rampage: [70000, 7423.083900226758],
-                powerup_shield: [79000, 2070.4761904761854],
-                powerup_upgrade: [83000, 1640.8616780045406],
-                repel: [86000, 2000],
-                respawn: [89000, 1315.9410430838961],
-                thruster: [92000, 9499.841269841269, !0],
-                upgrade: [103000, 2062.517006802722]
+                click: [5e3, 374.9886621315195],
+                complete: [7e3, 1910.9750566893417],
+                explosion1: [1e4, 4137.460317460316],
+                explosion2: [16e3, 4155.44217687075],
+                explosion3: [22e3, 4168.367346938776],
+                explosion4: [28e3, 4580.272108843537],
+                explosion5: [34e3, 4144.943310657595],
+                explosion6: [4e4, 4191.360544217688],
+                impact: [46e3, 3730.7709750566855],
+                launch1: [51e3, 1492.4943310657568],
+                launch2: [54e3, 1511.2244897959215],
+                levelup: [57e3, 1886.4172335600883],
+                missile: [6e4, 8335.351473922898, !0],
+                powerup_rampage: [7e4, 7423.083900226758],
+                powerup_shield: [79e3, 2070.4761904761854],
+                powerup_upgrade: [83e3, 1640.8616780045406],
+                repel: [86e3, 2e3],
+                respawn: [89e3, 1315.9410430838961],
+                thruster: [92e3, 9499.841269841269, !0],
+                upgrade: [103e3, 2062.517006802722]
             }
         };
         SWAM && SWAM.injectSounds(gn),
@@ -33271,7 +33570,7 @@ function loadGameCode() {
                 else if (null == Ht[An]) {
                     if (0 == En) {
                         if (!wn.me() && 5 <= jt)
-                            return;
+                            return
                     } else if (5 <= Wt)
                         return;
                     var Mn = Tn(wn.pos);
@@ -33338,14 +33637,14 @@ function loadGameCode() {
           , Kt = {}
           , $t = .06
           , en = .08
-          , rn = [0, 0.7, 1, 0.4, 0, 0.7, 0.4, 0.7]
-          , on = [0, 0.7, 1, 0.4, 0, 0.7, 1, 0.7]
-          , sn = [0, 0.8, 0.5, 1, 0, 0.8, 0.5, 0.8]
-          , dn = [0, 0.8, 1, 0.7, 0.8, 0.8]
-          , ln = [0, 1.5, 1.2, 0.8, 1.35, 1.7]
-          , un = [0, 1, 1, 0.35, 1, 1]
-          , pn = [0, 0.8, 0.5, 1, 0, 0.8, 0.8, 0.8]
-          , cn = [0, 1.5, 0.8, 2, 1, 1.5]
+          , rn = [0, .7, 1, .4, 0, .7, .4, .7]
+          , on = [0, .7, 1, .4, 0, .7, 1, .7]
+          , sn = [0, .8, .5, 1, 0, .8, .5, .8]
+          , dn = [0, .8, 1, .7, .8, .8]
+          , ln = [0, 1.5, 1.2, .8, 1.35, 1.7]
+          , un = [0, 1, 1, .35, 1, 1]
+          , pn = [0, .8, .5, 1, 0, .8, .8, .8]
+          , cn = [0, 1.5, .8, 2, 1, 1.5]
           , hn = {
             powerup_shield: .5,
             upgrade: .2,
@@ -33360,35 +33659,35 @@ function loadGameCode() {
             volume: 0,
             sprite: {
                 a_wing: [50, 917, !0],
-                tie_interceptor: [1000, 2381, !0],
+                tie_interceptor: [1e3, 2381, !0],
                 tie_fighter: [3500, 1173, !0],
-                x_wing: [5000, 5410, !0],
+                x_wing: [5e3, 5410, !0],
                 tie_bomber: [10500, 2431, !0],
-                b_wing: [13000, 2949, !0],
+                b_wing: [13e3, 2949, !0],
                 tie_advanced: [16500, 2940, !0],
-                y_wing: [20000, 2944, !0],
+                y_wing: [2e4, 2944, !0],
                 tie_phantom: [23500, 2949, !0],
                 scout_ship: [27500, 1392, !0],
-                click: [50000, 153],
-                complete: [51000, 4800],
-                explosion1: [60000, 3600],
-                explosion2: [66000, 3650],
-                explosion3: [72000, 3230],
-                explosion4: [78000, 3240],
-                explosion5: [84000, 3100],
-                explosion6: [90000, 3730],
-                impact: [96000, 2153],
-                launch1: [100000, 1665],
-                launch2: [103000, 1955],
-                levelup: [107000, 4320],
-                missile: [113000, 5339, !0],
-                powerup_rampage: [120000, 2971],
-                powerup_shield: [124000, 1633],
-                powerup_upgrade: [128000, 806],
-                repel: [130000, 1344],
-                respawn: [133000, 1237],
-                thruster: [137000, 9500, !0],
-                upgrade: [150000, 2455]
+                click: [5e4, 153],
+                complete: [51e3, 4800],
+                explosion1: [6e4, 3600],
+                explosion2: [66e3, 3650],
+                explosion3: [72e3, 3230],
+                explosion4: [78e3, 3240],
+                explosion5: [84e3, 3100],
+                explosion6: [9e4, 3730],
+                impact: [96e3, 2153],
+                launch1: [1e5, 1665],
+                launch2: [103e3, 1955],
+                levelup: [107e3, 4320],
+                missile: [113e3, 5339, !0],
+                powerup_rampage: [12e4, 2971],
+                powerup_shield: [124e3, 1633],
+                powerup_upgrade: [128e3, 806],
+                repel: [13e4, 1344],
+                respawn: [133e3, 1237],
+                thruster: [137e3, 9500, !0],
+                upgrade: [15e4, 2455]
             }
         };
         Sound.setup = function() {
@@ -33595,7 +33894,7 @@ function loadGameCode() {
                         Pn = 0 == wn.graphicsSet ? "tie_advanced" : "y_wing";
                         break;
                     case 5:
-                        Pn = 0 == wn.graphicsSet ? "tie_phantom" : "scout_ship";
+                        Pn = 0 == wn.graphicsSet ? "tie_phantom" : "scout_ship"
                     }
                     var An = "player_" + wn.id + "_" + wn.type
                 } else
@@ -33606,7 +33905,7 @@ function loadGameCode() {
                 else if (null == Ht[An]) {
                     if (0 == En) {
                         if (!wn.me() && 5 <= jt)
-                            return;
+                            return
                     } else if (5 <= Wt)
                         return;
                     var Mn = Tn(wn.pos);
@@ -33673,12 +33972,12 @@ jQuery.cachedScript = function(Bt, Gt) {
 SWAM.dependencies = ["https://cdn.jsdelivr.net/npm/pixi-filters@2.5.0/dist/pixi-filters.js"];
 function getURLRegEx(Bt) {
     return Bt = "undefined" == typeof Bt || Bt,
-    /(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[\/?#]\S*)?/img
+    /(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[\/?#]\S*)?/gim
 }
 !function(Bt, Gt) {
     "use strict";
     "function" == typeof define && define.amd ? define("stackframe", [], Gt) : "object" == typeof exports ? module.exports = Gt() : Bt.StackFrame = Gt()
-}(this, function() {
+}(this, (function() {
     "use strict";
     function Bt(Qt) {
         return !isNaN(parseFloat(Qt)) && isFinite(Qt)
@@ -33754,11 +34053,12 @@ function getURLRegEx(Bt) {
             }
         }(Wt[Zt]);
     return Yt
-}),
+}
+)),
 function(Bt, Gt) {
     "use strict";
     "function" == typeof define && define.amd ? define("error-stack-parser", ["stackframe"], Gt) : "object" == typeof exports ? module.exports = Gt(require("stackframe")) : Bt.ErrorStackParser = Gt(Bt.StackFrame)
-}(this, function(Bt) {
+}(this, (function(Bt) {
     "use strict";
     var Gt = /(^|@)\S+\:\d+/
       , Xt = /^\s*at .*(\S+\:\d+|\(native\))/m
@@ -33781,10 +34081,11 @@ function(Bt, Gt) {
             return [Wt[1], Wt[2] || void 0, Wt[3] || void 0]
         },
         parseV8OrIE: function(Ht) {
-            var jt = Ht.stack.split("\n").filter(function(Wt) {
+            var jt = Ht.stack.split("\n").filter((function(Wt) {
                 return !!Wt.match(Xt)
-            }, this);
-            return jt.map(function(Wt) {
+            }
+            ), this);
+            return jt.map((function(Wt) {
                 -1 < Wt.indexOf("(eval ") && (Wt = Wt.replace(/eval code/g, "eval").replace(/(\(eval at [^\()]*)|(\)\,.*$)/g, ""));
                 var zt = Wt.replace(/^\s+/, "").replace(/\(eval code/g, "(").split(/\s+/).slice(1)
                   , Vt = this.extractLocation(zt.pop())
@@ -33797,13 +34098,15 @@ function(Bt, Gt) {
                     columnNumber: Vt[2],
                     source: Wt
                 })
-            }, this)
+            }
+            ), this)
         },
         parseFFOrSafari: function(Ht) {
-            var jt = Ht.stack.split("\n").filter(function(Wt) {
+            var jt = Ht.stack.split("\n").filter((function(Wt) {
                 return !Wt.match(Yt)
-            }, this);
-            return jt.map(function(Wt) {
+            }
+            ), this);
+            return jt.map((function(Wt) {
                 if (-1 < Wt.indexOf(" > eval") && (Wt = Wt.replace(/ line (\d+)(?: > eval line \d+)* > eval\:\d+\:\d+/g, ":$1")),
                 -1 === Wt.indexOf("@") && -1 === Wt.indexOf(":"))
                     return new Bt({
@@ -33819,7 +34122,8 @@ function(Bt, Gt) {
                     columnNumber: Vt[2],
                     source: Wt
                 })
-            }, this)
+            }
+            ), this)
         },
         parseOpera: function(Ht) {
             return !Ht.stacktrace || -1 < Ht.message.indexOf("\n") && Ht.message.split("\n").length > Ht.stacktrace.split("\n").length ? this.parseOpera9(Ht) : Ht.stack ? this.parseOpera11(Ht) : this.parseOpera10(Ht)
@@ -33846,10 +34150,11 @@ function(Bt, Gt) {
             return zt
         },
         parseOpera11: function(Ht) {
-            var jt = Ht.stack.split("\n").filter(function(Wt) {
+            var jt = Ht.stack.split("\n").filter((function(Wt) {
                 return !!Wt.match(Gt) && !Wt.match(/^Error created at/)
-            }, this);
-            return jt.map(function(Wt) {
+            }
+            ), this);
+            return jt.map((function(Wt) {
                 var Vt = Wt.split("@"), qt = this.extractLocation(Vt.pop()), Kt = Vt.shift() || "", Zt = Kt.replace(/<anonymous function(: (\w+))?>/, "$2").replace(/\([^\)]*\)/g, "") || void 0, zt;
                 Kt.match(/\(([^\)]*)\)/) && (zt = Kt.replace(/^[^\(]+\(([^\)]*)\)$/, "$1"));
                 var Qt = void 0 === zt || "[arguments not available]" === zt ? void 0 : zt.split(",");
@@ -33861,15 +34166,18 @@ function(Bt, Gt) {
                     columnNumber: qt[2],
                     source: Wt
                 })
-            }, this)
+            }
+            ), this)
         }
     }
-});
+}
+));
 var nonprintRegex = /[⸻\u2E3A\u2E3B﷽\u0400-\u04FF\0-\x1F\x7F-\x9F\xAD\u0378\u0379\u037F-\u0383\u038B\u038D\u03A2\u0528-\u0530\u0557\u0558\u0560\u0588\u058B-\u058E\u0590\u05C8-\u05CF\u05EB-\u05EF\u05F5-\u0605\u061C\u061D\u06DD\u070E\u070F\u074B\u074C\u07B2-\u07BF\u07FB-\u07FF\u082E\u082F\u083F\u085C\u085D\u085F-\u089F\u08A1\u08AD-\u08E3\u08FF\u0978\u0980\u0984\u098D\u098E\u0991\u0992\u09A9\u09B1\u09B3-\u09B5\u09BA\u09BB\u09C5\u09C6\u09C9\u09CA\u09CF-\u09D6\u09D8-\u09DB\u09DE\u09E4\u09E5\u09FC-\u0A00\u0A04\u0A0B-\u0A0E\u0A11\u0A12\u0A29\u0A31\u0A34\u0A37\u0A3A\u0A3B\u0A3D\u0A43-\u0A46\u0A49\u0A4A\u0A4E-\u0A50\u0A52-\u0A58\u0A5D\u0A5F-\u0A65\u0A76-\u0A80\u0A84\u0A8E\u0A92\u0AA9\u0AB1\u0AB4\u0ABA\u0ABB\u0AC6\u0ACA\u0ACE\u0ACF\u0AD1-\u0ADF\u0AE4\u0AE5\u0AF2-\u0B00\u0B04\u0B0D\u0B0E\u0B11\u0B12\u0B29\u0B31\u0B34\u0B3A\u0B3B\u0B45\u0B46\u0B49\u0B4A\u0B4E-\u0B55\u0B58-\u0B5B\u0B5E\u0B64\u0B65\u0B78-\u0B81\u0B84\u0B8B-\u0B8D\u0B91\u0B96-\u0B98\u0B9B\u0B9D\u0BA0-\u0BA2\u0BA5-\u0BA7\u0BAB-\u0BAD\u0BBA-\u0BBD\u0BC3-\u0BC5\u0BC9\u0BCE\u0BCF\u0BD1-\u0BD6\u0BD8-\u0BE5\u0BFB-\u0C00\u0C04\u0C0D\u0C11\u0C29\u0C34\u0C3A-\u0C3C\u0C45\u0C49\u0C4E-\u0C54\u0C57\u0C5A-\u0C5F\u0C64\u0C65\u0C70-\u0C77\u0C80\u0C81\u0C84\u0C8D\u0C91\u0CA9\u0CB4\u0CBA\u0CBB\u0CC5\u0CC9\u0CCE-\u0CD4\u0CD7-\u0CDD\u0CDF\u0CE4\u0CE5\u0CF0\u0CF3-\u0D01\u0D04\u0D0D\u0D11\u0D3B\u0D3C\u0D45\u0D49\u0D4F-\u0D56\u0D58-\u0D5F\u0D64\u0D65\u0D76-\u0D78\u0D80\u0D81\u0D84\u0D97-\u0D99\u0DB2\u0DBC\u0DBE\u0DBF\u0DC7-\u0DC9\u0DCB-\u0DCE\u0DD5\u0DD7\u0DE0-\u0DF1\u0DF5-\u0E00\u0E3B-\u0E3E\u0E5C-\u0E80\u0E83\u0E85\u0E86\u0E89\u0E8B\u0E8C\u0E8E-\u0E93\u0E98\u0EA0\u0EA4\u0EA6\u0EA8\u0EA9\u0EAC\u0EBA\u0EBE\u0EBF\u0EC5\u0EC7\u0ECE\u0ECF\u0EDA\u0EDB\u0EE0-\u0EFF\u0F48\u0F6D-\u0F70\u0F98\u0FBD\u0FCD\u0FDB-\u0FFF\u10C6\u10C8-\u10CC\u10CE\u10CF\u1249\u124E\u124F\u1257\u1259\u125E\u125F\u1289\u128E\u128F\u12B1\u12B6\u12B7\u12BF\u12C1\u12C6\u12C7\u12D7\u1311\u1316\u1317\u135B\u135C\u137D-\u137F\u139A-\u139F\u13F5-\u13FF\u169D-\u169F\u16F1-\u16FF\u170D\u1715-\u171F\u1737-\u173F\u1754-\u175F\u176D\u1771\u1774-\u177F\u17DE\u17DF\u17EA-\u17EF\u17FA-\u17FF\u180F\u181A-\u181F\u1878-\u187F\u18AB-\u18AF\u18F6-\u18FF\u191D-\u191F\u192C-\u192F\u193C-\u193F\u1941-\u1943\u196E\u196F\u1975-\u197F\u19AC-\u19AF\u19CA-\u19CF\u19DB-\u19DD\u1A1C\u1A1D\u1A5F\u1A7D\u1A7E\u1A8A-\u1A8F\u1A9A-\u1A9F\u1AAE-\u1AFF\u1B4C-\u1B4F\u1B7D-\u1B7F\u1BF4-\u1BFB\u1C38-\u1C3A\u1C4A-\u1C4C\u1C80-\u1CBF\u1CC8-\u1CCF\u1CF7-\u1CFF\u1DE7-\u1DFB\u1F16\u1F17\u1F1E\u1F1F\u1F46\u1F47\u1F4E\u1F4F\u1F58\u1F5A\u1F5C\u1F5E\u1F7E\u1F7F\u1FB5\u1FC5\u1FD4\u1FD5\u1FDC\u1FF0\u1FF1\u1FF5\u1FFF\u200B-\u200F\u202A-\u202E\u2060-\u206F\u2072\u2073\u208F\u209D-\u209F\u20BB-\u20CF\u20F1-\u20FF\u218A-\u218F\u23F4-\u23FF\u2427-\u243F\u244B-\u245F\u2700\u2B4D-\u2B4F\u2B5A-\u2BFF\u2C2F\u2C5F\u2CF4-\u2CF8\u2D26\u2D28-\u2D2C\u2D2E\u2D2F\u2D68-\u2D6E\u2D71-\u2D7E\u2D97-\u2D9F\u2DA7\u2DAF\u2DB7\u2DBF\u2DC7\u2DCF\u2DD7\u2DDF\u2E3C-\u2E7F\u2E9A\u2EF4-\u2EFF\u2FD6-\u2FEF\u2FFC-\u2FFF\u3040\u3097\u3098\u3100-\u3104\u312E-\u3130\u318F\u31BB-\u31BF\u31E4-\u31EF\u321F\u32FF\u4DB6-\u4DBF\u9FCD-\u9FFF\uA48D-\uA48F\uA4C7-\uA4CF\uA62C-\uA63F\uA698-\uA69E\uA6F8-\uA6FF\uA78F\uA794-\uA79F\uA7AB-\uA7F7\uA82C-\uA82F\uA83A-\uA83F\uA878-\uA87F\uA8C5-\uA8CD\uA8DA-\uA8DF\uA8FC-\uA8FF\uA954-\uA95E\uA97D-\uA97F\uA9CE\uA9DA-\uA9DD\uA9E0-\uA9FF\uAA37-\uAA3F\uAA4E\uAA4F\uAA5A\uAA5B\uAA7C-\uAA7F\uAAC3-\uAADA\uAAF7-\uAB00\uAB07\uAB08\uAB0F\uAB10\uAB17-\uAB1F\uAB27\uAB2F-\uABBF\uABEE\uABEF\uABFA-\uABFF\uD7A4-\uD7AF\uD7C7-\uD7CA\uFA6E\uFA6F\uFADA-\uFAFF\uFB07-\uFB12\uFB18-\uFB1C\uFB37\uFB3D\uFB3F\uFB42\uFB45\uFBC2-\uFBD2\uFD40-\uFD4F\uFD90\uFD91\uFDC8-\uFDEF\uFDFE\uFDFF\uFE1A-\uFE1F\uFE27-\uFE2F\uFE53\uFE67\uFE6C-\uFE6F\uFE75\uFEFD-\uFF00\uFFBF-\uFFC1\uFFC8\uFFC9\uFFD0\uFFD1\uFFD8\uFFD9\uFFDD-\uFFDF\uFFE7\uFFEF-\uFFFB\uFFFE\uFFFF]/g;
 function ReplaceWhitespaceNames() {
-    forEachPlayer(function(Bt) {
-        Bt.name = Bt.name.replace(nonprintRegex, "\uFFFD")
-    })
+    forEachPlayer((function(Bt) {
+        Bt.name = Bt.name.replace(nonprintRegex, "�")
+    }
+    ))
 }
 function toUnicode(Bt) {
     for (var Gt = "", Xt = 0, Yt; Xt < Bt.length; Xt++) {
@@ -33915,19 +34223,23 @@ function confirmDialog(Bt) {
     Gt = Gt.replace(/\$title/g, Bt.title).replace(/\$message/g, Bt.message);
     var Xt = $(Gt);
     $("body").append(Xt),
-    Xt.focus().keydown(function(Yt) {
+    Xt.focus().keydown((function(Yt) {
         Yt.stopImmediatePropagation()
-    }).keyup(function(Yt) {
+    }
+    )).keyup((function(Yt) {
         Yt.stopImmediatePropagation()
-    }),
-    $("#confirmYes", Xt).val(Bt.yesText).click(function() {
+    }
+    )),
+    $("#confirmYes", Xt).val(Bt.yesText).click((function() {
         Xt.remove(),
         Bt.yes()
-    }),
-    $("#confirmNo", Xt).val(Bt.noText).click(function() {
+    }
+    )),
+    $("#confirmNo", Xt).val(Bt.noText).click((function() {
         Xt.remove(),
         Bt.no()
-    })
+    }
+    ))
 }
 function getTemplate(Bt, Gt=!0) {
     return Gt ? $(Bt, SWAM.Templates)[0].outerHTML : $(Bt, SWAM.Templates).html()
@@ -33963,12 +34275,14 @@ function createModal(Bt) {
     $(".modalContent", Xt).html(Bt.content),
     Sound.UIClick(),
     $("body").append(Xt),
-    Xt.focus().keydown(function(Ht) {
+    Xt.focus().keydown((function(Ht) {
         Bt.closeOnEsc && 27 == Ht.which && Xt.remove(),
         Ht.stopImmediatePropagation()
-    }).keyup(function(Ht) {
+    }
+    )).keyup((function(Ht) {
         Ht.stopImmediatePropagation()
-    }),
+    }
+    )),
     Xt
 }
 function closeWhenClickOutside(Bt, Gt=null) {
@@ -34112,15 +34426,17 @@ function SWAM() {
         SWAM.Settings.general.zoomFreeSpectator && game.state == Network.STATE.PLAYING && SWAM.resizeMap(5e3),
         $("body").keydown(SWAM.moveCamera),
         SWAM.debug && console.log("camera handler added"),
-        freeSpectator.interval = setInterval(function() {
+        freeSpectator.interval = setInterval((function() {
             freeSpectator.position = Graphics.getCamera().clone();
             let Xt = Gt(freeSpectator.position.x, freeSpectator.position.y);
             null != Xt && (freeSpectator.ignore_next = !0,
             Network.sendCommand("spectate", Xt.id + ""),
-            setTimeout(function() {
+            setTimeout((function() {
                 Network.sendCommand("spectate", game.myID + "")
-            }, 100))
-        }, 2e3)) : (clearInterval(freeSpectator.interval),
+            }
+            ), 100))
+        }
+        ), 2e3)) : (clearInterval(freeSpectator.interval),
         freeSpectator.handler_added = !1,
         0 < freeSpectator.prevSF && SWAM.resizeMap(freeSpectator.prevSF),
         $("body").off("keydown", SWAM.moveCamera),
@@ -34153,7 +34469,7 @@ function SWAM() {
         zt()
     }
     function replaceSpecialWordsInChat(Bt) {
-        return "shrug" === Bt.toLowerCase() ? "\xAF\\_(\u30C4)_/\xAF" : Bt
+        return "shrug" === Bt.toLowerCase() ? "¯\\_(ツ)_/¯" : Bt
     }
     function replaceTeamEmotes(Bt) {
         return "-cap-" === Bt ? Bt = 1 == game.myTeam ? "-bluecap-" : "-redcap-" : "-burn-" === Bt ? Bt = 1 == game.myTeam ? "-redfire-" : "-bluefire-" : "-take-" == Bt && (Bt = 1 == game.myTeam ? "-tred-" : "-tblue-"),
@@ -34193,7 +34509,7 @@ function SWAM() {
     function makePlayerGlow(Bt) {
         if (PIXI.filters.GlowFilter && "Bombita" != Bt.name && SWAM.Settings.general.killStreaksFX) {
             var Gt = 1 == Bt.team ? 3386111 : 16737894;
-            Bt.sprites.sprite.filters = [new PIXI.filters.GlowFilter(10,1,0,Gt,0.2)]
+            Bt.sprites.sprite.filters = [new PIXI.filters.GlowFilter(10,1,0,Gt,.2)]
         }
     }
     function removePlayerGlow(Bt) {
@@ -34230,9 +34546,9 @@ function SWAM() {
         SWAM.ArrowIndicator.RED.arrow.alpha = 1,
         updateMinimapOpacity.interval = setInterval(()=>{
             for (let Gt in Bt)
-                Bt[Gt].sprite.alpha -= 0.02;
-            SWAM.ArrowIndicator.BLUE.arrow.alpha -= 0.02,
-            SWAM.ArrowIndicator.RED.arrow.alpha -= 0.02
+                Bt[Gt].sprite.alpha -= .02;
+            SWAM.ArrowIndicator.BLUE.arrow.alpha -= .02,
+            SWAM.ArrowIndicator.RED.arrow.alpha -= .02
         }
         , 200)
     }
@@ -34367,7 +34683,7 @@ function SWAM() {
                 SWAM.GameLog.show();
                 break;
             case 121:
-                SWAM.OpenSettingsWindow();
+                SWAM.OpenSettingsWindow()
             }
             SWAM.trigger("keyup", Bt)
         }
@@ -34408,24 +34724,28 @@ function SWAM() {
     $("#logosmall").attr("href", window.location.href),
     $("#logon .logo .version").html(`AirMash ${game.version}<span style="margin: 0 20px;"></span>StarMash ${SWAM.version}`),
     $("body").append(`<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">`),
-    $("body").append($("<div id='btnFreeSpectator'>Free Camera</div>").click(function() {
+    $("body").append($("<div id='btnFreeSpectator'>Free Camera</div>").click((function() {
         SWAM.setTargetedPlayer(game.myID)
-    })),
-    $("#settings").prepend($("<div class='leaderBoardIcon'></div>").click(function() {
+    }
+    ))),
+    $("#settings").prepend($("<div class='leaderBoardIcon'></div>").click((function() {
         SWAM.toggleLeaderboard()
-    })),
-    $("#settings").prepend($("<div class='modSettingsIcon'></div>").click(function() {
+    }
+    ))),
+    $("#settings").prepend($("<div class='modSettingsIcon'></div>").click((function() {
         SWAM.OpenSettingsWindow()
-    })),
-    $("#logon > div.buttons").before($(getTemplate("#btnOpenSettings")).click(function() {
+    }
+    ))),
+    $("#logon > div.buttons").before($(getTemplate("#btnOpenSettings")).click((function() {
         SWAM.OpenSettingsWindow()
-    })),
+    }
+    ))),
     $("#minimizechatcontainer").prepend($(getTemplate("#clearChat")).click(clearChat)),
     function() {
         var Gt = [["Z", "Radio All"], ["X", "Radio Team"], ["C", "Radio Bubble"], ["Y", "Drop flag"], ["5 or End", "Cruise Control"], ["DEL", "Clear chat"], ["F3", "Toggle leaderboard"], ["F4", "Toggle UI"], ["F9", "Open Game Log"], ["F10", "Open Mod Settings"]]
-          , Xt = $("<div class=\"commands\" style=\"color: white\">StarMash - Mod shortcuts<div class=\"cmdlist\"></div></div>");
+          , Xt = $('<div class="commands" style="color: white">StarMash - Mod shortcuts<div class="cmdlist"></div></div>');
         for (var Ht of Gt) {
-            var jt = "<span class=\"nowrap\"><div class=\"cmd\">$key</div><div class=\"desc\">$desc</div></span>".replace(/\$key/g, Ht[0]).replace(/\$desc/g, Ht[1]);
+            var jt = '<span class="nowrap"><div class="cmd">$key</div><div class="desc">$desc</div></span>'.replace(/\$key/g, Ht[0]).replace(/\$desc/g, Ht[1]);
             $(".cmdlist", Xt).append(jt)
         }
         $("#howtoplay .hiddenstuff").append(Xt)
@@ -34465,9 +34785,10 @@ function SWAM() {
         var Bt = getTemplateContent("#killDeathInfo");
         $(".container-rank").after($(Bt))
     }(),
-    $("#logon > div.buttons").before($(getTemplate("#btnOpenExtensions")).click(function() {
+    $("#logon > div.buttons").before($(getTemplate("#btnOpenExtensions")).click((function() {
         SWAM.OpenExtensionsWindow()
-    })),
+    }
+    ))),
     function() {
         let Gt = new SettingsProvider({
             general: {
@@ -34515,7 +34836,7 @@ function SWAM() {
             max: 700,
             step: 10
         }),
-        Xt.addBoolean("ui.replaceEmoticons", "Replace emoticons with emojis while typing. :) \uD83E\uDC46 \uD83D\uDE42"),
+        Xt.addBoolean("ui.replaceEmoticons", "Replace emoticons with emojis while typing. :) 🡆 🙂"),
         Xt.addButton("Color Adjustments panel", {
             click: openColorAdjustments,
             css: {
@@ -34650,7 +34971,7 @@ function SWAM() {
                 Graphics.setCamera(Yt.x + Gt, Yt.y);
                 break;
             case 40:
-                Graphics.setCamera(Yt.x, Yt.y + Gt);
+                Graphics.setCamera(Yt.x, Yt.y + Gt)
             }
             return freeSpectator.position = Graphics.getCamera().clone(),
             !1
@@ -34666,14 +34987,15 @@ function SWAM() {
     ,
     SWAM.ZoomTo = function(Bt) {
         let Gt = config.scalingFactor
-          , Xt = setInterval(function() {
+          , Xt = setInterval((function() {
             Gt < Bt ? (config.scalingFactor += 100,
             config.scalingFactor >= Bt && (config.scalingFactor = Bt,
             clearInterval(Xt))) : (config.scalingFactor -= 100,
             config.scalingFactor <= Bt && (config.scalingFactor = Bt,
             clearInterval(Xt))),
             game.state == Network.STATE.PLAYING && SWAM.resizeMap(config.scalingFactor)
-        }, 20)
+        }
+        ), 20)
     }
     ,
     SWAM.setTargetedPlayer = function(Bt) {
@@ -34711,9 +35033,9 @@ function SWAM() {
             delete Xt.spamBlock
         }
         , 1388),
-        Xt.sprites.bubble && (Xt.sprites.bubble.alpha = Xt.sprites.bubbleCenter.alpha = Xt.sprites.bubbleLeft.alpha = Xt.sprites.bubblePoint.alpha = Xt.sprites.bubbleRight.alpha = 0.4,
-        Xt.sprites.bubbleText.alpha = 0.85);
-        game.state !== Network.STATE.PLAYING || (Xt.name = Xt.name.replace(nonprintRegex, "\uFFFD"),
+        Xt.sprites.bubble && (Xt.sprites.bubble.alpha = Xt.sprites.bubbleCenter.alpha = Xt.sprites.bubbleLeft.alpha = Xt.sprites.bubblePoint.alpha = Xt.sprites.bubbleRight.alpha = .4,
+        Xt.sprites.bubbleText.alpha = .85);
+        game.state !== Network.STATE.PLAYING || (Xt.name = Xt.name.replace(nonprintRegex, "�"),
         SWAM.GameLog.logPlayerConnection(Xt, !0),
         SWAM.trigger("playerAdded", Xt))
     }
@@ -34736,7 +35058,7 @@ function SWAM() {
     let Players_network = Players.network;
     Players.network = function(Bt, Gt) {
         Bt == Network.SERVERPACKET.CHAT_SAY && (Gt.originalText = Gt.text,
-        Gt.text = Gt.text.replace(/﷽/g, "\uFFFD")),
+        Gt.text = Gt.text.replace(/﷽/g, "�")),
         Players_network.call(Players, Bt, Gt);
         Bt === Network.SERVERPACKET.CHAT_SAY ? SWAM.trigger("playerSay", Gt) : Bt === Network.SERVERPACKET.PLAYER_RESPAWN ? (Gt.id == game.myID && (SWAM.CruiseMode.off(),
         SWAM.hyperSpace && SWAM.hyperSpace.show(),
@@ -34822,9 +35144,10 @@ function SWAM() {
     ,
     Network.sendWhisper = function(Bt, Gt) {
         Gt = replaceSpecialWordsInChat(Gt),
-        splitAndSend(Gt, function(Xt) {
+        splitAndSend(Gt, (function(Xt) {
             Network_sendMethods[2].call(Network, Bt, Xt)
-        })
+        }
+        ))
     }
     ,
     Network.sendSay = function(Bt) {
@@ -35254,7 +35577,7 @@ function SWAM() {
         for (var Yt = 0; Yt < Xt.length; Yt++)
             if (Gt) {
                 if (Bt === ":" + Xt[Yt] + ":" || Bt === "-" + Xt[Yt] + "-")
-                    return Xt[Yt];
+                    return Xt[Yt]
             } else if (Bt === Xt[Yt])
                 return Xt[Yt];
         return !1
@@ -35301,7 +35624,7 @@ function SWAM() {
         UI_addPowerup.call(UI, Bt, Gt);
         SWAM.Settings.general.powerupsFX && (game.graphics.layers.game.filters = 1 == Bt ? getFilters([new PIXI.filters.AdjustmentFilter({
             gamma: 1,
-            saturation: 0.8,
+            saturation: .8,
             contrast: 1,
             brightness: 1,
             red: 1,
@@ -35314,8 +35637,8 @@ function SWAM() {
             contrast: 1,
             brightness: 1,
             red: 1.35,
-            green: 0.8,
-            blue: 0.8,
+            green: .8,
+            blue: .8,
             alpha: 1.2
         }), new PIXI.filters.CRTFilter({
             curvature: 0,
@@ -35325,16 +35648,17 @@ function SWAM() {
             noise: 0,
             noiseSize: 0,
             seed: 0,
-            vignetting: 0.3,
-            vignettingAlpha: 0.7,
-            vignettingBlur: 0.3,
+            vignetting: .3,
+            vignettingAlpha: .7,
+            vignettingBlur: .3,
             time: 0
         })]),
         SWAM.prevPowerupTimeout && clearTimeout(SWAM.prevPowerupTimeout),
-        SWAM.prevPowerupTimeout = setTimeout(function() {
+        SWAM.prevPowerupTimeout = setTimeout((function() {
             game.graphics.layers.game.filters = getFilters([]),
             delete SWAM.prevPowerupTimeout
-        }, Gt))
+        }
+        ), Gt))
     }
     ;
     let UI_resetPowerups = UI.resetPowerups;
@@ -35373,7 +35697,7 @@ function SWAM() {
         SWAM.spoofLatency && (Bt.ping -= game.fakeExtraLatency);
         var Xt = Bt.playerstotal
           , Yt = "";
-        Yt += "<div class=\"item\"><span class=\"icon-container\"><div class=\"icon players\"></div></span><span class=\"greyed\">" + Bt.playersgame + "&nbsp;/&nbsp;</span>" + Xt + Gt + "<span class=\"icon-container padded\"><div class=\"icon ping\"></div></span>" + Bt.ping + "<span class=\"millis\">ms</span></div>",
+        Yt += '<div class="item"><span class="icon-container"><div class="icon players"></div></span><span class="greyed">' + Bt.playersgame + "&nbsp;/&nbsp;</span>" + Xt + Gt + '<span class="icon-container padded"><div class="icon ping"></div></span>' + Bt.ping + '<span class="millis">ms</span></div>',
         $("#gameinfo").html(Yt),
         game.ping = Bt.ping
     }
@@ -35385,8 +35709,8 @@ function SWAM() {
             SWAM.trigger("serverMessageReceived", [Bt])
         } catch (jt) {}
         if (game.gameType === SWAM.GAME_TYPE.CTF) {
-            const Gt = "<span class=\"info inline\"><span class=\"blueflag\"></span></span>"
-              , Xt = "<span class=\"info inline\"><span class=\"redflag\"></span></span>";
+            const Gt = '<span class="info inline"><span class="blueflag"></span></span>'
+              , Xt = '<span class="info inline"><span class="redflag"></span></span>';
             let Yt = Bt.text.includes(Gt)
               , Ht = Bt.text.includes(Xt);
             if (2 == Bt.type && (Yt || Ht)) {
@@ -35408,7 +35732,7 @@ function SWAM() {
                     break;
                 case "returned":
                     SWAM.GameLog.logFlag(Bt.text),
-                    Vt = qt == Kt ? SWAM.Audio.Flag.OursRecovered : SWAM.Audio.Flag.EnemyRecovered;
+                    Vt = qt == Kt ? SWAM.Audio.Flag.OursRecovered : SWAM.Audio.Flag.EnemyRecovered
                 }
                 SWAM.Settings && SWAM.Settings.audio && SWAM.Settings.audio.voiceEventsCTF && SWAM.Audio.playFlagEvent(Vt, qt),
                 SWAM.trigger("CTF_FlagEvent", [Vt, Kt, Wt, zt])
@@ -35425,7 +35749,7 @@ function SWAM() {
     let UI_addChatLine = UI.addChatLine;
     UI.addChatLine = function(Bt, Gt, Xt) {
         let Yt = ["-SWAM-PONG"];
-        if (Bt.lastMessageTime = new Date().getTime(),
+        if (Bt.lastMessageTime = (new Date).getTime(),
         2 == Xt && Bt.spamBlock && "STATSBOT" != Bt.name)
             return void console.log("SPAM BLOCKED: ", Gt);
         let jt = -1 < $.inArray(Gt.toUpperCase(), ["-SWAM-PING"]);
@@ -35551,11 +35875,12 @@ function SWAM() {
             "font-family": "'Alfa Slab One', cursive"
         }),
         SWAM.trigger("CTF_MatchEnded", Bt),
-        setTimeout(function() {
+        setTimeout((function() {
             SWAM.GameLog.logNewMatch(),
             SWAM.RandomizeBackground && SWAM.RandomizeBackground(),
             SWAM.trigger("CTF_MatchStarted")
-        }, 6e4)
+        }
+        ), 6e4)
     }
     ;
     let graphics_resizeRenderer = Graphics.resizeRenderer;
@@ -35563,7 +35888,7 @@ function SWAM() {
         SWAM.Settings.ui.useSquaredScene ? (Bt = Bt > 1.15 * Gt ? 1.15 * Gt : Bt,
         graphics_resizeRenderer.call(Graphics, Bt, Gt),
         $("canvas").css({
-            "margin-left": 0.5 * (window.innerWidth - $("canvas").width()) + "px"
+            "margin-left": .5 * (window.innerWidth - $("canvas").width()) + "px"
         })) : (graphics_resizeRenderer.call(Graphics, Bt, Gt),
         $("canvas").css("margin-left", "")),
         SWAM.resizeLayers(Bt, Gt),
@@ -35590,7 +35915,7 @@ function SWAM() {
     new function() {
         function Bt() {
             0 == $("#logon").length || 0 < $("#bgMusicIFrame").length || SWAM.Settings.audio.bgMusicMainMenu && (console.log("Playing music..."),
-            $("body").append("<iframe id=\"bgMusicIFrame\" width=\"1\" height=\"1\" wmode=\"transparent\" src=\"//www.youtube.com/embed/NoXZZhgUo_0?vq=small&autoplay=1&loop=1&playlist=NoXZZhgUo_0\" frameborder=\"0\" allowfullscreen>"))
+            $("body").append('<iframe id="bgMusicIFrame" width="1" height="1" wmode="transparent" src="//www.youtube.com/embed/NoXZZhgUo_0?vq=small&autoplay=1&loop=1&playlist=NoXZZhgUo_0" frameborder="0" allowfullscreen>'))
         }
         function Gt() {
             $("#bgMusicIFrame").remove()
@@ -35605,21 +35930,25 @@ function SWAM() {
     SWAM.addDebugElements = function() {
         if (SWAM.debug) {
             $("#logon").append("<div><input class='dgCamUpdates' type='button' value='updates' style='width: 50px; margin-right: 10px;'></div><table><tr><td colspan='3' align='center'><input class='dgCamY' type='button' value='-8192' style='width: 50px; margin-right: 10px;'></td></tr><tr><td><input class='dgCamX' type='button' value='-16384' style='width: 50px; margin-right: 10px;'></td><td><input class='dgCamX' type='button' value='0' style='width: 50px; margin-right: 10px;'><input class='dgCamY' type='button' value='0'    style='width: 50px; margin-right: 10px;'></td><td><input class='dgCamX' type='button' value='16384' style='width: 50px; margin-right: 10px;'></td></tr><tr><td colspan='3' align='center'><input class='dgCamY' type='button' value='8192' style='width: 50px; margin-right: 10px;'></td></tr></table>"),
-            $("#logon input.dgCamX").click(function(Gt) {
+            $("#logon input.dgCamX").click((function(Gt) {
                 let Xt = $(Gt.target).val();
                 Graphics.setCamera(parseFloat(Xt), Graphics.getCamera().y)
-            }),
-            $("#logon input.dgCamY").click(function(Gt) {
+            }
+            )),
+            $("#logon input.dgCamY").click((function(Gt) {
                 let Xt = $(Gt.target).val();
                 Graphics.setCamera(Graphics.getCamera().x, parseFloat(Xt))
-            }),
-            $("#logon input.dgCamUpdates").click(function() {
+            }
+            )),
+            $("#logon input.dgCamUpdates").click((function() {
                 SWAM.doUpdates = !SWAM.doUpdates
-            });
+            }
+            ));
             let Bt = $("#logon")[0];
-            $(window).keydown(function(Gt) {
+            $(window).keydown((function(Gt) {
                 game.state === Network.STATE.PLAYING || "none" == Bt.style.display || SWAM.moveCamera(Gt)
-            })
+            }
+            ))
         }
     }
     ,
@@ -35675,11 +36004,12 @@ function SWAM() {
     }
     ,
     SWAM.moveMinimap = function() {
-        setTimeout(function() {
+        setTimeout((function() {
             $("#scorebig").css("right", config.minimapSize + "px"),
             config.minimapPaddingY = game.screenY - 50 - config.minimapSize / 2,
             UI.resizeMinimap()
-        }, 8e3)
+        }
+        ), 8e3)
     }
     ;
     SWAM.CruiseMode = new class {
@@ -35695,10 +36025,10 @@ function SWAM() {
             }
             .bind(this));
             $("#sidebar").append(Gt),
-            $("#CruiseControl").mouseenter(function(Xt) {
+            $("#CruiseControl").mouseenter((function(Xt) {
                 let Yt = "<div class='header'>Cruise Control</div>";
                 Yt += "<div class='item'><div class='desc'>Makes the ship advance automatically at full speed.  Toggle with '5' or 'END' keys.</div></div>",
-                Yt += "<div class=\"arrow\"></div>",
+                Yt += '<div class="arrow"></div>',
                 $("#tooltip").html(Yt),
                 UI.show("#tooltip");
                 let Ht = Xt.currentTarget.getBoundingClientRect();
@@ -35706,10 +36036,12 @@ function SWAM() {
                     left: Math.round(Ht.left + 60) + "px",
                     top: Math.round(Ht.top - 10) + "px"
                 })
-            }).mouseleave(function() {
+            }
+            )).mouseleave((function() {
                 UI.hide("#tooltip"),
                 $("#tooltip").html("")
-            })
+            }
+            ))
         }
         on() {
             $("#CruiseControl").css({
@@ -35740,9 +36072,10 @@ function SWAM() {
         append: function() {
             $("body").append(getTemplateContent("#Radio_Panel")),
             this.loadOptions(),
-            $("#btnRadioConfig").click(function() {
+            $("#btnRadioConfig").click((function() {
                 SWAM.radio.showConfig(SWAM.radio.currentChannel)
-            })
+            }
+            ))
         },
         currentChannel: 0,
         channelMethods: [Network.sendChat, Network.sendTeam, Network.sendSay],
@@ -35792,16 +36125,18 @@ function SWAM() {
             }
             $("body").append(Xt),
             Xt.focus(),
-            $("#radioCustomizeSave", Xt).click(function() {
+            $("#radioCustomizeSave", Xt).click((function() {
                 for (var Wt = $("input", Xt), zt = 0; zt < Wt.length; zt++)
                     SWAM.radio.options[Bt][zt] = Wt[zt].value;
                 localStorage.setItem("radioMessages", JSON.stringify(SWAM.radio.options)),
                 Xt.remove()
-            }),
-            $("#radioCustomizeCancel", Xt).click(function() {
+            }
+            )),
+            $("#radioCustomizeCancel", Xt).click((function() {
                 Xt.remove()
-            }),
-            $("#radioRestoreThis", Xt).click(function() {
+            }
+            )),
+            $("#radioRestoreThis", Xt).click((function() {
                 confirmDialog({
                     title: "Are you sure? This will delete all customized messages for this panel and restore them to default.",
                     message: SWAM.radio.channelNames[Bt] + "   -  Confirmation needed",
@@ -35813,8 +36148,9 @@ function SWAM() {
                         Xt.remove()
                     }
                 })
-            }),
-            $("#radioRestoreAll", Xt).click(function() {
+            }
+            )),
+            $("#radioRestoreAll", Xt).click((function() {
                 confirmDialog({
                     title: "Are you sure? This will delete all customized messages and restore them to default.",
                     message: "Confirmation needed",
@@ -35824,12 +36160,15 @@ function SWAM() {
                         Xt.remove()
                     }
                 })
-            }),
-            $(Xt).keydown(function(Wt) {
+            }
+            )),
+            $(Xt).keydown((function(Wt) {
                 Wt.stopImmediatePropagation()
-            }).keyup(function(Wt) {
+            }
+            )).keyup((function(Wt) {
                 Wt.stopImmediatePropagation()
-            })
+            }
+            ))
         },
         show: function(Bt) {
             SWAM.radio.currentChannel = Bt;
@@ -35959,11 +36298,12 @@ function SWAM() {
         }
         let Ht = 0
           , jt = !1;
-        SWAM.on("serverMessageReceived", function(zt) {
+        SWAM.on("serverMessageReceived", (function(zt) {
             game.gameType != SWAM.GAME_TYPE.CTF || 1 == zt.type && zt.text == "Game starting in a second" && (jt = null != game.spectatingID,
             Ht = 0)
-        }),
-        SWAM.on("CTF_MatchStarted", function() {
+        }
+        )),
+        SWAM.on("CTF_MatchStarted", (function() {
             jt && (SWAM.on("keydown", Gt),
             Ht = setTimeout(()=>{
                 Network.spectateForce(),
@@ -35972,10 +36312,12 @@ function SWAM() {
                 Ht = 0
             }
             , 5e3))
-        }),
-        SWAM.on("gameWipe", function() {
+        }
+        )),
+        SWAM.on("gameWipe", (function() {
             clearTimeout(Ht)
-        })
+        }
+        ))
     }
     ;
     SWAM.chatinputVisible = function() {
@@ -36066,7 +36408,7 @@ function SWAM() {
                 this.arrow = new Textures.sprite("prowler"),
                 this.arrow.texture = PIXI.Texture.fromImage(getFilePath("arrow_indicator.png")),
                 this.arrow.tint = this.color,
-                this.arrow.alpha = 0.7,
+                this.arrow.alpha = .7,
                 this.arrow.position.set(0, 0),
                 this.arrow.scale.set(.2, .2),
                 this.arrow.anchor.set(.5, .5),
@@ -36181,9 +36523,10 @@ function SWAM() {
                 Gt.append(Yt);
                 let Ht = Gt[0];
                 Ht.scrollTop = Ht.scrollHeight,
-                setTimeout(function() {
+                setTimeout((function() {
                     Yt.remove()
-                }, 3e4)
+                }
+                ), 3e4)
             }
         }
     }
@@ -36209,7 +36552,7 @@ function SWAM() {
         ,
         this.logKill = function(Wt, zt) {
             if (null != Wt && null != zt) {
-                let qt = "<div class=\"flwkw line\"><span class=\"playersel\" data-playerid=\"" + Wt.id + "\"><span class=\"flag small flag-" + Wt.flag + "\"></span><span class=\"nick\" style=\"color:" + (1 == Wt.team ? "#4d7fd5" : 2 == Wt.team ? "#dc4f46" : "") + ";\">" + UI.escapeHTML(Wt.name) + "</span></span><span class=\"text\" style=\"margin-left: 10px; margin-right: 10px; opacity: 0.6;\"> killed </span><span class=\"playersel\" data-playerid=\"" + zt.id + "\"><span class=\"flag small flag-" + zt.flag + "\"></span><span class=\"nick\" style=\"color:" + (1 == zt.team ? "#4d7fd5" : 2 == zt.team ? "#dc4f46" : "") + ";\">" + UI.escapeHTML(zt.name) + "</span></span></div>";
+                let qt = '<div class="flwkw line"><span class="playersel" data-playerid="' + Wt.id + '"><span class="flag small flag-' + Wt.flag + '"></span><span class="nick" style="color:' + (1 == Wt.team ? "#4d7fd5" : 2 == Wt.team ? "#dc4f46" : "") + ';">' + UI.escapeHTML(Wt.name) + '</span></span><span class="text" style="margin-left: 10px; margin-right: 10px; opacity: 0.6;"> killed </span><span class="playersel" data-playerid="' + zt.id + '"><span class="flag small flag-' + zt.flag + '"></span><span class="nick" style="color:' + (1 == zt.team ? "#4d7fd5" : 2 == zt.team ? "#dc4f46" : "") + ';">' + UI.escapeHTML(zt.name) + "</span></span></div>";
                 this.add(qt),
                 SWAM.Settings.ui.showWhoKilledWho && SWAM.SmallLog.add(qt)
             }
@@ -36217,10 +36560,10 @@ function SWAM() {
         ,
         this.logPlayerConnection = function(Wt, zt) {
             if (null != Wt) {
-                let qt = "<div class=\"flplayer line\"><span class=\"playersel\" data-playerid=\"" + Wt.id + "\"><span class=\"flag small flag-" + Wt.flag + "\"></span><span class=\"nick\" style=\"color:" + (1 == Wt.team ? "#4d7fd5" : 2 == Wt.team ? "#dc4f46" : "") + ";\">" + UI.escapeHTML(Wt.name) + "</span></span><span class=\"text\" style=\"margin-left: 10px; margin-right: 10px; opacity: 0.6;\">" + (zt ? " joined." : "left.") + "</span></div>";
+                let qt = '<div class="flplayer line"><span class="playersel" data-playerid="' + Wt.id + '"><span class="flag small flag-' + Wt.flag + '"></span><span class="nick" style="color:' + (1 == Wt.team ? "#4d7fd5" : 2 == Wt.team ? "#dc4f46" : "") + ';">' + UI.escapeHTML(Wt.name) + '</span></span><span class="text" style="margin-left: 10px; margin-right: 10px; opacity: 0.6;">' + (zt ? " joined." : "left.") + "</span></div>";
                 this.add(qt),
                 SWAM.Settings.ui.showLogConnections && (SWAM.SmallLog.add(qt),
-                !zt && 3e4 > new Date().getTime() - Wt.lastMessageTime && UI.addChatMessage(qt, !0))
+                !zt && 3e4 > (new Date).getTime() - Wt.lastMessageTime && UI.addChatMessage(qt, !0))
             }
         }
         ,
@@ -36234,9 +36577,9 @@ function SWAM() {
                 Wt = "Capture the flag";
                 break;
             case SWAM.GAME_TYPE.BR:
-                Wt = "Battle Royale";
+                Wt = "Battle Royale"
             }
-            this.add("<hr/><div style='margin: 20px; font-size: 16px;'>" + new Date().toLocaleString() + "  - Joined to " + Wt + "</div>")
+            this.add("<hr/><div style='margin: 20px; font-size: 16px;'>" + (new Date).toLocaleString() + "  - Joined to " + Wt + "</div>")
         }
         ,
         this.logFlag = function(Wt) {
@@ -36246,7 +36589,7 @@ function SWAM() {
         }
         ,
         this.logNewMatch = function() {
-            this.add("<hr/><div style='margin: 20px; font-size: 16px;'>" + new Date().toLocaleString() + "  - New CTF Match started</div>")
+            this.add("<hr/><div style='margin: 20px; font-size: 16px;'>" + (new Date).toLocaleString() + "  - New CTF Match started</div>")
         }
         ,
         this.show = function() {
@@ -36398,7 +36741,7 @@ function SWAM() {
                     1 < rn && (rn -= 1),
                     rn < 1 / 6 ? nn + 6 * (an - nn) * rn : rn < 1 / 2 ? an : rn < 2 / 3 ? nn + 6 * ((an - nn) * (2 / 3 - rn)) : nn
                 }
-                  , en = 0.5 > Kt ? Kt * (1 + qt) : Kt + qt - Kt * qt
+                  , en = .5 > Kt ? Kt * (1 + qt) : Kt + qt - Kt * qt
                   , tn = 2 * Kt - en;
                 Zt = $t(tn, en, Vt + 1 / 3),
                 Qt = $t(tn, en, Vt),
@@ -36418,14 +36761,15 @@ function SWAM() {
           , Ht = null
           , jt = new PIXI.ticker.Ticker;
         jt.stop(),
-        jt.add(function() {
+        jt.add((function() {
             if (!window.adding) {
                 for (var Vt = [], qt = 0; qt < Yt.length; qt++)
                     Yt[qt].update(),
                     Yt[qt].exists() ? Vt.push(Yt[qt]) : Yt[qt].destroy();
                 Yt = Vt
             }
-        }),
+        }
+        )),
         jt.start();
         class Wt {
             constructor(Vt, qt) {
@@ -36450,7 +36794,7 @@ function SWAM() {
             createSprite() {
                 this.sprite = new PIXI.Sprite(Wt.texture),
                 this.sprite.width = this.sprite.height = 10;
-                let Vt = Bt(this.color / 360, 1, 0.5);
+                let Vt = Bt(this.color / 360, 1, .5);
                 this.sprite.tint = (Vt[0] << 16) + (Vt[1] << 8) + Vt[2],
                 Ht.addChild(this.sprite)
             }
@@ -36472,7 +36816,7 @@ function SWAM() {
                 this.sprite.visible = Graphics.inScreen(this.pos, 128)
             }
             exists() {
-                return 0.1 <= this.alpha && 1 <= this.size
+                return .1 <= this.alpha && 1 <= this.size
             }
         }
         Wt.texture = PIXI.Texture.fromImage(getFilePath("sparkbwsmall.png")),
@@ -36486,8 +36830,8 @@ function SWAM() {
                 Qt.vel.x = Math.cos(Jt) * $t,
                 Qt.vel.y = Math.sin(Jt) * $t,
                 Qt.size = 12,
-                Qt.resistance = 0.92,
-                Qt.shrink = 0.05 * Math.random() + 0.93,
+                Qt.resistance = .92,
+                Qt.shrink = .05 * Math.random() + .93,
                 Qt.flick = !0,
                 Yt.push(Qt)
             }
@@ -36513,10 +36857,10 @@ function SWAM() {
             function Kt() {
                 let Qt = qt();
                 createExplosion(Qt);
-                let Jt = new Date().getTime();
-                59000 > Jt - zt && setTimeout(Kt, Tools.randInt(400, 1e3))
+                let Jt = (new Date).getTime();
+                59e3 > Jt - zt && setTimeout(Kt, Tools.randInt(400, 1e3))
             }
-            zt = new Date().getTime(),
+            zt = (new Date).getTime(),
             SWAM.debug && console.log("Fireworks satarted");
             let Zt = Tools.randInt(1, 4);
             for (let Qt = 0; Qt < Zt; Qt++)
@@ -36547,7 +36891,7 @@ function SWAM() {
             Vt = 0,
             zt = 50,
             jt.scale.set(0),
-            jt.alpha = 0.4,
+            jt.alpha = .4,
             jt.tint = en,
             jt.position.set($t.x, $t.y),
             Wt.addChild(jt),
@@ -36559,7 +36903,7 @@ function SWAM() {
         }
         function Yt() {
             if (SWAM.debug) {
-                let $t = new Date().getTime() - Jt.getTime();
+                let $t = (new Date).getTime() - Jt.getTime();
                 console.log("Steps: " + Vt + "   Time: " + $t / 1e3 + "ms.")
             }
         }
@@ -36573,10 +36917,10 @@ function SWAM() {
         jt.drawCircle(0, 0, 50),
         jt.endFill(),
         jt.blendMode = PIXI.BLEND_MODES.ADD,
-        jt.alpha = 0.3;
+        jt.alpha = .3;
         let Kt = new PIXI.ticker.Ticker;
         Kt.autoStart = !1,
-        Kt.add(function() {
+        Kt.add((function() {
             if (qt) {
                 if (jt.width > 1.8 * config.mapWidth)
                     return Yt(),
@@ -36584,7 +36928,7 @@ function SWAM() {
                     void Graphics.renderBackground();
                 for (let en in Qt)
                     game.graphics.layers.map.filters[0][en] += Qt[en];
-                0.2 < jt.alpha && (jt.alpha -= 3e-3),
+                .2 < jt.alpha && (jt.alpha -= .003),
                 jt.height = jt.width += zt,
                 zt += 5
             } else if (Vt < 4 * Zt)
@@ -36595,7 +36939,8 @@ function SWAM() {
                 Yt();
             Vt++,
             Graphics.renderBackground()
-        }),
+        }
+        )),
         Kt.stop();
         const Zt = 145;
         let Qt = {}
@@ -36603,12 +36948,12 @@ function SWAM() {
         this.showBlue = function() {
             Bt({
                 gamma: 1.2,
-                saturation: 0.8,
+                saturation: .8,
                 contrast: 1,
                 brightness: 1.3,
-                red: 0.1,
-                green: 0.3,
-                blue: 0.7,
+                red: .1,
+                green: .3,
+                blue: .7,
                 alpha: 1.5
             }),
             Gt(SWAM.ArrowIndicator.BLUE.tracker.flag.BASE_COORDINATES, 3355647)
@@ -36620,9 +36965,9 @@ function SWAM() {
                 brightness: 1.3,
                 contrast: 1.2,
                 saturation: .2,
-                red: 0.7,
-                green: 0.3,
-                blue: 0.3,
+                red: .7,
+                green: .3,
+                blue: .3,
                 alpha: 1.2
             }),
             Gt(SWAM.ArrowIndicator.RED.tracker.flag.BASE_COORDINATES, 16724787)
@@ -36741,9 +37086,10 @@ function SWAM() {
         this.update = function(Gt) {
             if (SWAM.Settings.ui.useExtendedScoreboard) {
                 let zt = 0, Vt = "", qt = !1, Kt = 0, Zt = "", Qt = "", Jt = 0, $t = "", en = "", Xt, Yt, Ht, jt, Wt;
-                Gt.sort(function(an, rn) {
+                Gt.sort((function(an, rn) {
                     return rn.score - an.score
-                }),
+                }
+                )),
                 Kt = Gt.findIndex(an=>an.id == game.myID);
                 var tn = function(an) {
                     var rn = "";
@@ -36757,13 +37103,13 @@ function SWAM() {
                 Jt = 0; Jt < nn && !qt; Jt++)
                     Xt = Players.get(Gt[Jt].id),
                     null == Xt || (zt++,
-                    Yt = 4 > zt ? "<span class=\"badge scoreboard " + [, "gold", "silver", "bronze"][zt] + "\"></span>" : zt + ".",
+                    Yt = 4 > zt ? '<span class="badge scoreboard ' + [, "gold", "silver", "bronze"][zt] + '"></span>' : zt + ".",
                     Ht = Xt.me() ? " sel" : "",
                     jt = Gt[Jt].score,
                     Wt = Gt[Jt].level,
                     $t = UI.escapeHTML(Xt.name),
                     en = Xt.removedFromMap ? " spectator" : "",
-                    Kt > nn && zt == nn - 1 && Kt != nn && (Vt += "<div class=\"line dottedline\">&middot; &middot; &middot;</div>",
+                    Kt > nn && zt == nn - 1 && Kt != nn && (Vt += '<div class="line dottedline">&middot; &middot; &middot;</div>',
                     Xt = Players.get(game.myID),
                     Yt = Kt + ".",
                     jt = game.myScore,
@@ -36774,7 +37120,7 @@ function SWAM() {
                     game.gameType == SWAM.GAME_TYPE.CTF && (Zt = " team-" + Xt.team),
                     Qt = "",
                     4 == (Yt + "").length && (Qt = " bigger"),
-                    Vt += `<div class="line ${Ht}" data-playerid="${Xt.id}"><span class="place ${Qt}">` + Yt + `</span><span class="flag small flag-${Xt.flag}"></span>` + `<span class="nick ${Zt + en}">${$t}</span>` + (0 == Wt ? "" : `<span class="holder">&nbsp;<span class="rank">${Wt}</span></span>`) + "<span class=\"score\">" + tn(jt) + "</span></div>");
+                    Vt += `<div class="line ${Ht}" data-playerid="${Xt.id}"><span class="place ${Qt}">` + Yt + `</span><span class="flag small flag-${Xt.flag}"></span>` + `<span class="nick ${Zt + en}">${$t}</span>` + (0 == Wt ? "" : `<span class="holder">&nbsp;<span class="rank">${Wt}</span></span>`) + '<span class="score">' + tn(jt) + "</span></div>");
                 $("#scoreboard").html(Vt).perfectScrollbar()
             }
         }
@@ -36786,13 +37132,13 @@ function SWAM() {
     ;
     SWAM.on("playerSay", Bt=>{
         let Gt = Players.get(Bt.id);
-        !Gt || UI.getIgnored()[Gt.id] || UI.isEmote(Bt.text, !0) || !Graphics.inScreen(Gt.pos, 128) || (UI.addChatLine(Gt, "\uD83D\uDCAC " + Bt.text, 0),
+        !Gt || UI.getIgnored()[Gt.id] || UI.isEmote(Bt.text, !0) || !Graphics.inScreen(Gt.pos, 128) || (UI.addChatLine(Gt, "💬 " + Bt.text, 0),
         $("#chatlines div:last-of-type .text").addClass("chatSay"))
     }
     );
     let sentMessages = []
       , sentMessageIndex = 0;
-    $("#chatinput").keydown(function(Bt) {
+    $("#chatinput").keydown((function(Bt) {
         let Gt = $("#chatinput");
         if ("" == Gt.val() || Gt.val() == sentMessages[sentMessageIndex]) {
             if (38 == Bt.which && 0 < sentMessageIndex)
@@ -36814,8 +37160,9 @@ function SWAM() {
             sentMessageIndex = sentMessages.length,
             50 < sentMessages.length && sentMessages.shift())
         }
-    }),
-    $("#chatinput").on("input", function() {
+    }
+    )),
+    $("#chatinput").on("input", (function() {
         if (SWAM.Settings.ui.replaceEmoticons) {
             let Yt = this.selectionStart
               , Ht = this.value
@@ -36828,13 +37175,14 @@ function SWAM() {
                 } else
                     jt = "";
                 Ht = function(zt) {
-                    const Vt = [["\uD83D\uDE42", /[:=]-?\)/g], ["\uD83D\uDE03", /:D/g], ["\uD83D\uDE04", /\^_?\^/g], [" \uD83D\uDE06", / [xX]-?D/g], ["\uD83D\uDE09", /;-?\)/g], ["\uD83D\uDE0E", /B-?\)/g], ["\uD83D\uDE10", /:-?\|/g], ["\uD83D\uDE12", /¬_?¬/g], ["\uD83D\uDE14", /[:=]-[\/\\]/g], ["\uD83D\uDE15", /[:=]-?[sS]/g], ["\uD83D\uDE1B", /[:=]-?[pP]/g], ["\uD83D\uDE1C", /;-?[pP]/g], ["\uD83D\uDE21", /:-?\@/g], ["\uD83D\uDE22", /[:=]'-?\(/g], ["\uD83D\uDE2D", /[:=]''-?\(/g], ["\uD83D\uDE2E", /[:=]-[oO]/g], ["\uD83D\uDE33", /[:=]-?\$/g], ["\uD83D\uDE41", /[:=]-?\(/g], ["\uD83D\uDE43", /\(-?[:=]/g], ["\u2764\uFE0F", /<3|&lt;3/g], ["\uD83D\uDC94", /<\/3|&lt;&#x2F;3/g]];
+                    const Vt = [["🙂", /[:=]-?\)/g], ["😃", /:D/g], ["😄", /\^_?\^/g], [" 😆", / [xX]-?D/g], ["😉", /;-?\)/g], ["😎", /B-?\)/g], ["😐", /:-?\|/g], ["😒", /¬_?¬/g], ["😔", /[:=]-[\/\\]/g], ["😕", /[:=]-?[sS]/g], ["😛", /[:=]-?[pP]/g], ["😜", /;-?[pP]/g], ["😡", /:-?\@/g], ["😢", /[:=]'-?\(/g], ["😭", /[:=]''-?\(/g], ["😮", /[:=]-[oO]/g], ["😳", /[:=]-?\$/g], ["🙁", /[:=]-?\(/g], ["🙃", /\(-?[:=]/g], ["❤️", /<3|&lt;3/g], ["💔", /<\/3|&lt;&#x2F;3/g]];
                     for (let Kt of Vt) {
                         var qt = new RegExp(Kt[1],"gim");
-                        zt = zt.replace(qt, function(Zt) {
+                        zt = zt.replace(qt, (function(Zt) {
                             return Yt += Kt[0].length - Zt.length,
                             Kt[0]
-                        })
+                        }
+                        ))
                     }
                     return zt
                 }(Ht),
@@ -36842,14 +37190,17 @@ function SWAM() {
                 this.setSelectionRange(Yt, Yt)
             }
         }
-    }),
-    $("#chatbox").mousedown(function(Bt) {
+    }
+    )),
+    $("#chatbox").mousedown((function(Bt) {
         3 == Bt.which && Bt.target.className.includes("text") && copyTextToClipboard(Bt.target.innerText)
-    }),
-    $("#scoreboard, #scorecontainer").on("click", "div", function(Bt) {
+    }
+    )),
+    $("#scoreboard, #scorecontainer").on("click", "div", (function(Bt) {
         var Gt = $(Bt.currentTarget).attr("data-playerid");
         SWAM.setTargetedPlayer(Gt)
-    }),
+    }
+    )),
     SWAM.listLayers = function(Bt) {
         for (var Gt = 0; Gt < Bt.children.length; Gt++)
             console.log(Bt.children[Gt].layerName)
@@ -36891,28 +37242,28 @@ SWAM.injectTextures = function(Bt, Gt, Xt, Yt, Ht) {
         minimap1: {
             texture: "ui_minimap_1",
             layer: "ui2",
-            anchor: [0.5, 0.5],
+            anchor: [.5, .5],
             alpha: 1,
             scale: .25
         },
         minimap2: {
             texture: "ui_minimap_2",
             layer: "ui2",
-            anchor: [0.5, 0.5],
+            anchor: [.5, .5],
             alpha: 1,
             scale: .25
         },
         minimap3: {
             texture: "ui_minimap_3",
             layer: "ui2",
-            anchor: [0.5, 0.5],
+            anchor: [.5, .5],
             alpha: 1,
             scale: .25
         },
         minimapTarget: {
             texture: "powerup_circle",
             layer: "ui3",
-            anchor: [0.5, 0.5],
+            anchor: [.5, .5],
             alpha: 1,
             scale: .12
         }
@@ -36977,12 +37328,14 @@ SWAM.injectSounds = function(Bt) {
             var hn = 0;
             (function fn() {
                 hn < pn.length ? (console.log("SWAM: Loading script: " + pn[hn]),
-                $.cachedScript(pn[hn]).fail(function() {
+                $.cachedScript(pn[hn]).fail((function() {
                     console.error("SWAM: Load failed: " + pn[hn])
-                }).always(function() {
+                }
+                )).always((function() {
                     ++hn,
                     fn()
-                })) : cn && cn()
+                }
+                ))) : cn && cn()
             }
             )()
         }
@@ -36991,10 +37344,11 @@ SWAM.injectSounds = function(Bt) {
             for (let fn in delete SWAM.dependencies,
             rn)
                 rn[fn].enabled && hn.push(rn[fn].url);
-            un(hn, function() {
+            un(hn, (function() {
                 hn = Wt().dependencies,
                 un(hn, pn)
-            })
+            }
+            ))
         }
         )
     }
@@ -37053,10 +37407,11 @@ SWAM.injectSounds = function(Bt) {
                 url: un,
                 cache: !0,
                 timeout: 5e3
-            }).done(fn).fail(function() {
+            }).done(fn).fail((function() {
                 SWAM.off("extensionAdded", hn),
                 cn("There was an error when trying to load the file.")
-            })
+            }
+            ))
         } catch (yn) {
             SWAM.off("extensionAdded", hn),
             cn("There was an error executing the file. " + yn),
@@ -37440,12 +37795,13 @@ SWAM.injectSounds = function(Bt) {
             let vn = $("#selTheme", yn);
             vn.html("");
             let Tn = Object.values(sn).sort((Sn,En)=>Sn.themeName < En.themeName ? -1 : Sn.themeName > En.themeName ? 1 : 0);
-            $.each(Tn, function(Sn, En) {
+            $.each(Tn, (function(Sn, En) {
                 vn.append($("<option>", {
                     value: En.id,
                     text: En.themeName
                 }))
-            }),
+            }
+            )),
             vn.val(dn)
         }
         function hn() {
@@ -37495,7 +37851,7 @@ SWAM.injectSounds = function(Bt) {
           , bn = $.extend({}, on)
           , xn = $.extend({}, sn);
         un(),
-        $(".btnNew", yn).click(function() {
+        $(".btnNew", yn).click((function() {
             let vn = $(getTemplate("#ExtensionEditPanel", !1));
             $(".sectionsContainer", yn).append(vn);
             let Tn = $(".modName", vn)
@@ -37509,20 +37865,25 @@ SWAM.injectSounds = function(Bt) {
             En.hide(),
             wn.show(),
             Sn.show(),
-            $(".btnAcceptURL", vn).click(function() {
+            $(".btnAcceptURL", vn).click((function() {
                 wn.hide(),
                 Cn.html("").hide(),
-                Kt(Sn.val(), function() {
+                Kt(Sn.val(), (function() {
                     un()
-                }, function(Pn) {
+                }
+                ), (function(Pn) {
                     Cn.html(Pn).show(),
                     wn.show()
-                })
-            }),
-            $(".btnCancelURL", vn).click(function() {
+                }
+                ))
+            }
+            )),
+            $(".btnCancelURL", vn).click((function() {
                 vn.remove()
-            })
-        }),
+            }
+            ))
+        }
+        )),
         $(".btnAccept", yn).click(()=>{
             dn = $("#selTheme", yn).val(),
             Zt(),
@@ -37595,7 +37956,7 @@ SWAM.injectSounds = function(Bt) {
     }
     ,
     SWAM.replaceCSS = function(un) {
-        $("link[href*=\"style.css\"]").replaceWith("<link href=\"" + un + "\" type=\"text/css\" rel=\"stylesheet\">")
+        $('link[href*="style.css"]').replaceWith('<link href="' + un + '" type="text/css" rel="stylesheet">')
     }
 }(),
 window.AutoPilot = {
@@ -37622,7 +37983,7 @@ window.AutoPilot = {
         y: -7092
     },
     Load: function() {
-        $.getScript(getFilePath("pathfinding-browser.min.js"), function() {
+        $.getScript(getFilePath("pathfinding-browser.min.js"), (function() {
             for (var Ht = window.config.walls, zt = Array(164), Vt = 0; 164 > Vt; Vt++) {
                 zt[Vt] = Array(328);
                 for (var qt = 0; 328 > qt; qt++)
@@ -37635,7 +37996,8 @@ window.AutoPilot = {
                             zt[Vt][qt] = AutoPilot.BLOCKED
                         } catch (Qt) {}
             AutoPilot.Matrix = zt
-        })
+        }
+        ))
     },
     angleTo: function(Bt, Gt) {
         var Xt = Math.atan2(-Bt.x + Gt.x, Bt.y - Gt.y);
@@ -37786,14 +38148,15 @@ window.AutoPilot = {
           , zt = 0 >= Ht ? AutoPilot.right : AutoPilot.left;
         AutoPilot.rotating = !0,
         Wt.call(AutoPilot),
-        setTimeout(function() {
+        setTimeout((function() {
             AutoPilot.noSteer(),
             setTimeout(()=>{
                 AutoPilot.rotating = !1,
                 Yt && Yt()
             }
             , Xt)
-        }, jt)
+        }
+        ), jt)
     },
     moveTo: function(Bt, Gt, Xt) {
         function Yt() {
@@ -37812,8 +38175,8 @@ window.AutoPilot = {
                   , Wt = Tools.distance(Ht.pos.x, Ht.pos.y, Bt, Gt)
                   , zt = !0
                   , Vt = jt - Ht.rot;
-                if (0.3 < Math.abs(Vt))
-                    0.75 < Math.abs(Vt) && AutoPilot.fullStop(),
+                if (.3 < Math.abs(Vt))
+                    .75 < Math.abs(Vt) && AutoPilot.fullStop(),
                     AutoPilot.rotateTo(jt, Ht);
                 else {
                     if (AutoPilot.noSteer(),
@@ -37833,11 +38196,12 @@ window.AutoPilot = {
                             x: qt,
                             y: Kt
                         });
-                        zt = 0.3 <= Math.abs(Zt - jt)
+                        zt = .3 <= Math.abs(Zt - jt)
                     }
-                    zt ? setTimeout(function() {
+                    zt ? setTimeout((function() {
                         AutoPilot.stop()
-                    }, 50) : 1 == Ht.type && 0.8 < Ht.energy && 500 < Wt && (AutoPilot.boost(!0),
+                    }
+                    ), 50) : 1 == Ht.type && .8 < Ht.energy && 500 < Wt && (AutoPilot.boost(!0),
                     setTimeout(()=>AutoPilot.boost(!1), 1500))
                 }
                 !AutoPilot.exit && 100 < Wt ? setTimeout(Yt, 100) : !AutoPilot.exit && Xt && AutoPilot.currentNode < AutoPilot.path.length - 1 ? (AutoPilot.currentNode++,
@@ -37916,13 +38280,14 @@ window.AutoPilot = {
             let Gt = Players.getMe()
               , Xt = Players.get(this.mimicTarget)
               , Yt = Gt.rot - Xt.rot;
-            if (!this.rotating && 0.05 < Math.abs(Yt)) {
+            if (!this.rotating && .05 < Math.abs(Yt)) {
                 console.log(`rotating... delta: ${Yt}   me.rot: ${Gt.rot}   player.rot: ${Xt.rot}`);
                 let Ht = AutoPilot.reverseMimic ? Math.PI : 0;
-                AutoPilot.rotateTo(Xt.rot + Ht, Gt, 250, function() {
+                AutoPilot.rotateTo(Xt.rot + Ht, Gt, 250, (function() {
                     AutoPilot.aligned = !0,
                     Bt && (AutoPilot.mimicPaused = !1)
-                })
+                }
+                ))
             } else
                 ;
         }
@@ -37955,9 +38320,10 @@ window.AutoPilot = {
         if (Gt.id != game.myID && Gt.id == AutoPilot.mimicTarget && !AutoPilot.mimicPaused) {
             if (null == Gt.keystate)
                 return Bt == Network.SERVERPACKET.PLAYER_FIRE ? (Network.sendKey("FIRE", !0),
-                void setTimeout(function() {
+                void setTimeout((function() {
                     Network.sendKey("FIRE", !1)
-                }, 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Gt.boost && (Network.sendKey("SPECIAL", Gt.boost),
+                }
+                ), 100)) : void (Bt == Network.SERVERPACKET.EVENT_BOOST && AutoPilot.lastState.boost != Gt.boost && (Network.sendKey("SPECIAL", Gt.boost),
                 AutoPilot.lastState.boost = Gt.boost));
             Tools.decodeKeystate(Ht, Gt.keystate);
             var jt = {};
@@ -37989,15 +38355,15 @@ SWAM.Audio = {
     initialize: function() {
         var Bt = new Howl({
             src: [getFilePath("flag_phrases_1.mp3")],
-            volume: 0.5,
+            volume: .5,
             sprite: {
                 EnemyTaken_1: [0, 1450],
                 OursTaken_1: [1500, 1800],
                 EnemyCaptured_1: [3300, 1800],
                 OursCaptured_1: [5200, 1900],
                 EnemyRecovered_1: [7300, 1600],
-                OursRecovered_1: [9000, 1800],
-                EnemyTaken_2: [11000, 1500],
+                OursRecovered_1: [9e3, 1800],
+                EnemyTaken_2: [11e3, 1500],
                 OursTaken_2: [12600, 1800],
                 EnemyCaptured_2: [14600, 1600],
                 OursCaptured_2: [16400, 1800],
@@ -38021,9 +38387,10 @@ SWAM.Audio = {
         SWAM.Audio.play = function(Gt) {
             if (config.settings.sound) {
                 let Xt = Bt.play(Gt);
-                setTimeout(function() {
+                setTimeout((function() {
                     Bt.stop(Xt)
-                }, Bt._sprite[Gt][1])
+                }
+                ), Bt._sprite[Gt][1])
             }
         }
     }
@@ -38031,12 +38398,13 @@ SWAM.Audio = {
 function getFilePath(Bt) {
     return "https://molesmalo.github.io/StarWarsMod4AirMash/assets/" + Bt + "?" + SWAM_version
 }
-$(function() {
+$((function() {
     (function() {
         $("body").append($("<div id='LoadingMainScreen' style='position: fixed; top:0px; left:0px; width: 100%; height: 100%; background-color: black; z-index: 1000; '><div id='LoadingText' style='position: absolute; top: calc(50% - 15px); width: 100%; font-size: 30px; color: #555555; text-align: center;  font-family: \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; '>Loading...</div></div>")).css("overflow", "hidden")
     }
     )()
-});
+}
+));
 function showRequestlyWarningAgain() {
     localStorage.removeItem("requestlyWarning"),
     window.location = "/"
@@ -38051,11 +38419,12 @@ function showRequestlyWarning() {
     }, Bt),
     !Bt.accepted) {
         let Gt = $(getTemplate("#RequestlyWarning"));
-        $("#btnRequestlyAccept", Gt).click(function() {
+        $("#btnRequestlyAccept", Gt).click((function() {
             Bt.accepted = !0,
             localStorage.setItem("requestlyWarning", JSON.stringify(Bt)),
             Gt.remove()
-        }),
+        }
+        )),
         $("body").append(Gt).css("overflow", "hidden")
     }
 }
@@ -38094,7 +38463,7 @@ SWAM.loadFiles(()=>{
     SWAM.trigger("extensionsLoaded"),
     SWAM.loadTheme(),
     SWAM.trigger("themeLoaded"),
-    SWAM.one("texturesInjected", function() {
+    SWAM.one("texturesInjected", (function() {
         SWAM.Theme.loadGameModules(),
         SWAM.trigger("gameLoaded"),
         RunGame(),
@@ -38102,7 +38471,8 @@ SWAM.loadFiles(()=>{
         SWAM.hideLoadingScreen(),
         console.log("loading time: ", Date.now() - Gt),
         SWAM.trigger("gameRunning")
-    }),
+    }
+    )),
     loadGameCode()
 }
 );
