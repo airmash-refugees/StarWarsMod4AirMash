@@ -38540,25 +38540,6 @@ SWAM.hideLoadingScreen = function() {
     delete SWAM.hideLoadingScreen
 }
 ,
-SWAM.on("gameRunning", ()=>{
-    if ("starma.sh" == location.hostname.toLowerCase()) {
-        if (window.location.hash.toLowerCase().startsWith("#importsettings")) {
-            let Bt = JSON.parse(atob(window.location.hash.replace("#importsettings", "")));
-            Tools.setSettings(Bt),
-            $("#playername").val(Bt.name),
-            window.location = location.origin
-        }
-        $("#loginbutton").off("click").click(()=>{
-            let Gt = $(getTemplate("#loginInstructions"));
-            return $("#logon").append(Gt),
-            Gt.fadeIn(500),
-            closeWhenClickOutside(Gt),
-            !1
-        }
-        )
-    }
-}
-),
 SWAM.loadFiles(()=>{
     let Gt = Date.now();
     SWAM.trigger("extensionsLoaded"),
