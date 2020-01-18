@@ -32987,7 +32987,6 @@ function loadGameCode() {
                     Vt[wn].num++;
                     var Pn;
                     Pn = DEVELOPMENT ? "/ping" : "https://" + wn + "/ping",
-                    console.log(Pn),
                     xn(wn, Pn, (function() {
                         xn(wn, Pn)
                     }
