@@ -32492,11 +32492,7 @@ function loadGameCode() {
             pos: Vector.zero(),
             speed: 0
         }
-          , dn = {
-            2: "Custom country flags",
-            3: "Emotes",
-            4: "Flag Pack #1"
-        }
+          , dn = {}
           , loginOrigin = game.serviceUrls.login
           , loginIdentityProvider = 0
           , loginNonce = null;
@@ -33286,8 +33282,7 @@ function loadGameCode() {
             var Pn = '<div id="custom-msg" class="levelup' + Cn + '"><div class="leveltext">NEW LEVEL REACHED</div><div class="levelbadge"></div><div class="levelnum">' + En + "</div>" + wn + "</div>";
             $("body").append(Pn),
             UI.showPanel("#custom-msg"),
-            Sound.levelUp(),
-            UI.showChatLevel(En)
+            Sound.levelUp()
         }
         ,
         Games.popFirewall = function(En, wn) {
