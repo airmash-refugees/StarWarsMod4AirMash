@@ -26081,15 +26081,16 @@ function() {
         debug: {},
         buckets: []
     };
-    let backendRoot = window.origin + "/";
+    let backendRoot = window.origin;
     if (window.origin.endsWith(".airmash.online") || /^http:\/\/127\.0\.0\.1:[0-9]{1,5}\/?$/m.test(window.origin)) {
-        backendRoot = "https://data.airmash.online/"
+        backendRoot = "https://data.airmash.online"
     }
     game.serviceUrls = {
-        enter: backendRoot + "enter",
-        clienterror: backendRoot + "clienterror",
-        games: backendRoot + "games",
-        login: "https://login.airmash.online"
+        enter: backendRoot + "/enter",
+        clienterror: backendRoot + "/clienterror",
+        games: backendRoot + "/games",
+        login: "https://login.airmash.online",
+        settings: "https://data.airmash.online/settings"
     };
     window.config = {
         storage: {},
@@ -26313,9 +26314,7 @@ class Vector {
 }
 function loadGameCode() {
     !function() {
-        var Xt = {}
-          , Yt = 0
-          , Ht = {
+        var Xt = {}, Yt = 0, lastRemoteSettingsJson, Ht = {
             started: !1,
             startX: 200,
             startY: -2450,
@@ -26324,6 +26323,7 @@ function loadGameCode() {
             explosion: 4e3,
             direction: 1
         };
+        const localOnlySettings = ["id", "hidpi"];
         Tools.updateReel = function() {
             if (!Ht.started) {
                 Ht.pos = Vector.zero();
@@ -26394,6 +26394,29 @@ function loadGameCode() {
             "#forcemobile" == window.location.hash && (config.mobile = !0),
             "#nomobile" == window.location.hash && (config.mobile = !1)
         };
+        Tools.syncRemoteSettings = function(callback) {
+            if (config.auth.tokens && config.auth.tokens.settings) {
+                var remoteSettings = {};
+                Object.keys(config.settings).forEach(key=>{
+                    if (!localOnlySettings.includes(key)) {
+                        remoteSettings[key] = config.settings[key]
+                    }
+                }
+                );
+                var remoteSettingsJson = JSON.stringify(remoteSettings);
+                if (remoteSettingsJson !== lastRemoteSettingsJson) {
+                    lastRemoteSettingsJson = remoteSettingsJson;
+                    Tools.ajaxPost(game.serviceUrls.settings, remoteSettingsJson, config.auth.tokens.settings, (function(data) {
+                        if (!(data && data.result == 1)) {
+                            lastRemoteSettingsJson = ""
+                        }
+                        null != callback && callback(data)
+                    }
+                    ))
+                }
+            }
+        }
+        ;
         var loadObjectFromLocalStorage = function(key) {
             if (null == window.localStorage)
                 return {};
@@ -26416,38 +26439,31 @@ function loadGameCode() {
             }
         };
         Tools.loadSettings = function() {
-            var Jt = Vt();
-            config.storage = Jt,
-            DEVELOPMENT && console.log(Jt),
-            null != Jt.id && (config.settings.id = Jt.id),
-            null != Jt.name && (config.settings.name = Jt.name),
-            null != Jt.region && (config.settings.region = Jt.region),
-            null != Jt.helpshown && (config.settings.helpshown = Jt.helpshown),
-            null != Jt.mobileshown && (config.settings.mobileshown = Jt.mobileshown),
-            null != Jt.flag && (config.settings.flag = Jt.flag),
-            null != Jt.hidpi && (config.settings.hidpi = Jt.hidpi),
-            null != Jt.sound && (config.settings.sound = Jt.sound),
-            null != Jt.keybinds && (config.settings.keybinds = Jt.keybinds),
-            null != Jt.mousemode && (config.settings.mousemode = Jt.mousemode),
-            Wt()
+            var settings = loadObjectFromLocalStorage("settings");
+            for (var key in settings) {
+                config.settings[key] = settings[key]
+            }
+            DEVELOPMENT && console.log(settings);
+            Tools.applySettingsToGame()
         }
         ;
-        var Wt = function() {
+        Tools.applySettingsToGame = function() {
             if (null == config.settings.id) {
-                var Jt = Tools.randomID(16);
-                config.settings.id = Jt,
+                var e = Tools.randomID(16);
+                config.settings.id = e,
                 Tools.setSettings({
-                    id: Jt
+                    id: e
                 })
             }
             null != config.settings.name && $("#playername").val(config.settings.name),
             null != config.settings.region && (game.playRegion = config.settings.region),
             null != config.settings.flag && (game.myFlag = config.settings.flag),
-            null == config.settings.sound && (config.settings.sound = !0),
-            config.settings.mousemode && Input.toggleMouse(!0),
+            null == config.settings.sound && (config.settings.sound = true),
+            config.settings.mousemode && Input.toggleMouse(true),
             UI.updateSound(),
-            config.settings.oldhidpi = config.settings.hidpi
-        };
+            config.oldhidpi = config.settings.hidpi
+        }
+        ;
         Tools.randomID = function(Jt) {
             var $t = new Uint8Array(Jt);
             return window.crypto.getRandomValues($t),
@@ -26459,33 +26475,21 @@ function loadGameCode() {
                 en += $t = 1 === ($t = (255 & Jt[tn]).toString(16)).length ? "0" + $t : $t;
             return en
         };
-        Tools.setSettings = function(Jt) {
-            if (null != window.localStorage) {
-                for (var $t in Jt)
-                    config.storage[$t] = Jt[$t];
-                try {
-                    localStorage.setItem("settings", JSON.stringify(config.storage))
-                } catch (en) {}
+        Tools.setSettings = function(settings) {
+            for (var key in settings) {
+                config.settings[key] = settings[key]
             }
+            saveObjectToLocalStorage("settings", config.settings)
         }
-        ,
-        Tools.removeSetting = function(Jt) {
-            if (null != window.localStorage) {
-                null != config.storage[Jt] && delete config.storage[Jt];
-                try {
-                    localStorage.setItem("settings", JSON.stringify(config.storage))
-                } catch ($t) {}
-            }
+        ;
+        Tools.removeSetting = function(key) {
+            null != config.settings[key] && delete config.settings[key];
+            saveObjectToLocalStorage("settings", config.settings)
         }
-        ,
+        ;
         Tools.wipeSettings = function() {
-            if (null != window.localStorage) {
-                config.storage = {},
-                config.settings = {};
-                try {
-                    localStorage.setItem("settings", JSON.stringify(config.storage))
-                } catch (Jt) {}
-            }
+            config.settings = {};
+            saveObjectToLocalStorage("settings", config.settings)
         }
         ;
         var checkAuth = function() {
@@ -26520,18 +26524,39 @@ function loadGameCode() {
                 } catch (en) {}
             return $t
         };
-        Tools.ajaxPost = function(Jt, $t, en) {
+        Tools.ajaxPost = function(url, data, token, callback) {
             $.ajax({
-                url: Jt,
+                url: url,
                 method: "POST",
-                data: $t,
+                data: data,
                 dataType: "json",
                 timeout: 1e4,
-                success: function(tn) {
-                    null != en && en(null != tn && 1 == tn.result ? tn : null)
+                headers: null == token ? {} : {
+                    Authorization: "Bearer " + token
+                },
+                success: function(e) {
+                    null != callback && callback(e)
                 },
                 error: function() {
-                    null != en && en(null)
+                    null != callback && callback(null)
+                }
+            })
+        }
+        ,
+        Tools.ajaxGet = function(url, token, callback) {
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: "json",
+                timeout: 1e4,
+                headers: null == token ? {} : {
+                    Authorization: "Bearer " + token
+                },
+                success: function(e) {
+                    null != callback && callback(e)
+                },
+                error: function() {
+                    null != callback && callback(null)
                 }
             })
         }
@@ -27543,12 +27568,11 @@ function loadGameCode() {
         }
         ,
         Graphics.toggleHiDPI = function() {
-            config.settings.hidpi = 1 != config.settings.hidpi,
-            config.settings.hidpi ? Tools.setSettings({
-                hidpi: !0
-            }) : Tools.removeSetting("hidpi"),
+            Tools.setSettings({
+                hidpi: !config.settings.hidpi
+            }),
             UI.updateMainMenuSettings(),
-            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
+            1 == config.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
         }
         ;
         var Kt = function(an, rn) {
@@ -27889,7 +27913,7 @@ function loadGameCode() {
                 hidpi: !0
             }) : Tools.removeSetting("hidpi"),
             UI.updateMainMenuSettings(),
-            1 == config.settings.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
+            1 == config.oldhidpi == config.settings.hidpi ? UI.showMessage("alert", "", 1e3) : UI.showMessage("alert", 'Reload game to apply HiDPI settings<br><span class="button" onclick="Games.redirRoot()">RELOAD</span>', 1e4)
         }
         ;
         var Kt = function(an, rn) {
@@ -32545,8 +32569,9 @@ function loadGameCode() {
             }
             )),
             $("#gotomainpage").on("click", Games.redirRoot),
-            $("#lifetime-signin").on("click", Games.redirRoot);
-            Tools.loadAuth() ? Games.playerAuth() : Games.playerGuest();
+            $("#lifetime-signin").on("click", Games.redirRoot),
+            Tools.loadAuth() ? Games.playerAuth() : Games.playerGuest(),
+            setInterval(Tools.syncRemoteSettings, 1e3),
             un((function() {
                 return (Jt = !0,
                 pn(),
@@ -32602,8 +32627,10 @@ function loadGameCode() {
         };
         window.loginSuccess = function(En) {
             Tools.setAuth(En),
-            Games.playerAuth(),
-            UI.closeLogin()
+            Games.playerAuth((function() {
+                window.location = "/"
+            }
+            ))
         }
         ,
         window.loginFailure = function() {}
@@ -32613,23 +32640,31 @@ function loadGameCode() {
             UI.show("#loginbutton", !0)
         }
         ,
-        Games.playerAuth = function() {
-            game.loggedIn = true;
-            var t = UI.escapeHTML((config.auth.loginname || "").substr(0, 30)) + '<span class="grey">(' + ["", "Microsoft", "Google", "Twitter", "Reddit", "Twitch"][config.auth.identityprovider || 0] + ")</span>"
-              , n = t + '<span class="link" onclick="Games.logout()">Logout</span>'
-              , r = "Logged in as " + t + '<span class="button" onclick="Games.logout()">LOG OUT</span>';
-            $("#logout").html(n),
-            $("#logout-mainmenu").html(r),
-            $("#loginbutton").remove(),
-            $("#lifetime-account").remove(),
-            $("#playbutton").html("PLAY"),
-            UI.show("#playbutton", true)
+        Games.playerAuth = function(callback) {
+            Tools.ajaxGet(game.serviceUrls.settings, config.auth.tokens.settings, (function(remoteSettings) {
+                if (null != remoteSettings) {
+                    game.loggedIn = true;
+                    var t = UI.escapeHTML((config.auth.loginname || "").substr(0, 30)) + '<span class="grey">(' + ["", "Microsoft", "Google", "Twitter", "Reddit", "Twitch"][config.auth.identityprovider || 0] + ")</span>"
+                      , n = t + '<span class="link" onclick="Games.logout()">Logout</span>'
+                      , r = "Logged in as " + t + '<span class="button" onclick="Games.logout()">LOG OUT</span>';
+                    $("#logout").html(n),
+                    $("#logout-mainmenu").html(r),
+                    $("#loginbutton").remove(),
+                    $("#lifetime-account").remove(),
+                    $("#playbutton").html("PLAY"),
+                    UI.show("#playbutton", true),
+                    Tools.setSettings(remoteSettings),
+                    null != callback && callback()
+                } else {
+                    Games.playerGuest()
+                }
+            }
+            ))
         }
         ,
         Games.logout = function() {
-            Tools.setAuth({});
-            Tools.removeSetting("name"),
-            Tools.removeSetting("flag"),
+            Tools.setAuth({}),
+            Tools.wipeSettings(),
             window.location = "/"
         }
         ;
@@ -33447,9 +33482,8 @@ function loadGameCode() {
         }
         ,
         Sound.toggle = function() {
-            config.settings.sound = !config.settings.sound,
             Tools.setSettings({
-                sound: config.settings.sound
+                sound: !config.settings.sound
             }),
             UI.updateSound(!0),
             mn()
@@ -33770,9 +33804,8 @@ function loadGameCode() {
         }
         ,
         Sound.toggle = function() {
-            config.settings.sound = !config.settings.sound,
             Tools.setSettings({
-                sound: config.settings.sound
+                sound: !config.settings.sound
             }),
             UI.updateSound(!0),
             mn()
@@ -34444,14 +34477,10 @@ function SWAM() {
         let Gt = getDefaultModSettings();
         try {
             let Xt = null;
-            try {
-                Xt = JSON.parse(localStorage.getItem("SWAM_Settings"))
-            } catch (Yt) {
-                Xt = null
-            }
+            Xt = config.settings.SWAM_Settings;
             $.extend(!0, Gt, Xt)
         } catch (Xt) {
-            localStorage.removeItem("SWAM_Settings")
+            Tools.removeSetting("SWAM_Settings")
         }
         return Gt
     }
@@ -34467,7 +34496,9 @@ function SWAM() {
                 console.error(Xt)
             }
         SWAM.trigger("settingsApplied", Bt),
-        localStorage.setItem("SWAM_Settings", JSON.stringify(Bt))
+        Tools.setSettings({
+            SWAM_Settings: Bt
+        })
     }
     function freeSpectatorMode(Bt) {
         function Gt(Xt, Yt) {
@@ -36158,17 +36189,11 @@ function SWAM() {
         options: [[], [], []],
         defaultOptions: [["gg", "Hi!", "Yes", "No", "Thanks!", "You are welcome!", "I'll be right back.", "Got to go, cya!", "-SWAM-PING", "Try StarMash, a mod for Airmash!|How to use:  tiny.cc/starmash or play as guest in:  starma.sh"], ["Affirmative", "Negative", "** I'VE GOT THE FLAG! COVER ME! **", "** THE ENEMY HAS OUR FLAG! **", "** All wings, protect our flag carrier! **", "Defending the base! Need assistance!", "Attacking their base!  Need assistance!", "On my way!", "Cancel that..", "Prowler in our base!"], ["Hey there!", "Stop!", "Go Go Go!", "Imperial scum!", "Rebel scum!", "Prowler here!", "YEE-HAW!!!", ":lol:", ":cry:", ":clap:"]],
         loadOptions: function() {
-            var Bt = localStorage.getItem("radioMessages");
-            if (null != Bt)
-                try {
-                    SWAM.radio.options = JSON.parse(Bt)
-                } catch (Gt) {
-                    var Bt = null;
-                    localStorage.removeItem("radioMessages")
-                }
-            if (null == Bt) {
-                var Bt = jQuery.extend(!0, {}, SWAM.radio.defaultOptions);
+            var Bt = config.settings.SWAM_RadioMessages;
+            if (null != Bt) {
                 SWAM.radio.options = Bt
+            } else {
+                SWAM.radio.options = jQuery.extend(!0, {}, SWAM.radio.defaultOptions)
             }
         },
         showConfig: function(Bt) {
@@ -36193,7 +36218,9 @@ function SWAM() {
             $("#radioCustomizeSave", Xt).click((function() {
                 for (var Wt = $("input", Xt), zt = 0; zt < Wt.length; zt++)
                     SWAM.radio.options[Bt][zt] = Wt[zt].value;
-                localStorage.setItem("radioMessages", JSON.stringify(SWAM.radio.options)),
+                Tools.setSettings({
+                    SWAM_RadioMessages: SWAM.radio.options
+                }),
                 Xt.remove()
             }
             )),
@@ -36208,7 +36235,9 @@ function SWAM() {
                     yes: function() {
                         var Wt = jQuery.extend(!0, [], SWAM.radio.defaultOptions[Bt]);
                         SWAM.radio.options[Bt] = Wt,
-                        localStorage.setItem("radioMessages", JSON.stringify(SWAM.radio.options)),
+                        Tools.setSettings({
+                            SWAM_RadioMessages: SWAM.radio.options
+                        }),
                         SWAM.radio.loadOptions(),
                         Xt.remove()
                     }
@@ -36220,7 +36249,7 @@ function SWAM() {
                     title: "Are you sure? This will delete all customized messages and restore them to default.",
                     message: "Confirmation needed",
                     yes: function() {
-                        localStorage.removeItem("radioMessages"),
+                        Tools.removeSetting("SWAM_RadioMessages"),
                         SWAM.radio.loadOptions(),
                         Xt.remove()
                     }
@@ -37099,16 +37128,18 @@ function SWAM() {
             for (let en in Jt)
                 1 != Jt[en] && ($t = !0);
             if ($t) {
-                let en = new PIXI.filters.AdjustmentFilter;
+                let en = new PIXI.filters.AdjustmentFilter
+                  , colorAdjustments = {};
                 for (let tn in Jt)
                     en[tn] = Jt[tn];
                 config.adjustmentFilter = en,
                 game.graphics.layers.game.filters = [en],
-                localStorage.setItem(Zt, JSON.stringify(Jt))
+                colorAdjustments[Zt] = Jt,
+                Tools.setSettings(colorAdjustments)
             } else
                 delete config.adjustmentFilter,
                 game.graphics.layers.game.filters = [],
-                localStorage.removeItem(Zt)
+                Tools.removeSetting(Zt)
         }
         const Zt = "SWAM_ColorAdjustments";
         let Qt, Jt = {
@@ -37122,7 +37153,7 @@ function SWAM() {
             alpha: 1
         };
         (function() {
-            return $.extend(Jt, JSON.parse(localStorage.getItem(Zt)))
+            return $.extend(Jt, config.settings[Zt])
         }
         )(),
         Kt(),
@@ -37489,7 +37520,9 @@ SWAM.injectSounds = function(Bt) {
             selectedTheme: dn
         };
         window.specialTheme && (un.lastSpecialTheme = window.specialTheme),
-        localStorage.setItem("SWAM_Extensions", JSON.stringify(un))
+        Tools.setSettings({
+            SWAM_Extensions: un
+        })
     }
     function Jt(un) {
         let pn = un.info.id;
@@ -37501,7 +37534,9 @@ SWAM.injectSounds = function(Bt) {
             delete SWAM.Settings.extensions[pn],
             delete on[pn]
         }
-        localStorage.setItem("SWAM_Settings", JSON.stringify(SWAM.Settings))
+        Tools.setSettings({
+            SWAM_Settings: SWAM.Settings
+        })
     }
     function $t(un, pn) {
         pn = pn.replace(/\[(\w+)\]/g, ".$1"),
@@ -37752,9 +37787,8 @@ SWAM.injectSounds = function(Bt) {
     let rn = Xt(), on = {}, sn = {}, dn = "", ln;
     "#clean" == window.location.hash ? Zt() : "#noextensions" != window.location.hash && function() {
         try {
-            let un = localStorage.getItem("SWAM_Extensions");
-            null != un && (un = JSON.parse(un),
-            un.extensionsToLoad && (rn = $.extend(un.extensionsToLoad, Xt())),
+            let un = JSON.parse(localStorage.getItem("settings")).SWAM_Extensions;
+            null != un && (un.extensionsToLoad && (rn = $.extend(un.extensionsToLoad, Xt())),
             un.selectedTheme && "" != un.selectedTheme && (dn = un.selectedTheme),
             un.lastSpecialTheme && (ln = un.lastSpecialTheme))
         } catch (un) {}
@@ -37779,7 +37813,7 @@ SWAM.injectSounds = function(Bt) {
     ,
     SWAM.getThemeSettings = function() {
         let un = SWAM.Settings;
-        return SWAM.Settings || (un = JSON.parse(localStorage.getItem("SWAM_Settings"))),
+        return SWAM.Settings || (un = config.settings.SWAM_Settings),
         $t(un, SWAM.Theme.settingsProvider.root)
     }
     ,
@@ -37953,7 +37987,10 @@ SWAM.injectSounds = function(Bt) {
             dn = $("#selTheme", yn).val(),
             Zt(),
             mn(),
-            window.location = Yt()
+            Tools.syncRemoteSettings((function() {
+                window.location = Yt()
+            }
+            ))
         }
         ),
         $(".btnCancel", yn).click(()=>{
