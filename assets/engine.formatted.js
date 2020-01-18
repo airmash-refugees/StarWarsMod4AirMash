@@ -34462,7 +34462,7 @@ window.Base64 = {
         return Gt
     }
 },
-window.SWAM_version = "2.6011101",
+window.SWAM_version = "2.7011801",
 SWAM.version = window.SWAM_version,
 SWAM.debug = !1;
 function SWAM() {
