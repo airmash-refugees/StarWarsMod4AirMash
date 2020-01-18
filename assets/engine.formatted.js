@@ -28401,7 +28401,7 @@ function loadGameCode() {
         }
         ,
         Network.setup = function() {
-            jt = DEVELOPMENT ? -1 == document.domain.indexOf("192.168.") ? "ws://" + game.playHost + ".airmash.devel:8000/" + game.playPath : "ws://" + document.domain + ":8010/" + game.playPath : "wss://game-" + game.playHost + ".airma.sh/" + game.playPath,
+            jt = game.playUrl || "wss://" + game.playHost + "/" + game.playPath;
             Yt && Ht && Yt.close(),
             (Xt = new WebSocket(jt)).binaryType = "arraybuffer",
             Xt.onopen = function() {
@@ -33013,7 +33013,8 @@ function loadGameCode() {
                     }
                     var On = hn(game.playRegion, An);
                     game.playHost = On.host,
-                    game.playPath = On.id,
+                    game.playPath = On.path,
+                    game.playUrl = On.url,
                     game.regionName = cn(game.playRegion).name,
                     game.playRoom = An,
                     game.state == Network.STATE.LOGIN && Tools.wipeReel(),
