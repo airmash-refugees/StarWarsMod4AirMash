@@ -37521,7 +37521,7 @@ SWAM.injectSounds = function(Bt) {
             selectedTheme: dn
         };
         window.specialTheme && (un.lastSpecialTheme = window.specialTheme),
-        Tools.setSettings({
+        Tools.setSettings && Tools.setSettings({
             SWAM_Extensions: un
         })
     }
