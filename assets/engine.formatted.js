@@ -28478,8 +28478,8 @@ function loadGameCode() {
                     session: config.auth.tokens && config.auth.tokens.game ? JSON.stringify({
                         token: config.auth.tokens.game
                     }) : "none",
-                    horizonX: Math.ceil(16e3 / game.scale),
-                    horizonY: Math.ceil(8e3 / game.scale),
+                    horizonX: Math.ceil(2 * game.halfScreenX / game.scale),
+                    horizonY: Math.ceil(2 * game.halfScreenY / game.scale),
                     flag: game.myFlag
                 })
             }
