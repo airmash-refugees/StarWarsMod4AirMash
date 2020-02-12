@@ -29903,7 +29903,7 @@ function loadGameCode() {
             this.state.bubbleFade = 0,
             this.state.bubble || (this.state.bubble = !0,
             this.state.bubbleProgress = 0,
-            this.sprites.bubble.visible = !0,
+            this.sprites.bubble.visible = this.render,
             this.sprites.bubble.alpha = 0,
             this.sprites.bubble.scale.set(0, 0)),
             this.sprites.bubble.cacheAsBitmap = !1;
@@ -30085,6 +30085,7 @@ function loadGameCode() {
             }
         }
         updateBubble() {
+            this.sprites.bubble.visible = this.render,
             this.state.bubbleProgress += .015 * game.timeFactor,
             1 <= this.state.bubbleProgress && (this.state.bubbleProgress = 1),
             4e3 < game.time - this.state.bubbleTime ? (this.state.bubbleFade += .08 * game.timeFactor,
