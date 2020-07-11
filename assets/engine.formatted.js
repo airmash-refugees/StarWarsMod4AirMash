@@ -37368,8 +37368,7 @@ SWAM.injectTextures = function(Bt, Gt, Xt, Yt, Ht) {
     };
     for (let Zt in qt)
         Yt[Zt] = qt[Zt];
-    SWAM.Theme && SWAM.Theme.injectTextures && SWAM.Theme.injectTextures(Bt, Gt, Xt, Yt, Ht),
-    Christmas2017Theme.addSnow(Bt);
+    SWAM.Theme && SWAM.Theme.injectTextures && SWAM.Theme.injectTextures(Bt, Gt, Xt, Yt, Ht);
     let Kt = new PIXI.loaders.Loader;
     Kt.add(Object.values(Bt)),
     Kt.load(()=>SWAM.trigger("texturesInjected"))
